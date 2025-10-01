@@ -1,0 +1,10 @@
+# Core dependencies
+PyPDF2>=3.0.0
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+
+# Optional dependencies for advanced features
+# Uncomment if needed:
+# pypdf>=3.17.0  # Alternative PDF parser
+# pdfplumber>=0.10.0  # Better PDF text extraction
+
