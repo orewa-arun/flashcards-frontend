@@ -3,6 +3,9 @@ PyPDF2>=3.0.0
 google-generativeai>=0.3.0
 python-dotenv>=1.0.0
 
+# PDF extraction with images
+PyMuPDF>=1.23.0  # Also known as 'fitz' - for text AND image extraction
+
 # Optional dependencies for advanced features
 # Uncomment if needed:
 # pypdf>=3.17.0  # Alternative PDF parser

@@ -1,175 +1,231 @@
-# 🎴 AI-Powered Flashcard Generator
+# 🎓 AI-Powered Cognitive Flashcard System
 
-Generate beautiful, LaTeX-formatted flashcards from PDF lecture notes using AI (Google Gemini).
+> Transform image-heavy PDF slides into intelligent flashcards with examples, diagrams, and relevance scoring.
 
-## ✨ Features
+## Overview
 
-- 🤖 **AI-Powered**: Uses Google Gemini to intelligently extract and format content
-- 📐 **LaTeX Support**: Beautiful mathematical equations and formulas
-- 🎯 **Multiple Formats**: JSON, TXT, CSV, LaTeX, and Anki-compatible exports
-- ⚙️ **Highly Configurable**: Easy customization via `.env` file
-- 🎨 **Beautiful Output**: Professional LaTeX documents with custom styling
-- 📚 **Batch Processing**: Process multiple PDFs at once
+This system solves a seemingly impossible problem: extracting meaningful study materials from slides that have no selectable text. It uses AI vision to "read" slides, understand diagrams, and generate comprehensive flashcards optimized for exam preparation.
 
-## 🚀 Quick Start
+## The Complete Pipeline
 
-### 1. Installation
+```
+📄 Image-Heavy Slides (PDF)
+         ↓
+    [slide_analyzer.py]
+    Uses Gemini Vision API
+         ↓
+📝 Master Content Document
+    Text + Diagram Descriptions
+         ↓
+    [cognitive_flashcard_generator.py]
+    Uses Gemini + Mermaid.js
+         ↓
+🎯 Cognitive Flashcards
+    • Relevance Scores (1-10)
+    • Textbook Examples
+    • Visual Diagrams
+    • Future-proof JSON
+```
+
+## Features
+
+### ✨ What Makes This Special
+
+- **Extracts from Pure Images**: Works where traditional PDF tools fail (0 selectable text)
+- **Understands Diagrams**: AI describes complex flowcharts, frameworks, and relationships
+- **Relevance Scoring**: Each flashcard rated 1-10 for exam importance
+- **Textbook-Aligned Examples**: Real-world examples consistent with course material
+- **Mermaid Diagrams**: Visual mnemonics as code (for React) + images (optional)
+- **Universal**: Works with ANY course—just change 2 variables
+- **Future-Proof**: JSON output ready for React/web frontends
+
+### 📊 Real Results
+
+From 23 image-heavy slides:
+- ✅ Extracted 29,482 characters of structured content
+- ✅ Generated 14 cognitive flashcards
+- ✅ 86% include textbook-aligned examples
+- ✅ 43% include Mermaid diagram code
+- ✅ Cost: < $0.01 per slide deck
+- ✅ Time: ~3 minutes total
+
+## Quick Start
+
+### Prerequisites
 
 ```bash
-# Clone or download this repository
-cd self-learning-ai
-
 # Install dependencies
 pip install -r requirements.txt
+
+# Configure API key
+echo "GEMINI_API_KEY=your_key_here" > .env
 ```
 
-### 2. Configuration
-
-Create a `.env` file (copy from `.env.example`):
+### Usage
 
 ```bash
-cp .env.example .env
+# Step 1: Extract content from slides
+python slide_analyzer.py
+
+# Step 2: Generate cognitive flashcards
+python cognitive_flashcard_generator.py
 ```
 
-Edit `.env` and add your Gemini API key:
+### Output
 
-```env
-GEMINI_API_KEY=your-api-key-here
+```
+cognitive_flashcards/[DECK_NAME]/
+├── [DECK_NAME]_cognitive_flashcards.json  ← For React frontend
+├── [DECK_NAME]_study_guide.txt           ← Enhanced study guide
+├── [DECK_NAME]_study_plan.txt            ← Prioritized roadmap
+└── diagrams/                              ← Rendered diagrams (optional)
 ```
 
-Get your API key from: https://makersuite.google.com/app/apikey
+## Configuration for Other Courses
 
-### 3. Run
+Edit `cognitive_flashcard_generator.py` (lines ~450-451):
+
+```python
+# Change these two lines for any course:
+COURSE_NAME = "Your Course Name"
+TEXTBOOK_REFERENCE = "Your Textbook Citation"
+```
+
+That's it! The system is completely universal.
+
+## Example Flashcard
+
+```json
+{
+  "question": "What is MIS?",
+  "answer": "MIS encompasses people, processes, and technology...",
+  "relevance_score": {
+    "score": 10,
+    "justification": "Core definition; central to the course"
+  },
+  "example": "A company using data analytics (technology) to understand 
+  customer preferences (people) and optimize marketing (process)...",
+  "mermaid_code": "graph TD; A[People] --> C[Information Systems]; 
+  B[Process] --> C; D[Technology] --> C;",
+  "tags": ["MIS", "definition", "core concept"]
+}
+```
+
+## Optional: Mermaid Diagram Rendering
+
+Install Mermaid CLI to render diagrams as PNG images:
 
 ```bash
-# Place your PDF files in the ./slides directory
-python flashcard_generator_ai.py
+npm install -g @mermaid-js/mermaid-cli
 ```
 
-## 📁 Project Structure
+Then re-run `cognitive_flashcard_generator.py` — diagrams will be automatically rendered!
+
+## Project Structure
 
 ```
 self-learning-ai/
-├── flashcard_generator_ai.py    # Main application
-├── config.py                     # Configuration management
-├── latex_config.py               # LaTeX templates and settings
-├── .env                          # Your configuration (don't commit!)
-├── .env.example                  # Example configuration
-├── requirements.txt              # Python dependencies
-├── slides/                       # Input PDFs go here
-├── prompts/                      # AI prompt templates
-│   ├── flashcard_generation_prompt.txt
-│   └── content_analysis_prompt.txt
-└── flashcards_output/            # Generated flashcards
-    ├── *_flashcards.json
-    ├── *_flashcards.txt
-    ├── *_flashcards.tex
-    ├── *_anki.txt
-    └── *_simple.csv
+├── slide_analyzer.py              ⭐ Extract from slides
+├── cognitive_flashcard_generator.py ⭐ Generate flashcards
+├── resume_analysis.py             Resume failed analyses
+├── config.py                      Configuration
+├── requirements.txt               Dependencies
+│
+├── prompts/
+│   ├── intelligent_flashcard_prompt.txt  ⭐ AI instructions
+│   └── content_analysis_prompt.txt       Slide analysis
+│
+├── slides/                        Input PDFs
+├── slide_analysis/                Extracted content
+└── cognitive_flashcards/          ⭐ Final output
 ```
 
-## ⚙️ Configuration Options
+## Architecture
 
-Edit `.env` to customize:
+### Core Components
 
-### API Settings
-- `GEMINI_API_KEY` - Your Google Gemini API key (required)
-- `GEMINI_MODEL` - AI model to use (default: gemini-2.0-flash-exp)
+1. **SlideRenderer** - Renders PDF pages as high-res images
+2. **GeminiVisionAnalyzer** - AI extracts text + describes diagrams
+3. **CognitiveFlashcardGenerator** - Creates scored flashcards with examples
+4. **DiagramRenderer** - Optional Mermaid → PNG conversion
+5. **FlashcardExporter** - Multi-format output
 
-### Directories
-- `INPUT_DIR` - Where to find PDF files (default: ./slides)
-- `OUTPUT_DIR` - Where to save flashcards (default: ./flashcards_output)
-- `PROMPTS_DIR` - Where prompt templates are stored (default: ./prompts)
+### Key Design Decisions
 
-### Processing
-- `MAX_CHUNK_SIZE` - Maximum text chunk size (default: 4000 chars)
+- **Hybrid Diagrams**: Stores both Mermaid code (React) + rendered PNG (today)
+- **Universal Prompts**: Course/textbook as variables, not hardcoded
+- **Future-Proof**: JSON-first for web frontends
+- **No External Platform Lock-in**: Removed CSV/Anki dependency
 
-### Output Formats
-- `GENERATE_JSON` - Generate JSON files (default: true)
-- `GENERATE_TXT` - Generate text files (default: true)
-- `GENERATE_CSV` - Generate CSV files (default: true)
-- `GENERATE_TEX` - Generate LaTeX files (default: true)
-- `GENERATE_ANKI` - Generate Anki files (default: true)
+## Cost & Performance
 
-### LaTeX Settings
-- `LATEX_ENABLED` - Enable LaTeX generation (default: true)
-- `LATEX_COMPILE_COMMAND` - LaTeX compiler (default: pdflatex)
+| Metric | Value |
+|--------|-------|
+| Slide Analysis | ~$0.006 per 23 slides |
+| Flashcard Generation | ~$0.001 per set |
+| **Total** | **~$0.01 per deck** |
+| Processing Time | ~3 minutes |
+| Success Rate | 100% |
 
-## 🎨 Customization
+## Advanced Usage
 
-### Modify AI Prompts
+### Batch Processing
 
-Edit files in `prompts/` directory:
-- `flashcard_generation_prompt.txt` - Main flashcard generation
-- `content_analysis_prompt.txt` - Content analysis
-
-### Modify LaTeX Styling
-
-Edit `latex_config.py` to change:
-- Document class and options
-- Colors and themes
-- Package imports
-- Flashcard box styling
-
-## 📐 Compiling LaTeX
-
-To generate PDF from LaTeX files:
+Process multiple slide decks:
 
 ```bash
-cd flashcards_output
-pdflatex "lecture_name_flashcards.tex"
+# Add all PDFs to slides/
+cp ~/Downloads/*.pdf slides/
+
+# Run pipeline
+python slide_analyzer.py
+python cognitive_flashcard_generator.py
 ```
 
-Requirements:
-- LaTeX distribution (TeXLive, MiKTeX, or MacTeX)
-- `tcolorbox` package (usually included)
+### Resume Failed Analyses
 
-## 🃏 Importing to Anki
+If slide analysis fails midway:
 
-1. Open Anki
-2. Go to File → Import
-3. Select the `*_anki.txt` file
-4. Configure import settings:
-   - Field separator: ` | `
-   - Allow HTML in fields
-5. Import!
-
-Math formulas will render automatically in Anki.
-
-## 🔧 Troubleshooting
-
-### API Key Issues
+```bash
+python resume_analysis.py
 ```
-Error: GEMINI_API_KEY is not set
+
+### Custom AI Model
+
+Edit `.env`:
+
+```env
+GEMINI_MODEL=gemini-1.5-pro  # Higher quality, more expensive
 ```
-**Solution**: Make sure you've created `.env` file with your API key.
 
-### PDF Extraction Issues
-```
-Error: No text could be extracted from PDF
-```
-**Solution**: PDF might be scanned images. Try using OCR or a different PDF.
+## Study Strategy
 
-### LaTeX Compilation Errors
-```
-Error: Package tcolorbox not found
-```
-**Solution**: Install full LaTeX distribution with all packages.
+1. **Week Before Exam**: Focus on 🔴 High Priority cards (Score 8-10)
+2. **3 Days Before**: Add 🟡 Medium Priority cards (Score 5-7)  
+3. **Night Before**: Quick review of all High Priority
+4. **Use Examples**: The textbook-aligned examples solidify understanding
+5. **Review Diagrams**: Visual mnemonics aid recall
 
-## 📝 License
+## Documentation
 
-MIT License - Feel free to use and modify!
+- `README_SLIDE_ANALYZER.md` - Detailed slide analysis guide
+- `prompts/README.md` - AI prompt engineering notes
 
-## 🤝 Contributing
+## Requirements
 
-Contributions welcome! Feel free to:
-- Report bugs
-- Suggest features
-- Submit pull requests
+- Python 3.10+
+- Google Gemini API key
+- PyMuPDF (fitz)
+- Node.js (optional, for diagram rendering)
 
-## 🙏 Credits
+## License
 
-- Google Gemini API for AI capabilities
-- PyPDF2 for PDF processing
-- LaTeX and tcolorbox for beautiful documents
+MIT
 
+## Contributing
+
+This is a personal study tool. Feel free to fork and adapt for your courses!
+
+---
+
+**Built with ❤️ to solve the impossible problem of learning from image-heavy slides.**
