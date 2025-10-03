@@ -15,8 +15,16 @@
 .study-header h1 {
   font-size: 28px;
   color: #667eea;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
+}
+
+.flashcard-intro {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  font-style: italic;
 }
 
 .progress-info {

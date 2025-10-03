@@ -36,6 +36,7 @@ function StudyDeck({ flashcards, metadata, onComplete }) {
     <div className="study-deck">
       <div className="study-header">
         <h1>📚 {metadata.course_name}</h1>
+        <p className="flashcard-intro">Interactive Flashcards - They help you remember better!</p>
         <div className="progress-info">
           <span className="card-counter">
             Card {currentIndex + 1} of {flashcards.length}
