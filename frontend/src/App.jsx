@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import StudyDeck from './components/StudyDeck'
 import Quiz from './components/Quiz'
@@ -61,6 +62,7 @@ function App() {
           flashcards={flashcardsData.flashcards}
         />
       )}
+      <Analytics />
     </div>
   )
 }

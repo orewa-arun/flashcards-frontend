@@ -120,6 +120,26 @@ function Scorecard({ results, flashcards }) {
         <h1 className="yay-message">🎊 Yay!, you have completed the study session! 🎊</h1>
       </div>
 
+      <div className="feedback-section">
+        <div className="feedback-card">
+          <div className="feedback-icon">🔥</div>
+          <h2 className="feedback-title">Roast this Prototype</h2>
+          <div className="feedback-benefits">
+            <span className="benefit">✨ Takes only 2 minutes</span>
+            <span className="benefit">🎯 Shape future courses</span>
+            <span className="benefit">🚀 Become an early adopter</span>
+          </div>
+          <a 
+            href="https://forms.gle/ahJdpBG4hJWTZoHg9" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="feedback-btn"
+          >
+            Drop some anonymous feedback! →
+          </a>
+        </div>
+      </div>
+
       <button 
         className="restart-btn"
         onClick={() => window.location.reload()}
