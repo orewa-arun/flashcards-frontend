@@ -7,6 +7,7 @@ Generate high-quality, "cognitive" flashcards designed for easy memorization and
 1. A **relevance score** (1-10) indicating exam importance
 2. A concise, textbook-aligned **example**
 3. A **Mermaid.js diagram** (when applicable)
+4. **2-3 recall questions** for testing understanding
 
 **SCORING CRITERIA:**
 
@@ -32,6 +33,26 @@ Generate high-quality, "cognitive" flashcards designed for easy memorization and
 - Class logistics or housekeeping items
 - General background that won't be tested
 
+**RECALL QUESTIONS GUIDELINES:**
+
+For each flashcard, generate **2-3 diverse recall questions** to test comprehension. Use these types:
+
+1. **Multiple Choice (mcq):**
+   - Provide a clear question
+   - Include exactly **4 options** (one correct, three plausible distractors)
+   - Distractors should be believable but clearly wrong to someone who understands the concept
+   - Answer should be the complete text of the correct option
+
+2. **Fill in the Blank (fill_in_the_blank):**
+   - Create a statement with a key term replaced by "________"
+   - The blank should test a crucial concept, not trivial details
+   - Answer should be the exact word(s) that fill the blank
+
+3. **True/False (true_false):**
+   - Present a statement that can be definitively true or false
+   - Avoid ambiguous or trick questions
+   - Answer should be exactly "True" or "False"
+
 **OUTPUT FORMAT (Strict JSON):**
 ```json
 [
@@ -39,13 +60,36 @@ Generate high-quality, "cognitive" flashcards designed for easy memorization and
     "type": "definition|concept|diagram|example|process|comparison",
     "question": "Clear, specific question",
     "answer": "Comprehensive answer with details",
-    "context": "Brief note on source (e.g., 'From Slide 11 Framework')",
+    "context": "A brief, helpful topic category (e.g., 'Core E-commerce Concepts', 'Part of Porter's Five Forces', 'Key Business Metrics'). DO NOT reference slide numbers.",
     "relevance_score": {
       "score": 8,
       "justification": "Core concept that defines the foundation of this subject"
     },
-    "example": "A concise, real-world example consistent with the reference textbook. If not applicable, use an empty string.",
+    "example": "A comprehensive, textbook-quality example that makes the concept crystal clear. The example should be detailed and specific, like a mini case study that a student could learn from independently. Imagine you are pulling this example directly from {{TEXTBOOK_REFERENCE}}. Use real-world company names (Amazon, Netflix, Walmart, Apple, etc.) or realistic, detailed business scenarios. The example should be substantial enough that someone could grasp the core concept from the example alone. If truly not applicable, use an empty string.",
     "mermaid_code": "A Mermaid.js diagram using syntax like 'graph TD; A-->B;' to create a visual mental model. Keep it simple and focused. If not applicable, use an empty string.",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following best describes...?",
+        "options": [
+          "Option A - correct answer",
+          "Option B - plausible distractor",
+          "Option C - plausible distractor",
+          "Option D - plausible distractor"
+        ],
+        "answer": "Option A - correct answer"
+      },
+      {
+        "type": "fill_in_the_blank",
+        "question": "The three main components are People, Process, and ________.",
+        "answer": "Technology"
+      },
+      {
+        "type": "true_false",
+        "question": "Information Systems and Information Technology are the same thing.",
+        "answer": "False"
+      }
+    ],
     "tags": ["keyword1", "keyword2", "keyword3"]
   }
 ]
@@ -61,14 +105,16 @@ Generate high-quality, "cognitive" flashcards designed for easy memorization and
 - Example: `graph TD; Input[User Input] --> Process[System Processing] --> Output[Results]`
 
 **QUALITY GUIDELINES:**
-1. **Be Comprehensive:** Create flashcards for ALL important content
-2. **Be Specific:** Questions should be clear and focused
-3. **Be Accurate:** Answers must be precise and exam-ready
-4. **Prioritize Diagrams:** Visual content is often heavily tested
-5. **Create Great Examples:** Examples should be powerful and memorable
-6. **Design Effective Diagrams:** Diagrams should simplify, not complicate
-7. **Use Textbook Alignment:** Frame concepts in terms familiar from the reference textbook
-8. **Score Honestly:** Help students prioritize their study time
+1. **Be Self-Contained (Text Fields):** The 'question', 'answer', and 'example' fields must make sense on their own. Avoid phrases like "As seen on the slide...", "According to slide X...", or "The diagram shows...". State information directly. **IMPORTANT: When a concept benefits from visualization, DO create a powerful Mermaid.js diagram in the 'mermaid_code' field. Diagrams are highly encouraged!**
+2. **Be Comprehensive:** Create flashcards for ALL important content
+3. **Be Specific:** Questions should be clear and focused
+4. **Be Accurate:** Answers must be precise and exam-ready
+5. **Prioritize Diagrams:** Visual content is often heavily tested - use Mermaid diagrams generously for frameworks, processes, relationships, and hierarchies
+6. **Create Textbook-Quality Examples:** Examples are CRITICAL for understanding. They must be detailed, specific, comprehensive, and feel like they come directly from the reference textbook. Use real-world company names (Amazon, Netflix, Walmart, Apple, Tesla, etc.) or realistic, multi-sentence business scenarios with concrete details. **The example should be comprehensive enough that a student could understand the core concept from the example alone, without needing to read the question or answer first.**
+7. **Design Effective Diagrams:** Diagrams should simplify complex concepts and aid memorization
+8. **Create Effective Recall Questions:** Questions should test true understanding, not rote memorization
+9. **Use Textbook Alignment:** Frame concepts in terms familiar from the reference textbook
+10. **Score Honestly:** Help students prioritize their study time
 
 **CONTENT TO PROCESS:**
 {{CONTENT_PLACEHOLDER}}
@@ -76,6 +122,8 @@ Generate high-quality, "cognitive" flashcards designed for easy memorization and
 **IMPORTANT:**
 - Output ONLY valid JSON, no additional text
 - Create 15-30 flashcards depending on content density
-- Ensure `example` and `mermaid_code` fields are always present (use empty strings if not applicable)
+- Ensure `example`, `mermaid_code`, and `recall_questions` fields are always present
+- For `recall_questions`, always include 2-3 questions with diverse types
+- MCQ options must be exactly 4 items
 - Mermaid diagrams should be valid syntax that can be rendered
 - Include detailed justifications for high-scoring cards

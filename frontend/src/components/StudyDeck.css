@@ -1,0 +1,126 @@
+.study-deck {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.study-header {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.study-header h1 {
+  font-size: 28px;
+  color: #667eea;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-counter {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
+
+.flashcard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.navigation-controls {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.nav-btn {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.prev-btn {
+  background: linear-gradient(135deg, #95a5f5, #a8b5e8);
+  color: white;
+}
+
+.prev-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.prev-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.prev-btn:disabled {
+  background: #d0d0d0;
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.next-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.next-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.next-btn:active {
+  transform: translateY(0);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #667eea;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+

@@ -341,11 +341,11 @@ class InformationExtractor:
         document_lines.append("")
         
         for slide in analyzed_slides:
-            page_num = slide['page_number']
             analysis = slide.get('analysis', {})
             
+            # Generic separator - no slide numbers for course-agnostic content
             document_lines.append("\n" + "=" * 80)
-            document_lines.append(f"SLIDE {page_num}: {analysis.get('title', 'Content')}")
+            document_lines.append(f"TOPIC: {analysis.get('title', 'Content')}")
             document_lines.append("=" * 80)
             document_lines.append("")
             

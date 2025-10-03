@@ -114,8 +114,10 @@ class CognitiveFlashcardGenerator:
             # Display diagram stats
             diagrams_count = sum(1 for card in flashcards if card.get('mermaid_code', '').strip())
             examples_count = sum(1 for card in flashcards if card.get('example', '').strip())
+            recall_q_count = sum(len(card.get('recall_questions', [])) for card in flashcards)
             print(f"   📊 With Diagrams: {diagrams_count} cards")
             print(f"   📝 With Examples: {examples_count} cards")
+            print(f"   🧠 Recall Questions: {recall_q_count} total")
             
             return flashcards
             
@@ -154,6 +156,8 @@ class CognitiveFlashcardGenerator:
                                 card['example'] = ""
                             if 'mermaid_code' not in card:
                                 card['mermaid_code'] = ""
+                            if 'recall_questions' not in card:
+                                card['recall_questions'] = []
                             valid_flashcards.append(card)
             
             return valid_flashcards
@@ -261,7 +265,7 @@ class FlashcardExporter:
     @staticmethod
     def export_to_text(flashcards: List[Dict[str, Any]], metadata: Dict[str, Any],
                       output_path: str):
-        """Export flashcards as enhanced text study guide."""
+        """Export flashcards as enhanced text study guide with recall questions."""
         # Sort by relevance score (highest first)
         sorted_cards = sorted(
             flashcards,
@@ -284,8 +288,13 @@ class FlashcardExporter:
         lines.append("   🟡 Score 5-7:  MEDIUM PRIORITY - Important supporting material")
         lines.append("   🟢 Score 1-4:  LOW PRIORITY - Supplementary information")
         lines.append("")
+        lines.append("💡 TIP: Scroll to the bottom for the ANSWER KEY to recall questions")
+        lines.append("")
         lines.append("=" * 80)
         lines.append("")
+        
+        # Store answers for the answer key section
+        answer_key = []
         
         for i, card in enumerate(sorted_cards, 1):
             score = card['relevance_score']['score']
@@ -321,14 +330,73 @@ class FlashcardExporter:
             
             lines.append(f"💡 Score Justification: {card['relevance_score'].get('justification', 'N/A')}")
             lines.append("")
+            
+            # Add recall questions if present
+            recall_questions = card.get('recall_questions', [])
+            if recall_questions:
+                lines.append("-" * 40)
+                lines.append("🧠 RECALL PRACTICE")
+                lines.append("-" * 40)
+                
+                card_answers = []
+                for q_idx, q in enumerate(recall_questions, 1):
+                    q_type = q.get('type', 'unknown')
+                    question = q.get('question', '')
+                    
+                    if q_type == 'mcq':
+                        lines.append(f"{q_idx}. (MCQ) {question}")
+                        options = q.get('options', [])
+                        for opt_idx, opt in enumerate(options, 1):
+                            letter = chr(96 + opt_idx)  # a, b, c, d
+                            lines.append(f"   {letter}) {opt}")
+                        lines.append("")
+                    elif q_type == 'fill_in_the_blank':
+                        lines.append(f"{q_idx}. (Fill-in-the-Blank) {question}")
+                        lines.append("")
+                    elif q_type == 'true_false':
+                        lines.append(f"{q_idx}. (True/False) {question}")
+                        lines.append("")
+                    
+                    # Store answer for answer key
+                    card_answers.append({
+                        'card_num': i,
+                        'q_num': q_idx,
+                        'type': q_type,
+                        'answer': q.get('answer', 'N/A')
+                    })
+                
+                answer_key.extend(card_answers)
+                lines.append("")
+            
             lines.append("=" * 80)
             lines.append("")
+        
+        # Add answer key section at the end
+        if answer_key:
+            lines.append("")
+            lines.append("")
+            lines.append("=" * 80)
+            lines.append("🔑 ANSWER KEY - RECALL PRACTICE")
+            lines.append("=" * 80)
+            lines.append("")
+            
+            current_card = None
+            for ans in answer_key:
+                if ans['card_num'] != current_card:
+                    current_card = ans['card_num']
+                    lines.append(f"\nCARD {current_card}:")
+                
+                lines.append(f"  Question {ans['q_num']}: {ans['answer']}")
+            
+            lines.append("")
+            lines.append("=" * 80)
         
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write('\n'.join(lines))
         
         print(f"📄 Saved Study Guide: {output_path}")
-    
+
+
     @staticmethod
     def export_study_plan(flashcards: List[Dict[str, Any]], metadata: Dict[str, Any],
                          output_path: str):
