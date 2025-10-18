@@ -3,7 +3,7 @@ import Flashcard from './Flashcard'
 import DifficultyRating from './DifficultyRating'
 import './StudyDeck.css'
 
-function StudyDeck({ flashcards, metadata, onComplete }) {
+function StudyDeck({ flashcards, metadata, onStartQuiz }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showRating, setShowRating] = useState(false)
 
@@ -26,9 +26,6 @@ function StudyDeck({ flashcards, metadata, onComplete }) {
     if (currentIndex < flashcards.length - 1) {
       setCurrentIndex(currentIndex + 1)
       setShowRating(false)
-    } else {
-      // All cards completed
-      onComplete()
     }
   }
 
@@ -79,6 +76,18 @@ function StudyDeck({ flashcards, metadata, onComplete }) {
           {currentCard.tags.map((tag, index) => (
             <span key={index} className="tag">{tag}</span>
           ))}
+        </div>
+      )}
+
+      {onStartQuiz && (
+        <div className="quiz-section">
+          <div className="quiz-prompt">
+            <h3>📝 Ready to Test Your Knowledge?</h3>
+            <p>Take a quiz with 10 intelligently selected questions based on relevance scores</p>
+          </div>
+          <button className="start-quiz-btn" onClick={onStartQuiz}>
+            Start Quiz →
+          </button>
         </div>
       )}
     </div>

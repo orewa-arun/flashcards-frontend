@@ -11,7 +11,7 @@ This system solves a seemingly impossible problem: extracting meaningful study m
 ```
 📄 Image-Heavy Slides (PDF)
          ↓
-    [slide_analyzer.py]
+    [pdf_slide_processor]
     Uses Gemini Vision API
          ↓
 📝 Master Content Document
@@ -65,10 +65,14 @@ echo "GEMINI_API_KEY=your_key_here" > .env
 
 ```bash
 # Step 1: Extract content from slides
-python slide_analyzer.py
+# Process a specific course
+python -m pdf_slide_processor.main MS5130
+
+# Or process all courses
+python -m pdf_slide_processor.main
 
 # Step 2: Generate cognitive flashcards
-python cognitive_flashcard_generator.py
+python cognitive_flashcard_generator.py [COURSE_ID]
 ```
 
 ### Output
@@ -83,15 +87,28 @@ cognitive_flashcards/[DECK_NAME]/
 
 ## Configuration for Other Courses
 
-Edit `cognitive_flashcard_generator.py` (lines ~450-451):
+Add your course to `courses_resources/courses.json`:
 
-```python
-# Change these two lines for any course:
-COURSE_NAME = "Your Course Name"
-TEXTBOOK_REFERENCE = "Your Textbook Citation"
+```json
+{
+  "course_id": "YOUR_COURSE_ID",
+  "course_name": "Your Course Name",
+  "course_code": "COURSE_CODE",
+  "reference_textbooks": [
+    "Your Textbook Citation"
+  ],
+  "course_description": "Course description...",
+  "lecture_slides": [
+    {
+      "pdf_path": "courses_resources/YOUR_COURSE_ID/lecture_slides/lecture.pdf",
+      "lecture_name": "Lecture Name",
+      "lecture_number": "1"
+    }
+  ]
+}
 ```
 
-That's it! The system is completely universal.
+That's it! The system is completely universal and course-agnostic.
 
 ## Example Flashcard
 
@@ -125,9 +142,14 @@ Then re-run `cognitive_flashcard_generator.py` — diagrams will be automaticall
 
 ```
 self-learning-ai/
-├── slide_analyzer.py              ⭐ Extract from slides
+├── pdf_slide_processor/           ⭐ Modular slide processing package
+│   ├── main.py                   Entry point
+│   ├── renderer.py               PDF to images
+│   ├── analyzer.py               Gemini Vision analysis
+│   ├── extractor.py              Document generation
+│   └── utils.py                  Helper functions
+│
 ├── cognitive_flashcard_generator.py ⭐ Generate flashcards
-├── resume_analysis.py             Resume failed analyses
 ├── config.py                      Configuration
 ├── requirements.txt               Dependencies
 │
@@ -135,9 +157,16 @@ self-learning-ai/
 │   ├── intelligent_flashcard_prompt.txt  ⭐ AI instructions
 │   └── content_analysis_prompt.txt       Slide analysis
 │
-├── slides/                        Input PDFs
-├── slide_analysis/                Extracted content
-└── cognitive_flashcards/          ⭐ Final output
+├── courses_resources/             ⭐ Source materials
+│   ├── courses.json              Course configurations
+│   └── [COURSE_ID]/              Course-specific files
+│       └── lecture_slides/       PDF files
+│
+└── courses/                       ⭐ Generated output
+    └── [COURSE_ID]/
+        ├── slide_images/         Rendered images
+        ├── slide_analysis/       Extracted content
+        └── cognitive_flashcards/ Flashcard JSON files
 ```
 
 ## Architecture

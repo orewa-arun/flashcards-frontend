@@ -1,0 +1,2446 @@
+=== ORIGINAL RESPONSE (full) ===
+```json
+[
+  {
+    "type": "definition",
+    "question": "What are Management Information Systems (MIS)?",
+    "answer": "Management Information Systems is the study of information systems in organizations, focusing on how technology enables business strategy and operations.",
+    "context": "Core MIS Concepts",
+    "relevance_score": {
+      "score": 10,
+      "justification": "Core definition and foundational concept for this subject."
+    },
+    "example": "Consider Walmart's inventory management system. It's not just about tracking stock levels; it's a sophisticated MIS that uses real-time sales data to predict demand, optimize supply chains, and ensure shelves are stocked with the right products at the right time. This system directly impacts Walmart's ability to maintain low prices and meet customer needs, driving its overall business strategy. Without this MIS, Walmart would struggle to compete effectively in the retail landscape. This demonstrates how technology enables business strategy and operations.",
+    "mermaid_code": "",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which BEST describes the primary focus of Management Information Systems (MIS)?",
+        "options": [
+          "A. Developing new software applications for consumers.",
+          "B. Studying how technology enables business strategy and operations.",
+          "C. Managing a company's financial assets and investments.",
+          "D. Designing and maintaining computer hardware infrastructure."
+        ],
+        "answer": "B. Studying how technology enables business strategy and operations."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A small business owner wants to improve their customer service and sales tracking. They are looking for a system to manage customer interactions and generate sales reports.",
+        "question": "Which type of information system would be MOST suitable for this business owner?",
+        "options": [
+          "A. Enterprise Resource Planning (ERP) system",
+          "B. Customer Relationship Management (CRM) system",
+          "C. Supply Chain Management (SCM) system",
+          "D. Knowledge Management System (KMS)"
+        ],
+        "answer": "B. Customer Relationship Management (CRM) system"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following components to accurately describe the flow of information within a basic MIS.",
+        "items": [
+          "Data Processing",
+          "Data Input",
+          "Information Output",
+          "Data Storage"
+        ],
+        "answer": [
+          "Data Input",
+          "Data Storage",
+          "Data Processing",
+          "Information Output"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following technologies as either 'Hardware' or 'Software' components of an Information System.",
+        "items": [
+          "Operating System",
+          "Database Server",
+          "Network Router",
+          "Central Processing Unit (CPU)"
+        ],
+        "categories": [
+          "Hardware",
+          "Software"
+        ],
+        "answer": {
+          "Hardware": [
+            "Network Router",
+            "Central Processing Unit (CPU)"
+          ],
+          "Software": [
+            "Operating System",
+            "Database Server"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each type of information system with its primary function.",
+        "premises": [
+          "1. Transaction Processing System (TPS)",
+          "2. Decision Support System (DSS)",
+          "3. Executive Information System (EIS)",
+          "4. Knowledge Management System (KMS)"
+        ],
+        "responses": [
+          "A. Supports strategic decision-making for senior management.",
+          "B. Captures and processes routine business transactions.",
+          "C. Helps manage and share organizational knowledge and expertise.",
+          "D. Supports complex decision-making through data analysis and modeling."
+        ],
+        "answer": [
+          "1-B",
+          "2-D",
+          "3-A",
+          "4-C"
+        ]
+      }
+    ],
+    "tags": [
+      "MIS",
+      "Information Systems",
+      "Business Strategy",
+      "Technology"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the relationship between Information Technology (IT) and Information Systems (IS).",
+    "answer": "Information Technology (IT) refers to the hardware and software components that support Information Systems (IS). IT provides the infrastructure, while IS uses IT to achieve business objectives. There is a reciprocal relationship; IS requirements often drive IT development and adoption.",
+    "context": "Core IS Concepts",
+    "relevance_score": {
+      "score": 9,
+      "justification": "Key terms explicitly defined in slides and foundational concepts."
+    },
+    "example": "Think of Amazon's cloud infrastructure (AWS) as IT. It provides the servers, databases, and networking that power Amazon's e-commerce platform. The e-commerce platform itself, with its product catalog, shopping cart, and recommendation engine, is the IS. AWS (IT) enables Amazon to operate its massive online store (IS), while the evolving needs of Amazon's e-commerce platform drive further development and innovation within AWS. They are interdependent.",
+    "mermaid_code": "graph TD; IT[Information Technology] --> IS[Information Systems]; IS --> IT;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following BEST describes the role of Information Technology (IT) in relation to Information Systems (IS)?",
+        "options": [
+          "A. IT is a subset of IS, focusing only on software applications.",
+          "B. IT provides the infrastructure that supports IS.",
+          "C. IT and IS are interchangeable terms with the same meaning.",
+          "D. IT is responsible for managing organizational budgets, while IS focuses on technology."
+        ],
+        "answer": "B. IT provides the infrastructure that supports IS."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A hospital invests in new electronic health record (EHR) software. The IT department is responsible for installing and maintaining the servers, network, and computers needed to run the EHR.",
+        "question": "In this scenario, which aspect represents Information Technology (IT)?",
+        "options": [
+          "A. The doctors and nurses using the EHR software.",
+          "B. The EHR software itself.",
+          "C. The servers, network, and computers used to run the EHR.",
+          "D. The hospital's policies for patient data privacy."
+        ],
+        "answer": "C. The servers, network, and computers used to run the EHR."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following steps to reflect the relationship between IT and IS in a business setting.",
+        "items": [
+          "Business needs drive requirements for IS",
+          "IT infrastructure is implemented",
+          "IS utilizes IT to process data",
+          "Data is collected and stored"
+        ],
+        "answer": [
+          "Business needs drive requirements for IS",
+          "Data is collected and stored",
+          "IT infrastructure is implemented",
+          "IS utilizes IT to process data"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Classify the following components as either 'Information Technology (IT)' or 'Information System (IS)'.",
+        "items": [
+          "Database Management System",
+          "Web Server",
+          "Customer Relationship Management (CRM) application",
+          "Cloud Computing Infrastructure"
+        ],
+        "categories": [
+          "IT",
+          "IS"
+        ],
+        "answer": {
+          "IT": [
+            "Database Management System",
+            "Web Server",
+            "Cloud Computing Infrastructure"
+          ],
+          "IS": [
+            "Customer Relationship Management (CRM) application"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each business objective with the IT component that supports it.",
+        "premises": [
+          "1. Securely store customer data",
+          "2. Process online transactions",
+          "3. Analyze sales trends",
+          "4. Provide remote access for employees"
+        ],
+        "responses": [
+          "A. Database Management System (DBMS)",
+          "B. E-commerce platform",
+          "C. Business Intelligence (BI) tools",
+          "D. Virtual Private Network (VPN)"
+        ],
+        "answer": [
+          "1-A",
+          "2-B",
+          "3-C",
+          "4-D"
+        ]
+      }
+    ],
+    "tags": [
+      "IT",
+      "IS",
+      "Relationship",
+      "Infrastructure"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the impact of People, Process, and Technology on Management Information Systems (MIS) and business solutions.",
+    "answer": "People, process, and technology are crucial components for effective MIS. Skilled people are needed to manage and utilize technology effectively. Well-defined processes ensure efficient data flow and system utilization. The right technology provides the tools and infrastructure to support these processes and people, leading to effective information systems and valuable business solutions.",
+    "context": "Core MIS Concepts",
+    "relevance_score": {
+      "score": 9,
+      "justification": "Main components of major diagrams/frameworks."
+    },
+    "example": "Consider a hospital implementing a new Electronic Health Record (EHR) system. The *technology* is the EHR software and hardware. The *process* involves how doctors, nurses, and staff use the system to record patient information, order tests, and prescribe medications. The *people* are the trained healthcare professionals who understand the system and use it to improve patient care. If any of these elements are weak (e.g., poorly trained staff or inefficient processes), the entire EHR system's effectiveness is compromised.",
+    "mermaid_code": "graph TD; A[People] --> D[Information Systems]; B[Process] --> D; C[Technology] --> D; D --> E[Business Solutions];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is NOT considered a core component of an effective Management Information System (MIS)?",
+        "options": [
+          "A. People",
+          "B. Process",
+          "C. Technology",
+          "D. Profit"
+        ],
+        "answer": "D. Profit"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A company invests in a new CRM system (technology) but fails to train its sales team (people) on how to use it effectively. The sales process remains unchanged.",
+        "question": "What is the MOST likely outcome of this scenario?",
+        "options": [
+          "A. Increased sales and improved customer satisfaction.",
+          "B. The CRM system will automatically improve sales performance.",
+          "C. Limited improvement in sales performance due to lack of proper utilization.",
+          "D. The company will save money on training costs."
+        ],
+        "answer": "C. Limited improvement in sales performance due to lack of proper utilization."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to represent the correct order in which they contribute to successful MIS implementation.",
+        "items": [
+          "Optimized processes",
+          "Skilled personnel",
+          "Effective technology",
+          "Improved business outcomes"
+        ],
+        "answer": [
+          "Skilled personnel",
+          "Effective technology",
+          "Optimized processes",
+          "Improved business outcomes"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following activities as related to 'People', 'Process', or 'Technology' in the context of MIS.",
+        "items": [
+          "Developing data entry procedures",
+          "Implementing a new database server",
+          "Training employees on data analysis techniques",
+          "Defining data security protocols"
+        ],
+        "categories": [
+          "People",
+          "Process",
+          "Technology"
+        ],
+        "answer": {
+          "People": [
+            "Training employees on data analysis techniques"
+          ],
+          "Process": [
+            "Developing data entry procedures",
+            "Defining data security protocols"
+          ],
+          "Technology": [
+            "Implementing a new database server"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each component with its primary role in a successful MIS.",
+        "premises": [
+          "1. People",
+          "2. Process",
+          "3. Technology"
+        ],
+        "responses": [
+          "A. Provides the tools and infrastructure for data management.",
+          "B. Defines the steps for efficient data flow and system utilization.",
+          "C. Manages and utilizes technology to achieve business goals."
+        ],
+        "answer": [
+          "1-C",
+          "2-B",
+          "3-A"
+        ]
+      }
+    ],
+    "tags": [
+      "People",
+      "Process",
+      "Technology",
+      "MIS",
+      "Business Solutions"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Describe Porter's Five Forces model and its purpose.",
+    "answer": "Porter's Five Forces is a framework for analyzing the competitive intensity and attractiveness of an industry. It identifies five forces: the threat of new entrants, the bargaining power of suppliers, the bargaining power of customers, the threat of substitute products or services, and the intensity of competitive rivalry. By analyzing these forces, businesses can assess their position and potential profitability within an industry.",
+    "context": "Competitive Advantage",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key framework mentioned in agenda and lecture content."
+    },
+    "example": "Consider the airline industry. The threat of new entrants is relatively high (low barriers to entry for budget airlines), the bargaining power of suppliers (Boeing and Airbus) is significant, and the bargaining power of customers (price-sensitive travelers) is also high. The threat of substitutes (trains, buses) exists, and competitive rivalry (Southwest vs. American) is intense. Analyzing these forces helps airlines like Delta understand their competitive landscape and develop strategies to improve profitability, such as focusing on premium services or loyalty programs.",
+    "mermaid_code": "graph TD; A[Competitive Rivalry] -->< B[Industry Attractiveness]; C[Threat of New Entrants] -->< B; D[Bargaining Power of Suppliers] -->< B; E[Bargaining Power of Buyers] -->< B; F[Threat of Substitute Products] -->< B;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is NOT one of Porter's Five Forces?",
+        "options": [
+          "A. Threat of new entrants",
+          "B. Bargaining power of suppliers",
+          "C. Bargaining power of customers",
+          "D. Government regulations"
+        ],
+        "answer": "D. Government regulations"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A software company operates in a market with many competitors offering similar products. Customers can easily switch between different software providers.",
+        "question": "According to Porter's Five Forces, which force is MOST likely to be HIGH in this market?",
+        "options": [
+          "A. Threat of new entrants",
+          "B. Bargaining power of suppliers",
+          "C. Bargaining power of customers",
+          "D. Threat of substitute products"
+        ],
+        "answer": "C. Bargaining power of customers"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following steps to correctly apply Porter's Five Forces framework.",
+        "items": [
+          "Analyze each force individually",
+          "Identify the key players and factors influencing each force",
+          "Assess the overall industry attractiveness based on the combined impact of the forces",
+          "Define the industry and its boundaries"
+        ],
+        "answer": [
+          "Define the industry and its boundaries",
+          "Identify the key players and factors influencing each force",
+          "Analyze each force individually",
+          "Assess the overall industry attractiveness based on the combined impact of the forces"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following factors as influencing either 'Supplier Power' or 'Buyer Power' according to Porter's Five Forces.",
+        "items": [
+          "High switching costs for customers",
+          "Few suppliers in the market",
+          "Customers purchase in large volumes",
+          "Suppliers offer differentiated products"
+        ],
+        "categories": [
+          "Supplier Power",
+          "Buyer Power"
+        ],
+        "answer": {
+          "Supplier Power": [
+            "Few suppliers in the market",
+            "Suppliers offer differentiated products"
+          ],
+          "Buyer Power": [
+            "High switching costs for customers",
+            "Customers purchase in large volumes"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each of Porter's Five Forces with its potential impact on industry profitability.",
+        "premises": [
+          "1. High threat of new entrants",
+          "2. Strong bargaining power of suppliers",
+          "3. Intense competitive rivalry",
+          "4. High threat of substitutes"
+        ],
+        "responses": [
+          "A. Reduces profitability by increasing costs.",
+          "B. Erodes profitability by driving down prices and increasing marketing expenses.",
+          "C. Limits profitability by capping prices.",
+          "D. Reduces profitability by increasing competition and lowering margins."
+        ],
+        "answer": [
+          "1-D",
+          "2-A",
+          "3-B",
+          "4-C"
+        ]
+      }
+    ],
+    "tags": [
+      "Porter's Five Forces",
+      "Industry Analysis",
+      "Competitive Advantage"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the concept of 'Digital Business'.",
+    "answer": "Digital business is the creation of new business designs by blurring the digital and physical worlds. It requires technology to be a core competency, data-driven decision-making, and a business model that is inherently digital. It's more than just automating existing processes; it's about fundamentally rethinking how a business operates and delivers value in the digital age.",
+    "context": "Digital Business",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key concept mentioned in agenda and lecture content."
+    },
+    "example": "Netflix is a prime example of a digital business. It doesn't just stream videos online; its entire business model is built around digital technology. It uses data analytics to understand viewer preferences, personalize recommendations, and even inform the creation of original content. Technology is not just a support function; it's the core of Netflix's operations, enabling it to deliver a seamless and personalized entertainment experience to millions of subscribers worldwide. This is in contrast to a traditional video rental store, which has physical inventory and relies on in-person interactions.",
+    "mermaid_code": "graph TD; A[Tech is Core Competency] --> D[Digital Business]; B[Data-Driven Decision] --> D; C[BM is Inherently Digital] --> D;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is a KEY characteristic of a digital business?",
+        "options": [
+          "A. Primarily relies on physical stores and in-person interactions.",
+          "B. Technology is a support function, not a core competency.",
+          "C. Data-driven decision-making is central to its operations.",
+          "D. Business model is based on traditional, non-digital processes."
+        ],
+        "answer": "C. Data-driven decision-making is central to its operations."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A traditional brick-and-mortar bookstore decides to create an online store to sell ebooks. They scan their existing inventory and create a basic website to display the ebooks.",
+        "question": "Is this bookstore fully transformed into a 'Digital Business' according to the definition?",
+        "options": [
+          "A. Yes, because they are now selling products online.",
+          "B. No, because they haven't fundamentally changed their business model or leveraged data effectively.",
+          "C. Yes, because they are using technology to reach more customers.",
+          "D. It's impossible to tell without more information."
+        ],
+        "answer": "No, because they haven't fundamentally changed their business model or leveraged data effectively."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately describe the transformation from a traditional business to a digital business.",
+        "items": [
+          "Data-driven decision making",
+          "Technology as a core competency",
+          "Digital Business",
+          "Inherently digital business model"
+        ],
+        "answer": [
+          "Technology as a core competency",
+          "Data-driven decision making",
+          "Inherently digital business model",
+          "Digital Business"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following activities as characteristic of either a 'Traditional Business' or a 'Digital Business'.",
+        "items": [
+          "Relying on market research surveys for product development",
+          "Using real-time customer data to personalize product recommendations",
+          "Primarily advertising through print and television",
+          "Optimizing website design based on A/B testing results"
+        ],
+        "categories": [
+          "Traditional Business",
+          "Digital Business"
+        ],
+        "answer": {
+          "Traditional Business": [
+            "Relying on market research surveys for product development",
+            "Primarily advertising through print and television"
+          ],
+          "Digital Business": [
+            "Using real-time customer data to personalize product recommendations",
+            "Optimizing website design based on A/B testing results"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each characteristic with the type of business it best describes.",
+        "premises": [
+          "1. Primarily relies on physical assets",
+          "2. Leverages data for personalized experiences",
+          "3. Business model is inherently digital",
+          "4. Technology is a support function"
+        ],
+        "responses": [
+          "A. Traditional Business",
+          "B. Digital Business"
+        ],
+        "answer": [
+          "1-A",
+          "2-B",
+          "3-B",
+          "4-A"
+        ]
+      }
+    ],
+    "tags": [
+      "Digital Business",
+      "Data-Driven",
+      "Business Model",
+      "Technology"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "What are the key factors contributing to a sustained competitive advantage?",
+    "answer": "Sustained competitive advantage arises from a combination of resources, capabilities, and distinctive competencies. Resources are the assets a firm possesses, capabilities are the ability to effectively utilize those resources, and distinctive competencies are what a firm does particularly well compared to its competitors. These factors lead to either a cost advantage or a differentiation advantage, ultimately resulting in a sustainable competitive edge.",
+    "context": "Competitive Advantage",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key concept mentioned in agenda and lecture content."
+    },
+    "example": "Consider Toyota's sustained competitive advantage in the automotive industry. They possess strong *resources* like advanced manufacturing facilities and a reputable brand. Their *capabilities* include efficient production processes and a focus on quality control. Their *distinctive competency* is the Toyota Production System, which allows them to produce reliable cars at a lower cost than many competitors. This leads to a *cost advantage* and a reputation for reliability, resulting in a *sustained competitive advantage* in the market.",
+    "mermaid_code": "graph TD; A[Resources] --> B[Distinctive Competencies]; C[Capabilities] --> B; B --> D[Cost or Differentiation Advantage]; D --> E[Sustained Competitive Advantage];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is the ULTIMATE goal of developing resources, capabilities, and distinctive competencies?",
+        "options": [
+          "A. Increasing short-term profits",
+          "B. Achieving sustained competitive advantage",
+          "C. Reducing operational costs",
+          "D. Improving employee satisfaction"
+        ],
+        "answer": "B. Achieving sustained competitive advantage"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A company has developed a unique algorithm that significantly improves the efficiency of its manufacturing process. Competitors are unable to replicate this algorithm due to its complexity and the company's proprietary data.",
+        "question": "Which element is MOST likely contributing to this company's sustained competitive advantage?",
+        "options": [
+          "A. Resources",
+          "B. Capabilities",
+          "C. Distinctive Competency",
+          "D. Market Share"
+        ],
+        "answer": "C. Distinctive Competency"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately depict the process of achieving a sustained competitive advantage.",
+        "items": [
+          "Distinctive Competencies",
+          "Resources",
+          "Capabilities",
+          "Cost or Differentiation Advantage",
+          "Sustained Competitive Advantage"
+        ],
+        "answer": [
+          "Resources",
+          "Capabilities",
+          "Distinctive Competencies",
+          "Cost or Differentiation Advantage",
+          "Sustained Competitive Advantage"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following items as either 'Resources' or 'Capabilities' in the context of achieving a competitive advantage.",
+        "items": [
+          "Patented Technology",
+          "Efficient Supply Chain Management",
+          "Strong Brand Reputation",
+          "Effective Customer Service"
+        ],
+        "categories": [
+          "Resources",
+          "Capabilities"
+        ],
+        "answer": {
+          "Resources": [
+            "Patented Technology",
+            "Strong Brand Reputation"
+          ],
+          "Capabilities": [
+            "Efficient Supply Chain Management",
+            "Effective Customer Service"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each element with its role in achieving a sustained competitive advantage.",
+        "premises": [
+          "1. Resources",
+          "2. Capabilities",
+          "3. Distinctive Competencies"
+        ],
+        "responses": [
+          "A. What a firm does particularly well compared to its competitors.",
+          "B. The assets a firm possesses.",
+          "C. The ability to effectively utilize a firm's resources."
+        ],
+        "answer": [
+          "1-B",
+          "2-C",
+          "3-A"
+        ]
+      }
+    ],
+    "tags": [
+      "Competitive Advantage",
+      "Resources",
+      "Capabilities",
+      "Distinctive Competencies"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "What is a 'Digital Nomad' and what are the key requirements for this lifestyle?",
+    "answer": "Digital nomads are individuals who live and work remotely, leveraging the internet and mobile technology to connect with customers or employers. Key requirements include an appealing location with a low cost of living, good weather, and reliable connectivity through Wi-Fi or cellular networks. They also need to maintain good relationships with clients or employers and be able to build and maintain networks remotely.",
+    "context": "Digital Workforce",
+    "relevance_score": {
+      "score": 7,
+      "justification": "Important supporting material that explains key ideas."
+    },
+    "example": "Imagine a software developer who works for a US-based company but lives in Bali. They use high-speed internet to attend virtual meetings, collaborate with colleagues, and submit their code. The lower cost of living in Bali allows them to save money, while the good weather and vibrant culture enhance their quality of life. This developer is a digital nomad, successfully blending work and travel thanks to technology and careful planning.",
+    "mermaid_code": "",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following BEST defines a 'Digital Nomad'?",
+        "options": [
+          "A. A person who only works in a traditional office setting.",
+          "B. A person who uses the internet to shop online.",
+          "C. A person who lives and works remotely, using technology to connect with employers or customers.",
+          "D. A person who is unemployed and seeking job opportunities online."
+        ],
+        "answer": "C. A person who lives and works remotely, using technology to connect with employers or customers."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A marketing consultant wants to become a digital nomad. They need to ensure they can maintain consistent communication with their clients.",
+        "question": "Which of the following is MOST crucial for this consultant to consider?",
+        "options": [
+          "A. Access to a large social media following.",
+          "B. Reliable internet connectivity.",
+          "C. Ability to speak multiple languages.",
+          "D. Owning a high-end laptop."
+        ],
+        "answer": "B. Reliable internet connectivity."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately describe the key requirements for a successful digital nomad lifestyle.",
+        "items": [
+          "Good weather",
+          "Reliable connectivity",
+          "Appealing location",
+          "Low cost of living"
+        ],
+        "answer": [
+          "Appealing location",
+          "Low cost of living",
+          "Good weather",
+          "Reliable connectivity"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Classify the following factors as either 'Advantages' or 'Challenges' of the digital nomad lifestyle.",
+        "items": [
+          "Location independence",
+          "Maintaining strong client relationships remotely",
+          "Exposure to diverse cultures",
+          "Difficulty building a stable social network"
+        ],
+        "categories": [
+          "Advantages",
+          "Challenges"
+        ],
+        "answer": {
+          "Advantages": [
+            "Location independence",
+            "Exposure to diverse cultures"
+          ],
+          "Challenges": [
+            "Maintaining strong client relationships remotely",
+            "Difficulty building a stable social network"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each challenge with a potential solution for digital nomads.",
+        "premises": [
+          "1. Maintaining client relationships",
+          "2. Lack of social interaction",
+          "3. Unreliable internet connectivity",
+          "4. Managing finances across borders"
+        ],
+        "responses": [
+          "A. Joining online communities and attending local meetups.",
+          "B. Using a VPN and satellite internet as backup.",
+          "C. Scheduling regular video calls and providing excellent customer service.",
+          "D. Using international banking services and budgeting tools."
+        ],
+        "answer": [
+          "1-C",
+          "2-A",
+          "3-B",
+          "4-D"
+        ]
+      }
+    ],
+    "tags": [
+      "Digital Nomad",
+      "Remote Work",
+      "Location Independence"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the different organizational decision-making levels.",
+    "answer": "Organizational decision-making occurs at three main levels: Operational, Managerial/Tactical, and Executive/Strategic. The Operational level involves day-to-day decisions made by foremen and supervisors. The Managerial/Tactical level involves middle management making decisions to implement strategies. The Executive/Strategic level involves upper management making long-term strategic decisions.",
+    "context": "Organizational Structure",
+    "relevance_score": {
+      "score": 7,
+      "justification": "Important supporting material that explains key ideas."
+    },
+    "example": "In a retail company, an *Operational* decision is a store manager deciding how to arrange products on shelves. A *Managerial/Tactical* decision is a regional manager deciding which promotional campaigns to implement in their stores. An *Executive/Strategic* decision is the CEO deciding to expand the company into a new international market. Each level requires different information and decision-making tools.",
+    "mermaid_code": "graph TD; A[Executive/Strategic Level] --> B[Managerial/Tactical Level]; B --> C[Operational Level];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which organizational level is typically responsible for making long-term strategic decisions?",
+        "options": [
+          "A. Operational Level",
+          "B. Managerial/Tactical Level",
+          "C. Executive/Strategic Level",
+          "D. Supervisory Level"
+        ],
+        "answer": "C. Executive/Strategic Level"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A production supervisor needs to decide how to allocate resources for the next shift to meet daily production targets.",
+        "question": "At which organizational level is this decision being made?",
+        "options": [
+          "A. Executive/Strategic Level",
+          "B. Managerial/Tactical Level",
+          "C. Operational Level",
+          "D. Board of Directors"
+        ],
+        "answer": "C. Operational Level"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following organizational levels in a hierarchical order, from highest to lowest.",
+        "items": [
+          "Operational Level",
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level"
+        ],
+        "answer": [
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level",
+          "Operational Level"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following decisions based on the organizational level at which they are typically made.",
+        "items": [
+          "Determining the company's mission statement",
+          "Scheduling employee work hours",
+          "Developing a marketing campaign",
+          "Approving the annual budget"
+        ],
+        "categories": [
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level",
+          "Operational Level"
+        ],
+        "answer": {
+          "Executive/Strategic Level": [
+            "Determining the company's mission statement",
+            "Approving the annual budget"
+          ],
+          "Managerial/Tactical Level": [
+            "Developing a marketing campaign"
+          ],
+          "Operational Level": [
+            "Scheduling employee work hours"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each organizational level with its primary focus.",
+
+=== EXTRACTED JSON (full) ===
+[
+  {
+    "type": "definition",
+    "question": "What are Management Information Systems (MIS)?",
+    "answer": "Management Information Systems is the study of information systems in organizations, focusing on how technology enables business strategy and operations.",
+    "context": "Core MIS Concepts",
+    "relevance_score": {
+      "score": 10,
+      "justification": "Core definition and foundational concept for this subject."
+    },
+    "example": "Consider Walmart's inventory management system. It's not just about tracking stock levels; it's a sophisticated MIS that uses real-time sales data to predict demand, optimize supply chains, and ensure shelves are stocked with the right products at the right time. This system directly impacts Walmart's ability to maintain low prices and meet customer needs, driving its overall business strategy. Without this MIS, Walmart would struggle to compete effectively in the retail landscape. This demonstrates how technology enables business strategy and operations.",
+    "mermaid_code": "",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which BEST describes the primary focus of Management Information Systems (MIS)?",
+        "options": [
+          "A. Developing new software applications for consumers.",
+          "B. Studying how technology enables business strategy and operations.",
+          "C. Managing a company's financial assets and investments.",
+          "D. Designing and maintaining computer hardware infrastructure."
+        ],
+        "answer": "B. Studying how technology enables business strategy and operations."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A small business owner wants to improve their customer service and sales tracking. They are looking for a system to manage customer interactions and generate sales reports.",
+        "question": "Which type of information system would be MOST suitable for this business owner?",
+        "options": [
+          "A. Enterprise Resource Planning (ERP) system",
+          "B. Customer Relationship Management (CRM) system",
+          "C. Supply Chain Management (SCM) system",
+          "D. Knowledge Management System (KMS)"
+        ],
+        "answer": "B. Customer Relationship Management (CRM) system"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following components to accurately describe the flow of information within a basic MIS.",
+        "items": [
+          "Data Processing",
+          "Data Input",
+          "Information Output",
+          "Data Storage"
+        ],
+        "answer": [
+          "Data Input",
+          "Data Storage",
+          "Data Processing",
+          "Information Output"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following technologies as either 'Hardware' or 'Software' components of an Information System.",
+        "items": [
+          "Operating System",
+          "Database Server",
+          "Network Router",
+          "Central Processing Unit (CPU)"
+        ],
+        "categories": [
+          "Hardware",
+          "Software"
+        ],
+        "answer": {
+          "Hardware": [
+            "Network Router",
+            "Central Processing Unit (CPU)"
+          ],
+          "Software": [
+            "Operating System",
+            "Database Server"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each type of information system with its primary function.",
+        "premises": [
+          "1. Transaction Processing System (TPS)",
+          "2. Decision Support System (DSS)",
+          "3. Executive Information System (EIS)",
+          "4. Knowledge Management System (KMS)"
+        ],
+        "responses": [
+          "A. Supports strategic decision-making for senior management.",
+          "B. Captures and processes routine business transactions.",
+          "C. Helps manage and share organizational knowledge and expertise.",
+          "D. Supports complex decision-making through data analysis and modeling."
+        ],
+        "answer": [
+          "1-B",
+          "2-D",
+          "3-A",
+          "4-C"
+        ]
+      }
+    ],
+    "tags": [
+      "MIS",
+      "Information Systems",
+      "Business Strategy",
+      "Technology"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the relationship between Information Technology (IT) and Information Systems (IS).",
+    "answer": "Information Technology (IT) refers to the hardware and software components that support Information Systems (IS). IT provides the infrastructure, while IS uses IT to achieve business objectives. There is a reciprocal relationship; IS requirements often drive IT development and adoption.",
+    "context": "Core IS Concepts",
+    "relevance_score": {
+      "score": 9,
+      "justification": "Key terms explicitly defined in slides and foundational concepts."
+    },
+    "example": "Think of Amazon's cloud infrastructure (AWS) as IT. It provides the servers, databases, and networking that power Amazon's e-commerce platform. The e-commerce platform itself, with its product catalog, shopping cart, and recommendation engine, is the IS. AWS (IT) enables Amazon to operate its massive online store (IS), while the evolving needs of Amazon's e-commerce platform drive further development and innovation within AWS. They are interdependent.",
+    "mermaid_code": "graph TD; IT[Information Technology] --> IS[Information Systems]; IS --> IT;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following BEST describes the role of Information Technology (IT) in relation to Information Systems (IS)?",
+        "options": [
+          "A. IT is a subset of IS, focusing only on software applications.",
+          "B. IT provides the infrastructure that supports IS.",
+          "C. IT and IS are interchangeable terms with the same meaning.",
+          "D. IT is responsible for managing organizational budgets, while IS focuses on technology."
+        ],
+        "answer": "B. IT provides the infrastructure that supports IS."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A hospital invests in new electronic health record (EHR) software. The IT department is responsible for installing and maintaining the servers, network, and computers needed to run the EHR.",
+        "question": "In this scenario, which aspect represents Information Technology (IT)?",
+        "options": [
+          "A. The doctors and nurses using the EHR software.",
+          "B. The EHR software itself.",
+          "C. The servers, network, and computers used to run the EHR.",
+          "D. The hospital's policies for patient data privacy."
+        ],
+        "answer": "C. The servers, network, and computers used to run the EHR."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following steps to reflect the relationship between IT and IS in a business setting.",
+        "items": [
+          "Business needs drive requirements for IS",
+          "IT infrastructure is implemented",
+          "IS utilizes IT to process data",
+          "Data is collected and stored"
+        ],
+        "answer": [
+          "Business needs drive requirements for IS",
+          "Data is collected and stored",
+          "IT infrastructure is implemented",
+          "IS utilizes IT to process data"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Classify the following components as either 'Information Technology (IT)' or 'Information System (IS)'.",
+        "items": [
+          "Database Management System",
+          "Web Server",
+          "Customer Relationship Management (CRM) application",
+          "Cloud Computing Infrastructure"
+        ],
+        "categories": [
+          "IT",
+          "IS"
+        ],
+        "answer": {
+          "IT": [
+            "Database Management System",
+            "Web Server",
+            "Cloud Computing Infrastructure"
+          ],
+          "IS": [
+            "Customer Relationship Management (CRM) application"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each business objective with the IT component that supports it.",
+        "premises": [
+          "1. Securely store customer data",
+          "2. Process online transactions",
+          "3. Analyze sales trends",
+          "4. Provide remote access for employees"
+        ],
+        "responses": [
+          "A. Database Management System (DBMS)",
+          "B. E-commerce platform",
+          "C. Business Intelligence (BI) tools",
+          "D. Virtual Private Network (VPN)"
+        ],
+        "answer": [
+          "1-A",
+          "2-B",
+          "3-C",
+          "4-D"
+        ]
+      }
+    ],
+    "tags": [
+      "IT",
+      "IS",
+      "Relationship",
+      "Infrastructure"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the impact of People, Process, and Technology on Management Information Systems (MIS) and business solutions.",
+    "answer": "People, process, and technology are crucial components for effective MIS. Skilled people are needed to manage and utilize technology effectively. Well-defined processes ensure efficient data flow and system utilization. The right technology provides the tools and infrastructure to support these processes and people, leading to effective information systems and valuable business solutions.",
+    "context": "Core MIS Concepts",
+    "relevance_score": {
+      "score": 9,
+      "justification": "Main components of major diagrams/frameworks."
+    },
+    "example": "Consider a hospital implementing a new Electronic Health Record (EHR) system. The *technology* is the EHR software and hardware. The *process* involves how doctors, nurses, and staff use the system to record patient information, order tests, and prescribe medications. The *people* are the trained healthcare professionals who understand the system and use it to improve patient care. If any of these elements are weak (e.g., poorly trained staff or inefficient processes), the entire EHR system's effectiveness is compromised.",
+    "mermaid_code": "graph TD; A[People] --> D[Information Systems]; B[Process] --> D; C[Technology] --> D; D --> E[Business Solutions];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is NOT considered a core component of an effective Management Information System (MIS)?",
+        "options": [
+          "A. People",
+          "B. Process",
+          "C. Technology",
+          "D. Profit"
+        ],
+        "answer": "D. Profit"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A company invests in a new CRM system (technology) but fails to train its sales team (people) on how to use it effectively. The sales process remains unchanged.",
+        "question": "What is the MOST likely outcome of this scenario?",
+        "options": [
+          "A. Increased sales and improved customer satisfaction.",
+          "B. The CRM system will automatically improve sales performance.",
+          "C. Limited improvement in sales performance due to lack of proper utilization.",
+          "D. The company will save money on training costs."
+        ],
+        "answer": "C. Limited improvement in sales performance due to lack of proper utilization."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to represent the correct order in which they contribute to successful MIS implementation.",
+        "items": [
+          "Optimized processes",
+          "Skilled personnel",
+          "Effective technology",
+          "Improved business outcomes"
+        ],
+        "answer": [
+          "Skilled personnel",
+          "Effective technology",
+          "Optimized processes",
+          "Improved business outcomes"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following activities as related to 'People', 'Process', or 'Technology' in the context of MIS.",
+        "items": [
+          "Developing data entry procedures",
+          "Implementing a new database server",
+          "Training employees on data analysis techniques",
+          "Defining data security protocols"
+        ],
+        "categories": [
+          "People",
+          "Process",
+          "Technology"
+        ],
+        "answer": {
+          "People": [
+            "Training employees on data analysis techniques"
+          ],
+          "Process": [
+            "Developing data entry procedures",
+            "Defining data security protocols"
+          ],
+          "Technology": [
+            "Implementing a new database server"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each component with its primary role in a successful MIS.",
+        "premises": [
+          "1. People",
+          "2. Process",
+          "3. Technology"
+        ],
+        "responses": [
+          "A. Provides the tools and infrastructure for data management.",
+          "B. Defines the steps for efficient data flow and system utilization.",
+          "C. Manages and utilizes technology to achieve business goals."
+        ],
+        "answer": [
+          "1-C",
+          "2-B",
+          "3-A"
+        ]
+      }
+    ],
+    "tags": [
+      "People",
+      "Process",
+      "Technology",
+      "MIS",
+      "Business Solutions"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Describe Porter's Five Forces model and its purpose.",
+    "answer": "Porter's Five Forces is a framework for analyzing the competitive intensity and attractiveness of an industry. It identifies five forces: the threat of new entrants, the bargaining power of suppliers, the bargaining power of customers, the threat of substitute products or services, and the intensity of competitive rivalry. By analyzing these forces, businesses can assess their position and potential profitability within an industry.",
+    "context": "Competitive Advantage",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key framework mentioned in agenda and lecture content."
+    },
+    "example": "Consider the airline industry. The threat of new entrants is relatively high (low barriers to entry for budget airlines), the bargaining power of suppliers (Boeing and Airbus) is significant, and the bargaining power of customers (price-sensitive travelers) is also high. The threat of substitutes (trains, buses) exists, and competitive rivalry (Southwest vs. American) is intense. Analyzing these forces helps airlines like Delta understand their competitive landscape and develop strategies to improve profitability, such as focusing on premium services or loyalty programs.",
+    "mermaid_code": "graph TD; A[Competitive Rivalry] -->< B[Industry Attractiveness]; C[Threat of New Entrants] -->< B; D[Bargaining Power of Suppliers] -->< B; E[Bargaining Power of Buyers] -->< B; F[Threat of Substitute Products] -->< B;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is NOT one of Porter's Five Forces?",
+        "options": [
+          "A. Threat of new entrants",
+          "B. Bargaining power of suppliers",
+          "C. Bargaining power of customers",
+          "D. Government regulations"
+        ],
+        "answer": "D. Government regulations"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A software company operates in a market with many competitors offering similar products. Customers can easily switch between different software providers.",
+        "question": "According to Porter's Five Forces, which force is MOST likely to be HIGH in this market?",
+        "options": [
+          "A. Threat of new entrants",
+          "B. Bargaining power of suppliers",
+          "C. Bargaining power of customers",
+          "D. Threat of substitute products"
+        ],
+        "answer": "C. Bargaining power of customers"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following steps to correctly apply Porter's Five Forces framework.",
+        "items": [
+          "Analyze each force individually",
+          "Identify the key players and factors influencing each force",
+          "Assess the overall industry attractiveness based on the combined impact of the forces",
+          "Define the industry and its boundaries"
+        ],
+        "answer": [
+          "Define the industry and its boundaries",
+          "Identify the key players and factors influencing each force",
+          "Analyze each force individually",
+          "Assess the overall industry attractiveness based on the combined impact of the forces"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following factors as influencing either 'Supplier Power' or 'Buyer Power' according to Porter's Five Forces.",
+        "items": [
+          "High switching costs for customers",
+          "Few suppliers in the market",
+          "Customers purchase in large volumes",
+          "Suppliers offer differentiated products"
+        ],
+        "categories": [
+          "Supplier Power",
+          "Buyer Power"
+        ],
+        "answer": {
+          "Supplier Power": [
+            "Few suppliers in the market",
+            "Suppliers offer differentiated products"
+          ],
+          "Buyer Power": [
+            "High switching costs for customers",
+            "Customers purchase in large volumes"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each of Porter's Five Forces with its potential impact on industry profitability.",
+        "premises": [
+          "1. High threat of new entrants",
+          "2. Strong bargaining power of suppliers",
+          "3. Intense competitive rivalry",
+          "4. High threat of substitutes"
+        ],
+        "responses": [
+          "A. Reduces profitability by increasing costs.",
+          "B. Erodes profitability by driving down prices and increasing marketing expenses.",
+          "C. Limits profitability by capping prices.",
+          "D. Reduces profitability by increasing competition and lowering margins."
+        ],
+        "answer": [
+          "1-D",
+          "2-A",
+          "3-B",
+          "4-C"
+        ]
+      }
+    ],
+    "tags": [
+      "Porter's Five Forces",
+      "Industry Analysis",
+      "Competitive Advantage"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the concept of 'Digital Business'.",
+    "answer": "Digital business is the creation of new business designs by blurring the digital and physical worlds. It requires technology to be a core competency, data-driven decision-making, and a business model that is inherently digital. It's more than just automating existing processes; it's about fundamentally rethinking how a business operates and delivers value in the digital age.",
+    "context": "Digital Business",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key concept mentioned in agenda and lecture content."
+    },
+    "example": "Netflix is a prime example of a digital business. It doesn't just stream videos online; its entire business model is built around digital technology. It uses data analytics to understand viewer preferences, personalize recommendations, and even inform the creation of original content. Technology is not just a support function; it's the core of Netflix's operations, enabling it to deliver a seamless and personalized entertainment experience to millions of subscribers worldwide. This is in contrast to a traditional video rental store, which has physical inventory and relies on in-person interactions.",
+    "mermaid_code": "graph TD; A[Tech is Core Competency] --> D[Digital Business]; B[Data-Driven Decision] --> D; C[BM is Inherently Digital] --> D;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is a KEY characteristic of a digital business?",
+        "options": [
+          "A. Primarily relies on physical stores and in-person interactions.",
+          "B. Technology is a support function, not a core competency.",
+          "C. Data-driven decision-making is central to its operations.",
+          "D. Business model is based on traditional, non-digital processes."
+        ],
+        "answer": "C. Data-driven decision-making is central to its operations."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A traditional brick-and-mortar bookstore decides to create an online store to sell ebooks. They scan their existing inventory and create a basic website to display the ebooks.",
+        "question": "Is this bookstore fully transformed into a 'Digital Business' according to the definition?",
+        "options": [
+          "A. Yes, because they are now selling products online.",
+          "B. No, because they haven't fundamentally changed their business model or leveraged data effectively.",
+          "C. Yes, because they are using technology to reach more customers.",
+          "D. It's impossible to tell without more information."
+        ],
+        "answer": "No, because they haven't fundamentally changed their business model or leveraged data effectively."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately describe the transformation from a traditional business to a digital business.",
+        "items": [
+          "Data-driven decision making",
+          "Technology as a core competency",
+          "Digital Business",
+          "Inherently digital business model"
+        ],
+        "answer": [
+          "Technology as a core competency",
+          "Data-driven decision making",
+          "Inherently digital business model",
+          "Digital Business"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following activities as characteristic of either a 'Traditional Business' or a 'Digital Business'.",
+        "items": [
+          "Relying on market research surveys for product development",
+          "Using real-time customer data to personalize product recommendations",
+          "Primarily advertising through print and television",
+          "Optimizing website design based on A/B testing results"
+        ],
+        "categories": [
+          "Traditional Business",
+          "Digital Business"
+        ],
+        "answer": {
+          "Traditional Business": [
+            "Relying on market research surveys for product development",
+            "Primarily advertising through print and television"
+          ],
+          "Digital Business": [
+            "Using real-time customer data to personalize product recommendations",
+            "Optimizing website design based on A/B testing results"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each characteristic with the type of business it best describes.",
+        "premises": [
+          "1. Primarily relies on physical assets",
+          "2. Leverages data for personalized experiences",
+          "3. Business model is inherently digital",
+          "4. Technology is a support function"
+        ],
+        "responses": [
+          "A. Traditional Business",
+          "B. Digital Business"
+        ],
+        "answer": [
+          "1-A",
+          "2-B",
+          "3-B",
+          "4-A"
+        ]
+      }
+    ],
+    "tags": [
+      "Digital Business",
+      "Data-Driven",
+      "Business Model",
+      "Technology"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "What are the key factors contributing to a sustained competitive advantage?",
+    "answer": "Sustained competitive advantage arises from a combination of resources, capabilities, and distinctive competencies. Resources are the assets a firm possesses, capabilities are the ability to effectively utilize those resources, and distinctive competencies are what a firm does particularly well compared to its competitors. These factors lead to either a cost advantage or a differentiation advantage, ultimately resulting in a sustainable competitive edge.",
+    "context": "Competitive Advantage",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key concept mentioned in agenda and lecture content."
+    },
+    "example": "Consider Toyota's sustained competitive advantage in the automotive industry. They possess strong *resources* like advanced manufacturing facilities and a reputable brand. Their *capabilities* include efficient production processes and a focus on quality control. Their *distinctive competency* is the Toyota Production System, which allows them to produce reliable cars at a lower cost than many competitors. This leads to a *cost advantage* and a reputation for reliability, resulting in a *sustained competitive advantage* in the market.",
+    "mermaid_code": "graph TD; A[Resources] --> B[Distinctive Competencies]; C[Capabilities] --> B; B --> D[Cost or Differentiation Advantage]; D --> E[Sustained Competitive Advantage];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is the ULTIMATE goal of developing resources, capabilities, and distinctive competencies?",
+        "options": [
+          "A. Increasing short-term profits",
+          "B. Achieving sustained competitive advantage",
+          "C. Reducing operational costs",
+          "D. Improving employee satisfaction"
+        ],
+        "answer": "B. Achieving sustained competitive advantage"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A company has developed a unique algorithm that significantly improves the efficiency of its manufacturing process. Competitors are unable to replicate this algorithm due to its complexity and the company's proprietary data.",
+        "question": "Which element is MOST likely contributing to this company's sustained competitive advantage?",
+        "options": [
+          "A. Resources",
+          "B. Capabilities",
+          "C. Distinctive Competency",
+          "D. Market Share"
+        ],
+        "answer": "C. Distinctive Competency"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately depict the process of achieving a sustained competitive advantage.",
+        "items": [
+          "Distinctive Competencies",
+          "Resources",
+          "Capabilities",
+          "Cost or Differentiation Advantage",
+          "Sustained Competitive Advantage"
+        ],
+        "answer": [
+          "Resources",
+          "Capabilities",
+          "Distinctive Competencies",
+          "Cost or Differentiation Advantage",
+          "Sustained Competitive Advantage"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following items as either 'Resources' or 'Capabilities' in the context of achieving a competitive advantage.",
+        "items": [
+          "Patented Technology",
+          "Efficient Supply Chain Management",
+          "Strong Brand Reputation",
+          "Effective Customer Service"
+        ],
+        "categories": [
+          "Resources",
+          "Capabilities"
+        ],
+        "answer": {
+          "Resources": [
+            "Patented Technology",
+            "Strong Brand Reputation"
+          ],
+          "Capabilities": [
+            "Efficient Supply Chain Management",
+            "Effective Customer Service"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each element with its role in achieving a sustained competitive advantage.",
+        "premises": [
+          "1. Resources",
+          "2. Capabilities",
+          "3. Distinctive Competencies"
+        ],
+        "responses": [
+          "A. What a firm does particularly well compared to its competitors.",
+          "B. The assets a firm possesses.",
+          "C. The ability to effectively utilize a firm's resources."
+        ],
+        "answer": [
+          "1-B",
+          "2-C",
+          "3-A"
+        ]
+      }
+    ],
+    "tags": [
+      "Competitive Advantage",
+      "Resources",
+      "Capabilities",
+      "Distinctive Competencies"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "What is a 'Digital Nomad' and what are the key requirements for this lifestyle?",
+    "answer": "Digital nomads are individuals who live and work remotely, leveraging the internet and mobile technology to connect with customers or employers. Key requirements include an appealing location with a low cost of living, good weather, and reliable connectivity through Wi-Fi or cellular networks. They also need to maintain good relationships with clients or employers and be able to build and maintain networks remotely.",
+    "context": "Digital Workforce",
+    "relevance_score": {
+      "score": 7,
+      "justification": "Important supporting material that explains key ideas."
+    },
+    "example": "Imagine a software developer who works for a US-based company but lives in Bali. They use high-speed internet to attend virtual meetings, collaborate with colleagues, and submit their code. The lower cost of living in Bali allows them to save money, while the good weather and vibrant culture enhance their quality of life. This developer is a digital nomad, successfully blending work and travel thanks to technology and careful planning.",
+    "mermaid_code": "",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following BEST defines a 'Digital Nomad'?",
+        "options": [
+          "A. A person who only works in a traditional office setting.",
+          "B. A person who uses the internet to shop online.",
+          "C. A person who lives and works remotely, using technology to connect with employers or customers.",
+          "D. A person who is unemployed and seeking job opportunities online."
+        ],
+        "answer": "C. A person who lives and works remotely, using technology to connect with employers or customers."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A marketing consultant wants to become a digital nomad. They need to ensure they can maintain consistent communication with their clients.",
+        "question": "Which of the following is MOST crucial for this consultant to consider?",
+        "options": [
+          "A. Access to a large social media following.",
+          "B. Reliable internet connectivity.",
+          "C. Ability to speak multiple languages.",
+          "D. Owning a high-end laptop."
+        ],
+        "answer": "B. Reliable internet connectivity."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately describe the key requirements for a successful digital nomad lifestyle.",
+        "items": [
+          "Good weather",
+          "Reliable connectivity",
+          "Appealing location",
+          "Low cost of living"
+        ],
+        "answer": [
+          "Appealing location",
+          "Low cost of living",
+          "Good weather",
+          "Reliable connectivity"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Classify the following factors as either 'Advantages' or 'Challenges' of the digital nomad lifestyle.",
+        "items": [
+          "Location independence",
+          "Maintaining strong client relationships remotely",
+          "Exposure to diverse cultures",
+          "Difficulty building a stable social network"
+        ],
+        "categories": [
+          "Advantages",
+          "Challenges"
+        ],
+        "answer": {
+          "Advantages": [
+            "Location independence",
+            "Exposure to diverse cultures"
+          ],
+          "Challenges": [
+            "Maintaining strong client relationships remotely",
+            "Difficulty building a stable social network"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each challenge with a potential solution for digital nomads.",
+        "premises": [
+          "1. Maintaining client relationships",
+          "2. Lack of social interaction",
+          "3. Unreliable internet connectivity",
+          "4. Managing finances across borders"
+        ],
+        "responses": [
+          "A. Joining online communities and attending local meetups.",
+          "B. Using a VPN and satellite internet as backup.",
+          "C. Scheduling regular video calls and providing excellent customer service.",
+          "D. Using international banking services and budgeting tools."
+        ],
+        "answer": [
+          "1-C",
+          "2-A",
+          "3-B",
+          "4-D"
+        ]
+      }
+    ],
+    "tags": [
+      "Digital Nomad",
+      "Remote Work",
+      "Location Independence"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the different organizational decision-making levels.",
+    "answer": "Organizational decision-making occurs at three main levels: Operational, Managerial/Tactical, and Executive/Strategic. The Operational level involves day-to-day decisions made by foremen and supervisors. The Managerial/Tactical level involves middle management making decisions to implement strategies. The Executive/Strategic level involves upper management making long-term strategic decisions.",
+    "context": "Organizational Structure",
+    "relevance_score": {
+      "score": 7,
+      "justification": "Important supporting material that explains key ideas."
+    },
+    "example": "In a retail company, an *Operational* decision is a store manager deciding how to arrange products on shelves. A *Managerial/Tactical* decision is a regional manager deciding which promotional campaigns to implement in their stores. An *Executive/Strategic* decision is the CEO deciding to expand the company into a new international market. Each level requires different information and decision-making tools.",
+    "mermaid_code": "graph TD; A[Executive/Strategic Level] --> B[Managerial/Tactical Level]; B --> C[Operational Level];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which organizational level is typically responsible for making long-term strategic decisions?",
+        "options": [
+          "A. Operational Level",
+          "B. Managerial/Tactical Level",
+          "C. Executive/Strategic Level",
+          "D. Supervisory Level"
+        ],
+        "answer": "C. Executive/Strategic Level"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A production supervisor needs to decide how to allocate resources for the next shift to meet daily production targets.",
+        "question": "At which organizational level is this decision being made?",
+        "options": [
+          "A. Executive/Strategic Level",
+          "B. Managerial/Tactical Level",
+          "C. Operational Level",
+          "D. Board of Directors"
+        ],
+        "answer": "C. Operational Level"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following organizational levels in a hierarchical order, from highest to lowest.",
+        "items": [
+          "Operational Level",
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level"
+        ],
+        "answer": [
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level",
+          "Operational Level"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following decisions based on the organizational level at which they are typically made.",
+        "items": [
+          "Determining the company's mission statement",
+          "Scheduling employee work hours",
+          "Developing a marketing campaign",
+          "Approving the annual budget"
+        ],
+        "categories": [
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level",
+          "Operational Level"
+        ],
+        "answer": {
+          "Executive/Strategic Level": [
+            "Determining the company's mission statement",
+            "Approving the annual budget"
+          ],
+          "Managerial/Tactical Level": [
+            "Developing a marketing campaign"
+          ],
+          "Operational Level": [
+            "Scheduling employee work hours"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each organizational level with its primary focus.",
+
+=== REPAIRED JSON (full) ===
+[
+  {
+    "type": "definition",
+    "question": "What are Management Information Systems (MIS)?",
+    "answer": "Management Information Systems is the study of information systems in organizations, focusing on how technology enables business strategy and operations.",
+    "context": "Core MIS Concepts",
+    "relevance_score": {
+      "score": 10,
+      "justification": "Core definition and foundational concept for this subject."
+    },
+    "example": "Consider Walmart's inventory management system. It's not just about tracking stock levels; it's a sophisticated MIS that uses real-time sales data to predict demand, optimize supply chains, and ensure shelves are stocked with the right products at the right time. This system directly impacts Walmart's ability to maintain low prices and meet customer needs, driving its overall business strategy. Without this MIS, Walmart would struggle to compete effectively in the retail landscape. This demonstrates how technology enables business strategy and operations.",
+    "mermaid_code": "",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which BEST describes the primary focus of Management Information Systems (MIS)?",
+        "options": [
+          "A. Developing new software applications for consumers.",
+          "B. Studying how technology enables business strategy and operations.",
+          "C. Managing a company's financial assets and investments.",
+          "D. Designing and maintaining computer hardware infrastructure."
+        ],
+        "answer": "B. Studying how technology enables business strategy and operations."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A small business owner wants to improve their customer service and sales tracking. They are looking for a system to manage customer interactions and generate sales reports.",
+        "question": "Which type of information system would be MOST suitable for this business owner?",
+        "options": [
+          "A. Enterprise Resource Planning (ERP) system",
+          "B. Customer Relationship Management (CRM) system",
+          "C. Supply Chain Management (SCM) system",
+          "D. Knowledge Management System (KMS)"
+        ],
+        "answer": "B. Customer Relationship Management (CRM) system"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following components to accurately describe the flow of information within a basic MIS.",
+        "items": [
+          "Data Processing",
+          "Data Input",
+          "Information Output",
+          "Data Storage"
+        ],
+        "answer": [
+          "Data Input",
+          "Data Storage",
+          "Data Processing",
+          "Information Output"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following technologies as either 'Hardware' or 'Software' components of an Information System.",
+        "items": [
+          "Operating System",
+          "Database Server",
+          "Network Router",
+          "Central Processing Unit (CPU)"
+        ],
+        "categories": [
+          "Hardware",
+          "Software"
+        ],
+        "answer": {
+          "Hardware": [
+            "Network Router",
+            "Central Processing Unit (CPU)"
+          ],
+          "Software": [
+            "Operating System",
+            "Database Server"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each type of information system with its primary function.",
+        "premises": [
+          "1. Transaction Processing System (TPS)",
+          "2. Decision Support System (DSS)",
+          "3. Executive Information System (EIS)",
+          "4. Knowledge Management System (KMS)"
+        ],
+        "responses": [
+          "A. Supports strategic decision-making for senior management.",
+          "B. Captures and processes routine business transactions.",
+          "C. Helps manage and share organizational knowledge and expertise.",
+          "D. Supports complex decision-making through data analysis and modeling."
+        ],
+        "answer": [
+          "1-B",
+          "2-D",
+          "3-A",
+          "4-C"
+        ]
+      }
+    ],
+    "tags": [
+      "MIS",
+      "Information Systems",
+      "Business Strategy",
+      "Technology"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the relationship between Information Technology (IT) and Information Systems (IS).",
+    "answer": "Information Technology (IT) refers to the hardware and software components that support Information Systems (IS). IT provides the infrastructure, while IS uses IT to achieve business objectives. There is a reciprocal relationship; IS requirements often drive IT development and adoption.",
+    "context": "Core IS Concepts",
+    "relevance_score": {
+      "score": 9,
+      "justification": "Key terms explicitly defined in slides and foundational concepts."
+    },
+    "example": "Think of Amazon's cloud infrastructure (AWS) as IT. It provides the servers, databases, and networking that power Amazon's e-commerce platform. The e-commerce platform itself, with its product catalog, shopping cart, and recommendation engine, is the IS. AWS (IT) enables Amazon to operate its massive online store (IS), while the evolving needs of Amazon's e-commerce platform drive further development and innovation within AWS. They are interdependent.",
+    "mermaid_code": "graph TD; IT[Information Technology] --> IS[Information Systems]; IS --> IT;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following BEST describes the role of Information Technology (IT) in relation to Information Systems (IS)?",
+        "options": [
+          "A. IT is a subset of IS, focusing only on software applications.",
+          "B. IT provides the infrastructure that supports IS.",
+          "C. IT and IS are interchangeable terms with the same meaning.",
+          "D. IT is responsible for managing organizational budgets, while IS focuses on technology."
+        ],
+        "answer": "B. IT provides the infrastructure that supports IS."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A hospital invests in new electronic health record (EHR) software. The IT department is responsible for installing and maintaining the servers, network, and computers needed to run the EHR.",
+        "question": "In this scenario, which aspect represents Information Technology (IT)?",
+        "options": [
+          "A. The doctors and nurses using the EHR software.",
+          "B. The EHR software itself.",
+          "C. The servers, network, and computers used to run the EHR.",
+          "D. The hospital's policies for patient data privacy."
+        ],
+        "answer": "C. The servers, network, and computers used to run the EHR."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following steps to reflect the relationship between IT and IS in a business setting.",
+        "items": [
+          "Business needs drive requirements for IS",
+          "IT infrastructure is implemented",
+          "IS utilizes IT to process data",
+          "Data is collected and stored"
+        ],
+        "answer": [
+          "Business needs drive requirements for IS",
+          "Data is collected and stored",
+          "IT infrastructure is implemented",
+          "IS utilizes IT to process data"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Classify the following components as either 'Information Technology (IT)' or 'Information System (IS)'.",
+        "items": [
+          "Database Management System",
+          "Web Server",
+          "Customer Relationship Management (CRM) application",
+          "Cloud Computing Infrastructure"
+        ],
+        "categories": [
+          "IT",
+          "IS"
+        ],
+        "answer": {
+          "IT": [
+            "Database Management System",
+            "Web Server",
+            "Cloud Computing Infrastructure"
+          ],
+          "IS": [
+            "Customer Relationship Management (CRM) application"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each business objective with the IT component that supports it.",
+        "premises": [
+          "1. Securely store customer data",
+          "2. Process online transactions",
+          "3. Analyze sales trends",
+          "4. Provide remote access for employees"
+        ],
+        "responses": [
+          "A. Database Management System (DBMS)",
+          "B. E-commerce platform",
+          "C. Business Intelligence (BI) tools",
+          "D. Virtual Private Network (VPN)"
+        ],
+        "answer": [
+          "1-A",
+          "2-B",
+          "3-C",
+          "4-D"
+        ]
+      }
+    ],
+    "tags": [
+      "IT",
+      "IS",
+      "Relationship",
+      "Infrastructure"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the impact of People, Process, and Technology on Management Information Systems (MIS) and business solutions.",
+    "answer": "People, process, and technology are crucial components for effective MIS. Skilled people are needed to manage and utilize technology effectively. Well-defined processes ensure efficient data flow and system utilization. The right technology provides the tools and infrastructure to support these processes and people, leading to effective information systems and valuable business solutions.",
+    "context": "Core MIS Concepts",
+    "relevance_score": {
+      "score": 9,
+      "justification": "Main components of major diagrams/frameworks."
+    },
+    "example": "Consider a hospital implementing a new Electronic Health Record (EHR) system. The *technology* is the EHR software and hardware. The *process* involves how doctors, nurses, and staff use the system to record patient information, order tests, and prescribe medications. The *people* are the trained healthcare professionals who understand the system and use it to improve patient care. If any of these elements are weak (e.g., poorly trained staff or inefficient processes), the entire EHR system's effectiveness is compromised.",
+    "mermaid_code": "graph TD; A[People] --> D[Information Systems]; B[Process] --> D; C[Technology] --> D; D --> E[Business Solutions];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is NOT considered a core component of an effective Management Information System (MIS)?",
+        "options": [
+          "A. People",
+          "B. Process",
+          "C. Technology",
+          "D. Profit"
+        ],
+        "answer": "D. Profit"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A company invests in a new CRM system (technology) but fails to train its sales team (people) on how to use it effectively. The sales process remains unchanged.",
+        "question": "What is the MOST likely outcome of this scenario?",
+        "options": [
+          "A. Increased sales and improved customer satisfaction.",
+          "B. The CRM system will automatically improve sales performance.",
+          "C. Limited improvement in sales performance due to lack of proper utilization.",
+          "D. The company will save money on training costs."
+        ],
+        "answer": "C. Limited improvement in sales performance due to lack of proper utilization."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to represent the correct order in which they contribute to successful MIS implementation.",
+        "items": [
+          "Optimized processes",
+          "Skilled personnel",
+          "Effective technology",
+          "Improved business outcomes"
+        ],
+        "answer": [
+          "Skilled personnel",
+          "Effective technology",
+          "Optimized processes",
+          "Improved business outcomes"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following activities as related to 'People', 'Process', or 'Technology' in the context of MIS.",
+        "items": [
+          "Developing data entry procedures",
+          "Implementing a new database server",
+          "Training employees on data analysis techniques",
+          "Defining data security protocols"
+        ],
+        "categories": [
+          "People",
+          "Process",
+          "Technology"
+        ],
+        "answer": {
+          "People": [
+            "Training employees on data analysis techniques"
+          ],
+          "Process": [
+            "Developing data entry procedures",
+            "Defining data security protocols"
+          ],
+          "Technology": [
+            "Implementing a new database server"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each component with its primary role in a successful MIS.",
+        "premises": [
+          "1. People",
+          "2. Process",
+          "3. Technology"
+        ],
+        "responses": [
+          "A. Provides the tools and infrastructure for data management.",
+          "B. Defines the steps for efficient data flow and system utilization.",
+          "C. Manages and utilizes technology to achieve business goals."
+        ],
+        "answer": [
+          "1-C",
+          "2-B",
+          "3-A"
+        ]
+      }
+    ],
+    "tags": [
+      "People",
+      "Process",
+      "Technology",
+      "MIS",
+      "Business Solutions"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Describe Porter's Five Forces model and its purpose.",
+    "answer": "Porter's Five Forces is a framework for analyzing the competitive intensity and attractiveness of an industry. It identifies five forces: the threat of new entrants, the bargaining power of suppliers, the bargaining power of customers, the threat of substitute products or services, and the intensity of competitive rivalry. By analyzing these forces, businesses can assess their position and potential profitability within an industry.",
+    "context": "Competitive Advantage",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key framework mentioned in agenda and lecture content."
+    },
+    "example": "Consider the airline industry. The threat of new entrants is relatively high (low barriers to entry for budget airlines), the bargaining power of suppliers (Boeing and Airbus) is significant, and the bargaining power of customers (price-sensitive travelers) is also high. The threat of substitutes (trains, buses) exists, and competitive rivalry (Southwest vs. American) is intense. Analyzing these forces helps airlines like Delta understand their competitive landscape and develop strategies to improve profitability, such as focusing on premium services or loyalty programs.",
+    "mermaid_code": "graph TD; A[Competitive Rivalry] -->< B[Industry Attractiveness]; C[Threat of New Entrants] -->< B; D[Bargaining Power of Suppliers] -->< B; E[Bargaining Power of Buyers] -->< B; F[Threat of Substitute Products] -->< B;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is NOT one of Porter's Five Forces?",
+        "options": [
+          "A. Threat of new entrants",
+          "B. Bargaining power of suppliers",
+          "C. Bargaining power of customers",
+          "D. Government regulations"
+        ],
+        "answer": "D. Government regulations"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A software company operates in a market with many competitors offering similar products. Customers can easily switch between different software providers.",
+        "question": "According to Porter's Five Forces, which force is MOST likely to be HIGH in this market?",
+        "options": [
+          "A. Threat of new entrants",
+          "B. Bargaining power of suppliers",
+          "C. Bargaining power of customers",
+          "D. Threat of substitute products"
+        ],
+        "answer": "C. Bargaining power of customers"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following steps to correctly apply Porter's Five Forces framework.",
+        "items": [
+          "Analyze each force individually",
+          "Identify the key players and factors influencing each force",
+          "Assess the overall industry attractiveness based on the combined impact of the forces",
+          "Define the industry and its boundaries"
+        ],
+        "answer": [
+          "Define the industry and its boundaries",
+          "Identify the key players and factors influencing each force",
+          "Analyze each force individually",
+          "Assess the overall industry attractiveness based on the combined impact of the forces"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following factors as influencing either 'Supplier Power' or 'Buyer Power' according to Porter's Five Forces.",
+        "items": [
+          "High switching costs for customers",
+          "Few suppliers in the market",
+          "Customers purchase in large volumes",
+          "Suppliers offer differentiated products"
+        ],
+        "categories": [
+          "Supplier Power",
+          "Buyer Power"
+        ],
+        "answer": {
+          "Supplier Power": [
+            "Few suppliers in the market",
+            "Suppliers offer differentiated products"
+          ],
+          "Buyer Power": [
+            "High switching costs for customers",
+            "Customers purchase in large volumes"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each of Porter's Five Forces with its potential impact on industry profitability.",
+        "premises": [
+          "1. High threat of new entrants",
+          "2. Strong bargaining power of suppliers",
+          "3. Intense competitive rivalry",
+          "4. High threat of substitutes"
+        ],
+        "responses": [
+          "A. Reduces profitability by increasing costs.",
+          "B. Erodes profitability by driving down prices and increasing marketing expenses.",
+          "C. Limits profitability by capping prices.",
+          "D. Reduces profitability by increasing competition and lowering margins."
+        ],
+        "answer": [
+          "1-D",
+          "2-A",
+          "3-B",
+          "4-C"
+        ]
+      }
+    ],
+    "tags": [
+      "Porter's Five Forces",
+      "Industry Analysis",
+      "Competitive Advantage"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the concept of 'Digital Business'.",
+    "answer": "Digital business is the creation of new business designs by blurring the digital and physical worlds. It requires technology to be a core competency, data-driven decision-making, and a business model that is inherently digital. It's more than just automating existing processes; it's about fundamentally rethinking how a business operates and delivers value in the digital age.",
+    "context": "Digital Business",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key concept mentioned in agenda and lecture content."
+    },
+    "example": "Netflix is a prime example of a digital business. It doesn't just stream videos online; its entire business model is built around digital technology. It uses data analytics to understand viewer preferences, personalize recommendations, and even inform the creation of original content. Technology is not just a support function; it's the core of Netflix's operations, enabling it to deliver a seamless and personalized entertainment experience to millions of subscribers worldwide. This is in contrast to a traditional video rental store, which has physical inventory and relies on in-person interactions.",
+    "mermaid_code": "graph TD; A[Tech is Core Competency] --> D[Digital Business]; B[Data-Driven Decision] --> D; C[BM is Inherently Digital] --> D;",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is a KEY characteristic of a digital business?",
+        "options": [
+          "A. Primarily relies on physical stores and in-person interactions.",
+          "B. Technology is a support function, not a core competency.",
+          "C. Data-driven decision-making is central to its operations.",
+          "D. Business model is based on traditional, non-digital processes."
+        ],
+        "answer": "C. Data-driven decision-making is central to its operations."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A traditional brick-and-mortar bookstore decides to create an online store to sell ebooks. They scan their existing inventory and create a basic website to display the ebooks.",
+        "question": "Is this bookstore fully transformed into a 'Digital Business' according to the definition?",
+        "options": [
+          "A. Yes, because they are now selling products online.",
+          "B. No, because they haven't fundamentally changed their business model or leveraged data effectively.",
+          "C. Yes, because they are using technology to reach more customers.",
+          "D. It's impossible to tell without more information."
+        ],
+        "answer": "No, because they haven't fundamentally changed their business model or leveraged data effectively."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately describe the transformation from a traditional business to a digital business.",
+        "items": [
+          "Data-driven decision making",
+          "Technology as a core competency",
+          "Digital Business",
+          "Inherently digital business model"
+        ],
+        "answer": [
+          "Technology as a core competency",
+          "Data-driven decision making",
+          "Inherently digital business model",
+          "Digital Business"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following activities as characteristic of either a 'Traditional Business' or a 'Digital Business'.",
+        "items": [
+          "Relying on market research surveys for product development",
+          "Using real-time customer data to personalize product recommendations",
+          "Primarily advertising through print and television",
+          "Optimizing website design based on A/B testing results"
+        ],
+        "categories": [
+          "Traditional Business",
+          "Digital Business"
+        ],
+        "answer": {
+          "Traditional Business": [
+            "Relying on market research surveys for product development",
+            "Primarily advertising through print and television"
+          ],
+          "Digital Business": [
+            "Using real-time customer data to personalize product recommendations",
+            "Optimizing website design based on A/B testing results"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each characteristic with the type of business it best describes.",
+        "premises": [
+          "1. Primarily relies on physical assets",
+          "2. Leverages data for personalized experiences",
+          "3. Business model is inherently digital",
+          "4. Technology is a support function"
+        ],
+        "responses": [
+          "A. Traditional Business",
+          "B. Digital Business"
+        ],
+        "answer": [
+          "1-A",
+          "2-B",
+          "3-B",
+          "4-A"
+        ]
+      }
+    ],
+    "tags": [
+      "Digital Business",
+      "Data-Driven",
+      "Business Model",
+      "Technology"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "What are the key factors contributing to a sustained competitive advantage?",
+    "answer": "Sustained competitive advantage arises from a combination of resources, capabilities, and distinctive competencies. Resources are the assets a firm possesses, capabilities are the ability to effectively utilize those resources, and distinctive competencies are what a firm does particularly well compared to its competitors. These factors lead to either a cost advantage or a differentiation advantage, ultimately resulting in a sustainable competitive edge.",
+    "context": "Competitive Advantage",
+    "relevance_score": {
+      "score": 8,
+      "justification": "Key concept mentioned in agenda and lecture content."
+    },
+    "example": "Consider Toyota's sustained competitive advantage in the automotive industry. They possess strong *resources* like advanced manufacturing facilities and a reputable brand. Their *capabilities* include efficient production processes and a focus on quality control. Their *distinctive competency* is the Toyota Production System, which allows them to produce reliable cars at a lower cost than many competitors. This leads to a *cost advantage* and a reputation for reliability, resulting in a *sustained competitive advantage* in the market.",
+    "mermaid_code": "graph TD; A[Resources] --> B[Distinctive Competencies]; C[Capabilities] --> B; B --> D[Cost or Differentiation Advantage]; D --> E[Sustained Competitive Advantage];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following is the ULTIMATE goal of developing resources, capabilities, and distinctive competencies?",
+        "options": [
+          "A. Increasing short-term profits",
+          "B. Achieving sustained competitive advantage",
+          "C. Reducing operational costs",
+          "D. Improving employee satisfaction"
+        ],
+        "answer": "B. Achieving sustained competitive advantage"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A company has developed a unique algorithm that significantly improves the efficiency of its manufacturing process. Competitors are unable to replicate this algorithm due to its complexity and the company's proprietary data.",
+        "question": "Which element is MOST likely contributing to this company's sustained competitive advantage?",
+        "options": [
+          "A. Resources",
+          "B. Capabilities",
+          "C. Distinctive Competency",
+          "D. Market Share"
+        ],
+        "answer": "C. Distinctive Competency"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately depict the process of achieving a sustained competitive advantage.",
+        "items": [
+          "Distinctive Competencies",
+          "Resources",
+          "Capabilities",
+          "Cost or Differentiation Advantage",
+          "Sustained Competitive Advantage"
+        ],
+        "answer": [
+          "Resources",
+          "Capabilities",
+          "Distinctive Competencies",
+          "Cost or Differentiation Advantage",
+          "Sustained Competitive Advantage"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following items as either 'Resources' or 'Capabilities' in the context of achieving a competitive advantage.",
+        "items": [
+          "Patented Technology",
+          "Efficient Supply Chain Management",
+          "Strong Brand Reputation",
+          "Effective Customer Service"
+        ],
+        "categories": [
+          "Resources",
+          "Capabilities"
+        ],
+        "answer": {
+          "Resources": [
+            "Patented Technology",
+            "Strong Brand Reputation"
+          ],
+          "Capabilities": [
+            "Efficient Supply Chain Management",
+            "Effective Customer Service"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each element with its role in achieving a sustained competitive advantage.",
+        "premises": [
+          "1. Resources",
+          "2. Capabilities",
+          "3. Distinctive Competencies"
+        ],
+        "responses": [
+          "A. What a firm does particularly well compared to its competitors.",
+          "B. The assets a firm possesses.",
+          "C. The ability to effectively utilize a firm's resources."
+        ],
+        "answer": [
+          "1-B",
+          "2-C",
+          "3-A"
+        ]
+      }
+    ],
+    "tags": [
+      "Competitive Advantage",
+      "Resources",
+      "Capabilities",
+      "Distinctive Competencies"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "What is a 'Digital Nomad' and what are the key requirements for this lifestyle?",
+    "answer": "Digital nomads are individuals who live and work remotely, leveraging the internet and mobile technology to connect with customers or employers. Key requirements include an appealing location with a low cost of living, good weather, and reliable connectivity through Wi-Fi or cellular networks. They also need to maintain good relationships with clients or employers and be able to build and maintain networks remotely.",
+    "context": "Digital Workforce",
+    "relevance_score": {
+      "score": 7,
+      "justification": "Important supporting material that explains key ideas."
+    },
+    "example": "Imagine a software developer who works for a US-based company but lives in Bali. They use high-speed internet to attend virtual meetings, collaborate with colleagues, and submit their code. The lower cost of living in Bali allows them to save money, while the good weather and vibrant culture enhance their quality of life. This developer is a digital nomad, successfully blending work and travel thanks to technology and careful planning.",
+    "mermaid_code": "",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which of the following BEST defines a 'Digital Nomad'?",
+        "options": [
+          "A. A person who only works in a traditional office setting.",
+          "B. A person who uses the internet to shop online.",
+          "C. A person who lives and works remotely, using technology to connect with employers or customers.",
+          "D. A person who is unemployed and seeking job opportunities online."
+        ],
+        "answer": "C. A person who lives and works remotely, using technology to connect with employers or customers."
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A marketing consultant wants to become a digital nomad. They need to ensure they can maintain consistent communication with their clients.",
+        "question": "Which of the following is MOST crucial for this consultant to consider?",
+        "options": [
+          "A. Access to a large social media following.",
+          "B. Reliable internet connectivity.",
+          "C. Ability to speak multiple languages.",
+          "D. Owning a high-end laptop."
+        ],
+        "answer": "B. Reliable internet connectivity."
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following elements to accurately describe the key requirements for a successful digital nomad lifestyle.",
+        "items": [
+          "Good weather",
+          "Reliable connectivity",
+          "Appealing location",
+          "Low cost of living"
+        ],
+        "answer": [
+          "Appealing location",
+          "Low cost of living",
+          "Good weather",
+          "Reliable connectivity"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Classify the following factors as either 'Advantages' or 'Challenges' of the digital nomad lifestyle.",
+        "items": [
+          "Location independence",
+          "Maintaining strong client relationships remotely",
+          "Exposure to diverse cultures",
+          "Difficulty building a stable social network"
+        ],
+        "categories": [
+          "Advantages",
+          "Challenges"
+        ],
+        "answer": {
+          "Advantages": [
+            "Location independence",
+            "Exposure to diverse cultures"
+          ],
+          "Challenges": [
+            "Maintaining strong client relationships remotely",
+            "Difficulty building a stable social network"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each challenge with a potential solution for digital nomads.",
+        "premises": [
+          "1. Maintaining client relationships",
+          "2. Lack of social interaction",
+          "3. Unreliable internet connectivity",
+          "4. Managing finances across borders"
+        ],
+        "responses": [
+          "A. Joining online communities and attending local meetups.",
+          "B. Using a VPN and satellite internet as backup.",
+          "C. Scheduling regular video calls and providing excellent customer service.",
+          "D. Using international banking services and budgeting tools."
+        ],
+        "answer": [
+          "1-C",
+          "2-A",
+          "3-B",
+          "4-D"
+        ]
+      }
+    ],
+    "tags": [
+      "Digital Nomad",
+      "Remote Work",
+      "Location Independence"
+    ]
+  },
+  {
+    "type": "concept",
+    "question": "Explain the different organizational decision-making levels.",
+    "answer": "Organizational decision-making occurs at three main levels: Operational, Managerial/Tactical, and Executive/Strategic. The Operational level involves day-to-day decisions made by foremen and supervisors. The Managerial/Tactical level involves middle management making decisions to implement strategies. The Executive/Strategic level involves upper management making long-term strategic decisions.",
+    "context": "Organizational Structure",
+    "relevance_score": {
+      "score": 7,
+      "justification": "Important supporting material that explains key ideas."
+    },
+    "example": "In a retail company, an *Operational* decision is a store manager deciding how to arrange products on shelves. A *Managerial/Tactical* decision is a regional manager deciding which promotional campaigns to implement in their stores. An *Executive/Strategic* decision is the CEO deciding to expand the company into a new international market. Each level requires different information and decision-making tools.",
+    "mermaid_code": "graph TD; A[Executive/Strategic Level] --> B[Managerial/Tactical Level]; B --> C[Operational Level];",
+    "recall_questions": [
+      {
+        "type": "mcq",
+        "question": "Which organizational level is typically responsible for making long-term strategic decisions?",
+        "options": [
+          "A. Operational Level",
+          "B. Managerial/Tactical Level",
+          "C. Executive/Strategic Level",
+          "D. Supervisory Level"
+        ],
+        "answer": "C. Executive/Strategic Level"
+      },
+      {
+        "type": "scenario_mcq",
+        "scenario": "A production supervisor needs to decide how to allocate resources for the next shift to meet daily production targets.",
+        "question": "At which organizational level is this decision being made?",
+        "options": [
+          "A. Executive/Strategic Level",
+          "B. Managerial/Tactical Level",
+          "C. Operational Level",
+          "D. Board of Directors"
+        ],
+        "answer": "C. Operational Level"
+      },
+      {
+        "type": "sequencing",
+        "question": "Arrange the following organizational levels in a hierarchical order, from highest to lowest.",
+        "items": [
+          "Operational Level",
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level"
+        ],
+        "answer": [
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level",
+          "Operational Level"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize the following decisions based on the organizational level at which they are typically made.",
+        "items": [
+          "Determining the company's mission statement",
+          "Scheduling employee work hours",
+          "Developing a marketing campaign",
+          "Approving the annual budget"
+        ],
+        "categories": [
+          "Executive/Strategic Level",
+          "Managerial/Tactical Level",
+          "Operational Level"
+        ],
+        "answer": {
+          "Executive/Strategic Level": [
+            "Determining the company's mission statement",
+            "Approving the annual budget"
+          ],
+          "Managerial/Tactical Level": [
+            "Developing a marketing campaign"
+          ],
+          "Operational Level": [
+            "Scheduling employee work hours"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each organizational level with its primary focus.",
+
+=== ERROR CONTEXT (around line 743) ===
+     Line 807:         }
+     Line 808:       },
+     Line 809:       {
+     Line 810:         "type": "matching",
+ >>> Line 811:         "question": "Match each organizational level with its primary focus.",

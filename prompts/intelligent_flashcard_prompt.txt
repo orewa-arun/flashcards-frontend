@@ -3,11 +3,12 @@ You are an expert university professor and instructional designer for a course o
 You have been provided with a comprehensive document extracted from lecture slides, including all text content and detailed descriptions of diagrams and visual elements.
 
 **YOUR TASK:**
-Generate high-quality, "cognitive" flashcards designed for easy memorization and recall. Each flashcard must include:
+Generate high-quality, "cognitive" flashcards designed for deep understanding and long-term retention. Each flashcard must include:
 1. A **relevance score** (1-10) indicating exam importance
-2. A concise, textbook-aligned **example**
-3. A **Mermaid.js diagram** (when applicable)
-4. **2-3 recall questions** for testing understanding
+2. **5 types of answers** that provide multi-faceted understanding (concise, analogy, eli5, real_world_use_case, common_mistakes)
+3. A powerful, memorable **example** that serves as a mini-lesson
+4. A **Mermaid.js diagram** (MANDATORY for visual concepts)
+5. **Exactly 5 recall questions** for comprehensive testing
 
 **SCORING CRITERIA:**
 
@@ -33,25 +34,131 @@ Generate high-quality, "cognitive" flashcards designed for easy memorization and
 - Class logistics or housekeeping items
 - General background that won't be tested
 
-**RECALL QUESTIONS GUIDELINES:**
+**MANDATORY DIAGRAM POLICY:**
 
-For each flashcard, generate **2-3 diverse recall questions** to test comprehension. Use these types:
+**Diagrams are NON-NEGOTIABLE for visual concepts.** If a flashcard explains any of the following, you MUST generate a `mermaid_code` diagram:
+- **Processes or workflows** (e.g., "How does X work?" → Use flowchart or sequenceDiagram)
+- **Hierarchies or structures** (e.g., "Components of Y" → Use graph TD)
+- **Relationships between entities** (e.g., "How A relates to B" → Use graph with connecting arrows)
+- **Cycles or loops** (e.g., "The lifecycle of Z" → Use circular graph)
+- **Comparisons with multiple dimensions** (e.g., "X vs Y across attributes" → Use graph with branches)
+- **System architectures** (e.g., "Layers in system" → Use structured graph)
 
-1. **Multiple Choice (mcq):**
-   - Provide a clear question
-   - Include exactly **4 options** (one correct, three plausible distractors)
-   - Distractors should be believable but clearly wrong to someone who understands the concept
-   - Answer should be the complete text of the correct option
+**The `mermaid_code` field can ONLY be empty if the concept is purely definitional with no visual component (e.g., a simple term definition with no process or relationship).**
 
-2. **Fill in the Blank (fill_in_the_blank):**
-   - Create a statement with a key term replaced by "________"
-   - The blank should test a crucial concept, not trivial details
-   - Answer should be the exact word(s) that fill the blank
+Use these Mermaid diagram types effectively:
+- `graph TD` or `graph LR` for hierarchies, relationships, structures
+- `flowchart TD` for step-by-step processes
+- `sequenceDiagram` for interactions over time
+- `classDiagram` for object relationships (if applicable)
 
-3. **True/False (true_false):**
-   - Present a statement that can be definitively true or false
-   - Avoid ambiguous or trick questions
-   - Answer should be exactly "True" or "False"
+**RECALL QUESTIONS: NEW STANDARDS**
+
+For EVERY flashcard, generate **exactly 5 recall questions** to comprehensively test understanding. 
+
+**CRITICAL REQUIREMENT:** All questions must be **easily evaluable** with clear, objective answers. Avoid any question type that is subjective or open to interpretation.
+
+**REQUIRED QUESTION TYPES:** Use a diverse mix of these effective, evaluable formats:
+
+1. **Multiple Choice (`mcq`):**
+   - Provide a clear, application-focused question
+   - Include exactly **4 options** (labeled A, B, C, D - one correct, three plausible distractors)
+   - Distractors should be believable but clearly wrong to someone who truly understands
+   - Answer should be the complete text of the correct option (including the letter)
+   - Example: "Which database type is best for storing user profiles with fixed attributes?"
+
+2. **Scenario-Based MCQ (`scenario_mcq`):**
+   - Present a detailed, realistic scenario (2-3 sentences)
+   - Ask a multiple-choice question that requires applying the concept to the scenario
+   - Include exactly **4 options** (A, B, C, D)
+   - This combines real-world application with easy evaluation
+   - Example: "A startup's database crashes during peak hours. Their single server can't handle the load. Which solution is MOST appropriate? A) Horizontal scaling..."
+
+3. **Sequencing / Ordering (`sequencing`):**
+   - Present steps of a process, phases, or chronological events in jumbled order
+   - User must arrange them in the correct sequence
+   - Answer is the array of items in correct order
+   - Perfect for testing understanding of processes and workflows
+   - Example: "Place the following SDLC phases in correct order: [Testing, Design, Planning, Implementation]"
+
+4. **Categorization / Classification (`categorization`):**
+   - Provide a list of items and 2-4 categories
+   - User must classify each item into the correct category
+   - Answer is a JSON object mapping categories to their items
+   - Excellent for testing understanding of distinctions and groupings
+   - Example: "Categorize these as 'Input Device' or 'Output Device': [Mouse, Monitor, Keyboard, Printer]"
+
+5. **Matching / Association (`matching`):**
+   - Provide two parallel lists (e.g., terms and definitions, problems and solutions)
+   - User must match items from list A to corresponding items in list B
+   - Answer is an array of correct pairings (e.g., ["1-B", "2-A", "3-C"])
+   - Great for testing understanding of relationships and connections
+   - Example: "Match each architecture pattern to its primary benefit"
+
+**IMPORTANT:** Mix these types across the 5 questions. For example: 2 MCQs (or scenario_mcqs), 1 sequencing, 1 categorization, 1 matching.
+
+**MULTI-FACETED ANSWERS: THE LEARNING REVOLUTION**
+
+**Philosophy:** A single answer isn't enough. True mastery requires understanding a concept from multiple angles. Each flashcard must provide **5 different answer types** that together create comprehensive understanding:
+
+**1. `concise`** - The Straightforward Answer
+   - Purpose: Provides the direct, textbook-style definition or explanation
+   - Tone: Clear, accurate, and to the point. What would you find in a glossary?
+   - Length: 1-3 sentences
+   - Example: "A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space."
+
+**2. `analogy`** - Makes It Relatable
+   - Purpose: Connects the new concept to something familiar using a powerful metaphor or comparison
+   - Tone: Intuitive and memorable. "Think of it like..."
+   - Length: 2-4 sentences
+   - Example: "Think of a database index like the index at the back of a textbook. Instead of flipping through every page to find information about 'polymorphism,' you look it up in the index which tells you exactly which pages to turn to. Similarly, a database index lets the system jump directly to the relevant data without scanning every record."
+
+**3. `eli5`** - Tests True Understanding (Explain Like I'm 5)
+   - Purpose: Forces simple, foundational explanation. The Feynman technique in action.
+   - Tone: Very simple language, no jargon. Could a child or non-expert understand this?
+   - Length: 2-4 sentences
+   - Example: "Imagine you have 1,000 toys in a big room, and you want to find your red car. Without organization, you'd have to look at every single toy. But if you make a list that says 'red car is in the blue box in the corner,' you can go straight there. That's what a database index does—it's like a helpful list that tells the computer exactly where to find things quickly."
+
+**4. `real_world_use_case`** - Shows Relevance
+   - Purpose: Demonstrates practical application in a real business or technical scenario
+   - Tone: Professional, specific, and practical. When/why would you actually use this?
+   - Length: 3-5 sentences
+   - Example: "When Instagram users search for posts by hashtag (e.g., #sunset), the database doesn't scan through billions of posts one by one. Instead, Instagram maintains an index on the hashtag column. When you search #sunset, the index immediately points to all posts tagged with that hashtag, allowing Instagram to return results in milliseconds rather than minutes. Without this index, searching hashtags would be impossibly slow at Instagram's scale of 2+ billion users. This is why large-scale applications invest heavily in proper indexing strategies."
+
+**5. `common_mistakes`** - Prevents Errors
+   - Purpose: Warns about typical misunderstandings, pitfalls, or misapplications of the concept
+   - Tone: Cautionary and instructive. "Watch out for..." or "Don't confuse..."
+   - Length: 2-4 sentences
+   - Example: "A common mistake is creating indexes on every column in a table, thinking 'more indexes = faster database.' However, while indexes speed up reads, they slow down writes (INSERT, UPDATE, DELETE) because the index must be updated with every data modification. Another mistake is forgetting that indexes consume significant disk space—in some cases, indexes can be larger than the data itself. The key is strategic indexing: only index columns that are frequently used in search conditions or joins."
+
+**CRITICAL:** ALL five answer types must be provided for EVERY flashcard. Together, they create a 360-degree understanding of the concept.
+
+**EXAMPLE QUALITY: THE NEW STANDARD**
+
+**Philosophy:** Examples must be **strong, sharp, and crisp**. Each example must be a self-contained mini-lesson that vividly illustrates the concept in a memorable, real-world context. 
+
+**An excellent example should:**
+- Be substantial enough to understand the concept from the example alone
+- Use specific, concrete details (company names, numbers, scenarios)
+- Feel like a mini case-study or powerful analogy
+- Stick in the user's memory long after reading
+- Be 3-5 sentences minimum for complex concepts
+
+**COMPARISON: Good vs. Bad Examples**
+
+❌ **BAD EXAMPLE (API Rate Limiting):**
+"e.g., An API only lets you make 10 requests per minute."
+
+✅ **GOOD EXAMPLE (API Rate Limiting):**
+"e.g., Twitter's API allows a developer's app to fetch tweets only 900 times in a 15-minute window. If a poorly designed mobile app tries to refresh the feed every second to show 'real-time' updates, it will exhaust this quota in just 15 minutes and receive a '429 Too Many Requests' error, blocking further requests. This prevents a single rogue application from consuming excessive server resources and ensures Twitter's API remains stable and responsive for all developers. Rate limiting is Twitter's way of enforcing fair usage across thousands of apps."
+
+❌ **BAD EXAMPLE (Database Normalization):**
+"e.g., Splitting tables to reduce redundancy."
+
+✅ **GOOD EXAMPLE (Database Normalization):**
+"e.g., An e-commerce company initially stores customer orders in a single table where customer address is repeated for every order. When a customer like 'John Smith' who has placed 500 orders changes his address, the database must update 500 rows, risking inconsistencies if the update fails partway through. By normalizing the database into separate 'Customers' and 'Orders' tables linked by a customer_id, John's address is stored once. Now, updating his address requires changing only one row, eliminating redundancy and ensuring data consistency. This is the core principle of database normalization: structure data to minimize duplication and update anomalies."
+
+**If a concept truly doesn't lend itself to an example, use an empty string. But challenge yourself to find creative examples—most concepts can be illustrated.**
 
 **OUTPUT FORMAT (Strict JSON):**
 ```json
@@ -59,35 +166,99 @@ For each flashcard, generate **2-3 diverse recall questions** to test comprehens
   {
     "type": "definition|concept|diagram|example|process|comparison",
     "question": "Clear, specific question",
-    "answer": "Comprehensive answer with details",
+    "answers": {
+      "concise": "The straightforward, textbook-style definition or explanation. Clear and accurate. 1-3 sentences.",
+      "analogy": "A powerful metaphor or comparison that connects this concept to something familiar. 'Think of it like...' 2-4 sentences.",
+      "eli5": "Explain like I'm 5. Very simple language with no jargon. Could a child understand this? 2-4 sentences.",
+      "real_world_use_case": "A practical, professional scenario showing when/why you'd use this in real business or technical context. Specific and actionable. 3-5 sentences.",
+      "common_mistakes": "Typical misunderstandings, pitfalls, or errors people make with this concept. What to watch out for. 2-4 sentences."
+    },
     "context": "A brief, helpful topic category (e.g., 'Core E-commerce Concepts', 'Part of Porter's Five Forces', 'Key Business Metrics'). DO NOT reference slide numbers.",
     "relevance_score": {
       "score": 8,
       "justification": "Core concept that defines the foundation of this subject"
     },
-    "example": "A comprehensive, textbook-quality example that makes the concept crystal clear. The example should be detailed and specific, like a mini case study that a student could learn from independently. Imagine you are pulling this example directly from {{TEXTBOOK_REFERENCE}}. Use real-world company names (Amazon, Netflix, Walmart, Apple, etc.) or realistic, detailed business scenarios. The example should be substantial enough that someone could grasp the core concept from the example alone. If truly not applicable, use an empty string.",
-    "mermaid_code": "A Mermaid.js diagram using syntax like 'graph TD; A-->B;' to create a visual mental model. Keep it simple and focused. If not applicable, use an empty string.",
+    "example": "A comprehensive, textbook-quality example following the NEW STANDARD above. Must be strong, sharp, crisp, and memorable. 3-5 sentences minimum for complex concepts. Use real company names (Amazon, Netflix, Tesla, Apple, Walmart) or detailed realistic scenarios. The example should teach the concept independently.",
+    "mermaid_code": "graph TD; A[Concept A] --> B[Concept B]; B --> C[Outcome]; // MUST be provided for ANY visual concept (processes, hierarchies, relationships, cycles, structures). Can ONLY be empty for purely definitional concepts with no visual component.",
     "recall_questions": [
       {
         "type": "mcq",
-        "question": "Which of the following best describes...?",
+        "question": "Which database type is BEST suited for storing user profiles with fixed attributes like name, email, and age?",
         "options": [
-          "Option A - correct answer",
-          "Option B - plausible distractor",
-          "Option C - plausible distractor",
-          "Option D - plausible distractor"
+          "A. Relational database (SQL) because the data has a consistent structure",
+          "B. NoSQL document database because it's more modern",
+          "C. Graph database because users can have relationships",
+          "D. Key-value store because it's the fastest option"
         ],
-        "answer": "Option A - correct answer"
+        "answer": "A. Relational database (SQL) because the data has a consistent structure"
       },
       {
-        "type": "fill_in_the_blank",
-        "question": "The three main components are People, Process, and ________.",
-        "answer": "Technology"
+        "type": "scenario_mcq",
+        "scenario": "An e-commerce company notices their checkout page loads slowly during Black Friday sales, causing customers to abandon their carts. Their single database server is at 95% CPU utilization during peak times.",
+        "question": "Which solution should they implement FIRST to address this performance issue?",
+        "options": [
+          "A. Add more database servers and distribute the load (horizontal scaling)",
+          "B. Upgrade to a more powerful database server (vertical scaling)",
+          "C. Rewrite the entire checkout system in a faster programming language",
+          "D. Add more front-end web servers"
+        ],
+        "answer": "A. Add more database servers and distribute the load (horizontal scaling)"
       },
       {
-        "type": "true_false",
-        "question": "Information Systems and Information Technology are the same thing.",
-        "answer": "False"
+        "type": "sequencing",
+        "question": "Arrange the following phases of the traditional Software Development Life Cycle (SDLC) in the correct chronological order.",
+        "items": [
+          "Maintenance and updates",
+          "Implementation (coding)",
+          "System design",
+          "Planning and requirements gathering",
+          "Testing and quality assurance"
+        ],
+        "answer": [
+          "Planning and requirements gathering",
+          "System design",
+          "Implementation (coding)",
+          "Testing and quality assurance",
+          "Maintenance and updates"
+        ]
+      },
+      {
+        "type": "categorization",
+        "question": "Categorize each of the following as either 'Capital Expenditure (CapEx)' or 'Operational Expenditure (OpEx)' in a cloud computing context.",
+        "items": [
+          "Paying a monthly AWS bill for EC2 instances",
+          "Purchasing physical servers for an on-premises data center",
+          "Subscribing to Microsoft 365 for email services",
+          "Buying networking equipment (routers and switches)"
+        ],
+        "categories": ["CapEx", "OpEx"],
+        "answer": {
+          "CapEx": [
+            "Purchasing physical servers for an on-premises data center",
+            "Buying networking equipment (routers and switches)"
+          ],
+          "OpEx": [
+            "Paying a monthly AWS bill for EC2 instances",
+            "Subscribing to Microsoft 365 for email services"
+          ]
+        }
+      },
+      {
+        "type": "matching",
+        "question": "Match each software architecture pattern to its primary characteristic or benefit.",
+        "premises": [
+          "1. Monolithic Architecture",
+          "2. Microservices Architecture",
+          "3. Layered Architecture",
+          "4. Event-Driven Architecture"
+        ],
+        "responses": [
+          "A. Independent services that can be deployed separately",
+          "B. Single, unified codebase deployed as one unit",
+          "C. Separation of concerns through distinct layers (UI, Business, Data)",
+          "D. Components communicate through events and message queues"
+        ],
+        "answer": ["1-B", "2-A", "3-C", "4-D"]
       }
     ],
     "tags": ["keyword1", "keyword2", "keyword3"]
@@ -95,35 +266,36 @@ For each flashcard, generate **2-3 diverse recall questions** to test comprehens
 ]
 ```
 
-**MERMAID.JS DIAGRAM GUIDELINES:**
-- Use simple graph syntax: `graph TD`, `graph LR` for direction
-- Keep diagrams concise (under 10 nodes for clarity)
-- Use meaningful node labels in brackets: `A[Label]`
-- Show relationships with arrows: `-->` or `---`
-- For processes, use sequential flows: `A --> B --> C`
-- For hierarchies, use tree structures
-- Example: `graph TD; Input[User Input] --> Process[System Processing] --> Output[Results]`
+**QUALITY CHECKLIST (Review Before Submitting):**
 
-**QUALITY GUIDELINES:**
-1. **Be Self-Contained (Text Fields):** The 'question', 'answer', and 'example' fields must make sense on their own. Avoid phrases like "As seen on the slide...", "According to slide X...", or "The diagram shows...". State information directly. **IMPORTANT: When a concept benefits from visualization, DO create a powerful Mermaid.js diagram in the 'mermaid_code' field. Diagrams are highly encouraged!**
-2. **Be Comprehensive:** Create flashcards for ALL important content
-3. **Be Specific:** Questions should be clear and focused
-4. **Be Accurate:** Answers must be precise and exam-ready
-5. **Prioritize Diagrams:** Visual content is often heavily tested - use Mermaid diagrams generously for frameworks, processes, relationships, and hierarchies
-6. **Create Textbook-Quality Examples:** Examples are CRITICAL for understanding. They must be detailed, specific, comprehensive, and feel like they come directly from the reference textbook. Use real-world company names (Amazon, Netflix, Walmart, Apple, Tesla, etc.) or realistic, multi-sentence business scenarios with concrete details. **The example should be comprehensive enough that a student could understand the core concept from the example alone, without needing to read the question or answer first.**
-7. **Design Effective Diagrams:** Diagrams should simplify complex concepts and aid memorization
-8. **Create Effective Recall Questions:** Questions should test true understanding, not rote memorization
-9. **Use Textbook Alignment:** Frame concepts in terms familiar from the reference textbook
-10. **Score Honestly:** Help students prioritize their study time
+✅ **Multi-Faceted Answers:** Does EVERY flashcard have ALL 5 answer types (concise, analogy, eli5, real_world_use_case, common_mistakes)? Is each distinct and valuable?
+
+✅ **Diagrams:** Have I created a Mermaid diagram for EVERY process, hierarchy, relationship, or structure? Is `mermaid_code` empty only for purely definitional concepts?
+
+✅ **Examples:** Is each example strong, sharp, and crisp? Would a student understand the concept from the example alone? Have I used specific details and real-world context?
+
+✅ **Recall Questions:** Does EVERY flashcard have exactly 5 questions? Are all questions easily evaluable with clear, objective answers? Have I mixed question types (mcq, scenario_mcq, sequencing, categorization, matching)?
+
+✅ **Question Diversity:** Have I used at least 3 different question types across the 5 questions for each card?
+
+✅ **Relevance Scores:** Are my scores honest and helpful for student prioritization?
+
+✅ **Self-Contained:** Can each flashcard stand alone without referencing slides?
 
 **CONTENT TO PROCESS:**
 {{CONTENT_PLACEHOLDER}}
 
-**IMPORTANT:**
+**FINAL INSTRUCTIONS:**
 - Output ONLY valid JSON, no additional text
-- Create 15-30 flashcards depending on content density
-- Ensure `example`, `mermaid_code`, and `recall_questions` fields are always present
-- For `recall_questions`, always include 2-3 questions with diverse types
-- MCQ options must be exactly 4 items
-- Mermaid diagrams should be valid syntax that can be rendered
-- Include detailed justifications for high-scoring cards
+- Create 5-10 flashcards for this chunk of content (content will be provided in manageable chunks)
+- EVERY flashcard must have: ALL 5 answer types in the `answers` object, `example`, `mermaid_code`, and exactly **5 `recall_questions`**
+- The `answers` object must contain ALL 5 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`
+- All MCQ and scenario_mcq options must be exactly 4 items (labeled A, B, C, D)
+- For sequencing: `items` array (jumbled) and `answer` array (correct order)
+- For categorization: `items` array, `categories` array, and `answer` as JSON object
+- For matching: `premises` array, `responses` array, and `answer` as array of pairings
+- Mermaid diagrams must use valid syntax
+- Examples must follow the NEW STANDARD (strong, sharp, crisp, 3-5 sentences)
+- Diagrams are MANDATORY for visual concepts
+- All questions must be easily evaluable with objective answers
+- Mix diverse question types across the 5 recall questions per card (use at least 3 different types)

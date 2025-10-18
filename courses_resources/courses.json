@@ -1,0 +1,23 @@
+[
+  {
+    "course_id": "MS5260",
+    "course_name": "Management Information Systems",
+    "course_code": "MIS",
+    "instructor": "",
+    "reference_textbooks": [
+      "Management Information Systems: Managing the Digital Firm by Laudon & Laudon"
+    ],
+    "course_description": "Study of information systems in organizations, focusing on how technology enables business strategy and operations.",
+    "lecture_slides": [
+      {
+        "pdf_path": "courses_resources/MS5260/lecture_slides/MIS_lec_1-3.pdf",
+        "lecture_name": "MIS Lectures 1-3",
+        "lecture_number": "1-3",
+        "topics": [
+          "Introduction to MIS",
+          "Information Systems in Business"
+        ]
+      }
+    ]
+  }
+]

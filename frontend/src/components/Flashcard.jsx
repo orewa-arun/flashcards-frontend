@@ -11,14 +11,30 @@ mermaid.initialize({
   fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif'
 })
 
+const answerTypes = [
+  { key: 'concise', label: 'Concise' },
+  { key: 'analogy', label: 'Analogy' },
+  { key: 'eli5', label: 'ELI5' },
+  { key: 'real_world_use_case', label: 'Use Case' },
+  { key: 'common_mistakes', label: 'Mistakes' }
+];
+
 function Flashcard({ card }) {
   const [isFlipped, setIsFlipped] = useState(false)
   const [showExample, setShowExample] = useState(false)
+  const [selectedAnswer, setSelectedAnswer] = useState('concise');
   
   // Generate a stable unique ID for this card's mermaid diagram using useMemo
   const uniqueDiagramId = useMemo(() => {
     return `mermaid-diagram-${card.question.substring(0, 20).replace(/[^a-zA-Z0-9]/g, '')}-${Math.random().toString(36).substr(2, 9)}`
   }, [card.question])
+
+  // Effect to reset state when card changes
+  useEffect(() => {
+    setIsFlipped(false);
+    setShowExample(false);
+    setSelectedAnswer('concise');
+  }, [card]);
 
   useEffect(() => {
     // Render mermaid diagram when card is flipped to answer side and has diagram code
@@ -49,8 +65,8 @@ function Flashcard({ card }) {
   }, [isFlipped, card.mermaid_code, uniqueDiagramId, card.question])
 
   const handleCardClick = (e) => {
-    // Don't flip if clicking on the example button or diagram
-    if (e.target.closest('.example-button') || e.target.closest('.mermaid-diagram-container')) {
+    // Don't flip if clicking on buttons or diagram
+    if (e.target.closest('.example-button') || e.target.closest('.mermaid-diagram-container') || e.target.closest('.answer-selector')) {
       return
     }
     setIsFlipped(!isFlipped)
@@ -79,7 +95,23 @@ function Flashcard({ card }) {
           <div className="card-content">
             <div className="card-type-badge">{card.type}</div>
             <h2>Answer</h2>
-            <p className="card-text">{card.answer}</p>
+            <div className="answer-selector">
+              {answerTypes.map(type => (
+                <button
+                  key={type.key}
+                  className={`answer-type-btn ${selectedAnswer === type.key ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedAnswer(type.key);
+                  }}
+                >
+                  {type.label}
+                </button>
+              ))}
+            </div>
+            <p className="card-text answer-text">
+              {card.answers && card.answers[selectedAnswer]}
+            </p>
             
             {/* Mermaid Diagram Container */}
             {card.mermaid_code && card.mermaid_code.trim() !== '' && (
