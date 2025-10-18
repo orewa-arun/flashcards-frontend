@@ -116,6 +116,7 @@ function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disab
 // eslint-disable-next-line no-unused-vars
 function SequencingRenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
   const [items, setItems] = useState(userAnswer || [...(question.items || [])])
+  const [draggedIndex, setDraggedIndex] = useState(null)
   
   const moveItem = (fromIndex, toIndex) => {
     if (disabled) return
@@ -124,6 +125,33 @@ function SequencingRenderer({ question, userAnswer, onAnswerChange, showFeedback
     newItems.splice(toIndex, 0, removed)
     setItems(newItems)
     onAnswerChange(newItems)
+  }
+
+  const handleDragStart = (e, index) => {
+    if (disabled) return
+    setDraggedIndex(index)
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/html', e.target)
+  }
+
+  const handleDragOver = (e) => {
+    if (disabled) return
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'move'
+  }
+
+  const handleDrop = (e, dropIndex) => {
+    if (disabled) return
+    e.preventDefault()
+    
+    if (draggedIndex !== null && draggedIndex !== dropIndex) {
+      moveItem(draggedIndex, dropIndex)
+    }
+    setDraggedIndex(null)
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
   }
 
   return (
@@ -135,7 +163,16 @@ function SequencingRenderer({ question, userAnswer, onAnswerChange, showFeedback
       
       <div className="sequencing-list">
         {items.map((item, index) => (
-          <div key={index} className="sequence-item">
+          <div 
+            key={index} 
+            className={`sequence-item ${draggedIndex === index ? 'dragging' : ''}`}
+            draggable={!disabled}
+            onDragStart={(e) => handleDragStart(e, index)}
+            onDragOver={handleDragOver}
+            onDrop={(e) => handleDrop(e, index)}
+            onDragEnd={handleDragEnd}
+          >
+            <span className="sequence-handle">⋮⋮</span>
             <span className="sequence-number">{index + 1}</span>
             <span className="sequence-content">{item}</span>
             <div className="sequence-controls">
@@ -260,7 +297,6 @@ function MatchingRenderer({ question, userAnswer, onAnswerChange, showFeedback, 
     // Pass up the full response text for checking
     const answerForCheck = newMatches.map(match => {
       const [pNum, rLetter] = match.split('-')
-      const fullResponse = question.responses.find(r => r.startsWith(rLetter + '.'))
       return `${pNum}-${rLetter}`
     }).sort()
 

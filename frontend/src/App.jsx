@@ -6,10 +6,12 @@ import CourseDetailView from './views/CourseDetailView'
 import DeckView from './views/DeckView'
 import QuizView from './views/QuizView'
 import ResultsView from './views/ResultsView'
+import ThemeToggle from './components/ThemeToggle'
 
 function App() {
   return (
     <Router>
+      <ThemeToggle />
       <div className="app-container">
         <Routes>
           <Route path="/" element={<CourseListView />} />

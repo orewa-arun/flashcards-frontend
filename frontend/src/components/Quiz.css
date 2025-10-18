@@ -110,14 +110,15 @@
 }
 
 .mcq-option.correct {
-  border-color: #4caf50;
-  background: #e8f5e9;
+  border-color: var(--success);
+  background: var(--success-light);
   animation: correctPulse 0.5s ease;
+  font-weight: 600;
 }
 
 .mcq-option.incorrect {
-  border-color: #f44336;
-  background: #ffebee;
+  border-color: var(--error);
+  background: var(--error-light);
   animation: incorrectShake 0.5s ease;
 }
 
@@ -175,23 +176,25 @@
 }
 
 .fill-input input.correct {
-  border-color: #4caf50;
-  background: #e8f5e9;
+  border-color: var(--success);
+  background: var(--success-light);
+  font-weight: 600;
 }
 
 .fill-input input.incorrect {
-  border-color: #f44336;
-  background: #ffebee;
+  border-color: var(--error);
+  background: var(--error-light);
 }
 
 .correct-answer-display {
   margin-top: 15px;
   padding: 15px;
-  background: #e8f5e9;
-  border-left: 4px solid #4caf50;
+  background: var(--success-light);
+  border-left: 4px solid var(--success);
   border-radius: 8px;
-  color: #2e7d32;
+  color: var(--success);
   font-size: 16px;
+  font-weight: 600;
   animation: slideDown 0.3s ease;
 }
 

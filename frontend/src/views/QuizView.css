@@ -1,70 +1,96 @@
+/* Clean Quizlet-Style Quiz View */
 .quiz-view {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
   min-height: 100vh;
+  background-color: var(--bg-primary);
 }
 
 .quiz-header {
   margin-bottom: 2rem;
 }
 
+/* Back Button - Clean & Minimal */
 .quiz-header .back-button {
   background: none;
   border: none;
-  color: #667eea;
-  font-size: 1rem;
+  color: var(--accent-primary);
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   margin-bottom: 1rem;
   padding: 0.5rem 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .quiz-header .back-button:hover {
   opacity: 0.7;
 }
 
+/* Progress Card - Matching Flashcard Style */
 .quiz-progress {
-  background: white;
-  padding: 1rem;
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
+  border: 2px solid var(--border);
+  transition: box-shadow 0.2s ease;
+}
+
+.quiz-progress:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .question-counter {
   display: block;
-  color: #667eea;
+  color: var(--text-secondary);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-size: 14px;
+  margin-bottom: 0.75rem;
 }
 
+/* Clean Progress Bar - Like StudyDeck */
 .progress-bar {
   height: 8px;
-  background: #e7eaff;
-  border-radius: 10px;
+  background-color: var(--bg-elevated);
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background-color: var(--accent-primary);
   transition: width 0.3s ease;
+  border-radius: 4px;
 }
 
+/* Question Card - Clean White Card */
 .quiz-content {
-  background: white;
-  border-radius: 16px;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 2px solid var(--border);
   padding: 2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease;
 }
 
+.quiz-content:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Scenario/Context Box */
 .question-context {
-  background: #f8f9fa;
-  padding: 1rem;
+  background-color: var(--bg-tertiary);
+  padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
-  color: #666;
-  border-left: 4px solid #667eea;
+  color: var(--text-primary);
+  border-left: 4px solid var(--accent-primary);
+  line-height: 1.6;
 }
 
 .quiz-actions {
@@ -72,26 +98,37 @@
   text-align: center;
 }
 
+/* Submit Button - Matching Primary Button Style */
 .submit-answer-btn {
-  padding: 1rem 3rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem 2.5rem;
+  background-color: var(--accent-primary);
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-card);
 }
 
 .submit-answer-btn:hover:not(:disabled) {
-  opacity: 0.9;
+  background-color: var(--accent-secondary);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.submit-answer-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-card);
 }
 
 .submit-answer-btn:disabled {
-  opacity: 0.5;
+  background-color: var(--bg-elevated);
+  color: var(--text-muted);
   cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
 }
 
 .feedback-section {
@@ -99,65 +136,118 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+  animation: fadeInUp 0.3s ease-out;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Duolingo-Style Feedback Messages */
 .feedback-message {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 2rem;
+  padding: 1.25rem 2rem;
   border-radius: 12px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  border: 2px solid;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .feedback-message.correct {
-  background: #d4edda;
-  color: #155724;
+  background-color: var(--success-light);
+  color: var(--success);
+  border-color: var(--success);
+  animation: correctPulse 0.5s ease;
 }
 
 .feedback-message.incorrect {
-  background: #f8d7da;
-  color: #721c24;
+  background-color: var(--error-light);
+  color: var(--error);
+  border-color: var(--error);
+  animation: incorrectShake 0.5s ease;
+}
+
+@keyframes correctPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes incorrectShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 .feedback-icon {
   font-size: 1.5rem;
 }
 
+/* Correct Answer Display */
 .correct-answer-display {
   width: 100%;
-  background: #f8f9fa;
+  background-color: var(--bg-tertiary);
   padding: 1.5rem;
   border-radius: 8px;
   text-align: left;
+  border: 1px solid var(--border);
 }
 
 .correct-answer-display strong {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .answer-text {
-  color: #667eea;
+  color: var(--accent-primary);
   font-weight: 600;
   white-space: pre-wrap;
+  line-height: 1.5;
 }
 
+/* Next Question Button */
 .next-question-btn {
-  padding: 1rem 3rem;
-  background: #667eea;
+  padding: 1rem 2.5rem;
+  background-color: var(--accent-primary);
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-card);
 }
 
 .next-question-btn:hover {
-  opacity: 0.9;
+  background-color: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.next-question-btn:active {
+  transform: translateY(0);
 }
 

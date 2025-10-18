@@ -1,3 +1,81 @@
+/* Quizlet + Duolingo Inspired Color System */
+:root {
+  /* Light Mode (Default) - Quizlet Inspired */
+  --bg-primary: #FAFAF9;      /* Warm white, easy on eyes */
+  --bg-secondary: #FFFFFF;    /* Pure white for cards */
+  --bg-tertiary: #F8FAFC;     /* Subtle elevation */
+  --bg-elevated: #F1F5F9;     /* Elevated elements */
+  
+  /* Text Colors - Professional & Readable */
+  --text-primary: #1F2937;    /* Deep gray, not harsh black */
+  --text-secondary: #4B5563;  /* Medium gray for secondary content */
+  --text-muted: #9CA3AF;      /* Light gray for subtle elements */
+  --text-question: #111827;   /* Near black for maximum question impact */
+  
+  /* Accent Colors - Bright & Energetic like Quizlet */
+  --accent-primary: #3B82F6;  /* Quizlet blue - primary actions */
+  --accent-secondary: #2563EB; /* Darker blue for hover states */
+  --accent-light: #60A5FA;    /* Light blue for highlights */
+  --accent-glow: rgba(59, 130, 246, 0.15); /* Subtle blue glow */
+  
+  /* Answer Type Colors - Color-coded tabs */
+  --tab-concise: #3B82F6;     /* Blue - Concise */
+  --tab-analogy: #8B5CF6;     /* Purple - Analogy */
+  --tab-eli5: #10B981;        /* Green - ELI5 */
+  --tab-usecase: #F59E0B;     /* Orange - Use Case */
+  --tab-mistakes: #EF4444;    /* Red - Mistakes */
+  --tab-example: #06B6D4;     /* Teal - Example */
+  
+  /* Semantic Colors - Duolingo Style */
+  --success: #10B981;         /* Duolingo green */
+  --success-light: #D1FAE5;   /* Light green background */
+  --warning: #F59E0B;         /* Warm amber */
+  --warning-light: #FEF3C7;   /* Light amber background */
+  --error: #EF4444;           /* Gentle red */
+  --error-light: #FEE2E2;     /* Light red background */
+  
+  /* Interactive Elements - Clean & Modern */
+  --border: #E5E7EB;          /* Light gray borders */
+  --border-light: #F3F4F6;    /* Very light borders */
+  --border-focus: #3B82F6;    /* Blue focus borders */
+  
+  /* Shadows - Quizlet-style depth */
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Dark Mode (Toggle Option) - High Contrast */
+[data-theme="dark"] {
+  /* Backgrounds - Deeper for better contrast */
+  --bg-primary: #111827;      /* Deep blue-gray background */
+  --bg-secondary: #1F2937;    /* Card backgrounds (lighter than primary) */
+  --bg-tertiary: #374151;     /* Elevated elements */
+  --bg-elevated: #4B5563;     /* Interactive hover states */
+  
+  /* Text - Brighter for high readability */
+  --text-primary: #F9FAFB;    /* Near white, high contrast */
+  --text-secondary: #E5E7EB;  /* Brighter secondary text */
+  --text-muted: #9CA3AF;      /* Muted text */
+  --text-question: #FFFFFF;   /* Pure white for questions */
+  
+  /* Borders - More defined for separation */
+  --border: #374151;          /* Visible borders */
+  --border-light: #4B5563;    /* Lighter borders */
+  
+  /* Dark Mode Semantic Colors - More vibrant */
+  --success-light: rgba(16, 185, 129, 0.15);   /* Brighter green background */
+  --error-light: rgba(239, 68, 68, 0.15);      /* Brighter red background */
+  --warning-light: rgba(245, 158, 11, 0.15);   /* Brighter amber background */
+  
+  /* Shadows - Enhanced depth */
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,11 +84,20 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+  background-color: var(--bg-elevated);
+  color: var(--accent-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
 }

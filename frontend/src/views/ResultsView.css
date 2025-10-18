@@ -1,7 +1,10 @@
+/* Clean Results View */
 .results-view {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
 }
 
 .results-header {
@@ -10,17 +13,37 @@
 }
 
 .results-header h1 {
-  color: #333;
+  color: var(--text-primary);
   font-size: 2rem;
+  font-weight: 700;
 }
 
+/* Score Card - Celebrating Achievement */
 .score-card {
-  background: white;
-  border-radius: 16px;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 2px solid var(--border);
   padding: 3rem 2rem;
   text-align: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
   margin-bottom: 3rem;
+  transition: box-shadow 0.2s ease;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.score-card:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .score-circle {
@@ -33,6 +56,18 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
+  animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .score-value {
@@ -42,14 +77,15 @@
 
 .score-fraction {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-top: 0.5rem;
+  font-weight: 600;
 }
 
 .score-message {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .results-breakdown {
@@ -58,7 +94,8 @@
 
 .results-breakdown h2 {
   margin-bottom: 1.5rem;
-  color: #333;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .questions-list {
@@ -68,19 +105,27 @@
 }
 
 .result-item {
-  background: white;
+  background-color: var(--bg-secondary);
   border-radius: 12px;
+  border: 2px solid var(--border);
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
   border-left: 4px solid;
+  transition: box-shadow 0.2s ease;
+}
+
+.result-item:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .result-item.correct {
-  border-left-color: #28a745;
+  border-left-color: var(--success);
+  background-color: rgba(16, 185, 129, 0.02);
 }
 
 .result-item.incorrect {
-  border-left-color: #dc3545;
+  border-left-color: var(--error);
+  background-color: rgba(239, 68, 68, 0.02);
 }
 
 .result-header {
@@ -92,30 +137,31 @@
 
 .result-number {
   font-weight: 600;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .result-status {
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .result-status.correct {
-  background: #d4edda;
-  color: #155724;
+  background-color: var(--success-light);
+  color: var(--success);
 }
 
 .result-status.incorrect {
-  background: #f8d7da;
-  color: #721c24;
+  background-color: var(--error-light);
+  color: var(--error);
 }
 
 .result-question {
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   line-height: 1.6;
+  font-weight: 500;
 }
 
 .result-answers {
@@ -124,7 +170,7 @@
   gap: 0.75rem;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
 }
 
 .your-answer,
@@ -135,52 +181,70 @@
 }
 
 .your-answer strong {
-  color: #dc3545;
+  color: var(--error);
+  font-weight: 600;
 }
 
 .correct-answer strong {
-  color: #28a745;
+  color: var(--success);
+  font-weight: 600;
 }
 
 .answer-value {
-  padding: 0.5rem;
-  background: #f8f9fa;
+  padding: 0.65rem;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
   border-radius: 6px;
-  color: #333;
-  font-family: monospace;
+  color: var(--text-primary);
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 14px;
 }
 
 .results-actions {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
+/* Quizlet-Style Action Buttons */
 .btn-primary,
 .btn-secondary {
   padding: 1rem 2rem;
   border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-card);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: var(--accent-primary);
   color: white;
 }
 
-.btn-secondary {
-  background: #f8f9fa;
-  color: #667eea;
-  border: 2px solid #667eea;
+.btn-primary:hover {
+  background-color: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
-.btn-primary:hover,
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+}
+
 .btn-secondary:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+  background-color: var(--bg-tertiary);
+  transform: translateY(-1px);
 }
 

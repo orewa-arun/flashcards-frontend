@@ -1,42 +1,56 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Flashcard from './Flashcard'
-import DifficultyRating from './DifficultyRating'
 import './StudyDeck.css'
 
 function StudyDeck({ flashcards, metadata, onStartQuiz }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [showRating, setShowRating] = useState(false)
 
   const currentCard = flashcards[currentIndex]
   const progress = ((currentIndex + 1) / flashcards.length) * 100
 
   const handleNext = () => {
-    setShowRating(true)
+    if (currentIndex < flashcards.length - 1) {
+      setCurrentIndex(currentIndex + 1)
+    }
   }
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1)
-      setShowRating(false)
     }
   }
 
-  const handleRating = () => {
-    // Rating is recorded but not used for now
-    if (currentIndex < flashcards.length - 1) {
-      setCurrentIndex(currentIndex + 1)
-      setShowRating(false)
+  // Keyboard shortcuts for faster studying
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      switch (event.code) {
+        case 'ArrowRight':
+          event.preventDefault()
+          handleNext()
+          break
+        case 'ArrowLeft':
+          event.preventDefault()
+          handlePrevious()
+          break
+        default:
+          break
+      }
     }
-  }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [currentIndex, flashcards.length])
 
   return (
     <div className="study-deck">
-      <div className="study-header">
-        <h1>📚 {metadata.course_name}</h1>
-        <p className="flashcard-intro">Interactive Flashcards - They help you remember better!</p>
-        <div className="progress-info">
-          <span className="card-counter">
-            Card {currentIndex + 1} of {flashcards.length}
+      {/* Minimal Top Navigation */}
+      <div className="top-nav">
+        <div className="deck-title">
+          {metadata.course_name}
+        </div>
+        <div className="progress-section">
+          <span className="progress-counter">
+            {currentIndex + 1} / {flashcards.length}
           </span>
           <div className="progress-bar">
             <div 
@@ -45,48 +59,48 @@ function StudyDeck({ flashcards, metadata, onStartQuiz }) {
             ></div>
           </div>
         </div>
+        <div className="nav-actions">
+          <button 
+            className="nav-arrow left"
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            title="Previous (←)"
+          >
+            ←
+          </button>
+          <button 
+            className="nav-arrow right"
+            onClick={handleNext}
+            disabled={currentIndex === flashcards.length - 1}
+            title="Next (→)"
+          >
+            →
+          </button>
+        </div>
       </div>
 
-      {!showRating ? (
-        <div className="flashcard-container">
-          <Flashcard card={currentCard} />
-          
-          <div className="navigation-controls">
-            <button 
-              className="nav-btn prev-btn"
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-            >
-              ← Previous
-            </button>
-            <button 
-              className="nav-btn next-btn"
-              onClick={handleNext}
-            >
-              Next →
-            </button>
-          </div>
+      {/* Main Study Area */}
+      <div className="study-main">
+        <Flashcard card={currentCard} />
+        
+        {/* Enhanced Keyboard Shortcuts Hint */}
+        <div className="keyboard-hints">
+          <span>← → Navigate</span>
+          <span>Space Flip</span>
+          <span>1-6 Switch Answers</span>
+          <span>Tab Cycle Tabs</span>
         </div>
-      ) : (
-        <DifficultyRating onRate={handleRating} />
-      )}
+      </div>
 
-      {currentCard.tags && (
-        <div className="card-tags">
-          {currentCard.tags.map((tag, index) => (
-            <span key={index} className="tag">{tag}</span>
-          ))}
-        </div>
-      )}
-
-      {onStartQuiz && (
+      {/* Quiz Section */}
+      {onStartQuiz && currentIndex === flashcards.length - 1 && (
         <div className="quiz-section">
           <div className="quiz-prompt">
-            <h3>📝 Ready to Test Your Knowledge?</h3>
-            <p>Take a quiz with 10 intelligently selected questions based on relevance scores</p>
+            <h3>Ready for a Quiz?</h3>
+            <p>Test your knowledge with 10 questions</p>
           </div>
-          <button className="start-quiz-btn" onClick={onStartQuiz}>
-            Start Quiz →
+          <button className="btn-primary" onClick={onStartQuiz}>
+            Start Quiz
           </button>
         </div>
       )}
