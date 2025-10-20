@@ -4,6 +4,8 @@ import StudyDeck from '../components/StudyDeck'
 import { startStudySession, updateStudySession } from '../api/analytics'
 import './DeckView.css'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 function DeckView() {
   const { courseId, lectureId } = useParams()
   const navigate = useNavigate()
@@ -111,7 +113,7 @@ function DeckView() {
       if (sessionId && studyStartTime.current) {
         const studyDurationSeconds = Math.round((Date.now() - studyStartTime.current) / 1000)
         navigator.sendBeacon(
-          'http://localhost:8000/api/v1/analytics/session/update',
+          `${API_BASE_URL}/api/v1/analytics/session/update`,
           JSON.stringify({
             session_id: sessionId,
             study_duration_seconds: studyDurationSeconds

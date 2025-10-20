@@ -5,9 +5,13 @@
 import axios from 'axios';
 import { getUserId, isAnalyticsEnabled } from '../utils/userTracking';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_ENDPOINT = `${API_BASE_URL}/api/v1/analytics`;
+  
+
 // Create axios instance for analytics API
 const analyticsAPI = axios.create({
-  baseURL: 'http://localhost:8000/api/v1/analytics',
+  baseURL: API_ENDPOINT,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -132,7 +136,7 @@ export async function getUserSummary(userId = null) {
  */
 export async function checkAnalyticsHealth() {
   try {
-    const response = await axios.get('http://localhost:8000/health', { timeout: 5000 });
+    const response = await axios.get(`${API_BASE_URL}/health`, { timeout: 5000 });
     console.log('Analytics API health:', response.data);
     return response.data.status === 'healthy';
   } catch (error) {
