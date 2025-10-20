@@ -1,12 +1,47 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 import { calculateScore } from '../utils/quizUtils'
+import { trackQuizResult } from '../api/analytics'
 import './ResultsView.css'
 
 function ResultsView() {
   const location = useLocation()
   const navigate = useNavigate()
   const { courseId, lectureId } = useParams()
-  const { results, total } = location.state || { results: [], total: 0 }
+  const { results, total, sessionId, quizTime } = location.state || { 
+    results: [], 
+    total: 0, 
+    sessionId: null, 
+    quizTime: 0 
+  }
+
+  // Save quiz result to the database for quiz history
+  useEffect(() => {
+    if (results && results.length > 0) {
+      const correctCount = results.filter(r => r.isCorrect).length
+      
+      results.forEach(result => {
+        result.questionResult.question = result.question;
+      });
+
+      const questionResultsForApi = results.map(r => r.questionResult).filter(Boolean)
+
+      // console.log("location state", location.state);
+      // console.log("results", results);
+      // console.log("questionResultsForApi", questionResultsForApi);
+
+      trackQuizResult({
+        deckId: lectureId,
+        courseId: courseId,
+        score: correctCount,
+        totalQuestions: total,
+        timeTaken: quizTime || 0,
+        questionResults: questionResultsForApi,
+      }).catch(error => {
+        console.error("Failed to submit quiz result:", error)
+      })
+    }
+  }, [results, total, sessionId, lectureId, courseId, quizTime])
 
   if (!results || results.length === 0) {
     return (

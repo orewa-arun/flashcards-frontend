@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Flashcard from './Flashcard'
 import './StudyDeck.css'
 
-function StudyDeck({ flashcards, metadata, onStartQuiz }) {
+function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessionId }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const currentCard = flashcards[currentIndex]
@@ -81,7 +81,13 @@ function StudyDeck({ flashcards, metadata, onStartQuiz }) {
 
       {/* Main Study Area */}
       <div className="study-main">
-        <Flashcard card={currentCard} />
+        <Flashcard 
+          card={currentCard} 
+          courseId={courseId}
+          deckId={deckId}
+          index={currentIndex}
+          sessionId={sessionId}
+        />
         
         {/* Enhanced Keyboard Shortcuts Hint */}
         <div className="keyboard-hints">

@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
-import { FaLightbulb } from 'react-icons/fa'
+import { FaLightbulb, FaStar, FaRegStar, FaThumbsUp, FaThumbsDown } from 'react-icons/fa'
+import { addBookmark, removeBookmark, isBookmarked } from '../api/bookmarks'
+import { submitFeedback, getFlashcardFeedback } from '../api/feedback'
 import mermaid from 'mermaid'
 import './Flashcard.css'
 
@@ -37,11 +39,17 @@ const answerTypes = [
   { key: 'example', label: 'Example' }
 ];
 
-function Flashcard({ card }) {
+function Flashcard({ card, courseId, deckId, index, sessionId }) {
   const [isFlipped, setIsFlipped] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState('concise');
   const [mermaidLoading, setMermaidLoading] = useState(false)
   const [mermaidError, setMermaidError] = useState(null)
+  
+  // Bookmark and feedback state
+  const [isCardBookmarked, setIsCardBookmarked] = useState(false)
+  const [feedbackRating, setFeedbackRating] = useState(null) // null, 1 (like), -1 (dislike)
+  const [feedbackLoading, setFeedbackLoading] = useState(false)
+  const [bookmarkLoading, setBookmarkLoading] = useState(false)
   
   // Generate a stable unique ID for this card's mermaid diagram using useMemo
   const uniqueDiagramId = useMemo(() => {
@@ -60,7 +68,108 @@ function Flashcard({ card }) {
     setSelectedAnswer('concise');
     setMermaidLoading(false);
     setMermaidError(null);
+    setIsCardBookmarked(false);
+    setFeedbackRating(null);
   }, [card]);
+
+  // Load bookmark and feedback state when card changes
+  useEffect(() => {
+    const loadCardState = async () => {
+      if (!courseId || !deckId || index === undefined) return;
+      
+      try {
+        // Load bookmark status
+        const bookmarked = await isBookmarked(courseId, deckId, index);
+        setIsCardBookmarked(bookmarked);
+        
+        // Load feedback status  
+        const rating = await getFlashcardFeedback(courseId, deckId, index);
+        setFeedbackRating(rating);
+      } catch (error) {
+        console.error('Error loading card state:', error);
+      }
+    };
+
+    loadCardState();
+  }, [courseId, deckId, index]);
+
+  // Bookmark handlers
+  const handleBookmarkToggle = async (e) => {
+    e.stopPropagation();
+    if (bookmarkLoading) return;
+    
+    setBookmarkLoading(true);
+    try {
+      if (isCardBookmarked) {
+        await removeBookmark({ courseId, deckId, index });
+        setIsCardBookmarked(false);
+      } else {
+        await addBookmark({ courseId, deckId, index });
+        setIsCardBookmarked(true);
+      }
+    } catch (error) {
+      console.error('Error toggling bookmark:', error);
+    } finally {
+      setBookmarkLoading(false);
+    }
+  };
+
+  // Feedback handlers
+  const handleLike = async (e) => {
+    e.stopPropagation();
+    if (feedbackLoading || !sessionId) return;
+    
+    setFeedbackLoading(true);
+    try {
+      const newRating = feedbackRating === 1 ? null : 1;
+      
+      if (newRating === null) {
+        // Clear feedback logic would go here if we implement it
+        setFeedbackRating(null);
+      } else {
+        await submitFeedback({
+          sessionId,
+          courseId,
+          deckId,
+          index,
+          rating: newRating
+        });
+        setFeedbackRating(newRating);
+      }
+    } catch (error) {
+      console.error('Error submitting like:', error);
+    } finally {
+      setFeedbackLoading(false);
+    }
+  };
+
+  const handleDislike = async (e) => {
+    e.stopPropagation();
+    if (feedbackLoading || !sessionId) return;
+    
+    setFeedbackLoading(true);
+    try {
+      const newRating = feedbackRating === -1 ? null : -1;
+      
+      if (newRating === null) {
+        // Clear feedback logic would go here if we implement it
+        setFeedbackRating(null);
+      } else {
+        await submitFeedback({
+          sessionId,
+          courseId,
+          deckId,
+          index,
+          rating: newRating
+        });
+        setFeedbackRating(newRating);
+      }
+    } catch (error) {
+      console.error('Error submitting dislike:', error);
+    } finally {
+      setFeedbackLoading(false);
+    }
+  };
 
   // Enhanced Mermaid rendering with caching, loading states, and error handling
   useEffect(() => {
@@ -132,7 +241,10 @@ function Flashcard({ card }) {
 
   const handleCardClick = (e) => {
     // Don't flip if clicking on buttons or diagram
-    if (e.target.closest('.mermaid-diagram-container') || e.target.closest('.answer-selector')) {
+    if (e.target.closest('.mermaid-diagram-container') || 
+        e.target.closest('.answer-selector') ||
+        e.target.closest('.bookmark-btn') ||
+        e.target.closest('.feedback-buttons')) {
       return
     }
     setIsFlipped(!isFlipped)
@@ -184,6 +296,20 @@ function Flashcard({ card }) {
       >
         {/* Front of Card - Clean Question Display */}
         <div className="flashcard-front">
+          {/* Bookmark button in top-right corner */}
+          <button
+            className={`bookmark-btn ${isCardBookmarked ? 'bookmarked' : ''}`}
+            onClick={handleBookmarkToggle}
+            disabled={bookmarkLoading}
+            title={isCardBookmarked ? 'Remove bookmark' : 'Add bookmark'}
+          >
+            {bookmarkLoading ? (
+              <div className="btn-spinner"></div>
+            ) : (
+              isCardBookmarked ? <FaStar /> : <FaRegStar />
+            )}
+          </button>
+          
           <div className="card-content">
             <div className="question-text">
               {card.question}
@@ -193,6 +319,20 @@ function Flashcard({ card }) {
         
         {/* Back of Card - Answer with Type Selector */}
         <div className="flashcard-back">
+          {/* Bookmark button in top-right corner */}
+          <button
+            className={`bookmark-btn ${isCardBookmarked ? 'bookmarked' : ''}`}
+            onClick={handleBookmarkToggle}
+            disabled={bookmarkLoading}
+            title={isCardBookmarked ? 'Remove bookmark' : 'Add bookmark'}
+          >
+            {bookmarkLoading ? (
+              <div className="btn-spinner"></div>
+            ) : (
+              isCardBookmarked ? <FaStar /> : <FaRegStar />
+            )}
+          </button>
+          
           <div className="card-content">
             <div className="answer-selector">
               {answerTypes.map((type, index) => (
@@ -233,6 +373,35 @@ function Flashcard({ card }) {
                   </div>
                 </div>
               )}
+            </div>
+            
+            {/* Feedback buttons at bottom of card */}
+            <div className="feedback-buttons">
+              <button
+                className={`feedback-btn like-btn ${feedbackRating === 1 ? 'active' : ''}`}
+                onClick={handleLike}
+                disabled={feedbackLoading}
+                title="Like this flashcard"
+              >
+                {feedbackLoading && feedbackRating !== -1 ? (
+                  <div className="btn-spinner"></div>
+                ) : (
+                  <FaThumbsUp />
+                )}
+              </button>
+              
+              <button
+                className={`feedback-btn dislike-btn ${feedbackRating === -1 ? 'active' : ''}`}
+                onClick={handleDislike}
+                disabled={feedbackLoading}
+                title="Dislike this flashcard"
+              >
+                {feedbackLoading && feedbackRating !== 1 ? (
+                  <div className="btn-spinner"></div>
+                ) : (
+                  <FaThumbsDown />
+                )}
+              </button>
             </div>
           </div>
         </div>

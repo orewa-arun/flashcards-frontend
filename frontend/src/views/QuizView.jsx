@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { selectQuizFlashcards, selectRandomRecallQuestions, checkAnswer, calculateScore } from '../utils/quizUtils'
+import { updateStudySession } from '../api/analytics'
 import QuestionRenderer from '../components/QuestionRenderer'
 import './QuizView.css'
 
 function QuizView() {
   const { courseId, lectureId } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
   const [flashcardsData, setFlashcardsData] = useState(null)
   const [quizQuestions, setQuizQuestions] = useState([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -14,6 +16,11 @@ function QuizView() {
   const [showFeedback, setShowFeedback] = useState(false)
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(true)
+  const [quizStartTime, setQuizStartTime] = useState(null)
+  const [questionStartTime, setQuestionStartTime] = useState(null)
+  
+  // Get session ID from navigation state
+  const sessionId = location.state?.sessionId
 
   useEffect(() => {
     // Load flashcards
@@ -29,6 +36,8 @@ function QuizView() {
         const questions = selectRandomRecallQuestions(selectedFlashcards)
         
         setQuizQuestions(questions)
+        setQuizStartTime(Date.now()) // Start timing the quiz
+        setQuestionStartTime(Date.now()) // Start timing the first question
         setLoading(false)
       })
       .catch(error => {
@@ -40,25 +49,62 @@ function QuizView() {
   const handleSubmitAnswer = () => {
     const currentQuestion = quizQuestions[currentQuestionIndex]
     const isCorrect = checkAnswer(currentQuestion, userAnswer)
+    const questionTime = questionStartTime ? Math.round((Date.now() - questionStartTime) / 1000) : 0
+    
+    const questionResult = {
+      question_number: currentQuestionIndex + 1,
+      question_type: currentQuestion.type,
+      user_answer: userAnswer,
+      correct_answer: currentQuestion.answer,
+      is_correct: isCorrect,
+      time_taken: questionTime
+    }
     
     setResults([...results, {
       question: currentQuestion,
       userAnswer,
-      isCorrect
+      isCorrect,
+      questionResult // Store for analytics
     }])
     
     setShowFeedback(true)
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setUserAnswer(null)
       setShowFeedback(false)
+      setQuestionStartTime(Date.now()) // Start timing the next question
     } else {
-      // Quiz completed
+      // Quiz completed - track results in session
+      const totalTime = quizStartTime ? Math.round((Date.now() - quizStartTime) / 1000) : 0
+      const correctAnswers = results.filter(r => r.isCorrect).length
+      const questionResults = results.map(r => r.questionResult).filter(Boolean)
+
+      // Update session with quiz results
+      if (sessionId) {
+        await updateStudySession({
+          sessionId,
+          quizData: {
+            score: correctAnswers,
+            totalQuestions: quizQuestions.length,
+            timeTaken: totalTime,
+            questionResults: questionResults
+          },
+          isCompleted: true
+        })
+      } else {
+        console.warn('No session ID available for quiz completion tracking')
+      }
+
       navigate(`/courses/${courseId}/${lectureId}/results`, {
-        state: { results, total: quizQuestions.length }
+        state: { 
+          results, 
+          total: quizQuestions.length,
+          sessionId, // Pass session ID to results view for potential summary display
+          quizTime: totalTime // Pass total quiz time for database storage
+        }
       })
     }
   }

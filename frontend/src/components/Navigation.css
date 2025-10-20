@@ -1,0 +1,280 @@
+/* Main Navigation Styling */
+.main-navigation {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-subtle);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* Brand/Logo */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+
+.nav-brand:hover {
+  color: var(--accent-primary);
+}
+
+.brand-icon {
+  font-size: 24px;
+}
+
+.brand-text {
+  font-weight: 700;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.nav-link.active {
+  color: var(--accent-primary);
+  background: var(--accent-bg);
+}
+
+.nav-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 20px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+}
+
+.mobile-nav.open {
+  display: block;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+}
+
+.mobile-nav-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.mobile-nav-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 280px;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav.open .mobile-nav-content {
+  transform: translateX(0);
+}
+
+.mobile-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav .nav-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.mobile-nav .nav-link.active {
+  color: var(--accent-primary);
+  background: var(--accent-bg);
+}
+
+.mobile-nav .nav-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .brand-text {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 12px;
+    height: 56px;
+  }
+  
+  .nav-brand {
+    font-size: 16px;
+  }
+  
+  .brand-icon {
+    font-size: 20px;
+  }
+  
+  .mobile-nav.open {
+    top: 56px;
+  }
+  
+  .mobile-nav-content {
+    width: 100%;
+    border-left: none;
+  }
+}
+
+/* Custom CSS Variables for Navigation */
+:root {
+  --accent-bg: rgba(59, 130, 246, 0.1);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-bg: rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* Smooth animations */
+.nav-link,
+.mobile-menu-btn,
+.mobile-nav-content {
+  transition: all 0.2s ease;
+}
+
+/* Focus states for accessibility */
+.nav-link:focus,
+.mobile-menu-btn:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.nav-link:focus:not(:focus-visible),
+.mobile-menu-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Hover effects */
+.nav-link:hover svg,
+.mobile-menu-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Active state animation */
+.nav-link.active {
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .nav-link.active::after {
+    display: none;
+  }
+}
