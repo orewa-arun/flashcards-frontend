@@ -64,6 +64,6 @@ bugs.txt
 # Legacy directories (if they somehow reappear)
 slide_analysis/
 slide_images/
-cognitive_flashcards/
+# cognitive_flashcards/
 flashcards_output/
 intelligent_flashcards/

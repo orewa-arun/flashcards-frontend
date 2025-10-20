@@ -1,0 +1,2263 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-07T18:26:49.111192",
+    "total_cards": 20,
+    "course_name": "Management Information Systems",
+    "course_id": "MS5260",
+    "course_code": "MIS",
+    "textbook_reference": "Management Information Systems: Managing the Digital Firm by Laudon & Laudon",
+    "source": "MIS_lec_1-3",
+    "chunks_processed": 5,
+    "total_slides": 23
+  },
+  "flashcards": [
+    {
+      "type": "definition",
+      "question": "What are Management Information Systems (MIS)?",
+      "answers": {
+        "concise": "Management Information Systems (MIS) is the study of information systems within organizations, focusing on how technology enables business strategy and operations.",
+        "analogy": "Think of MIS as the central nervous system of a business. Just as the nervous system gathers sensory information and sends signals to control the body, MIS gathers data and provides insights to guide business decisions and operations.",
+        "eli5": "Imagine a company is like a big school. MIS is like the school's computer system that keeps track of everything – student grades, teacher schedules, and classroom supplies. It helps the principal make smart decisions about how to run the school better.",
+        "real_world_use_case": "Walmart uses MIS extensively to manage its supply chain. By tracking sales data in real-time, Walmart can predict demand and ensure that products are stocked efficiently in its stores. This allows them to minimize inventory costs and maximize sales, giving them a competitive edge.",
+        "common_mistakes": "A common mistake is thinking MIS is just about IT. MIS is about aligning IT with business goals. Another mistake is not considering the human element. Even the best system will fail if employees don't understand or use it properly."
+      },
+      "context": "Core MIS Concepts",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept for the entire subject."
+      },
+      "example": "Amazon uses MIS to optimize its logistics and delivery operations. By analyzing data on customer orders, delivery routes, and warehouse inventory, Amazon can predict delivery times with high accuracy and minimize shipping costs. Their MIS also helps them manage their vast network of warehouses and delivery vehicles efficiently, ensuring that packages are delivered on time. This allows them to provide fast and reliable delivery services, which is a key competitive advantage.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the PRIMARY focus of Management Information Systems (MIS)?",
+          "options": [
+            "A. Developing new software applications",
+            "B. Managing computer hardware infrastructure",
+            "C. Studying information systems in organizations and their impact on business strategy and operations",
+            "D. Providing technical support to end-users"
+          ],
+          "answer": "C. Studying information systems in organizations and their impact on business strategy and operations"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A retail company implements a new inventory management system that automatically reorders products when stock levels fall below a certain threshold. This system is an example of:",
+          "question": "What kind of system is described above?",
+          "options": [
+            "A. A customer relationship management (CRM) system",
+            "B. A supply chain management (SCM) system",
+            "C. A decision support system (DSS)",
+            "D. An enterprise resource planning (ERP) system"
+          ],
+          "answer": "B. A supply chain management (SCM) system"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the data-driven decision-making process in the correct order:",
+          "items": [
+            "Analyze the data and draw conclusions",
+            "Identify the business problem or opportunity",
+            "Collect relevant data",
+            "Implement the solution and monitor results",
+            "Develop potential solutions"
+          ],
+          "answer": [
+            "Identify the business problem or opportunity",
+            "Collect relevant data",
+            "Analyze the data and draw conclusions",
+            "Develop potential solutions",
+            "Implement the solution and monitor results"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following technologies as either 'Hardware' or 'Software':",
+          "items": [
+            "Operating System",
+            "Central Processing Unit (CPU)",
+            "Database Management System (DBMS)",
+            "Random Access Memory (RAM)"
+          ],
+          "categories": [
+            "Hardware",
+            "Software"
+          ],
+          "answer": {
+            "Hardware": [
+              "Central Processing Unit (CPU)",
+              "Random Access Memory (RAM)"
+            ],
+            "Software": [
+              "Operating System",
+              "Database Management System (DBMS)"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each type of information system to its primary function:",
+          "premises": [
+            "1. Transaction Processing System (TPS)",
+            "2. Decision Support System (DSS)",
+            "3. Executive Support System (ESS)",
+            "4. Customer Relationship Management (CRM)"
+          ],
+          "responses": [
+            "A. Supports strategic decision making for senior management",
+            "B. Automates routine business transactions",
+            "C. Helps manage interactions with customers",
+            "D. Supports semi-structured decision making"
+          ],
+          "answer": [
+            "1-B",
+            "2-D",
+            "3-A",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "MIS",
+        "Information Systems",
+        "Business Strategy"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "Explain the relationship between Information Systems (IS) and organizations.",
+      "answers": {
+        "concise": "Information Systems (IS) and organizations have a reciprocal relationship. Organizations use IS to improve efficiency, decision-making, and competitiveness, while IS are designed and implemented to support the specific needs and goals of the organization.",
+        "analogy": "Think of an organization and its IS like a car and its engine. The car (organization) needs the engine (IS) to move forward and achieve its destination. The engine must be designed and maintained to meet the specific needs of the car.",
+        "eli5": "Imagine a lemonade stand. The stand (organization) needs a cash register (IS) to keep track of sales and give customers the right change. The cash register helps the lemonade stand run smoothly and make more money.",
+        "real_world_use_case": "Netflix uses IS to personalize recommendations for its users. By analyzing viewing habits and preferences, Netflix's IS suggests movies and TV shows that users are likely to enjoy. This increases user engagement and reduces churn, contributing to Netflix's success.",
+        "common_mistakes": "A common mistake is implementing an IS without considering the organization's culture or processes. Another mistake is not providing adequate training to employees on how to use the IS effectively. This can lead to resistance and underutilization of the system."
+      },
+      "context": "IS and Organizations",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important supporting material that explains the core concept of MIS."
+      },
+      "example": "Zara uses IS to rapidly respond to changing fashion trends. By tracking sales data in its stores worldwide, Zara can identify popular styles and quickly design and manufacture new clothing items. Their IS also helps them manage their supply chain and logistics efficiently, ensuring that new products reach stores quickly. This allows them to stay ahead of the competition and meet the demands of fashion-conscious consumers.",
+      "mermaid_code": "graph TD; A[Organization] -- Needs --> B(Information Systems); B -- Supports --> A; B -- Influences --> C(Business Processes); C -- Impacts --> A;",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes the relationship between Information Systems (IS) and organizations?",
+          "options": [
+            "A. IS are independent of organizational goals and structure.",
+            "B. Organizations passively adopt IS without influencing their design.",
+            "C. IS are designed and implemented to support the specific needs and goals of the organization, and in turn, influence organizational processes.",
+            "D. IS primarily serve to reduce employee headcount and lower operational costs."
+          ],
+          "answer": "C. IS are designed and implemented to support the specific needs and goals of the organization, and in turn, influence organizational processes."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A hospital implements an Electronic Health Record (EHR) system to improve patient care and reduce paperwork. However, doctors resist using the system because it is difficult to navigate and disrupts their workflow.",
+          "question": "What is the MOST likely reason for the failure of this IS implementation?",
+          "options": [
+            "A. The EHR system was too expensive.",
+            "B. The EHR system was not technologically advanced enough.",
+            "C. The organization did not adequately consider the impact of the IS on existing processes and user experience.",
+            "D. The hospital did not have enough computers for the doctors to use."
+          ],
+          "answer": "C. The organization did not adequately consider the impact of the IS on existing processes and user experience."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the process of aligning IS with organizational goals in the correct order:",
+          "items": [
+            "Evaluate the effectiveness of the IS and make adjustments as needed",
+            "Identify the organization's strategic goals and objectives",
+            "Design and implement IS that support those goals",
+            "Assess the current IS capabilities and identify gaps"
+          ],
+          "answer": [
+            "Identify the organization's strategic goals and objectives",
+            "Assess the current IS capabilities and identify gaps",
+            "Design and implement IS that support those goals",
+            "Evaluate the effectiveness of the IS and make adjustments as needed"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following organizational benefits as either 'Operational Efficiency' or 'Strategic Advantage' resulting from effective IS implementation:",
+          "items": [
+            "Reduced inventory costs",
+            "Improved customer satisfaction",
+            "Faster product development cycles",
+            "Increased market share"
+          ],
+          "categories": [
+            "Operational Efficiency",
+            "Strategic Advantage"
+          ],
+          "answer": {
+            "Operational Efficiency": [
+              "Reduced inventory costs",
+              "Faster product development cycles"
+            ],
+            "Strategic Advantage": [
+              "Improved customer satisfaction",
+              "Increased market share"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each organizational function to the type of IS that typically supports it:",
+          "premises": [
+            "1. Human Resources",
+            "2. Marketing",
+            "3. Finance",
+            "4. Operations"
+          ],
+          "responses": [
+            "A. Enterprise Resource Planning (ERP) System",
+            "B. Customer Relationship Management (CRM) System",
+            "C. Human Resource Management System (HRMS)",
+            "D. Financial Accounting System"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-D",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "IS",
+        "Organizations",
+        "Relationship"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is 'Competitive Advantage' and how can Information Systems contribute to it?",
+      "answers": {
+        "concise": "Competitive advantage is a condition or circumstance that puts a company in a favorable or superior business position. Information Systems can contribute to competitive advantage by improving efficiency, enabling innovation, enhancing customer relationships, and creating barriers to entry.",
+        "analogy": "Think of competitive advantage like being the fastest runner in a race. Information Systems are like the training tools and techniques that help you run faster and outpace your competitors.",
+        "eli5": "Imagine two lemonade stands. One uses a simple sign, while the other has a computer that tracks customer preferences and offers special deals. The second stand has a competitive advantage because it uses information to attract more customers.",
+        "real_world_use_case": "Tesla has a competitive advantage in the electric vehicle market due to its advanced battery technology and innovative features. Information Systems play a crucial role in managing Tesla's supply chain, optimizing its manufacturing processes, and providing over-the-air software updates to its vehicles, enhancing their performance and features over time.",
+        "common_mistakes": "A common mistake is thinking that simply implementing an IS will automatically create a competitive advantage. The IS must be aligned with the company's overall strategy and provide unique value to customers. Another mistake is not continuously innovating and improving the IS to stay ahead of the competition."
+      },
+      "context": "Competitive Advantage",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Key term explicitly defined and essential for understanding business strategy."
+      },
+      "example": "Amazon has a significant competitive advantage in e-commerce due to its vast selection of products, efficient logistics network, and personalized recommendations. Their IS infrastructure supports these capabilities by managing inventory, optimizing delivery routes, and analyzing customer data to provide targeted offers and product suggestions. This creates a seamless and convenient shopping experience for customers, making it difficult for competitors to match Amazon's level of service.",
+      "mermaid_code": "graph TD; A[Information Systems] --> B(Efficiency); A --> C(Innovation); A --> D(Customer Relationships); A --> E(Barriers to Entry); B --> F[Competitive Advantage]; C --> F; D --> F; E --> F;",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the definition of 'Competitive Advantage' in a business context?",
+          "options": [
+            "A. Having the lowest prices in the market.",
+            "B. Being the largest company in the industry.",
+            "C. A condition or circumstance that puts a company in a favorable or superior business position.",
+            "D. Having the most employees."
+          ],
+          "answer": "C. A condition or circumstance that puts a company in a favorable or superior business position."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A small bakery implements a new online ordering system that allows customers to customize their cakes and track their orders in real-time. This leads to increased customer satisfaction and repeat business.",
+          "question": "How is the information system described in the scenario contributing to the bakery's competitive advantage?",
+          "options": [
+            "A. By reducing the bakery's operational costs.",
+            "B. By enhancing customer relationships and improving service quality.",
+            "C. By increasing the bakery's employee headcount.",
+            "D. By automating the bakery's accounting processes."
+          ],
+          "answer": "B. By enhancing customer relationships and improving service quality."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the process of using IS to achieve a competitive advantage in the correct order:",
+          "items": [
+            "Implement and maintain the IS",
+            "Identify opportunities to leverage IS for competitive advantage",
+            "Evaluate the results and make adjustments",
+            "Develop a strategy to achieve competitive advantage using IS"
+          ],
+          "answer": [
+            "Identify opportunities to leverage IS for competitive advantage",
+            "Develop a strategy to achieve competitive advantage using IS",
+            "Implement and maintain the IS",
+            "Evaluate the results and make adjustments"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following examples as either 'Cost Leadership' or 'Differentiation' strategies for achieving competitive advantage:",
+          "items": [
+            "Offering the lowest prices in the market",
+            "Providing unique product features or services",
+            "Streamlining operations to reduce expenses",
+            "Building a strong brand reputation"
+          ],
+          "categories": [
+            "Cost Leadership",
+            "Differentiation"
+          ],
+          "answer": {
+            "Cost Leadership": [
+              "Offering the lowest prices in the market",
+              "Streamlining operations to reduce expenses"
+            ],
+            "Differentiation": [
+              "Providing unique product features or services",
+              "Building a strong brand reputation"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each type of IS to its potential contribution to competitive advantage:",
+          "premises": [
+            "1. Supply Chain Management (SCM) System",
+            "2. Customer Relationship Management (CRM) System",
+            "3. Enterprise Resource Planning (ERP) System",
+            "4. Business Intelligence (BI) System"
+          ],
+          "responses": [
+            "A. Improves customer satisfaction and loyalty through personalized service",
+            "B. Optimizes inventory levels and reduces production costs",
+            "C. Provides insights into market trends and customer behavior",
+            "D. Integrates business processes and improves operational efficiency"
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-D",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Competitive Advantage",
+        "Information Systems",
+        "Business Strategy"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is 'Digital Business'?",
+      "answers": {
+        "concise": "Digital business is the creation of new business designs by blurring the digital and physical worlds. It involves using digital technologies to create new value, experiences, and capabilities.",
+        "analogy": "Think of digital business as transforming a traditional store into an online marketplace. It's not just about selling online; it's about creating new ways for customers to interact with your business and access your products and services.",
+        "eli5": "Imagine your mom's bakery. Instead of just selling cakes in the store, she uses a website to take orders, shows pictures of cakes online, and delivers them to people's homes. That's digital business - using technology to make her bakery better and reach more people.",
+        "real_world_use_case": "Uber is a digital business that transformed the transportation industry. It uses a mobile app to connect riders with drivers, track ride progress, and process payments. This creates a convenient and efficient transportation experience that is different from traditional taxi services.",
+        "common_mistakes": "A common mistake is thinking that digital business is just about having a website or social media presence. Digital business requires a fundamental rethinking of business models and processes. Another mistake is not focusing on the customer experience when implementing digital technologies."
+      },
+      "context": "Digital Business",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Important supporting material related to core concepts."
+      },
+      "example": "Netflix is a digital business that disrupted the traditional video rental market. It uses a streaming platform to provide on-demand access to a vast library of movies and TV shows. Their IS analyzes viewing habits to personalize recommendations and optimize streaming quality. This creates a convenient and engaging entertainment experience that has made Netflix a dominant player in the industry.",
+      "mermaid_code": "graph TD; A[Digital Technologies] --> B(New Value); A --> C(New Experiences); A --> D(New Capabilities); B --> E[Digital Business]; C --> E; D --> E;",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes the concept of 'Digital Business'?",
+          "options": [
+            "A. Using computers and software to automate business tasks.",
+            "B. Selling products and services online.",
+            "C. Creating new business designs by blurring the digital and physical worlds.",
+            "D. Implementing a new accounting system."
+          ],
+          "answer": "C. Creating new business designs by blurring the digital and physical worlds."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A traditional bookstore opens an online store to sell e-books and audiobooks. They also start offering online book clubs and author interviews.",
+          "question": "Which aspect of 'Digital Business' is the bookstore demonstrating in this scenario?",
+          "options": [
+            "A. Simply selling products online without changing the core business model.",
+            "B. Automating inventory management.",
+            "C. Creating new ways for customers to interact with the business and access content.",
+            "D. Reducing employee headcount."
+          ],
+          "answer": "C. Creating new ways for customers to interact with the business and access content."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the process of transforming a traditional business into a digital business in the correct order:",
+          "items": [
+            "Implement digital technologies",
+            "Define a clear digital business strategy",
+            "Assess the current business model and identify opportunities for digital transformation",
+            "Evaluate the results and make adjustments",
+            "Develop new digital products, services, and experiences"
+          ],
+          "answer": [
+            "Assess the current business model and identify opportunities for digital transformation",
+            "Define a clear digital business strategy",
+            "Develop new digital products, services, and experiences",
+            "Implement digital technologies",
+            "Evaluate the results and make adjustments"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following examples as either 'Digital Products/Services' or 'Digital Processes' in the context of digital business:",
+          "items": [
+            "Online Banking",
+            "Automated Customer Support Chatbots",
+            "E-books",
+            "Cloud-based Accounting Software"
+          ],
+          "categories": [
+            "Digital Products/Services",
+            "Digital Processes"
+          ],
+          "answer": {
+            "Digital Products/Services": [
+              "Online Banking",
+              "E-books"
+            ],
+            "Digital Processes": [
+              "Automated Customer Support Chatbots",
+              "Cloud-based Accounting Software"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each digital technology to its potential impact on business:",
+          "premises": [
+            "1. Cloud Computing",
+            "2. Mobile Computing",
+            "3. Social Media",
+            "4. Big Data Analytics"
+          ],
+          "responses": [
+            "A. Enables real-time customer engagement and feedback",
+            "B. Provides on-demand access to computing resources",
+            "C. Supports data-driven decision making",
+            "D. Facilitates remote work and access to information"
+          ],
+          "answer": [
+            "1-B",
+            "2-D",
+            "3-A",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Digital Business",
+        "Technology",
+        "Innovation"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is a Small-to-Medium Enterprise (SME)?",
+      "answers": {
+        "concise": "A Small-to-Medium Enterprise (SME) is a business that falls below certain size thresholds (e.g., number of employees, annual revenue, or assets). These thresholds vary by country and industry.",
+        "analogy": "Think of SMEs as the backbone of a local economy, like the small shops and restaurants that give a town its character, compared to the big chain stores.",
+        "eli5": "Imagine a store owned by your mom and dad that isn't a big company like Walmart. It's small and helps people in your town. That's an SME!",
+        "real_world_use_case": "A local bakery with 20 employees in Chennai is an SME. They contribute to the local economy, provide jobs in their community, and often have more personalized customer relationships than a large bakery chain.",
+        "common_mistakes": "A common mistake is assuming that all small businesses are SMEs. SMEs have specific size definitions, and a very small 'mom and pop' shop might not meet the criteria to be considered an SME for certain government programs or research purposes."
+      },
+      "context": "Core Business Concepts",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Core definition crucial for understanding the project context"
+      },
+      "example": "Consider a textile shop in Chennai with 30 employees and an annual revenue of $500,000. This business likely qualifies as an SME. It faces challenges such as competing with larger retailers and adapting to online sales channels. Understanding the characteristics and challenges of SMEs is crucial for developing appropriate technology solutions.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is a typical characteristic of a Small-to-Medium Enterprise (SME)?",
+          "options": [
+            "A. Global operations with thousands of employees",
+            "B. Limited access to capital and resources",
+            "C. Dominant market share in a large industry",
+            "D. Standardized products sold through franchise locations"
+          ],
+          "answer": "B. Limited access to capital and resources"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A family-run restaurant in Chennai wants to modernize its operations. They have limited funds and technical expertise.",
+          "question": "Which technology solution is MOST appropriate for this SME, considering their constraints?",
+          "options": [
+            "A. Implementing a complex ERP system with custom modules",
+            "B. Developing a custom mobile app with advanced analytics",
+            "C. Using a cloud-based point-of-sale (POS) system and online ordering platform",
+            "D. Building an on-premises data center for data storage"
+          ],
+          "answer": "C. Using a cloud-based point-of-sale (POS) system and online ordering platform"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following stages of analyzing an SME for a technology project in the correct order.",
+          "items": [
+            "Proposing technology solutions",
+            "Conducting on-site analysis",
+            "Identifying pain points",
+            "Interviewing owners and staff"
+          ],
+          "answer": [
+            "Conducting on-site analysis",
+            "Interviewing owners and staff",
+            "Identifying pain points",
+            "Proposing technology solutions"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following as either a 'Challenge' or 'Opportunity' for an SME in adopting digital technologies.",
+          "items": [
+            "Limited budget for IT investment",
+            "Potential to reach new customers online",
+            "Lack of technical expertise among staff",
+            "Ability to streamline operations with automation"
+          ],
+          "categories": [
+            "Challenge",
+            "Opportunity"
+          ],
+          "answer": {
+            "Challenge": [
+              "Limited budget for IT investment",
+              "Lack of technical expertise among staff"
+            ],
+            "Opportunity": [
+              "Potential to reach new customers online",
+              "Ability to streamline operations with automation"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its definition.",
+          "premises": [
+            "1. Digital Presence",
+            "2. Pain Points",
+            "3. Emerging Technology",
+            "4. On-site Analysis"
+          ],
+          "responses": [
+            "A. A new or rapidly developing technology",
+            "B. The challenges or problems faced by a business",
+            "C. A business's visibility and activity online",
+            "D. Examination of a business's operations at its physical location"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A",
+            "4-D"
+          ]
+        }
+      ],
+      "tags": [
+        "SME",
+        "small business",
+        "digital transformation",
+        "local business"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What are the appropriate and inappropriate uses of Generative AI (Gen-AI) in an academic or business context?",
+      "answers": {
+        "concise": "Appropriate uses of Gen-AI include idea refinement, initial outlining, and research assistance for understanding concepts. Inappropriate uses include plagiarism by directly copy-pasting AI-generated content, asking AI to write entire papers, and falsifying information.",
+        "analogy": "Think of Gen-AI like a powerful calculator. It can help you with complex calculations (research, outlining), but you can't just copy the answer and claim it's your own work (plagiarism), or use it to create false data.",
+        "eli5": "Imagine a robot that can help you with your homework. It's okay to ask it to explain things or give you ideas, but it's not okay to let it do all the work for you and pretend you did it!",
+        "real_world_use_case": "A marketing team can use Gen-AI to brainstorm different ad campaign ideas based on target audience preferences. However, they cannot use Gen-AI to create fake customer testimonials or fabricate data to inflate the campaign's success metrics.",
+        "common_mistakes": "A common mistake is over-relying on Gen-AI and not critically evaluating the output. Another mistake is assuming that Gen-AI can generate original ideas without human input and oversight. Gen-AI is a tool to assist, not replace, human creativity and critical thinking."
+      },
+      "context": "Ethical AI Usage",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Important for academic integrity and responsible AI use"
+      },
+      "example": "A student uses ChatGPT to understand the concept of 'blockchain technology' for a research paper. This is an appropriate use. However, if the student copies and pastes ChatGPT's explanation directly into their paper without attribution, it constitutes plagiarism, an unethical and inappropriate use of the technology.",
+      "mermaid_code": "graph TD; A[Gen-AI] --> B{Appropriate Use?}; B -- Yes --> C[Idea Refinement]; B -- Yes --> D[Research Assistance]; B -- No --> E[Plagiarism]; B -- No --> F[Falsification];",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is considered an APPROPRIATE use of Generative AI in academic research?",
+          "options": [
+            "A. Copy-pasting AI-generated text directly into a research paper without citation",
+            "B. Asking AI to write an entire term paper from scratch",
+            "C. Using AI to understand complex concepts and generate initial outlines",
+            "D. Falsifying data using AI to support a research hypothesis"
+          ],
+          "answer": "C. Using AI to understand complex concepts and generate initial outlines"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A marketing manager wants to create engaging social media content. They use Gen-AI to generate several draft posts.",
+          "question": "Which action would be considered an INAPPROPRIATE use of Gen-AI in this scenario?",
+          "options": [
+            "A. Using the AI-generated drafts as inspiration and rewriting them in their own voice",
+            "B. Fact-checking the AI-generated content to ensure accuracy",
+            "C. Posting the AI-generated content directly without any modifications or attribution",
+            "D. Asking the AI to generate different versions of the content for A/B testing"
+          ],
+          "answer": "C. Posting the AI-generated content directly without any modifications or attribution"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the correct order for using Gen-AI ethically for research.",
+          "items": [
+            "Critically evaluate the AI-generated output",
+            "Clearly cite the use of AI in your work",
+            "Use AI to generate ideas or outlines",
+            "Verify the accuracy of AI-generated information"
+          ],
+          "answer": [
+            "Use AI to generate ideas or outlines",
+            "Verify the accuracy of AI-generated information",
+            "Critically evaluate the AI-generated output",
+            "Clearly cite the use of AI in your work"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following actions as either 'Acceptable' or 'Unacceptable' when using Gen-AI for business purposes.",
+          "items": [
+            "Using AI to summarize customer feedback",
+            "Creating fake customer reviews with AI",
+            "Using AI to generate different marketing slogans",
+            "Using AI to fabricate financial reports"
+          ],
+          "categories": [
+            "Acceptable",
+            "Unacceptable"
+          ],
+          "answer": {
+            "Acceptable": [
+              "Using AI to summarize customer feedback",
+              "Using AI to generate different marketing slogans"
+            ],
+            "Unacceptable": [
+              "Creating fake customer reviews with AI",
+              "Using AI to fabricate financial reports"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its corresponding description.",
+          "premises": [
+            "1. Plagiarism",
+            "2. Falsification",
+            "3. Idea Refinement",
+            "4. Research Assistance"
+          ],
+          "responses": [
+            "A. Helping to understand concepts and gather information",
+            "B. Improving and developing initial thoughts",
+            "C. Presenting someone else's work as your own",
+            "D. Creating false or inaccurate information"
+          ],
+          "answer": [
+            "1-C",
+            "2-D",
+            "3-B",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Generative AI",
+        "AI Ethics",
+        "Plagiarism",
+        "Academic Integrity",
+        "Business Applications"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is the relationship between Information Technology (IT) and Information Systems (IS)?",
+      "answers": {
+        "concise": "Information Technology (IT) refers to the hardware, software, and networks that organizations use. Information Systems (IS) are systems that use IT to collect, process, store, and distribute information to support decision-making, coordination, control, analysis, and visualization in an organization.",
+        "analogy": "Think of IT as the building blocks (bricks, mortar, tools) and IS as the finished building (house, office, factory). You need the building blocks to create the building, and the building serves a specific purpose.",
+        "eli5": "IT is like the computer and the internet. IS is like using the computer and the internet to do things like play games, learn, or talk to your friends.",
+        "real_world_use_case": "A hospital uses IT (servers, computers, network) to run its Electronic Health Record (EHR) system, which is an IS. The EHR system allows doctors and nurses to access patient information, schedule appointments, and manage medication, thereby improving patient care.",
+        "common_mistakes": "A common mistake is using IT and IS interchangeably. IT is the technology infrastructure, while IS is how that infrastructure is used to manage and process information to achieve business goals. Another mistake is focusing solely on IT without considering how it aligns with and supports the organization's information needs."
+      },
+      "context": "Core MIS Concepts",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Fundamental concepts defining the field of MIS"
+      },
+      "example": "Amazon uses IT infrastructure (massive data centers, servers, networks) to power its e-commerce platform, which is an IS. The IS enables customers to browse products, place orders, and track shipments. Amazon continuously invests in IT to improve the functionality and performance of its IS, enhancing the customer experience and driving sales.",
+      "mermaid_code": "graph TD\n    IT[Information Technology<br/>Hardware, Software, Networks]\n    IS[Information Systems<br/>Uses IT to manage information]\n    \n    IT --> IS\n    \n    subgraph IT_Components [\"IT Components\"]\n        H[Hardware<br/>Servers, Computers]\n        S[Software<br/>Applications, OS]\n        N[Networks<br/>Internet, LANs]\n    end\n    \n    subgraph IS_Functions [\"IS Functions\"]\n        C[Collect Data]\n        P[Process Information]\n        St[Store Data]\n        D[Distribute Information]\n    end\n    \n    IT_Components --> IT\n    IT --> IS_Functions\n    IS_Functions --> IS\n    \n    style IT fill:#90EE90,stroke:#333,stroke-width:2px\n    style IS fill:#ADD8E6,stroke:#333,stroke-width:2px\n    style IT_Components fill:#f9f9f9,stroke:#666,stroke-width:1px\n    style IS_Functions fill:#f0f8ff,stroke:#666,stroke-width:1px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes Information Technology (IT)?",
+          "options": [
+            "A. The process of managing information within an organization",
+            "B. The hardware, software, and networks used to create and manage information systems",
+            "C. The application of information to solve business problems",
+            "D. The strategic use of data to gain a competitive advantage"
+          ],
+          "answer": "B. The hardware, software, and networks used to create and manage information systems"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company invests in new servers and networking equipment to improve its data processing capabilities.",
+          "question": "Which aspect is the company PRIMARILY focusing on in this scenario?",
+          "options": [
+            "A. Information Systems (IS)",
+            "B. Information Technology (IT)",
+            "C. Business Intelligence (BI)",
+            "D. Knowledge Management (KM)"
+          ],
+          "answer": "B. Information Technology (IT)"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following elements in the correct order to demonstrate how IT enables IS.",
+          "items": [
+            "Data is processed and analyzed",
+            "Information is used for decision-making",
+            "IT infrastructure is deployed (hardware, software, networks)",
+            "Data is collected and stored"
+          ],
+          "answer": [
+            "IT infrastructure is deployed (hardware, software, networks)",
+            "Data is collected and stored",
+            "Data is processed and analyzed",
+            "Information is used for decision-making"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following as either 'Information Technology (IT)' or 'Information Systems (IS)'.",
+          "items": [
+            "Database Management System (DBMS)",
+            "Network Routers and Switches",
+            "Customer Relationship Management (CRM) System",
+            "Cloud Computing Infrastructure"
+          ],
+          "categories": [
+            "IT",
+            "IS"
+          ],
+          "answer": {
+            "IT": [
+              "Network Routers and Switches",
+              "Cloud Computing Infrastructure"
+            ],
+            "IS": [
+              "Database Management System (DBMS)",
+              "Customer Relationship Management (CRM) System"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its corresponding description.",
+          "premises": [
+            "1. Information Technology",
+            "2. Information Systems",
+            "3. Data",
+            "4. Information"
+          ],
+          "responses": [
+            "A. Raw facts and figures",
+            "B. Organized and processed data that has meaning",
+            "C. The hardware and software components",
+            "D. Systems that use technology to manage information"
+          ],
+          "answer": [
+            "1-C",
+            "2-D",
+            "3-A",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "Information Technology",
+        "Information Systems",
+        "IT",
+        "IS",
+        "MIS"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What are examples of current technology and business trends in India, as highlighted in the provided news articles?",
+      "answers": {
+        "concise": "Current technology and business trends in India include the rise of instant home services (e.g., Urban Company's 'Insta Help'), the increasing importance of app store rankings (e.g., Nano Banana trends), and the growing adoption of business applications on platforms like WhatsApp (e.g., WhatsApp Business with payments and AI tools).",
+        "analogy": "Think of India's tech scene as a rapidly growing plant. Instant services are like fast-growing vines, app store trends are like colorful blossoms attracting attention, and business applications are like strong roots providing stability.",
+        "eli5": "Imagine everyone wants things super fast, like getting help at home in minutes instead of hours. Also, apps want to be popular like the cool new toy. And grown-ups are using apps like WhatsApp to help them with their jobs.",
+        "real_world_use_case": "Urban Company's 'Insta Help' service allows users in India to book domestic workers within 15 minutes, reflecting the trend of on-demand services. WhatsApp Business is being used by businesses to connect with customers, process payments, and provide support, showcasing the platform's growing role in e-commerce and customer engagement.",
+        "common_mistakes": "A common mistake is assuming these trends are isolated. They are interconnected, with the demand for instant services driving the need for innovative app solutions and the adoption of business tools to manage customer interactions and logistics. Another mistake is overlooking the importance of localization and cultural relevance in adapting these trends to the Indian market."
+      },
+      "context": "Indian Business and Technology Landscape",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Provides context for understanding the current market"
+      },
+      "example": "Consider the trend of quick commerce in India. Companies like Blinkit and Zepto offer grocery deliveries in under 10 minutes. This trend has influenced Urban Company to launch 'Insta Help' to provide faster home services. To support this, they need robust technology infrastructure, efficient logistics, and user-friendly mobile apps, all contributing to the evolving business landscape.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST exemplifies the trend of 'instant home services' in India?",
+          "options": [
+            "A. Customers scheduling home repairs for a week in advance",
+            "B. Urban Company offering domestic workers within 15 minutes through 'Insta Help'",
+            "C. Traditional businesses maintaining only physical storefronts",
+            "D. E-commerce companies offering standard delivery times of 3-5 business days"
+          ],
+          "answer": "B. Urban Company offering domestic workers within 15 minutes through 'Insta Help'"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A small business in India wants to leverage WhatsApp to improve customer engagement.",
+          "question": "Which of the following features would be MOST beneficial for them to adopt?",
+          "options": [
+            "A. Sending broadcast messages to all contacts",
+            "B. Implementing WhatsApp Payments for direct transactions",
+            "C. Sharing personal updates on their status",
+            "D. Creating a public group for general discussions"
+          ],
+          "answer": "B. Implementing WhatsApp Payments for direct transactions"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following stages in the typical adoption of a new business technology in India.",
+          "items": [
+            "Widespread adoption and integration",
+            "Early experimentation by innovative companies",
+            "Awareness and initial interest",
+            "Refinement and adaptation to local market"
+          ],
+          "answer": [
+            "Awareness and initial interest",
+            "Early experimentation by innovative companies",
+            "Refinement and adaptation to local market",
+            "Widespread adoption and integration"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following as either a 'Benefit' or 'Challenge' for businesses using WhatsApp in India.",
+          "items": [
+            "Direct communication with customers",
+            "Limited data analytics capabilities",
+            "Increased customer engagement",
+            "Potential for spam and misuse"
+          ],
+          "categories": [
+            "Benefit",
+            "Challenge"
+          ],
+          "answer": {
+            "Benefit": [
+              "Direct communication with customers",
+              "Increased customer engagement"
+            ],
+            "Challenge": [
+              "Limited data analytics capabilities",
+              "Potential for spam and misuse"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its corresponding description.",
+          "premises": [
+            "1. Quick Commerce",
+            "2. IPO",
+            "3. ROI",
+            "4. App Store Ranking"
+          ],
+          "responses": [
+            "A. Initial Public Offering",
+            "B. Return on Investment",
+            "C. Rapid delivery of goods",
+            "D. Position on app marketplace"
+          ],
+          "answer": [
+            "1-C",
+            "2-A",
+            "3-B",
+            "4-D"
+          ]
+        }
+      ],
+      "tags": [
+        "Indian Business",
+        "Technology Trends",
+        "Urban Company",
+        "WhatsApp Business",
+        "Quick Commerce"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "How do People, Process, and Technology contribute to Competitive Advantage in an organization?",
+      "answers": {
+        "concise": "People, process, and technology are the fundamental building blocks of information systems. Effective integration of these elements leads to business solutions, which in turn drive operational excellence, new products/services, customer intimacy, and improved decision-making, ultimately resulting in competitive advantage and survival.",
+        "analogy": "Think of it like baking a cake. People are the bakers, process is the recipe, and technology is the oven. If you have skilled bakers (people), a well-defined recipe (process), and a reliable oven (technology), you can consistently bake delicious cakes (business solutions) that customers love, giving you a competitive edge over other bakeries.",
+        "eli5": "Imagine you're building a Lego castle. The people are the builders, the process is the instructions, and the Lego bricks are the technology. If everyone knows how to follow the instructions and uses the right Lego bricks, you can build a super cool castle that's better than anyone else's!",
+        "real_world_use_case": "Amazon's success is built on the effective integration of people, process, and technology. They have skilled employees (people), efficient order fulfillment processes (process), and advanced technology like robotics in their warehouses (technology). This combination allows them to deliver products quickly and efficiently, resulting in high customer satisfaction and a strong competitive advantage.",
+        "common_mistakes": "A common mistake is focusing solely on technology without considering the people and processes involved. For example, implementing a new CRM system without training employees or adapting business processes can lead to low adoption rates and a failure to realize the system's potential benefits. It's crucial to consider all three elements – people, process, and technology – for successful implementation."
+      },
+      "context": "Core MIS Concepts",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core concept that defines the foundation of this subject"
+      },
+      "example": "Walmart's efficient supply chain exemplifies how people, processes, and technology work together. Skilled logistics managers (people) use sophisticated inventory management systems (technology) and streamlined distribution procedures (process) to minimize costs and ensure products are always available. This integrated approach allows Walmart to offer competitive prices, maintain high inventory turnover, and gain a significant competitive advantage in the retail industry.",
+      "mermaid_code": "graph TD;\n    A[People] --> B(Information Systems);\n    C[Process] --> B;\n    D[Technology] --> B;\n    B --> E(Business Solutions);\n    E --> F[Operational Excellence];\n    E --> G[New Products/Services/Business Models];\n    E --> H[Customer & Supplier Intimacy];\n    E --> I[Improved Decision-Making];\n    F --> J((Competitive Advantage/Survival));\n    G --> J;\n    H --> J;\n    I --> J;",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is NOT a primary component of Management Information Systems (MIS)?",
+          "options": [
+            "A. People",
+            "B. Process",
+            "C. Technology",
+            "D. Marketing"
+          ],
+          "answer": "D. Marketing"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company invests heavily in new software but doesn't train its employees on how to use it. As a result, productivity declines, and the software is underutilized.",
+          "question": "Which element of MIS was MOST neglected in this scenario?",
+          "options": [
+            "A. Technology",
+            "B. Process",
+            "C. People",
+            "D. Information"
+          ],
+          "answer": "C. People"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the typical progression from foundational elements to competitive advantage:",
+          "items": [
+            "Business Solutions",
+            "Information Systems",
+            "Competitive Advantage/Survival",
+            "People, Process, and Technology"
+          ],
+          "answer": [
+            "People, Process, and Technology",
+            "Information Systems",
+            "Business Solutions",
+            "Competitive Advantage/Survival"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify the following as either 'Tangible' or 'Intangible' resources in the context of MIS:",
+          "items": [
+            "Software",
+            "Employee Skills",
+            "Hardware",
+            "Customer Loyalty"
+          ],
+          "categories": [
+            "Tangible",
+            "Intangible"
+          ],
+          "answer": {
+            "Tangible": [
+              "Software",
+              "Hardware"
+            ],
+            "Intangible": [
+              "Employee Skills",
+              "Customer Loyalty"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its description:",
+          "premises": [
+            "1. People",
+            "2. Process",
+            "3. Technology",
+            "4. Information Systems"
+          ],
+          "responses": [
+            "A. The hardware and software used to manage data",
+            "B. The procedures and workflows used in a business",
+            "C. The individuals who use and manage information systems",
+            "D. The combination of people, process, and technology to achieve business goals"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A",
+            "4-D"
+          ]
+        }
+      ],
+      "tags": [
+        "MIS",
+        "Information Systems",
+        "Competitive Advantage",
+        "People",
+        "Process",
+        "Technology"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What does it mean to say that 'Data is the new oil,' and what are the implications for businesses?",
+      "answers": {
+        "concise": "The phrase 'Data is the new oil' suggests that data, like oil, is a valuable raw material that can be refined and transformed into valuable products and services. For businesses, this implies that collecting, analyzing, and leveraging data can lead to significant competitive advantages, improved decision-making, and new revenue streams.",
+        "analogy": "Think of data as crude oil extracted from the ground. It's valuable in its raw form, but it becomes much more valuable when refined into gasoline, plastics, and other products. Similarly, raw data needs to be processed and analyzed to extract insights and create value for businesses.",
+        "eli5": "Imagine you have a big box of toys (data). By sorting and counting them, you can figure out which toys are most popular (insights) and use that information to decide which toys to ask for next Christmas (business decisions). Data is like those toys, and understanding it helps you make better choices.",
+        "real_world_use_case": "Netflix uses data on viewing habits to make recommendations and create original content. By analyzing what shows and movies users watch, they can predict what they'll enjoy in the future and invest in producing content that is likely to be successful. This data-driven approach has been crucial to Netflix's growth and competitive advantage in the streaming industry.",
+        "common_mistakes": "A common mistake is collecting large amounts of data without a clear plan for how to use it. Like storing barrels of oil without a refinery, this can lead to wasted resources and missed opportunities. Businesses need to define their goals and develop strategies for collecting, analyzing, and acting on data to realize its full potential."
+      },
+      "context": "Data & Business Strategy",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important supporting material for understanding data-driven decision making"
+      },
+      "example": "Google leverages user search data to improve its search algorithms and generate revenue through targeted advertising. By analyzing search queries, Google can provide more relevant search results and display ads that are more likely to be clicked on, creating a win-win situation for users and advertisers. This data-driven approach is the foundation of Google's business model.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What does the phrase 'Data is the new oil' primarily emphasize?",
+          "options": [
+            "A. Data is messy and requires extensive cleaning.",
+            "B. Data is a valuable raw material that can be refined into valuable products and services.",
+            "C. Data is environmentally damaging if not handled properly.",
+            "D. Data is becoming increasingly scarce and expensive."
+          ],
+          "answer": "B. Data is a valuable raw material that can be refined into valuable products and services."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A retail company collects extensive data on customer purchases but lacks the expertise to analyze it effectively. As a result, they struggle to identify trends or personalize marketing efforts.",
+          "question": "What is the MOST critical missing element in this scenario?",
+          "options": [
+            "A. Data collection infrastructure",
+            "B. Data storage capacity",
+            "C. Data analysis skills",
+            "D. Data security measures"
+          ],
+          "answer": "C. Data analysis skills"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the process of extracting value from data:",
+          "items": [
+            "Data Analysis",
+            "Data Collection",
+            "Business Decisions",
+            "Data Storage"
+          ],
+          "answer": [
+            "Data Collection",
+            "Data Storage",
+            "Data Analysis",
+            "Business Decisions"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify the following as either 'Structured' or 'Unstructured' data:",
+          "items": [
+            "Customer Reviews",
+            "Sales Transactions",
+            "Social Media Posts",
+            "Database Records"
+          ],
+          "categories": [
+            "Structured",
+            "Unstructured"
+          ],
+          "answer": {
+            "Structured": [
+              "Sales Transactions",
+              "Database Records"
+            ],
+            "Unstructured": [
+              "Customer Reviews",
+              "Social Media Posts"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its description:",
+          "premises": [
+            "1. Data Mining",
+            "2. Big Data",
+            "3. Data Visualization",
+            "4. Data Governance"
+          ],
+          "responses": [
+            "A. Policies and procedures for managing data quality and security",
+            "B. The process of discovering patterns and insights from large datasets",
+            "C. Techniques for presenting data in a graphical format",
+            "D. Extremely large and complex datasets that are difficult to process using traditional methods"
+          ],
+          "answer": [
+            "1-B",
+            "2-D",
+            "3-C",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Data",
+        "Business Strategy",
+        "Data Analysis",
+        "Data Mining",
+        "Big Data"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What are the three organizational decision-making levels, and how do they differ?",
+      "answers": {
+        "concise": "The three organizational decision-making levels are operational, managerial/tactical, and executive/strategic. Operational level focuses on day-to-day tasks and transactions. Managerial/tactical level focuses on implementing strategies and monitoring performance. Executive/strategic level focuses on long-term planning and setting organizational goals.",
+        "analogy": "Think of a ship. The operational level is like the crew members who perform specific tasks like steering and navigating. The managerial level is like the captain who coordinates the crew and monitors the ship's progress. The executive level is like the owner who sets the ship's destination and overall strategy.",
+        "eli5": "Imagine a school. The operational level is like the teachers who teach the students. The managerial level is like the principal who manages the teachers and makes sure the school runs smoothly. The executive level is like the school board who decides the school's long-term goals and policies.",
+        "real_world_use_case": "In a retail company, the operational level involves processing customer orders and managing inventory. The managerial level involves setting sales targets and analyzing sales data. The executive level involves deciding on new store locations and overall business strategy.",
+        "common_mistakes": "A common mistake is failing to align decisions across all three levels. For example, if the executive level sets ambitious growth targets without providing the resources or support needed at the managerial and operational levels, it can lead to frustration and failure to achieve those goals."
+      },
+      "context": "Organizational Structure & Management",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Key concept explicitly defined in slides and foundational for understanding organizational structure"
+      },
+      "example": "Consider a hospital. Nurses and technicians (operational level) provide direct patient care. Department heads (managerial level) manage resources and ensure quality of care. The CEO and board of directors (executive level) set the hospital's strategic direction and financial goals. Each level makes decisions appropriate to their role, contributing to the hospital's overall success.",
+      "mermaid_code": "graph TD;\n    A[Executive Level] --> B(Managerial Level);\n    B --> C(Operational Level);",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which organizational decision-making level is primarily responsible for day-to-day tasks and transactions?",
+          "options": [
+            "A. Executive/Strategic Level",
+            "B. Managerial/Tactical Level",
+            "C. Operational Level",
+            "D. Supervisory Level"
+          ],
+          "answer": "C. Operational Level"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company's CEO decides to enter a new market. This decision primarily falls under which organizational level?",
+          "options": [
+            "A. Operational Level",
+            "B. Managerial/Tactical Level",
+            "C. Executive/Strategic Level",
+            "D. Supervisory Level"
+          ],
+          "answer": "C. Executive/Strategic Level"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the organizational decision-making levels from the highest to the lowest level of authority:",
+          "items": [
+            "Managerial/Tactical Level",
+            "Operational Level",
+            "Executive/Strategic Level"
+          ],
+          "answer": [
+            "Executive/Strategic Level",
+            "Managerial/Tactical Level",
+            "Operational Level"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following decisions based on the organizational level that primarily makes them:",
+          "items": [
+            "Processing customer orders",
+            "Setting sales targets",
+            "Developing a new product strategy",
+            "Managing inventory levels"
+          ],
+          "categories": [
+            "Operational Level",
+            "Managerial/Tactical Level",
+            "Executive/Strategic Level"
+          ],
+          "answer": {
+            "Operational Level": [
+              "Processing customer orders",
+              "Managing inventory levels"
+            ],
+            "Managerial/Tactical Level": [
+              "Setting sales targets"
+            ],
+            "Executive/Strategic Level": [
+              "Developing a new product strategy"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each organizational level with its primary focus:",
+          "premises": [
+            "1. Operational Level",
+            "2. Managerial/Tactical Level",
+            "3. Executive/Strategic Level"
+          ],
+          "responses": [
+            "A. Implementing strategies and monitoring performance",
+            "B. Long-term planning and setting organizational goals",
+            "C. Day-to-day tasks and transactions"
+          ],
+          "answer": [
+            "1-C",
+            "2-A",
+            "3-B"
+          ]
+        }
+      ],
+      "tags": [
+        "Organizational Levels",
+        "Decision Making",
+        "Management",
+        "Strategy"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What are the main organizational functional areas and their corresponding information systems?",
+      "answers": {
+        "concise": "Organizational functional areas include accounting, finance, human resources, marketing, and operations. Each area utilizes specific information systems to manage data and support decision-making. These systems are Accounting Information Systems (AIS), Financial Information Systems (FIS), Human Resource Information Systems (HRIS), Marketing Information Systems (MIS), and Operational Information Systems.",
+        "analogy": "Think of a hospital with different departments: accounting manages finances, HR manages employees, marketing promotes services, and operations handles patient care. Each department has its own specialized tools and systems to manage its specific tasks, just like each functional area has its corresponding information system.",
+        "eli5": "Imagine a lemonade stand. Accounting keeps track of the money, HR hires helpers, marketing makes signs, and operations makes the lemonade. Each part of the stand needs different tools and systems to work, like a cash register for accounting or a recipe for operations.",
+        "real_world_use_case": "A manufacturing company uses an Enterprise Resource Planning (ERP) system that integrates all functional areas, including finance, HR, manufacturing, and supply chain. This allows for real-time visibility into all aspects of the business, enabling better coordination and decision-making across the organization.",
+        "common_mistakes": "A common mistake is having siloed information systems that don't communicate with each other. This can lead to data inconsistencies, inefficiencies, and poor decision-making. Integrating information systems across functional areas is crucial for achieving a holistic view of the business."
+      },
+      "context": "Organizational Structure & Information Systems",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important supporting material that explains core concepts and functional relationships."
+      },
+      "example": "Consider a large e-commerce company. The Marketing Information System tracks customer behavior and campaign performance. The Financial Information System manages revenue and expenses. The Human Resource Information System manages employee data and payroll. The Operational Information System manages order fulfillment and logistics. Each system is critical to the success of its respective functional area.",
+      "mermaid_code": "graph TD;\n    A[Organizational Functional Areas] --> B(Accounting Information Systems);\n    A --> C(Financial Information Systems);\n    A --> D(Human Resource Information Systems);\n    A --> E(Marketing Information Systems);\n    A --> F(Operational Information Systems);",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which information system is primarily used for managing employee data and payroll?",
+          "options": [
+            "A. Accounting Information System (AIS)",
+            "B. Financial Information System (FIS)",
+            "C. Human Resource Information System (HRIS)",
+            "D. Marketing Information System (MIS)"
+          ],
+          "answer": "C. Human Resource Information System (HRIS)"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A marketing team needs to analyze the effectiveness of a recent advertising campaign. Which information system would be MOST helpful?",
+          "options": [
+            "A. Accounting Information System (AIS)",
+            "B. Financial Information System (FIS)",
+            "C. Human Resource Information System (HRIS)",
+            "D. Marketing Information System (MIS)"
+          ],
+          "answer": "D. Marketing Information System (MIS)"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the typical order processing workflow:",
+          "items": [
+            "Order Confirmation",
+            "Payment Processing",
+            "Order Placement",
+            "Order Fulfillment"
+          ],
+          "answer": [
+            "Order Placement",
+            "Payment Processing",
+            "Order Confirmation",
+            "Order Fulfillment"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following functions based on the functional area they belong to:",
+          "items": [
+            "Payroll Processing",
+            "Financial Forecasting",
+            "Sales Force Automation",
+            "Inventory Management"
+          ],
+          "categories": [
+            "Human Resources",
+            "Finance",
+            "Marketing",
+            "Operations"
+          ],
+          "answer": {
+            "Human Resources": [
+              "Payroll Processing"
+            ],
+            "Finance": [
+              "Financial Forecasting"
+            ],
+            "Marketing": [
+              "Sales Force Automation"
+            ],
+            "Operations": [
+              "Inventory Management"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each functional area with its primary goal:",
+          "premises": [
+            "1. Accounting",
+            "2. Finance",
+            "3. Human Resources",
+            "4. Marketing",
+            "5. Operations"
+          ],
+          "responses": [
+            "A. Managing the organization's financial resources",
+            "B. Managing the organization's workforce",
+            "C. Managing the organization's production and delivery of goods/services",
+            "D. Recording and reporting financial transactions",
+            "E. Promoting and selling the organization's products/services"
+          ],
+          "answer": [
+            "1-D",
+            "2-A",
+            "3-B",
+            "4-E",
+            "5-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Functional Areas",
+        "Information Systems",
+        "Accounting",
+        "Finance",
+        "HR",
+        "Marketing",
+        "Operations"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "Explain how Information Systems (IS) impact organizations across different levels and functions, focusing on the concept of 'Digital Density'.",
+      "answers": {
+        "concise": "Information Systems enhance organizational efficiency, personalization, anticipation, and coordination. Digital Density, the increased use of digital technologies, drives these improvements across all levels and functions.",
+        "analogy": "Think of Digital Density like the air pressure in a tire. The higher the pressure (Digital Density), the smoother and more efficient the ride (organizational operations). IS acts as the engine that powers this increased pressure.",
+        "eli5": "Imagine your toys are your company's data. Information systems are like the tools you use to organize and find your toys faster. Digital Density means using more of these tools to keep everything neat and easy to find, making your play (work) more fun and efficient.",
+        "real_world_use_case": "Amazon uses IS to personalize recommendations (personalization), predict demand (anticipation), optimize warehouse operations (efficiency), and coordinate global logistics (coordination). High digital density across all departments enables Amazon to respond quickly to market changes and customer needs.",
+        "common_mistakes": "A common mistake is implementing IS without a clear strategy, leading to fragmented systems and wasted investment. Another error is focusing solely on efficiency gains while neglecting personalization or anticipation, resulting in a poor customer experience."
+      },
+      "context": "Impact of IS on Organizations",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Core concept defining the impact of IS on organizational performance."
+      },
+      "example": "Netflix utilizes IS to analyze viewing patterns, predict popular content, and personalize recommendations for its subscribers. This high level of digital density allows Netflix to anticipate viewer preferences, efficiently manage its content library, and coordinate its streaming infrastructure globally. Without this IS-driven approach, Netflix would struggle to compete with other streaming services.",
+      "mermaid_code": "graph TD; A[Digital Density] --> B(Efficiency); A --> C(Personalization); A --> D(Anticipation); A --> E(Coordination);",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes 'Digital Density'?",
+          "options": [
+            "A. The amount of physical office space an organization occupies.",
+            "B. The increased use and reliance on digital technologies within an organization.",
+            "C. The number of employees working remotely.",
+            "D. The speed of an organization's internet connection."
+          ],
+          "answer": "B. The increased use and reliance on digital technologies within an organization."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A retail company implements a new CRM system to track customer interactions and personalize marketing campaigns. They also use data analytics to optimize inventory levels and predict demand.",
+          "question": "Which organizational benefit is MOST directly enhanced by these IS implementations?",
+          "options": [
+            "A. Reduced employee turnover",
+            "B. Increased Digital Density",
+            "C. Improved employee satisfaction",
+            "D. Reduced regulatory compliance costs"
+          ],
+          "answer": "B. Increased Digital Density"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following organizational benefits in order of how they are typically enabled by increasing Digital Density.",
+          "items": [
+            "Anticipation",
+            "Efficiency",
+            "Personalization",
+            "Coordination"
+          ],
+          "answer": [
+            "Efficiency",
+            "Coordination",
+            "Personalization",
+            "Anticipation"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following examples as either 'Efficiency Improvement' or 'Personalization Improvement' resulting from increased Digital Density.",
+          "items": [
+            "Automated invoice processing",
+            "Personalized product recommendations on an e-commerce site",
+            "Real-time inventory tracking",
+            "Customized email marketing campaigns"
+          ],
+          "categories": [
+            "Efficiency Improvement",
+            "Personalization Improvement"
+          ],
+          "answer": {
+            "Efficiency Improvement": [
+              "Automated invoice processing",
+              "Real-time inventory tracking"
+            ],
+            "Personalization Improvement": [
+              "Personalized product recommendations on an e-commerce site",
+              "Customized email marketing campaigns"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each organizational function to a potential benefit from increased Digital Density.",
+          "premises": [
+            "1. Marketing",
+            "2. Operations",
+            "3. Supply Chain",
+            "4. Customer Service"
+          ],
+          "responses": [
+            "A. Optimized logistics and reduced shipping costs",
+            "B. Personalized customer support and faster issue resolution",
+            "C. Targeted advertising campaigns and increased conversion rates",
+            "D. Streamlined production processes and reduced waste"
+          ],
+          "answer": [
+            "1-C",
+            "2-D",
+            "3-A",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "IS",
+        "Digital Density",
+        "Efficiency",
+        "Personalization",
+        "Anticipation",
+        "Coordination"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "Define 'Digital Nomad' and outline the key requirements for a location to be suitable for digital nomads.",
+      "answers": {
+        "concise": "Digital Nomads are individuals who leverage the internet and mobile technology to work remotely from anywhere they choose. Suitable locations must offer an appealing lifestyle, low cost of living, good weather, and reliable connectivity via Wi-Fi or cellular networks.",
+        "analogy": "Think of a Digital Nomad as a plant that can grow anywhere, but needs specific conditions to thrive: sunlight (good weather), water (connectivity), and fertile soil (appealing location and low cost of living). Without these, the plant will struggle.",
+        "eli5": "Imagine you can do your homework from any place in the world, as long as you have a computer and internet. Digital Nomads are like that, but for their jobs. They need nice places, cheap food, good weather, and strong internet to work well.",
+        "real_world_use_case": "Software developers, writers, and online marketers often choose to be Digital Nomads, working from locations like Bali, Thailand, or Portugal. These places offer a lower cost of living and appealing lifestyles, while still providing reliable internet access for their work.",
+        "common_mistakes": "A common mistake is underestimating the importance of reliable internet connectivity. Digital Nomads often face challenges with inconsistent Wi-Fi or cellular signals, which can disrupt their work and income. Another mistake is neglecting the need for a conducive workspace."
+      },
+      "context": "Digital Nomadism",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Important supporting concept related to the evolving workplace."
+      },
+      "example": "A graphic designer based in the United States decides to become a digital nomad and relocates to Medellin, Colombia. Medellin offers a significantly lower cost of living, a vibrant cultural scene, and reliable high-speed internet. The designer can continue serving US-based clients remotely, while enjoying a higher quality of life and reduced expenses. However, they must also manage time zone differences and maintain strong communication with clients.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is a defining characteristic of a Digital Nomad?",
+          "options": [
+            "A. Working exclusively in a traditional office setting.",
+            "B. Living and working wherever they choose, using the internet and mobile technology.",
+            "C. Primarily using landline telephones for communication.",
+            "D. Requiring a high-paying job with significant benefits."
+          ],
+          "answer": "B. Living and working wherever they choose, using the internet and mobile technology."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A freelance writer wants to become a digital nomad but struggles with unreliable internet access and frequent power outages in their chosen location.",
+          "question": "Which of the following challenges is the writer MOST directly facing?",
+          "options": [
+            "A. Lack of social interaction.",
+            "B. Difficulty maintaining relationships with clients.",
+            "C. Poor connectivity.",
+            "D. High cost of living."
+          ],
+          "answer": "C. Poor connectivity."
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following factors in order of importance when considering a location for digital nomadism.",
+          "items": [
+            "Appealing Lifestyle",
+            "Good Weather",
+            "Reliable Connectivity",
+            "Low Cost of Living"
+          ],
+          "answer": [
+            "Reliable Connectivity",
+            "Low Cost of Living",
+            "Appealing Lifestyle",
+            "Good Weather"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following as either 'Advantages' or 'Challenges' of being a Digital Nomad.",
+          "items": [
+            "Location Independence",
+            "Unstable Income",
+            "Cultural Immersion",
+            "Difficulty Building Networks"
+          ],
+          "categories": [
+            "Advantages",
+            "Challenges"
+          ],
+          "answer": {
+            "Advantages": [
+              "Location Independence",
+              "Cultural Immersion"
+            ],
+            "Challenges": [
+              "Unstable Income",
+              "Difficulty Building Networks"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each profession to a potential challenge they might face as a Digital Nomad.",
+          "premises": [
+            "1. Software Developer",
+            "2. Freelance Writer",
+            "3. Online Teacher",
+            "4. Virtual Assistant"
+          ],
+          "responses": [
+            "A. Maintaining consistent communication with students across different time zones.",
+            "B. Finding quiet and distraction-free environments for coding.",
+            "C. Managing client deadlines and expectations with limited resources.",
+            "D. Securing reliable internet access for research and writing."
+          ],
+          "answer": [
+            "1-B",
+            "2-D",
+            "3-A",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Digital Nomad",
+        "Remote Work",
+        "Connectivity",
+        "Location Independence"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "Explain Porter's Five Forces model and its purpose in industry analysis.",
+      "answers": {
+        "concise": "Porter's Five Forces is a framework for analyzing the competitive intensity and attractiveness of an industry. It identifies five key forces: threat of new entrants, bargaining power of suppliers, bargaining power of customers, threat of substitute products or services, and competitive rivalry.",
+        "analogy": "Think of Porter's Five Forces like a weather forecast for business. It helps you predict the 'competitive climate' of an industry, indicating whether it's likely to be sunny (profitable) or stormy (highly competitive).",
+        "eli5": "Imagine you're selling lemonade. Porter's Five Forces helps you understand who else is selling lemonade nearby (rivals), how easy it is for new kids to start selling (new entrants), how much you pay for lemons (suppliers), how much people are willing to pay for your lemonade (customers), and if people can drink something else instead (substitutes).",
+        "real_world_use_case": "When considering entering the electric vehicle market, a company like Tesla needs to analyze Porter's Five Forces. They assess the threat of established automakers (rivalry), the availability of battery suppliers (suppliers), the price sensitivity of consumers (customers), the potential of alternative fuels (substitutes), and the barriers to entry for new EV manufacturers (new entrants).",
+        "common_mistakes": "A common mistake is only focusing on existing competitors and ignoring the other four forces. Another error is failing to regularly update the analysis as the industry evolves and forces shift."
+      },
+      "context": "Porter's Five Forces",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Foundational framework for industry analysis and competitive strategy."
+      },
+      "example": "A small coffee shop uses Porter's Five Forces to analyze its local market. It considers the presence of Starbucks and other coffee chains (rivalry), the power of coffee bean suppliers (suppliers), the availability of tea and energy drinks (substitutes), the bargaining power of price-sensitive customers (customers), and the ease with which new coffee shops can open nearby (new entrants). This analysis helps the coffee shop identify opportunities to differentiate itself, such as offering unique blends or exceptional customer service.",
+      "mermaid_code": "graph LR;\n    A[Forces] --> B(Traditional rivals);\n    A --> C(Threat of new entrants);\n    A --> D(\"Customers'\\n bargaining power\");\n    A --> E(\"Suppliers'\\n bargaining power\");\n    A --> F(Threat of substitute);",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is NOT one of Porter's Five Forces?",
+          "options": [
+            "A. Threat of new entrants",
+            "B. Bargaining power of suppliers",
+            "C. Government regulations",
+            "D. Threat of substitute products or services"
+          ],
+          "answer": "C. Government regulations"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A software company is evaluating a new market. They identify numerous established competitors, low switching costs for customers, and readily available open-source alternatives.",
+          "question": "According to Porter's Five Forces, which force is MOST likely to be strong in this market?",
+          "options": [
+            "A. Bargaining power of suppliers",
+            "B. Threat of new entrants",
+            "C. Competitive rivalry",
+            "D. Bargaining power of customers"
+          ],
+          "answer": "C. Competitive rivalry"
+        },
+        {
+          "type": "sequencing",
+          "question": "Imagine a company wants to use Porter's Five Forces. Place the following steps in the correct order for conducting an industry analysis.",
+          "items": [
+            "Analyze the impact of each force on profitability.",
+            "Gather data on each of the five forces.",
+            "Identify the five competitive forces in the industry.",
+            "Develop strategies to mitigate the negative impact of strong forces."
+          ],
+          "answer": [
+            "Identify the five competitive forces in the industry.",
+            "Gather data on each of the five forces.",
+            "Analyze the impact of each force on profitability.",
+            "Develop strategies to mitigate the negative impact of strong forces."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following factors as either increasing the 'Threat of New Entrants' or decreasing the 'Threat of New Entrants'.",
+          "items": [
+            "High capital requirements",
+            "Strong brand loyalty",
+            "Easy access to distribution channels",
+            "Government regulations"
+          ],
+          "categories": [
+            "Increasing Threat",
+            "Decreasing Threat"
+          ],
+          "answer": {
+            "Increasing Threat": [
+              "Easy access to distribution channels"
+            ],
+            "Decreasing Threat": [
+              "High capital requirements",
+              "Strong brand loyalty",
+              "Government regulations"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each competitive force to a factor that would make that force stronger.",
+          "premises": [
+            "1. Bargaining power of suppliers",
+            "2. Bargaining power of customers",
+            "3. Threat of substitute products",
+            "4. Competitive rivalry"
+          ],
+          "responses": [
+            "A. Many similar products available at lower prices",
+            "B. Few suppliers exist for a critical component",
+            "C. High number of competitors offering similar products",
+            "D. Customers can easily switch to a competitor's product"
+          ],
+          "answer": [
+            "1-B",
+            "2-D",
+            "3-A",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Porter's Five Forces",
+        "Industry Analysis",
+        "Competitive Advantage"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "Describe the different competitive strategies companies can adopt, focusing on the interplay between market focus and differentiation.",
+      "answers": {
+        "concise": "Companies can compete through low-cost leadership, differentiation, or a best-cost provider strategy. These strategies are further refined by market focus (broad or narrow) and differentiating attributes (low cost or uniqueness), leading to specific strategies like broad market/low-cost, broad market/differentiation, narrow market/low-cost, and narrow market/differentiation.",
+        "analogy": "Think of competitive strategies like choosing a restaurant. You can go for cheap and fast (low-cost), fancy and unique (differentiation), or a good balance of both (best-cost). You also decide if you want to appeal to everyone (broad market) or a specific group (narrow market).",
+        "eli5": "Imagine you're selling toys. You can sell cheap toys to everyone (broad market/low-cost), special toys that no one else has (broad market/differentiation), cheap toys only for girls (narrow market/low-cost), or special toys only for boys (narrow market/differentiation).",
+        "real_world_use_case": "Walmart pursues a broad market/low-cost strategy by offering a wide range of products at the lowest possible prices. Apple follows a broad market/differentiation strategy by creating innovative and premium products that appeal to a wide customer base. A boutique fitness studio might adopt a narrow market/differentiation strategy by focusing on a specific type of workout and catering to a niche clientele.",
+        "common_mistakes": "A common mistake is trying to be everything to everyone, resulting in a 'stuck in the middle' strategy that lacks focus and competitive advantage. Another error is failing to adapt the strategy as market conditions change."
+      },
+      "context": "Competitive Strategies",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Key framework for understanding how companies position themselves in the market."
+      },
+      "example": "Hyundai initially competed with a broad market/low-cost strategy, offering affordable cars to a wide range of customers. However, they have evolved towards a best-cost provider strategy by improving quality and design while maintaining competitive prices. This shift allows them to attract customers who are seeking value without sacrificing quality.",
+      "mermaid_code": "graph LR\n    subgraph Differentiating Attribute\n        direction LR\n        A[Low Cost] -- Broad Market --> B(Broad Market, Low-Cost Strategy)\n        A -- Narrow Market --> C(Narrow Market, Low-Cost Strategy)\n        D[Uniqueness] -- Broad Market --> E(Broad Market, Differentiation Strategy)\n        D -- Narrow Market --> F(Narrow Market, Differentiation Strategy)\n    end\n    subgraph Market Focus\n        direction TB\n        G[Narrow]\n        H[Broader]\n    end\n    B --> I{Best-Cost\nProvider\nStrategy}\n    C --> I\n    E --> I\n    F --> I",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which competitive strategy involves offering products or services at the lowest possible price to a broad market?",
+          "options": [
+            "A. Differentiation",
+            "B. Best-cost provider",
+            "C. Low-cost leadership",
+            "D. Narrow market differentiation"
+          ],
+          "answer": "C. Low-cost leadership"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A luxury car manufacturer focuses on producing high-performance vehicles with cutting-edge technology for a specific segment of affluent consumers.",
+          "question": "Which competitive strategy is the manufacturer MOST likely pursuing?",
+          "options": [
+            "A. Broad market, low-cost",
+            "B. Broad market, differentiation",
+            "C. Narrow market, low-cost",
+            "D. Narrow market, differentiation"
+          ],
+          "answer": "D. Narrow market, differentiation"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order for determining a competitive strategy.",
+          "items": [
+            "Identify target market segment.",
+            "Analyze market conditions.",
+            "Determine differentiating attributes.",
+            "Select competitive strategy."
+          ],
+          "answer": [
+            "Analyze market conditions.",
+            "Identify target market segment.",
+            "Determine differentiating attributes.",
+            "Select competitive strategy."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following companies based on their primary competitive strategy as either 'Low-Cost Leader' or 'Differentiator'.",
+          "items": [
+            "Dollar General",
+            "Apple",
+            "Ryanair",
+            "Tesla"
+          ],
+          "categories": [
+            "Low-Cost Leader",
+            "Differentiator"
+          ],
+          "answer": {
+            "Low-Cost Leader": [
+              "Dollar General",
+              "Ryanair"
+            ],
+            "Differentiator": [
+              "Apple",
+              "Tesla"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each competitive strategy with its primary characteristic.",
+          "premises": [
+            "1. Broad Market, Low-Cost",
+            "2. Broad Market, Differentiation",
+            "3. Narrow Market, Low-Cost",
+            "4. Narrow Market, Differentiation"
+          ],
+          "responses": [
+            "A. Serving a specific niche with unique offerings",
+            "B. Offering affordable products to a wide range of customers",
+            "C. Providing premium products to a large customer base",
+            "D. Targeting a specific segment with low-priced products"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-D",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Competitive Strategy",
+        "Low-Cost",
+        "Differentiation",
+        "Market Focus"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "process",
+      "question": "Explain the process by which a company's resources and capabilities can lead to a sustained competitive advantage.",
+      "answers": {
+        "concise": "A company's resources and capabilities, when effectively combined, create distinctive competencies. These competencies lead to either a cost advantage or a differentiation advantage, which ultimately results in a sustained competitive advantage.",
+        "analogy": "Think of it like baking a cake. Resources are the ingredients, capabilities are your baking skills, distinctive competencies are your special recipes, cost/differentiation is the cake's price or unique flavor, and sustained advantage is people always wanting your cake.",
+        "eli5": "Imagine you have LEGOs (resources) and you know how to build cool things (capabilities). If you can build things better than anyone else (distinctive competencies), you can sell them for less money or make them super special (cost/differentiation), so everyone wants to buy from you forever (sustained advantage).",
+        "real_world_use_case": "Toyota's resources include advanced manufacturing technology and a skilled workforce. Their capabilities involve lean manufacturing and efficient supply chain management. These lead to distinctive competencies in producing high-quality, reliable cars at a competitive cost, resulting in a sustained competitive advantage in the automotive industry.",
+        "common_mistakes": "A common mistake is assuming that simply having valuable resources guarantees a competitive advantage. Resources must be effectively leveraged through capabilities and distinctive competencies to create value. Another mistake is failing to continuously innovate and adapt to changing market conditions."
+      },
+      "context": "Sustained Competitive Advantage",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Core concept for understanding how companies achieve long-term success."
+      },
+      "example": "Zara's resources include a vertically integrated supply chain and sophisticated IT systems. Their capabilities involve fast fashion design and rapid inventory turnover. These lead to distinctive competencies in quickly responding to changing fashion trends and delivering new styles to stores in weeks, rather than months. This results in a differentiation advantage and a sustained competitive advantage in the apparel industry.",
+      "mermaid_code": "graph TD\n    A[Resources] --> B{Distinctive Competencies}\n    C[Capabilities] --> B\n    B --> D{Cost or Differentiation\nAdvantage}\n    D --> E[Sustained Competitive\nAdvantage]",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes 'Distinctive Competencies'?",
+          "options": [
+            "A. The financial resources available to a company.",
+            "B. What a firm does especially well compared to its competitors.",
+            "C. The physical assets owned by a company.",
+            "D. The number of employees working for a company."
+          ],
+          "answer": "B. What a firm does especially well compared to its competitors."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company possesses valuable patents and a strong brand reputation, but struggles to efficiently manufacture its products and faces high production costs.",
+          "question": "Which element is the company MOST likely lacking in order to achieve a sustained competitive advantage?",
+          "options": [
+            "A. Resources",
+            "B. Capabilities",
+            "C. Distinctive Competencies",
+            "D. Cost or Differentiation Advantage"
+          ],
+          "answer": "B. Capabilities"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following elements in the correct order to illustrate how a company achieves sustained competitive advantage.",
+          "items": [
+            "Cost or Differentiation Advantage",
+            "Distinctive Competencies",
+            "Capabilities",
+            "Resources",
+            "Sustained Competitive Advantage"
+          ],
+          "answer": [
+            "Resources",
+            "Capabilities",
+            "Distinctive Competencies",
+            "Cost or Differentiation Advantage",
+            "Sustained Competitive Advantage"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following as either 'Resources' or 'Capabilities'.",
+          "items": [
+            "Patents",
+            "Efficient Supply Chain Management",
+            "Brand Reputation",
+            "Skilled Workforce"
+          ],
+          "categories": [
+            "Resources",
+            "Capabilities"
+          ],
+          "answer": {
+            "Resources": [
+              "Patents",
+              "Brand Reputation"
+            ],
+            "Capabilities": [
+              "Efficient Supply Chain Management",
+              "Skilled Workforce"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each element with its role in achieving a sustained competitive advantage.",
+          "premises": [
+            "1. Resources",
+            "2. Capabilities",
+            "3. Distinctive Competencies",
+            "4. Cost or Differentiation Advantage"
+          ],
+          "responses": [
+            "A. Creates superior value for customers",
+            "B. Enables effective use of resources",
+            "C. Foundation for building competitive advantage",
+            "D. Differentiates a firm from its competitors"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-D",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Resources",
+        "Capabilities",
+        "Distinctive Competencies",
+        "Competitive Advantage"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "How do technology, data-driven decisions, and digital business models contribute to creating a digital business?",
+      "answers": {
+        "concise": "A digital business arises from the integration of technology as a core competency, data-driven decision-making processes, and a business model that is inherently digital. These elements combine to form a modern, digitally-focused enterprise.",
+        "analogy": "Think of building a digital business like baking a cake. Technology is the flour (essential ingredient), data-driven decisions are the recipe (guiding the process), and a digital business model is the oven (transforming ingredients into the final product). Without all three, you can't bake a digital business cake.",
+        "eli5": "Imagine you're building a cool robot. First, you need the robot parts (technology). Then, you need to figure out what the robot should do using information (data). Finally, the robot needs a job that makes sense in today's world (digital business model). If you have all three, you have a super cool robot business!",
+        "real_world_use_case": "Netflix transformed from a DVD rental service to a streaming giant by making technology a core competency (building its streaming platform), using data to recommend content (data-driven decisions), and adopting a subscription-based digital business model. This combination allowed them to disrupt the traditional entertainment industry.",
+        "common_mistakes": "A common mistake is focusing solely on technology without considering the business model or data strategy. Another mistake is relying on gut feelings instead of data to make decisions. A truly digital business requires a holistic approach that integrates all three elements."
+      },
+      "context": "Digital Business Transformation",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core concept defining the essence of digital business transformation."
+      },
+      "example": "Amazon's journey exemplifies this transformation. Initially a bookstore (traditional), they invested heavily in technology (core competency) to build a robust e-commerce platform. They leveraged data analytics to personalize recommendations and optimize logistics (data-driven). Finally, they expanded into cloud computing (AWS) and other digital services, creating an inherently digital business model, making them a global leader.",
+      "mermaid_code": "graph LR\nA[\"Tech. as Core Competency\"] --> B(Data-Driven Decisions)\nB --> C{BM is Inherently Digital}\nC --> D((Digital Business))",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is NOT a key component of a digital business?",
+          "options": [
+            "A. Technology as a core competency",
+            "B. Data-driven decision making",
+            "C. Inherently digital business model",
+            "D. Physical storefront presence"
+          ],
+          "answer": "D. Physical storefront presence"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A traditional brick-and-mortar retailer wants to transition to a digital business. They invest in a new website and e-commerce platform but don't change their decision-making process or overall business strategy.",
+          "question": "What is the MOST likely outcome of this approach?",
+          "options": [
+            "A. Immediate success and increased revenue",
+            "B. Limited success due to lack of integration",
+            "C. Decreased revenue due to cannibalization of physical sales",
+            "D. Complete failure due to high implementation costs"
+          ],
+          "answer": "B. Limited success due to lack of integration"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following elements in the order they contribute to the creation of a digital business:",
+          "items": [
+            "Data-driven decision making",
+            "Digital Business",
+            "Technology as a core competency",
+            "Business model is inherently digital"
+          ],
+          "answer": [
+            "Technology as a core competency",
+            "Data-driven decision making",
+            "Business model is inherently digital",
+            "Digital Business"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following business activities as either 'Traditional Business' or 'Digital Business'.",
+          "items": [
+            "Running a physical retail store",
+            "Offering online subscription services",
+            "Using data analytics to personalize customer experiences",
+            "Relying on print advertising for marketing"
+          ],
+          "categories": [
+            "Traditional Business",
+            "Digital Business"
+          ],
+          "answer": {
+            "Traditional Business": [
+              "Running a physical retail store",
+              "Relying on print advertising for marketing"
+            ],
+            "Digital Business": [
+              "Offering online subscription services",
+              "Using data analytics to personalize customer experiences"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each component with its role in creating a digital business:",
+          "premises": [
+            "1. Technology as a core competency",
+            "2. Data-driven decision making",
+            "3. Inherently digital business model"
+          ],
+          "responses": [
+            "A. Using insights to guide strategy and operations",
+            "B. A fundamental component of the business",
+            "C. A business model that is designed for the digital world"
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "digital business",
+        "technology",
+        "data",
+        "business model"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What does it mean to 'reverse engineer' a digital platform's success, and what are you looking for?",
+      "answers": {
+        "concise": "Reverse engineering a digital platform involves analyzing its architecture, features, and data usage to understand how its information system powers its business model, drives strategy, and creates a competitive advantage. It aims to uncover the platform's core functionalities and proprietary data.",
+        "analogy": "Think of reverse engineering a digital platform like disassembling a complex machine to understand how each part works and how they all fit together. You're trying to figure out the design principles and engineering choices that made it successful.",
+        "eli5": "Imagine you have a cool toy car, and you want to know how it works. You take it apart piece by piece to see what each part does and how they all connect. Reverse engineering a digital platform is like taking apart that toy car to understand its secrets.",
+        "real_world_use_case": "Analyzing Zomato's platform involves understanding how they collect restaurant data, manage user reviews, optimize delivery routes, and personalize recommendations. Reverse engineering would reveal how their information system contributes to their competitive edge in the food delivery market, including any proprietary data they leverage.",
+        "common_mistakes": "A common mistake is focusing solely on the user interface or marketing strategies without delving into the underlying data and system architecture. Another mistake is overlooking the importance of proprietary data and how it contributes to the platform's competitive advantage."
+      },
+      "context": "Digital Platform Analysis",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important skill for understanding competitive advantage in digital businesses."
+      },
+      "example": "Consider Zerodha, a discount brokerage firm. Reverse engineering their platform would involve understanding how they handle order execution, risk management, user authentication, and data security. It would also uncover how their proprietary data on trading patterns and risk profiles contributes to their competitive edge in the financial services industry.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the primary goal of reverse engineering a digital platform?",
+          "options": [
+            "A. To copy the platform's code and create a competing product",
+            "B. To understand the platform's underlying information system and how it drives its business model",
+            "C. To identify security vulnerabilities in the platform",
+            "D. To improve the platform's user interface"
+          ],
+          "answer": "B. To understand the platform's underlying information system and how it drives its business model"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A business analyst is tasked with reverse engineering Meesho's platform. They focus on understanding how Meesho connects suppliers with resellers and how it manages logistics and payments.",
+          "question": "Which aspect of Meesho's platform would be MOST crucial to analyze to understand its competitive advantage?",
+          "options": [
+            "A. The platform's user interface design",
+            "B. The platform's marketing campaigns",
+            "C. The platform's data analytics capabilities and proprietary data",
+            "D. The platform's customer service processes"
+          ],
+          "answer": "C. The platform's data analytics capabilities and proprietary data"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the process of reverse engineering a digital platform:",
+          "items": [
+            "Analyze the platform's data usage and analytics",
+            "Identify the platform's core functionalities and features",
+            "Understand the platform's business model and strategy",
+            "Examine the platform's architecture and infrastructure"
+          ],
+          "answer": [
+            "Identify the platform's core functionalities and features",
+            "Examine the platform's architecture and infrastructure",
+            "Analyze the platform's data usage and analytics",
+            "Understand the platform's business model and strategy"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following elements as either 'Information System Component' or 'Business Strategy'.",
+          "items": [
+            "Database management system",
+            "Pricing strategy",
+            "Customer relationship management (CRM) software",
+            "Market segmentation"
+          ],
+          "categories": [
+            "Information System Component",
+            "Business Strategy"
+          ],
+          "answer": {
+            "Information System Component": [
+              "Database management system",
+              "Customer relationship management (CRM) software"
+            ],
+            "Business Strategy": [
+              "Pricing strategy",
+              "Market segmentation"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each digital platform with its primary function:",
+          "premises": [
+            "1. Zomato",
+            "2. Zerodha",
+            "3. Meesho"
+          ],
+          "responses": [
+            "A. Online resale platform",
+            "B. Food delivery and restaurant discovery",
+            "C. Discount brokerage firm"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "reverse engineering",
+        "digital platforms",
+        "information systems",
+        "competitive advantage"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is an Information System, and how does it power a business model?",
+      "answers": {
+        "concise": "An Information System (IS) is a set of interrelated components that collect, process, store, and distribute information to support decision-making, coordination, control, analysis, and visualization in an organization. It powers the business model by providing the infrastructure and capabilities needed to execute key business processes and deliver value to customers.",
+        "analogy": "Think of an Information System as the central nervous system of a business. It gathers information from different parts of the organization, processes it, and sends signals to guide actions, just like the nervous system controls the body.",
+        "eli5": "Imagine a lemonade stand. The Information System is like the cash register, the notebook where you write down sales, and the phone you use to order more lemons. It helps you keep track of everything so you can run your lemonade stand better.",
+        "real_world_use_case": "Walmart's supply chain management system is a powerful Information System. It tracks inventory levels, predicts demand, and optimizes logistics to ensure that products are always available on store shelves at the lowest possible cost. This IS is critical to Walmart's low-price business model.",
+        "common_mistakes": "A common mistake is viewing an Information System as simply a collection of software and hardware. An IS also includes people, processes, and data. Another mistake is failing to align the IS with the business model, resulting in inefficiencies and missed opportunities."
+      },
+      "context": "Information Systems Fundamentals",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Core definition and foundational concept for understanding MIS."
+      },
+      "example": "Amazon's e-commerce platform is a complex Information System that manages product listings, customer orders, payment processing, and shipping logistics. The IS is the backbone of Amazon's business model, enabling them to offer a vast selection of products, personalized recommendations, and fast delivery to millions of customers worldwide.",
+      "mermaid_code": "graph TD\nA[Input: Data Collection] --> B(Process: Data Transformation)\nB --> C{Output: Information Distribution}\nC --> D((Decision Making & Control))",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is NOT a core component of an Information System?",
+          "options": [
+            "A. Hardware",
+            "B. Software",
+            "C. Data",
+            "D. Physical storefront"
+          ],
+          "answer": "D. Physical storefront"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A small business implements a new CRM system to manage customer interactions and track sales leads. However, employees are not trained on how to use the system effectively, and the data is not regularly updated.",
+          "question": "What is the MOST likely outcome of this situation?",
+          "options": [
+            "A. Significant improvement in sales and customer satisfaction",
+            "B. Limited improvement due to lack of user adoption and data quality",
+            "C. Decreased sales due to system errors",
+            "D. Complete failure of the CRM implementation"
+          ],
+          "answer": "B. Limited improvement due to lack of user adoption and data quality"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following activities in the typical data processing cycle of an Information System:",
+          "items": [
+            "Output: Information distribution",
+            "Process: Data transformation",
+            "Input: Data collection",
+            "Storage: Data archiving"
+          ],
+          "answer": [
+            "Input: Data collection",
+            "Process: Data transformation",
+            "Output: Information distribution",
+            "Storage: Data archiving"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following as either 'Strategic Use of IS' or 'Operational Use of IS'.",
+          "items": [
+            "Improving supply chain efficiency",
+            "Developing new products and services",
+            "Automating customer service processes",
+            "Gaining a competitive advantage in the market"
+          ],
+          "categories": [
+            "Strategic Use of IS",
+            "Operational Use of IS"
+          ],
+          "answer": {
+            "Strategic Use of IS": [
+              "Developing new products and services",
+              "Gaining a competitive advantage in the market"
+            ],
+            "Operational Use of IS": [
+              "Improving supply chain efficiency",
+              "Automating customer service processes"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each type of Information System with its primary function:",
+          "premises": [
+            "1. Transaction Processing System (TPS)",
+            "2. Management Information System (MIS)",
+            "3. Decision Support System (DSS)"
+          ],
+          "responses": [
+            "A. Provides routine summary reports for managers",
+            "B. Processes large volumes of routine data",
+            "C. Supports non-routine decision making"
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "information systems",
+        "business model",
+        "data processing",
+        "decision making"
+      ],
+      "diagram_image_path": ""
+    }
+  ]
+}
