@@ -49,8 +49,8 @@ async def load_flashcard_data(course_id: str, deck_id: str, flashcard_index: int
     try:
         import os
         # Construct path to flashcard JSON file
-        json_path = f"./courses/{course_id}/cognitive_flashcards/{deck_id}/{deck_id}_cognitive_flashcards.json"
-        
+        json_path = f"../courses/{course_id}/cognitive_flashcards/{deck_id}/{deck_id}_cognitive_flashcards.json"
+        # json_path = "../"
         if not os.path.exists(json_path):
             logger.warning(f"Flashcard JSON file not found: {json_path}")
             return None
