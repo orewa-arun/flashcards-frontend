@@ -14,7 +14,7 @@ Usage:
 import sys
 import json
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, List
 from datetime import datetime
 
 from config import Config
@@ -34,6 +34,70 @@ def save_flashcards_json(flashcards, metadata, output_path):
         json.dump(data, f, indent=2, ensure_ascii=False)
     
     print(f"💾 Saved JSON: {output_path}")
+
+# ==============================================================================
+# NEW HELPER FUNCTION FOR CHUNKING
+# ==============================================================================
+
+def chunk_content(content: str, max_chunk_size: int = 15000, overlap: int = 500) -> List[str]:
+    """
+    Splits the large content string into smaller chunks with an overlap.
+    
+    Args:
+        content: The full text content.
+        max_chunk_size: Maximum size of a chunk.
+        overlap: Overlap size to provide context to the next chunk.
+        
+    Returns:
+        A list of content strings (chunks).
+    """
+    chunks = []
+    current_position = 0
+    total_length = len(content)
+    
+    while current_position < total_length:
+        # Determine the end of the chunk (max size from current position)
+        end_position = min(current_position + max_chunk_size, total_length)
+        
+        # If this is not the last chunk, find a good break point (e.g., newline)
+        if end_position < total_length:
+            # Look for the last newline character before the max end position
+            # This makes the break more natural (between concepts/slides)
+            break_point = content.rfind('\n\n', current_position, end_position)
+            
+            # If a clean break is found, use it, otherwise stick to max size
+            if break_point != -1 and (end_position - break_point) < 1000:
+                chunk_end = break_point
+            else:
+                chunk_end = end_position
+        else:
+            # Last chunk
+            chunk_end = end_position
+
+        chunk = content[current_position:chunk_end]
+        chunks.append(chunk)
+
+        # Set up for the next chunk with an overlap
+        if chunk_end < total_length:
+            # Move back by overlap amount for the next start
+            next_start_potential = max(0, chunk_end - overlap)
+            
+            # Find a clean starting point (e.g., start of a line/paragraph) near the overlap point
+            # This ensures the overlap starts at a reasonable place
+            clean_start_point = content.find('\n\n', next_start_potential)
+            
+            if clean_start_point != -1 and clean_start_point < chunk_end:
+                 current_position = clean_start_point + 2 # Start after the newlines
+            else:
+                 current_position = next_start_potential
+        else:
+            current_position = total_length # End loop
+            
+    return chunks
+
+# ==============================================================================
+# END NEW HELPER FUNCTION FOR CHUNKING
+# ==============================================================================
 
 
 def process_course_flashcards(course: Dict[str, Any]) -> None:
@@ -115,12 +179,41 @@ def process_course_flashcards(course: Dict[str, Any]) -> None:
         
         print(f"📄 Loaded {len(content):,} characters of content")
         
-        # Generate flashcards
-        flashcards = generator.generate_flashcards(content, lecture_name)
+        # ======================================================================
+        # CHUNKING AND ITERATIVE GENERATION LOGIC (MODIFIED)
+        # ======================================================================
+        content_chunks = chunk_content(content, max_chunk_size=15000, overlap=500)
+        print(f"📦 Splitting content into {len(content_chunks)} manageable chunk(s)")
+        
+        all_flashcards = []
+        
+        # Iterate over chunks and generate flashcards for each
+        for i, chunk in enumerate(content_chunks, 1):
+            chunk_info = f"Chunk {i}/{len(content_chunks)}"
+            
+            # Generate flashcards for the current chunk
+            chunk_flashcards = generator.generate_flashcards(
+                chunk, 
+                lecture_name, 
+                chunk_info=chunk_info
+            )
+            
+            # Add a tracking field (optional but helpful for debugging/review)
+            for card in chunk_flashcards:
+                card['source_chunk'] = f"{lecture_name}_{i}"
+            
+            all_flashcards.extend(chunk_flashcards)
+            
+        flashcards = all_flashcards
         
         if not flashcards:
             print(f"⚠️  No flashcards generated for {lecture_name}")
             continue
+        
+        print(f"\n🎉 Total aggregated flashcards for {lecture_name}: {len(flashcards)}")
+        # ======================================================================
+        # END CHUNKING AND ITERATIVE GENERATION LOGIC
+        # ======================================================================
         
         # Create lecture-specific output directory
         lecture_output_dir = output_base / lecture_name
@@ -136,14 +229,17 @@ def process_course_flashcards(course: Dict[str, Any]) -> None:
         for i, card in enumerate(flashcards, 1):
             mermaid_code = card.get('mermaid_code', '').strip()
             
+            # Assign a unique card ID for the filename
+            card_id = card.get('source_chunk', lecture_name).replace('/', '_').replace('-', '_')
+            
             if mermaid_code and has_mermaid:
-                diagram_filename = f"{lecture_name}_card_{i:03d}.png"
+                diagram_filename = f"{card_id}_card_{i:03d}.png"
                 diagram_path = diagrams_dir / diagram_filename
                 
                 if DiagramRenderer.render_diagram(mermaid_code, str(diagram_path)):
                     card['diagram_image_path'] = f"diagrams/{diagram_filename}"
                     rendered_count += 1
-                    print(f"  ✓ Rendered diagram {i}")
+                    # print(f"  ✓ Rendered diagram {i}") # Reduced logging for brevity
                 else:
                     card['diagram_image_path'] = ""
                     print(f"  ⚠️  Failed to render diagram {i}")
@@ -153,7 +249,7 @@ def process_course_flashcards(course: Dict[str, Any]) -> None:
         if rendered_count > 0:
             print(f"✅ Rendered {rendered_count} diagrams")
         
-        # Prepare metadata
+        # Prepare metadata (UPDATED to include chunk count)
         metadata = {
             'generated_at': datetime.now().isoformat(),
             'total_cards': len(flashcards),
@@ -161,7 +257,8 @@ def process_course_flashcards(course: Dict[str, Any]) -> None:
             'course_id': course_id,
             'course_code': course.get('course_code', 'N/A'),
             'textbook_reference': textbook_reference,
-            'source': lecture_name
+            'source': lecture_name,
+            'chunks_processed': len(content_chunks), # NEW: Number of chunks processed
         }
         
         # Export as JSON
@@ -240,4 +337,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -1,0 +1,667 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-21T10:41:39.066339",
+    "total_cards": 6,
+    "course_name": "Management Information Systems",
+    "course_id": "MS5260",
+    "course_code": "MIS",
+    "textbook_reference": "Management Information Systems: Managing the Digital Firm by Laudon & Laudon; Information Systems Today: Managing in the Digital World, EIGHTH EDITION, Joseph Valacich • Christoph Schneider",
+    "source": "MIS_lec_4"
+  },
+  "flashcards": [
+    {
+      "type": "definition",
+      "question": "What is an Entity-Relationship (E-R) Diagram?",
+      "answers": {
+        "concise": "An Entity-Relationship (E-R) Diagram is a diagramming technique that visually represents entities, their attributes, and the relationships between those entities within a system or database.",
+        "analogy": "Think of an E-R diagram as a blueprint for a building. The entities are the rooms, the attributes are the features of each room (size, color, furniture), and the relationships are the doorways connecting the rooms.",
+        "eli5": "Imagine you're drawing a picture of your toys. An E-R diagram is like that picture, but instead of toys, you draw boxes for things like 'Cars' and 'Dolls,' write down what each thing has (like 'Car has color' or 'Doll has hair'), and draw lines to show how they are related (like 'Cars are driven by Dolls').",
+        "real_world_use_case": "A hospital uses an E-R diagram to design its patient database. Entities include 'Patient,' 'Doctor,' and 'Appointment.' Attributes for 'Patient' are name, ID, and birthdate. Relationships show which doctors have which appointments with which patients. This ensures efficient data management and retrieval for patient care.",
+        "common_mistakes": "A common mistake is confusing entities and attributes. An entity is a thing (e.g., 'Customer'), while an attribute is a property of that thing (e.g., 'Customer Name'). Another mistake is not clearly defining the relationships between entities, leading to ambiguous or incorrect database designs."
+      },
+      "context": "Database Design Fundamentals",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept for database design."
+      },
+      "example": "Consider designing a database for a university. Entities might include 'Student,' 'Course,' and 'Professor.' 'Student' has attributes like student ID, name, and major. 'Course' has attributes like course number, title, and credits. A relationship would link students to the courses they are enrolled in and professors to the courses they teach. The ER diagram would visually represent these entities, attributes, and relationships to define the database structure.",
+      "mermaid_code": "graph TD;\n    A[Student] --> B(Enrolls in);\n    C[Course] --> B;\n    D[Professor] --> E(Teaches);\n    C --> E;\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style C fill:#f9f,stroke:#333,stroke-width:2px\n    style D fill:#f9f,stroke:#333,stroke-width:2px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "In an E-R diagram, which shape represents an entity?",
+          "options": [
+            "A. Oval",
+            "B. Rectangle",
+            "C. Diamond",
+            "D. Circle"
+          ],
+          "answer": "B. Rectangle"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company wants to design a database to track employees and their skills. Each employee can have multiple skills, and each skill can be possessed by multiple employees.",
+          "question": "Which type of relationship BEST describes the relationship between 'Employee' and 'Skill'?",
+          "options": [
+            "A. One-to-One",
+            "B. One-to-Many",
+            "C. Many-to-One",
+            "D. Many-to-Many"
+          ],
+          "answer": "D. Many-to-Many"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps of database design in the correct order.",
+          "items": [
+            "Logical Design",
+            "Conceptual Design",
+            "Physical Design",
+            "Requirements Specification"
+          ],
+          "answer": [
+            "Requirements Specification",
+            "Conceptual Design",
+            "Logical Design",
+            "Physical Design"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following elements as either 'Entity' or 'Attribute' in the context of an E-R diagram.",
+          "items": [
+            "Customer",
+            "Order Date",
+            "Product",
+            "Product Price"
+          ],
+          "categories": [
+            "Entity",
+            "Attribute"
+          ],
+          "answer": {
+            "Entity": [
+              "Customer",
+              "Product"
+            ],
+            "Attribute": [
+              "Order Date",
+              "Product Price"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each E-R diagram element to its description.",
+          "premises": [
+            "1. Entity",
+            "2. Attribute",
+            "3. Relationship",
+            "4. Primary Key"
+          ],
+          "responses": [
+            "A. A characteristic or property of an entity.",
+            "B. A unique identifier for an entity.",
+            "C. A person, place, thing, event, or concept about which data is stored.",
+            "D. An association between entities."
+          ],
+          "answer": [
+            "1-C",
+            "2-A",
+            "3-D",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "ER Diagram",
+        "Database Design",
+        "Entities",
+        "Relationships"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "comparison",
+      "question": "What is the difference between Structured and Unstructured data?",
+      "answers": {
+        "concise": "Structured data is organized in a predefined format, typically with rows and columns, making it easily searchable and analyzable. Unstructured data lacks a predefined format, making it more challenging to process and analyze directly.",
+        "analogy": "Think of structured data as a neatly organized spreadsheet with clear headings and rows. Unstructured data is like a pile of documents, emails, and images scattered across a desk – finding specific information requires more effort.",
+        "eli5": "Structured data is like having toys in labeled boxes, so you know exactly where to find each toy. Unstructured data is like having all your toys in one big pile, so you have to dig around to find what you want.",
+        "real_world_use_case": "A retail company uses structured data to track sales transactions in a database, including product ID, customer ID, date, and price. They use unstructured data from customer reviews and social media posts to understand customer sentiment and preferences, requiring natural language processing techniques.",
+        "common_mistakes": "A common mistake is assuming that all data needs to be structured. While structured data is easier to manage, unstructured data contains valuable insights that can be extracted with the right tools. Another mistake is trying to force unstructured data into a structured format, which can lead to loss of information and inaccurate analysis."
+      },
+      "context": "Database Types",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Key concept for understanding database types and their applications."
+      },
+      "example": "Consider a bank. Structured data includes customer account information (account number, balance, transaction history) stored in a relational database. Unstructured data includes customer service call recordings and email communications. The bank uses structured data for core banking operations and analyzes unstructured data to improve customer service and detect fraud.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is an example of structured data?",
+          "options": [
+            "A. Customer reviews on a website",
+            "B. Images stored in a file system",
+            "C. Sales transactions in a database table",
+            "D. Social media posts"
+          ],
+          "answer": "C. Sales transactions in a database table"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A marketing team wants to analyze customer feedback from open-ended survey responses to improve their product. The responses are in text format.",
+          "question": "Which type of data is MOST suitable for these survey responses?",
+          "options": [
+            "A. Structured data",
+            "B. Unstructured data",
+            "C. Semi-structured data",
+            "D. Relational data"
+          ],
+          "answer": "B. Unstructured data"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the typical process of analyzing unstructured data.",
+          "items": [
+            "Data cleaning and preprocessing",
+            "Data collection",
+            "Insight extraction and reporting",
+            "Feature extraction and transformation"
+          ],
+          "answer": [
+            "Data collection",
+            "Data cleaning and preprocessing",
+            "Feature extraction and transformation",
+            "Insight extraction and reporting"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following data types as either 'Structured' or 'Unstructured'.",
+          "items": [
+            "Sensor data from IoT devices",
+            "Customer addresses in a CRM system",
+            "Video recordings of security cameras",
+            "Product catalog information in a database"
+          ],
+          "categories": [
+            "Structured",
+            "Unstructured"
+          ],
+          "answer": {
+            "Structured": [
+              "Customer addresses in a CRM system",
+              "Product catalog information in a database"
+            ],
+            "Unstructured": [
+              "Sensor data from IoT devices",
+              "Video recordings of security cameras"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each data type to its typical storage solution.",
+          "premises": [
+            "1. Structured Data",
+            "2. Unstructured Data"
+          ],
+          "responses": [
+            "A. Data Lake",
+            "B. Relational Database"
+          ],
+          "answer": [
+            "1-B",
+            "2-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Structured Data",
+        "Unstructured Data",
+        "Database Types"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "process",
+      "question": "What are the five steps involved in Database Planning?",
+      "answers": {
+        "concise": "Database planning involves five steps: Data Planning (modeling business processes), Requirements Specification (defining user information needs), Conceptual Design (creating a high-level model like an ER diagram), Logical Design (translating the conceptual model into a DBMS data model), and Physical Design (determining data storage structures and access methods).",
+        "analogy": "Think of database planning like building a house. Data planning is understanding what the house will be used for. Requirements specification is figuring out what rooms are needed. Conceptual design is drawing a blueprint. Logical design is selecting materials. Physical design is the actual construction.",
+        "eli5": "Imagine you want to organize your toys. First, you decide what games you play with them (data planning). Then, you ask your friends what toys they want to play with (requirements specification). Next, you draw a map of where each toy should go (conceptual design). After that, you decide what boxes to use (logical design). Finally, you put the toys in the boxes (physical design).",
+        "real_world_use_case": "A large e-commerce company follows these steps when designing a new product catalog database. They start by modeling their product management processes, then gather requirements from marketing and sales teams. They create an ER diagram to represent products, categories, and attributes. Next, they choose a relational database system like MySQL. Finally, they optimize storage and indexing for fast product searches.",
+        "common_mistakes": "A common mistake is skipping the early planning stages and jumping straight to physical design. This can lead to a database that doesn't meet user needs or support business processes effectively. Another mistake is not involving end-users in the requirements specification phase, resulting in a mismatch between the database and actual usage patterns."
+      },
+      "context": "Database Design Process",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Important supporting material for understanding the database design process."
+      },
+      "example": "Consider a library building a new database system. Data planning involves identifying the library's core processes (borrowing, returning, cataloging). Requirements specification gathers the needs of librarians and patrons. Conceptual design creates an ER diagram showing books, authors, members, and loans. Logical design selects a relational database and defines tables. Physical design optimizes storage and indexing for efficient book searches and loan management.",
+      "mermaid_code": "flowchart TD\n    A[Data Planning] --> B(Requirements Specification)\n    B --> C{Conceptual Design}\n    C --> D[Logical Design]\n    D --> E((Physical Design))\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style B fill:#f9f,stroke:#333,stroke-width:2px\n    style C fill:#f9f,stroke:#333,stroke-width:2px\n    style D fill:#f9f,stroke:#333,stroke-width:2px\n    style E fill:#f9f,stroke:#333,stroke-width:2px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which phase of database planning focuses on defining the information needs of end-users?",
+          "options": [
+            "A. Data Planning",
+            "B. Requirements Specification",
+            "C. Conceptual Design",
+            "D. Logical Design"
+          ],
+          "answer": "B. Requirements Specification"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A project team is designing a database for a new online store. They are currently creating a high-level model that represents the entities and relationships between products, customers, and orders.",
+          "question": "Which phase of database planning are they currently in?",
+          "options": [
+            "A. Data Planning",
+            "B. Requirements Specification",
+            "C. Conceptual Design",
+            "D. Physical Design"
+          ],
+          "answer": "C. Conceptual Design"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following phases of database planning in the correct order.",
+          "items": [
+            "Logical Design",
+            "Physical Design",
+            "Conceptual Design",
+            "Requirements Specification",
+            "Data Planning"
+          ],
+          "answer": [
+            "Data Planning",
+            "Requirements Specification",
+            "Conceptual Design",
+            "Logical Design",
+            "Physical Design"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following activities as belonging to either 'Conceptual Design' or 'Physical Design' phases.",
+          "items": [
+            "Creating an ER diagram",
+            "Selecting data storage structures",
+            "Defining relationships between entities",
+            "Choosing access methods"
+          ],
+          "categories": [
+            "Conceptual Design",
+            "Physical Design"
+          ],
+          "answer": {
+            "Conceptual Design": [
+              "Creating an ER diagram",
+              "Defining relationships between entities"
+            ],
+            "Physical Design": [
+              "Selecting data storage structures",
+              "Choosing access methods"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each database planning phase to its primary output.",
+          "premises": [
+            "1. Data Planning",
+            "2. Requirements Specification",
+            "3. Logical Design",
+            "4. Physical Design"
+          ],
+          "responses": [
+            "A. Description of user needs",
+            "B. Data storage structures and access methods",
+            "C. Business process model",
+            "D. DBMS data model"
+          ],
+          "answer": [
+            "1-C",
+            "2-A",
+            "3-D",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "Database Planning",
+        "Database Design",
+        "SDLC"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is a Primary Key in a relational database?",
+      "answers": {
+        "concise": "A primary key is an attribute or a set of attributes that uniquely identifies each record (row) in a table. It ensures that no two records are identical and serves as a reference point for relationships with other tables.",
+        "analogy": "Think of a primary key as your social security number. It's a unique identifier that distinguishes you from every other person, even if others share your name or birthdate.",
+        "eli5": "Imagine you have a box of toys, and each toy has a special sticker with a number on it. The number is like a primary key. No two toys have the same number, so you can always find the exact toy you want.",
+        "real_world_use_case": "In an e-commerce database, the 'Order ID' is the primary key for the 'Orders' table. Each order has a unique ID, allowing the system to retrieve specific order details, link it to the customer who placed the order, and track its shipping status.",
+        "common_mistakes": "A common mistake is choosing a non-unique attribute as the primary key. For example, using 'Name' as a primary key for a 'Customers' table is problematic because multiple customers can have the same name. Another mistake is not defining a primary key at all, which can lead to data integrity issues and difficulties in relating tables."
+      },
+      "context": "Relational Database Concepts",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core concept for relational database design and data integrity."
+      },
+      "example": "Consider a database for a library. The 'Book ID' would be the primary key for the 'Books' table. Each book has a unique ID, ensuring that the system can accurately track each book, its availability, and its borrowing history. Without a primary key, it would be difficult to distinguish between different copies of the same book or to manage loans effectively.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the primary purpose of a primary key in a database table?",
+          "options": [
+            "A. To encrypt the data in the table",
+            "B. To improve query performance",
+            "C. To uniquely identify each record in the table",
+            "D. To store related data from other tables"
+          ],
+          "answer": "C. To uniquely identify each record in the table"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database designer is creating a table to store information about employees in a company. Each employee has a unique employee ID, name, and email address.",
+          "question": "Which attribute is the BEST candidate for the primary key?",
+          "options": [
+            "A. Name",
+            "B. Email address",
+            "C. Employee ID",
+            "D. Department"
+          ],
+          "answer": "C. Employee ID"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the process of defining a primary key in a database table.",
+          "items": [
+            "Choose an attribute or set of attributes",
+            "Ensure the chosen attribute(s) are unique for each record",
+            "Declare the chosen attribute(s) as the primary key",
+            "Verify that the chosen attribute(s) are not null"
+          ],
+          "answer": [
+            "Choose an attribute or set of attributes",
+            "Ensure the chosen attribute(s) are unique for each record",
+            "Verify that the chosen attribute(s) are not null",
+            "Declare the chosen attribute(s) as the primary key"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following attributes as either 'Suitable for Primary Key' or 'Unsuitable for Primary Key'.",
+          "items": [
+            "Social Security Number",
+            "First Name",
+            "Email Address",
+            "Order Date"
+          ],
+          "categories": [
+            "Suitable for Primary Key",
+            "Unsuitable for Primary Key"
+          ],
+          "answer": {
+            "Suitable for Primary Key": [
+              "Social Security Number",
+              "Email Address"
+            ],
+            "Unsuitable for Primary Key": [
+              "First Name",
+              "Order Date"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term related to primary keys to its definition.",
+          "premises": [
+            "1. Primary Key",
+            "2. Composite Key",
+            "3. Foreign Key",
+            "4. Candidate Key"
+          ],
+          "responses": [
+            "A. An attribute or set of attributes that could potentially be a primary key.",
+            "B. An attribute that uniquely identifies each record in a table.",
+            "C. A primary key that consists of multiple attributes.",
+            "D. An attribute in one table that refers to the primary key of another table."
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-D",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Primary Key",
+        "Relational Database",
+        "Database Design"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is Cardinality in the context of Entity-Relationship (E-R) diagrams?",
+      "answers": {
+        "concise": "Cardinality in an E-R diagram represents the maximum number of instances of one entity that can be associated with instances of another entity in a relationship. It defines the constraints on the relationship between entities, such as one-to-one, one-to-many, or many-to-many.",
+        "analogy": "Think of cardinality as the rules for a dance. A one-to-one relationship is like a waltz where one dancer leads one partner. A one-to-many relationship is like a conductor leading many musicians. A many-to-many relationship is like a group of friends freely interacting with each other.",
+        "eli5": "Imagine you're playing with LEGOs. Cardinality is like saying how many LEGO bricks can connect to another LEGO brick. One-to-one means one brick connects to only one other. One-to-many means one brick can connect to many others. Many-to-many means many bricks can connect to many other bricks.",
+        "real_world_use_case": "In a university database, the relationship between 'Professor' and 'Course' has a one-to-many cardinality. One professor can teach many courses, but each course is typically taught by only one professor. This cardinality constraint ensures data integrity and accurate course assignments.",
+        "common_mistakes": "A common mistake is choosing the wrong cardinality for a relationship. For example, incorrectly defining the relationship between 'Order' and 'Product' as one-to-one when it should be many-to-many (since one order can contain multiple products, and one product can be in multiple orders). Another mistake is ignoring cardinality constraints, leading to inaccurate data representation and potential data integrity issues."
+      },
+      "context": "E-R Diagram Concepts",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Essential for understanding relationships between entities in database design."
+      },
+      "example": "Consider an online shopping platform. The relationship between 'Customer' and 'Order' is typically one-to-many. One customer can place multiple orders, but each order belongs to only one customer. This cardinality ensures that orders are correctly associated with the customers who placed them and allows for efficient order tracking and management.",
+      "mermaid_code": "graph LR\n    A[Customer] -- 1 -- B{Places}\n    B -- N -- C[Order]\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style C fill:#f9f,stroke:#333,stroke-width:2px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What does cardinality represent in an E-R diagram?",
+          "options": [
+            "A. The minimum number of entity instances in a relationship",
+            "B. The maximum number of entity instances in a relationship",
+            "C. The average number of entity instances in a relationship",
+            "D. The total number of entity instances in a relationship"
+          ],
+          "answer": "B. The maximum number of entity instances in a relationship"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database is being designed for a music streaming service. Each song can belong to multiple playlists, and each playlist can contain multiple songs.",
+          "question": "What type of cardinality BEST describes the relationship between 'Song' and 'Playlist'?",
+          "options": [
+            "A. One-to-One",
+            "B. One-to-Many",
+            "C. Many-to-One",
+            "D. Many-to-Many"
+          ],
+          "answer": "D. Many-to-Many"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following cardinalities in order of increasing complexity (from least to most complex).",
+          "items": [
+            "One-to-Many",
+            "Many-to-Many",
+            "One-to-One"
+          ],
+          "answer": [
+            "One-to-One",
+            "One-to-Many",
+            "Many-to-Many"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following relationships as either 'One-to-One', 'One-to-Many', or 'Many-to-Many'.",
+          "items": [
+            "Husband and Wife",
+            "Author and Book",
+            "Student and Course"
+          ],
+          "categories": [
+            "One-to-One",
+            "One-to-Many",
+            "Many-to-Many"
+          ],
+          "answer": {
+            "One-to-One": [
+              "Husband and Wife"
+            ],
+            "One-to-Many": [
+              "Author and Book"
+            ],
+            "Many-to-Many": [
+              "Student and Course"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each cardinality type with its description.",
+          "premises": [
+            "1. One-to-One",
+            "2. One-to-Many",
+            "3. Many-to-Many"
+          ],
+          "responses": [
+            "A. One instance of entity A can be related to many instances of entity B, but one instance of entity B can only be related to one instance of entity A.",
+            "B. One instance of entity A can be related to only one instance of entity B, and vice versa.",
+            "C. One instance of entity A can be related to many instances of entity B, and one instance of entity B can be related to many instances of entity A."
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Cardinality",
+        "ER Diagram",
+        "Database Design"
+      ],
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is Data Normalization and why is it important?",
+      "answers": {
+        "concise": "Data normalization is a process of organizing data in a database to reduce redundancy and improve data integrity. It involves dividing databases into tables and defining relationships between the tables. This minimizes data duplication and makes the database more efficient and consistent.",
+        "analogy": "Think of data normalization as organizing your closet. Instead of throwing everything in a pile, you sort clothes by type (shirts, pants, shoes) and store them in separate drawers or shelves. This makes it easier to find what you need and prevents you from having multiple copies of the same item.",
+        "eli5": "Imagine you're making a list of your friends and their toys. Instead of writing each friend's name and all their toys on one long list, you make a separate list for friends and another list for toys. Then, you write down which friend owns which toy. This is like data normalization – it keeps your lists organized and prevents you from repeating information.",
+        "real_world_use_case": "A hospital uses data normalization to manage patient records. They create separate tables for patients, doctors, appointments, and medications. Each table has a primary key, and foreign keys link related tables. This prevents data redundancy, ensures data consistency, and allows for efficient retrieval of patient information.",
+        "common_mistakes": "A common mistake is over-normalizing the database, which can lead to too many tables and complex relationships, making queries slower and more difficult to manage. Another mistake is under-normalizing the database, which can result in data redundancy, inconsistencies, and update anomalies."
+      },
+      "context": "Database Design Principles",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core concept for database design, ensuring data integrity and efficiency."
+      },
+      "example": "Consider an e-commerce company that initially stores customer orders in a single table, repeating customer address information for each order. When a customer updates their address, the database must update multiple rows, increasing the risk of inconsistencies. By normalizing the database into 'Customers' and 'Orders' tables linked by 'customer_id', the address is stored only once. Now, updating the address requires changing only one row, eliminating redundancy and ensuring data consistency.",
+      "mermaid_code": "graph TD\n    A[Unnormalized Table] --> B{Normalization Process}\n    B --> C[Normalized Tables]\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style C fill:#f9f,stroke:#333,stroke-width:2px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the primary goal of data normalization?",
+          "options": [
+            "A. To increase data redundancy",
+            "B. To improve query performance",
+            "C. To reduce data redundancy and improve data integrity",
+            "D. To encrypt the data in the database"
+          ],
+          "answer": "C. To reduce data redundancy and improve data integrity"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database designer notices that a table contains repeating groups of data, leading to data redundancy and update anomalies.",
+          "question": "Which process should the designer apply to address this issue?",
+          "options": [
+            "A. Data encryption",
+            "B. Data normalization",
+            "C. Data warehousing",
+            "D. Data mining"
+          ],
+          "answer": "B. Data normalization"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following normal forms in the order they are typically applied during data normalization.",
+          "items": [
+            "Third Normal Form (3NF)",
+            "Second Normal Form (2NF)",
+            "First Normal Form (1NF)"
+          ],
+          "answer": [
+            "First Normal Form (1NF)",
+            "Second Normal Form (2NF)",
+            "Third Normal Form (3NF)"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following database issues as either 'Addressed by Normalization' or 'Not Addressed by Normalization'.",
+          "items": [
+            "Data redundancy",
+            "Slow query performance due to indexing",
+            "Update anomalies",
+            "Data security vulnerabilities"
+          ],
+          "categories": [
+            "Addressed by Normalization",
+            "Not Addressed by Normalization"
+          ],
+          "answer": {
+            "Addressed by Normalization": [
+              "Data redundancy",
+              "Update anomalies"
+            ],
+            "Not Addressed by Normalization": [
+              "Slow query performance due to indexing",
+              "Data security vulnerabilities"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each normal form to its primary objective.",
+          "premises": [
+            "1. First Normal Form (1NF)",
+            "2. Second Normal Form (2NF)",
+            "3. Third Normal Form (3NF)"
+          ],
+          "responses": [
+            "A. Eliminate transitive dependencies",
+            "B. Eliminate repeating groups",
+            "C. Eliminate partial dependencies"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Data Normalization",
+        "Database Design",
+        "Normal Forms"
+      ],
+      "diagram_image_path": ""
+    }
+  ]
+}

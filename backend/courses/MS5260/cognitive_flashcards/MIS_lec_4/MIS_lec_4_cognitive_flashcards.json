@@ -1,0 +1,1213 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-21T13:20:03.989230",
+    "total_cards": 11,
+    "course_name": "Management Information Systems",
+    "course_id": "MS5260",
+    "course_code": "MIS",
+    "textbook_reference": "Management Information Systems: Managing the Digital Firm by Laudon & Laudon",
+    "source": "MIS_lec_4",
+    "chunks_processed": 3
+  },
+  "flashcards": [
+    {
+      "type": "definition",
+      "question": "What is an Entity-Relationship (E-R) Model?",
+      "answers": {
+        "concise": "An Entity-Relationship (E-R) Model is a diagramming technique used to visually represent entities, their attributes, and the relationships between those entities in a database system.",
+        "analogy": "Think of an E-R model like a blueprint for a building. The entities are the rooms (e.g., bedroom, kitchen), the attributes are the characteristics of each room (e.g., size, color), and the relationships are how the rooms connect to each other (e.g., 'is adjacent to').",
+        "eli5": "Imagine you're drawing a map of your toys. The E-R model is like that map. The toys are the 'entities,' their colors and sizes are their 'attributes,' and how they're grouped together is their 'relationship.'",
+        "real_world_use_case": "A hospital uses an E-R model to design its patient database. 'Patient' is an entity with attributes like 'Patient ID,' 'Name,' and 'Date of Birth.' 'Doctor' is another entity. The relationship 'Treats' connects patients to doctors, defining who is responsible for which patient.",
+        "common_mistakes": "A common mistake is to confuse entities with attributes. For example, 'Color' should be an attribute of an entity like 'Car', not an entity itself. Another mistake is creating overly complex diagrams without a clear understanding of the business requirements."
+      },
+      "context": "Database Design Fundamentals",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept for database design"
+      },
+      "example": "Consider designing a database for a university. 'Student' and 'Course' are entities. The 'Student' entity has attributes like 'StudentID', 'Name', and 'Major'. The 'Course' entity has attributes like 'CourseID', 'CourseName', and 'Credits'. The relationship 'Enrolls in' connects students and courses, indicating which students are taking which courses. This E-R model helps visualize the database structure before implementation.",
+      "mermaid_code": "erDiagram\n    STUDENT ||--o{ ENROLLS_IN : Enrolls in\n    COURSE ||--o{ ENROLLS_IN : Is taken by\n    STUDENT { \n        int StudentID PK\n        varchar Name\n        varchar Major\n    }\n    COURSE { \n        int CourseID PK\n        varchar CourseName\n        int Credits\n    }",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "In an E-R diagram, what shape is used to represent an entity?",
+          "options": [
+            "A. Rectangle",
+            "B. Oval",
+            "C. Diamond",
+            "D. Circle"
+          ],
+          "answer": "A. Rectangle"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company is designing a database to track employees and departments. Each employee belongs to one department. Which relationship type is most appropriate?",
+          "question": "Which cardinality best represents the relationship between 'Employee' and 'Department'?",
+          "options": [
+            "A. One-to-One",
+            "B. One-to-Many",
+            "C. Many-to-One",
+            "D. Many-to-Many"
+          ],
+          "answer": "C. Many-to-One"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in logical database design in the correct order:",
+          "items": [
+            "Logical Design",
+            "Conceptual Design",
+            "Physical Design",
+            "Requirements Specification",
+            "Data Planning"
+          ],
+          "answer": [
+            "Data Planning",
+            "Requirements Specification",
+            "Conceptual Design",
+            "Logical Design",
+            "Physical Design"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following database elements as either 'Entity' or 'Attribute':",
+          "items": [
+            "CustomerID",
+            "Order",
+            "ProductName",
+            "Customer",
+            "Price"
+          ],
+          "categories": [
+            "Entity",
+            "Attribute"
+          ],
+          "answer": {
+            "Entity": [
+              "Order",
+              "Customer"
+            ],
+            "Attribute": [
+              "CustomerID",
+              "ProductName",
+              "Price"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the E-R model component with its description:",
+          "premises": [
+            "1. Entity",
+            "2. Attribute",
+            "3. Relationship"
+          ],
+          "responses": [
+            "A. A characteristic of an entity",
+            "B. An object or concept about which you want to store information",
+            "C. An association between entities"
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "ER Diagram",
+        "Database Design",
+        "Data Modeling"
+      ],
+      "source_chunk": "MIS_lec_4_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is a primary key in a relational database?",
+      "answers": {
+        "concise": "A primary key is an attribute or a set of attributes that uniquely identifies each record in a database table. It ensures that each row is distinct and serves as a reference point for relationships with other tables.",
+        "analogy": "Think of a primary key like a social security number. Each person in the United States has a unique SSN, which distinguishes them from everyone else. Similarly, each row in a database table has a unique primary key.",
+        "eli5": "Imagine you have a box of toys, and each toy has a special sticker with a unique number on it. That sticker number is like a primary key – it helps you quickly find and identify each toy without getting mixed up.",
+        "real_world_use_case": "In an e-commerce database, the 'OrderID' is typically the primary key for the 'Orders' table. Each order has a unique OrderID, allowing the system to easily retrieve and manage specific order information, link it to customer details, and track its status.",
+        "common_mistakes": "A common mistake is choosing a non-unique attribute as the primary key, such as a customer's name. Another mistake is not defining a primary key at all, which can lead to data integrity issues and difficulties in relating tables."
+      },
+      "context": "Database Design",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Fundamental concept in relational database design"
+      },
+      "example": "Consider a 'Customers' table in a database. The 'CustomerID' is the primary key. Each customer is assigned a unique CustomerID (e.g., 1001, 1002, 1003). This ensures that each customer record is distinct and can be easily referenced in other tables, such as 'Orders' table, through a foreign key relationship.",
+      "mermaid_code": "erDiagram\n    CUSTOMER ||--o{ ORDER : Places\n    CUSTOMER { \n        int CustomerID PK\n        varchar Name\n    }\n    ORDER { \n        int OrderID PK\n        int CustomerID FK\n        date OrderDate\n    }",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is a KEY characteristic of a primary key?",
+          "options": [
+            "A. It can contain duplicate values.",
+            "B. It uniquely identifies each record in a table.",
+            "C. It can be null (empty).",
+            "D. It is not required for every table."
+          ],
+          "answer": "B. It uniquely identifies each record in a table."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database table storing product information has columns for 'ProductName', 'Description', and 'Price'. Which column is the BEST candidate for a primary key?",
+          "question": "Given the following columns, which makes the best primary key?",
+          "options": [
+            "A. ProductName",
+            "B. Description",
+            "C. Price",
+            "D. A new column 'ProductID' with unique values"
+          ],
+          "answer": "D. A new column 'ProductID' with unique values"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in identifying a primary key in the correct order:",
+          "items": [
+            "Evaluate candidate keys for uniqueness and suitability.",
+            "Define the primary key in the database schema.",
+            "Identify candidate keys (potential primary keys).",
+            "Ensure the chosen primary key meets all requirements (uniqueness, non-null)."
+          ],
+          "answer": [
+            "Identify candidate keys (potential primary keys).",
+            "Evaluate candidate keys for uniqueness and suitability.",
+            "Ensure the chosen primary key meets all requirements (uniqueness, non-null).",
+            "Define the primary key in the database schema."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following attributes as either 'Suitable for Primary Key' or 'Unsuitable for Primary Key':",
+          "items": [
+            "Email Address (unique)",
+            "Order Date",
+            "Social Security Number",
+            "Product Name",
+            "Auto-incrementing ID"
+          ],
+          "categories": [
+            "Suitable for Primary Key",
+            "Unsuitable for Primary Key"
+          ],
+          "answer": {
+            "Suitable for Primary Key": [
+              "Email Address (unique)",
+              "Social Security Number",
+              "Auto-incrementing ID"
+            ],
+            "Unsuitable for Primary Key": [
+              "Order Date",
+              "Product Name"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the term with its description:",
+          "premises": [
+            "1. Primary Key",
+            "2. Candidate Key",
+            "3. Foreign Key"
+          ],
+          "responses": [
+            "A. A field in one table that refers to the primary key in another table",
+            "B. An attribute that uniquely identifies each record in a table",
+            "C. A field that could potentially be chosen as the primary key"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Primary Key",
+        "Database",
+        "Relational Database"
+      ],
+      "source_chunk": "MIS_lec_4_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is cardinality in the context of E-R diagrams?",
+      "answers": {
+        "concise": "Cardinality represents the maximum number of instances of one entity that can be associated with instances of another entity in a relationship. It defines the numerical constraints of the relationship (one-to-one, one-to-many, many-to-many).",
+        "analogy": "Think of cardinality like the seating capacity of a bus. A one-to-one relationship is like a bus with only one seat. A one-to-many relationship is like a bus with many seats for passengers but only one driver. A many-to-many relationship is like multiple buses with multiple drivers and passengers.",
+        "eli5": "Imagine you're matching kids to toys. Cardinality tells you how many toys each kid can have and how many kids can play with each toy. One-to-one means each kid gets one toy. One-to-many means one kid gets many toys. Many-to-many means many kids can share many toys.",
+        "real_world_use_case": "In a library database, the relationship between 'Author' and 'Book' has a cardinality of one-to-many. One author can write many books, but each book is typically written by only one primary author. This cardinality constraint ensures data integrity.",
+        "common_mistakes": "A common mistake is choosing the wrong cardinality, leading to incorrect data representation. For example, assuming a one-to-one relationship when a one-to-many relationship is more appropriate. Another mistake is not considering the business rules and constraints when determining cardinality."
+      },
+      "context": "E-R Diagrams",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Important concept for understanding relationships between entities"
+      },
+      "example": "Consider a 'Department' and 'Employee' relationship in a company. If one department can have many employees, and each employee belongs to only one department, the cardinality is one-to-many (1:M). The 'Department' is the 'one' side, and the 'Employee' is the 'many' side. This means each employee record will have a foreign key referencing the department they belong to.",
+      "mermaid_code": "erDiagram\n    DEPARTMENT ||--o{ EMPLOYEE : Has",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What does cardinality represent in an E-R diagram?",
+          "options": [
+            "A. The minimum number of entities involved in a relationship",
+            "B. The maximum number of entities involved in a relationship",
+            "C. The average number of entities involved in a relationship",
+            "D. The type of data stored in an entity"
+          ],
+          "answer": "B. The maximum number of entities involved in a relationship"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "In a university database, a student can enroll in multiple courses, and each course can have multiple students. What type of relationship exists between 'Student' and 'Course'?",
+          "question": "Which of the following cardinalities is most appropriate?",
+          "options": [
+            "A. One-to-One",
+            "B. One-to-Many",
+            "C. Many-to-One",
+            "D. Many-to-Many"
+          ],
+          "answer": "D. Many-to-Many"
+        },
+        {
+          "type": "sequencing",
+          "question": "Order the cardinalities from least complex to most complex:",
+          "items": [
+            "Many-to-Many",
+            "One-to-Many",
+            "One-to-One"
+          ],
+          "answer": [
+            "One-to-One",
+            "One-to-Many",
+            "Many-to-Many"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following relationships as either 'One-to-One', 'One-to-Many', or 'Many-to-Many':",
+          "items": [
+            "A country has one president.",
+            "A customer can place multiple orders.",
+            "A student can enroll in multiple courses, and a course can have multiple students."
+          ],
+          "categories": [
+            "One-to-One",
+            "One-to-Many",
+            "Many-to-Many"
+          ],
+          "answer": {
+            "One-to-One": [
+              "A country has one president."
+            ],
+            "One-to-Many": [
+              "A customer can place multiple orders."
+            ],
+            "Many-to-Many": [
+              "A student can enroll in multiple courses, and a course can have multiple students."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the cardinality type with its description:",
+          "premises": [
+            "1. One-to-One (1:1)",
+            "2. One-to-Many (1:M)",
+            "3. Many-to-Many (M:M)"
+          ],
+          "responses": [
+            "A. One instance of entity A can be related to many instances of entity B, but one instance of entity B can be related to only one instance of entity A.",
+            "B. One instance of entity A can be related to only one instance of entity B, and vice versa.",
+            "C. Many instances of entity A can be related to many instances of entity B, and vice versa."
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Cardinality",
+        "E-R Diagram",
+        "Database Relationships"
+      ],
+      "source_chunk": "MIS_lec_4_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is modality in the context of E-R diagrams?",
+      "answers": {
+        "concise": "Modality represents the minimum number of instances of one entity that must be associated with an instance of another entity in a relationship. It defines whether the participation of an entity in a relationship is mandatory or optional.",
+        "analogy": "Think of modality as the 'must-have' requirement in a relationship. If a student *must* have a major, the modality is mandatory. If a student *can* have a minor, but it's not required, the modality is optional.",
+        "eli5": "Imagine you're building a Lego set. Modality tells you if you *have* to use a certain block or if you *can* choose not to. If the instructions say you *must* use a red block, that's mandatory modality. If you *can* use a blue block instead, that's optional modality.",
+        "real_world_use_case": "In a hospital database, the relationship between 'Patient' and 'Appointment' has a modality constraint. A patient must have at least one appointment (mandatory), while an appointment may or may not be associated with a specific doctor (optional, if it's a general check-in).",
+        "common_mistakes": "A common mistake is confusing modality with cardinality. Cardinality is the *maximum* participation, while modality is the *minimum* participation. Another mistake is not properly defining modality, leading to incorrect data constraints and potential data integrity issues."
+      },
+      "context": "E-R Diagrams",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Important for fully specifying relationships, but less emphasized than cardinality"
+      },
+      "example": "Consider the relationship between 'Order' and 'OrderItem' in an e-commerce database. An order *must* have at least one order item (mandatory modality) because an order without any items is meaningless. However, an 'OrderItem' may or may not be associated with a promotion (optional modality).",
+      "mermaid_code": "erDiagram\n    ORDER ||--|{ ORDER_ITEM : Contains",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What does modality represent in an E-R diagram?",
+          "options": [
+            "A. The maximum number of entities involved in a relationship",
+            "B. The minimum number of entities involved in a relationship",
+            "C. The average number of entities involved in a relationship",
+            "D. The type of data stored in an entity"
+          ],
+          "answer": "B. The minimum number of entities involved in a relationship"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "In a company database, every employee *must* belong to a department. Which modality best represents this?",
+          "question": "What is the modality of the relationship between 'Employee' and 'Department'?",
+          "options": [
+            "A. Mandatory",
+            "B. Optional",
+            "C. Cardinal",
+            "D. Null"
+          ],
+          "answer": "A. Mandatory"
+        },
+        {
+          "type": "sequencing",
+          "question": "Order the steps for determining modality in a relationship:",
+          "items": [
+            "Determine if the participation is mandatory or optional.",
+            "Consider the business rules governing the relationship.",
+            "Document the modality in the E-R diagram."
+          ],
+          "answer": [
+            "Consider the business rules governing the relationship.",
+            "Determine if the participation is mandatory or optional.",
+            "Document the modality in the E-R diagram."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following relationships as either 'Mandatory' or 'Optional' modality:",
+          "items": [
+            "A book must have a title.",
+            "A customer can have a shipping address.",
+            "An employee must have a job title."
+          ],
+          "categories": [
+            "Mandatory",
+            "Optional"
+          ],
+          "answer": {
+            "Mandatory": [
+              "A book must have a title.",
+              "An employee must have a job title."
+            ],
+            "Optional": [
+              "A customer can have a shipping address."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the modality with its implication:",
+          "premises": [
+            "1. Mandatory Modality",
+            "2. Optional Modality"
+          ],
+          "responses": [
+            "A. An entity instance must participate in the relationship.",
+            "B. An entity instance may or may not participate in the relationship."
+          ],
+          "answer": [
+            "1-A",
+            "2-B"
+          ]
+        }
+      ],
+      "tags": [
+        "Modality",
+        "E-R Diagram",
+        "Database Relationships"
+      ],
+      "source_chunk": "MIS_lec_4_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is a binary relationship in an E-R diagram?",
+      "answers": {
+        "concise": "A binary relationship is a relationship between two entities in an E-R diagram. It represents how instances of two different entity types are associated with each other.",
+        "analogy": "Think of a binary relationship like a marriage. It's a connection between two people (entities).",
+        "eli5": "Imagine you have two groups of toys, like cars and dolls. A binary relationship is like drawing a line between a car and a doll to show they're playing together.",
+        "real_world_use_case": "In a university database, the relationship between 'Student' and 'Course' is a binary relationship. It shows how students are related to the courses they enroll in.",
+        "common_mistakes": "A common mistake is confusing binary relationships with unary or ternary relationships. Binary relationships involve only two entities, while unary relationships involve one entity related to itself, and ternary relationships involve three entities."
+      },
+      "context": "E-R Diagrams",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Core concept in E-R diagram modeling"
+      },
+      "example": "In a library database, the 'Borrows' relationship between 'Member' and 'Book' is a binary relationship. It connects members to the books they have borrowed, with attributes like 'BorrowDate' and 'ReturnDate'.",
+      "mermaid_code": "erDiagram\n    MEMBER ||--o{ BOOK : Borrows",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "How many entities are involved in a binary relationship?",
+          "options": [
+            "A. One",
+            "B. Two",
+            "C. Three",
+            "D. Any number"
+          ],
+          "answer": "B. Two"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database tracks authors and books. Each author can write multiple books. What kind of relationship is this?",
+          "question": "What type of relationship is 'Writes' between Authors and Books?",
+          "options": [
+            "A. Unary",
+            "B. Binary",
+            "C. Ternary",
+            "D. Quaternary"
+          ],
+          "answer": "B. Binary"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the steps of defining a binary relationship in the correct order:",
+          "items": [
+            "Define the cardinality constraints.",
+            "Identify the two entities involved.",
+            "Name the relationship.",
+            "Determine the modality constraints."
+          ],
+          "answer": [
+            "Identify the two entities involved.",
+            "Name the relationship.",
+            "Define the cardinality constraints.",
+            "Determine the modality constraints."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following relationships as either 'Binary' or 'Not Binary':",
+          "items": [
+            "Employee manages a department.",
+            "Employee is related to themselves (e.g. manages other employees).",
+            "Customer places an order.",
+            "Supplier supplies parts to a project."
+          ],
+          "categories": [
+            "Binary",
+            "Not Binary"
+          ],
+          "answer": {
+            "Binary": [
+              "Employee manages a department.",
+              "Customer places an order."
+            ],
+            "Not Binary": [
+              "Employee is related to themselves (e.g. manages other employees).",
+              "Supplier supplies parts to a project."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the relationship type with its description:",
+          "premises": [
+            "1. Binary Relationship",
+            "2. Unary Relationship",
+            "3. Ternary Relationship"
+          ],
+          "responses": [
+            "A. Relationship between three entities",
+            "B. Relationship between one entity and itself",
+            "C. Relationship between two entities"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Binary Relationship",
+        "E-R Diagram",
+        "Database Relationships"
+      ],
+      "source_chunk": "MIS_lec_4_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "Explain the difference between structured and unstructured data in the context of databases.",
+      "answers": {
+        "concise": "Structured data has a predefined format, making it easily searchable and organizable within a database. Unstructured data lacks a predefined format, making it more challenging to store and analyze.",
+        "analogy": "Think of structured data as neatly organized files in a filing cabinet, where you know exactly where to find each document. Unstructured data is like a pile of papers on your desk, where finding something specific can be time-consuming.",
+        "eli5": "Imagine you have a box of toys. If you sort them by color and size, that's structured data. If you just dump them all in the box without any order, that's unstructured data.",
+        "real_world_use_case": "Customer data in a CRM system, such as names, addresses, and phone numbers, is structured data stored in relational databases. Social media posts, videos, and images are unstructured data that require different storage and analysis techniques, often using NoSQL databases or data lakes.",
+        "common_mistakes": "A common mistake is assuming that all data must be structured to be useful. Unstructured data can provide valuable insights when analyzed with appropriate tools and techniques. Another mistake is trying to force unstructured data into a structured format, which can lead to data loss or inaccurate representation."
+      },
+      "context": "Database Fundamentals",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Key distinction for understanding database types"
+      },
+      "example": "Consider a hospital. Patient records containing demographic information (name, age, address) and lab results (blood pressure, cholesterol levels) and structured data stored in a relational database. Doctors' notes, medical images (X-rays, MRIs), and audio recordings of consultations are unstructured data, often stored in a document database or object storage.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which characteristic BEST describes structured data?",
+          "options": [
+            "A. Lacks a predefined format",
+            "B. Easily searchable and organizable",
+            "C. Typically stored in NoSQL databases",
+            "D. Includes images and videos"
+          ],
+          "answer": "B. Easily searchable and organizable"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company needs to store customer feedback collected from online surveys. The feedback consists of open-ended text responses. Which type of data is this?",
+          "question": "What type of data is the customer feedback?",
+          "options": [
+            "A. Structured",
+            "B. Unstructured",
+            "C. Semi-structured",
+            "D. Relational"
+          ],
+          "answer": "B. Unstructured"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the steps of processing structured data in the correct order:",
+          "items": [
+            "Analyze the data using SQL queries.",
+            "Define a database schema.",
+            "Store the data in a relational database.",
+            "Extract data from a source."
+          ],
+          "answer": [
+            "Define a database schema.",
+            "Extract data from a source.",
+            "Store the data in a relational database.",
+            "Analyze the data using SQL queries."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following data types as either 'Structured' or 'Unstructured':",
+          "items": [
+            "Excel Spreadsheet",
+            "Medical Images (X-Rays)",
+            "Customer Address",
+            "Social Media Posts",
+            "Database Table"
+          ],
+          "categories": [
+            "Structured",
+            "Unstructured"
+          ],
+          "answer": {
+            "Structured": [
+              "Excel Spreadsheet",
+              "Customer Address",
+              "Database Table"
+            ],
+            "Unstructured": [
+              "Medical Images (X-Rays)",
+              "Social Media Posts"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the data type with its typical storage method:",
+          "premises": [
+            "1. Structured Data",
+            "2. Unstructured Data"
+          ],
+          "responses": [
+            "A. NoSQL Databases or Data Lakes",
+            "B. Relational Databases"
+          ],
+          "answer": [
+            "1-B",
+            "2-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Structured Data",
+        "Unstructured Data",
+        "Database Types"
+      ],
+      "source_chunk": "MIS_lec_4_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "What does full E-R notation represent, and how does it depict mandatory versus optional participation?",
+      "answers": {
+        "concise": "Full E-R notation represents both the cardinality (maximum number of instances) and modality (minimum number of instances) of a relationship between entities. Modality indicates whether participation is mandatory (at least one instance required) or optional (zero instances allowed).",
+        "analogy": "Think of cardinality and modality like booking a hotel room. Cardinality is like the maximum number of people allowed in the room, while modality is like whether you *have* to book the room for at least one night (mandatory) or if you *can* choose not to book at all (optional).",
+        "eli5": "Imagine you're inviting friends to a party. Cardinality is the most friends you *can* invite. Modality is whether you *have* to invite at least one friend (mandatory) or if it's okay to have the party all by yourself (optional).",
+        "real_world_use_case": "In a university database, the relationship between 'Student' and 'Course' has both cardinality and modality. A student can enroll in many courses (cardinality), and a student might be required to enroll in at least one course to remain active (mandatory modality) or can choose to take no courses in a semester (optional modality). The registrar needs to know both constraints to manage enrollment.",
+        "common_mistakes": "A common mistake is confusing cardinality and modality. Cardinality describes the *maximum* instances, while modality describes the *minimum* instances. Another error is assuming that all relationships are mandatory; many relationships are optional, reflecting real-world flexibility."
+      },
+      "context": "Entity-Relationship Modeling",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Fundamental concept for understanding database relationships and constraints."
+      },
+      "example": "Consider a database modeling the relationship between 'Orders' and 'Customers' in an e-commerce system. The cardinality might be 'one-to-many,' indicating one customer can place multiple orders. If every order *must* be associated with a customer, the modality is mandatory (each order requires a customer). However, if a customer can exist in the system without placing any orders (e.g., just signed up for marketing emails), the modality is optional.",
+      "mermaid_code": "erDiagram\n    CUSTOMER o|--o{ ORDER : Places\n    CUSTOMER { \n        int CustomerID PK\n    }\n    ORDER { \n        int OrderID PK\n        int CustomerID FK\n    }",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "In E-R notation, what does modality primarily represent?",
+          "options": [
+            "A. The maximum number of instances in a relationship",
+            "B. The minimum number of instances required in a relationship",
+            "C. The average number of instances in a relationship",
+            "D. The data type of the relationship attribute"
+          ],
+          "answer": "B. The minimum number of instances required in a relationship"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database is being designed for a library. A book can be borrowed by many patrons, and a patron can borrow many books. However, a book might not be borrowed at all. A patron must be registered to exist in the system.",
+          "question": "What is the correct modality for the 'Book' side of the 'borrows' relationship?",
+          "options": [
+            "A. Mandatory",
+            "B. Optional",
+            "C. One-to-one",
+            "D. One-to-many"
+          ],
+          "answer": "B. Optional"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order to determine the full E-R notation for a relationship:",
+          "items": [
+            "Determine the modality (minimum instances required).",
+            "Identify the entities involved in the relationship.",
+            "Determine the cardinality (maximum instances allowed).",
+            "Define the relationship between the entities."
+          ],
+          "answer": [
+            "Identify the entities involved in the relationship.",
+            "Define the relationship between the entities.",
+            "Determine the cardinality (maximum instances allowed).",
+            "Determine the modality (minimum instances required)."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following participation constraints as either 'Mandatory' or 'Optional':",
+          "items": [
+            "An employee must belong to a department.",
+            "A customer may or may not place an order.",
+            "A product must have a category.",
+            "An author may or may not write a book."
+          ],
+          "categories": [
+            "Mandatory",
+            "Optional"
+          ],
+          "answer": {
+            "Mandatory": [
+              "An employee must belong to a department.",
+              "A product must have a category."
+            ],
+            "Optional": [
+              "A customer may or may not place an order.",
+              "An author may or may not write a book."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the E-R notation symbol to its meaning:",
+          "premises": [
+            "1. 1..1",
+            "2. 0..1",
+            "3. 1..*",
+            "4. 0..*"
+          ],
+          "responses": [
+            "A. Optional, Many",
+            "B. Mandatory, Exactly One",
+            "C. Optional, One",
+            "D. Mandatory, Many"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-D",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "E-R Diagram",
+        "Cardinality",
+        "Modality",
+        "Database Design"
+      ],
+      "source_chunk": "MIS_lec_4_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "definition",
+      "question": "What is intersection data, and when is it typically used in database design?",
+      "answers": {
+        "concise": "Intersection data describes attributes that are specific to the relationship between two entities, particularly in many-to-many relationships. It represents data that doesn't belong solely to either entity but rather characterizes the interaction between them.",
+        "analogy": "Think of intersection data like the meeting point of two roads. The roads themselves are the entities, but the intersection has its own properties, like traffic lights and crosswalks, which describe the interaction between the roads.",
+        "eli5": "Imagine two kids, Alice and Bob, sharing toys. Intersection data is like how many toys Alice shares with Bob – it's not just about Alice's toys or Bob's toys, but about their sharing.",
+        "real_world_use_case": "In an e-commerce system, consider the relationship between 'Customers' and 'Products.'  Intersection data could be the 'Quantity' of a specific product purchased by a customer in a particular order, the 'Discount' applied to that product for that customer, or the 'Date' of the purchase.  These details describe the specific transaction between the customer and the product, not just properties of the customer or the product alone.",
+        "common_mistakes": "A common mistake is confusing intersection data with attributes of the entities themselves. Intersection data describes the *relationship* between entities, while entity attributes describe the *entities* themselves. Another mistake is overlooking the need for intersection data in many-to-many relationships, leading to incomplete or inaccurate data modeling."
+      },
+      "context": "Entity-Relationship Modeling",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important concept for accurately representing many-to-many relationships."
+      },
+      "example": "Consider a university database tracking student enrollment in courses. The 'Enrollment' relationship between 'Students' and 'Courses' might have intersection data such as 'Grade' and 'Enrollment Date.' The grade isn't a property of the student (it's specific to the course) nor a property of the course (it's specific to the student), but rather describes the student's performance *in that specific course.* The enrollment date captures the timing of the relationship.",
+      "mermaid_code": "erDiagram\n    STUDENT }|--|{ COURSE : Takes\n    STUDENT ||--o{ ENROLLMENT : Has\n    COURSE ||--o{ ENROLLMENT : Is in\n    ENROLLMENT { \n        int StudentID FK\n        int CourseID FK\n        int Grade\n        date EnrollmentDate\n    }",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Intersection data is MOST commonly used in which type of relationship?",
+          "options": [
+            "A. One-to-one",
+            "B. One-to-many",
+            "C. Many-to-many",
+            "D. One-to-zero"
+          ],
+          "answer": "C. Many-to-many"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database is being designed to track patients and doctors. A patient can see many doctors, and a doctor can see many patients. What type of data might be considered intersection data in the relationship between patients and doctors?",
+          "options": [
+            "A. Patient's name",
+            "B. Doctor's specialty",
+            "C. Date of appointment",
+            "D. Patient's address"
+          ],
+          "answer": "C. Date of appointment"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order when identifying intersection data:",
+          "items": [
+            "Determine if the relationship is many-to-many.",
+            "Identify the entities involved in the relationship.",
+            "Determine if there are attributes that describe the relationship itself.",
+            "Define the relationship between the entities."
+          ],
+          "answer": [
+            "Identify the entities involved in the relationship.",
+            "Define the relationship between the entities.",
+            "Determine if the relationship is many-to-many.",
+            "Determine if there are attributes that describe the relationship itself."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following attributes as either 'Entity Attribute' or 'Intersection Data' in a database for a store that sells books:",
+          "items": [
+            "Book Title",
+            "Customer Address",
+            "Purchase Date",
+            "Quantity Purchased",
+            "Book Author"
+          ],
+          "categories": [
+            "Entity Attribute",
+            "Intersection Data"
+          ],
+          "answer": {
+            "Entity Attribute": [
+              "Book Title",
+              "Customer Address",
+              "Book Author"
+            ],
+            "Intersection Data": [
+              "Purchase Date",
+              "Quantity Purchased"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the example to the type of data:",
+          "premises": [
+            "1. Customer's name",
+            "2. Product's price",
+            "3. Quantity purchased",
+            "4. Order date"
+          ],
+          "responses": [
+            "A. Attribute of Customer",
+            "B. Attribute of Product",
+            "C. Intersection Data (Order-Customer)",
+            "D. Intersection Data (Order-Product)"
+          ],
+          "answer": [
+            "1-A",
+            "2-B",
+            "3-D",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "Intersection Data",
+        "Many-to-Many",
+        "Database Design",
+        "E-R Diagram"
+      ],
+      "source_chunk": "MIS_lec_4_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "How is a many-to-many binary relationship converted into relational tables, and what role does the associative entity play in this conversion?",
+      "answers": {
+        "concise": "A many-to-many (M:M) binary relationship is converted into three relational tables: one for each of the original entities and a third table representing the relationship itself, called an associative entity or intersection table. The associative entity's primary key is a composite key consisting of the primary keys of the two original entities.",
+        "analogy": "Think of two social groups, 'Book Club' and 'Hiking Club,' with members who can belong to both. The M:M relationship is 'Membership.' To represent this in a database, you'd have tables for 'Book Club,' 'Hiking Club,' and a third table 'Membership' linking members to the clubs they belong to.",
+        "eli5": "Imagine kids trading stickers. Some kids have many stickers, and some stickers are traded by many kids. You need three lists: one for the kids, one for the stickers, and one to show who traded which stickers with whom.",
+        "real_world_use_case": "Consider an online course platform like Coursera, which has a many-to-many relationship between 'Students' and 'Courses.'  A student can enroll in multiple courses, and a course can have multiple students. To represent this in a relational database, Coursera would have a 'Students' table, a 'Courses' table, and an 'Enrollments' table. The 'Enrollments' table would contain foreign keys referencing both 'Students' and 'Courses,' along with attributes specific to the enrollment, like 'Enrollment Date' and 'Grade'.",
+        "common_mistakes": "A common mistake is trying to represent a many-to-many relationship with just two tables, leading to data redundancy and update anomalies. Another error is forgetting to include the primary keys of both original entities in the associative entity's composite key, preventing proper linking of the tables."
+      },
+      "context": "Entity-Relationship Modeling",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core concept for relational database design, essential for handling complex relationships."
+      },
+      "example": "Consider a library database with 'Authors' and 'Books.' An author can write multiple books, and a book can be written by multiple authors (e.g., collaborations). The many-to-many relationship 'Writes' is resolved by creating an 'Authorships' associative entity. This table contains AuthorID (FK), BookID (FK), and possibly additional data like 'Contribution Percentage' if some authors contributed more than others. Now, we have 3 tables: Authors, Books, and Authorships.",
+      "mermaid_code": "erDiagram\n    SALESPERSON }o--o{ PRODUCT : Sold\n    SALESPERSON ||--o{ SALE : Has\n    PRODUCT ||--o{ SALE : Contains\n    SALE { \n        int SalespersonID FK\n        int ProductID FK\n        int Quantity\n        date SaleDate\n    }",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "When converting a many-to-many relationship into relational tables, how many tables are typically created?",
+          "options": [
+            "A. One",
+            "B. Two",
+            "C. Three",
+            "D. Four"
+          ],
+          "answer": "C. Three"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database is being designed for a music streaming service. A song can be on many playlists, and a playlist can contain many songs. What is the purpose of the associative entity in this scenario?",
+          "options": [
+            "A. To store information about the songs",
+            "B. To store information about the playlists",
+            "C. To link songs and playlists together",
+            "D. To store user listening history"
+          ],
+          "answer": "C. To link songs and playlists together"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order when converting a many-to-many relationship to relational tables:",
+          "items": [
+            "Create an associative entity (intersection table).",
+            "Create a table for the first entity.",
+            "Define the primary key of the associative entity as a composite key.",
+            "Create a table for the second entity."
+          ],
+          "answer": [
+            "Create a table for the first entity.",
+            "Create a table for the second entity.",
+            "Create an associative entity (intersection table).",
+            "Define the primary key of the associative entity as a composite key."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following table types as either 'Entity Table' or 'Associative Entity Table' when converting a many-to-many relationship:",
+          "items": [
+            "Students",
+            "Courses",
+            "Enrollments",
+            "Professors"
+          ],
+          "categories": [
+            "Entity Table",
+            "Associative Entity Table"
+          ],
+          "answer": {
+            "Entity Table": [
+              "Students",
+              "Courses",
+              "Professors"
+            ],
+            "Associative Entity Table": [
+              "Enrollments"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the role to the table type in M:M conversion:",
+          "premises": [
+            "1. Entity Table",
+            "2. Entity Table",
+            "3. Associative Entity Table"
+          ],
+          "responses": [
+            "A. Stores attributes of the second entity",
+            "B. Stores the relationship between the two entities",
+            "C. Stores attributes of the first entity"
+          ],
+          "answer": [
+            "1-C",
+            "2-A",
+            "3-B"
+          ]
+        }
+      ],
+      "tags": [
+        "Many-to-Many",
+        "Associative Entity",
+        "Relational Database",
+        "Database Design"
+      ],
+      "source_chunk": "MIS_lec_4_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "process",
+      "question": "Describe the three options for converting a one-to-one binary relationship into relational tables.",
+      "answers": {
+        "concise": "There are three options: (1) Combine the two entities into a single table. (2) Create separate tables for each entity and place the primary key of one entity as a foreign key in the other entity's table. (3) Create separate tables for each entity and place the primary key of the second entity as a foreign key in the first entity's table.",
+        "analogy": "Imagine two people who are married. Option 1 is to list all the information about both people on a single form. Options 2 and 3 are to have two separate forms, but one form has a field that refers back to the other person's form (like a spouse ID).",
+        "eli5": "Imagine two friends who always do everything together. You can write down all their information on one page (option 1), or you can have two pages, and on one page, you write down the other friend's name (options 2 and 3).",
+        "real_world_use_case": "Consider a company where each employee is assigned exactly one company car, and each company car is assigned to exactly one employee. Option 1 combines employee and car details into one table if access patterns favor retrieving both together. Options 2 and 3 keep them separate, useful if car details are rarely needed with employee data or vice versa. Option 2 might place CarID as a foreign key in the Employee table; Option 3 places EmployeeID as a foreign key in the Car table.",
+        "common_mistakes": "A common mistake is not considering the query patterns when choosing an option. Combining the tables (option 1) can lead to redundancy if one entity has many attributes that are rarely used. Placing the foreign key in the 'wrong' table (options 2 and 3) can make certain queries less efficient."
+      },
+      "context": "Entity-Relationship Modeling",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Important for understanding different approaches to representing 1-1 relationships in a relational model."
+      },
+      "example": "Let's say we have 'Employees' and 'ParkingSpaces,' where each employee gets one parking space and each parking space belongs to one employee. Option 1 merges all employee and parking space details into one table. Option 2 puts the ParkingSpaceID as a foreign key in the Employee table. Option 3 puts the EmployeeID as a foreign key in the ParkingSpace table. The choice depends on how often you need to query employees and parking spaces together vs. separately.",
+      "mermaid_code": "erDiagram\n    EMPLOYEE ||--|| PARKING_SPACE : Is_Assigned_To\n    EMPLOYEE { \n        int EmployeeID PK\n        varchar Name\n    }\n    PARKING_SPACE { \n        int SpaceID PK\n        varchar Location\n    }",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "In Option #1 for converting a one-to-one relationship, what happens to the two entities?",
+          "options": [
+            "A. They are represented by three tables.",
+            "B. They are combined into one relational table.",
+            "C. They are represented by two separate tables with no foreign keys.",
+            "D. They are represented by two separate tables with a foreign key in both."
+          ],
+          "answer": "B. They are combined into one relational table."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database is being designed for a company where each employee has one office. It is frequently necessary to retrieve all information about both an employee and their office in a single query. Which option might be MOST efficient?",
+          "options": [
+            "A. Option #1: Combine the tables.",
+            "B. Option #2: Foreign key in the Employee table.",
+            "C. Option #3: Foreign key in the Office table.",
+            "D. Any of the options, as they are all equally efficient."
+          ],
+          "answer": "A. Option #1: Combine the tables."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order when deciding how to convert a 1:1 relationship to relational tables:",
+          "items": [
+            "Decide whether to combine tables or keep them separate.",
+            "Analyze data access patterns and query requirements.",
+            "If separate, choose which table will hold the foreign key.",
+            "Identify the two entities involved in the relationship."
+          ],
+          "answer": [
+            "Identify the two entities involved in the relationship.",
+            "Analyze data access patterns and query requirements.",
+            "Decide whether to combine tables or keep them separate.",
+            "If separate, choose which table will hold the foreign key."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following descriptions based on which option for 1:1 conversion they describe:",
+          "items": [
+            "One table with all attributes from both entities",
+            "Employee table with a foreign key to the Office table",
+            "Office table with a foreign key to the Employee table"
+          ],
+          "categories": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ],
+          "answer": {
+            "Option 1": [
+              "One table with all attributes from both entities"
+            ],
+            "Option 2": [
+              "Employee table with a foreign key to the Office table"
+            ],
+            "Option 3": [
+              "Office table with a foreign key to the Employee table"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each option for 1:1 conversion to its key characteristic:",
+          "premises": [
+            "1. Option 1",
+            "2. Option 2",
+            "3. Option 3"
+          ],
+          "responses": [
+            "A. Office table contains a foreign key referencing the Employee table",
+            "B. Employee table contains a foreign key referencing the Office table",
+            "C. A single table contains attributes from both entities"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "One-to-One",
+        "Relational Database",
+        "Foreign Key",
+        "Database Design"
+      ],
+      "source_chunk": "MIS_lec_4_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "process",
+      "question": "How is a one-to-many binary relationship converted into relational tables?",
+      "answers": {
+        "concise": "In a one-to-many (1:M) relationship, the unique identifier (primary key) of the entity on the 'one' side of the relationship is placed as a foreign key in the table representing the entity on the 'many' side.",
+        "analogy": "Think of a parent and their children. The parent is the 'one' side, and the children are the 'many' side. Each child has a reference to their parent (like a family ID), but the parent doesn't need to list all their children on their record.",
+        "eli5": "Imagine a teacher and their students. The teacher is the 'one,' and the students are the 'many.' Each student has the teacher's name written on their paper, but the teacher doesn't write all the student's names on their record.",
+        "real_world_use_case": "Consider the relationship between 'Customers' and 'Orders' in an e-commerce system. One customer can place many orders. Therefore, the CustomerID (primary key of the Customer table) is added as a foreign key to the Orders table. This allows you to easily find all orders placed by a specific customer.",
+        "common_mistakes": "A common mistake is placing the foreign key in the wrong table (i.e., putting the primary key of the 'many' side in the 'one' side's table). This would not allow you to represent multiple relationships for each entity on the 'many' side."
+      },
+      "context": "Entity-Relationship Modeling",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Fundamental concept for relational database design, very common relationship type."
+      },
+      "example": "Consider the relationship between 'Departments' and 'Employees' in a company. One department can have many employees. The DepartmentID (primary key of the Department table) is added as a foreign key to the Employee table. This way, each employee record indicates which department they belong to.",
+      "mermaid_code": "erDiagram\n    DEPARTMENT ||--o{ EMPLOYEE : Has\n    DEPARTMENT { \n        int DepartmentID PK\n        varchar Name\n    }\n    EMPLOYEE { \n        int EmployeeID PK\n        varchar Name\n        int DepartmentID FK\n    }",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "In a one-to-many relationship, where is the foreign key placed?",
+          "options": [
+            "A. In the table representing the entity on the 'one' side.",
+            "B. In the table representing the entity on the 'many' side.",
+            "C. In a separate table.",
+            "D. It is not needed in a one-to-many relationship."
+          ],
+          "answer": "B. In the table representing the entity on the 'many' side."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A database is being designed to track authors and books. An author can write many books. Where should the foreign key be placed?",
+          "options": [
+            "A. In the Author table.",
+            "B. In the Book table.",
+            "C. In a separate table linking authors and books.",
+            "D. It is not needed in this scenario."
+          ],
+          "answer": "B. In the Book table."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order when converting a 1:M relationship to relational tables:",
+          "items": [
+            "Create a table for the entity on the 'many' side.",
+            "Identify the entity on the 'one' side and the entity on the 'many' side.",
+            "Create a table for the entity on the 'one' side.",
+            "Add the primary key of the 'one' side table as a foreign key in the 'many' side table."
+          ],
+          "answer": [
+            "Identify the entity on the 'one' side and the entity on the 'many' side.",
+            "Create a table for the entity on the 'one' side.",
+            "Create a table for the entity on the 'many' side.",
+            "Add the primary key of the 'one' side table as a foreign key in the 'many' side table."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following tables based on whether they would contain a foreign key in a 1:M relationship between 'Customers' and 'Addresses' (one customer can have many addresses):",
+          "items": [
+            "Customers Table",
+            "Addresses Table"
+          ],
+          "categories": [
+            "Contains Foreign Key",
+            "Does Not Contain Foreign Key"
+          ],
+          "answer": {
+            "Contains Foreign Key": [
+              "Addresses Table"
+            ],
+            "Does Not Contain Foreign Key": [
+              "Customers Table"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the table to its role in a 1:M relationship conversion:",
+          "premises": [
+            "1. Table representing the 'one' side",
+            "2. Table representing the 'many' side"
+          ],
+          "responses": [
+            "A. Contains a foreign key referencing the 'one' side table",
+            "B. Does not contain a foreign key related to this relationship"
+          ],
+          "answer": [
+            "1-B",
+            "2-A"
+          ]
+        }
+      ],
+      "tags": [
+        "One-to-Many",
+        "Relational Database",
+        "Foreign Key",
+        "Database Design"
+      ],
+      "source_chunk": "MIS_lec_4_2",
+      "diagram_image_path": ""
+    }
+  ]
+}

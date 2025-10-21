@@ -32,7 +32,7 @@ function CourseListView() {
   return (
     <div className="course-list-view">
       <header className="page-header">
-        <h1>📚 Self-Learning AI</h1>
+        <h1>📚⚡ speedlearn.ai</h1>
         <p className="subtitle">Your intelligent study companion</p>
       </header>
 

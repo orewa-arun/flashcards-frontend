@@ -700,7 +700,7 @@
         "justification": "Fundamental concepts defining the field of MIS"
       },
       "example": "Amazon uses IT infrastructure (massive data centers, servers, networks) to power its e-commerce platform, which is an IS. The IS enables customers to browse products, place orders, and track shipments. Amazon continuously invests in IT to improve the functionality and performance of its IS, enhancing the customer experience and driving sales.",
-      "mermaid_code": "graph TD\n    IT[Information Technology<br/>Hardware, Software, Networks]\n    IS[Information Systems<br/>Uses IT to manage information]\n    \n    IT --> IS\n    \n    subgraph IT_Components [\"IT Components\"]\n        H[Hardware<br/>Servers, Computers]\n        S[Software<br/>Applications, OS]\n        N[Networks<br/>Internet, LANs]\n    end\n    \n    subgraph IS_Functions [\"IS Functions\"]\n        C[Collect Data]\n        P[Process Information]\n        St[Store Data]\n        D[Distribute Information]\n    end\n    \n    IT_Components --> IT\n    IT --> IS_Functions\n    IS_Functions --> IS\n    \n    style IT fill:#90EE90,stroke:#333,stroke-width:2px\n    style IS fill:#ADD8E6,stroke:#333,stroke-width:2px\n    style IT_Components fill:#f9f9f9,stroke:#666,stroke-width:1px\n    style IS_Functions fill:#f0f8ff,stroke:#666,stroke-width:1px",
+      "mermaid_code": "graph LR; A[Information Technology] --> B(Information Systems); B --> A; style A fill:#90EE90; style B fill:#ADD8E6;",
       "recall_questions": [
         {
           "type": "mcq",
@@ -1948,7 +1948,7 @@
         "justification": "Core concept defining the essence of digital business transformation."
       },
       "example": "Amazon's journey exemplifies this transformation. Initially a bookstore (traditional), they invested heavily in technology (core competency) to build a robust e-commerce platform. They leveraged data analytics to personalize recommendations and optimize logistics (data-driven). Finally, they expanded into cloud computing (AWS) and other digital services, creating an inherently digital business model, making them a global leader.",
-      "mermaid_code": "graph LR\nA[\"Tech. as Core Competency\"] --> B(Data-Driven Decisions)\nB --> C{BM is Inherently Digital}\nC --> D((Digital Business))",
+      "mermaid_code": "graph LR\nA[Tech. as Core Competency] --> B(Data-Driven Decisions)\nB --> C{BM is Inherently Digital}\nC --> D((Digital Business))",
       "recall_questions": [
         {
           "type": "mcq",

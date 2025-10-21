@@ -17,6 +17,30 @@
           "Introduction to MIS",
           "Information Systems in Business"
         ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5260/lecture_slides/MIS_lec_4.pdf",
+        "lecture_name": "MIS Lectures 4",
+        "lecture_number": "4",
+        "topics": [
+          "ER Diagram and Database",
+          "Database Planning (Data Planning, Requirements Specification, Conceptual Design, Logical Design, Physical Design)",
+          "Chapter Objectives (Logical database design, Converting ER diagrams to relational tables, Need for data normalization)",
+          "Entity-Relationship (E-R) Model (Diagramming entities and relationships)",
+          "E-R Model Entity and its attributes (Salesperson example, primary key)",
+          "Primary Key",
+          "Binary Relationships",
+          "Cardinality (One-to-One, One-to-Many, Many-to-Many Binary Relationships)",
+          "Modality",
+          "Intersection Data (Used with many-to-many relationships)",
+          "Converting a Simple Entity (to a table)",
+          "Converting Entities in Binary Relationships:",
+          "Converting One-to-One Relationship (Options #1, #2, #3)",
+          "Converting One-to-Many Relationship (Foreign key on the 'many' side)",
+          "Converting Many-to-Many Relationship (Three relational tables, intersection data/associative entity)",
+          "The Data Normalization Process (Eliminating redundancy)",
+          "Normalization Forms (First, Second, and Third Normal Form examples)"
+        ]
       }
     ]
   }

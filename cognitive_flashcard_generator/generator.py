@@ -55,7 +55,8 @@ class CognitiveFlashcardGenerator:
         Returns:
             List of flashcard dictionaries with scores, examples, and mermaid diagrams
         """
-        chunk_display = f" ({chunk_info})" if chunk_info else ""
+        # chunk_info is now passed from main.py, making this print statement useful
+        chunk_display = f" ({chunk_info})" if chunk_info else "" 
         print(f"\n{'='*70}")
         print(f"🧠 Generating Cognitive Flashcards{chunk_display}")
         print(f"📚 Course: {self.course_name}")
