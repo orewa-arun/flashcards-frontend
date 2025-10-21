@@ -26,7 +26,7 @@
         "justification": "Core definition and foundational concept for database design"
       },
       "example": "Consider designing a database for a university. 'Student' and 'Course' are entities. The 'Student' entity has attributes like 'StudentID', 'Name', and 'Major'. The 'Course' entity has attributes like 'CourseID', 'CourseName', and 'Credits'. The relationship 'Enrolls in' connects students and courses, indicating which students are taking which courses. This E-R model helps visualize the database structure before implementation.",
-      "mermaid_code": "erDiagram\n    STUDENT ||--o{ ENROLLS_IN : Enrolls in\n    COURSE ||--o{ ENROLLS_IN : Is taken by\n    STUDENT { \n        int StudentID PK\n        varchar Name\n        varchar Major\n    }\n    COURSE { \n        int CourseID PK\n        varchar CourseName\n        int Credits\n    }",
+      "mermaid_code": "erDiagram\n    STUDENT ||--o{ ENROLLMENT : Has\n    COURSE ||--o{ ENROLLMENT : Involves\n    STUDENT { \n        int student_id PK\n        varchar name\n    }\n    COURSE { \n        int course_id PK\n        varchar course_name\n    }\n    ENROLLMENT { \n        int student_id FK,PK \"Composite Key\"\n        int course_id FK,PK \"Composite Key\"\n        int grade \"Intersection Data\"\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -139,7 +139,7 @@
         "justification": "Fundamental concept in relational database design"
       },
       "example": "Consider a 'Customers' table in a database. The 'CustomerID' is the primary key. Each customer is assigned a unique CustomerID (e.g., 1001, 1002, 1003). This ensures that each customer record is distinct and can be easily referenced in other tables, such as 'Orders' table, through a foreign key relationship.",
-      "mermaid_code": "erDiagram\n    CUSTOMER ||--o{ ORDER : Places\n    CUSTOMER { \n        int CustomerID PK\n        varchar Name\n    }\n    ORDER { \n        int OrderID PK\n        int CustomerID FK\n        date OrderDate\n    }",
+      "mermaid_code": "erDiagram\n    CUSTOMER ||--o{ ORDER : Places\n    CUSTOMER { \n        int customer_id PK\n        varchar name\n    }\n    ORDER { \n        int order_id PK\n        int customer_id FK\n        date order_date\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -250,7 +250,7 @@
         "justification": "Important concept for understanding relationships between entities"
       },
       "example": "Consider a 'Department' and 'Employee' relationship in a company. If one department can have many employees, and each employee belongs to only one department, the cardinality is one-to-many (1:M). The 'Department' is the 'one' side, and the 'Employee' is the 'many' side. This means each employee record will have a foreign key referencing the department they belong to.",
-      "mermaid_code": "erDiagram\n    DEPARTMENT ||--o{ EMPLOYEE : Has",
+      "mermaid_code": "erDiagram\n    DEPARTMENT ||--o{ EMPLOYEE : Has\n    DEPARTMENT { \n        int dept_id PK\n    }\n    EMPLOYEE { \n        int emp_id PK\n        int dept_id FK\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -358,7 +358,7 @@
         "justification": "Important for fully specifying relationships, but less emphasized than cardinality"
       },
       "example": "Consider the relationship between 'Order' and 'OrderItem' in an e-commerce database. An order *must* have at least one order item (mandatory modality) because an order without any items is meaningless. However, an 'OrderItem' may or may not be associated with a promotion (optional modality).",
-      "mermaid_code": "erDiagram\n    ORDER ||--|{ ORDER_ITEM : Contains",
+      "mermaid_code": "erDiagram\n    ORDER ||--|{ ORDER_ITEM : Contains\n    ORDER { \n        int order_id PK\n    }\n    ORDER_ITEM { \n        int item_id PK\n        int order_id FK\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -460,7 +460,7 @@
         "justification": "Core concept in E-R diagram modeling"
       },
       "example": "In a library database, the 'Borrows' relationship between 'Member' and 'Book' is a binary relationship. It connects members to the books they have borrowed, with attributes like 'BorrowDate' and 'ReturnDate'.",
-      "mermaid_code": "erDiagram\n    MEMBER ||--o{ BOOK : Borrows",
+      "mermaid_code": "erDiagram\n    MEMBER ||--o{ BOOK : Borrows\n    MEMBER {\n        int member_id PK\n    }\n    BOOK {\n        int book_id PK\n        int member_id FK\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -677,7 +677,7 @@
         "justification": "Fundamental concept for understanding database relationships and constraints."
       },
       "example": "Consider a database modeling the relationship between 'Orders' and 'Customers' in an e-commerce system. The cardinality might be 'one-to-many,' indicating one customer can place multiple orders. If every order *must* be associated with a customer, the modality is mandatory (each order requires a customer). However, if a customer can exist in the system without placing any orders (e.g., just signed up for marketing emails), the modality is optional.",
-      "mermaid_code": "erDiagram\n    CUSTOMER o|--o{ ORDER : Places\n    CUSTOMER { \n        int CustomerID PK\n    }\n    ORDER { \n        int OrderID PK\n        int CustomerID FK\n    }",
+      "mermaid_code": "erDiagram\n    CUSTOMER o|--|{ ORDER : Places\n    CUSTOMER { \n        int customer_id PK\n    }\n    ORDER { \n        int order_id PK\n        int customer_id FK \"Mandatory FK\"\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -790,7 +790,7 @@
         "justification": "Important concept for accurately representing many-to-many relationships."
       },
       "example": "Consider a university database tracking student enrollment in courses. The 'Enrollment' relationship between 'Students' and 'Courses' might have intersection data such as 'Grade' and 'Enrollment Date.' The grade isn't a property of the student (it's specific to the course) nor a property of the course (it's specific to the student), but rather describes the student's performance *in that specific course.* The enrollment date captures the timing of the relationship.",
-      "mermaid_code": "erDiagram\n    STUDENT }|--|{ COURSE : Takes\n    STUDENT ||--o{ ENROLLMENT : Has\n    COURSE ||--o{ ENROLLMENT : Is in\n    ENROLLMENT { \n        int StudentID FK\n        int CourseID FK\n        int Grade\n        date EnrollmentDate\n    }",
+      "mermaid_code": "erDiagram\n    STUDENT ||--o{ ENROLLMENT : Has\n    COURSE ||--o{ ENROLLMENT : Involves\n    STUDENT { \n        int student_id PK\n    }\n    COURSE { \n        int course_id PK\n    }\n    ENROLLMENT { \n        int student_id FK,PK\n        int course_id FK,PK\n        varchar grade \"Intersection Data\"\n        date enrollment_date \"Intersection Data\"\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -904,7 +904,7 @@
         "justification": "Core concept for relational database design, essential for handling complex relationships."
       },
       "example": "Consider a library database with 'Authors' and 'Books.' An author can write multiple books, and a book can be written by multiple authors (e.g., collaborations). The many-to-many relationship 'Writes' is resolved by creating an 'Authorships' associative entity. This table contains AuthorID (FK), BookID (FK), and possibly additional data like 'Contribution Percentage' if some authors contributed more than others. Now, we have 3 tables: Authors, Books, and Authorships.",
-      "mermaid_code": "erDiagram\n    SALESPERSON }o--o{ PRODUCT : Sold\n    SALESPERSON ||--o{ SALE : Has\n    PRODUCT ||--o{ SALE : Contains\n    SALE { \n        int SalespersonID FK\n        int ProductID FK\n        int Quantity\n        date SaleDate\n    }",
+      "mermaid_code": "erDiagram\n    SALESPERSON ||--o{ SALE : Has\n    PRODUCT ||--o{ SALE : Contains\n    SALESPERSON { \n        int salesperson_id PK\n    }\n    PRODUCT { \n        int product_id PK\n    }\n    SALE { \n        int salesperson_id FK,PK \"Composite Key\"\n        int product_id FK,PK \"Composite Key\"\n        int quantity\n        date sale_date\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -1013,7 +1013,7 @@
         "justification": "Important for understanding different approaches to representing 1-1 relationships in a relational model."
       },
       "example": "Let's say we have 'Employees' and 'ParkingSpaces,' where each employee gets one parking space and each parking space belongs to one employee. Option 1 merges all employee and parking space details into one table. Option 2 puts the ParkingSpaceID as a foreign key in the Employee table. Option 3 puts the EmployeeID as a foreign key in the ParkingSpace table. The choice depends on how often you need to query employees and parking spaces together vs. separately.",
-      "mermaid_code": "erDiagram\n    EMPLOYEE ||--|| PARKING_SPACE : Is_Assigned_To\n    EMPLOYEE { \n        int EmployeeID PK\n        varchar Name\n    }\n    PARKING_SPACE { \n        int SpaceID PK\n        varchar Location\n    }",
+      "mermaid_code": "erDiagram\n    STUDENT ||--o{ ENROLLMENT : Has\n    COURSE ||--o{ ENROLLMENT : Involves\n    STUDENT { \n        int student_id PK\n        varchar name\n    }\n    COURSE { \n        int course_id PK\n        varchar course_name\n    }\n    ENROLLMENT { \n        int student_id FK,PK \"Composite Key\"\n        int course_id FK,PK \"Composite Key\"\n        int grade \"Intersection Data\"\n    }",
       "recall_questions": [
         {
           "type": "mcq",
@@ -1029,6 +1029,7 @@
         {
           "type": "scenario_mcq",
           "scenario": "A database is being designed for a company where each employee has one office. It is frequently necessary to retrieve all information about both an employee and their office in a single query. Which option might be MOST efficient?",
+          "question": "Which of the options is MOST efficient?",
           "options": [
             "A. Option #1: Combine the tables.",
             "B. Option #2: Foreign key in the Employee table.",
@@ -1123,7 +1124,7 @@
         "justification": "Fundamental concept for relational database design, very common relationship type."
       },
       "example": "Consider the relationship between 'Departments' and 'Employees' in a company. One department can have many employees. The DepartmentID (primary key of the Department table) is added as a foreign key to the Employee table. This way, each employee record indicates which department they belong to.",
-      "mermaid_code": "erDiagram\n    DEPARTMENT ||--o{ EMPLOYEE : Has\n    DEPARTMENT { \n        int DepartmentID PK\n        varchar Name\n    }\n    EMPLOYEE { \n        int EmployeeID PK\n        varchar Name\n        int DepartmentID FK\n    }",
+      "mermaid_code": "erDiagram\n    DEPARTMENT ||--o{ EMPLOYEE : Has\n    DEPARTMENT { \n        int department_id PK\n        varchar name\n    }\n    EMPLOYEE { \n        int employee_id PK\n        varchar name\n        int department_id FK\n    }",
       "recall_questions": [
         {
           "type": "mcq",
