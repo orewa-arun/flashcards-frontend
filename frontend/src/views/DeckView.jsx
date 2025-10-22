@@ -69,6 +69,8 @@ function DeckView() {
         // Load flashcards
         const flashcardsPath = `/courses/${courseId}/cognitive_flashcards/${lectureId}/${lectureId}_cognitive_flashcards.json`
         const response = await fetch(flashcardsPath)
+
+        console.log('Fetching flashcards from:', flashcardsPath)
         
         if (!response.ok) {
           throw new Error('Flashcards not found')

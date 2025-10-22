@@ -61,47 +61,6 @@
   border-radius: 4px;
 }
 
-/* Clean Navigation Arrows */
-.nav-actions {
-  display: flex;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.nav-arrow {
-  width: 40px;
-  height: 40px;
-  background-color: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text-primary);
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-arrow:hover:not(:disabled) {
-  background-color: var(--accent-primary);
-  color: white;
-  border-color: var(--accent-primary);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-card);
-}
-
-.nav-arrow:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.nav-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  background-color: var(--bg-elevated);
-}
-
 /* Main Study Area */
 .study-main {
   flex: 1;
@@ -111,6 +70,58 @@
   justify-content: center;
   padding: 40px 20px;
   gap: 20px;
+}
+
+/* Card Navigation Below Flashcard */
+.card-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.card-navigation .nav-arrow {
+  flex: 0 0 auto;
+  min-width: 120px;
+  padding: 12px 24px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-navigation .nav-arrow:hover:not(:disabled) {
+  background-color: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card);
+}
+
+.card-navigation .nav-arrow:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.card-navigation .nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background-color: var(--bg-elevated);
+}
+
+.card-navigation .nav-hint {
+  flex: 1;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 500;
 }
 
 /* Clean Keyboard Hints */
@@ -131,7 +142,6 @@
   align-items: center;
   gap: 4px;
 }
-
 
 /* Clean Quiz Section */
 .quiz-section {
@@ -176,14 +186,24 @@
     max-width: 200px;
   }
   
-  .nav-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-  
   .study-main {
     padding: 20px 16px;
+  }
+  
+  .card-navigation {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  
+  .card-navigation .nav-arrow {
+    width: 100%;
+    min-width: unset;
+  }
+  
+  .card-navigation .nav-hint {
+    order: -1;
+    margin-bottom: 8px;
   }
   
   .keyboard-hints {

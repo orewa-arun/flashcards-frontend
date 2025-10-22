@@ -43,5 +43,39 @@
         ]
       }
     ]
+  },
+  {
+    "course_id": "MS5150",
+    "course_name": "Strategies and Innovation",
+    "course_code": "SI",
+    "instructor": "Richa Agrawal",
+    "reference_textbooks": [],
+    "course_description": "Marketing tools : Strategies and Innovation",
+    "lecture_slides": [
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_lec_1.pdf",
+        "lecture_name": "SI Lectures 1",
+        "lecture_number": "1",
+          "topics": [
+            "Core Definition and Scope of a Product (Anything offered to a market to satisfy a want or need, including goods, services, and experiences)",
+            "Product Classification (Dividing products into Industrial and Consumer types based on purchase purpose)",
+            "Detailed Consumer Product Categories (Classification based on customer buying behavior: Convenience, Shopping, Specialty, and Unsought Products)",
+            "The Three Levels of Product (Modeling a product's value proposition across Core Customer Value, Actual Product Attributes, and Augmented Product Services)",
+            "Key Product Attributes (Defining Product Quality and its components like Performance Quality, Conformance Quality, Branding, and Packaging)"
+          ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_PLC.pdf",
+        "lecture_name": "SI Product Life Cycle",
+        "lecture_number": "2",
+        "topics": [
+          "The Stages of the Product Life Cycle (PLC) (Analyzing sales, profit, costs, customers, and competitors across Introduction, Growth, Maturity, and Decline stages)",
+          "PLC Marketing Strategies (Outlining distinct strategies for Product, Price, Distribution, Advertising, and Sales Promotion for each PLC stage)",
+          "PLC Curve Variations (Examining non-standard life cycle patterns: Growth-Decline, Cycle-Recycle, Innovative/Scalloped, and the differences between Style, Fashion, and Fad)",
+          "The Ansoff Growth Matrix (Using the 2x2 matrix to identify corporate growth strategies: Market Penetration, Product Development, Market Development, and Diversification)",
+          "The Boston Consulting Group (BCG) Matrix (Using the 2x2 matrix of Market Growth Rate vs. Relative Market Share to classify products/SBUs as Stars, Cash Cows, Question Marks, and Dogs, and determining appropriate strategies)"
+        ]
+      }
+    ]
   }
 ]

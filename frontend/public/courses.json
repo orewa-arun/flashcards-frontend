@@ -43,5 +43,27 @@
         ]
       }
     ]
+  },
+  {
+    "course_id": "MS5150",
+    "course_name": "Strategies and Innovation",
+    "course_code": "SI",
+    "instructor": "Richa Agrawal",
+    "reference_textbooks": [],
+    "course_description": "Marketing tools : Strategies and Innovation",
+    "lecture_slides": [
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_lec_1.pdf",
+        "lecture_name": "SI Lectures 1",
+        "lecture_number": "1",
+          "topics": [
+            "Core Definition and Scope of a Product (Anything offered to a market to satisfy a want or need, including goods, services, and experiences)",
+            "Product Classification (Dividing products into Industrial and Consumer types based on purchase purpose)",
+            "Detailed Consumer Product Categories (Classification based on customer buying behavior: Convenience, Shopping, Specialty, and Unsought Products)",
+            "The Three Levels of Product (Modeling a product's value proposition across Core Customer Value, Actual Product Attributes, and Augmented Product Services)",
+            "Key Product Attributes (Defining Product Quality and its components like Performance Quality, Conformance Quality, Branding, and Packaging)"
+          ]
+      }
+    ]
   }
 ]

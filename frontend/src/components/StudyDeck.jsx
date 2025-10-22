@@ -59,24 +59,6 @@ function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessio
             ></div>
           </div>
         </div>
-        <div className="nav-actions">
-          <button 
-            className="nav-arrow left"
-            onClick={handlePrevious}
-            disabled={currentIndex === 0}
-            title="Previous (←)"
-          >
-            ←
-          </button>
-          <button 
-            className="nav-arrow right"
-            onClick={handleNext}
-            disabled={currentIndex === flashcards.length - 1}
-            title="Next (→)"
-          >
-            →
-          </button>
-        </div>
       </div>
 
       {/* Main Study Area */}
@@ -88,6 +70,27 @@ function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessio
           index={currentIndex}
           sessionId={sessionId}
         />
+        
+        {/* Navigation Below Card */}
+        <div className="card-navigation">
+          <button 
+            className="nav-arrow left"
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            title="Previous (←)"
+          >
+            ← Previous
+          </button>
+          <span className="nav-hint">Think first, then tap to reveal</span>
+          <button 
+            className="nav-arrow right"
+            onClick={handleNext}
+            disabled={currentIndex === flashcards.length - 1}
+            title="Next (→)"
+          >
+            Next →
+          </button>
+        </div>
         
         {/* Enhanced Keyboard Shortcuts Hint */}
         <div className="keyboard-hints">
@@ -115,4 +118,3 @@ function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessio
 }
 
 export default StudyDeck
-
