@@ -24,7 +24,8 @@ function Navigation() {
       <div className="nav-container">
         {/* Logo/Brand */}
         <Link to="/" className="nav-brand" onClick={closeMenu}>
-          <span className="brand-icon">📚</span>
+          {/* <span className="brand-icon">📚</span> */}
+          <img src="/logo.png" alt="exammate.ai logo" className="brand-icon" />
           <span className="brand-text">exammate.ai</span>
         </Link>
 

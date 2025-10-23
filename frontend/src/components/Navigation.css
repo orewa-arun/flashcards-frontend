@@ -35,7 +35,10 @@
 }
 
 .brand-icon {
+  width: 32px;  /* adjust size as needed */
+  height: 32px;
   font-size: 24px;
+  border-radius: 50%;
 }
 
 .brand-text {
@@ -206,6 +209,8 @@
   }
   
   .brand-icon {
+    width: 32px;  /* adjust size as needed */
+    height: 32px;
     font-size: 20px;
   }
   

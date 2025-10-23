@@ -143,3 +143,9 @@
   100% { transform: rotate(360deg); }
 }
 
+.logo-icon {
+  width: 100px;  /* adjust size as needed */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: contain;  /* maintains aspect ratio */
+}

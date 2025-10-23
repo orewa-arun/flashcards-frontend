@@ -32,8 +32,9 @@ function CourseListView() {
   return (
     <div className="course-list-view">
       <header className="page-header">
-        <h1>📚⚡ exammate.ai</h1>
-        <p className="subtitle">Your intelligent study companion</p>
+        <img src="/logo.png" alt="exammate.ai logo" className="logo-icon" />
+        <h1>exammate.ai</h1>
+        <p className="subtitle">Study smart, when time is short</p>
       </header>
 
       <div className="courses-container">
