@@ -25,7 +25,7 @@ function Navigation() {
         {/* Logo/Brand */}
         <Link to="/" className="nav-brand" onClick={closeMenu}>
           <span className="brand-icon">📚</span>
-          <span className="brand-text">speedlearn.ai</span>
+          <span className="brand-text">exammate.ai</span>
         </Link>
 
         {/* Desktop Navigation */}
