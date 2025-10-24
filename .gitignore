@@ -67,3 +67,6 @@ slide_images/
 # cognitive_flashcards/
 flashcards_output/
 intelligent_flashcards/
+
+# temporary
+without_slide_processor/

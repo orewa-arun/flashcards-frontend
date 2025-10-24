@@ -1,0 +1,923 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-24T18:45:42.589976",
+    "total_cards": 8,
+    "course_name": "Data Analysis Applications",
+    "course_id": "MS5031",
+    "course_code": "DAA",
+    "textbook_reference": "Statistics for Business: Decision Making and Analysis by Robert E Stine and Dean Foster, Pearson (ISBN: 978-81-317-3347-9)",
+    "source": "DAA_lec_1",
+    "chunks_processed": 2
+  },
+  "flashcards": [
+    {
+      "type": "concept",
+      "question": "What is a regression model and what is its primary purpose in data analysis?",
+      "answers": {
+        "concise": "A regression model is a statistical tool used to model the relationship between a dependent variable and one or more independent variables. Its primary purpose is to predict or explain the values of the dependent variable based on the values of the independent variables.",
+        "analogy": "Think of a regression model like a recipe. The ingredients (independent variables) are combined in specific proportions (coefficients) to produce a dish (dependent variable). The model helps you predict how the dish will taste based on the amount of each ingredient.",
+        "eli5": "Imagine you're trying to guess how tall someone will be based on how old they are. A regression model is like a smart guesser that uses past data to make the best prediction. It finds a line that shows the relationship between age and height.",
+        "real_world_use_case": "Netflix uses regression models to predict how many users will watch a particular movie based on factors like the movie's genre, actors, release date, and marketing spend. This helps them optimize their content recommendations and marketing strategies to maximize viewership.",
+        "common_mistakes": "A common mistake is assuming correlation implies causation. Just because two variables are related in a regression model doesn't mean one causes the other. There might be other factors at play, or the relationship could be coincidental."
+      },
+      "context": "Core Data Analysis",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept for this subject."
+      },
+      "example": "Amazon uses regression models extensively in predicting sales. For example, they might model the number of units of a specific product sold (dependent variable) based on price, advertising spend, seasonality, and competitor pricing (independent variables). By analyzing historical data and fitting a regression model, Amazon can forecast future demand and optimize inventory levels to minimize storage costs and prevent stockouts. A well-trained model allows them to dynamically adjust pricing and advertising strategies to maximize profitability.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes the primary purpose of a regression model?",
+          "options": [
+            "A. To establish a causal relationship between variables.",
+            "B. To predict or explain the value of a dependent variable based on independent variables.",
+            "C. To categorize data into distinct groups.",
+            "D. To summarize data using descriptive statistics."
+          ],
+          "answer": "B. To predict or explain the value of a dependent variable based on independent variables."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A marketing team wants to predict the number of website clicks they will receive based on their advertising spending. They have historical data on ad spend and website clicks.",
+          "question": "Which statistical technique is MOST appropriate for this task?",
+          "options": [
+            "A. T-test",
+            "B. Regression analysis",
+            "C. ANOVA",
+            "D. Chi-square test"
+          ],
+          "answer": "B. Regression analysis"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the typical order of building and using a regression model.",
+          "items": [
+            "Model evaluation and validation",
+            "Data collection and preparation",
+            "Model deployment and prediction",
+            "Model fitting and training",
+            "Variable selection and feature engineering"
+          ],
+          "answer": [
+            "Data collection and preparation",
+            "Variable selection and feature engineering",
+            "Model fitting and training",
+            "Model evaluation and validation",
+            "Model deployment and prediction"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following as either a 'Dependent Variable' or an 'Independent Variable' in the context of a regression model.",
+          "items": [
+            "Advertising Spend",
+            "Sales Revenue",
+            "Website Traffic",
+            "Price of Product"
+          ],
+          "categories": [
+            "Dependent Variable",
+            "Independent Variable"
+          ],
+          "answer": {
+            "Dependent Variable": [
+              "Sales Revenue"
+            ],
+            "Independent Variable": [
+              "Advertising Spend",
+              "Website Traffic",
+              "Price of Product"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term related to regression models with its definition.",
+          "premises": [
+            "1. Dependent Variable",
+            "2. Independent Variable",
+            "3. Coefficient",
+            "4. Residual"
+          ],
+          "responses": [
+            "A. The variable being predicted or explained.",
+            "B. The variable used to predict or explain the dependent variable.",
+            "C. A measure of the error between the predicted and actual value.",
+            "D. The estimated effect of an independent variable on the dependent variable."
+          ],
+          "answer": [
+            "1-A",
+            "2-B",
+            "3-D",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "regression",
+        "modeling",
+        "prediction",
+        "dependent variable",
+        "independent variable"
+      ],
+      "source_chunk": "DAA_lec_1_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "Explain the Least Squares Criterion and its importance in determining the 'best' line in regression analysis.",
+      "answers": {
+        "concise": "The Least Squares Criterion is a method used in regression analysis to find the line of best fit by minimizing the sum of the squared differences (errors) between the observed values and the predicted values. This ensures the line is as close as possible to all data points.",
+        "analogy": "Imagine you're trying to throw a dart at the center of a dartboard. The Least Squares Criterion is like aiming to minimize the total distance of all your darts from the bullseye, but with extra penalty for darts that are very far off. This leads to a tighter, more accurate grouping of darts.",
+        "eli5": "Imagine you have a bunch of dots on a paper, and you want to draw a line that's closest to all the dots. The Least Squares Criterion is like a rule that says the best line is the one where the total of the squared distances from each dot to the line is the smallest.",
+        "real_world_use_case": "In financial modeling, analysts use the Least Squares Criterion to determine the best-fit line for stock prices over time. This helps them identify trends, predict future price movements, and make informed investment decisions. Minimizing the squared errors ensures the model is robust and less sensitive to outliers.",
+        "common_mistakes": "A common mistake is thinking that minimizing the sum of errors (instead of squared errors) is sufficient. However, this can lead to a line that fits poorly because positive and negative errors can cancel each other out. Squaring the errors ensures all errors are positive and penalizes large errors more heavily."
+      },
+      "context": "Regression Analysis",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Key method for finding the best fit line in regression."
+      },
+      "example": "Consider a real estate company that wants to predict house prices based on square footage. They collect data on 100 houses and use the Least Squares Criterion to find the line of best fit. The SSE (Sum of Squared Errors) is minimized when the coefficients are $b_0 = 50000$ and $b_1 = 150$ (price increases by $150 for each additional square foot). This means the model provides the most accurate predictions of house prices given the available data and minimizes errors in the predictions.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What does the Least Squares Criterion aim to minimize?",
+          "options": [
+            "A. The sum of the absolute errors.",
+            "B. The sum of the errors.",
+            "C. The sum of the squared errors.",
+            "D. The average of the errors."
+          ],
+          "answer": "C. The sum of the squared errors."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A data scientist is building a linear regression model and wants to ensure that the model's predictions are as close as possible to the actual observed values.",
+          "question": "Which criterion should they use to determine the optimal coefficients for the regression equation?",
+          "options": [
+            "A. Maximum Likelihood Estimation",
+            "B. Least Absolute Deviations",
+            "C. Least Squares Criterion",
+            "D. Bayesian Information Criterion"
+          ],
+          "answer": "C. Least Squares Criterion"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps involved in applying the Least Squares Criterion.",
+          "items": [
+            "Calculate the predicted values using the regression equation.",
+            "Determine the coefficients that minimize the SSE.",
+            "Calculate the squared difference between observed and predicted values.",
+            "Sum the squared differences to obtain the SSE.",
+            "Obtain observed values for the dependent and independent variables."
+          ],
+          "answer": [
+            "Obtain observed values for the dependent and independent variables.",
+            "Calculate the predicted values using the regression equation.",
+            "Calculate the squared difference between observed and predicted values.",
+            "Sum the squared differences to obtain the SSE.",
+            "Determine the coefficients that minimize the SSE."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following as either a 'Benefit' or a 'Drawback' of using the Least Squares Criterion.",
+          "items": [
+            "Penalizes large errors more heavily.",
+            "Sensitive to outliers in the data.",
+            "Prevents positive and negative errors from canceling out.",
+            "Can be computationally intensive for large datasets."
+          ],
+          "categories": [
+            "Benefit",
+            "Drawback"
+          ],
+          "answer": {
+            "Benefit": [
+              "Penalizes large errors more heavily.",
+              "Prevents positive and negative errors from canceling out."
+            ],
+            "Drawback": [
+              "Sensitive to outliers in the data.",
+              "Can be computationally intensive for large datasets."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term related to the Least Squares Criterion with its description.",
+          "premises": [
+            "1. SSE",
+            "2. Residual",
+            "3. Least Squares Fitting",
+            "4. Outlier"
+          ],
+          "responses": [
+            "A. The difference between the observed and predicted value.",
+            "B. A data point that deviates significantly from the other data points.",
+            "C. The process of minimizing the sum of squared errors.",
+            "D. The sum of squared errors."
+          ],
+          "answer": [
+            "1-D",
+            "2-A",
+            "3-C",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "least squares",
+        "SSE",
+        "residual",
+        "fitting",
+        "error minimization"
+      ],
+      "source_chunk": "DAA_lec_1_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is point prediction in the context of regression, and what is the difference between interpolation and extrapolation?",
+      "answers": {
+        "concise": "Point prediction in regression is using the fitted regression equation to estimate the value of the dependent variable for a specific value of the independent variable. Interpolation is predicting within the range of the observed data, while extrapolation is predicting outside this range.",
+        "analogy": "Imagine you have a map showing the elevation of a mountain trail. Interpolation is like estimating the elevation at a point on the trail that's already on the map. Extrapolation is like guessing the elevation at a point beyond the edge of the map - you're making assumptions about terrain you haven't seen.",
+        "eli5": "Imagine you're drawing a line through some dots. Point prediction is guessing where the line will be at a certain spot. Interpolation is guessing between the dots you already have, and extrapolation is guessing where the line goes beyond the last dot.",
+        "real_world_use_case": "A retail company uses a regression model to predict sales based on advertising spend. Interpolation would be predicting sales for an ad spend within the range of past campaigns. Extrapolation would be predicting sales for a significantly higher ad spend than ever used before, which could be unreliable.",
+        "common_mistakes": "A common mistake is assuming that a linear relationship observed within a certain range of data will continue indefinitely. Extrapolating too far beyond the observed data can lead to wildly inaccurate predictions because the underlying relationship may change."
+      },
+      "context": "Predictive Modeling",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Practical application of regression equation and important warning."
+      },
+      "example": "A marketing agency models website conversion rate ($Y$) based on the number of marketing emails sent ($X$). The regression equation is $\\hat{Y} = 0.01 + 0.002X$. Historical data shows email sends between 100 and 1000 per week. Interpolating for 500 emails: $\\hat{Y} = 0.01 + 0.002(500) = 1.01$, predicting a 1.01% conversion rate. Extrapolating for 2000 emails: $\\hat{Y} = 0.01 + 0.002(2000) = 4.01$, predicting 4.01%. This extrapolation might be unreliable because sending drastically more emails could annoy users, reducing conversion rates.",
+      "mermaid_code": "flowchart TD\n    A[Input X*] --> B(Regression Equation)\n    B --> C[Predicted Y*]\n    C --> D{Valid? X* in range of X?}\n    D -- Yes --> E[Reliable Prediction: Interpolation]\n    D -- No --> F[Potentially Unreliable: Extrapolation]",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the process of predicting a value within the range of the observed data in regression called?",
+          "options": [
+            "A. Extrapolation",
+            "B. Interpolation",
+            "C. Regression",
+            "D. Prediction"
+          ],
+          "answer": "B. Interpolation"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "An analyst uses a regression model to predict customer churn based on customer satisfaction scores. The model was trained on data with satisfaction scores ranging from 1 to 7.",
+          "question": "If the analyst uses the model to predict churn for a customer with a satisfaction score of 9, what is this process called?",
+          "options": [
+            "A. Interpolation",
+            "B. Extrapolation",
+            "C. Regression",
+            "D. Validation"
+          ],
+          "answer": "B. Extrapolation"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the process of making a point prediction using a regression equation.",
+          "items": [
+            "Substitute the value of X* into the regression equation.",
+            "Obtain the fitted regression equation.",
+            "Calculate the predicted value Y*.",
+            "Determine the value of the independent variable X* for which to predict."
+          ],
+          "answer": [
+            "Obtain the fitted regression equation.",
+            "Determine the value of the independent variable X* for which to predict.",
+            "Substitute the value of X* into the regression equation.",
+            "Calculate the predicted value Y*."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following as either an 'Advantage' or a 'Disadvantage' of extrapolation.",
+          "items": [
+            "Allows predictions beyond the observed data range.",
+            "May lead to inaccurate predictions if the relationship changes.",
+            "Can provide insights into potential future outcomes.",
+            "Assumes the relationship observed in the data continues indefinitely."
+          ],
+          "categories": [
+            "Advantage",
+            "Disadvantage"
+          ],
+          "answer": {
+            "Advantage": [
+              "Allows predictions beyond the observed data range.",
+              "Can provide insights into potential future outcomes."
+            ],
+            "Disadvantage": [
+              "May lead to inaccurate predictions if the relationship changes.",
+              "Assumes the relationship observed in the data continues indefinitely."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term related to point prediction with its description.",
+          "premises": [
+            "1. Point Prediction",
+            "2. Interpolation",
+            "3. Extrapolation",
+            "4. Regression Equation"
+          ],
+          "responses": [
+            "A. Predicting a value outside the range of the observed data.",
+            "B. The equation used to predict the value of the dependent variable.",
+            "C. Estimating the value of the dependent variable for a specific value of the independent variable.",
+            "D. Predicting a value within the range of the observed data."
+          ],
+          "answer": [
+            "1-C",
+            "2-D",
+            "3-A",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "point prediction",
+        "interpolation",
+        "extrapolation",
+        "forecasting",
+        "predictive modeling"
+      ],
+      "source_chunk": "DAA_lec_1_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "Why are data transformations used in regression analysis, and what are the main reasons for applying them?",
+      "answers": {
+        "concise": "Data transformations are used in regression analysis to address violations of the linear model's assumptions. The main reasons include linearizing non-linear relationships, stabilizing variance (addressing heteroscedasticity), and normalizing the distribution of residuals.",
+        "analogy": "Think of data transformations like tailoring a suit. If the suit (data) doesn't fit well in its original form, you need to alter it (transform the data) to achieve a better fit for the model (the tailored suit).",
+        "eli5": "Imagine you're trying to fit a straight line through some curvy dots. Data transformation is like bending or stretching the dots so they look straighter, making it easier to draw a good line.",
+        "real_world_use_case": "In marketing, the relationship between advertising spend and sales often exhibits diminishing returns. Transforming the advertising spend variable using a logarithm can linearize the relationship, allowing a linear regression model to capture the effect more accurately. This leads to better predictions of sales based on advertising budgets.",
+        "common_mistakes": "A common mistake is applying transformations without understanding the underlying data and the reasons for the transformation. Randomly applying transformations can worsen the model's performance and make the results difficult to interpret. It's crucial to diagnose the problem (e.g., non-linearity, heteroscedasticity) before applying a transformation."
+      },
+      "context": "Regression Assumptions",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important tool to satisfy linear model assumptions."
+      },
+      "example": "A company analyzes the relationship between time spent on a website and the probability of a purchase. The scatter plot shows a curve, and the residuals fan out (heteroscedasticity). Applying a logarithmic transformation to the 'time spent' variable linearizes the relationship and stabilizes the variance. The transformed model now meets the assumptions of linear regression, providing more reliable predictions of purchase probability.",
+      "mermaid_code": "flowchart TD\n    A[Original Data: Non-Linear, Unequal Variance] --> B(Apply Transformation: e.g. Log)\n    B --> C[Transformed Data: Linear, Stabilized Variance]\n    C --> D(Fit OLS Model)",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is NOT a common reason for applying data transformations in regression analysis?",
+          "options": [
+            "A. To linearize a non-linear relationship.",
+            "B. To stabilize variance (reduce heteroscedasticity).",
+            "C. To normalize the distribution of residuals.",
+            "D. To increase the number of data points."
+          ],
+          "answer": "D. To increase the number of data points."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A statistician observes that the residuals in a regression model exhibit heteroscedasticity (unequal variance).",
+          "question": "What type of data transformation is MOST appropriate to address this issue?",
+          "options": [
+            "A. Logarithmic transformation",
+            "B. Inverse transformation",
+            "C. Square root transformation",
+            "D. Any of the above"
+          ],
+          "answer": "D. Any of the above"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the process of applying data transformations in regression analysis.",
+          "items": [
+            "Interpret the results of the transformed model.",
+            "Diagnose violations of regression assumptions.",
+            "Apply a suitable data transformation.",
+            "Fit the regression model to the transformed data.",
+            "Choose the appropriate data transformation."
+          ],
+          "answer": [
+            "Diagnose violations of regression assumptions.",
+            "Choose the appropriate data transformation.",
+            "Apply a suitable data transformation.",
+            "Fit the regression model to the transformed data.",
+            "Interpret the results of the transformed model."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following as either a 'Problem Addressed' or a 'Transformation Technique' in regression analysis.",
+          "items": [
+            "Heteroscedasticity",
+            "Logarithmic Transformation",
+            "Non-linear Relationship",
+            "Inverse Transformation"
+          ],
+          "categories": [
+            "Problem Addressed",
+            "Transformation Technique"
+          ],
+          "answer": {
+            "Problem Addressed": [
+              "Heteroscedasticity",
+              "Non-linear Relationship"
+            ],
+            "Transformation Technique": [
+              "Logarithmic Transformation",
+              "Inverse Transformation"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each data transformation with the type of relationship it is typically used to linearize.",
+          "premises": [
+            "1. Logarithmic Transformation",
+            "2. Inverse Transformation",
+            "3. Square Root Transformation"
+          ],
+          "responses": [
+            "A. Relationship approaching an asymptote.",
+            "B. Exponential growth or decreasing rate of return.",
+            "C. Mild non-linearity and stabilizing variance."
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "data transformation",
+        "linearization",
+        "heteroscedasticity",
+        "normalization",
+        "regression assumptions"
+      ],
+      "source_chunk": "DAA_lec_1_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "Describe the Log-Y and Log-Log models, including when to use them and how to interpret their coefficients.",
+      "answers": {
+        "concise": "The Log-Y model ($\\log(Y) = b_0 + b_1 X$) is used when the data exhibits exponential growth. A one-unit change in $X$ is associated with a percentage change in $Y$. The Log-Log model ($\\log(Y) = b_0 + b_1 \\log(X)$) is used when both variables exhibit exponential growth, representing elasticity. A one percent change in $X$ is associated with a $b_1$ percent change in $Y$.",
+        "analogy": "Think of the Log-Y model like compound interest. The amount of money you have (Y) grows exponentially over time (X). The Log-Log model is like understanding how sensitive the demand for a product (Y) is to changes in its price (X).",
+        "eli5": "Imagine you're measuring how fast a plant grows. If it grows faster and faster each day, you can use the Log-Y model. If you also change how much sunlight it gets, and that changes its growth even more, you use the Log-Log model to see how much the sunlight affects the growth.",
+        "real_world_use_case": "An e-commerce company uses the Log-Log model to analyze the relationship between advertising spend ($X$) and sales revenue ($Y$). If the coefficient $b_1$ is 0.8, it means that a 1% increase in advertising spend is associated with a 0.8% increase in sales revenue, helping them optimize their advertising budget.",
+        "common_mistakes": "A common mistake is forgetting to back-transform the coefficients in logarithmic models to interpret them in the original units. For the Log-Y model, you need to exponentiate $b_1$ (i.e., $e^{b_1}$) to get the multiplicative effect of $X$ on $Y$, and subtract 1 to get the percentage change. Forgetting this step leads to misinterpreting the effect of the independent variable."
+      },
+      "context": "Data Transformations",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Practical non-linear transformations and their business interpretation."
+      },
+      "example": "A startup analyzes its user growth ($Y$) over time ($X$). The model is $\\log(\\text{Users}) = 2.0 + 0.2(\\text{Years})$. Interpreting $b_1 = 0.2$: For every year, $\\log(\\text{Users})$ increases by 0.2. To find the annual growth rate, we calculate $e^{0.2} \\approx 1.221$. The user base grows by approximately 22.1% per year. If the model was $\\log(\\text{Users}) = 2.0 + 0.5\\log(\\text{Marketing Spend})$, a 1% increase in marketing spend results in a 0.5% increase in users.",
+  "mermaid_code": "flowchart TD\\n    Start([Start]) --> Check{Decide transformation for X and Y}\\n    Check -- BothLog --> LL[Log-Log Model: Elasticity]\\n    Check -- YLogOnly --> LY[Log-Y Model: Growth Rate]\\n    Check -- NoneLog --> L[Linear Model]\\n\\n    LL --> Viz_LL[Visualize (LL)]\\n    Viz_LL --> B_LL{Linear Relationship?}\\n    B_LL -- Yes --> C_LL[Fit OLS]\\n    B_LL -- No --> D_LL[Apply further transform]\\n    D_LL --> C_LL\\n    C_LL --> E_LL[Estimate Coefs]\\n    E_LL --> F_LL[Predict]\\n    F_LL --> G_LL[Interpret]\\n    G_LL --> End_LL([End])\\n\\n    LY --> Viz_LY[Visualize (LY)]\\n    Viz_LY --> B_LY{Linear Relationship?}\\n    B_LY -- Yes --> C_LY[Fit OLS]\\n    B_LY -- No --> D_LY[Apply further transform]\\n    D_LY --> C_LY\\n    C_LY --> E_LY[Estimate Coefs]\\n    E_LY --> F_LY[Predict]\\n    F_LY --> G_LY[Interpret]\\n    G_LY --> End_LY([End])\\n\\n    L --> Viz_L[Visualize (Linear)]\\n    Viz_L --> B_L{Linear Relationship?}\\n    B_L -- Yes --> C_L[Fit OLS]\\n    B_L -- No --> D_L[Apply transform]\\n    D_L --> C_L\\n    C_L --> E_L[Estimate Coefs]\\n    E_L --> F_L[Predict]\\n    F_L --> G_L[Interpret]\\n    G_L --> End_L([End])",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "In a Log-Y model, what does a one-unit increase in the independent variable (X) correspond to?",
+          "options": [
+            "A. A constant increase in the dependent variable (Y).",
+            "B. A percentage increase in the dependent variable (Y).",
+            "C. A constant decrease in the dependent variable (Y).",
+            "D. A percentage decrease in the dependent variable (Y)."
+          ],
+          "answer": "B. A percentage increase in the dependent variable (Y)."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company uses a Log-Log model to analyze the relationship between price and quantity demanded. The coefficient for log(Price) is -1.5.",
+          "question": "What is the interpretation of this coefficient?",
+          "options": [
+            "A. A 1% increase in price leads to a 1.5 unit decrease in quantity demanded.",
+            "B. A 1 unit increase in price leads to a 1.5% decrease in quantity demanded.",
+            "C. A 1% increase in price leads to a 1.5% decrease in quantity demanded.",
+            "D. A 1 unit increase in price leads to a 1.5 unit decrease in quantity demanded."
+          ],
+          "answer": "C. A 1% increase in price leads to a 1.5% decrease in quantity demanded."
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the process of interpreting the coefficients of a Log-Y model.",
+          "items": [
+            "Exponentiate the coefficient (e^b1).",
+            "Subtract 1 from the exponentiated value.",
+            "Obtain the coefficient (b1) from the model.",
+            "Express the result as a percentage."
+          ],
+          "answer": [
+            "Obtain the coefficient (b1) from the model.",
+            "Exponentiate the coefficient (e^b1).",
+            "Subtract 1 from the exponentiated value.",
+            "Express the result as a percentage."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following as an 'Application' or a 'Calculation' related to Log-Y and Log-Log models.",
+          "items": [
+            "Analyzing elasticity of demand.",
+            "Calculating e^b1 to find the multiplicative effect.",
+            "Modeling exponential growth.",
+            "Subtracting 1 from e^b1 to get the percentage change."
+          ],
+          "categories": [
+            "Application",
+            "Calculation"
+          ],
+          "answer": {
+            "Application": [
+              "Analyzing elasticity of demand.",
+              "Modeling exponential growth."
+            ],
+            "Calculation": [
+              "Calculating e^b1 to find the multiplicative effect.",
+              "Subtracting 1 from e^b1 to get the percentage change."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each model with its typical use case.",
+          "premises": [
+            "1. Log-Y Model",
+            "2. Log-Log Model",
+            "3. Linear Model"
+          ],
+          "responses": [
+            "A. Modeling a linear relationship between two variables.",
+            "B. Modeling the percentage change in Y for a one-unit change in X when Y grows exponentially.",
+            "C. Modeling the percentage change in Y for a percentage change in X."
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "log-y model",
+        "log-log model",
+        "elasticity",
+        "exponential growth",
+        "data transformation"
+      ],
+      "source_chunk": "DAA_lec_1_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is a Polynomial Transformation in regression analysis, and why is it used?",
+      "answers": {
+        "concise": "A polynomial transformation involves adding polynomial terms (e.g., X^2, X^3) of the independent variable (X) to a regression model. It's used to model non-linear relationships between X and Y that exhibit curvature, like a U-shape or inverted U-shape.",
+        "analogy": "Think of trying to fit a straight stick (linear regression) to a curved slide. It won't fit well! Polynomial transformation is like bending the stick to match the curve of the slide, allowing you to better capture the relationship between the variables.",
+        "eli5": "Imagine you're drawing a line to connect dots. Sometimes the dots go straight, but sometimes they curve up and down. A polynomial transformation lets you draw a curved line instead of just a straight one, so you can connect all the dots better.",
+        "real_world_use_case": "In marketing, a company might use a polynomial transformation to model the relationship between advertising spend (X) and sales (Y). Sales initially increase with more advertising, but eventually, the effect diminishes or even becomes negative due to saturation. A quadratic model (X^2 term) can capture this diminishing returns effect.",
+        "common_mistakes": "A common mistake is to blindly add polynomial terms without visualizing the data first. Overfitting can occur, where the model fits the training data perfectly but performs poorly on new data. Also, interpreting the coefficients in polynomial models can be tricky, as the effect of X on Y depends on the values of both X and X^2."
+      },
+      "context": "Regression Analysis",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Core concept for modeling non-linear relationships in regression."
+      },
+      "example": "An agricultural company wants to optimize fertilizer usage to maximize crop yield. They observe that yield increases with fertilizer up to a point, but then decreases due to over-fertilization. They fit a quadratic model: Yield = b0 + b1*Fertilizer + b2*Fertilizer^2. The negative coefficient for Fertilizer^2 indicates the diminishing returns effect, allowing them to identify the optimal fertilizer level for maximum yield. This prevents wasting fertilizer and maximizing profits.",
+      "mermaid_code": "flowchart TD\n    A[Visualize Data] --> B{Curvilinear with Turning Point?}\n    B -- Yes --> C[Add X^2 Term: Polynomial]\n    C --> D[Fit Model: Y = b0 + b1X + b2X^2]\n    B -- No --> E[Try Linear or Log Transformation]",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following best describes a polynomial transformation in regression?",
+          "options": [
+            "A. Adding a constant to the independent variable.",
+            "B. Multiplying the dependent variable by a constant.",
+            "C. Including powers of the independent variable in the model.",
+            "D. Removing outliers from the dataset."
+          ],
+          "answer": "C. Including powers of the independent variable in the model."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company is modeling the relationship between employee training hours (X) and productivity (Y). They suspect that productivity increases with training initially, but then plateaus or decreases due to burnout. They should use a:",
+          "options": [
+            "A. Linear regression model.",
+            "B. Logistic regression model.",
+            "C. Polynomial regression model.",
+            "D. Simple moving average."
+          ],
+          "answer": "C. Polynomial regression model."
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in the correct order when using a polynomial transformation in regression analysis.",
+          "items": [
+            "Evaluate the model's fit and interpret coefficients.",
+            "Visualize the data to check for non-linearity.",
+            "Add polynomial terms (e.g., X^2, X^3) to the model.",
+            "Fit the polynomial regression model using least squares."
+          ],
+          "answer": [
+            "Visualize the data to check for non-linearity.",
+            "Add polynomial terms (e.g., X^2, X^3) to the model.",
+            "Fit the polynomial regression model using least squares.",
+            "Evaluate the model's fit and interpret coefficients."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each of the following relationships as either likely to be modeled well by 'Linear Regression' or requiring 'Polynomial Regression'.",
+          "items": [
+            "Height vs. Age in adults",
+            "Advertising Spend vs. Sales (with diminishing returns)",
+            "Temperature vs. Ice Cream Sales (linear)",
+            "Machine Speed vs. Defect Rate (with an optimal speed)"
+          ],
+          "categories": [
+            "Linear Regression",
+            "Polynomial Regression"
+          ],
+          "answer": {
+            "Linear Regression": [
+              "Height vs. Age in adults",
+              "Temperature vs. Ice Cream Sales (linear)"
+            ],
+            "Polynomial Regression": [
+              "Advertising Spend vs. Sales (with diminishing returns)",
+              "Machine Speed vs. Defect Rate (with an optimal speed)"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its corresponding description.",
+          "premises": [
+            "1. Polynomial Transformation",
+            "2. Curvilinear Relationship",
+            "3. Diminishing Returns",
+            "4. Overfitting"
+          ],
+          "responses": [
+            "A. A relationship between variables that is not a straight line.",
+            "B. Adding polynomial terms to a regression model.",
+            "C. The point where the effect of an input variable starts to decrease.",
+            "D. A model that fits the training data too well and performs poorly on new data."
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C",
+            "4-D"
+          ]
+        }
+      ],
+      "tags": [
+        "polynomial regression",
+        "non-linear regression",
+        "quadratic model",
+        "diminishing returns"
+      ],
+      "source_chunk": "DAA_lec_1_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What does it mean for a model to be 'linear in parameters,' and why is this important for Ordinary Least Squares (OLS)?",
+      "answers": {
+        "concise": "A model is 'linear in parameters' if the coefficients (b0, b1, b2, etc.) appear linearly in the equation, meaning they are not part of any non-linear function (e.g., exponent, logarithm). This is crucial for OLS because OLS relies on minimizing a sum of squared errors, which is easier to solve when the model is linear in parameters.",
+        "analogy": "Imagine you're trying to adjust knobs on a machine to get the best result. If each knob directly controls a specific aspect of the outcome (linear), it's easier to find the right settings. But if the knobs interact in complicated ways (non-linear), it's much harder to optimize.",
+        "eli5": "Think of building with LEGOs. If each LEGO brick adds a certain amount to the height of your tower, it's easy to figure out how many bricks you need. But if some bricks make the tower taller and others make the tower shorter depending on where you put them, it's much harder to plan.",
+        "real_world_use_case": "In real estate, a model predicting house price based on square footage (X) and number of bedrooms (Z) as Price = b0 + b1*X + b2*Z is linear in parameters. OLS can be used to estimate b0, b1, and b2. However, if the model were Price = b0 + X^(b1), it would be non-linear in parameters (b1 is an exponent) and OLS could not be directly applied.",
+        "common_mistakes": "A common mistake is to confuse 'linear in parameters' with 'linear in variables.' A model can be curvilinear in X (e.g., contain X^2 terms) but still be linear in parameters as long as the coefficients are not part of a non-linear function. Also, some transformations (like logarithms) can make a model linear in parameters, allowing OLS to be used."
+      },
+      "context": "Regression Analysis",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Fundamental concept for understanding the assumptions of OLS regression."
+      },
+      "example": "A consulting firm models project completion time (Y) based on the number of team members (X) and project complexity (Z). The model Y = b0 + b1*X + b2*Z is linear in parameters. They use OLS to estimate b0, b1, and b2. If they added an interaction term like b3*X*Z, the model would still be linear in parameters. However, if the model was Y = b0 + exp(b1*X), it would be non-linear in parameters, and OLS would not be directly applicable.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the defining characteristic of a model that is 'linear in parameters'?",
+          "options": [
+            "A. The independent variable (X) appears linearly in the equation.",
+            "B. The dependent variable (Y) appears linearly in the equation.",
+            "C. The coefficients (b0, b1, b2, etc.) appear linearly in the equation.",
+            "D. The model is a straight line when plotted."
+          ],
+          "answer": "C. The coefficients (b0, b1, b2, etc.) appear linearly in the equation."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A researcher wants to use Ordinary Least Squares (OLS) regression. Which of the following models is suitable for OLS?",
+          "options": [
+            "A. Y = b0 + X^(b1)",
+            "B. Y = b0 + b1*log(X)",
+            "C. Y = exp(b0 + b1*X)",
+            "D. Y = b0 + sin(b1*X)"
+          ],
+          "answer": "B. Y = b0 + b1*log(X)"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order when determining if OLS can be applied to a regression model.",
+          "items": [
+            "Check if the model is linear in parameters.",
+            "If not, consider transformations to linearize the model.",
+            "Write down the proposed regression equation.",
+            "If linear in parameters, proceed with OLS."
+          ],
+          "answer": [
+            "Write down the proposed regression equation.",
+            "Check if the model is linear in parameters.",
+            "If not, consider transformations to linearize the model.",
+            "If linear in parameters, proceed with OLS."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following models as either 'Linear in Parameters' or 'Non-Linear in Parameters'.",
+          "items": [
+            "Y = b0 + b1*X + b2*X^2",
+            "Y = b0 + exp(b1*X)",
+            "Y = b0 + b1*log(X)",
+            "Y = b0 + (b1)^X"
+          ],
+          "categories": [
+            "Linear in Parameters",
+            "Non-Linear in Parameters"
+          ],
+          "answer": {
+            "Linear in Parameters": [
+              "Y = b0 + b1*X + b2*X^2",
+              "Y = b0 + b1*log(X)"
+            ],
+            "Non-Linear in Parameters": [
+              "Y = b0 + exp(b1*X)",
+              "Y = b0 + (b1)^X"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its corresponding explanation in the context of regression models.",
+          "premises": [
+            "1. Linear in Parameters",
+            "2. Non-Linear in Parameters",
+            "3. Ordinary Least Squares (OLS)",
+            "4. Transformation"
+          ],
+          "responses": [
+            "A. A method used to estimate the coefficients in a linear regression model.",
+            "B. A model where the coefficients appear linearly in the equation.",
+            "C. A model where the coefficients are part of a non-linear function.",
+            "D. Applying a mathematical function to a variable (e.g., logarithm) to change its distribution or relationship with another variable."
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-A",
+            "4-D"
+          ]
+        }
+      ],
+      "tags": [
+        "linear in parameters",
+        "ordinary least squares",
+        "OLS",
+        "regression assumptions"
+      ],
+      "source_chunk": "DAA_lec_1_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "process",
+      "question": "Describe the process of predictive modeling, including data visualization, model selection/transformation, coefficient estimation, point prediction, and interpretation.",
+      "answers": {
+        "concise": "Predictive modeling involves visualizing data to assess linearity and variance, selecting an appropriate model or transformation, estimating coefficients using Least Squares, generating point predictions with the resulting equation, and interpreting the coefficients, especially in transformed models, being mindful of extrapolation risks.",
+        "analogy": "Think of baking a cake. First, you look at the ingredients (data visualization). Then, you choose a recipe (model selection). Next, you mix the ingredients according to the recipe (coefficient estimation). After baking, you taste a slice (point prediction) and adjust the ingredients for the next cake (interpretation).",
+        "eli5": "Imagine you want to guess how tall your friend will be next year. First, you look at how tall they've been each year (data visualization). Then, you decide if they're growing steadily or in spurts (model selection). Next, you draw a line that best fits their growth (coefficient estimation). Then, you use the line to guess their height next year (point prediction). Finally, you check if your guess makes sense based on what you know about them (interpretation).",
+        "real_world_use_case": "A retail company uses predictive modeling to forecast sales. They first plot sales data against marketing spend to see the relationship (data visualization). If the relationship is non-linear, they apply a logarithmic transformation (model selection/transformation). They then use regression to estimate the relationship (coefficient estimation). They use the model to predict future sales based on planned marketing spend (point prediction). Finally, they interpret the coefficients to understand the impact of marketing on sales (interpretation).",
+        "common_mistakes": "A common mistake is to skip the data visualization step and blindly apply a model. This can lead to poor model fit and inaccurate predictions. Another mistake is to extrapolate beyond the range of the data, which can result in unrealistic predictions. Finally, failing to properly interpret coefficients in transformed models can lead to incorrect conclusions."
+      },
+      "context": "Predictive Modeling",
+      "relevance_score": {
+        "score": 10,
+        "justification": "This is the core process for regression analysis and a critical learning objective."
+      },
+      "example": "Netflix uses predictive modeling to forecast subscriber churn. They visualize churn rate against factors like viewing hours and account tenure. They might apply a logistic regression model or incorporate interaction effects. They estimate coefficients to quantify the impact of each factor. They predict which subscribers are most likely to churn in the next month. Finally, they interpret the coefficients to understand which factors are driving churn and tailor retention strategies accordingly. For example, they might find that subscribers who haven't watched anything in 30 days are at high risk of churning.",
+      "mermaid_code": "flowchart TD\\n    %% Transformation decision\\n    X_IN[Input X] --> X_LOG_Q{Is log(X) Needed?}\\n    Y_IN[Input Y] --> Y_LOG_Q{Is log(Y) Needed?}\\n\\n    X_LOG_Q -- Yes --> X_L[Use Log X]\\n    X_LOG_Q -- No --> X_O[Use Original X]\\n\\n    Y_LOG_Q -- Yes --> Y_L[Use Log Y]\\n    Y_LOG_Q -- No --> Y_O[Use Original Y]\\n\\n    X_L & Y_L --> LL[Log-Log Model: Elasticity]\\n    X_O & Y_L --> LY[Log-Y Model: Growth Rate]\\n    X_O & Y_O --> L[Linear Model]\\n\\n    %% Modeling pipeline\\n    A[Data Visualization: Scatter Plot] --> B{Linear Relationship?}\\n    B -- Yes --> C[Fit OLS Model]\\n    B -- No --> D[Apply Transformation (Log/Poly)]\\n    D --> C\\n    C --> E[Coefficient Estimation]\\n    E --> F[Point Prediction]\\n    F --> G[Interpretation]\\n    G --> H[End]",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is the FIRST step in the predictive modeling process described?",
+          "options": [
+            "A. Coefficient estimation",
+            "B. Point prediction",
+            "C. Data visualization",
+            "D. Model selection"
+          ],
+          "answer": "C. Data visualization"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A data analyst notices that the relationship between two variables is non-linear. According to the predictive modeling process, what should be their NEXT step?",
+          "question": "Which of the following is the next step?",
+          "options": [
+            "A. Estimate the coefficients using Least Squares.",
+            "B. Generate point predictions.",
+            "C. Apply an appropriate transformation.",
+            "D. Interpret the coefficients."
+          ],
+          "answer": "C. Apply an appropriate transformation."
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps of the predictive modeling process in the correct order.",
+          "items": [
+            "Point Prediction",
+            "Data Visualization",
+            "Interpretation",
+            "Coefficient Estimation",
+            "Model Selection/Transformation"
+          ],
+          "answer": [
+            "Data Visualization",
+            "Model Selection/Transformation",
+            "Coefficient Estimation",
+            "Point Prediction",
+            "Interpretation"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each of the following activities as belonging to either 'Model Building' or 'Model Application' stages of predictive modeling.",
+          "items": [
+            "Estimating coefficients using Least Squares",
+            "Generating point predictions with the model",
+            "Visualizing data to assess linearity",
+            "Interpreting the model's coefficients"
+          ],
+          "categories": [
+            "Model Building",
+            "Model Application"
+          ],
+          "answer": {
+            "Model Building": [
+              "Estimating coefficients using Least Squares",
+              "Visualizing data to assess linearity"
+            ],
+            "Model Application": [
+              "Generating point predictions with the model",
+              "Interpreting the model's coefficients"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each step in the predictive modeling process with its primary goal.",
+          "premises": [
+            "1. Data Visualization",
+            "2. Model Selection/Transformation",
+            "3. Coefficient Estimation",
+            "4. Point Prediction"
+          ],
+          "responses": [
+            "A. To determine the best functional form for the model.",
+            "B. To assess linearity and variance uniformity.",
+            "C. To generate forecasts based on the model.",
+            "D. To quantify the relationship between variables."
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-D",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "predictive modeling",
+        "regression process",
+        "data visualization",
+        "model selection"
+      ],
+      "source_chunk": "DAA_lec_1_2",
+      "diagram_image_path": ""
+    }
+  ]
+}

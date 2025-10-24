@@ -77,5 +77,96 @@
         ]
       }
     ]
+  },
+  {
+    "course_id": "MS5031",
+    "course_name": "Data Analysis Applications",
+    "course_code": "DAA",
+    "instructor": "Usha Mohan",
+    "reference_textbooks": [
+      "Statistics for Business: Decision Making and Analysis by Robert E Stine and Dean Foster, Pearson (ISBN: 978-81-317-3347-9)"
+    ],
+    "course_description": "Regression models are among the most powerful statistical models used in business analysis. This course introduces students to the concepts of regression by modeling dependent behavior and relationships among variables, followed by analysis of covariance and logistic regression as a classifier. The objective is to help students identify relationships, use predictive models and analyze correlations.",
+    "lecture_slides": [
+      {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_1.pdf",
+        "lecture_name": "DAA Lecture 1",
+        "lecture_number": "1",
+        "topics": [
+          "Fitting Equations to Data",
+          "Transformations",
+          "Least squares fitting criteria",
+          "Point prediction from regression equation",
+          "Linear transformation",
+          "Non-linear transformation",
+          "Polynomial transformation"
+        ]
+      },
+      {
+        "lecture_name": "DAA Lecture 2",
+        "lecture_number": "2",
+        "topics": [
+          "Simple Regression Model",
+          "Assumptions in regression modeling",
+          "Estimates in regression",
+          "Fitted values and residuals",
+          "Inference in Regression",
+          "Prediction intervals",
+          "Confidence intervals in Regression"
+        ]
+      },
+      {
+        "lecture_name": "DAA Lecture 3",
+        "lecture_number": "3",
+        "topics": [
+          "Regression Diagnostics",
+          "Nonlinearity",
+          "Unequal variances",
+          "Outliers",
+          "Auto-correlation"
+        ]
+      },
+      {
+        "lecture_name": "DAA Lecture 4",
+        "lecture_number": "4",
+        "topics": [
+          "Multiple Regression",
+          "Scatterplot matrix",
+          "Correlation matrix",
+          "Interpreting Multiple Regression",
+          "Inference in Multiple Regression"
+        ]
+      },
+      {
+        "lecture_name": "DAA Lecture 5",
+        "lecture_number": "5",
+        "topics": [
+          "Building Regression Models",
+          "Identifying Explanatory variables",
+          "Comparison of regression models",
+          "Impact of Collinearity",
+          "Strategies for dealing with Collinearity",
+          "Variance Inflation Factor (VIF)"
+        ]
+      },
+      {
+        "lecture_name": "DAA Lecture 6",
+        "lecture_number": "6",
+        "topics": [
+          "Categorical Explanatory Variables",
+          "Two sample comparisons",
+          "Analysis of Covariance (ANCOVA)",
+          "Interactions and inference",
+          "Use of categorical variables in regression models"
+        ]
+      },
+      {
+        "lecture_name": "DAA Lecture 7",
+        "lecture_number": "7",
+        "topics": [
+          "Logistic Regression"
+        ]
+      }
+    ]
   }
 ]
