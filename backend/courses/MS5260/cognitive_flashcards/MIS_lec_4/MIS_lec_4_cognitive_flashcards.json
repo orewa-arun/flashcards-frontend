@@ -26,7 +26,22 @@
         "justification": "Core definition and foundational concept for database design"
       },
       "example": "Consider designing a database for a university. 'Student' and 'Course' are entities. The 'Student' entity has attributes like 'StudentID', 'Name', and 'Major'. The 'Course' entity has attributes like 'CourseID', 'CourseName', and 'Credits'. The relationship 'Enrolls in' connects students and courses, indicating which students are taking which courses. This E-R model helps visualize the database structure before implementation.",
-      "mermaid_code": "graph LR\n  A[Student] --> B(Enrolls in)\n  B --> C[Course]\n  style A fill:#f9f,stroke:#333,stroke-width:2px\n  style C fill:#f9f,stroke:#333,stroke-width:2px\n  style B fill:#ccf,stroke:#333,stroke-width:2px",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  Entity[Entity]\n  Attributes[Attributes]\n  Relationship[Relationship]\n  Entity --> Attributes\n  Entity --> Relationship\n  Relationship --> Entity2[Another Entity]\n  style Entity fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Attributes fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Relationship fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Entity2 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px",
+        "analogy": "graph TD\n  Building[Building Blueprint]\n  Rooms[Rooms: Entities]\n  Characteristics[Room Characteristics: Attributes]\n  Connections[How Rooms Connect: Relationships]\n  Building --> Rooms\n  Building --> Characteristics\n  Building --> Connections\n  style Building fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Rooms fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Characteristics fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Connections fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "eli5": "graph TD\n  ToyMap[Toy Map]\n  Toys[Toys: Entities]\n  Colors[Colors & Sizes: Attributes]\n  Groups[How Toys are Grouped: Relationships]\n  ToyMap --> Toys\n  ToyMap --> Colors\n  ToyMap --> Groups\n  style ToyMap fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style Toys fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Colors fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Groups fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Patient[Patient Entity]\n  PatientID[Patient ID]\n  Name[Name]\n  DOB[Date of Birth]\n  Doctor[Doctor Entity]\n  Treats[Treats Relationship]\n  Patient --> PatientID\n  Patient --> Name\n  Patient --> DOB\n  Patient --> Treats\n  Treats --> Doctor\n  style Patient fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Doctor fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Treats fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style PatientID fill:#fff3e0,stroke:#f57c00,stroke-width:1px\n  style Name fill:#fff3e0,stroke:#f57c00,stroke-width:1px\n  style DOB fill:#fff3e0,stroke:#f57c00,stroke-width:1px",
+        "common_mistakes": "graph TD\n  Mistake[Common Mistake]\n  Wrong1[Color as Entity]\n  Wrong2[Overly Complex Diagram]\n  Correct1[Color as Attribute of Car]\n  Correct2[Clear Business Requirements]\n  Mistake --> Wrong1\n  Mistake --> Wrong2\n  Wrong1 -.->|Should be| Correct1\n  Wrong2 -.->|Should be| Correct2\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style Wrong1 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Wrong2 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Correct1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Correct2 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "example": "graph LR\n  Student[Student Entity]\n  StudentID[StudentID]\n  StudentName[Name]\n  Major[Major]\n  Course[Course Entity]\n  CourseID[CourseID]\n  CourseName[CourseName]\n  Credits[Credits]\n  EnrollsIn[Enrolls In]\n  Student --> StudentID\n  Student --> StudentName\n  Student --> Major\n  Student --> EnrollsIn\n  EnrollsIn --> Course\n  Course --> CourseID\n  Course --> CourseName\n  Course --> Credits\n  style Student fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Course fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style EnrollsIn fill:#c8e6c9,stroke:#388e3c,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -139,7 +154,22 @@
         "justification": "Fundamental concept in relational database design"
       },
       "example": "Consider a 'Customers' table in a database. The 'CustomerID' is the primary key. Each customer is assigned a unique CustomerID (e.g., 1001, 1002, 1003). This ensures that each customer record is distinct and can be easily referenced in other tables, such as 'Orders' table, through a foreign key relationship.",
-      "mermaid_code": "",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  Table[Database Table]\n  PK[Primary Key]\n  Unique[Uniquely Identifies]\n  Record[Each Record]\n  Table --> PK\n  PK --> Unique\n  Unique --> Record\n  style Table fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style PK fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Unique fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Record fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "analogy": "graph LR\n  Person[Person]\n  SSN[Social Security Number]\n  Unique[Unique Identifier]\n  Person --> SSN\n  SSN --> Unique\n  Unique -.->|Like| PK[Primary Key in Database]\n  style Person fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style SSN fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Unique fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style PK fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "eli5": "graph TD\n  ToyBox[Box of Toys]\n  Stickers[Special Sticker Numbers]\n  EachToy[Each Toy Gets One]\n  FindQuickly[Find Toys Quickly]\n  ToyBox --> Stickers\n  Stickers --> EachToy\n  EachToy --> FindQuickly\n  style ToyBox fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style Stickers fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style EachToy fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style FindQuickly fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  OrdersTable[Orders Table]\n  OrderID[OrderID: Primary Key]\n  UniqueOrders[Each Order is Unique]\n  Link[Link to Customer]\n  OrdersTable --> OrderID\n  OrderID --> UniqueOrders\n  UniqueOrders --> Link\n  style OrdersTable fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style OrderID fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style UniqueOrders fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Link fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Mistakes[Common Mistakes]\n  Wrong1[Using Non-Unique Attribute]\n  Wrong2[No Primary Key Defined]\n  Problem1[Data Integrity Issues]\n  Problem2[Cannot Relate Tables]\n  Mistakes --> Wrong1\n  Mistakes --> Wrong2\n  Wrong1 --> Problem1\n  Wrong2 --> Problem2\n  style Mistakes fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style Wrong1 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Wrong2 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Problem1 fill:#ffebee,stroke:#c62828,stroke-width:2px\n  style Problem2 fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph LR\n  CustomersTable[Customers Table]\n  CustomerID[CustomerID]\n  ID1001[1001]\n  ID1002[1002]\n  ID1003[1003]\n  OrdersTable[Orders Table References CustomerID]\n  CustomersTable --> CustomerID\n  CustomerID --> ID1001\n  CustomerID --> ID1002\n  CustomerID --> ID1003\n  CustomerID -.->|Foreign Key| OrdersTable\n  style CustomersTable fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style CustomerID fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style OrdersTable fill:#c8e6c9,stroke:#388e3c,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -250,7 +280,22 @@
         "justification": "Important concept for understanding relationships between entities"
       },
       "example": "Consider a 'Department' and 'Employee' relationship in a company. If one department can have many employees, and each employee belongs to only one department, the cardinality is one-to-many (1:M). The 'Department' is the 'one' side, and the 'Employee' is the 'many' side. This means each employee record will have a foreign key referencing the department they belong to.",
-      "mermaid_code": "graph LR\n  A[Department] -- 1 -- B{Employee}\n  style A fill:#f9f,stroke:#333,stroke-width:2px\n  style B fill:#ccf,stroke:#333,stroke-width:2px",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  Cardinality[Cardinality]\n  OneToOne[1:1 One-to-One]\n  OneToMany[1:M One-to-Many]\n  ManyToMany[M:M Many-to-Many]\n  Cardinality --> OneToOne\n  Cardinality --> OneToMany\n  Cardinality --> ManyToMany\n  style Cardinality fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style OneToOne fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style OneToMany fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style ManyToMany fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "analogy": "graph TD\n  Bus[Bus Seating]\n  OneSeat[One Seat: 1:1]\n  ManySeatOneDriver[Many Seats, One Driver: 1:M]\n  ManyBusesDrivers[Many Buses, Many Drivers: M:M]\n  Bus --> OneSeat\n  Bus --> ManySeatOneDriver\n  Bus --> ManyBusesDrivers\n  style Bus fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style OneSeat fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style ManySeatOneDriver fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style ManyBusesDrivers fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "eli5": "graph TD\n  KidsToys[Kids and Toys]\n  OneKidOneToy[One Kid, One Toy: 1:1]\n  OneKidManyToys[One Kid, Many Toys: 1:M]\n  ManyKidsManyToys[Many Kids Share Many Toys: M:M]\n  KidsToys --> OneKidOneToy\n  KidsToys --> OneKidManyToys\n  KidsToys --> ManyKidsManyToys\n  style KidsToys fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style OneKidOneToy fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style OneKidManyToys fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style ManyKidsManyToys fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Author[Author]\n  Book[Book]\n  OneAuthor[One Author]\n  ManyBooks[Many Books]\n  Author -->|Writes| Book\n  OneAuthor -.-> ManyBooks\n  style Author fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Book fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style OneAuthor fill:#fff3e0,stroke:#f57c00,stroke-width:1px\n  style ManyBooks fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px",
+        "common_mistakes": "graph TD\n  Mistake[Choosing Wrong Cardinality]\n  Wrong1[Assuming 1:1 When 1:M]\n  Wrong2[Ignoring Business Rules]\n  Correct[Check Business Constraints]\n  Mistake --> Wrong1\n  Mistake --> Wrong2\n  Wrong1 -.->|Should| Correct\n  Wrong2 -.->|Should| Correct\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style Wrong1 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Wrong2 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Correct fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "example": "graph LR\n  Department[Department]\n  Employee1[Employee 1]\n  Employee2[Employee 2]\n  Employee3[Employee 3]\n  EmployeeN[Employee N]\n  Department -->|1:M| Employee1\n  Department --> Employee2\n  Department --> Employee3\n  Department --> EmployeeN\n  style Department fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Employee1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Employee2 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Employee3 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style EmployeeN fill:#c8e6c9,stroke:#388e3c,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -358,7 +403,22 @@
         "justification": "Important for fully specifying relationships, but less emphasized than cardinality"
       },
       "example": "Consider the relationship between 'Order' and 'OrderItem' in an e-commerce database. An order *must* have at least one order item (mandatory modality) because an order without any items is meaningless. However, an 'OrderItem' may or may not be associated with a promotion (optional modality).",
-      "mermaid_code": "graph LR\n  A[Order] -- || -- B{OrderItem}\n  style A fill:#f9f,stroke:#333,stroke-width:2px\n  style B fill:#ccf,stroke:#333,stroke-width:2px",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  Modality[Modality]\n  Mandatory[Mandatory: Must Participate]\n  Optional[Optional: May Participate]\n  MinInstances[Minimum Instances Required]\n  Modality --> Mandatory\n  Modality --> Optional\n  Mandatory --> MinInstances\n  style Modality fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Mandatory fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Optional fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style MinInstances fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "analogy": "graph TD\n  StudentMajor[Student and Major]\n  MustHave[Must Have Major: Mandatory]\n  CanHave[Can Have Minor: Optional]\n  StudentMajor --> MustHave\n  StudentMajor --> CanHave\n  style StudentMajor fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style MustHave fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style CanHave fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "eli5": "graph TD\n  LegoSet[Building LEGO Set]\n  MustUse[Must Use Red Block: Mandatory]\n  CanUse[Can Use Blue Block: Optional]\n  LegoSet --> MustUse\n  LegoSet --> CanUse\n  style LegoSet fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style MustUse fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style CanUse fill:#ffecb3,stroke:#f57c00,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Patient[Patient]\n  Appointment[Appointment]\n  Doctor[Doctor]\n  Patient -->|Must Have 1+ Mandatory| Appointment\n  Appointment -.->|May Have Optional| Doctor\n  style Patient fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Appointment fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Doctor fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Mistake[Confusing Modality & Cardinality]\n  Cardinality[Cardinality: Maximum]\n  Modality[Modality: Minimum]\n  Wrong[Not Defining Modality]\n  Result[Data Integrity Issues]\n  Mistake --> Cardinality\n  Mistake --> Modality\n  Mistake --> Wrong\n  Wrong --> Result\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style Wrong fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Result fill:#ffebee,stroke:#c62828,stroke-width:2px\n  style Cardinality fill:#e3f2fd,stroke:#1976d2,stroke-width:1px\n  style Modality fill:#c8e6c9,stroke:#388e3c,stroke-width:1px",
+        "example": "graph LR\n  Order[Order]\n  OrderItem1[OrderItem 1]\n  OrderItem2[OrderItem 2]\n  Promotion[Promotion]\n  Order -->|1..* Mandatory| OrderItem1\n  Order --> OrderItem2\n  OrderItem1 -.->|0..1 Optional| Promotion\n  style Order fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style OrderItem1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style OrderItem2 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Promotion fill:#fff3e0,stroke:#f57c00,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -460,7 +520,22 @@
         "justification": "Core concept in E-R diagram modeling"
       },
       "example": "In a library database, the 'Borrows' relationship between 'Member' and 'Book' is a binary relationship. It connects members to the books they have borrowed, with attributes like 'BorrowDate' and 'ReturnDate'.",
-      "mermaid_code": "graph LR\n  A[Member] -- Borrows -- B[Book]\n  style A fill:#f9f,stroke:#333,stroke-width:2px\n  style B fill:#f9f,stroke:#333,stroke-width:2px",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n  Entity1[Entity 1]\n  Entity2[Entity 2]\n  Relationship[Binary Relationship]\n  Entity1 --> Relationship\n  Relationship --> Entity2\n  style Entity1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Entity2 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Relationship fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "analogy": "graph LR\n  Person1[Person 1]\n  Person2[Person 2]\n  Marriage[Marriage: Binary Relationship]\n  Person1 --> Marriage\n  Marriage --> Person2\n  style Person1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Person2 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Marriage fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "eli5": "graph LR\n  Cars[Cars]\n  Dolls[Dolls]\n  PlayingTogether[Playing Together]\n  Cars --> PlayingTogether\n  PlayingTogether --> Dolls\n  style Cars fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style Dolls fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style PlayingTogether fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Student[Student]\n  Course[Course]\n  EnrollsIn[Enrolls In: Binary Relationship]\n  Student --> EnrollsIn\n  EnrollsIn --> Course\n  style Student fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Course fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style EnrollsIn fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Confusion[Common Confusion]\n  Binary[Binary: 2 Entities]\n  Unary[Unary: 1 Entity]\n  Ternary[Ternary: 3 Entities]\n  Confusion --> Binary\n  Confusion --> Unary\n  Confusion --> Ternary\n  style Confusion fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style Binary fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Unary fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Ternary fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "example": "graph LR\n  Member[Member]\n  Book[Book]\n  Borrows[Borrows]\n  BorrowDate[BorrowDate]\n  ReturnDate[ReturnDate]\n  Member --> Borrows\n  Borrows --> Book\n  Borrows --> BorrowDate\n  Borrows --> ReturnDate\n  style Member fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Book fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Borrows fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style BorrowDate fill:#fff3e0,stroke:#f57c00,stroke-width:1px\n  style ReturnDate fill:#fff3e0,stroke:#f57c00,stroke-width:1px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -569,7 +644,22 @@
         "justification": "Key distinction for understanding database types"
       },
       "example": "Consider a hospital. Patient records containing demographic information (name, age, address) and lab results (blood pressure, cholesterol levels) are structured data stored in a relational database. Doctors' notes, medical images (X-rays, MRIs), and audio recordings of consultations are unstructured data, often stored in a document database or object storage.",
-      "mermaid_code": "",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  Data[Data Types]\n  Structured[Structured Data]\n  Unstructured[Unstructured Data]\n  Predefined[Predefined Format]\n  NoPredefined[No Predefined Format]\n  Searchable[Easily Searchable]\n  Challenging[Challenging to Search]\n  Data --> Structured\n  Data --> Unstructured\n  Structured --> Predefined\n  Structured --> Searchable\n  Unstructured --> NoPredefined\n  Unstructured --> Challenging\n  style Data fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Structured fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Unstructured fill:#ffecb3,stroke:#f57c00,stroke-width:2px",
+        "analogy": "graph TD\n  FilingCabinet[Organized Filing Cabinet]\n  Papers[Pile of Papers on Desk]\n  EasyFind[Easy to Find Documents]\n  TimeConsuming[Time-Consuming Search]\n  FilingCabinet -->|Structured| EasyFind\n  Papers -->|Unstructured| TimeConsuming\n  style FilingCabinet fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Papers fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style EasyFind fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px\n  style TimeConsuming fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "eli5": "graph TD\n  ToyBox[Box of Toys]\n  Sorted[Sorted by Color & Size]\n  DumpedIn[Just Dumped In]\n  Sorted -->|Structured| FindEasy[Find Toys Easily]\n  DumpedIn -->|Unstructured| FindHard[Hard to Find]\n  style ToyBox fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style Sorted fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style DumpedIn fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style FindEasy fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px\n  style FindHard fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  CRMSystem[CRM System]\n  SocialMedia[Social Media]\n  StructuredData[Names, Addresses, Phone Numbers]\n  UnstructuredData[Posts, Videos, Images]\n  RelationalDB[Relational Database]\n  NoSQLDB[NoSQL/Data Lake]\n  CRMSystem --> StructuredData\n  StructuredData --> RelationalDB\n  SocialMedia --> UnstructuredData\n  UnstructuredData --> NoSQLDB\n  style CRMSystem fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style SocialMedia fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style StructuredData fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style UnstructuredData fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style RelationalDB fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style NoSQLDB fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Mistake[Common Mistakes]\n  Wrong1[Assuming All Data Must Be Structured]\n  Wrong2[Forcing Unstructured into Structured Format]\n  Problem1[Missing Valuable Insights]\n  Problem2[Data Loss/Inaccuracy]\n  Mistake --> Wrong1\n  Mistake --> Wrong2\n  Wrong1 --> Problem1\n  Wrong2 --> Problem2\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style Wrong1 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Wrong2 fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Problem1 fill:#ffebee,stroke:#c62828,stroke-width:2px\n  style Problem2 fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph TD\n  Hospital[Hospital Data]\n  Structured[Structured Data]\n  Unstructured[Unstructured Data]\n  Demographics[Name, Age, Address]\n  LabResults[Blood Pressure, Cholesterol]\n  DoctorsNotes[Doctors Notes]\n  MedicalImages[X-rays, MRIs]\n  Audio[Audio Recordings]\n  RelationalDB[Relational Database]\n  DocumentDB[Document DB/Object Storage]\n  Hospital --> Structured\n  Hospital --> Unstructured\n  Structured --> Demographics\n  Structured --> LabResults\n  Structured --> RelationalDB\n  Unstructured --> DoctorsNotes\n  Unstructured --> MedicalImages\n  Unstructured --> Audio\n  Unstructured --> DocumentDB\n  style Hospital fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Structured fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Unstructured fill:#ffecb3,stroke:#f57c00,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -677,7 +767,22 @@
         "justification": "Fundamental concept for understanding database relationships and constraints."
       },
       "example": "Consider a database modeling the relationship between 'Orders' and 'Customers' in an e-commerce system. The cardinality might be 'one-to-many,' indicating one customer can place multiple orders. If every order *must* be associated with a customer, the modality is mandatory (each order requires a customer). However, if a customer can exist in the system without placing any orders (e.g., just signed up for marketing emails), the modality is optional.",
-      "mermaid_code": "graph LR\nA[Entity A]--1..1-->B[Entity B]\nB--0..N-->A\nstyle A fill:#f9f,stroke:#333,stroke-width:2px\nstyle B fill:#ccf,stroke:#333,stroke-width:2px",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n  Cardinality[Cardinality: Maximum]\n  Modality[Modality: Minimum]\n  Mandatory[Mandatory: At Least 1]\n  Optional[Optional: Zero Allowed]\n  FullNotation[Full E-R Notation]\n  Cardinality --> FullNotation\n  Modality --> FullNotation\n  Modality --> Mandatory\n  Modality --> Optional\n  style Cardinality fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Modality fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style FullNotation fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Mandatory fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px\n  style Optional fill:#ffecb3,stroke:#f57c00,stroke-width:2px",
+        "analogy": "graph TD\n  HotelRoom[Hotel Room Booking]\n  MaxPeople[Maximum People: Cardinality]\n  MinNights[Minimum Nights: Modality]\n  MustBook[Must Book 1+ Night: Mandatory]\n  CanSkip[Can Choose Not to Book: Optional]\n  HotelRoom --> MaxPeople\n  HotelRoom --> MinNights\n  MinNights --> MustBook\n  MinNights --> CanSkip\n  style HotelRoom fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style MaxPeople fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style MinNights fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style MustBook fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px\n  style CanSkip fill:#ffecb3,stroke:#f57c00,stroke-width:2px",
+        "eli5": "graph TD\n  PartyInvites[Party Invites]\n  MostFriends[Most Friends You Can Invite: Cardinality]\n  MustInvite[Must Invite 1+ Friend: Mandatory]\n  CanBeAlone[Can Have Party Alone: Optional]\n  PartyInvites --> MostFriends\n  PartyInvites --> MustInvite\n  PartyInvites --> CanBeAlone\n  style PartyInvites fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style MostFriends fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style MustInvite fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style CanBeAlone fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Student[Student]\n  Course[Course]\n  ManyCoursesCard[Cardinality: Many Courses]\n  AtLeastOne[Mandatory Modality: 1+ Course]\n  ZeroCourses[Optional Modality: 0 Courses OK]\n  Student -->|1..* or 0..*| Course\n  Course --> ManyCoursesCard\n  Student --> AtLeastOne\n  Student -.->|Or| ZeroCourses\n  style Student fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Course fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style ManyCoursesCard fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style AtLeastOne fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style ZeroCourses fill:#ffecb3,stroke:#f57c00,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Mistake[Common Mistake]\n  ConfuseTwo[Confusing Cardinality & Modality]\n  AssumeAll[Assuming All Relationships Mandatory]\n  CardinalityMax[Cardinality = Maximum Instances]\n  ModalityMin[Modality = Minimum Instances]\n  Flexibility[Many Relationships Are Optional]\n  Mistake --> ConfuseTwo\n  Mistake --> AssumeAll\n  ConfuseTwo --> CardinalityMax\n  ConfuseTwo --> ModalityMin\n  AssumeAll --> Flexibility\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style ConfuseTwo fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style AssumeAll fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style CardinalityMax fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px\n  style ModalityMin fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px\n  style Flexibility fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "example": "graph LR\n  Customer[Customer]\n  Order[Order]\n  ManyOrders[Cardinality: 1:M]\n  OrderMandatory[Order Must Have Customer: Mandatory]\n  CustomerOptional[Customer Can Exist Without Orders: Optional]\n  Customer -->|0..* Optional| Order\n  Order -->|1..1 Mandatory| Customer\n  Order --> OrderMandatory\n  Customer --> CustomerOptional\n  style Customer fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Order fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style ManyOrders fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style OrderMandatory fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style CustomerOptional fill:#ffecb3,stroke:#f57c00,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -790,7 +895,22 @@
         "justification": "Important concept for accurately representing many-to-many relationships."
       },
       "example": "Consider a university database tracking student enrollment in courses. The 'Enrollment' relationship between 'Students' and 'Courses' might have intersection data such as 'Grade' and 'Enrollment Date.' The grade isn't a property of the student (it's specific to the course) nor a property of the course (it's specific to the student), but rather describes the student's performance *in that specific course.* The enrollment date captures the timing of the relationship.",
-      "mermaid_code": "",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  IntersectionData[Intersection Data]\n  EntityAttributes[Entity Attributes]\n  RelationshipAttributes[Relationship Attributes]\n  ManyToMany[Used in M:M Relationships]\n  IntersectionData --> RelationshipAttributes\n  IntersectionData --> ManyToMany\n  EntityAttributes -.->|Not| IntersectionData\n  style IntersectionData fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style RelationshipAttributes fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style ManyToMany fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style EntityAttributes fill:#ffecb3,stroke:#f57c00,stroke-width:2px",
+        "analogy": "graph LR\n  Road1[Road 1]\n  Road2[Road 2]\n  Intersection[Intersection Point]\n  TrafficLights[Traffic Lights]\n  Crosswalks[Crosswalks]\n  Road1 --> Intersection\n  Road2 --> Intersection\n  Intersection --> TrafficLights\n  Intersection --> Crosswalks\n  style Road1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Road2 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Intersection fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style TrafficLights fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Crosswalks fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "eli5": "graph TD\n  Alice[Alice]\n  Bob[Bob]\n  Sharing[Sharing Toys]\n  HowMany[How Many Toys Shared]\n  Alice --> Sharing\n  Bob --> Sharing\n  Sharing --> HowMany\n  style Alice fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style Bob fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Sharing fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style HowMany fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Customer[Customer]\n  Product[Product]\n  Transaction[Transaction]\n  Quantity[Quantity]\n  Discount[Discount]\n  Date[Date]\n  Customer --> Transaction\n  Product --> Transaction\n  Transaction --> Quantity\n  Transaction --> Discount\n  Transaction --> Date\n  style Customer fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Product fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Transaction fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Quantity fill:#fff3e0,stroke:#f57c00,stroke-width:1px\n  style Discount fill:#fff3e0,stroke:#f57c00,stroke-width:1px\n  style Date fill:#fff3e0,stroke:#f57c00,stroke-width:1px",
+        "common_mistakes": "graph TD\n  Mistake[Common Mistake]\n  ConfuseEntity[Confusing with Entity Attributes]\n  OverlookNeed[Overlooking Need in M:M]\n  IncompleteModel[Incomplete Data Model]\n  Mistake --> ConfuseEntity\n  Mistake --> OverlookNeed\n  OverlookNeed --> IncompleteModel\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style ConfuseEntity fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style OverlookNeed fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style IncompleteModel fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph LR\n  Student[Student]\n  Course[Course]\n  Enrollment[Enrollment]\n  Grade[Grade]\n  EnrollmentDate[Enrollment Date]\n  Student --> Enrollment\n  Course --> Enrollment\n  Enrollment --> Grade\n  Enrollment --> EnrollmentDate\n  Grade -.->|Not Student Attribute| Student\n  Grade -.->|Not Course Attribute| Course\n  style Student fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Course fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Enrollment fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Grade fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style EnrollmentDate fill:#fff3e0,stroke:#f57c00,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -904,7 +1024,22 @@
         "justification": "Core concept for relational database design, essential for handling complex relationships."
       },
       "example": "Consider a library database with 'Authors' and 'Books.' An author can write multiple books, and a book can be written by multiple authors (e.g., collaborations). The many-to-many relationship 'Writes' is resolved by creating an 'Authorships' associative entity. This table contains AuthorID (FK), BookID (FK), and possibly additional data like 'Contribution Percentage' if some authors contributed more than others. Now, we have 3 tables: Authors, Books, and Authorships.",
-      "mermaid_code": "graph LR\nA[SALESPERSON] -- M -- C[SALE] -- M -- B[PRODUCT]\nstyle A fill:#f9f,stroke:#333,stroke-width:2px\nstyle B fill:#ccf,stroke:#333,stroke-width:2px\nstyle C fill:#ffc,stroke:#333,stroke-width:2px",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  ManyToMany[Many-to-Many Relationship]\n  EntityA[Entity A Table]\n  EntityB[Entity B Table]\n  Associative[Associative Entity Table]\n  CompositePK[Composite Primary Key]\n  ManyToMany --> EntityA\n  ManyToMany --> EntityB\n  ManyToMany --> Associative\n  Associative --> CompositePK\n  style ManyToMany fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style EntityA fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style EntityB fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Associative fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style CompositePK fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "analogy": "graph LR\n  BookClub[Book Club]\n  HikingClub[Hiking Club]\n  Membership[Membership Table]\n  BookClub --> Membership\n  HikingClub --> Membership\n  Membership -.->|Links Members to| BookClub\n  Membership -.->|Links Members to| HikingClub\n  style BookClub fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style HikingClub fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Membership fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "eli5": "graph TD\n  Kids[List of Kids]\n  Stickers[List of Stickers]\n  TradingList[Trading List]\n  Kids --> TradingList\n  Stickers --> TradingList\n  TradingList -.->|Shows Who Traded What| Kids\n  TradingList -.->|Shows Who Traded What| Stickers\n  style Kids fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style Stickers fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style TradingList fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Students[Students Table]\n  Courses[Courses Table]\n  Enrollments[Enrollments Table]\n  StudentID[StudentID FK]\n  CourseID[CourseID FK]\n  EnrollmentDate[Enrollment Date]\n  Grade[Grade]\n  Students --> Enrollments\n  Courses --> Enrollments\n  Enrollments --> StudentID\n  Enrollments --> CourseID\n  Enrollments --> EnrollmentDate\n  Enrollments --> Grade\n  style Students fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Courses fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Enrollments fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Mistake[Common Mistakes]\n  TwoTables[Trying to Use Only 2 Tables]\n  NoComposite[Forgetting Composite Key]\n  Redundancy[Data Redundancy]\n  CannotLink[Cannot Properly Link Tables]\n  Mistake --> TwoTables\n  Mistake --> NoComposite\n  TwoTables --> Redundancy\n  NoComposite --> CannotLink\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style TwoTables fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style NoComposite fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Redundancy fill:#ffebee,stroke:#c62828,stroke-width:2px\n  style CannotLink fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph LR\n  Authors[Authors Table]\n  Books[Books Table]\n  Authorships[Authorships Table]\n  AuthorID[AuthorID FK]\n  BookID[BookID FK]\n  Contribution[Contribution %]\n  Authors --> Authorships\n  Books --> Authorships\n  Authorships --> AuthorID\n  Authorships --> BookID\n  Authorships --> Contribution\n  style Authors fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Books fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Authorships fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style AuthorID fill:#c8e6c9,stroke:#388e3c,stroke-width:1px\n  style BookID fill:#c8e6c9,stroke:#388e3c,stroke-width:1px\n  style Contribution fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -1013,7 +1148,22 @@
         "justification": "Important for understanding different approaches to representing 1-1 relationships in a relational model."
       },
       "example": "Let's say we have 'Employees' and 'ParkingSpaces,' where each employee gets one parking space and each parking space belongs to one employee. Option 1 merges all employee and parking space details into one table. Option 2 puts the ParkingSpaceID as a foreign key in the Employee table. Option 3 puts the EmployeeID as a foreign key in the ParkingSpace table. The choice depends on how often you need to query employees and parking spaces together vs. separately.",
-      "mermaid_code": "flowchart TD\nA[Entity 1: Table 1 & 2 Combined] --> B{One Table?}\nB -- Yes --> C[Combined Table]\nB -- No --> D{FK in Table 1?}\nD -- Yes --> E[Table 1 has FK to Table 2]\nD -- No --> F[Table 2 has FK to Table 1]",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  OneToOne[1:1 Relationship]\n  Option1[Option 1: Combine Tables]\n  Option2[Option 2: FK in Table 1]\n  Option3[Option 3: FK in Table 2]\n  OneToOne --> Option1\n  OneToOne --> Option2\n  OneToOne --> Option3\n  style OneToOne fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Option1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Option2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Option3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "analogy": "graph TD\n  Married[Two Married People]\n  OneForm[Option 1: One Form for Both]\n  Form1WithRef[Option 2: Form 1 with Spouse ID]\n  Form2WithRef[Option 3: Form 2 with Spouse ID]\n  Married --> OneForm\n  Married --> Form1WithRef\n  Married --> Form2WithRef\n  style Married fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style OneForm fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Form1WithRef fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Form2WithRef fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "eli5": "graph TD\n  TwoFriends[Two Friends Always Together]\n  OnePage[Option 1: One Page for Both]\n  Page1Link[Option 2: Page 1 with Friend's Name]\n  Page2Link[Option 3: Page 2 with Friend's Name]\n  TwoFriends --> OnePage\n  TwoFriends --> Page1Link\n  TwoFriends --> Page2Link\n  style TwoFriends fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style OnePage fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Page1Link fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Page2Link fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px",
+        "real_world_use_case": "flowchart TD\n  CompanyCar[Employee-Company Car]\n  AccessPatterns{Query Together Often?}\n  Option1Combined[Option 1: Combined Table]\n  Option2EmployeeFK[Option 2: CarID in Employee]\n  Option3CarFK[Option 3: EmployeeID in Car]\n  CompanyCar --> AccessPatterns\n  AccessPatterns -->|Yes| Option1Combined\n  AccessPatterns -->|No, Employee Queries| Option2EmployeeFK\n  AccessPatterns -->|No, Car Queries| Option3CarFK\n  style CompanyCar fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Option1Combined fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Option2EmployeeFK fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Option3CarFK fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Mistake[Common Mistake]\n  IgnorePatterns[Not Considering Query Patterns]\n  CombineAlways[Combining When Rarely Queried Together]\n  Redundancy[Unnecessary Redundancy]\n  Inefficiency[Query Inefficiency]\n  Mistake --> IgnorePatterns\n  Mistake --> CombineAlways\n  CombineAlways --> Redundancy\n  IgnorePatterns --> Inefficiency\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style IgnorePatterns fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style CombineAlways fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style Redundancy fill:#ffebee,stroke:#c62828,stroke-width:2px\n  style Inefficiency fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph TD\n  Employees[Employees]\n  ParkingSpaces[ParkingSpaces]\n  Opt1[Option 1: Combined Table]\n  Opt2[Option 2: ParkingSpaceID FK in Employee]\n  Opt3[Option 3: EmployeeID FK in ParkingSpace]\n  Employees --> Opt1\n  ParkingSpaces --> Opt1\n  Employees --> Opt2\n  ParkingSpaces --> Opt3\n  style Employees fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style ParkingSpaces fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Opt1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Opt2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Opt3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
@@ -1123,7 +1273,22 @@
         "justification": "Fundamental concept for relational database design, very common relationship type."
       },
       "example": "Consider the relationship between 'Departments' and 'Employees' in a company. One department can have many employees. The DepartmentID (primary key of the Department table) is added as a foreign key to the Employee table. This way, each employee record indicates which department they belong to.",
-      "mermaid_code": "graph LR\nA[Entity 1: One Side] -- 1 -- B[Entity 2: Many Side]\nB --> C[FK from A in B]",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n  OneSide[One Side Entity]\n  ManySide[Many Side Entity]\n  FK[Foreign Key Placement]\n  PK[Primary Key of One]\n  OneSide --> PK\n  PK --> FK\n  FK --> ManySide\n  style OneSide fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style ManySide fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style FK fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style PK fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "analogy": "graph LR\n  Parent[Parent: One]\n  Children[Children: Many]\n  FamilyID[Family ID]\n  Parent --> FamilyID\n  FamilyID -.->|Referenced by| Children\n  style Parent fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Children fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style FamilyID fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "eli5": "graph LR\n  Teacher[Teacher: One]\n  Students[Students: Many]\n  TeacherName[Teacher's Name]\n  Teacher --> TeacherName\n  TeacherName -.->|Written on Student Paper| Students\n  style Teacher fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n  style Students fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style TeacherName fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "graph LR\n  Customer[Customer: One]\n  Orders[Orders: Many]\n  CustomerID[CustomerID PK]\n  OrdersFK[CustomerID FK]\n  Customer --> CustomerID\n  CustomerID -.->|Added to| OrdersFK\n  OrdersFK --> Orders\n  style Customer fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style Orders fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style CustomerID fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style OrdersFK fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "common_mistakes": "graph TD\n  Mistake[Common Mistake]\n  WrongTable[FK in Wrong Table]\n  OneSideTable[FK in One Side Table]\n  Problem[Cannot Represent Multiple Relationships]\n  Mistake --> WrongTable\n  WrongTable --> OneSideTable\n  OneSideTable --> Problem\n  style Mistake fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n  style WrongTable fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n  style OneSideTable fill:#ffebee,stroke:#c62828,stroke-width:2px\n  style Problem fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph LR\n  Department[Department Table]\n  DeptID[DepartmentID PK]\n  Employee1[Employee 1]\n  Employee2[Employee 2]\n  Employee3[Employee 3]\n  FK[DepartmentID FK]\n  Department --> DeptID\n  DeptID -.->|Added to| FK\n  FK --> Employee1\n  FK --> Employee2\n  FK --> Employee3\n  style Department fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n  style DeptID fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n  style Employee1 fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Employee2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style Employee3 fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n  style FK fill:#c8e6c9,stroke:#388e3c,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
       "recall_questions": [
         {
           "type": "mcq",
