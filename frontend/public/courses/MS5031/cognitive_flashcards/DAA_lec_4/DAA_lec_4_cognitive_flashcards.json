@@ -1,0 +1,1384 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-26T11:21:47.273912",
+    "total_cards": 12,
+    "course_name": "Data Analysis Applications",
+    "course_id": "MS5031",
+    "course_code": "DAA",
+    "textbook_reference": "Statistics for Business: Decision Making and Analysis by Robert E Stine and Dean Foster, Pearson (ISBN: 978-81-317-3347-9)",
+    "source": "DAA_lec_4",
+    "chunks_processed": 6
+  },
+  "flashcards": [
+    {
+      "type": "definition",
+      "question": "What is the core concept of Multiple Linear Regression (MLR), and how does it differ from Simple Linear Regression (SLR)?",
+      "answers": {
+        "concise": "Multiple Linear Regression (MLR) extends Simple Linear Regression (SLR) by incorporating multiple independent variables to predict a single dependent variable.  It allows for a more nuanced understanding of how multiple factors influence an outcome.",
+        "analogy": "Think of SLR like trying to predict a cake's deliciousness based only on the amount of sugar. MLR is like considering sugar, flour, eggs, and baking time \u2013 a more complete recipe for prediction.",
+        "eli5": "Imagine you're guessing how many candies are in a jar.  SLR is like only knowing the size of the jar. MLR is knowing the size of the jar AND how tightly packed the candies are, so you can make a better guess.",
+        "real_world_use_case": "A real estate company uses MLR to predict house prices (Y) using square footage ($X_1$), number of bedrooms ($X_2$), and location score ($X_3$). This allows them to provide more accurate property valuations than using only one factor like square footage.",
+        "common_mistakes": "A common mistake is assuming that a high $R^2$ always means a good model.  It's crucial to check for multicollinearity (high correlation between predictor variables) and ensure model assumptions are met, even with a high $R^2$."
+      },
+      "context": "Core Regression Concepts",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Foundational concept for understanding multiple variable relationships."
+      },
+      "example": "Netflix uses MLR to predict user movie ratings (Y) based on the genre preferences ($X_1$), viewing history ($X_2$), and demographic information ($X_3$) of each user. By considering these multiple factors, Netflix can personalize recommendations and predict how much a user will enjoy a movie with greater accuracy compared to using just one factor like genre preference. This leads to increased user engagement and satisfaction with the platform's suggestions.",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n    X1[X\u2081] --> Y[Y]\n    X2[X\u2082] --> Y\n    X3[X\u2083] --> Y\n    Xk[X\u2096] --> Y\n    style Y fill:#e3f2fd,stroke:#1976d2,stroke-width:3px",
+        "analogy": "graph TD\n    Sugar[\ud83c\udf6c Sugar] --> Cake[\ud83c\udf82 Cake Deliciousness]\n    Flour[\ud83c\udf3e Flour] --> Cake\n    Eggs[\ud83e\udd5a Eggs] --> Cake\n    Time[\u23f0 Baking Time] --> Cake\n    style Cake fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "eli5": "graph TD\n    JarSize[\ud83d\udccf Jar Size] --> Candies[\ud83c\udf6c Number of Candies]\n    Density[\ud83d\udce6 Candy Density] --> Candies\n    style Candies fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
+        "real_world_use_case": "graph LR\n    SF[Square Footage] --> Model[MLR Model]\n    BR[Bedrooms] --> Model\n    Loc[Location] --> Model\n    Model --> Price[\ud83d\udcb0 House Price]\n    style Model fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style Price fill:#fff9c4,stroke:#f57f17,stroke-width:2px",
+        "common_mistakes": "graph TD\n    R2[High R\u00b2] --> Check1{Check}\n    Check1 --> MCL[Multicollinearity?]\n    Check1 --> Assump[Assumptions Met?]\n    style R2 fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph LR\n    Genre[Genre Pref] --> Netflix[Netflix MLR]\n    History[View History] --> Netflix\n    Demo[Demographics] --> Netflix\n    Netflix --> Rating[\u2b50 Predicted Rating]\n    style Netflix fill:#e1f5fe,stroke:#0277bd,stroke-width:2px\n    style Rating fill:#fff9c4,stroke:#f57f17,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph MLR_Formula {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=4, height=1.5];\n  \n  formula [label=\"Multiple Linear Regression\\n\\nŶ = β₀ + β₁X₁ + β₂X₂ + ⋯ + βₖXₖ + ε\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=6, height=2];\n  \n  components [label=\"β₀ = Intercept\\nβᵢ = Coefficients\\nXᵢ = Predictors\\nε = Error term\", fontsize=14, shape=note, fillcolor=\"#fff3e0\", width=3, height=1.5];\n  \n  formula -> components [style=dashed, color=\"#757575\", penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph CakeAnalogy {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=3];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=2.5, height=1.2];\n  \n  slr [label=\"SLR\\n(Sugar only)\", fillcolor=\"#ffcdd2\", width=2.5];\n  mlr [label=\"MLR\\n(Sugar + Flour\\n+ Eggs + Time)\", fillcolor=\"#c8e6c9\", width=2.5];\n  \n  result1 [label=\"🎂\\nLess Accurate\", fillcolor=\"#ffecb3\", width=2.5];\n  result2 [label=\"🎂✨\\nMore Accurate\", fillcolor=\"#fff9c4\", width=2.5];\n  \n  slr -> result1 [penwidth=2, color=\"#d32f2f\"];\n  mlr -> result2 [penwidth=2, color=\"#388e3c\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph CandyJar {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=2.5, height=1];\n  \n  slr_input [label=\"🏺 Jar Size Only\", fillcolor=\"#ffcdd2\"];\n  mlr_input [label=\"🏺 Jar Size\\n+ 📦 Density\", fillcolor=\"#c8e6c9\"];\n  \n  guess [label=\"🍬 Number of\\nCandies Guess\", fillcolor=\"#fff9c4\", width=3];\n  \n  slr_input -> guess [label=\"OK Guess\", color=\"#ff9800\", penwidth=2];\n  mlr_input -> guess [label=\"Better Guess\", color=\"#4caf50\", penwidth=2];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph HousePricing {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  inputs [label=\"Inputs:\\n• Square Footage (X₁)\\n• Bedrooms (X₂)\\n• Location Score (X₃)\", fillcolor=\"#e1f5fe\", width=4];\n  model [label=\"MLR Model\", fillcolor=\"#c8e6c9\", shape=ellipse, width=2.5];\n  output [label=\"Output:\\n💰 Predicted Price\", fillcolor=\"#fff9c4\", width=3];\n  \n  inputs -> model [penwidth=3, color=\"#1976d2\"];\n  model -> output [penwidth=3, color=\"#388e3c\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph CommonMistake {\n  graph [rankdir=TB, margin=0.5, pad=0.5, nodesep=1, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1];\n  \n  highR2 [label=\"⚠️ High R²\", fillcolor=\"#ffcdd2\", penwidth=2.5, color=\"#c62828\", width=2.5];\n  \n  check1 [label=\"✓ Check\\nMulticollinearity\", fillcolor=\"#fff3e0\", width=2.5];\n  check2 [label=\"✓ Verify\\nAssumptions\", fillcolor=\"#fff3e0\", width=2.5];\n  \n  warning [label=\"Don't assume\\nhigh R² = good model!\", shape=note, fillcolor=\"#ffebee\", width=3.5];\n  \n  highR2 -> check1 [penwidth=2, color=\"#ff9800\"];\n  highR2 -> check2 [penwidth=2, color=\"#ff9800\"];\n  highR2 -> warning [style=dashed, penwidth=2, color=\"#d32f2f\"];\n}",
+        "example": "/* layout=dot */\ndigraph NetflixExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=2.5, height=1.2];\n  \n  genre [label=\"🎭 Genre\\nPreferences\", fillcolor=\"#e1f5fe\"];\n  history [label=\"📺 Viewing\\nHistory\", fillcolor=\"#e1f5fe\"];\n  demo [label=\"👤 Demographics\", fillcolor=\"#e1f5fe\"];\n  \n  netflix [label=\"Netflix\\nMLR Model\", fillcolor=\"#c8e6c9\", width=3];\n  rating [label=\"⭐ Predicted\\nRating\", fillcolor=\"#fff9c4\"];\n  \n  genre -> netflix [penwidth=2, color=\"#1976d2\"];\n  history -> netflix [penwidth=2, color=\"#1976d2\"];\n  demo -> netflix [penwidth=2, color=\"#1976d2\"];\n  netflix -> rating [penwidth=3, color=\"#388e3c\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes the primary difference between Simple Linear Regression (SLR) and Multiple Linear Regression (MLR)?",
+          "options": [
+            "A. MLR uses multiple dependent variables, while SLR uses only one.",
+            "B. MLR uses multiple independent variables, while SLR uses only one.",
+            "C. MLR can only be used with categorical data, while SLR is for continuous data.",
+            "D. MLR is used for classification problems, while SLR is used for regression problems."
+          ],
+          "answer": "B. MLR uses multiple independent variables, while SLR uses only one."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A marketing analyst wants to predict sales based on advertising spend across different channels (TV, Radio, Online). They have data on sales and advertising spend for each channel over the past year.",
+          "question": "Which statistical technique is MOST appropriate for this analysis?",
+          "options": [
+            "A. Simple Linear Regression (SLR)",
+            "B. Multiple Linear Regression (MLR)",
+            "C. T-test",
+            "D. ANOVA"
+          ],
+          "answer": "B. Multiple Linear Regression (MLR)"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps in a typical Multiple Linear Regression analysis in the correct order.",
+          "items": [
+            "Model building and selection",
+            "Data collection and preparation",
+            "Model validation and interpretation",
+            "Hypothesis formulation"
+          ],
+          "answer": [
+            "Hypothesis formulation",
+            "Data collection and preparation",
+            "Model building and selection",
+            "Model validation and interpretation"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following variables as either 'Dependent Variable' or 'Independent Variable' in a Multiple Linear Regression model predicting customer satisfaction.",
+          "items": [
+            "Customer satisfaction score",
+            "Number of support tickets",
+            "Product price",
+            "Customer loyalty points"
+          ],
+          "categories": [
+            "Dependent Variable",
+            "Independent Variable"
+          ],
+          "answer": {
+            "Dependent Variable": [
+              "Customer satisfaction score"
+            ],
+            "Independent Variable": [
+              "Number of support tickets",
+              "Product price",
+              "Customer loyalty points"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term related to Multiple Linear Regression with its definition.",
+          "premises": [
+            "1. $R^2$",
+            "2. Partial Slope",
+            "3. Error Term",
+            "4. Intercept"
+          ],
+          "responses": [
+            "A. The expected value of Y when all X variables are zero.",
+            "B. The unexplained variation in the model.",
+            "C. The proportion of variance in the dependent variable explained by the independent variables.",
+            "D. The change in Y associated with a one-unit change in X, holding all other predictors constant."
+          ],
+          "answer": [
+            "1-C",
+            "2-D",
+            "3-B",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "multiple regression",
+        "linear regression",
+        "statistical modeling"
+      ],
+      "source_chunk": "DAA_lec_4_1",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_1_card_001_concise.png",
+        "analogy": "diagrams/DAA_lec_4_1_card_001_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_1_card_001_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_1_card_001_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_1_card_001_common_mistakes.png",
+        "example": "diagrams/DAA_lec_4_1_card_001_example.png"
+      }
+    },
+    {
+      "type": "definition",
+      "question": "Define the term 'partial regression coefficient' (or 'partial slope') in the context of Multiple Linear Regression (MLR) and explain its significance.",
+      "answers": {
+        "concise": "A partial regression coefficient (or partial slope) in MLR represents the estimated change in the dependent variable (Y) for a one-unit increase in a specific independent variable (X), *holding all other independent variables in the model constant*.",
+        "analogy": "Imagine baking a cake. The partial slope for sugar is how much sweeter the cake gets for each extra teaspoon of sugar, *assuming you keep the amounts of flour, eggs, and other ingredients the same*.",
+        "eli5": "Think of it like adding toys to a box. The partial slope for cars is how much heavier the box gets for each car you add, *if you don't add any trucks or dolls*.",
+        "real_world_use_case": "In a model predicting employee salary, the partial slope for 'years of experience' indicates how much salary is expected to increase for each additional year of experience, *assuming education level and job title remain the same*.",
+        "common_mistakes": "A common mistake is interpreting a partial slope as the *total* effect of a variable on Y. It's only the effect *after accounting for the other variables* in the model. The total effect might be larger or smaller due to correlations with other predictors."
+      },
+      "context": "Multiple Regression Concepts",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Key concept for understanding variable relationships in MLR."
+      },
+      "example": "Amazon uses MLR to predict customer spending (Y) based on website visit frequency ($X_1$), number of items in cart ($X_2$), and average order value ($X_3$). The partial slope for 'website visit frequency' tells Amazon how much a customer's spending is expected to increase for each additional website visit per week, *assuming the number of items in their cart and their average order value remain constant*. This helps Amazon target marketing campaigns to encourage more frequent visits from high-value customers.",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n    X1[X\u2081] -->|\u03b2\u2081| Y[Y]\n    X2[X\u2082 held constant] -.->|\u03b2\u2082| Y\n    X3[X\u2083 held constant] -.->|\u03b2\u2083| Y\n    style Y fill:#e3f2fd,stroke:#1976d2,stroke-width:3px\n    style X1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "analogy": "graph LR\n    Sugar[\ud83c\udf6c Sugar +1 tsp] -->|\u0394 Sweetness| Cake[\ud83c\udf82 Cake]\n    Flour[\ud83c\udf3e Flour constant] -.-> Cake\n    Eggs[\ud83e\udd5a Eggs constant] -.-> Cake\n    style Cake fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style Sugar fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "eli5": "graph LR\n    Cars[\ud83d\ude97 +1 Car] -->|\u0394 Weight| Box[\ud83d\udce6 Box]\n    Trucks[\ud83d\ude9a Trucks same] -.-> Box\n    Dolls[\ud83c\udf8e Dolls same] -.-> Box\n    style Box fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style Cars fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "graph LR\n    Exp[Years +1] -->|\u03b2\u2081| Salary[\ud83d\udcb0 Salary]\n    Edu[Education same] -.-> Salary\n    Job[Job Title same] -.-> Salary\n    style Salary fill:#fff9c4,stroke:#f57f17,stroke-width:2px\n    style Exp fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "common_mistakes": "graph TD\n    Partial[Partial Slope \u03b2\u2081] --> Effect[Effect after\\ncontrolling others]\n    Total[Total Effect] --> Different[May be different\\ndue to correlations]\n    style Partial fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style Total fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": "graph LR\n    Visits[Visits +1/week] -->|\u03b2\u2081| Spending[\ud83d\udcb0 Spending]\n    Cart[Cart Items same] -.-> Spending\n    AOV[Avg Order same] -.-> Spending\n    style Spending fill:#fff9c4,stroke:#f57f17,stroke-width:2px\n    style Visits fill:#c8e6c9,stroke:#388e3c,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph PartialSlope {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=4, height=1.5];\n  \n  formula [label=\"Partial Slope Interpretation\\n\\nΔY ≈ βᵢ × ΔXᵢ\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=5, height=1.8];\n  \n  condition [label=\"Ceteris Paribus:\\nAll other variables held constant\", fontsize=14, shape=note, fillcolor=\"#fff3e0\", width=4, height=1.2];\n  \n  formula -> condition [style=dashed, color=\"#757575\", penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph SugarExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=3];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=2.5, height=1.2];\n  \n  change [label=\"🥄 +1 teaspoon\\nsugar\", fillcolor=\"#c8e6c9\", width=2.8];\n  result [label=\"🍰 Δ Sweetness\\n= β_sugar\", fillcolor=\"#fff9c4\", width=2.8];\n  \n  constant [label=\"🌾 Flour &\\n🥚 Eggs\\nConstant\", fillcolor=\"#e1f5fe\", width=2.5];\n  \n  change -> result [penwidth=3, color=\"#388e3c\"];\n  constant -> result [style=dashed, penwidth=2, color=\"#757575\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph ToyBox {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=2.5, height=1.2];\n  \n  add_car [label=\"🚗 Add 1 Car\", fillcolor=\"#c8e6c9\"];\n  weight_change [label=\"📦 Box gets\\nheavier by βcar\", fillcolor=\"#fff9c4\", width=3];\n  \n  trucks [label=\"🚚 Trucks\\nstay same\", fillcolor=\"#e1f5fe\"];\n  dolls [label=\"🎎 Dolls\\nstay same\", fillcolor=\"#e1f5fe\"];\n  \n  add_car -> weight_change [penwidth=3, color=\"#388e3c\"];\n  trucks -> weight_change [style=dashed, penwidth=2, color=\"#757575\"];\n  dolls -> weight_change [style=dashed, penwidth=2, color=\"#757575\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph SalaryExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  input [label=\"📈 +1 Year\\nExperience\", fillcolor=\"#c8e6c9\"];\n  output [label=\"💰 Salary Increase\\n= β₁\", fillcolor=\"#fff9c4\", width=3.5];\n  \n  education [label=\"🎓 Education\\nConstant\", fillcolor=\"#e1f5fe\"];\n  job_title [label=\"👔 Job Title\\nConstant\", fillcolor=\"#e1f5fe\"];\n  \n  input -> output [penwidth=3, color=\"#388e3c\"];\n  education -> output [style=dashed, penwidth=2, color=\"#757575\"];\n  job_title -> output [style=dashed, penwidth=2, color=\"#757575\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph PartialVsTotal {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  partial [label=\"✓ Partial Effect (βᵢ)\\nAfter controlling\\nfor others\", fillcolor=\"#c8e6c9\"];\n  total [label=\"❌ Total Effect\\nMay differ due to\\ncorrelations\", fillcolor=\"#ffcdd2\"];\n  \n  warning [label=\"⚠️ Don't confuse\\nthese two!\", shape=note, fillcolor=\"#fff3e0\", width=3.5];\n  \n  partial -> warning [style=dashed, penwidth=2, color=\"#388e3c\"];\n  total -> warning [style=dashed, penwidth=2, color=\"#d32f2f\"];\n}",
+        "example": "/* layout=dot */\ndigraph AmazonExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  visits [label=\"🌐 +1 Website\\nVisit/Week\", fillcolor=\"#c8e6c9\"];\n  spending [label=\"💳 Customer\\nSpending = β₁\", fillcolor=\"#fff9c4\", width=3.5];\n  \n  cart [label=\"🛒 Cart Items\\nConstant\", fillcolor=\"#e1f5fe\"];\n  aov [label=\"💰 Avg Order\\nConstant\", fillcolor=\"#e1f5fe\"];\n  \n  visits -> spending [penwidth=3, color=\"#388e3c\"];\n  cart -> spending [style=dashed, penwidth=2, color=\"#757575\"];\n  aov -> spending [style=dashed, penwidth=2, color=\"#757575\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What does a partial regression coefficient in Multiple Linear Regression represent?",
+          "options": [
+            "A. The total change in the dependent variable for a one-unit change in any independent variable.",
+            "B. The change in the independent variable when the dependent variable is held constant.",
+            "C. The change in the dependent variable for a one-unit change in a specific independent variable, holding all other independent variables constant.",
+            "D. The correlation between two independent variables."
+          ],
+          "answer": "C. The change in the dependent variable for a one-unit change in a specific independent variable, holding all other independent variables constant."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "In a regression model predicting sales, the partial slope for 'advertising spend' is 5. This means:",
+          "question": "What does the partial slope of 5 indicate?",
+          "options": [
+            "A. Sales will always increase by 5 units for every unit increase in advertising spend.",
+            "B. Sales are 5 times higher than advertising spend.",
+            "C. For every one-unit increase in advertising spend, sales are expected to increase by 5 units, holding all other variables constant.",
+            "D. Advertising spend causes sales to increase by 5 units."
+          ],
+          "answer": "C. For every one-unit increase in advertising spend, sales are expected to increase by 5 units, holding all other variables constant."
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following steps to correctly interpret the impact of a partial slope.",
+          "items": [
+            "Consider the units of measurement for both the dependent and independent variables.",
+            "Identify the independent variable associated with the partial slope.",
+            "State that the change in Y occurs when ALL OTHER independent variables are held constant.",
+            "Examine the sign and magnitude of the partial slope."
+          ],
+          "answer": [
+            "Identify the independent variable associated with the partial slope.",
+            "Examine the sign and magnitude of the partial slope.",
+            "Consider the units of measurement for both the dependent and independent variables.",
+            "State that the change in Y occurs when ALL OTHER independent variables are held constant."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each statement as either a 'Correct Interpretation' or an 'Incorrect Interpretation' of a partial slope.",
+          "items": [
+            "The partial slope represents the total effect of the independent variable on the dependent variable.",
+            "The partial slope represents the change in Y for a one-unit change in X, holding all other variables constant.",
+            "The partial slope can be used to determine causality.",
+            "The partial slope accounts for the influence of other independent variables in the model."
+          ],
+          "categories": [
+            "Correct Interpretation",
+            "Incorrect Interpretation"
+          ],
+          "answer": {
+            "Correct Interpretation": [
+              "The partial slope represents the change in Y for a one-unit change in X, holding all other variables constant.",
+              "The partial slope accounts for the influence of other independent variables in the model."
+            ],
+            "Incorrect Interpretation": [
+              "The partial slope represents the total effect of the independent variable on the dependent variable.",
+              "The partial slope can be used to determine causality."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each concept with its corresponding description.",
+          "premises": [
+            "1. Multicollinearity",
+            "2. Holding other variables constant",
+            "3. Partial Slope",
+            "4. Ceteris Paribus"
+          ],
+          "responses": [
+            "A. The core principle behind interpreting partial slopes.",
+            "B. High correlation between independent variables.",
+            "C. The estimated change in Y for a one-unit increase in X, accounting for other variables.",
+            "D. Latin phrase meaning 'all other things being equal'."
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C",
+            "4-D"
+          ]
+        }
+      ],
+      "tags": [
+        "partial slope",
+        "regression coefficient",
+        "multiple regression"
+      ],
+      "source_chunk": "DAA_lec_4_1",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_1_card_002_concise.png",
+        "analogy": "diagrams/DAA_lec_4_1_card_002_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_1_card_002_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_1_card_002_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_1_card_002_common_mistakes.png",
+        "example": "diagrams/DAA_lec_4_1_card_002_example.png"
+      }
+    },
+    {
+      "type": "concept",
+      "question": "What are the key assumptions of the Multiple Linear Regression (MLR) model, and why are they important?",
+      "answers": {
+        "concise": "The key assumptions of MLR are Linearity, Independence of errors, Normality of errors, and Equal variance of errors (L.I.N.E.). These assumptions ensure that the model's estimates are unbiased, efficient, and that statistical inferences (hypothesis tests, confidence intervals) are valid.",
+        "analogy": "Think of MLR assumptions like the ingredients for a good recipe. If you use bad ingredients (violate assumptions), the final cake (model) won't taste good (be unreliable).",
+        "eli5": "Imagine you're playing a game, and the rules have to be fair for everyone to have a chance.  MLR assumptions are like the fair rules that make sure the model's predictions are correct.",
+        "real_world_use_case": "Before using an MLR model to predict customer churn, a telecom company must verify that the errors are normally distributed and have equal variance. If these assumptions are violated, the company's churn predictions will be inaccurate, leading to ineffective retention strategies.",
+        "common_mistakes": "A common mistake is ignoring the assumptions after building the model. Always check residual plots and perform statistical tests to validate that the assumptions hold. Violations can lead to misleading conclusions and poor predictions."
+      },
+      "context": "Regression Model Assumptions",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important for ensuring the validity of MLR results."
+      },
+      "example": "A bank uses MLR to predict loan defaults based on credit score, income, and loan amount. Before deploying the model, they check the residuals for heteroscedasticity (unequal variance) using a Breusch-Pagan test. If heteroscedasticity is present, they might transform the dependent variable or use weighted least squares regression to address the violation and ensure reliable default predictions. Ignoring this would lead to inaccurate risk assessments and potentially significant financial losses.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    MLR[MLR Model] --> L[\ud83d\udccf Linearity]\n    MLR --> I[\ud83d\udd17 Independence]\n    MLR --> N[\ud83d\udcca Normality]\n    MLR --> E[\u2696\ufe0f Equal Variance]\n    style MLR fill:#e3f2fd,stroke:#1976d2,stroke-width:3px",
+        "analogy": "graph LR\n    Good[\u2713 Good Ingredients] --> Reliable[\ud83d\ude0a Reliable Model]\n    Bad[\u2717 Bad Ingredients] --> Unreliable[\ud83d\ude1e Unreliable Model]\n    style Reliable fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n    style Unreliable fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "eli5": "graph LR\n    Fair[\u2696\ufe0f Fair Rules] --> Correct[\u2713 Correct Predictions]\n    Unfair[\u26a0\ufe0f Unfair Rules] --> Wrong[\u2717 Wrong Predictions]\n    style Correct fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n    style Wrong fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "real_world_use_case": "graph TD\n    Model[MLR Model] --> Check{Check Assumptions}\n    Check -->|Violated| Fix[\ud83d\udd27 Address Violation]\n    Check -->|Met| Reliable[\u2713 Reliable Predictions]\n    style Reliable fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "common_mistakes": "graph TD\n    Build[Build Model] --> Ignore[\u274c Ignore Assumptions]\n    Ignore --> Misleading[\u26a0\ufe0f Misleading Results]\n    style Misleading fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "example": "graph TD\n    Predict[Predict Defaults] --> Test[Breusch-Pagan Test]\n    Test -->|Heteroscedasticity| Transform[Transform Data]\n    Test -->|OK| Deploy[\u2713 Deploy Model]\n    style Deploy fill:#c8e6c9,stroke:#388e3c,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph LINE_Assumptions {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  title [label=\"L.I.N.E. Assumptions\", fontsize=20, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=4, height=1.5];\n  \n  l [label=\"L = Linearity\\nRelationship is linear\", fillcolor=\"#fff3e0\", width=3.5];\n  i [label=\"I = Independence\\nErrors are independent\", fillcolor=\"#fff3e0\", width=3.5];\n  n [label=\"N = Normality\\nErrors are normally distributed\", fillcolor=\"#fff3e0\", width=3.5];\n  e [label=\"E = Equal Variance\\nConstant error variance\", fillcolor=\"#fff3e0\", width=3.5];\n  \n  title -> l [penwidth=2, color=\"#1976d2\"];\n  title -> i [penwidth=2, color=\"#1976d2\"];\n  title -> n [penwidth=2, color=\"#1976d2\"];\n  title -> e [penwidth=2, color=\"#1976d2\"];\n}",
+        "analogy": "/* layout=dot */\ndigraph RecipeAnalogy {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=3];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  good [label=\"✓ Good Ingredients\\n(Assumptions Met)\", fillcolor=\"#c8e6c9\"];\n  bad [label=\"✗ Bad Ingredients\\n(Assumptions Violated)\", fillcolor=\"#ffcdd2\"];\n  \n  good_result [label=\"😊\\nReliable Model\", fillcolor=\"#e8f5e9\", width=2.5];\n  bad_result [label=\"😞\\nUnreliable Model\", fillcolor=\"#ffebee\", width=2.5];\n  \n  good -> good_result [penwidth=3, color=\"#388e3c\"];\n  bad -> bad_result [penwidth=3, color=\"#c62828\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph GameRules {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  fair_rules [label=\"⚖️ Fair Game Rules\\n(Good Assumptions)\", fillcolor=\"#c8e6c9\"];\n  unfair_rules [label=\"⚠️ Unfair Rules\\n(Bad Assumptions)\", fillcolor=\"#ffcdd2\"];\n  \n  good_game [label=\"✓ Everyone has\\na fair chance\", fillcolor=\"#e8f5e9\", width=3.5];\n  bad_game [label=\"✗ Game is\\nunfair\", fillcolor=\"#ffebee\", width=3.5];\n  \n  fair_rules -> good_game [penwidth=3, color=\"#388e3c\"];\n  unfair_rules -> bad_game [penwidth=3, color=\"#c62828\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph ChurnPrediction {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  model [label=\"📊 MLR Model\\nfor Churn Prediction\", fillcolor=\"#e3f2fd\", width=4];\n  check [label=\"🔍 Check Assumptions\", fillcolor=\"#fff3e0\"];\n  \n  met [label=\"✓ Assumptions Met\\n📈 Reliable Predictions\", fillcolor=\"#c8e6c9\", width=4];\n  violated [label=\"✗ Assumptions Violated\\n📉 Inaccurate Predictions\", fillcolor=\"#ffcdd2\", width=4];\n  \n  model -> check [penwidth=3, color=\"#1976d2\"];\n  check -> met [penwidth=2, color=\"#388e3c\"];\n  check -> violated [penwidth=2, color=\"#c62828\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph AssumptionMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  build [label=\"🏗️ Build Model\", fillcolor=\"#e3f2fd\"];\n  ignore [label=\"❌ Ignore Assumptions\", fillcolor=\"#ffcdd2\", width=4];\n  check [label=\"✓ Check Assumptions\", fillcolor=\"#c8e6c9\", width=4];\n  \n  misleading [label=\"⚠️ Misleading Results\", fillcolor=\"#ffebee\", width=4];\n  reliable [label=\"📊 Reliable Results\", fillcolor=\"#e8f5e9\", width=4];\n  \n  build -> ignore [penwidth=2, color=\"#c62828\"];\n  build -> check [penwidth=2, color=\"#388e3c\"];\n  ignore -> misleading [penwidth=3, color=\"#c62828\"];\n  check -> reliable [penwidth=3, color=\"#388e3c\"];\n}",
+        "example": "/* layout=dot */\ndigraph BankExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  model [label=\"🏦 Bank MLR Model\\nLoan Default Prediction\", fillcolor=\"#e3f2fd\", width=4.5];\n  test [label=\"🧪 Breusch-Pagan Test\\nfor Heteroscedasticity\", fillcolor=\"#fff3e0\", width=4];\n  \n  ok [label=\"✓ No Heteroscedasticity\\n📊 Deploy Model\", fillcolor=\"#c8e6c9\", width=4];\n  problem [label=\"⚠️ Heteroscedasticity Found\\n🔧 Transform Data\", fillcolor=\"#ffcdd2\", width=4];\n  \n  model -> test [penwidth=3, color=\"#1976d2\"];\n  test -> ok [penwidth=2, color=\"#388e3c\"];\n  test -> problem [penwidth=2, color=\"#ff9800\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is NOT a key assumption of Multiple Linear Regression (MLR)?",
+          "options": [
+            "A. Linearity",
+            "B. Independence of errors",
+            "C. Multicollinearity",
+            "D. Normality of errors"
+          ],
+          "answer": "C. Multicollinearity"
+        }
+      ],
+      "tags": [
+        "mlr assumptions",
+        "regression assumptions",
+        "statistical validity"
+      ],
+      "source_chunk": "DAA_lec_4_1",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_1_card_003_concise.png",
+        "analogy": "diagrams/DAA_lec_4_1_card_003_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_1_card_003_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_1_card_003_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_1_card_003_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "definition",
+      "question": "What is a Scatterplot Matrix (Scatmat) and what is its primary purpose in Exploratory Data Analysis (EDA)?",
+      "answers": {
+        "concise": "A Scatterplot Matrix (Scatmat) is a grid of two-dimensional scatterplots that displays every possible pairwise relationship between variables in a dataset. Its primary purpose is to visually examine relationships between variables, including the response variable and predictors, and among the predictors themselves, before fitting a model.",
+        "analogy": "Think of a Scatmat like a social network diagram where each person (variable) has a profile (histogram) and lines connecting them to their friends (other variables) show how well they get along (correlation).  It's a quick way to see who's popular, who's isolated, and who's causing drama (multicollinearity) before you plan a party (build a model).",
+        "eli5": "Imagine you have a bunch of toys, and you want to see which ones play well together. A Scatterplot Matrix is like taking pictures of each toy playing with every other toy, so you can see which ones are friends, which ones don't like each other, and which ones are the same toy!",
+        "real_world_use_case": "A marketing team analyzing sales data with multiple factors like advertising spend, competitor pricing, and seasonality would use a Scatterplot Matrix to quickly identify which factors have the strongest relationships with sales and if any factors are highly correlated with each other.",
+        "common_mistakes": "A common mistake is to only look at the Scatterplot Matrix and assume a strong visual relationship guarantees a strong effect in the final model.  The Scatmat shows *marginal* relationships, not *partial* effects after controlling for other variables."
+      },
+      "context": "Exploratory Data Analysis (EDA)",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Fundamental EDA tool for understanding variable relationships before modeling."
+      },
+      "example": "An analyst at Netflix wants to understand what drives viewership. They create a Scatmat with variables like 'movie budget,' 'average critic score,' 'number of actors,' and 'viewership hours.' The Scatmat reveals a positive relationship between 'movie budget' and 'viewership hours,' and shows a strong positive correlation between 'movie budget' and 'number of actors,' indicating potential multicollinearity.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Scatmat[\ud83d\udcca Scatterplot Matrix] --> Grid[Grid of Pairwise Plots]\n    Grid --> YvsX[Y vs X\u2081, X\u2082, ...]\n    Grid --> XivsXj[X\u1d62 vs X\u2c7c]\n    style Scatmat fill:#e3f2fd,stroke:#1976d2,stroke-width:3px",
+        "analogy": "graph LR\n    A[\ud83d\udc64 Person A] -->|Friends| B[\ud83d\udc64 Person B]\n    A -.->|Not Friends| C[\ud83d\udc64 Person C]\n    B -->|Drama| C\n    style A fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n    style C fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "eli5": "graph TD\n    Toy1[\ud83d\ude97 Toy 1] -->|Plays With| Toy2[\ud83d\ude9a Toy 2]\n    Toy1 -.->|Doesn't Play| Toy3[\ud83c\udf8e Toy 3]\n    style Toy1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "graph TD\n    Data[\ud83d\udcc8 Marketing Data] --> Create[Create Scatmat]\n    Create --> Identify{Identify Relationships}\n    Identify -->|Yes| MCL[\u26a0\ufe0f Check Multicollinearity]\n    style Create fill:#e3f2fd,stroke:#1976d2,stroke-width:2px",
+        "common_mistakes": "graph TD\n    Scatmat[Scatmat Analysis] --> Marginal[Marginal Relationships]\n    Marginal -.->|\u2260| Partial[Partial Effects]\n    style Marginal fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style Partial fill:#e3f2fd,stroke:#1976d2,stroke-width:2px",
+        "example": "graph TD\n    Vars[Budget, Score, Actors, Views] --> Create[Create Scatmat]\n    Create --> Analyze[Analyze Relationships]\n    Analyze --> MCL[\u26a0\ufe0f Multicollinearity Detected]\n    style MCL fill:#ffcdd2,stroke:#c62828,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph ScatterplotMatrix {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=4, height=1.2];\n  \n  title [label=\"📊 Scatterplot Matrix\\nPairwise Relationships\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=4.5, height=1.5];\n  \n  purpose1 [label=\"👁️ Visual examination\\nof all variable pairs\", fillcolor=\"#fff3e0\", width=4];\n  purpose2 [label=\"🔍 Identify correlations\\nand patterns\", fillcolor=\"#fff3e0\", width=4];\n  purpose3 [label=\"⚠️ Detect multicollinearity\\nearly\", fillcolor=\"#fff3e0\", width=4];\n  \n  title -> purpose1 [penwidth=2, color=\"#1976d2\"];\n  title -> purpose2 [penwidth=2, color=\"#1976d2\"];\n  title -> purpose3 [penwidth=2, color=\"#1976d2\"];\n}",
+        "analogy": "/* layout=dot */\ndigraph SocialNetwork {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  people [label=\"👥 People\\n(Variables)\", fillcolor=\"#e3f2fd\"];\n  connections [label=\"🔗 Connections\\n(Relationships)\", fillcolor=\"#fff3e0\", width=3.5];\n  \n  popular [label=\"⭐ Popular Person\\n(Strong Correlations)\", fillcolor=\"#c8e6c9\", width=3.5];\n  isolated [label=\"😔 Isolated Person\\n(Weak Correlations)\", fillcolor=\"#ffcdd2\", width=3.5];\n  drama [label=\"🎭 Drama\\n(Multicollinearity)\", fillcolor=\"#ffebee\"];\n  \n  people -> connections [penwidth=2, color=\"#1976d2\"];\n  connections -> popular [penwidth=2, color=\"#388e3c\"];\n  connections -> isolated [penwidth=2, color=\"#ff9800\"];\n  connections -> drama [penwidth=2, color=\"#c62828\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph ToyPlaymates {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=2.5, height=1.2];\n  \n  toy1 [label=\"🚗 Car\", fillcolor=\"#e3f2fd\"];\n  toy2 [label=\"🚚 Truck\", fillcolor=\"#e3f2fd\"];\n  toy3 [label=\"🎎 Doll\", fillcolor=\"#e3f2fd\"];\n  \n  friends [label=\"👫 Play Together\\n(Strong Correlation)\", fillcolor=\"#c8e6c9\", width=3];\n  dont_play [label=\"🚫 Don't Play\\n(Weak Correlation)\", fillcolor=\"#ffcdd2\", width=3];\n  \n  toy1 -> friends [penwidth=2, color=\"#388e3c\"];\n  toy2 -> friends [penwidth=2, color=\"#388e3c\"];\n  toy3 -> dont_play [penwidth=2, color=\"#c62828\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph MarketingAnalysis {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  data [label=\"📈 Marketing Data\\nAd Spend, Pricing, Seasonality\", fillcolor=\"#e3f2fd\", width=4.5];\n  scatmat [label=\"📊 Create Scatterplot Matrix\", fillcolor=\"#fff3e0\", width=4];\n  \n  relationships [label=\"🔍 Identify Strong\\nRelationships with Sales\", fillcolor=\"#c8e6c9\", width=4];\n  multicollinearity [label=\"⚠️ Check for\\nMulticollinearity\", fillcolor=\"#ffcdd2\", width=4];\n  \n  data -> scatmat [penwidth=3, color=\"#1976d2\"];\n  scatmat -> relationships [penwidth=2, color=\"#388e3c\"];\n  scatmat -> multicollinearity [penwidth=2, color=\"#ff9800\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph ScatmatMistakes {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.5];\n  \n  scatmat [label=\"📊 Scatterplot Matrix\\nAnalysis\", fillcolor=\"#e3f2fd\"];\n  \n  marginal [label=\"📈 Marginal\\nRelationships\", fillcolor=\"#fff3e0\"];\n  partial [label=\"📉 Partial Effects\\n(After controlling)\", fillcolor=\"#e1f5fe\"];\n  \n  warning [label=\"⚠️ These are\\nNOT the same!\", fillcolor=\"#ffebee\", width=3];\n  \n  scatmat -> marginal [penwidth=2, color=\"#ff9800\"];\n  marginal -> warning [style=dashed, penwidth=2, color=\"#c62828\"];\n  partial -> warning [style=dashed, penwidth=2, color=\"#c62828\"];\n}",
+        "example": "/* layout=dot */\ndigraph NetflixAnalysis {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  variables [label=\"🎬 Netflix Variables\\nBudget, Score, Actors, Views\", fillcolor=\"#e3f2fd\", width=4.5];\n  scatmat [label=\"📊 Create Scatterplot Matrix\", fillcolor=\"#fff3e0\", width=4];\n  \n  positive [label=\"📈 Budget ↔ Views\\nPositive Relationship\", fillcolor=\"#c8e6c9\", width=4];\n  multicollinear [label=\"⚠️ Budget ↔ Actors\\nMulticollinearity Detected\", fillcolor=\"#ffcdd2\", width=4.5];\n  \n  variables -> scatmat [penwidth=3, color=\"#1976d2\"];\n  scatmat -> positive [penwidth=2, color=\"#388e3c\"];\n  scatmat -> multicollinear [penwidth=2, color=\"#c62828\"];\n}"
+      },
+      "recall_questions": [],
+      "tags": [
+        "EDA",
+        "scatterplot matrix",
+        "multicollinearity",
+        "visualization"
+      ],
+      "source_chunk": "DAA_lec_4_2",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_2_card_004_concise.png",
+        "analogy": "diagrams/DAA_lec_4_2_card_004_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_2_card_004_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_2_card_004_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_2_card_004_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "definition",
+      "question": "What is a Correlation Matrix and what key information does it provide for data analysis?",
+      "answers": {
+        "concise": "A Correlation Matrix is a square, symmetric table that displays the Pearson correlation coefficient between every pair of variables in a dataset. It provides a numerical summary of the linear association between variables, aiding in identifying potential multicollinearity and assessing the relationship between predictors and the response variable.",
+        "analogy": "Think of a Correlation Matrix as a dating app profile for each variable. It tells you how strongly each variable is attracted to (correlated with) every other variable.  High scores (close to +1 or -1) mean a strong connection, while scores near zero mean they're just not that into each other.",
+        "eli5": "Imagine you ask all your friends how much they like each other on a scale of -1 to 1.  A Correlation Matrix is like writing down all those answers in a table so you can see who likes whom, who dislikes whom, and who are best friends (high positive correlation) or worst enemies (high negative correlation).",
+        "real_world_use_case": "A financial analyst building a stock portfolio uses a Correlation Matrix to understand how different stocks move in relation to each other. A high positive correlation between two stocks means they tend to rise and fall together, reducing diversification.",
+        "common_mistakes": "A common mistake is to interpret correlation as causation.  Just because two variables are highly correlated doesn't mean one causes the other; there might be a lurking variable."
+      },
+      "context": "Exploratory Data Analysis (EDA)",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Essential numerical tool for assessing variable relationships and multicollinearity."
+      },
+      "example": "A real estate company wants to predict house prices. They calculate a Correlation Matrix with variables like 'square footage,' 'number of bedrooms,' 'location rating,' and 'price.' The matrix shows a strong positive correlation (0.85) between 'square footage' and 'price,' and a high correlation (0.8) between 'square footage' and 'number of bedrooms,' signaling multicollinearity.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    CorrMat[\ud83d\udcca Correlation Matrix] --> Pearson[Pearson Coefficients]\n    Pearson --> Range[-1 to +1]\n    style CorrMat fill:#e3f2fd,stroke:#1976d2,stroke-width:3px",
+        "analogy": "graph LR\n    VarA[\ud83d\udc95 Variable A] -->|Attracted| VarB[\ud83d\udc95 Variable B]\n    VarA -.->|Not Attracted| VarC[Variable C]\n    style VarA fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "eli5": "graph LR\n    Friend1[\ud83d\udc64 Friend 1] -->|Likes| Friend2[\ud83d\udc64 Friend 2]\n    Friend1 -.->|Dislikes| Friend3[\ud83d\udc64 Friend 3]\n    style Friend1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "graph TD\n    Stocks[\ud83d\udcc8 Stock Data] --> Calc[Calculate Correlation]\n    Calc --> Pos[Positive Correlation]\n    Calc --> Neg[Negative Correlation]\n    Pos --> LowDiv[Lower Diversification]\n    Neg --> HighDiv[\u2713 Higher Diversification]\n    style HighDiv fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "common_mistakes": "graph TD\n    Corr[Correlation] -.->|\u2260| Cause[Causation]\n    style Corr fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style Cause fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "example": "graph TD\n    Vars[SF, Beds, Location, Price] --> Calc[Calculate Matrix]\n    Calc --> MCL[\u26a0\ufe0f High Correlation SF-Beds]\n    style MCL fill:#ffcdd2,stroke:#c62828,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph CorrelationMatrix {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=4, height=1.5];\n  \n  title [label=\"📊 Correlation Matrix Example\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=5, height=1.2];\n  \n  matrix [label=\"       X₁    X₂    Y\\nX₁   1.0   0.8   0.6\\nX₂   0.8   1.0   0.7\\nY    0.6   0.7   1.0\", fontsize=14, fillcolor=\"#fff3e0\", fontname=\"Courier\", width=4.5, height=2];\n  \n  warning [label=\"⚠️ High correlation (0.8)\\nbetween X₁ and X₂\", shape=note, fillcolor=\"#ffebee\", width=4];\n  \n  title -> matrix [penwidth=2, color=\"#1976d2\"];\n  matrix -> warning [style=dashed, color=\"#c62828\", penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph DatingApp {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  variables [label=\"💕 Dating App\\nfor Variables\", fillcolor=\"#e3f2fd\"];\n  \n  strong_match [label=\"💖 Strong Match\\n(High Correlation)\", fillcolor=\"#c8e6c9\", width=3.5];\n  weak_match [label=\"💔 Weak Match\\n(Low Correlation)\", fillcolor=\"#ffcdd2\", width=3.5];\n  no_match [label=\"😐 No Interest\\n(Zero Correlation)\", fillcolor=\"#f5f5f5\", width=3.5];\n  \n  variables -> strong_match [penwidth=2, color=\"#388e3c\"];\n  variables -> weak_match [penwidth=2, color=\"#c62828\"];\n  variables -> no_match [penwidth=2, color=\"#757575\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph FriendshipTable {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  friends [label=\"👫 All Your Friends\", fillcolor=\"#e3f2fd\"];\n  table [label=\"📝 Friendship Table\\nWho likes whom?\", fillcolor=\"#fff3e0\", width=3.5];\n  \n  best_friends [label=\"💕 Best Friends\\n(Score: +1)\", fillcolor=\"#c8e6c9\"];\n  enemies [label=\"😠 Enemies\\n(Score: -1)\", fillcolor=\"#ffcdd2\"];\n  neutral [label=\"😐 Neutral\\n(Score: 0)\", fillcolor=\"#f5f5f5\"];\n  \n  friends -> table [penwidth=2, color=\"#1976d2\"];\n  table -> best_friends [penwidth=2, color=\"#388e3c\"];\n  table -> enemies [penwidth=2, color=\"#c62828\"];\n  table -> neutral [penwidth=2, color=\"#757575\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph StockPortfolio {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  stocks [label=\"📈 Stock Portfolio\\nAnalysis\", fillcolor=\"#e3f2fd\"];\n  correlation [label=\"📊 Calculate\\nCorrelation Matrix\", fillcolor=\"#fff3e0\", width=4];\n  \n  high_corr [label=\"⚠️ High Positive\\nCorrelation = Low Diversity\", fillcolor=\"#ffcdd2\", width=4.5];\n  low_corr [label=\"✓ Low/Negative\\nCorrelation = High Diversity\", fillcolor=\"#c8e6c9\", width=4.5];\n  \n  stocks -> correlation [penwidth=3, color=\"#1976d2\"];\n  correlation -> high_corr [penwidth=2, color=\"#c62828\"];\n  correlation -> low_corr [penwidth=2, color=\"#388e3c\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph CorrelationMistakes {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  correlation [label=\"📊 High\\nCorrelation\", fillcolor=\"#fff3e0\"];\n  \n  causation [label=\"❌ Assumes\\nCausation\", fillcolor=\"#ffcdd2\"];\n  lurking [label=\"🕵️ Lurking\\nVariable\", fillcolor=\"#e1f5fe\"];\n  \n  warning [label=\"⚠️ Correlation ≠\\nCausation!\", fillcolor=\"#ffebee\", width=3.5];\n  \n  correlation -> causation [style=dashed, penwidth=2, color=\"#c62828\"];\n  lurking -> warning [penwidth=2, color=\"#ff9800\"];\n  causation -> warning [penwidth=2, color=\"#c62828\"];\n}",
+        "example": "/* layout=dot */\ndigraph RealEstateExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  variables [label=\"🏠 Real Estate Variables\\nSF, Bedrooms, Location, Price\", fillcolor=\"#e3f2fd\", width=4.5];\n  matrix [label=\"📊 Calculate\\nCorrelation Matrix\", fillcolor=\"#fff3e0\", width=4];\n  \n  sf_price [label=\"📈 SF ↔ Price\\nCorrelation: 0.85\", fillcolor=\"#c8e6c9\"];\n  sf_beds [label=\"⚠️ SF ↔ Bedrooms\\nCorrelation: 0.8\", fillcolor=\"#ffcdd2\"];\n  \n  variables -> matrix [penwidth=3, color=\"#1976d2\"];\n  matrix -> sf_price [penwidth=2, color=\"#388e3c\"];\n  matrix -> sf_beds [penwidth=2, color=\"#c62828\"];\n}"
+      },
+      "recall_questions": [],
+      "tags": [
+        "correlation matrix",
+        "Pearson correlation",
+        "multicollinearity",
+        "EDA"
+      ],
+      "source_chunk": "DAA_lec_4_2",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_2_card_005_concise.png",
+        "analogy": "diagrams/DAA_lec_4_2_card_005_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_2_card_005_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_2_card_005_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_2_card_005_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "comparison",
+      "question": "What are the key differences between a Scatterplot Matrix and a Correlation Matrix in Exploratory Data Analysis?",
+      "answers": {
+        "concise": "A Scatterplot Matrix provides a visual representation of pairwise relationships, revealing both linear and non-linear patterns. A Correlation Matrix, on the other hand, offers a numerical summary of the *linear* association between variables using Pearson correlation coefficients. The Scatmat is good for visual inspection and uncovering non-linearities, while the Correlation Matrix provides precise numerical values for linear relationships.",
+        "analogy": "Think of a Scatterplot Matrix as a photo album showing pictures of all your friends together, while a Correlation Matrix is like a report card grading how well each friend gets along with the others. The photo album lets you see everything, even if it's messy, while the report card gives you specific grades but misses the nuances of their relationships.",
+        "eli5": "Imagine you want to know how well your toys play together. A Scatterplot Matrix is like taking pictures of them playing, so you can *see* what's happening. A Correlation Matrix is like asking each toy to give a number from -1 to 1 on how much they like the other toys, so you get a *number* to describe their relationship.",
+        "real_world_use_case": "A medical researcher studying the relationship between lifestyle factors and disease risk might use a Scatterplot Matrix to visually explore the relationships between variables like diet, exercise, and blood pressure. They would then use a Correlation Matrix to quantify the strength of the *linear* relationships between these variables. The Scatterplot Matrix might reveal non-linear relationships (e.g., a U-shaped relationship between exercise and blood pressure) that the Correlation Matrix would miss.",
+        "common_mistakes": "A common mistake is to rely solely on the Correlation Matrix for multicollinearity detection and ignore the Scatterplot Matrix. The Correlation Matrix only captures linear relationships, so if two predictors have a strong *non-linear* relationship, the Correlation Matrix might show a weak correlation, leading you to miss a potential multicollinearity problem that's visible in the Scatmat. Conversely, assuming a causal relationship based solely on visual patterns in the Scatmat without numerical confirmation from the Correlation Matrix is also a mistake."
+      },
+      "context": "Exploratory Data Analysis (EDA)",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Understanding the strengths and weaknesses of each tool is crucial for effective EDA."
+      },
+      "example": "An analyst at an e-commerce company wants to understand the relationship between website traffic, advertising spend, and sales. They create both a Scatterplot Matrix and a Correlation Matrix. The Scatmat reveals a positive, but slightly curved, relationship between advertising spend and website traffic, and a strong linear relationship between website traffic and sales. The Correlation Matrix shows a correlation of 0.6 between advertising spend and website traffic and a correlation of 0.8 between website traffic and sales. The analyst recognizes that the curved relationship between advertising spend and website traffic might require a non-linear transformation in the model.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Scatmat[\ud83d\udcca Scatterplot Matrix] --> Visual[\ud83d\udc41\ufe0f Visual]\n    Scatmat --> NonLinear[\ud83d\udcc8 Non-Linear Patterns]\n    CorrMat[\ud83d\udd22 Correlation Matrix] --> Numerical[\ud83d\udcca Numerical]\n    CorrMat --> Linear[\ud83d\udccf Linear Only]\n    style Scatmat fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style CorrMat fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "analogy": "graph LR\n    Photo[\ud83d\udcf8 Photo Album] --> See[See Everything]\n    Report[\ud83d\udcdd Report Card] --> Grades[Specific Grades]\n    style Photo fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style Report fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "eli5": "graph LR\n    Pictures[\ud83d\udcf7 Pictures] --> See[\ud83d\udc40 See What Happens]\n    Numbers[\ud83d\udd22 Numbers] --> Describe[\ud83d\udcdd Describe Relationship]\n    style Pictures fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n    style Numbers fill:#fff9c4,stroke:#f57f17,stroke-width:2px",
+        "real_world_use_case": "graph TD\n    Research[\ud83d\udd2c Medical Research] --> Both[Use Both Tools]\n    Both --> Scatmat[Scatmat: Non-Linear]\n    Both --> CorrMat[CorrMat: Linear]\n    style Both fill:#e3f2fd,stroke:#1976d2,stroke-width:2px",
+        "common_mistakes": "graph TD\n    OnlyCorr[Only Correlation Matrix] --> Miss[\u274c Miss Non-Linear]\n    style Miss fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "example": "graph TD\n    Data[Traffic, Ad Spend, Sales] --> Create[Create Both]\n    Create --> Scatmat[Scatmat: Curved Relationship]\n    Create --> CorrMat[CorrMat: Linear Values]\n    style Create fill:#e3f2fd,stroke:#1976d2,stroke-width:2px"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph Comparison {\n  graph [rankdir=LR, margin=0.3, pad=0.3, nodesep=1.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=18, margin=\"0.4,0.2\", fixedsize=false];\n  \n  scatmat [label=\"Scatterplot Matrix\\n\\n\u2713 Visual\\n\u2713 Non-linear patterns\\n\u2713 Quick overview\", fillcolor=\"#e3f2fd\"];\n  corrmat [label=\"Correlation Matrix\\n\\n\u2713 Numerical\\n\u2713 Linear only\\n\u2713 Precise values\", fillcolor=\"#fff3e0\"];\n  \n  scatmat -> corrmat [label=\"Complementary\\nTools\", fontsize=14, penwidth=2, style=dashed];\n}",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is a key advantage of a Scatterplot Matrix over a Correlation Matrix?",
+          "options": [
+            "A. It can reveal non-linear relationships between variables.",
+            "B. It provides precise numerical values for linear associations.",
+            "C. It is easier to compute for large datasets.",
+            "D. It automatically detects causation."
+          ],
+          "answer": "A. It can reveal non-linear relationships between variables."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "An analyst notices a strong U-shaped relationship between 'work hours' and 'employee satisfaction' in a Scatterplot Matrix, but the Correlation Matrix shows a near-zero correlation.",
+          "question": "What does this discrepancy suggest?",
+          "options": [
+            "A. There is no relationship between work hours and employee satisfaction.",
+            "B. The relationship between work hours and employee satisfaction is non-linear.",
+            "C. The Correlation Matrix is more reliable than the Scatterplot Matrix.",
+            "D. There is multicollinearity between work hours and employee satisfaction."
+          ],
+          "answer": "B. The relationship between work hours and employee satisfaction is non-linear."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order when using both a Scatterplot Matrix and a Correlation Matrix for EDA:",
+          "items": [
+            "Quantify linear relationships with the Correlation Matrix.",
+            "Visually inspect pairwise relationships with the Scatterplot Matrix.",
+            "Identify potential multicollinearity issues.",
+            "Investigate non-linear relationships suggested by the Scatterplot Matrix."
+          ],
+          "answer": [
+            "Visually inspect pairwise relationships with the Scatterplot Matrix.",
+            "Quantify linear relationships with the Correlation Matrix.",
+            "Investigate non-linear relationships suggested by the Scatterplot Matrix.",
+            "Identify potential multicollinearity issues."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each statement as describing either the 'Scatterplot Matrix' or the 'Correlation Matrix':",
+          "items": [
+            "Displays a grid of pairwise scatterplots.",
+            "Provides Pearson correlation coefficients.",
+            "Good for detecting non-linear relationships.",
+            "Summarizes linear associations numerically."
+          ],
+          "categories": [
+            "Scatterplot Matrix",
+            "Correlation Matrix"
+          ],
+          "answer": {
+            "Scatterplot Matrix": [
+              "Displays a grid of pairwise scatterplots.",
+              "Good for detecting non-linear relationships."
+            ],
+            "Correlation Matrix": [
+              "Provides Pearson correlation coefficients.",
+              "Summarizes linear associations numerically."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each concept with its correct description:",
+          "premises": [
+            "1. Scatterplot Matrix",
+            "2. Correlation Matrix",
+            "3. Linear Relationship",
+            "4. Non-Linear Relationship"
+          ],
+          "responses": [
+            "A. Association between variables that can be represented by a straight line.",
+            "B. Association between variables that cannot be represented by a straight line.",
+            "C. Visual tool for examining pairwise relationships.",
+            "D. Numerical tool for summarizing linear associations."
+          ],
+          "answer": [
+            "1-C",
+            "2-D",
+            "3-A",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "scatterplot matrix",
+        "correlation matrix",
+        "EDA",
+        "comparison"
+      ],
+      "source_chunk": "DAA_lec_4_2",
+      "diagram_image_paths": {
+        "concise": "",
+        "analogy": "diagrams/DAA_lec_4_2_card_006_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_2_card_006_eli5.png",
+        "real_world_use_case": "",
+        "common_mistakes": "diagrams/DAA_lec_4_2_card_006_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "definition",
+      "question": "What is the Adjusted $R^2$ and why is it used in multiple linear regression?",
+      "answers": {
+        "concise": "The Adjusted $R^2$ is a modified version of $R^2$ that adjusts for the number of predictors in a model. It penalizes the inclusion of irrelevant predictors and is preferred when comparing models with different numbers of predictors because it can decrease if a predictor doesn't add sufficient explanatory power.",
+        "analogy": "Think of $R^2$ as a student who always gets extra credit for adding more details to a report, even if those details are irrelevant. The Adjusted $R^2$ is like a teacher who only gives extra credit if the added details significantly improve the report's understanding, penalizing unnecessary additions.",
+        "eli5": "Imagine you're building a Lego tower, and $R^2$ is how tall the tower is. Adjusted $R^2$ is how strong the tower is. Adding more blocks ($R^2$) always makes it taller, but Adjusted $R^2$ checks if the new blocks actually make it stronger or just wobbly.",
+        "real_world_use_case": "In marketing, a company might use multiple regression to predict sales based on advertising spend across different channels (TV, online, print).  The Adjusted $R^2$ helps them determine if adding another advertising channel (e.g., social media) actually improves the model's predictive accuracy or if the added complexity isn't worth the investment.",
+        "common_mistakes": "A common mistake is solely relying on $R^2$ to compare models, especially when the number of predictors varies.  Adding more variables will always increase $R^2$, even if those variables are irrelevant.  Instead, use Adjusted $R^2$ to avoid overfitting and select a more parsimonious model."
+      },
+      "context": "Model Evaluation and Selection",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core concept for model evaluation and comparison in multiple linear regression."
+      },
+      "example": "A real estate company wants to predict house prices using variables like square footage, number of bedrooms, and location. Initially, they include irrelevant features like the color of the front door. While the $R^2$ increases slightly, the Adjusted $R^2$ decreases, indicating the model is overfitting. By removing the irrelevant feature and maximizing the Adjusted $R^2$, the company builds a more reliable and generalizable model for predicting house prices.",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n    R2[R\u00b2] -->|Always Increases| Over[\u26a0\ufe0f Overfitting Risk]\n    AdjR2[Adjusted R\u00b2] -->|Penalizes| Better[\u2713 Better Model]\n    style R2 fill:#ffcdd2,stroke:#c62828,stroke-width:2px\n    style AdjR2 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "analogy": "graph LR\n    Student[\ud83d\udcda Student] -->|Extra Credit| R2[R\u00b2]\n    Teacher[\ud83d\udc68\u200d\ud83c\udfeb Teacher] -->|Only if Relevant| AdjR2[Adjusted R\u00b2]\n    style AdjR2 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "eli5": "graph LR\n    Tall[\ud83c\udfd7\ufe0f Tall Tower] --> R2[R\u00b2]\n    Strong[\ud83d\udcaa Strong Tower] --> AdjR2[Adjusted R\u00b2]\n    style Strong fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph AdjustedR2 {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=5, height=2];\n  \n  formula [label=\"Adjusted R²\\n\\nAdj R² = 1 - [(SSE/(n-k-1)) / (SST/(n-1))]\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=6, height=2.5];\n  \n  note [label=\"📉 Penalizes adding\\nirrelevant predictors\", fontsize=14, shape=note, fillcolor=\"#fff3e0\", width=4];\n  \n  formula -> note [style=dashed, color=\"#757575\", penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph TeacherAnalogy {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  student [label=\"📚 Student\\n(R²)\", fillcolor=\"#ffcdd2\"];\n  teacher [label=\"👨‍🏫 Teacher\\n(Adjusted R²)\", fillcolor=\"#c8e6c9\"];\n  \n  extra_credit [label=\"📝 Extra Credit\\nfor Everything\", fillcolor=\"#ffecb3\", width=3.5];\n  smart_grading [label=\"✓ Extra Credit\\nonly if Relevant\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  student -> extra_credit [penwidth=2, color=\"#ff9800\"];\n  teacher -> smart_grading [penwidth=2, color=\"#388e3c\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph LegoTower {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  r2 [label=\"🏗️ R²\\nTaller Tower\", fillcolor=\"#ffcdd2\"];\n  adj_r2 [label=\"💪 Adjusted R²\\nStronger Tower\", fillcolor=\"#c8e6c9\", width=3.5];\n  \n  more_blocks [label=\"🧱 Adding Blocks\\nAlways makes taller\", fillcolor=\"#ffecb3\", width=3.5];\n  strong_blocks [label=\"✓ Strong Blocks\\nMake it stronger\", fillcolor=\"#e8f5e9\", width=3.5];\n  wobbly [label=\"❌ Wobbly Blocks\\nMake it weaker\", fillcolor=\"#ffebee\", width=3.5];\n  \n  r2 -> more_blocks [penwidth=2, color=\"#ff9800\"];\n  adj_r2 -> strong_blocks [penwidth=2, color=\"#388e3c\"];\n  adj_r2 -> wobbly [penwidth=2, color=\"#c62828\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph MarketingModel {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  channels [label=\"📺 Marketing Channels\\nTV, Online, Print\", fillcolor=\"#e3f2fd\", width=4];\n  add_social [label=\"📱 Add Social Media\\nChannel\", fillcolor=\"#fff3e0\"];\n  \n  r2_up [label=\"📈 R² Goes Up\\n(Always)\", fillcolor=\"#ffcdd2\"];\n  adj_r2_check [label=\"🤔 Adjusted R²\\nChecks if Worth It\", fillcolor=\"#c8e6c9\", width=4];\n  \n  worth_it [label=\"✓ Worth the\\nInvestment\", fillcolor=\"#e8f5e9\"];\n  not_worth [label=\"❌ Not Worth\\nthe Complexity\", fillcolor=\"#ffebee\", width=3.5];\n  \n  channels -> add_social [penwidth=2, color=\"#1976d2\"];\n  add_social -> r2_up [penwidth=2, color=\"#ff9800\"];\n  add_social -> adj_r2_check [penwidth=2, color=\"#388e3c\"];\n  adj_r2_check -> worth_it [penwidth=2, color=\"#388e3c\"];\n  adj_r2_check -> not_worth [penwidth=2, color=\"#c62828\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph R2Mistakes {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  r2_only [label=\"❌ Using R²\\nOnly\", fillcolor=\"#ffcdd2\"];\n  adj_r2 [label=\"✓ Using\\nAdjusted R²\", fillcolor=\"#c8e6c9\"];\n  \n  overfitting [label=\"⚠️ Overfitting\\nRisk\", fillcolor=\"#ffebee\"];\n  better_model [label=\"📊 Better Model\\nSelection\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  r2_only -> overfitting [penwidth=3, color=\"#c62828\"];\n  adj_r2 -> better_model [penwidth=3, color=\"#388e3c\"];\n}",
+        "example": "/* layout=dot */\ndigraph RealEstateExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  features [label=\"🏠 House Features\\nSF, Bedrooms, Location\", fillcolor=\"#e3f2fd\", width=4];\n  add_color [label=\"🎨 Add Door Color\\n(Irrelevant)\", fillcolor=\"#fff3e0\"];\n  \n  r2_increase [label=\"📈 R² Increases\\nSlightly\", fillcolor=\"#ffcdd2\"];\n  adj_r2_decrease [label=\"📉 Adjusted R²\\nDecreases\", fillcolor=\"#c8e6c9\", width=4];\n  \n  remove_color [label=\"✂️ Remove Door Color\\nMaximize Adj R²\", fillcolor=\"#e8f5e9\", width=4];\n  \n  features -> add_color [penwidth=2, color=\"#1976d2\"];\n  add_color -> r2_increase [penwidth=2, color=\"#ff9800\"];\n  add_color -> adj_r2_decrease [penwidth=2, color=\"#388e3c\"];\n  adj_r2_decrease -> remove_color [penwidth=2, color=\"#388e3c\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is the primary benefit of using Adjusted $R^2$ over $R^2$ in multiple linear regression?",
+          "options": [
+            "A. Adjusted $R^2$ always increases when a new predictor is added to the model.",
+            "B. Adjusted $R^2$ penalizes the inclusion of irrelevant predictors, preventing overfitting.",
+            "C. Adjusted $R^2$ is easier to calculate than $R^2$.",
+            "D. Adjusted $R^2$ is not affected by the sample size.",
+            "E. Adjusted R^2 always decreases when a new predictor is added to the model."
+          ],
+          "answer": "B. Adjusted $R^2$ penalizes the inclusion of irrelevant predictors, preventing overfitting."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A data scientist is building a model to predict customer churn. They have two models: Model A with 5 predictors and an $R^2$ of 0.75, and Model B with 8 predictors and an $R^2$ of 0.78. However, Model B has a lower Adjusted $R^2$ than Model A.",
+          "question": "Which model should the data scientist prefer, assuming all other factors are equal?",
+          "options": [
+            "A. Model A because it has a higher Adjusted $R^2$, indicating better model fit.",
+            "B. Model B because it has a higher $R^2$, indicating better explanatory power.",
+            "C. Either model is fine since the $R^2$ values are close.",
+            "D. Neither model should be used; more data is needed."
+          ],
+          "answer": "A. Model A because it has a higher Adjusted $R^2$, indicating better model fit."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order for building a multiple linear regression model and evaluating its fit using Adjusted $R^2$:",
+          "items": [
+            "Calculate the Adjusted $R^2$ for each model.",
+            "Select the model with the highest Adjusted $R^2$.",
+            "Build multiple regression models with different sets of predictors.",
+            "Evaluate the $R^2$ of each model."
+          ],
+          "answer": [
+            "Build multiple regression models with different sets of predictors.",
+            "Evaluate the $R^2$ of each model.",
+            "Calculate the Adjusted $R^2$ for each model.",
+            "Select the model with the highest Adjusted $R^2$."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each of the following scenarios as either indicating 'Overfitting' or 'Good Fit' based on the relationship between $R^2$ and Adjusted $R^2$:",
+          "items": [
+            "$R^2$ increases significantly, Adjusted $R^2$ increases moderately.",
+            "$R^2$ increases slightly, Adjusted $R^2$ decreases.",
+            "$R^2$ increases significantly, Adjusted $R^2$ increases significantly.",
+            "$R^2$ remains the same, Adjusted $R^2$ decreases."
+          ],
+          "categories": [
+            "Overfitting",
+            "Good Fit"
+          ],
+          "answer": {
+            "Overfitting": [
+              "$R^2$ increases slightly, Adjusted $R^2$ decreases.",
+              "$R^2$ remains the same, Adjusted $R^2$ decreases."
+            ],
+            "Good Fit": [
+              "$R^2$ increases significantly, Adjusted $R^2$ increases moderately.",
+              "$R^2$ increases significantly, Adjusted $R^2$ increases significantly."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its definition or description:",
+          "premises": [
+            "1. $R^2$",
+            "2. Adjusted $R^2$",
+            "3. Overfitting",
+            "4. Predictor"
+          ],
+          "responses": [
+            "A. A variable used to predict the dependent variable in a regression model.",
+            "B. A measure of how well the regression model explains the variance in the dependent variable; always increases when a predictor is added.",
+            "C. A measure of how well the regression model explains the variance in the dependent variable, adjusted for the number of predictors in the model.",
+            "D. A phenomenon where a model fits the training data too well, resulting in poor performance on new data."
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-D",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Adjusted R-squared",
+        "Model Fit",
+        "Overfitting",
+        "Multiple Regression"
+      ],
+      "source_chunk": "DAA_lec_4_4",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_4_card_007_concise.png",
+        "analogy": "diagrams/DAA_lec_4_4_card_007_analogy.png",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "diagrams/DAA_lec_4_4_card_007_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "concept",
+      "question": "Explain the purpose and interpretation of the Global F-Test in multiple regression.",
+      "answers": {
+        "concise": "The Global F-Test in multiple regression assesses the overall significance of the model. It tests whether at least one of the predictor variables has a statistically significant linear relationship with the dependent variable. A significant F-test indicates that the model, as a whole, has explanatory power.",
+        "analogy": "Think of the Global F-Test as a team leader evaluating whether a group project is worthwhile. If the F-test is significant, it means at least one team member contributed meaningfully. If it's not significant, the whole project was a waste of time, regardless of individual efforts.",
+        "eli5": "Imagine you're trying to guess how many candies are in a jar using clues. The Global F-Test checks if any of your clues are actually helpful. If the test says 'yes,' at least one clue helps you guess better. If it says 'no,' the clues are useless.",
+        "real_world_use_case": "In a pharmaceutical company, the Global F-Test is used to determine if a combination of drugs has a significant effect on treating a disease. If the F-test is significant, it suggests the drug combination has potential. If it's not, the company may abandon the drug combination and explore other options.",
+        "common_mistakes": "A common mistake is interpreting individual t-tests for coefficients when the Global F-test is not significant. If the Global F-test fails to reject the null hypothesis, the entire model is deemed useless, and individual coefficient interpretations are irrelevant."
+      },
+      "context": "Hypothesis Testing in Regression",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Essential for determining the overall significance of a multiple regression model."
+      },
+      "example": "An analyst builds a multiple regression model to predict stock prices using economic indicators like inflation, interest rates, and unemployment. The Global F-Test p-value is 0.02, which is less than the significance level of 0.05. Therefore, the analyst rejects the null hypothesis and concludes the model is significant, suggesting the economic indicators, as a whole, have a relationship with stock prices and the model can be used for further analysis.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    FTest[\ud83e\uddea Global F-Test] -->|p \u2264 \u03b1| Sig[\u2713 Model Significant]\n    FTest -->|p > \u03b1| NotSig[\u2717 Model Useless]\n    style Sig fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n    style NotSig fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "analogy": "graph LR\n    Team[\ud83d\udc65 Team Project] -->|Worthwhile| Sig[\u2713 Significant]\n    Team -->|Waste| NotSig[\u2717 Not Significant]\n    style Sig fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "eli5": "graph LR\n    Clues[\ud83d\udd0d Clues] -->|Helpful| Better[\u2713 Better Guess]\n    Clues -->|Useless| Bad[\u2717 Bad Guess]\n    style Better fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph GlobalFTest {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=4, height=1.5];\n  \n  formula [label=\"Global F-Test\\n\\nF = MSR / MSE\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=4.5, height=1.8];\n  \n  hyp [label=\"H₀: All β coefficients = 0\\nH₁: At least one β ≠ 0\", fontsize=14, shape=note, fillcolor=\"#fff3e0\", width=4.5];\n  \n  formula -> hyp [style=dashed, color=\"#757575\", penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph TeamProject {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  team [label=\"👥 Team Project\\n(MLR Model)\", fillcolor=\"#e3f2fd\"];\n  ftest [label=\"🧐 Team Leader\\n(F-Test)\", fillcolor=\"#fff3e0\"];\n  \n  worthwhile [label=\"✓ Project Worthwhile\\n(At least one β ≠ 0)\", fillcolor=\"#c8e6c9\", width=4];\n  waste [label=\"❌ Waste of Time\\n(All β = 0)\", fillcolor=\"#ffcdd2\", width=4];\n  \n  team -> ftest [penwidth=2, color=\"#1976d2\"];\n  ftest -> worthwhile [penwidth=2, color=\"#388e3c\"];\n  ftest -> waste [penwidth=2, color=\"#c62828\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph CandyClues {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  clues [label=\"🔍 Clues for\\nCandy Guessing\", fillcolor=\"#e3f2fd\"];\n  ftest [label=\"🤔 F-Test\\nChecks Clues\", fillcolor=\"#fff3e0\"];\n  \n  helpful [label=\"✓ At least one\\nclue helps!\", fillcolor=\"#c8e6c9\", width=3.5];\n  useless [label=\"❌ All clues\\nare useless\", fillcolor=\"#ffcdd2\", width=3.5];\n  \n  clues -> ftest [penwidth=2, color=\"#1976d2\"];\n  ftest -> helpful [penwidth=2, color=\"#388e3c\"];\n  ftest -> useless [penwidth=2, color=\"#c62828\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph DrugCombination {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  drugs [label=\"💊 Drug Combination\\nTreatment\", fillcolor=\"#e3f2fd\"];\n  ftest [label=\"🧪 Global F-Test\", fillcolor=\"#fff3e0\"];\n  \n  significant [label=\"✓ Significant Effect\\nContinue Research\", fillcolor=\"#c8e6c9\", width=4];\n  not_significant [label=\"❌ No Effect\\nAbandon Combination\", fillcolor=\"#ffcdd2\", width=4];\n  \n  drugs -> ftest [penwidth=3, color=\"#1976d2\"];\n  ftest -> significant [penwidth=2, color=\"#388e3c\"];\n  ftest -> not_significant [penwidth=2, color=\"#c62828\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph FTestMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  ftest_fail [label=\"❌ F-Test\\nNot Significant\", fillcolor=\"#ffcdd2\"];\n  \n  wrong_approach [label=\"⚠️ Still interpret\\nindividual t-tests\", fillcolor=\"#ffebee\", width=4];\n  correct_approach [label=\"✓ Stop here\\nModel is useless\", fillcolor=\"#c8e6c9\", width=4];\n  \n  ftest_fail -> wrong_approach [penwidth=2, color=\"#c62828\"];\n  ftest_fail -> correct_approach [penwidth=2, color=\"#388e3c\"];\n}",
+        "example": "/* layout=dot */\ndigraph StockExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  indicators [label=\"📊 Economic Indicators\\nInflation, Interest, Unemployment\", fillcolor=\"#e3f2fd\", width=4.5];\n  ftest [label=\"🧪 F-Test\\np-value = 0.02\", fillcolor=\"#fff3e0\"];\n  \n  significant [label=\"✓ p < 0.05\\nModel is Significant\", fillcolor=\"#c8e6c9\", width=4];\n  proceed [label=\"📈 Proceed with\\nFurther Analysis\", fillcolor=\"#e8f5e9\", width=4];\n  \n  indicators -> ftest [penwidth=3, color=\"#1976d2\"];\n  ftest -> significant [penwidth=2, color=\"#388e3c\"];\n  significant -> proceed [penwidth=2, color=\"#388e3c\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the null hypothesis ($H_0$) of the Global F-Test in multiple linear regression?",
+          "options": [
+            "A. At least one predictor variable has a linear relationship with the dependent variable.",
+            "B. All predictor variables have a non-linear relationship with the dependent variable.",
+            "C. All predictor variables have a linear relationship with the dependent variable.",
+            "D. None of the predictor variables have a linear relationship with the dependent variable."
+          ],
+          "answer": "D. None of the predictor variables have a linear relationship with the dependent variable."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "An analyst runs a Global F-Test on a multiple regression model and obtains a p-value of 0.10. The significance level ($\\alpha$) is set at 0.05.",
+          "question": "What conclusion should the analyst draw?",
+          "options": [
+            "A. Reject the null hypothesis and conclude the model is statistically significant.",
+            "B. Fail to reject the null hypothesis and conclude the model is statistically significant.",
+            "C. Reject the null hypothesis and conclude the model is not statistically significant.",
+            "D. Fail to reject the null hypothesis and conclude the model is not statistically significant."
+          ],
+          "answer": "D. Fail to reject the null hypothesis and conclude the model is not statistically significant."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order for conducting a Global F-Test:",
+          "items": [
+            "Calculate the F-statistic.",
+            "State the null and alternative hypotheses.",
+            "Determine the p-value associated with the F-statistic.",
+            "Compare the p-value to the significance level and draw a conclusion."
+          ],
+          "answer": [
+            "State the null and alternative hypotheses.",
+            "Calculate the F-statistic.",
+            "Determine the p-value associated with the F-statistic.",
+            "Compare the p-value to the significance level and draw a conclusion."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each of the following statements as either 'True' or 'False' regarding the Global F-Test:",
+          "items": [
+            "A significant Global F-Test implies all predictor variables are individually significant.",
+            "The Global F-Test assesses the overall significance of the regression model.",
+            "If the Global F-Test is not significant, individual t-tests should still be interpreted.",
+            "The F-statistic is calculated as MSR/MSE."
+          ],
+          "categories": [
+            "True",
+            "False"
+          ],
+          "answer": {
+            "True": [
+              "The Global F-Test assesses the overall significance of the regression model.",
+              "The F-statistic is calculated as MSR/MSE."
+            ],
+            "False": [
+              "A significant Global F-Test implies all predictor variables are individually significant.",
+              "If the Global F-Test is not significant, individual t-tests should still be interpreted."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its corresponding definition:",
+          "premises": [
+            "1. MSR",
+            "2. MSE",
+            "3. F-statistic",
+            "4. p-value"
+          ],
+          "responses": [
+            "A. Mean Square Error: The unexplained variation per degree of freedom.",
+            "B. The probability of observing a test statistic as extreme as, or more extreme than, the statistic obtained, assuming the null hypothesis is true.",
+            "C. Mean Square Regression: The variation explained by the regression per degree of freedom.",
+            "D. The ratio of MSR to MSE, used to assess the overall significance of the regression model."
+          ],
+          "answer": [
+            "1-C",
+            "2-A",
+            "3-D",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "Global F-Test",
+        "ANOVA",
+        "Model Significance",
+        "Hypothesis Testing"
+      ],
+      "source_chunk": "DAA_lec_4_4",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_4_card_008_concise.png",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "diagrams/DAA_lec_4_4_card_008_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_4_card_008_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "definition",
+      "question": "What are Degrees of Freedom (Error) and how are they calculated?",
+      "answers": {
+        "concise": "Degrees of Freedom (Error) in multiple regression represent the number of independent pieces of information available to estimate the error variance. It is calculated as $n - k - 1$, where $n$ is the sample size and $k$ is the number of predictor variables in the model.",
+        "analogy": "Imagine you have 'n' data points to fit a line. Each predictor variable you add 'costs' you one degree of freedom because you're using that data to estimate the coefficient of that predictor. The remaining degrees of freedom represent how much 'wiggle room' you have to estimate the error.",
+        "eli5": "Think of degrees of freedom like cookies. You start with 'n' cookies. Each time you add a new ingredient (predictor), you have to use up one cookie to figure out how much of that ingredient to use. The leftover cookies are your degrees of freedom.",
+        "real_world_use_case": "In clinical trials, the degrees of freedom are crucial for calculating the statistical significance of treatment effects. A small sample size ('n') or too many covariates ('k') can result in low degrees of freedom, making it difficult to detect a real treatment effect.",
+        "common_mistakes": "A common mistake is neglecting the degrees of freedom when interpreting statistical results. Low degrees of freedom can inflate the variance estimates and lead to incorrect conclusions about the significance of the model or individual predictors."
+      },
+      "context": "Statistical Inference",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Important for understanding the underlying calculations in statistical tests."
+      },
+      "example": "A researcher analyzes sales data for a retail store with 100 data points (n=100) and includes 5 predictor variables in the regression model (k=5). The degrees of freedom (error) are calculated as 100 - 5 - 1 = 94. This value is then used to calculate the Mean Square Error (MSE) and perform hypothesis tests.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    DF[\ud83d\udcca Degrees of Freedom] --> Formula[n - k - 1]\n    Formula --> n[n = Sample Size]\n    Formula --> k[k = Predictors]\n    style DF fill:#e3f2fd,stroke:#1976d2,stroke-width:2px",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph DegreesOfFreedom {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=4, height=1.5];\n  \n  formula [label=\"Degrees of Freedom (Error)\\n\\nDF = n - k - 1\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=5, height=1.8];\n  \n  explain [label=\"n = sample size\\nk = number of predictors\", fontsize=14, shape=note, fillcolor=\"#fff3e0\", width=4];\n  \n  formula -> explain [style=dashed, color=\"#757575\", penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph CookieAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  start_cookies [label=\"🍪 Start with\\nn cookies\", fillcolor=\"#e3f2fd\"];\n  \n  use_ingredient1 [label=\"🥄 Use 1 cookie\\nfor ingredient 1\", fillcolor=\"#fff3e0\", width=3.5];\n  use_ingredient2 [label=\"🧂 Use 1 cookie\\nfor ingredient 2\", fillcolor=\"#fff3e0\", width=3.5];\n  use_more [label=\"... Use k cookies\\nfor k ingredients\", fillcolor=\"#fff3e0\", width=3.5];\n  \n  leftover [label=\"🍪 Leftover cookies\\n= Degrees of Freedom\", fillcolor=\"#c8e6c9\", width=4];\n  \n  start_cookies -> use_ingredient1 [penwidth=2, color=\"#1976d2\"];\n  use_ingredient1 -> use_ingredient2 [penwidth=2, color=\"#1976d2\"];\n  use_ingredient2 -> use_more [penwidth=2, color=\"#1976d2\"];\n  use_more -> leftover [penwidth=3, color=\"#388e3c\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph ToysAnalogy {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=2.5, height=1.2];\n  \n  toys [label=\"🧸 n toys\", fillcolor=\"#e3f2fd\"];\n  \n  use_toys [label=\"🎯 Use k toys\\nto learn patterns\", fillcolor=\"#fff3e0\", width=3];\n  \n  leftover [label=\"🎮 Leftover toys\\nfor error checking\", fillcolor=\"#c8e6c9\", width=3.5];\n  \n  toys -> use_toys [penwidth=2, color=\"#1976d2\"];\n  use_toys -> leftover [penwidth=3, color=\"#388e3c\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph ClinicalTrial {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  patients [label=\"👥 n = 100 patients\", fillcolor=\"#e3f2fd\"];\n  covariates [label=\"📊 k = 5 covariates\\n(age, weight, etc.)\", fillcolor=\"#fff3e0\", width=4];\n  \n  df [label=\"📐 DF = 100 - 5 - 1 = 94\", fillcolor=\"#c8e6c9\", width=4];\n  \n  low_df [label=\"⚠️ Low DF = Hard to\\ndetect real effects\", fillcolor=\"#ffcdd2\", width=4];\n  \n  patients -> covariates [penwidth=2, color=\"#1976d2\"];\n  covariates -> df [penwidth=2, color=\"#388e3c\"];\n  df -> low_df [style=dashed, penwidth=2, color=\"#ff9800\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph DFMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  ignore_df [label=\"❌ Ignore\\nDegrees of Freedom\", fillcolor=\"#ffcdd2\"];\n  \n  inflated_variance [label=\"📈 Inflated\\nVariance Estimates\", fillcolor=\"#ffebee\", width=4];\n  wrong_conclusions [label=\"⚠️ Wrong Statistical\\nConclusions\", fillcolor=\"#ffebee\", width=4];\n  \n  correct_approach [label=\"✓ Consider DF\\nin Interpretation\", fillcolor=\"#c8e6c9\", width=4];\n  \n  ignore_df -> inflated_variance [penwidth=2, color=\"#c62828\"];\n  ignore_df -> wrong_conclusions [penwidth=2, color=\"#c62828\"];\n  correct_approach -> ignore_df [style=dashed, penwidth=2, color=\"#388e3c\"];\n}",
+        "example": "/* layout=dot */\ndigraph RetailExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  data [label=\"🛍️ Retail Sales Data\\nn = 100 data points\", fillcolor=\"#e3f2fd\", width=4];\n  predictors [label=\"📊 k = 5 predictors\\nPrice, Season, etc.\", fillcolor=\"#fff3e0\", width=4];\n  \n  calculation [label=\"🧮 DF = 100 - 5 - 1 = 94\", fillcolor=\"#c8e6c9\", width=4];\n  \n  use_mse [label=\"📈 Use DF to calculate\\nMSE and hypothesis tests\", fillcolor=\"#e8f5e9\", width=4.5];\n  \n  data -> predictors [penwidth=2, color=\"#1976d2\"];\n  predictors -> calculation [penwidth=2, color=\"#388e3c\"];\n  calculation -> use_mse [penwidth=2, color=\"#388e3c\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What does Degrees of Freedom (Error) represent in multiple regression?",
+          "options": [
+            "A. The total number of data points in the dataset.",
+            "B. The number of predictor variables in the model.",
+            "C. The number of independent pieces of information available to estimate the error variance.",
+            "D. The variance of the error term."
+          ],
+          "answer": "C. The number of independent pieces of information available to estimate the error variance."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A regression model has a sample size of 50 (n=50) and includes 3 predictor variables (k=3).",
+          "question": "What are the Degrees of Freedom (Error) for this model?",
+          "options": [
+            "A. 46",
+            "B. 47",
+            "C. 48",
+            "D. 49"
+          ],
+          "answer": "A. 46"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following elements in the correct order to calculate the Degrees of Freedom (Error) in multiple regression:",
+          "items": [
+            "Subtract the number of predictor variables (k).",
+            "Start with the sample size (n).",
+            "Subtract 1."
+          ],
+          "answer": [
+            "Start with the sample size (n).",
+            "Subtract the number of predictor variables (k).",
+            "Subtract 1."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each of the following factors as either 'Increasing Degrees of Freedom' or 'Decreasing Degrees of Freedom':",
+          "items": [
+            "Increasing the sample size (n).",
+            "Adding more predictor variables (k).",
+            "Removing predictor variables (k).",
+            "Decreasing the sample size (n)."
+          ],
+          "categories": [
+            "Increasing Degrees of Freedom",
+            "Decreasing Degrees of Freedom"
+          ],
+          "answer": {
+            "Increasing Degrees of Freedom": [
+              "Increasing the sample size (n).",
+              "Removing predictor variables (k)."
+            ],
+            "Decreasing Degrees of Freedom": [
+              "Adding more predictor variables (k).",
+              "Decreasing the sample size (n)."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each symbol with its corresponding meaning in the context of Degrees of Freedom (Error):",
+          "premises": [
+            "1. n",
+            "2. k",
+            "3. n - k - 1",
+            "4. DF"
+          ],
+          "responses": [
+            "A. The formula for calculating Degrees of Freedom (Error).",
+            "B. Degrees of Freedom (Error).",
+            "C. The number of predictor variables in the model.",
+            "D. The sample size."
+          ],
+          "answer": [
+            "1-D",
+            "2-C",
+            "3-A",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "Degrees of Freedom",
+        "Error",
+        "Sample Size",
+        "Predictor Variables"
+      ],
+      "source_chunk": "DAA_lec_4_4",
+      "diagram_image_paths": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "diagrams/DAA_lec_4_4_card_009_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "concept",
+      "question": "What is the interpretation of a coefficient in a multiple linear regression model?",
+      "answers": {
+        "concise": "In multiple linear regression, a coefficient represents the average change in the dependent variable for a one-unit increase in the corresponding independent variable, holding all other independent variables constant (ceteris paribus).",
+        "analogy": "Think of each coefficient as a dial that adjusts the predicted outcome. Changing one dial affects the outcome, but the effect is isolated *only if* all other dials remain in the same position. If the other dials also move (correlated variables), it's hard to know which dial is causing the change.",
+        "eli5": "Imagine you're baking a cake, and you want to know how much the sugar affects the sweetness. But you also added chocolate and sprinkles. The coefficient for sugar tells you how much sweeter the cake gets for each spoon of sugar *if* you keep the amount of chocolate and sprinkles the same.",
+        "real_world_use_case": "In a marketing campaign analysis, the coefficient for 'advertising spend' might indicate the increase in sales for each additional dollar spent on advertising, assuming the prices of the products, competitor actions, and overall economic conditions remain constant. This allows marketers to isolate the impact of their advertising efforts.",
+        "common_mistakes": "A common mistake is interpreting a coefficient as the *only* factor affecting the outcome. Multiple regression acknowledges that many factors contribute, and the coefficient only isolates the effect of *one* variable *while holding others constant*. Failing to account for the 'ceteris paribus' condition leads to oversimplified or incorrect conclusions."
+      },
+      "context": "Multiple Linear Regression",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core concept for understanding regression models."
+      },
+      "example": "Consider a model predicting customer spending based on 'age' and 'income.' If the coefficient for 'income' is 0.02, it means that for every $1 increase in a customer's income, their predicted spending increases by $0.02, *assuming their age remains constant*. This allows businesses to understand the isolated impact of income on spending, independent of age.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Y[Y] -->|b1*X1| X1[X\u2081]\n    Y -->|b2*X2| X2[X\u2082 constant]\n    Y -->|bk*Xk| Xk[X\u2096 constant]\n    style Y fill:#e3f2fd,stroke:#1976d2,stroke-width:3px\n    style X1 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "analogy": "graph LR\n    Dials[\ud83c\udf9b\ufe0f Multiple Dials] -->|Adjust| Outcome[Predicted Outcome]\n    style Dials fill:#e3f2fd,stroke:#1976d2,stroke-width:2px",
+        "eli5": "graph TD\n    Sugar[\ud83c\udf6c Sugar] -->|Sweetness| Cake[\ud83c\udf82 Cake]\n    Chocolate[\ud83c\udf6b Chocolate] -.-> Cake\n    Sprinkles[\u2728 Sprinkles] -.-> Cake\n    style Cake fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style Sugar fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "",
+        "common_mistakes": "graph TD\n    Correct[Coefficient (ceteris paribus)] --> Accurate[\u2713 Accurate]\n    Incorrect[Ignoring others] --> Misleading[\u2717 Misleading]\n    style Correct fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style Incorrect fill:#ffebee,stroke:#c62828,stroke-width:2px",
+        "example": ""
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph RegressionFormula {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=5, height=1.8];\n  \n  formula [label=\"Regression Formula\\n\\nŶᵢ = b₀ + b₁Xᵢ₁ + b₂Xᵢ₂ + ⋯ + bₖXᵢₖ\", fontsize=18, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=6, height=2];\n  \n  explanation [label=\"Where Ŷᵢ is the predicted value\\nand bᵢ are coefficients\", fontsize=14, shape=note, fillcolor=\"#fff3e0\", width=4.5];\n  \n  formula -> explanation [style=dashed, color=\"#757575\", penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph DialsAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  dials [label=\"🎛️ Multiple Dials\\n(Predictors)\", fillcolor=\"#e3f2fd\"];\n  \n  dial1 [label=\"🔄 Dial 1\\n(X₁)\", fillcolor=\"#fff3e0\"];\n  dial2 [label=\"🔄 Dial 2\\n(X₂)\", fillcolor=\"#fff3e0\"];\n  dial3 [label=\"🔄 Dial 3\\n(X₃)\", fillcolor=\"#fff3e0\"];\n  \n  outcome [label=\"📊 Predicted\\nOutcome\", fillcolor=\"#c8e6c9\"];\n  \n  ceteris [label=\"⚖️ Hold other\\ndials constant\", fillcolor=\"#ffebee\", width=3.5];\n  \n  dials -> dial1 [penwidth=2, color=\"#1976d2\"];\n  dials -> dial2 [penwidth=2, color=\"#1976d2\"];\n  dials -> dial3 [penwidth=2, color=\"#1976d2\"];\n  \n  dial1 -> outcome [penwidth=2, color=\"#388e3c\"];\n  dial2 -> outcome [style=dashed, penwidth=1, color=\"#757575\"];\n  dial3 -> outcome [style=dashed, penwidth=1, color=\"#757575\"];\n  \n  dial1 -> ceteris [style=dashed, penwidth=2, color=\"#c62828\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph CakeIngredients {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  ingredients [label=\"🧁 Cake Ingredients\", fillcolor=\"#e3f2fd\"];\n  \n  sugar [label=\"🍬 Sugar\\n(Focus on this)\", fillcolor=\"#c8e6c9\"];\n  chocolate [label=\"🍫 Chocolate\\n(Keep same)\", fillcolor=\"#fff3e0\"];\n  sprinkles [label=\"✨ Sprinkles\\n(Keep same)\", fillcolor=\"#fff3e0\"];\n  \n  sweetness [label=\"😋 Cake\\nSweetness\", fillcolor=\"#fff9c4\"];\n  \n  ingredients -> sugar [penwidth=3, color=\"#388e3c\"];\n  ingredients -> chocolate [penwidth=2, color=\"#757575\"];\n  ingredients -> sprinkles [penwidth=2, color=\"#757575\"];\n  \n  sugar -> sweetness [penwidth=3, color=\"#388e3c\"];\n  chocolate -> sweetness [style=dashed, penwidth=1, color=\"#757575\"];\n  sprinkles -> sweetness [style=dashed, penwidth=1, color=\"#757575\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph CustomerSpending {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  factors [label=\"👤 Customer Factors\", fillcolor=\"#e3f2fd\"];\n  \n  age [label=\"📅 Age\\n(Focus Variable)\", fillcolor=\"#c8e6c9\"];\n  income [label=\"💰 Income\\n(Held Constant)\", fillcolor=\"#fff3e0\"];\n  \n  spending [label=\"🛒 Customer\\nSpending\", fillcolor=\"#fff9c4\"];\n  \n  coefficient [label=\"📈 For every $1\\nincome increase:\\n$0.02 more spending\", fillcolor=\"#e8f5e9\", width=4];\n  \n  factors -> age [penwidth=3, color=\"#388e3c\"];\n  factors -> income [penwidth=2, color=\"#757575\"];\n  \n  age -> spending [style=dashed, penwidth=1, color=\"#757575\"];\n  income -> spending [penwidth=3, color=\"#388e3c\"];\n  \n  spending -> coefficient [penwidth=2, color=\"#388e3c\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph CoefficientMistakes {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  coefficient [label=\"📊 Coefficient\\nInterpretation\", fillcolor=\"#e3f2fd\"];\n  \n  correct [label=\"✓ Ceteris Paribus\\n(All else constant)\", fillcolor=\"#c8e6c9\", width=3.5];\n  incorrect [label=\"❌ Ignore other\\nvariables\", fillcolor=\"#ffcdd2\"];\n  \n  accurate [label=\"📈 Accurate\\nUnderstanding\", fillcolor=\"#e8f5e9\"];\n  misleading [label=\"⚠️ Misleading\\nConclusions\", fillcolor=\"#ffebee\"];\n  \n  coefficient -> correct [penwidth=2, color=\"#388e3c\"];\n  coefficient -> incorrect [penwidth=2, color=\"#c62828\"];\n  \n  correct -> accurate [penwidth=2, color=\"#388e3c\"];\n  incorrect -> misleading [penwidth=2, color=\"#c62828\"];\n}",
+        "example": "/* layout=dot */\ndigraph HousePriceExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  model [label=\"🏠 House Price Model\", fillcolor=\"#e3f2fd\"];\n  \n  sf [label=\"📐 Square Footage\\n(Coefficient = $200)\", fillcolor=\"#c8e6c9\", width=4];\n  bedrooms [label=\"🛏️ Bedrooms\\n(Held Constant)\", fillcolor=\"#fff3e0\"];\n  lot_size [label=\"🌳 Lot Size\\n(Held Constant)\", fillcolor=\"#fff3e0\"];\n  \n  interpretation [label=\"📈 +1 sq ft = +$200\\n(assuming bedrooms &\\nlot size stay same)\", fillcolor=\"#e8f5e9\", width=4.5];\n  \n  model -> sf [penwidth=3, color=\"#388e3c\"];\n  model -> bedrooms [penwidth=2, color=\"#757575\"];\n  model -> lot_size [penwidth=2, color=\"#757575\"];\n  \n  sf -> interpretation [penwidth=2, color=\"#388e3c\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "In a multiple regression model, what does a coefficient represent?",
+          "options": [
+            "A. The change in the independent variable for a one-unit increase in the dependent variable.",
+            "B. The average change in the dependent variable for a one-unit increase in the corresponding independent variable, holding all other independent variables constant.",
+            "C. The total change in the dependent variable.",
+            "D. The standard deviation of the independent variable."
+          ],
+          "answer": "B. The average change in the dependent variable for a one-unit increase in the corresponding independent variable, holding all other independent variables constant."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A real estate company builds a model to predict house prices. The model includes square footage, number of bedrooms, and lot size. The coefficient for square footage is $200. ",
+          "question": "What does this coefficient mean?",
+          "options": [
+            "A. For every increase of one square foot, the price increases by $200, regardless of other factors.",
+            "B. Square footage is the only factor that affects house prices.",
+            "C. For every increase of one square foot, the price increases by $200, assuming the number of bedrooms and lot size remain constant.",
+            "D. The average square footage of houses is $200."
+          ],
+          "answer": "C. For every increase of one square foot, the price increases by $200, assuming the number of bedrooms and lot size remain constant."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps for interpreting a multiple regression model in the correct order.",
+          "items": [
+            "Examine the adjusted R-squared.",
+            "Interpret the coefficients.",
+            "Check the F-test for overall significance.",
+            "Examine t-tests for individual variable significance."
+          ],
+          "answer": [
+            "Check the F-test for overall significance.",
+            "Examine t-tests for individual variable significance.",
+            "Interpret the coefficients.",
+            "Examine the adjusted R-squared."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each of the following interpretations of regression coefficients as either 'Correct' or 'Incorrect'.",
+          "items": [
+            "An increase of 1 in X1 leads to an average increase of b1 in Y, holding all else constant.",
+            "The coefficient b1 represents the only factor influencing Y.",
+            "b1 is the change in Y for every change in X1.",
+            "An increase of 1 in X1 is associated with an average change of b1 in Y, assuming all other variables remain unchanged."
+          ],
+          "categories": [
+            "Correct",
+            "Incorrect"
+          ],
+          "answer": {
+            "Correct": [
+              "An increase of 1 in X1 leads to an average increase of b1 in Y, holding all else constant.",
+              "An increase of 1 in X1 is associated with an average change of b1 in Y, assuming all other variables remain unchanged."
+            ],
+            "Incorrect": [
+              "The coefficient b1 represents the only factor influencing Y.",
+              "b1 is the change in Y for every change in X1."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term with its definition in the context of multiple regression.",
+          "premises": [
+            "1. Coefficient",
+            "2. Ceteris Paribus",
+            "3. Adjusted R-squared",
+            "4. F-test"
+          ],
+          "responses": [
+            "A. Holding all other variables constant",
+            "B. A measure of the overall model fit, adjusted for the number of predictors",
+            "C. Tests the overall significance of the regression model",
+            "D. The estimated effect of an independent variable on the dependent variable"
+          ],
+          "answer": [
+            "1-D",
+            "2-A",
+            "3-B",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "multiple regression",
+        "coefficient interpretation",
+        "ceteris paribus"
+      ],
+      "source_chunk": "DAA_lec_4_6",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_6_card_010_concise.png",
+        "analogy": "diagrams/DAA_lec_4_6_card_010_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_6_card_010_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_6_card_010_real_world_use_case.png",
+        "common_mistakes": "",
+        "example": ""
+      }
+    },
+    {
+      "type": "concept",
+      "question": "What is multicollinearity and why is it a problem in multiple regression?",
+      "answers": {
+        "concise": "Multicollinearity (MCL) occurs when two or more independent variables in a multiple regression model are highly correlated. This leads to inflated standard errors of the coefficients, making it difficult to determine the individual effect of each predictor and potentially leading to statistically insignificant coefficients.",
+        "analogy": "Imagine trying to determine the individual contribution of flour and baking powder to a cake's rise when you always use them in fixed proportions. Because they always move together, it's difficult to isolate which ingredient is truly responsible for the rise. That's multicollinearity: predictors that are so intertwined that their individual effects become blurred.",
+        "eli5": "Imagine you're trying to figure out if eating carrots or spinach makes you see better. But every time you eat carrots, you *also* eat spinach. It's hard to know if your good eyesight is from the carrots, the spinach, or both! Multicollinearity is like that: when two things always happen together, it's hard to tell which one is causing the effect.",
+        "real_world_use_case": "In a marketing model, 'TV advertising spend' and 'Online advertising spend' might be highly correlated because the company always increases both together. This makes it difficult to determine which advertising channel is more effective, leading to inefficient allocation of marketing resources. The model might suggest neither is significant due to MCL, even if both are driving sales.",
+        "common_mistakes": "A common mistake is ignoring multicollinearity, assuming that insignificant t-tests automatically mean those variables are unimportant. Multicollinearity can mask the true significance of predictors. Another mistake is trying to 'fix' multicollinearity by simply removing one of the correlated variables without considering the theoretical importance of the variables or using more advanced techniques like VIF analysis."
+      },
+      "context": "Multicollinearity in Multiple Regression",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Important concept for model diagnostics and variable selection."
+      },
+      "example": "A model predicting student test scores includes 'hours studied' and 'number of practice problems completed'. If students who study more also tend to complete more practice problems, these variables will be highly correlated. This multicollinearity could result in both variables appearing statistically insignificant, even though both contribute to higher test scores. The standard errors will be artificially inflated.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    X1[X\u2081] -- High Correlation --> X2[X\u2082]\n    X1 --> Y[Y]\n    X2 --> Y\n    style Y fill:#e3f2fd,stroke:#1976d2,stroke-width:3px\n    style X1 fill:#ffcdd2,stroke:#c62828,stroke-width:2px\n    style X2 fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "analogy": "graph LR\n    Flour[\ud83c\udf3e Flour] -- Always with --> Powder[\ud83e\uddc2 Baking Powder]\n    Flour --> Rise[Cake Rise]\n    Powder --> Rise\n    style Rise fill:#fff3e0,stroke:#f57c00,stroke-width:2px",
+        "eli5": "graph TD\n    Carrots[\ud83e\udd55 Carrots] -- Always with --> Spinach[\ud83e\udd6c Spinach]\n    Carrots --> Eyesight[\ud83d\udc40 Good Eyesight]\n    Spinach --> Eyesight\n    style Eyesight fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "",
+        "common_mistakes": "graph TD\n    Ignore[\u274c Ignoring MCL] --> Wrong[Incorrect Conclusion]\n    VIF[\u2713 VIF Analysis] --> Better[Better Understanding]\n    style Wrong fill:#ffcdd2,stroke:#c62828,stroke-width:2px\n    style Better fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "example": ""
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph Multicollinearity {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=4.5, height=2];\n  \n  problem [label=\"⚠️ MULTICOLLINEARITY\\n\\nPredictors are highly correlated\\n\\nMakes it hard to determine\\neach predictor's individual effect\", fontsize=16, fillcolor=\"#ffebee\", color=\"#c62828\", penwidth=2.5, width=5, height=2.5];\n}",
+        "analogy": "/* layout=dot */\ndigraph FlourPowder {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  baking [label=\"🧁 Baking Experiment\", fillcolor=\"#e3f2fd\"];\n  \n  flour [label=\"🌾 Flour\\n(Always together)\", fillcolor=\"#ffcdd2\"];\n  powder [label=\"🧂 Baking Powder\\n(Always together)\", fillcolor=\"#ffcdd2\"];\n  \n  rise [label=\"📈 Cake Rise\", fillcolor=\"#fff9c4\"];\n  \n  confusion [label=\"🤔 Which ingredient\\ncauses the rise?\", fillcolor=\"#ffebee\", width=3.5];\n  \n  baking -> flour [penwidth=2, color=\"#1976d2\"];\n  baking -> powder [penwidth=2, color=\"#1976d2\"];\n  \n  flour -> rise [penwidth=2, color=\"#ff9800\"];\n  powder -> rise [penwidth=2, color=\"#ff9800\"];\n  \n  flour -> powder [penwidth=3, color=\"#c62828\", style=dashed, label=\"High\\nCorrelation\"];\n  \n  rise -> confusion [penwidth=2, color=\"#c62828\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph CarrotsSpinach {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  eating [label=\"🥗 Eating Healthy\", fillcolor=\"#e3f2fd\"];\n  \n  carrots [label=\"🥕 Carrots\\n(Always eat together)\", fillcolor=\"#ffcdd2\"];\n  spinach [label=\"🥬 Spinach\\n(Always eat together)\", fillcolor=\"#ffcdd2\"];\n  \n  eyesight [label=\"👀 Good Eyesight\", fillcolor=\"#c8e6c9\"];\n  \n  mystery [label=\"❓ Which food\\nhelps eyesight?\", fillcolor=\"#ffebee\", width=3.5];\n  \n  eating -> carrots [penwidth=2, color=\"#1976d2\"];\n  eating -> spinach [penwidth=2, color=\"#1976d2\"];\n  \n  carrots -> eyesight [penwidth=2, color=\"#388e3c\"];\n  spinach -> eyesight [penwidth=2, color=\"#388e3c\"];\n  \n  carrots -> spinach [penwidth=3, color=\"#c62828\", style=dashed, label=\"Always\\ntogether\"];\n  \n  eyesight -> mystery [penwidth=2, color=\"#c62828\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph MarketingChannels {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  marketing [label=\"📺 Marketing Campaign\", fillcolor=\"#e3f2fd\"];\n  \n  tv [label=\"📺 TV Advertising\\n(Always increase together)\", fillcolor=\"#ffcdd2\", width=4];\n  online [label=\"💻 Online Advertising\\n(Always increase together)\", fillcolor=\"#ffcdd2\", width=4];\n  \n  sales [label=\"💰 Sales\", fillcolor=\"#c8e6c9\"];\n  \n  problem [label=\"⚠️ Can't determine\\nwhich channel is\\nmore effective\", fillcolor=\"#ffebee\", width=4];\n  \n  inefficient [label=\"📉 Inefficient\\nResource Allocation\", fillcolor=\"#ffebee\", width=4];\n  \n  marketing -> tv [penwidth=2, color=\"#1976d2\"];\n  marketing -> online [penwidth=2, color=\"#1976d2\"];\n  \n  tv -> sales [penwidth=2, color=\"#388e3c\"];\n  online -> sales [penwidth=2, color=\"#388e3c\"];\n  \n  tv -> online [penwidth=3, color=\"#c62828\", style=dashed, label=\"High\\nCorrelation\"];\n  \n  sales -> problem [penwidth=2, color=\"#c62828\"];\n  problem -> inefficient [penwidth=2, color=\"#c62828\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph MCLMistakes {\n  graph [rankdir=LR, margin=0.5, pad=0.5, nodesep=2, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  insignificant [label=\"❌ Insignificant\\nt-tests\", fillcolor=\"#ffcdd2\"];\n  \n  wrong_conclusion [label=\"⚠️ Variables are\\nunimportant\", fillcolor=\"#ffebee\", width=3.5];\n  correct_analysis [label=\"✓ Check for\\nMulticollinearity\", fillcolor=\"#c8e6c9\", width=3.5];\n  \n  vif [label=\"📊 Use VIF\\nAnalysis\", fillcolor=\"#e8f5e9\"];\n  \n  insignificant -> wrong_conclusion [penwidth=2, color=\"#c62828\"];\n  insignificant -> correct_analysis [penwidth=2, color=\"#388e3c\"];\n  \n  correct_analysis -> vif [penwidth=2, color=\"#388e3c\"];\n}",
+        "example": "/* layout=dot */\ndigraph StudentExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  model [label=\"📚 Student Test Score\\nPrediction Model\", fillcolor=\"#e3f2fd\", width=4];\n  \n  hours [label=\"⏰ Hours Studied\\n(Highly correlated)\", fillcolor=\"#ffcdd2\", width=4];\n  problems [label=\"📝 Practice Problems\\n(Highly correlated)\", fillcolor=\"#ffcdd2\", width=4];\n  \n  scores [label=\"📊 Test Scores\", fillcolor=\"#c8e6c9\"];\n  \n  mcl_effect [label=\"⚠️ Both appear\\ninsignificant due to MCL\", fillcolor=\"#ffebee\", width=4];\n  \n  inflated_se [label=\"📈 Inflated\\nStandard Errors\", fillcolor=\"#ffebee\", width=4];\n  \n  model -> hours [penwidth=2, color=\"#1976d2\"];\n  model -> problems [penwidth=2, color=\"#1976d2\"];\n  \n  hours -> scores [penwidth=2, color=\"#388e3c\"];\n  problems -> scores [penwidth=2, color=\"#388e3c\"];\n  \n  hours -> problems [penwidth=3, color=\"#c62828\", style=dashed, label=\"High\\nCorrelation\"];\n  \n  scores -> mcl_effect [penwidth=2, color=\"#c62828\"];\n  mcl_effect -> inflated_se [penwidth=2, color=\"#c62828\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the primary consequence of multicollinearity in a multiple regression model?",
+          "options": [
+            "A. Reduced R-squared value.",
+            "B. Inflated standard errors of the coefficients.",
+            "C. Biased coefficient estimates.",
+            "D. Invalid F-test."
+          ],
+          "answer": "B. Inflated standard errors of the coefficients."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A marketing analyst finds that in their regression model, both 'social media spend' and 'email marketing spend' have high p-values despite the F-test being significant and marketing theory suggesting they are important. The correlation between the two variables is 0.85.",
+          "question": "What is the most likely cause of this issue?",
+          "options": [
+            "A. The model is overfitting the data.",
+            "B. There is no actual relationship between marketing spend and sales.",
+            "C. Multicollinearity between social media spend and email marketing spend.",
+            "D. The analyst used the wrong type of regression model."
+          ],
+          "answer": "C. Multicollinearity between social media spend and email marketing spend."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps for detecting multicollinearity in the correct order.",
+          "items": [
+            "Calculate Variance Inflation Factor (VIF).",
+            "Examine the correlation matrix.",
+            "Observe high p-values for individual variables despite a significant F-test."
+          ],
+          "answer": [
+            "Examine the correlation matrix.",
+            "Observe high p-values for individual variables despite a significant F-test.",
+            "Calculate Variance Inflation Factor (VIF)."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify the following effects as either 'Directly caused by Multicollinearity' or 'Not directly caused by Multicollinearity'.",
+          "items": [
+            "Inflated standard errors.",
+            "Reduced R-squared.",
+            "Statistically insignificant coefficients.",
+            "Unreliable coefficient signs."
+          ],
+          "categories": [
+            "Directly caused by Multicollinearity",
+            "Not directly caused by Multicollinearity"
+          ],
+          "answer": {
+            "Directly caused by Multicollinearity": [
+              "Inflated standard errors.",
+              "Statistically insignificant coefficients.",
+              "Unreliable coefficient signs."
+            ],
+            "Not directly caused by Multicollinearity": [
+              "Reduced R-squared."
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the term with its description.",
+          "premises": [
+            "1. Multicollinearity",
+            "2. VIF",
+            "3. Correlation Matrix",
+            "4. Insignificant t-tests"
+          ],
+          "responses": [
+            "A. A table showing the pairwise correlations between variables.",
+            "B. A symptom of multicollinearity.",
+            "C. A measure of how much the variance of an estimated regression coefficient increases if your predictors are correlated.",
+            "D. High correlation between independent variables."
+          ],
+          "answer": [
+            "1-D",
+            "2-C",
+            "3-A",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "multicollinearity",
+        "regression diagnostics",
+        "VIF"
+      ],
+      "source_chunk": "DAA_lec_4_6",
+      "diagram_image_paths": {
+        "concise": "diagrams/DAA_lec_4_6_card_011_concise.png",
+        "analogy": "diagrams/DAA_lec_4_6_card_011_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_6_card_011_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_6_card_011_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_6_card_011_common_mistakes.png",
+        "example": "diagrams/DAA_lec_4_6_card_011_example.png"
+      }
+    },
+    {
+      "type": "process",
+      "question": "What are the key steps in the multiple regression modeling process?",
+      "answers": {
+        "concise": "The multiple regression modeling process involves initial EDA (scatterplot & correlation matrix), model estimation using OLS, global inference with the F-test, individual inference with t-tests, and final evaluation & interpretation using Adjusted R-squared and coefficient interpretation.",
+        "analogy": "Think of building a house. First, you survey the land (EDA). Then, you lay the foundation (OLS estimation). Next, you inspect the whole structure (F-test). Then, you check each individual beam (t-tests). Finally, you assess the overall quality and aesthetics (Adjusted R-squared and interpretation).",
+        "eli5": "Imagine you're building a LEGO tower. First, you look at all the LEGOs you have (EDA). Then, you start putting them together (OLS estimation). Then, you check if the whole tower is standing straight (F-test). Then, you check if each LEGO is connected tightly (t-tests). Finally, you see if your tower looks cool and does what you wanted (Adjusted R-squared and interpretation).",
+        "real_world_use_case": "A data science team at Netflix uses multiple regression to predict movie viewership. They start with EDA to understand relationships between factors like genre, actors, and release date. They then estimate the model, check its overall significance, assess the individual impact of each factor, and finally, interpret the results to optimize movie recommendations and production strategies.",
+        "common_mistakes": "A common mistake is skipping the initial EDA and jumping straight to model estimation, which can lead to ignoring multicollinearity or other data issues. Another mistake is focusing only on the F-test and ignoring the t-tests, which can mask the importance of individual predictors. Finally, failing to interpret the coefficients in context can lead to incorrect business decisions."
+      },
+      "context": "Multiple Regression Modeling Process",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Outlines the systematic approach to building and interpreting regression models."
+      },
+      "example": "A bank uses multiple regression to predict loan defaults. They begin with EDA to check relationships between credit score, income, and loan amount. They estimate the model using OLS, perform the F-test to check overall significance, conduct t-tests to assess individual predictor significance, and then interpret the coefficients to understand the impact of each factor on loan default risk, adjusting their lending criteria accordingly.",
+      "mermaid_diagrams": {
+        "concise": "flowchart TD\n    EDA[\ud83d\udcca Initial EDA] --> OLS[Model Estimation]\n    OLS --> FTest[\ud83e\uddea Global F-Test]\n    FTest -- p \u2264 \u03b1 --> TTests[T-Tests]\n    FTest -- p > \u03b1 --> Stop[\u274c STOP]\n    TTests --> Eval[\u2713 Evaluation]\n    style EDA fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style Eval fill:#c8e6c9,stroke:#388e3c,stroke-width:2px\n    style Stop fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "analogy": "flowchart TD\n    Survey[\ud83c\udfd7\ufe0f Survey Land] --> Foundation[Lay Foundation]\n    Foundation --> Inspect[Inspect Structure]\n    Inspect --> Beams[Check Beams]\n    Beams --> Quality[\u2713 Assess Quality]\n    style Quality fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "eli5": "flowchart TD\n    Look[\ud83d\udc40 Look at Legos] --> Build[Put Together]\n    Build --> Straight{Tower Straight?}\n    Straight -- Yes --> Tight[Legos Tight?]\n    Straight -- No --> Stop2[\u274c STOP]\n    Tight --> Cool[\u2713 Looks Cool?]\n    style Cool fill:#c8e6c9,stroke:#388e3c,stroke-width:2px",
+        "real_world_use_case": "",
+        "common_mistakes": "graph TD\n    SkipEDA[\u274c Skip EDA] --> IgnoreMCL[Ignore Multicollinearity]\n    FTestOnly[\u274c F-Test Only] --> MaskPred[Mask Predictors]\n    NoContext[\u274c No Context] --> Wrong[Incorrect Decisions]\n    style SkipEDA fill:#ffcdd2,stroke:#c62828,stroke-width:2px",
+        "example": ""
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph RegressionProcess {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=5, height=2.5];\n  \n  process [label=\"MLR Modeling Process\\n\\n1. EDA (Scatmat & Correlation)\\n2. Model Estimation (OLS)\\n3. Global F-Test\\n4. Individual T-Tests\\n5. Evaluation (Adj R²)\", fontsize=16, fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2.5, width=6, height=3];\n}",
+        "analogy": "/* layout=dot */\ndigraph HouseBuilding {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  survey [label=\"🏗️ Survey Land\\n(EDA)\", fillcolor=\"#e3f2fd\"];\n  foundation [label=\"🏠 Lay Foundation\\n(OLS Estimation)\", fillcolor=\"#fff3e0\"];\n  inspect [label=\"🔍 Inspect Structure\\n(F-Test)\", fillcolor=\"#c8e6c9\"];\n  beams [label=\"🔧 Check Beams\\n(T-Tests)\", fillcolor=\"#fff9c4\"];\n  quality [label=\"✅ Assess Quality\\n(Adj R²)\", fillcolor=\"#e8f5e9\"];\n  \n  survey -> foundation [penwidth=2, color=\"#1976d2\"];\n  foundation -> inspect [penwidth=2, color=\"#1976d2\"];\n  inspect -> beams [penwidth=2, color=\"#388e3c\"];\n  beams -> quality [penwidth=2, color=\"#388e3c\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph LegoBuilding {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  look [label=\"👀 Look at Legos\\n(EDA)\", fillcolor=\"#e3f2fd\"];\n  build [label=\"🔨 Put Together\\n(Build Model)\", fillcolor=\"#fff3e0\"];\n  straight [label=\"📏 Tower Straight?\\n(F-Test)\", fillcolor=\"#c8e6c9\"];\n  tight [label=\"🔗 Legos Tight?\\n(T-Tests)\", fillcolor=\"#fff9c4\"];\n  cool [label=\"😎 Looks Cool?\\n(Evaluation)\", fillcolor=\"#e8f5e9\"];\n  \n  look -> build [penwidth=2, color=\"#1976d2\"];\n  build -> straight [penwidth=2, color=\"#1976d2\"];\n  straight -> tight [penwidth=2, color=\"#388e3c\"];\n  tight -> cool [penwidth=2, color=\"#388e3c\"];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph NetflixProcess {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  eda [label=\"📊 EDA\\nGenre, Actors, Release Date\", fillcolor=\"#e3f2fd\", width=4];\n  estimate [label=\"🔢 Estimate Model\\nPredict Viewership\", fillcolor=\"#fff3e0\", width=4];\n  ftest [label=\"🧪 F-Test\\nOverall Significance\", fillcolor=\"#c8e6c9\", width=4];\n  ttests [label=\"📈 T-Tests\\nIndividual Factors\", fillcolor=\"#fff9c4\", width=4];\n  interpret [label=\"🎯 Interpret Results\\nOptimize Strategy\", fillcolor=\"#e8f5e9\", width=4];\n  \n  eda -> estimate [penwidth=2, color=\"#1976d2\"];\n  estimate -> ftest [penwidth=2, color=\"#1976d2\"];\n  ftest -> ttests [penwidth=2, color=\"#388e3c\"];\n  ttests -> interpret [penwidth=2, color=\"#388e3c\"];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph ProcessMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  skip_eda [label=\"❌ Skip EDA\", fillcolor=\"#ffcdd2\"];\n  ftest_only [label=\"❌ F-Test Only\", fillcolor=\"#ffcdd2\"];\n  no_context [label=\"❌ No Context\\nInterpretation\", fillcolor=\"#ffcdd2\"];\n  \n  ignore_mcl [label=\"⚠️ Ignore\\nMulticollinearity\", fillcolor=\"#ffebee\", width=4];\n  mask_predictors [label=\"⚠️ Mask Important\\nPredictors\", fillcolor=\"#ffebee\", width=4];\n  wrong_decisions [label=\"⚠️ Incorrect\\nBusiness Decisions\", fillcolor=\"#ffebee\", width=4];\n  \n  skip_eda -> ignore_mcl [penwidth=2, color=\"#c62828\"];\n  ftest_only -> mask_predictors [penwidth=2, color=\"#c62828\"];\n  no_context -> wrong_decisions [penwidth=2, color=\"#c62828\"];\n}",
+        "example": "/* layout=dot */\ndigraph BankExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  eda [label=\"📊 EDA\\nCredit Score, Income, Loan\", fillcolor=\"#e3f2fd\", width=4];\n  ols [label=\"🔢 OLS Estimation\\nPredict Defaults\", fillcolor=\"#fff3e0\", width=4];\n  ftest [label=\"🧪 F-Test\\np < 0.05 ✓\", fillcolor=\"#c8e6c9\"];\n  ttests [label=\"📈 T-Tests\\nAssess Predictors\", fillcolor=\"#fff9c4\", width=4];\n  interpret [label=\"🎯 Interpret & Apply\\nAdjust Lending Criteria\", fillcolor=\"#e8f5e9\", width=4.5];\n  \n  eda -> ols [penwidth=2, color=\"#1976d2\"];\n  ols -> ftest [penwidth=2, color=\"#1976d2\"];\n  ftest -> ttests [penwidth=2, color=\"#388e3c\"];\n  ttests -> interpret [penwidth=2, color=\"#388e3c\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the first step in the multiple regression modeling process?",
+          "options": [
+            "A. Perform the Global F-Test.",
+            "B. Estimate the MLR model using Ordinary Least Squares (OLS).",
+            "C. Initial Exploratory Data Analysis (EDA).",
+            "D. Perform T-Tests for each coefficient."
+          ],
+          "answer": "C. Initial Exploratory Data Analysis (EDA)."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A data scientist is building a multiple regression model and finds that the Global F-Test p-value is greater than the significance level (alpha).",
+          "question": "What should the data scientist do?",
+          "options": [
+            "A. Proceed to perform T-Tests for each coefficient.",
+            "B. Stop, as the model is not statistically significant.",
+            "C. Increase the sample size and re-run the model.",
+            "D. Remove the variable with the highest p-value and re-run the model."
+          ],
+          "answer": "B. Stop, as the model is not statistically significant."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps of the multiple regression modeling process in the correct order.",
+          "items": [
+            "Individual Inference: Perform T-Tests",
+            "Initial EDA: Scatterplot Matrix & Correlation Matrix",
+            "Global Inference: Perform the Global F-Test",
+            "Final Evaluation & Interpretation: Check Adjusted R^2",
+            "Model Estimation: Fit the MLR model using OLS"
+          ],
+          "answer": [
+            "Initial EDA: Scatterplot Matrix & Correlation Matrix",
+            "Model Estimation: Fit the MLR model using OLS",
+            "Global Inference: Perform the Global F-Test",
+            "Individual Inference: Perform T-Tests",
+            "Final Evaluation & Interpretation: Check Adjusted R^2"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following activities as either 'Global Inference' or 'Individual Inference' in the multiple regression modeling process.",
+          "items": [
+            "Performing the F-Test",
+            "Checking Adjusted R-squared",
+            "Performing T-Tests",
+            "Interpreting Coefficients"
+          ],
+          "categories": [
+            "Global Inference",
+            "Individual Inference"
+          ],
+          "answer": {
+            "Global Inference": [
+              "Performing the F-Test",
+              "Checking Adjusted R-squared"
+            ],
+            "Individual Inference": [
+              "Performing T-Tests",
+              "Interpreting Coefficients"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match the step in the multiple regression modeling process with its description.",
+          "premises": [
+            "1. Initial EDA",
+            "2. Global Inference",
+            "3. Individual Inference",
+            "4. Final Evaluation & Interpretation"
+          ],
+          "responses": [
+            "A. Assess the significance of each predictor variable.",
+            "B. Check if the overall model is significant.",
+            "C. Examine relationships and potential problems in the data.",
+            "D. Assess model fit and understand the impact of each predictor."
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A",
+            "4-D"
+          ]
+        }
+      ],
+      "tags": [
+        "regression process",
+        "model building",
+        "EDA",
+        "F-test",
+        "t-test",
+        "adjusted R-squared"
+      ],
+      "source_chunk": "DAA_lec_4_6",
+      "diagram_image_paths": {
+        "concise": "",
+        "analogy": "diagrams/DAA_lec_4_6_card_012_analogy.png",
+        "eli5": "diagrams/DAA_lec_4_6_card_012_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_4_6_card_012_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_4_6_card_012_common_mistakes.png",
+        "example": ""
+      }
+    }
+  ]
+}
