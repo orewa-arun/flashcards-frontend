@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
+import QuestionRenderer from './QuestionRenderer'
 import './Quiz.css'
 
 function Quiz({ flashcards, onComplete }) {
   const [allQuestions, setAllQuestions] = useState([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [userAnswer, setUserAnswer] = useState('')
+  const [userAnswer, setUserAnswer] = useState(null)
   const [results, setResults] = useState([])
   const [showTransition, setShowTransition] = useState(true)
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false)
@@ -16,18 +17,15 @@ function Quiz({ flashcards, onComplete }) {
     flashcards.forEach(card => {
       if (card.recall_questions && card.recall_questions.length > 0) {
         card.recall_questions.forEach(q => {
-          // Filter: Only use MCQ and True/False questions (ignore fill_in_the_blank)
-          if (q.type === 'mcq' || q.type === 'true_false') {
-            // Sanitize MCQ options to remove duplicates (Pro fix!)
-            if (q.type === 'mcq' && q.options && Array.isArray(q.options)) {
-              q.options = [...new Set(q.options)]
-            }
-            questions.push({
-              ...q,
-              cardContext: card.context,
-              cardType: card.type
-            })
+          // Sanitize MCQ options to remove duplicates
+          if (q.type === 'mcq' && q.options && Array.isArray(q.options)) {
+            q.options = [...new Set(q.options)]
           }
+          questions.push({
+            ...q,
+            cardContext: card.context,
+            cardType: card.type
+          })
         })
       }
     })
@@ -45,8 +43,14 @@ function Quiz({ flashcards, onComplete }) {
 
   const currentQuestion = allQuestions[currentQuestionIndex]
 
+  // Reset answer when question changes
+  useEffect(() => {
+    setUserAnswer(null)
+  }, [currentQuestionIndex])
+
   const handleSubmit = () => {
-    if (!userAnswer) return
+    // Check if user has provided an answer
+    if (!userAnswer && userAnswer !== false && userAnswer !== 0) return
 
     // Two-stage flow: Submit Answer → Show Feedback → Next Question
     if (!isAnswerSubmitted) {
@@ -58,7 +62,7 @@ function Quiz({ flashcards, onComplete }) {
       // Save result
       const result = {
         question: currentQuestion,
-        userAnswer,
+        userAnswer: userAnswer,
         isCorrect: correct,
         context: currentQuestion.cardContext
       }
@@ -67,7 +71,7 @@ function Quiz({ flashcards, onComplete }) {
       // Stage 2: Move to next question
       if (currentQuestionIndex < allQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1)
-        setUserAnswer('')
+        setUserAnswer(null)
         setIsAnswerSubmitted(false)
         setIsCorrect(false)
       } else {
@@ -77,50 +81,36 @@ function Quiz({ flashcards, onComplete }) {
   }
 
   const checkAnswer = () => {
-    const correctAnswer = currentQuestion.answer.toString().toLowerCase().trim()
-    const userAns = userAnswer.toString().toLowerCase().trim()
-    
-    if (currentQuestion.type === 'true_false') {
-      return correctAnswer === userAns
-    } else if (currentQuestion.type === 'fill_in_the_blank') {
-      // Case insensitive comparison for fill in the blank
-      return correctAnswer === userAns
-    } else {
-      // MCQ
-      return correctAnswer === userAns
-    }
-  }
-
-  const getOptionClass = (option) => {
-    if (!isAnswerSubmitted) return 'mcq-option'
-    
     const correctAnswer = currentQuestion.answer
-    const isThisCorrect = option === correctAnswer
-    const isThisSelected = option === userAnswer
     
-    if (isThisCorrect) {
-      return 'mcq-option correct'
+    // Handle different question types
+    switch (currentQuestion.type) {
+      case 'sequencing':
+        return JSON.stringify(userAnswer) === JSON.stringify(correctAnswer)
+      
+      case 'categorization':
+        return JSON.stringify(userAnswer) === JSON.stringify(correctAnswer)
+      
+      case 'matching':
+        // Matching answers are arrays of pairs
+        if (Array.isArray(userAnswer) && Array.isArray(correctAnswer)) {
+          const sortedUser = [...userAnswer].sort()
+          const sortedCorrect = [...correctAnswer].sort()
+          return JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect)
+        }
+        return false
+      
+      case 'true_false':
+        return correctAnswer.toString().toLowerCase() === userAnswer.toString().toLowerCase()
+      
+      case 'fill_in_the_blank':
+        return correctAnswer.toString().toLowerCase().trim() === userAnswer.toString().toLowerCase().trim()
+      
+      case 'mcq':
+      case 'scenario_mcq':
+      default:
+        return correctAnswer.toString().toLowerCase().trim() === userAnswer.toString().toLowerCase().trim()
     }
-    if (isThisSelected && !isCorrect) {
-      return 'mcq-option incorrect'
-    }
-    return 'mcq-option'
-  }
-
-  const getTFOptionClass = (value) => {
-    if (!isAnswerSubmitted) return 'tf-option'
-    
-    const correctAnswer = currentQuestion.answer.toLowerCase()
-    const isThisCorrect = value === correctAnswer
-    const isThisSelected = value === userAnswer
-    
-    if (isThisCorrect) {
-      return 'tf-option correct'
-    }
-    if (isThisSelected && !isCorrect) {
-      return 'tf-option incorrect'
-    }
-    return 'tf-option'
   }
 
   if (showTransition) {
@@ -150,76 +140,29 @@ function Quiz({ flashcards, onComplete }) {
 
       <div className="question-card">
         <div className="question-type-badge">{currentQuestion.type.replace('_', ' ')}</div>
-        <h2>{currentQuestion.question}</h2>
+        
+        <QuestionRenderer
+          question={currentQuestion}
+          userAnswer={userAnswer}
+          onAnswerChange={setUserAnswer}
+          showFeedback={isAnswerSubmitted}
+          disabled={isAnswerSubmitted}
+        />
 
-        {currentQuestion.type === 'mcq' && (
-          <div className="mcq-options">
-            {currentQuestion.options.map((option, index) => (
-              <label key={index} className={getOptionClass(option)}>
-                <input
-                  type="radio"
-                  name="mcq"
-                  value={option}
-                  checked={userAnswer === option}
-                  onChange={(e) => setUserAnswer(e.target.value)}
-                  disabled={isAnswerSubmitted}
-                />
-                <span>{option}</span>
-              </label>
-            ))}
-          </div>
-        )}
-
-        {currentQuestion.type === 'fill_in_the_blank' && (
-          <div className="fill-input">
-            <input
-              type="text"
-              placeholder="Type your answer here..."
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && !isAnswerSubmitted && handleSubmit()}
-              disabled={isAnswerSubmitted}
-              className={isAnswerSubmitted ? (isCorrect ? 'correct' : 'incorrect') : ''}
-            />
-            {isAnswerSubmitted && !isCorrect && (
-              <div className="correct-answer-display">
-                ✓ Correct answer: <strong>{currentQuestion.answer}</strong>
-              </div>
+        {isAnswerSubmitted && (
+          <div className={`feedback-message ${isCorrect ? 'correct-feedback' : 'incorrect-feedback'}`}>
+            {isCorrect ? (
+              <span>✅ Correct!</span>
+            ) : (
+              <span>❌ Incorrect</span>
             )}
-          </div>
-        )}
-
-        {currentQuestion.type === 'true_false' && (
-          <div className="true-false-options">
-            <label className={getTFOptionClass('true')}>
-              <input
-                type="radio"
-                name="tf"
-                value="true"
-                checked={userAnswer === 'true'}
-                onChange={(e) => setUserAnswer(e.target.value)}
-                disabled={isAnswerSubmitted}
-              />
-              <span>True</span>
-            </label>
-            <label className={getTFOptionClass('false')}>
-              <input
-                type="radio"
-                name="tf"
-                value="false"
-                checked={userAnswer === 'false'}
-                onChange={(e) => setUserAnswer(e.target.value)}
-                disabled={isAnswerSubmitted}
-              />
-              <span>False</span>
-            </label>
           </div>
         )}
 
         <button 
           className="submit-btn"
           onClick={handleSubmit}
-          disabled={!userAnswer}
+          disabled={!userAnswer && userAnswer !== false && userAnswer !== 0}
         >
           {isAnswerSubmitted 
             ? (currentQuestionIndex < allQuestions.length - 1 ? 'Next Question →' : 'Finish Quiz 🎉')

@@ -179,16 +179,14 @@ function QuizHistoryView() {
                       </div>
                     </div>
                     
-                    {!question.is_correct && (
-                      <div className="correct-answer">
-                        <strong>Correct Answer:</strong>
-                        <div className="answer-content">
-                          {typeof question.correct_answer === 'object'
-                            ? JSON.stringify(question.correct_answer, null, 2)
-                            : question.correct_answer}
-                        </div>
+                    <div className="correct-answer">
+                      <strong>Correct Answer:</strong>
+                      <div className="answer-content">
+                        {typeof question.correct_answer === 'object'
+                          ? JSON.stringify(question.correct_answer, null, 2)
+                          : question.correct_answer}
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
               </div>

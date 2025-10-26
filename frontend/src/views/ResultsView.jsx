@@ -105,22 +105,20 @@ function ResultsView() {
                 <strong>Q:</strong> {result.question.question}
               </div>
               
-              {!result.isCorrect && (
-                <div className="result-answers">
-                  <div className="your-answer">
-                    <strong>Your Answer:</strong>
-                    <span className="answer-value">
-                      {JSON.stringify(result.userAnswer).replace(/["{}\[\]]/g, '')}
-                    </span>
-                  </div>
-                  <div className="correct-answer">
-                    <strong>Correct Answer:</strong>
-                    <span className="answer-value">
-                      {JSON.stringify(result.question.answer).replace(/["{}\[\]]/g, '')}
-                    </span>
-                  </div>
+              <div className="result-answers">
+                <div className="your-answer">
+                  <strong>Your Answer:</strong>
+                  <span className="answer-value">
+                    {JSON.stringify(result.userAnswer).replace(/["{}\[\]]/g, '')}
+                  </span>
                 </div>
-              )}
+                <div className="correct-answer">
+                  <strong>Correct Answer:</strong>
+                  <span className="answer-value">
+                    {JSON.stringify(result.question.answer).replace(/["{}\[\]]/g, '')}
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
