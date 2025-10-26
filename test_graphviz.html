@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Graphviz Test</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@5.0.2/build/d3-graphviz.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .graphviz-container { border: 1px solid #ccc; padding: 20px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Graphviz Frontend Rendering Test</h1>
+
+    <div id="graph1" class="graphviz-container"></div>
+    <div id="graph2" class="graphviz-container"></div>
+
+    <script>
+        // Test 1: Simple formula
+        const dot1 = `digraph Formula {
+            node [shape=plaintext, fontsize=12];
+            rankdir=LR;
+            formula [label="R\\\\textsuperscript{2} = 1 - \\\\left( \\\\frac{SSE / (n-k-1)}{SST / (n-1)} \\\\right)"];
+        }`;
+
+        // Test 2: Mathematical relationship
+        const dot2 = `digraph PartialSlope {
+            node [shape=plaintext, fontsize=12];
+            rankdir=LR;
+            deltaY [label="\\\\Delta Y"];
+            equals [label="\\\\approx", shape=none];
+            beta_i [label="\\\\beta_i"];
+            deltaXi [label="\\\\Delta X_i"];
+            deltaY -> equals [style=invis];
+            equals -> beta_i [style=invis];
+            beta_i -> deltaXi [style=invis];
+        }`;
+
+        d3.select("#graph1").graphviz()
+            .engine('dot')
+            .width(600)
+            .height(200)
+            .fit(true)
+            .renderDot(dot1);
+
+        d3.select("#graph2").graphviz()
+            .engine('dot')
+            .width(600)
+            .height(200)
+            .fit(true)
+            .renderDot(dot2);
+    </script>
+</body>
+</html>

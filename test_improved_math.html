@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Improved Mathematical Visualizations</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@5.0.2/build/d3-graphviz.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .viz-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .viz-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .viz-description {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .graphviz-container {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .graphviz-container svg {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .dot-code {
+            background: #f1f5f9;
+            padding: 12px;
+            margin: 12px 0;
+            font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace;
+            font-size: 11px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            overflow-x: auto;
+        }
+        .improvement-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .before-after {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .before, .after {
+            flex: 1;
+            padding: 16px;
+            border-radius: 8px;
+        }
+        .before {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+        .after {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+        .before h4, .after h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .before p, .after p {
+            margin: 0;
+            font-size: 12px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>📐 Perfectly Sized Mathematical Visualizations</h1>
+        <p>Compact 650×550px modals with clean, simple diagrams - no more overwhelming full-screen experiences!</p>
+
+        <div class="viz-section">
+            <div class="viz-title">
+                <span class="improvement-badge">COMPACT</span>
+                Multiple Linear Regression Formula
+            </div>
+            <div class="viz-description">
+                Clean, readable formula display in a compact 650×550px modal - no more overwhelming full-screen experience!
+            </div>
+            <div class="dot-code">/* layout=dot */
+digraph MLR_Formula {
+  rankdir=LR;
+  node [shape=plaintext, fontsize=20];
+
+  // Clean, simple formula display
+  formula [label="Ŷ = β₀ + β₁X₁ + β₂X₂ + ⋯ + βₖXₖ + ε", fontsize=24];
+
+  // Style
+  formula [color=blue, fontweight=bold];
+}</div>
+            <div class="graphviz-container" id="mlr-formula">
+              <div class="math-diagram-container-large"></div>
+            </div>
+        </div>
+
+        <div class="viz-section">
+            <div class="viz-title">
+                <span class="improvement-badge">COMPACT</span>
+                Partial Slope Interpretation
+            </div>
+            <div class="viz-description">
+                Clean relationship display with minimal arrows - easy to understand in the compact modal format.
+            </div>
+            <div class="dot-code">/* layout=dot */
+digraph PartialSlope {
+  rankdir=LR;
+  node [shape=plaintext, fontsize=18];
+
+  // Simple, clear relationship
+  relationship [label="ΔY ≈ βᵢ × ΔXᵢ", fontsize=22];
+  condition [label="(Holding other variables constant)", fontsize=14];
+
+  // Connect
+  relationship -> condition [style=dotted];
+
+  // Style
+  relationship [color=blue, fontweight=bold];
+  condition [color=green];
+}</div>
+            <div class="graphviz-container" id="partial-slope">
+              <div class="math-diagram-container-large"></div>
+            </div>
+        </div>
+
+        <div class="viz-section">
+            <div class="viz-title">
+                <span class="improvement-badge">COMPACT</span>
+                Multicollinearity Problem
+            </div>
+            <div class="viz-description">
+                Simple, clear problem explanation without overwhelming complexity - perfect for the compact modal.
+            </div>
+            <div class="dot-code">/* layout=dot */
+digraph Multicollinearity {
+  node [shape=plaintext, fontsize=18];
+  rankdir=LR;
+
+  // Simple problem display
+  problem [label="⚠️ MULTICOLLINEARITY PROBLEM\n\nPredictors are highly correlated\nThis makes it hard to determine\neach predictor's individual effect", fontsize=16];
+
+  // Style
+  problem [color=red, fontweight=bold];
+}</div>
+            <div class="graphviz-container" id="multicollinearity"></div>
+        </div>
+
+        <div class="before-after">
+            <div class="before">
+                <h4>❌ Before (The Problem)</h4>
+                <p>Modal was gigantic with lots of blank margins and small content in the center, overwhelming users.</p>
+                <p><strong>Issues:</strong></p>
+                <ul>
+                    <li>Modal too large (1000×750px)</li>
+                    <li>Lots of blank margins</li>
+                    <li>Small content in center</li>
+                    <li>Poor proportions for viewing</li>
+                    <li>Overwhelming user experience</li>
+                </ul>
+            </div>
+            <div class="after">
+                <h4>✅ After (The Solution)</h4>
+                <p>Compact, well-proportioned modal (700×500px) with content that fills the space properly.</p>
+                <p><strong>Improvements:</strong></p>
+                <ul>
+                    <li>Perfect size: 700×500px modal</li>
+                    <li>Content fills the modal properly</li>
+                    <li>No blank margins</li>
+                    <li>Large, readable diagrams</li>
+                    <li>Clean, simple layout</li>
+                    <li>Mobile responsive design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Render all visualizations
+        const configs = [
+            { id: '#mlr-formula', title: 'Multiple Linear Regression' },
+            { id: '#partial-slope', title: 'Partial Slope' },
+            { id: '#multicollinearity', title: 'Multicollinearity' }
+        ];
+
+        configs.forEach((config) => {
+        d3.select(config.id).graphviz({
+            engine: 'dot',
+            width: 620,
+            height: 300,
+            fit: true,
+            zoom: false
+        })
+            .on('renderEnd', () => {
+                console.log(`✅ ${config.title} rendered successfully`);
+
+                // Apply enhanced styling
+                const svg = d3.select(config.id).select('svg');
+                if (svg.node()) {
+                    svg.selectAll('text')
+                        .style('font-family', 'system-ui, -apple-system, sans-serif')
+                        .style('font-weight', '500');
+
+                    svg.selectAll('path')
+                        .style('stroke-width', '2')
+                        .style('fill', 'none');
+
+                    svg.selectAll('.node')
+                        .style('stroke-width', '1.5');
+
+                    svg.selectAll('.cluster')
+                        .style('fill-opacity', '0.1')
+                        .style('stroke-dasharray', '5,5');
+                }
+            })
+            .renderDot(d3.select(config.id).select('.dot-code').text().trim());
+        });
+    </script>
+</body>
+</html>

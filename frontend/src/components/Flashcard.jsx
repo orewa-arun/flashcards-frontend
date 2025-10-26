@@ -1,9 +1,12 @@
 // Flashcard.jsx
-import { useState, useEffect, useMemo } from 'react'
-import { FaLightbulb, FaStar, FaRegStar, FaThumbsUp, FaThumbsDown } from 'react-icons/fa'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
+import ReactDOM from 'react-dom'
+import { FaLightbulb, FaStar, FaRegStar, FaThumbsUp, FaThumbsDown, FaCalculator, FaSearchPlus, FaSearchMinus, FaExpandAlt } from 'react-icons/fa'
 import { addBookmark, removeBookmark, isBookmarked } from '../api/bookmarks'
 import { submitFeedback, getFlashcardFeedback } from '../api/feedback'
 import mermaid from 'mermaid'
+import * as d3 from 'd3'
+import 'd3-graphviz'
 import './Flashcard.css'
 
 // Initialize Mermaid
@@ -55,20 +58,25 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
   const [feedbackRating, setFeedbackRating] = useState(null)
   const [feedbackLoading, setFeedbackLoading] = useState(false)
   const [bookmarkLoading, setBookmarkLoading] = useState(false)
+  const [showMathLarge, setShowMathLarge] = useState(false)
+  const [graphvizLoading, setGraphvizLoading] = useState(false)
+  const [graphvizError, setGraphvizError] = useState(null)
+  const graphvizRef = useRef(null)
+  const graphvizInstanceRef = useRef(null)
 
   const uniqueDiagramId = useMemo(() => {
     const q = (card && card.question) ? card.question : ''
     return `mermaid-diagram-${q.substring(0, 20).replace(/[^a-zA-Z0-9]/g, '')}-${Math.random().toString(36).substr(2, 9)}`
-  }, [card.question])
+  }, [card])
 
   const diagramCacheKey = useMemo(() => {
-    if (!card || !card.mermaid_code) return null
+    if (!card || !card.mermaid_diagrams || !card.mermaid_diagrams[selectedAnswer]) return null
     try {
-      return `mermaid-${card.mermaid_code.replace(/\s+/g, '').substring(0, 80)}`
+      return `mermaid-${selectedAnswer}-${card.mermaid_diagrams[selectedAnswer].replace(/\s+/g, '').substring(0, 80)}`
     } catch {
       return null
     }
-  }, [card && card.mermaid_code])
+  }, [card, selectedAnswer])
 
   useEffect(() => {
     setIsFlipped(false)
@@ -77,7 +85,9 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
     setMermaidError(null)
     setIsCardBookmarked(false)
     setFeedbackRating(null)
-  }, [card])
+    setGraphvizLoading(false)
+    setGraphvizError(null)
+  }, [])
 
   useEffect(() => {
     const loadCardState = async () => {
@@ -153,7 +163,18 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
 
   // ---------- MERMAID RENDER EFFECT ----------
   useEffect(() => {
-    if (!isFlipped || !card || !card.mermaid_code?.trim()) return
+    // Backward compatibility: Handle legacy mermaid_code field
+    if (card && !card.mermaid_diagrams && card.mermaid_code) {
+      card.mermaid_diagrams = { concise: card.mermaid_code }
+    }
+
+    const currentDiagramCode = card?.mermaid_diagrams?.[selectedAnswer]?.trim()
+    if (!isFlipped || !card || !currentDiagramCode) {
+      // Clear diagram if no code for current answer type
+      const mermaidContainer = document.getElementById(uniqueDiagramId)
+      if (mermaidContainer) mermaidContainer.innerHTML = ''
+      return
+    }
 
     let mounted = true
     let timeoutHandle = null
@@ -167,7 +188,7 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
         setMermaidError(null)
 
         // Sanitize code
-        let code = card.mermaid_code.trim()
+        let code = currentDiagramCode.trim()
         code = code.replace(/^```(?:mermaid)?\s*/, '').replace(/\s*```$/, '').trim()
         code = code.replace(/\\n/g, '\n').replace(/\\r/g, '\n').replace(/\\t/g, '\t')
         code = code.split('\n').map(l => l.replace(/\s{2,}/g, ' ').trimEnd()).join('\n')
@@ -211,7 +232,7 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
                 <p>⚠️ Diagram could not be rendered: ${escapeHtml(err.message || 'Unknown error')}</p>
                 <details>
                   <summary>View diagram code</summary>
-                  <pre><code>${escapeHtml(card.mermaid_code)}</code></pre>
+                  <pre><code>${escapeHtml(currentDiagramCode)}</code></pre>
                 </details>
               </div>
             `
@@ -228,13 +249,18 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
       clearTimeout(scheduledRender)
       if (timeoutHandle) clearTimeout(timeoutHandle)
     }
-  }, [isFlipped, card?.mermaid_code, uniqueDiagramId, diagramCacheKey])
+  }, [isFlipped, card, selectedAnswer, uniqueDiagramId, diagramCacheKey])
 
   const handleCardClick = (e) => {
+    // Check if click is on any interactive element
     if (e.target.closest('.mermaid-diagram-container') || 
         e.target.closest('.answer-selector') ||
+        e.target.closest('.answer-type-btn') ||
         e.target.closest('.bookmark-btn') ||
-        e.target.closest('.feedback-buttons')) {
+        e.target.closest('.feedback-buttons') ||
+        e.target.closest('.feedback-btn') ||
+        e.target.closest('.math-viz-section') ||
+        e.target.closest('.math-lookup-btn')) {
       return
     }
     setIsFlipped(!isFlipped)
@@ -264,6 +290,113 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isFlipped, selectedAnswer])
+
+  // ---------- GRAPHVIZ RENDER EFFECT ----------
+  useEffect(() => {
+    // Backward compatibility: Handle legacy diagram_image_path or missing math_visualizations
+    if (card && !card.math_visualizations && card.diagram_image_path) {
+      // If there's a legacy diagram_image_path, we can't render it with Graphviz
+      // but we can at least prevent errors
+      card.math_visualizations = {}
+    }
+
+    if (!showMathLarge || !card?.math_visualizations?.[selectedAnswer]?.trim()) {
+      return
+    }
+
+    const dotCode = card.math_visualizations[selectedAnswer].trim()
+    if (!dotCode) return
+
+    let mounted = true
+
+    const renderGraphviz = async () => {
+      if (!graphvizRef.current) return
+
+      try {
+        setGraphvizLoading(true)
+        setGraphvizError(null)
+
+        // Clear previous content
+        d3.select(graphvizRef.current).selectAll('*').remove()
+
+        // Render the DOT code with enhanced settings
+        const graphvizInstance = d3.select(graphvizRef.current)
+          .graphviz({
+            fit: true,
+            zoom: true, // Re-enable zoom!
+            transition: (selection) => {
+              return selection.transition().duration(300)
+            }
+          })
+          .on('renderEnd', () => {
+            // Apply custom styling to the rendered SVG
+            const svg = d3.select(graphvizRef.current).select('svg')
+            if (svg.node()) {
+              svg.selectAll('text')
+                .style('font-family', 'system-ui, -apple-system, sans-serif')
+                .style('font-weight', '500')
+
+              svg.selectAll('path')
+                .style('stroke-width', '2')
+                .style('fill', 'none')
+
+              svg.selectAll('.node')
+                .style('stroke-width', '1.5')
+
+              svg.selectAll('.cluster rect')
+                .style('fill-opacity', '0.06')
+                .style('stroke-dasharray', '6,3')
+
+              svg.selectAll('.cluster text')
+                .style('font-weight', '600')
+                .style('font-size', '12px')
+            }
+          })
+
+        graphvizInstanceRef.current = graphvizInstance // Store instance in ref
+
+        await graphvizInstance.renderDot(dotCode)
+
+        if (mounted) {
+          setGraphvizLoading(false)
+        }
+      } catch (err) {
+        console.error('Graphviz rendering error:', err)
+        if (mounted) {
+          setGraphvizError(err.message || 'Failed to render mathematical diagram')
+          setGraphvizLoading(false)
+        }
+      }
+    }
+
+    renderGraphviz()
+
+    return () => {
+      mounted = false
+      // Note: Cleanup is handled by the d3-graphviz library automatically
+      // when the component unmounts or when new content is rendered
+    }
+  }, [showMathLarge, card, selectedAnswer])
+
+  const handleZoomIn = () => {
+    if (graphvizInstanceRef.current) {
+      const svg = d3.select(graphvizRef.current).select('svg')
+      graphvizInstanceRef.current.zoomBehavior().scaleBy(svg.transition().duration(250), 1.2)
+    }
+  }
+
+  const handleZoomOut = () => {
+    if (graphvizInstanceRef.current) {
+      const svg = d3.select(graphvizRef.current).select('svg')
+      graphvizInstanceRef.current.zoomBehavior().scaleBy(svg.transition().duration(250), 1 / 1.2)
+    }
+  }
+
+  const handleZoomReset = () => {
+    if (graphvizInstanceRef.current) {
+      graphvizInstanceRef.current.resetZoom(d3.transition().duration(500))
+    }
+  }
 
   const getAnswerContent = () => {
     if (selectedAnswer === 'example') return card.example || 'No example available.'
@@ -301,12 +434,18 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
               isCardBookmarked ? <FaStar /> : <FaRegStar />}
           </button>
           <div className="card-content">
-            <div className="answer-selector">
+            <div className="answer-selector" onClick={(e) => e.stopPropagation()}>
               {answerTypes.map((type, idx) => (
                 <button
                   key={type.key}
                   className={`answer-type-btn ${selectedAnswer === type.key ? 'active' : ''}`}
-                  onClick={(e) => { e.stopPropagation(); setSelectedAnswer(type.key) }}
+                  onClick={(e) => { 
+                    e.preventDefault(); 
+                    e.stopPropagation(); 
+                    e.nativeEvent.stopImmediatePropagation();
+                    setSelectedAnswer(type.key);
+                    return false;
+                  }}
                   title={`${type.label} (${idx + 1})`}
                 >
                   <span className="shortcut-key">{idx + 1}</span>
@@ -316,7 +455,7 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
             </div>
             <div className="answer-content">
               <div className="answer-text">{getAnswerContent()}</div>
-              {card.mermaid_code?.trim() && (
+              {card.mermaid_diagrams?.[selectedAnswer]?.trim() && (
                 <div className="mermaid-diagram-wrapper">
                   {mermaidLoading && (
                     <div className="mermaid-loading">
@@ -328,11 +467,81 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
                   {mermaidError && <div className="mermaid-error-inline"><small>{mermaidError}</small></div>}
                 </div>
               )}
+              
+              {/* Math Visualization Button */}
+              {card.math_visualizations?.[selectedAnswer]?.trim() && (
+                <div className="math-viz-section">
+                  <button
+                    className="math-lookup-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowMathLarge(true);
+                    }}
+                    title="View mathematical diagram"
+                  >
+                    <FaCalculator /> View Math Diagram
+                  </button>
+                </div>
+              )}
+
+              {/* Large Modal for Mathematical Diagrams */}
+              {showMathLarge && ReactDOM.createPortal(
+                <>
+                  <div className="math-modal-large-backdrop" onClick={() => setShowMathLarge(false)}></div>
+                  <div className="math-modal-large" onClick={(e) => e.stopPropagation()}>
+                    <div className="math-modal-large-content" onClick={(e) => e.stopPropagation()}>
+                      <button className="math-close-btn" onClick={() => setShowMathLarge(false)}>×</button>
+                      <div className="math-modal-header">
+                        <h3>🔢 Math Diagram</h3>
+                        <p>For {selectedAnswer.replace(/_/g, ' ')}</p>
+                      </div>
+
+                      {/* Graphviz Rendering Container */}
+                      <div className="math-diagram-container-large">
+                        {graphvizLoading && (
+                          <div className="graphviz-loading">
+                            <div className="graphviz-spinner"></div>
+                            <p>Rendering mathematical diagram...</p>
+                          </div>
+                        )}
+                        {graphvizError && (
+                          <div className="graphviz-error">
+                            <p>⚠️ Failed to render diagram: {graphvizError}</p>
+                          </div>
+                        )}
+                        <div
+                          ref={graphvizRef}
+                          className="graphviz-diagram-large"
+                        ></div>
+
+                        <div className="math-modal-controls">
+                          <button onClick={handleZoomIn} className="math-zoom-btn" title="Zoom In"><FaSearchPlus /></button>
+                          <button onClick={handleZoomOut} className="math-zoom-btn" title="Zoom Out"><FaSearchMinus /></button>
+                          <button onClick={handleZoomReset} className="math-zoom-btn" title="Reset Zoom"><FaExpandAlt /></button>
+                        </div>
+                      </div>
+
+                      {/* Always show the source code */}
+                      <details className="math-code-details">
+                        <summary>View Graphviz DOT Code</summary>
+                        <pre><code>{card.math_visualizations[selectedAnswer]}</code></pre>
+                      </details>
+                    </div>
+                  </div>
+                </>,
+                document.getElementById('modal-root')
+              )}
             </div>
-            <div className="feedback-buttons">
+            <div className="feedback-buttons" onClick={(e) => e.stopPropagation()}>
               <button
                 className={`feedback-btn like-btn ${feedbackRating === 1 ? 'active' : ''}`}
-                onClick={handleLike}
+                onClick={(e) => { 
+                  e.preventDefault(); 
+                  e.stopPropagation(); 
+                  e.nativeEvent.stopImmediatePropagation();
+                  handleLike(e);
+                  return false;
+                }}
                 disabled={feedbackLoading}
                 title="Like this flashcard"
               >
@@ -340,7 +549,13 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
               </button>
               <button
                 className={`feedback-btn dislike-btn ${feedbackRating === -1 ? 'active' : ''}`}
-                onClick={handleDislike}
+                onClick={(e) => { 
+                  e.preventDefault(); 
+                  e.stopPropagation(); 
+                  e.nativeEvent.stopImmediatePropagation();
+                  handleDislike(e);
+                  return false;
+                }}
                 disabled={feedbackLoading}
                 title="Dislike this flashcard"
               >

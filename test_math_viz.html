@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Visualizations Test</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@5.0.2/build/d3-graphviz.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .viz-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9f9f9;
+        }
+        .dot-code {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        .test-card {
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            background: #e7f3ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔢 Math Visualizations Test</h1>
+    <p>Testing the Graphviz DOT codes from the fixed JSON file:</p>
+
+    <div class="test-card">
+        <h3>1. Multiple Linear Regression Formula</h3>
+        <div class="dot-code">/* layout=dot */ digraph MLR_Formula { node [shape=plaintext, fontsize=14]; Y [label="Y_i"]; equals [label="=", shape=none]; beta0 [label="\\beta_0"]; plus1 [label="+", shape=none]; beta1X1 [label="\\beta_1 X_{i1}"]; plus2 [label="+", shape=none]; beta2X2 [label="\\beta_2 X_{i2}"]; plus3 [label="+", shape=none]; dots [label="...", shape=none]; plusk [label="+", shape=none]; betaKXk [label="\\beta_k X_{ik}"]; epsilon [label="+ \\epsilon_i"]; Y -> equals [style=invis]; equals -> beta0 [style=invis]; beta0 -> plus1 [style=invis]; plus1 -> beta1X1 [style=invis]; beta1X1 -> plus2 [style=invis]; plus2 -> beta2X2 [style=invis]; beta2X2 -> plus3 [style=invis]; plus3 -> dots [style=invis]; dots -> plusk [style=invis]; plusk -> betaKXk [style=invis]; betaKXk -> epsilon [style=invis]; }</div>
+        <div class="viz-container" id="viz1"></div>
+    </div>
+
+    <div class="test-card">
+        <h3>2. Partial Slope Visualization</h3>
+        <div class="dot-code">/* layout=dot */ digraph PartialSlope { node [shape=plaintext, fontsize=14]; deltaY [label="\\Delta Y"]; equals [label="\\approx", shape=none]; beta_i [label="\\beta_i"]; deltaXi [label="\\Delta X_i"]; deltaY -> equals [style=invis]; equals -> beta_i [style=invis]; beta_i -> deltaXi [style=invis]; subgraph cluster_condition { label="Holding other X's constant"; style=dashed; } }</div>
+        <div class="viz-container" id="viz2"></div>
+    </div>
+
+    <div class="test-card">
+        <h3>3. Adjusted R-squared Formula</h3>
+        <div class="dot-code">/* layout=dot */ digraph AdjustedR2 { node [shape=plaintext, fontsize=12]; rankdir=LR; AdjustedR2 [label="Adjusted R\\textsuperscript{2} = 1 - \\left( \\frac{SSE / (n-k-1)}{SST / (n-1)} \\right)"; fontsize=14;] }</div>
+        <div class="viz-container" id="viz3"></div>
+    </div>
+
+    <div class="test-card">
+        <h3>4. Multicollinearity Diagram</h3>
+        <div class="dot-code">/* layout=dot */ digraph Multicollinearity { node [shape=plaintext, fontsize=12]; rankdir=LR; subgraph cluster_problem { label="Multicollinearity Problem"; style=filled; color=lightcoral; X1 [label="X_1 (Predictor 1)"]; X2 [label="X_2 (Predictor 2)"]; Y [label="Y (Response)"]; X1 -> Y [label="Direct Effect"]; X2 -> Y [label="Direct Effect"]; X1 -> X2 [label="High Correlation", style=dashed, color=red]; } }</div>
+        <div class="viz-container" id="viz4"></div>
+    </div>
+
+    <script>
+        // Test all visualizations
+        const configs = [
+            { id: '#viz1', engine: 'dot' },
+            { id: '#viz2', engine: 'dot' },
+            { id: '#viz3', engine: 'dot' },
+            { id: '#viz4', engine: 'dot' }
+        ];
+
+        configs.forEach((config, index) => {
+            const dotCode = document.querySelector(`#viz${index + 1}`).previousElementSibling.textContent.trim();
+
+            d3.select(config.id).graphviz()
+                .engine(config.engine)
+                .width(600)
+                .height(200)
+                .fit(true)
+                .renderDot(dotCode)
+                .on('end', () => {
+                    console.log(`✅ Visualization ${index + 1} rendered successfully`);
+                });
+        });
+    </script>
+</body>
+</html>

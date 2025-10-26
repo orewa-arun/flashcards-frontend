@@ -541,3 +541,427 @@
   }
 }
 
+/* Math Visualization Styles */
+.math-viz-section {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.math-lookup-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.math-lookup-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+}
+
+.math-lookup-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Compact Modal for Mathematical Diagrams */
+.math-modal-large {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  max-width: 1000px;
+  max-height: 750px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  overflow: hidden;
+  animation: modalScaleIn 0.3s ease;
+}
+
+.math-modal-large-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.math-modal-large-content {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.math-modal-header {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.math-modal-header h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  color: #1e293b;
+}
+
+.math-modal-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.math-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #f1f5f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.math-close-btn:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  transform: rotate(90deg);
+}
+
+.math-diagram-container-large {
+  flex: 1;
+  width: 100%;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.math-diagram-large {
+  width: 100%;
+  height: 100%;
+}
+
+.math-diagram-container-large svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.math-modal-controls {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.math-zoom-btn {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.math-zoom-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #1e293b;
+  transform: translateY(-1px);
+}
+
+.math-zoom-btn:active {
+  transform: translateY(0);
+  background: #f1f5f9;
+}
+
+.math-diagram-container-large .node text {
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  font-weight: 600 !important;
+  fill: #1e293b !important;
+}
+
+.math-diagram-container-large .edge path {
+  stroke: #64748b !important;
+  stroke-width: 2px !important;
+  fill: none !important;
+}
+
+.math-diagram-container-large .edge text {
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  font-size: 11px !important;
+  fill: #64748b !important;
+}
+
+.math-diagram-container-large .cluster rect {
+  fill: rgba(59, 130, 246, 0.05) !important;
+  stroke: #3b82f6 !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: 6,3 !important;
+}
+
+.math-diagram-container-large .cluster text {
+  font-weight: 600 !important;
+  fill: #3b82f6 !important;
+  font-size: 12px !important;
+}
+
+/* Remove old modal styles */
+.math-modal {
+  display: none;
+}
+
+/* Responsive design for math modal */
+@media (max-width: 768px) {
+  .math-modal-large {
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+
+  .math-modal-large-content {
+    padding: 16px;
+  }
+
+  .math-diagram-container-large {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-modal-large {
+    width: 98vw;
+    height: 95vh;
+    max-width: 98vw;
+    max-height: 95vh;
+  }
+
+  .math-modal-large-content {
+    padding: 12px;
+  }
+
+  .math-diagram-container-large {
+    padding: 12px;
+  }
+
+  .math-modal-large-content h3 {
+    font-size: 18px;
+  }
+}
+
+/* Graphviz Diagram Styles */
+.graphviz-container {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  min-height: 200px;
+}
+
+.graphviz-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.graphviz-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.graphviz-loading p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.graphviz-error {
+  text-align: center;
+  padding: 20px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.graphviz-error p {
+  margin: 0;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.graphviz-diagram {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.graphviz-diagram svg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced Graphviz styling */
+.graphviz-diagram .node text {
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  font-weight: 600 !important;
+  fill: #1e293b !important;
+}
+
+.graphviz-diagram .edge path {
+  stroke: #475569 !important;
+  stroke-width: 2px !important;
+  fill: none !important;
+}
+
+.graphviz-diagram .edge text {
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  font-size: 11px !important;
+  fill: #64748b !important;
+}
+
+.graphviz-diagram .cluster rect {
+  fill: rgba(59, 130, 246, 0.05) !important;
+  stroke: #3b82f6 !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: 8,4 !important;
+}
+
+.graphviz-diagram .cluster text {
+  font-weight: 600 !important;
+  fill: #3b82f6 !important;
+  font-size: 12px !important;
+}
+
+.math-code-details {
+  margin-top: 12px;
+}
+
+.math-code-details summary {
+  cursor: pointer;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: background 0.2s ease;
+}
+
+.math-code-details summary:hover {
+  background: var(--border);
+}
+
+.math-code-details pre {
+  margin: 12px 0 0 0;
+  padding: 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.math-code-details code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--text-primary);
+}
+

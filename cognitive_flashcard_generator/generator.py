@@ -75,7 +75,7 @@ class CognitiveFlashcardGenerator:
             # Generate flashcards with AI
             # Configure generation with higher output token limit
             generation_config = {
-                "max_output_tokens": 8192,  # Increased from default
+                "max_output_tokens": 16384,  # Doubled to handle multiple diagrams per flashcard
                 "temperature": 0.7,
             }
             response = self.model.generate_content(
@@ -97,10 +97,18 @@ class CognitiveFlashcardGenerator:
             self._display_score_distribution(flashcards)
             
             # Display stats
-            diagrams_count = sum(1 for card in flashcards if card.get('mermaid_code', '').strip())
+            total_diagrams = 0
+            total_math_viz = 0
+            for card in flashcards:
+                diagrams = card.get('mermaid_diagrams', {})
+                total_diagrams += sum(1 for diagram in diagrams.values() if diagram.strip())
+                math_viz = card.get('math_visualizations', {})
+                total_math_viz += sum(1 for viz in math_viz.values() if viz.strip())
+            
             examples_count = sum(1 for card in flashcards if card.get('example', '').strip())
             recall_q_count = sum(len(card.get('recall_questions', [])) for card in flashcards)
-            print(f"   📊 With Diagrams: {diagrams_count} cards")
+            print(f"   📊 Mermaid Diagrams: {total_diagrams} across all answer types")
+            print(f"   🔢 Math Visualizations: {total_math_viz} Graphviz diagrams")
             print(f"   📝 With Examples: {examples_count} cards")
             print(f"   🧠 Recall Questions: {recall_q_count} total")
             
@@ -142,10 +150,19 @@ class CognitiveFlashcardGenerator:
                     # Ensure optional fields exist
                     if 'example' not in card:
                         card['example'] = ""
-                    if 'mermaid_code' not in card:
-                        card['mermaid_code'] = ""
                     if 'recall_questions' not in card:
                         card['recall_questions'] = []
+                    # Ensure all diagram types exist (already validated above, but ensure they're strings)
+                    if 'mermaid_diagrams' not in card:
+                        card['mermaid_diagrams'] = {}
+                    if 'math_visualizations' not in card:
+                        card['math_visualizations'] = {}
+                    diagram_types = ['concise', 'analogy', 'eli5', 'real_world_use_case', 'common_mistakes', 'example']
+                    for diagram_type in diagram_types:
+                        if diagram_type not in card['mermaid_diagrams']:
+                            card['mermaid_diagrams'][diagram_type] = ""
+                        if diagram_type not in card['math_visualizations']:
+                            card['math_visualizations'][diagram_type] = ""
                     valid_flashcards.append(card)
             
             return valid_flashcards
@@ -157,7 +174,7 @@ class CognitiveFlashcardGenerator:
     
     def _validate_flashcard(self, card: Dict[str, Any], card_num: int) -> bool:
         """Validate a single flashcard has all required fields."""
-        required_fields = ['question', 'answers', 'relevance_score']
+        required_fields = ['question', 'answers', 'relevance_score', 'mermaid_diagrams', 'math_visualizations']
         
         # Check basic required fields
         for field in required_fields:
@@ -175,6 +192,37 @@ class CognitiveFlashcardGenerator:
         for answer_type in required_answer_types:
             if answer_type not in card['answers']:
                 print(f"   ⚠️  Flashcard {card_num} missing answer type: {answer_type}")
+                return False
+        
+        # Validate mermaid_diagrams structure
+        if not isinstance(card['mermaid_diagrams'], dict):
+            print(f"   ⚠️  Flashcard {card_num}: 'mermaid_diagrams' must be an object/dict")
+            return False
+        
+        # Check all 6 diagram types are present (including example)
+        required_diagram_types = ['concise', 'analogy', 'eli5', 'real_world_use_case', 'common_mistakes', 'example']
+        for diagram_type in required_diagram_types:
+            if diagram_type not in card['mermaid_diagrams']:
+                print(f"   ⚠️  Flashcard {card_num} missing diagram type: {diagram_type}")
+                return False
+            # Validate that diagram content is a string (can be empty)
+            if not isinstance(card['mermaid_diagrams'][diagram_type], str):
+                print(f"   ⚠️  Flashcard {card_num} diagram '{diagram_type}' must be a string")
+                return False
+        
+        # Validate math_visualizations structure (optional but must exist)
+        if not isinstance(card['math_visualizations'], dict):
+            print(f"   ⚠️  Flashcard {card_num}: 'math_visualizations' must be an object/dict")
+            return False
+        
+        # Check all 6 math visualization types are present (can be empty strings)
+        for viz_type in required_diagram_types:
+            if viz_type not in card['math_visualizations']:
+                print(f"   ⚠️  Flashcard {card_num} missing math_visualization type: {viz_type}")
+                return False
+            # Validate that math visualization content is a string (can be empty)
+            if not isinstance(card['math_visualizations'][viz_type], str):
+                print(f"   ⚠️  Flashcard {card_num} math_visualization '{viz_type}' must be a string")
                 return False
         
         # Validate relevance_score
