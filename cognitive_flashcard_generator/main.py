@@ -2,19 +2,21 @@
 Main entry point for Cognitive Flashcard Generator.
 
 Usage:
-    python -m cognitive_flashcard_generator.main [course_id]
+    python -m cognitive_flashcard_generator.main [course_id] [slide_analysis_prefix]
     
     If course_id is not provided, all courses in courses.json will be processed.
+    If slide_analysis_prefix is provided, only that specific lecture will be processed.
     
-    Example:
+    Examples:
         python -m cognitive_flashcard_generator.main MS5260
+        python -m cognitive_flashcard_generator.main MS5031 DAA_lec_4
         python -m cognitive_flashcard_generator.main
 """
 
 import sys
 import json
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime
 
 from config import Config
@@ -231,12 +233,13 @@ def extract_content_from_structured_json(json_path: Path) -> str:
         return ""
 
 
-def process_course_flashcards(course: Dict[str, Any]) -> None:
+def process_course_flashcards(course: Dict[str, Any], slide_analysis_prefix: Optional[str] = None) -> None:
     """
-    Process flashcard generation for all lectures in a course.
+    Process flashcard generation for all lectures in a course, or a specific lecture.
     
     Args:
         course: Course dictionary with metadata and slides list
+        slide_analysis_prefix: Optional prefix to process only a specific lecture (e.g., 'DAA_lec_4')
     """
     course_id = course['course_id']
     course_name = course['course_name']
@@ -268,14 +271,25 @@ def process_course_flashcards(course: Dict[str, Any]) -> None:
         print(f"   Please run: python -m pdf_slide_processor.main {course_id}")
         return
     
-    # Find all structured analysis JSON files
-    structured_analysis_files = list(analysis_dir.glob("*_structured_analysis.json"))
-    
-    if not structured_analysis_files:
-        print(f"⚠️  No structured analysis files found in {analysis_dir}")
-        return
-    
-    print(f"\n📊 Found {len(structured_analysis_files)} lecture(s) to process")
+    # Find structured analysis JSON files based on slide_analysis_prefix
+    if slide_analysis_prefix:
+        # Process only the specified lecture
+        specific_file = analysis_dir / f"{slide_analysis_prefix}_structured_analysis.json"
+        if not specific_file.exists():
+            print(f"⚠️  Specified lecture analysis not found: {specific_file}")
+            print(f"   Available lectures in {analysis_dir}:")
+            for f in analysis_dir.glob("*_structured_analysis.json"):
+                print(f"      • {f.stem.replace('_structured_analysis', '')}")
+            return
+        structured_analysis_files = [specific_file]
+        print(f"\n🎯 Processing specific lecture: {slide_analysis_prefix}")
+    else:
+        # Find all structured analysis JSON files
+        structured_analysis_files = list(analysis_dir.glob("*_structured_analysis.json"))
+        if not structured_analysis_files:
+            print(f"⚠️  No structured analysis files found in {analysis_dir}")
+            return
+        print(f"\n📊 Found {len(structured_analysis_files)} lecture(s) to process")
     
     # Create output base directory
     output_base.mkdir(exist_ok=True)
@@ -464,11 +478,17 @@ def main():
     
     print(f"📚 Loaded {len(courses)} course(s) from courses.json")
     
-    # Check for command-line argument (specific course ID)
+    # Check for command-line arguments
     target_course_id = None
+    slide_analysis_prefix = None
+    
     if len(sys.argv) > 1:
         target_course_id = sys.argv[1]
         print(f"🎯 Target course: {target_course_id}")
+    
+    if len(sys.argv) > 2:
+        slide_analysis_prefix = sys.argv[2]
+        print(f"🎯 Target lecture: {slide_analysis_prefix}")
     
     # Process courses
     if target_course_id:
@@ -481,9 +501,13 @@ def main():
                 print(f"  • {c['course_id']}: {c['course_name']}")
             return
         
-        process_course_flashcards(course)
+        process_course_flashcards(course, slide_analysis_prefix)
     else:
-        # Process all courses
+        # Process all courses (slide_analysis_prefix is ignored when processing all courses)
+        if slide_analysis_prefix:
+            print(f"⚠️  Note: slide_analysis_prefix '{slide_analysis_prefix}' ignored when processing all courses")
+            print(f"   Please specify a course_id to use slide_analysis_prefix")
+        
         print(f"\n🔄 Processing all courses...\n")
         for i, course in enumerate(courses, 1):
             print(f"\n{'#'*80}")

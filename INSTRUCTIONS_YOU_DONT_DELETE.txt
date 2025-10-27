@@ -1,0 +1,11 @@
+1. You update the courses.json, You get the structured_analysis from gemini chat, just the json is enough
+2. Then you apply the flashcard_generation.main script
+3. Then you ask claude from cursor to fix the mermaid_diagrams and math_visualizations: using something like this:
+Here's the thing, you are not to recreate/tamper any other field except the following in @DAA_lec_4_cognitive_flashcards.json 
+
+mermaid_diagrams, math_visualizations.
+
+Read the  @intelligent_flashcard_prompt.txt , to get an idea of what must go into these objects.
+
+Don't tamper with anything else. Make all the changes in the existing file itself.
+4. You copy the courses to public/ and backend/

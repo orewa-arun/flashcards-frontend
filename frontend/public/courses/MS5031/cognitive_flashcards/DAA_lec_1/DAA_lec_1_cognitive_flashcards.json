@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "generated_at": "2025-10-26T10:48:11.586975",
-    "total_cards": 8,
+    "generated_at": "2025-10-26T12:37:02.904584",
+    "total_cards": 6,
     "course_name": "Data Analysis Applications",
     "course_id": "MS5031",
     "course_code": "DAA",
@@ -11,85 +11,85 @@
   },
   "flashcards": [
     {
-      "type": "definition",
-      "question": "What is a point prediction in the context of regression analysis, and how is it calculated?",
+      "type": "concept",
+      "question": "What is a point prediction in the context of regression analysis?",
       "answers": {
-        "concise": "A point prediction in regression analysis is the single best estimate ($\\hat{Y}$) for the dependent variable $Y$ given a specific value ($X^*$) of the explanatory variable $X$. It's calculated using the regression equation: $\\hat{Y}^* = b_0 + b_1 X^*$, where $b_0$ and $b_1$ are the estimated coefficients.",
-        "analogy": "Think of a point prediction like estimating how long it will take to drive somewhere based on the distance. You use your average speed (like the regression coefficient) and the distance (the $X^*$ value) to get a single 'best guess' for the travel time.",
-        "eli5": "Imagine you're guessing how many cookies your friend will eat based on how hungry they are. If you know they usually eat 2 cookies for every level of hunger, and they say they're at level 5, your best guess (point prediction) is 10 cookies.",
-        "real_world_use_case": "A marketing team predicts sales revenue for a new advertising campaign. Based on historical data showing a relationship between ad spend and sales, they use the regression equation to forecast the expected revenue given a planned ad spend of $10,000. This point prediction helps them decide if the campaign is worthwhile.",
-        "common_mistakes": "A common mistake is to assume the point prediction is a guaranteed outcome. It's just an estimate based on the model, and there's always uncertainty. Also, predicting outside the range of the original data (extrapolation) can lead to wildly inaccurate predictions."
+        "concise": "A point prediction in regression analysis is a single, best estimate ($\\hat{Y}$) for the value of the response variable ($Y$) given a specific value ($X^*$) of the explanatory variable ($X$), based on the fitted regression equation.",
+        "analogy": "Think of a point prediction like using a recipe to estimate how many cookies you'll get. The recipe (regression equation) uses ingredients (explanatory variables) to predict the number of cookies (response variable). The point prediction is your single best guess of the cookie yield based on the recipe.",
+        "eli5": "Imagine you're trying to guess how tall someone will be based on their age. A point prediction is like making one specific guess, like 'they'll be 4 feet tall when they're 8 years old,' based on what you've seen before.",
+        "real_world_use_case": "Netflix uses point predictions to forecast the number of subscribers they'll have next quarter based on their marketing spend. They use a regression model to predict subscriber growth (Y) based on marketing budget (X). The point prediction is their single best estimate of subscriber numbers for the upcoming quarter, guiding their financial planning.",
+        "common_mistakes": "A common mistake is to assume a point prediction is a guaranteed outcome. It's just an estimate based on the model and data. Another mistake is extrapolating far beyond the observed data range, assuming the relationship will hold true, which can lead to wildly inaccurate predictions."
       },
       "context": "Regression Analysis",
       "relevance_score": {
         "score": 10,
-        "justification": "Core definition in regression analysis and predictive modeling."
+        "justification": "Core concept in regression, essential for understanding predictive modeling."
       },
-      "example": "A real estate company wants to predict the selling price of houses based on their size. They have historical data showing a linear relationship between house size (in square feet) and selling price.  The regression equation is found to be $\\hat{Y} = 50000 + 150X$, where $X$ is the house size in square feet. If they want to predict the price of a 2000 square foot house, the point prediction is $\\hat{Y} = 50000 + 150(2000) = $350,000. This gives them a starting point for pricing the house.",
+      "example": "A real estate company models house prices ($Y$, in thousands of dollars) based on square footage ($X$, in hundreds of square feet). The fitted equation is $\\hat{Y} = 100 + 50X$. If they want to predict the price of a house with 2000 square feet (i.e., $X^* = 20$), the point prediction is $\\hat{Y}^* = 100 + 50(20) = 1100$ thousands of dollars, or $1,100,000. However, if their data only included houses up to 3000 square feet, predicting the price of a 5000 square foot mansion based on this model would be an unreliable extrapolation.",
       "mermaid_diagrams": {
-        "concise": "flowchart TD\n    A[Point Prediction Ŷ*] --> B[Formula: Ŷ* = b₀ + b₁X*]\n    B --> C[Single Best Estimate]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "analogy": "flowchart LR\n    A[Distance to Travel] --> B[Average Speed b₁]\n    B --> C[Estimated Travel Time]\n    A --> D[Base Time b₀]\n    D --> C\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style D fill:#fce4ec,stroke:#c2185b,stroke-width:2px",
-        "eli5": "flowchart TD\n    A[Friend's Hunger Level] --> B[Cookies per Hunger Level]\n    B --> C[Total Cookies Predicted]\n    A --> D[Base Cookies Always Eaten]\n    D --> C\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style D fill:#fce4ec,stroke:#c2185b,stroke-width:2px",
-        "real_world_use_case": "flowchart TD\n    A[Planned Ad Spend $10,000] --> B[Regression Model]\n    B --> C[Historical Data Analysis]\n    C --> D[Predicted Revenue]\n    D --> E[Marketing Decision]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px",
-        "common_mistakes": "flowchart TD\n    A[Point Prediction] --> B{Is it Guaranteed?}\n    B -->|❌ NO| C[Just an Estimate]\n    B -->|⚠️ Risk| D[Extrapolation Beyond Data]\n    D --> E[Potentially Inaccurate]\n    C --> F[Always Has Uncertainty]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#ffebee,stroke:#d32f2f,stroke-width:2px\n    style D fill:#ffebee,stroke:#d32f2f,stroke-width:2px\n    style E fill:#ffcdd2,stroke:#c62828,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px",
-        "example": "flowchart TD\n    A[House Size: 2000 sq ft] --> B[Regression Equation]\n    B --> C[Ŷ = 50000 + 150X]\n    C --> D[Ŷ = 50000 + 150×2000]\n    D --> E[Predicted Price: $350,000]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px"
+        "concise": "graph TD; X_star[X* (Specific X Value)] -->|Regression Equation| Y_hat[Ŷ (Point Prediction)];",
+        "analogy": "graph TD; Recipe[Recipe (Regression Equation)] -->|Ingredients (X)| EstimatedCookies[Estimated Cookies (Point Prediction)];",
+        "eli5": "graph TD; Age[Age (X)] -->|Guessing| Height[Height (Ŷ)];",
+        "real_world_use_case": "graph LR; MarketingSpend[Marketing Spend (X)] -->|Regression Model| PredictedSubscribers[Predicted Subscribers (Ŷ)];",
+        "common_mistakes": "graph TD; Extrapolation[Extrapolation] -->|Beyond Data Range| UnreliablePrediction[Unreliable Prediction];",
+        "example": "graph TD; SquareFootage[Square Footage (X=20)] -->|Regression Equation| PredictedPrice[Predicted Price (Ŷ = $1,100,000)];"
       },
       "math_visualizations": {
-        "concise": "/* layout=dot */\ndigraph PointPrediction {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.2];\n  node [shape=box, style=\"rounded,filled\", fontsize=14, margin=\"0.5,0.3\", width=2.8, height=1];\n  \n  formula [label=\"Ŷ* = b₀ + b₁X*\", fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2, fontsize=16, width=3, height=1.2];\n  \n  b0 [label=\"b₀\\nIntercept\", fillcolor=\"#fff3e0\", width=2];\n  b1 [label=\"b₁\\nSlope\", fillcolor=\"#c8e6c9\", width=2];\n  x_star [label=\"X*\\nInput\", fillcolor=\"#f3e5f5\", width=2];\n  \n  formula -> b0 [penwidth=2, color=\"#f57c00\"];\n  formula -> b1 [penwidth=2, color=\"#388e3c\"];\n  formula -> x_star [penwidth=2, color=\"#7b1fa2\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph TravelAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.2];\n  node [shape=box, style=\"rounded,filled\", fontsize=13, margin=\"0.5,0.3\", width=2.8, height=1];\n  \n  distance [label=\"🛣️ Distance\\n100 miles\", fillcolor=\"#e3f2fd\", width=2.5];\n  speed [label=\"🚗 Speed\\n60 mph\", fillcolor=\"#fff3e0\", width=2.5];\n  base_time [label=\"⏰ Base\\n15 min\", fillcolor=\"#f3e5f5\", width=2.5];\n  travel_time [label=\"🕐 Total Time\\n115 min\", fillcolor=\"#e8f5e9\", width=2.5];\n  \n  distance -> travel_time [penwidth=2, color=\"#1976d2\"];\n  speed -> travel_time [penwidth=2, color=\"#f57c00\"];\n  base_time -> travel_time [penwidth=2, color=\"#7b1fa2\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph CookieAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.2];\n  node [shape=box, style=\"rounded,filled\", fontsize=13, margin=\"0.5,0.3\", width=2.5, height=1];\n  \n  hunger [label=\"😋 Hunger\\nLevel 5\", fillcolor=\"#e3f2fd\"];\n  rate [label=\"🍪 Rate\\n2 per level\", fillcolor=\"#fff3e0\"];\n  base [label=\"🍪 Base\\n1 cookie\", fillcolor=\"#f3e5f5\"];\n  total [label=\"🍪 Total\\n11 cookies\", fillcolor=\"#e8f5e9\"];\n  \n  hunger -> total [penwidth=2, color=\"#1976d2\"];\n  rate -> total [penwidth=2, color=\"#f57c00\"];\n  base -> total [penwidth=2, color=\"#7b1fa2\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph MarketingExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  ad_spend [label=\"💰 Ad Spend\\n$10,000\", fillcolor=\"#e3f2fd\", width=2.5];\n  model [label=\"📊 Regression Model\\nRevenue = 5000 + 3×AdSpend\", fillcolor=\"#fff3e0\", width=4];\n  prediction [label=\"📈 Predicted Revenue\\n$35,000\", fillcolor=\"#e8f5e9\", width=3];\n  decision [label=\"✅ Marketing Decision\\nProceed with Campaign\", fillcolor=\"#fff9c4\", width=3.5];\n  \n  ad_spend -> model [penwidth=2, color=\"#1976d2\"];\n  model -> prediction [penwidth=2, color=\"#f57c00\"];\n  prediction -> decision [penwidth=2, color=\"#388e3c\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph CommonMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  prediction [label=\"🎯 Point Prediction\", fillcolor=\"#e3f2fd\", width=3];\n  mistake1 [label=\"❌ Treating as Guarantee\\nIt's just an estimate!\", fillcolor=\"#ffcdd2\", width=3.5];\n  mistake2 [label=\"⚠️ Extrapolation Risk\\nPredicting beyond data range\", fillcolor=\"#ffecb3\", width=3.5];\n  correct [label=\"✅ Proper Understanding\\nEstimate with uncertainty\", fillcolor=\"#c8e6c9\", width=3.5];\n  \n  prediction -> mistake1 [penwidth=2, color=\"#d32f2f\", style=dashed];\n  prediction -> mistake2 [penwidth=2, color=\"#f57c00\", style=dashed];\n  prediction -> correct [penwidth=2, color=\"#388e3c\"];\n}",
-        "example": "/* layout=dot */\ndigraph HouseExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  house_size [label=\"🏠 House Size\\n2000 sq ft\", fillcolor=\"#e3f2fd\"];\n  equation [label=\"📐 Equation\\nŶ = 50000 + 150X\", fillcolor=\"#fff3e0\"];\n  calculation [label=\"🧮 Calculation\\n50000 + 150×2000\", fillcolor=\"#f3e5f5\"];\n  price [label=\"💵 Predicted Price\\n$350,000\", fillcolor=\"#e8f5e9\"];\n  \n  house_size -> equation [penwidth=2, color=\"#1976d2\"];\n  equation -> calculation [penwidth=2, color=\"#f57c00\"];\n  calculation -> price [penwidth=2, color=\"#388e3c\"];\n}"
+        "concise": "/* layout=dot */\ndigraph PointPredictionFormula {\n  rankdir=LR;\n  node [shape=plaintext, fontsize=14];\n  edge [fontsize=12];\n\n  Y_hat_star [label=\"Ŷ*\"];\n  equals [label=\"=\", shape=none, fontsize=16];\n  b0 [label=\"b₀\"];\n  plus [label=\"+\", shape=none, fontsize=16];\n  b1 [label=\"b₁\"];\n  X_star [label=\"X*\"];\n\n  Y_hat_star -> equals [style=invis];\n  equals -> b0 [style=invis];\n  b0 -> plus [style=invis];\n  plus -> b1 [style=invis];\n  b1 -> X_star [style=invis];\n}\n",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
       },
       "recall_questions": [
         {
           "type": "mcq",
-          "question": "Which of the following is the correct formula for calculating a point prediction in linear regression?",
+          "question": "What is the primary purpose of calculating a point prediction in regression analysis?",
           "options": [
-            "A.  $\\hat{Y}^* = b_0 + b_1 X^*$",
-            "B.  $\\hat{Y}^* = b_0 - b_1 X^*$",
-            "C.  $\\hat{Y}^* = b_1 + b_0 X^*$",
-            "D.  $\\hat{Y}^* = b_0 / b_1 X^*$"
+            "A. To estimate the uncertainty around a single value of the independent variable.",
+            "B. To find the range of possible values for the dependent variable.",
+            "C. To determine the single best estimate for the dependent variable given a specific value of the independent variable.",
+            "D. To determine the statistical significance of the independent variable."
           ],
-          "answer": "A.  $\\hat{Y}^* = b_0 + b_1 X^*$"
+          "answer": "C. To determine the single best estimate for the dependent variable given a specific value of the independent variable."
         },
         {
           "type": "scenario_mcq",
-          "scenario": "A company uses a regression model to predict customer churn based on customer satisfaction scores. The model is $\\hat{Y} = 0.8 - 0.05X$, where X is the satisfaction score (1-10) and Y is the probability of churn. A customer has a satisfaction score of 7.",
-          "question": "What is the point prediction for the probability of churn for this customer?",
+          "scenario": "A marketing team uses a regression model to predict sales based on advertising spend. Their model is \\(\\hat{Y} = 1000 + 5X\\), where Y is sales and X is advertising spend. They plan to spend $200 on advertising.",
+          "question": "What is the point prediction for sales?",
           "options": [
-            "A. 0.45",
-            "B. 0.35",
-            "C. 1.15",
-            "D. 0.05"
+            "A. $1000",
+            "B. $200",
+            "C. $2000",
+            "D. $1100"
           ],
-          "answer": "A. 0.45"
+          "answer": "C. $2000"
         },
         {
           "type": "sequencing",
-          "question": "Place the following steps in the correct order to make a point prediction using a regression model:",
+          "question": "Place the following steps in the correct order for generating a point prediction:",
           "items": [
-            "Input the value of the explanatory variable ($X^*$).",
-            "Obtain the estimated regression coefficients ($b_0$ and $b_1$).",
-            "Calculate the point prediction ($\\hat{Y}^*$).",
-            "Define the regression equation."
+            "Calculate the predicted value (\\(\\hat{Y}^*\\)).",
+            "Estimate the regression coefficients (\\(b_0\\) and \\(b_1\\)).",
+            "Obtain a specific value of the explanatory variable (\\(X^*\\)).",
+            "Define the regression equation (\\(\\hat{Y} = b_0 + b_1X\\))."
           ],
           "answer": [
-            "Define the regression equation.",
-            "Obtain the estimated regression coefficients ($b_0$ and $b_1$).",
-            "Input the value of the explanatory variable ($X^*$).",
-            "Calculate the point prediction ($\\hat{Y}^*$)."
+            "Define the regression equation (\\(\\hat{Y} = b_0 + b_1X\\)).",
+            "Estimate the regression coefficients (\\(b_0\\) and \\(b_1\\)).",
+            "Obtain a specific value of the explanatory variable (\\(X^*\\)).",
+            "Calculate the predicted value (\\(\\hat{Y}^*\\))."
           ]
         },
         {
           "type": "categorization",
-          "question": "Categorize the following as either 'Interpolation' or 'Extrapolation' based on whether the prediction is within or outside the range of observed data.",
+          "question": "Categorize each scenario as either 'Interpolation' or 'Extrapolation':",
           "items": [
-            "Predicting sales for next month based on data from the past year.",
-            "Predicting stock prices 10 years into the future based on the past 5 years.",
-            "Predicting customer satisfaction for a score of 6 when scores ranged from 1 to 10 in the data.",
-            "Predicting delivery time for a distance of 15 miles when the data ranged from 1 to 10 miles."
+            "Predicting sales for a marketing spend within the historical range of data.",
+            "Predicting delivery time for a distance far beyond the longest delivery ever made.",
+            "Predicting customer satisfaction based on a survey score within the range of previous surveys.",
+            "Predicting stock price based on economic indicators outside the range of past economic conditions."
           ],
           "categories": [
             "Interpolation",
@@ -97,441 +97,27 @@
           ],
           "answer": {
             "Interpolation": [
-              "Predicting sales for next month based on data from the past year.",
-              "Predicting customer satisfaction for a score of 6 when scores ranged from 1 to 10 in the data."
+              "Predicting sales for a marketing spend within the historical range of data.",
+              "Predicting customer satisfaction based on a survey score within the range of previous surveys."
             ],
             "Extrapolation": [
-              "Predicting stock prices 10 years into the future based on the past 5 years.",
-              "Predicting delivery time for a distance of 15 miles when the data ranged from 1 to 10 miles."
+              "Predicting delivery time for a distance far beyond the longest delivery ever made.",
+              "Predicting stock price based on economic indicators outside the range of past economic conditions."
             ]
           }
         },
         {
           "type": "matching",
-          "question": "Match each term with its corresponding definition:",
+          "question": "Match each term with its definition:",
           "premises": [
             "1. Point Prediction",
             "2. Interpolation",
             "3. Extrapolation"
           ],
           "responses": [
-            "A. Predicting a value within the range of the observed data.",
-            "B. Predicting a value outside the range of the observed data.",
-            "C. The single best estimate for Y given a specific value of X."
-          ],
-          "answer": [
-            "1-C",
-            "2-A",
-            "3-B"
-          ]
-        }
-      ],
-      "tags": [
-        "point prediction",
-        "regression",
-        "forecasting"
-      ],
-      "source_chunk": "DAA_lec_1_2",
-      "diagram_image_paths": {
-        "concise": "",
-        "analogy": "",
-        "eli5": "",
-        "real_world_use_case": "diagrams/DAA_lec_1_2_card_001_real_world_use_case.png",
-        "common_mistakes": "diagrams/DAA_lec_1_2_card_001_common_mistakes.png",
-        "example": ""
-      },
-      "math_image_paths": {
-        "concise": "",
-        "analogy": "",
-        "eli5": "",
-        "real_world_use_case": "",
-        "common_mistakes": "",
-        "example": ""
-      }
-    },
-    {
-      "type": "concept",
-      "question": "Explain the concepts of interpolation and extrapolation in the context of predictive modeling, and why is extrapolation considered risky?",
-      "answers": {
-        "concise": "Interpolation is predicting a value within the range of the observed data, while extrapolation is predicting a value outside that range. Extrapolation is risky because the relationship between the variables may not hold true beyond the observed data, leading to inaccurate predictions.",
-        "analogy": "Think of interpolation as estimating the temperature inside your house based on the thermostat reading. Extrapolation is like guessing the temperature outside based only on the thermostat inside – it might be close, but it ignores other factors like wind or sunlight.",
-        "eli5": "Imagine you know how many candies your friend eats each day for a week. If you guess how many they'll eat tomorrow, that's interpolation. If you guess how many they'll eat next year, that's extrapolation, and it's harder to be right because things might change.",
-        "real_world_use_case": "A retail company uses sales data from the past 5 years to predict sales for the next quarter (interpolation).  If they try to predict sales 20 years into the future based on the same data (extrapolation), they're ignoring potential market shifts, new competitors, and changing consumer preferences, making the prediction unreliable.",
-        "common_mistakes": "A common mistake is to treat interpolation and extrapolation as equally reliable. Interpolation is generally more trustworthy because it's based on observed data patterns, while extrapolation assumes those patterns continue indefinitely, which is rarely the case."
-      },
-      "context": "Predictive Modeling",
-      "relevance_score": {
-        "score": 9,
-        "justification": "Important concept for understanding the limitations of predictive models."
-      },
-      "example": "A pharmaceutical company develops a new drug and tests it on patients aged 30-60. They use the results to predict the drug's effectiveness for patients in that age range (interpolation). If they then try to predict the drug's effectiveness for patients aged 80+ (extrapolation), they risk inaccurate predictions because the drug's effects might be different in older patients due to age-related physiological changes.  The company should conduct further trials with older patients to validate the drug's efficacy in that population.",
-      "mermaid_diagrams": {
-        "concise": "flowchart TD\n    A[Observed Data Range] --> B[Within Range]\n    A --> C[Outside Range]\n    B --> D[Interpolation - Reliable]\n    C --> E[Extrapolation - Risky]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style E fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px",
-        "analogy": "flowchart LR\n    A[Thermostat Reading Inside] --> B[Predict Inside Temperature]\n    A --> C[Guess Outside Temperature]\n    B --> D[Interpolation - Reliable]\n    C --> E[Extrapolation - Risky]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style E fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px",
-        "eli5": "flowchart TD\n    A[Past Week Candy Data] --> B[Tomorrow's Candy]\n    A --> C[Next Year's Candy]\n    B --> D[Interpolation - Good Guess]\n    C --> E[Extrapolation - Wild Guess]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style E fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px",
-        "real_world_use_case": "flowchart TD\n    A[5 Years Sales Data] --> B[Next Quarter Prediction]\n    A --> C[20 Years Future Prediction]\n    B --> D[Interpolation - Trustworthy]\n    C --> E[Extrapolation - Unreliable]\n    E --> F[Market Changes Ignored]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style E fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style F fill:#ffebee,stroke:#c62828,stroke-width:2px",
-        "common_mistakes": "flowchart TD\n    A[Prediction Method] --> B{Within Data Range?}\n    B -->|✅ YES| C[Interpolation]\n    B -->|❌ NO| D[Extrapolation]\n    C --> E[More Reliable - Based on Observed Patterns]\n    D --> F[Less Reliable - Assumes Patterns Continue]\n    F --> G[⚠️ Often False Assumption]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style D fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style G fill:#ffebee,stroke:#c62828,stroke-width:2px",
-        "example": "flowchart TD\n    A[Drug Trials: Ages 30-60] --> B[Predict for Age 45]\n    A --> C[Predict for Age 80+]\n    B --> D[Interpolation - Within Range]\n    C --> E[Extrapolation - Outside Range]\n    D --> F[✅ Reliable Prediction]\n    E --> G[⚠️ Risky - Age-Related Changes]\n    G --> H[Need Additional Trials]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style E fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style G fill:#ffebee,stroke:#c62828,stroke-width:2px\n    style H fill:#fff9c4,stroke:#f9a825,stroke-width:2px"
-      },
-      "math_visualizations": {
-        "concise": "/* layout=neato */\ngraph InterpExtrap {\n  layout=neato;\n  overlap=false;\n  node [shape=circle, width=1.5, fixedsize=true, style=filled, fontsize=12];\n  \n  data [label=\"Data\\nRange\", pos=\"0,0!\", fillcolor=\"#e3f2fd\"];\n  within [label=\"Within\\nInterp\", pos=\"-2,1!\", fillcolor=\"#c8e6c9\"];\n  outside [label=\"Outside\\nExtrap\", pos=\"2,1!\", fillcolor=\"#ffcdd2\"];\n  reliable [label=\"Reliable\", pos=\"-2,2.5!\", fillcolor=\"#e8f5e9\"];\n  risky [label=\"Risky\", pos=\"2,2.5!\", fillcolor=\"#ffebee\"];\n  \n  data -- within [penwidth=3, color=\"#388e3c\"];\n  data -- outside [penwidth=3, color=\"#d32f2f\"];\n  within -- reliable [penwidth=2, color=\"#2e7d32\"];\n  outside -- risky [penwidth=2, color=\"#c62828\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph ThermostatAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  thermostat [label=\"🌡️ Thermostat\\nReading (Inside)\", fillcolor=\"#e3f2fd\"];\n  inside_temp [label=\"🏠 Inside Temperature\\n(Same Environment)\", fillcolor=\"#c8e6c9\"];\n  outside_temp [label=\"🌤️ Outside Temperature\\n(Different Environment)\", fillcolor=\"#ffcdd2\"];\n  interpolation [label=\"✅ Interpolation\\nReliable\", fillcolor=\"#e8f5e9\"];\n  extrapolation [label=\"❓ Extrapolation\\nUnreliable\", fillcolor=\"#ffebee\"];\n  \n  thermostat -> inside_temp [penwidth=2, color=\"#388e3c\"];\n  thermostat -> outside_temp [penwidth=2, color=\"#d32f2f\"];\n  inside_temp -> interpolation [penwidth=2, color=\"#2e7d32\"];\n  outside_temp -> extrapolation [penwidth=2, color=\"#c62828\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph CandyAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  past_week [label=\"🍬 Past Week\\nCandy Data\", fillcolor=\"#e3f2fd\"];\n  tomorrow [label=\"🍭 Tomorrow\\n(Soon)\", fillcolor=\"#c8e6c9\"];\n  next_year [label=\"🍫 Next Year\\n(Far Future)\", fillcolor=\"#ffcdd2\"];\n  good_guess [label=\"😊 Good Guess\\n(Similar Pattern)\", fillcolor=\"#e8f5e9\"];\n  wild_guess [label=\"🤔 Wild Guess\\n(Things Change)\", fillcolor=\"#ffebee\"];\n  \n  past_week -> tomorrow [penwidth=2, color=\"#388e3c\"];\n  past_week -> next_year [penwidth=2, color=\"#d32f2f\"];\n  tomorrow -> good_guess [penwidth=2, color=\"#2e7d32\"];\n  next_year -> wild_guess [penwidth=2, color=\"#c62828\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph SalesExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  sales_data [label=\"📈 5 Years\\nSales Data\", fillcolor=\"#e3f2fd\", width=3];\n  next_quarter [label=\"📅 Next Quarter\\n(Short-term)\", fillcolor=\"#c8e6c9\", width=3];\n  twenty_years [label=\"🔮 20 Years Future\\n(Long-term)\", fillcolor=\"#ffcdd2\", width=3];\n  trustworthy [label=\"✅ Trustworthy\\nSimilar Conditions\", fillcolor=\"#e8f5e9\", width=3.5];\n  unreliable [label=\"❌ Unreliable\\nMarket Changes Ignored\", fillcolor=\"#ffebee\", width=3.5];\n  \n  sales_data -> next_quarter [penwidth=2, color=\"#388e3c\"];\n  sales_data -> twenty_years [penwidth=2, color=\"#d32f2f\"];\n  next_quarter -> trustworthy [penwidth=2, color=\"#2e7d32\"];\n  twenty_years -> unreliable [penwidth=2, color=\"#c62828\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph CommonMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  mistake [label=\"❌ Common Mistake\\nTreating Both as Equal\", fillcolor=\"#ffcdd2\", width=3.5];\n  interpolation [label=\"✅ Interpolation\\nBased on Observed Patterns\", fillcolor=\"#c8e6c9\", width=3.5];\n  extrapolation [label=\"⚠️ Extrapolation\\nAssumes Patterns Continue\", fillcolor=\"#ffecb3\", width=3.5];\n  reality [label=\"🎯 Reality Check\\nPatterns Rarely Continue\", fillcolor=\"#fff9c4\", width=3.5];\n  \n  mistake -> interpolation [penwidth=2, color=\"#388e3c\", style=dashed];\n  mistake -> extrapolation [penwidth=2, color=\"#f57c00\", style=dashed];\n  extrapolation -> reality [penwidth=2, color=\"#d32f2f\"];\n}",
-        "example": "/* layout=dot */\ndigraph DrugExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  trials [label=\"💊 Drug Trials\\nAges 30-60\", fillcolor=\"#e3f2fd\"];\n  age_45 [label=\"👤 Age 45\\n(Within Range)\", fillcolor=\"#c8e6c9\"];\n  age_80 [label=\"👴 Age 80+\\n(Outside Range)\", fillcolor=\"#ffcdd2\"];\n  reliable [label=\"✅ Reliable\\nInterpolation\", fillcolor=\"#e8f5e9\"];\n  risky [label=\"⚠️ Risky\\nExtrapolation\", fillcolor=\"#ffebee\"];\n  \n  trials -> age_45 [penwidth=2, color=\"#388e3c\"];\n  trials -> age_80 [penwidth=2, color=\"#d32f2f\"];\n  age_45 -> reliable [penwidth=2, color=\"#2e7d32\"];\n  age_80 -> risky [penwidth=2, color=\"#c62828\"];\n}"
-      },
-      "recall_questions": [
-        {
-          "type": "mcq",
-          "question": "Which of the following best describes extrapolation in predictive modeling?",
-          "options": [
-            "A. Predicting a value within the range of the observed data.",
-            "B. Predicting a value outside the range of the observed data.",
-            "C. Estimating the coefficients of a regression equation.",
-            "D. Calculating the mean of the observed data."
-          ],
-          "answer": "B. Predicting a value outside the range of the observed data."
-        },
-        {
-          "type": "scenario_mcq",
-          "scenario": "A financial analyst uses a regression model based on data from 2010-2020 to predict stock prices in 2022. This prediction is based on data outside of the original dataset.",
-          "question": "What type of prediction is this?",
-          "options": [
-            "A. Interpolation",
-            "B. Extrapolation",
-            "C. Linear Regression",
-            "D. Time Series Analysis"
-          ],
-          "answer": "B. Extrapolation"
-        },
-        {
-          "type": "sequencing",
-          "question": "Arrange the following steps in the correct order when considering whether to extrapolate:",
-          "items": [
-            "Assess the potential risks and limitations of extrapolation.",
-            "Determine if the desired prediction falls outside the range of the observed data.",
-            "Evaluate the validity of the underlying assumptions outside the observed range.",
-            "Gather the data and fit the model."
-          ],
-          "answer": [
-            "Gather the data and fit the model.",
-            "Determine if the desired prediction falls outside the range of the observed data.",
-            "Evaluate the validity of the underlying assumptions outside the observed range.",
-            "Assess the potential risks and limitations of extrapolation."
-          ]
-        },
-        {
-          "type": "categorization",
-          "question": "Categorize the following scenarios as either 'Appropriate for Interpolation' or 'Requires Caution due to Extrapolation'.",
-          "items": [
-            "Predicting website traffic for December based on traffic data from January to November.",
-            "Predicting the lifespan of a new type of battery based on short-term testing data.",
-            "Predicting the selling price of a house based on comparable sales in the same neighborhood.",
-            "Predicting the long-term effects of a new drug based on clinical trials lasting only 6 months."
-          ],
-          "categories": [
-            "Appropriate for Interpolation",
-            "Requires Caution due to Extrapolation"
-          ],
-          "answer": {
-            "Appropriate for Interpolation": [
-              "Predicting website traffic for December based on traffic data from January to November.",
-              "Predicting the selling price of a house based on comparable sales in the same neighborhood."
-            ],
-            "Requires Caution due to Extrapolation": [
-              "Predicting the lifespan of a new type of battery based on short-term testing data.",
-              "Predicting the long-term effects of a new drug based on clinical trials lasting only 6 months."
-            ]
-          }
-        },
-        {
-          "type": "matching",
-          "question": "Match each term with the most appropriate statement about its reliability:",
-          "premises": [
-            "1. Interpolation",
-            "2. Extrapolation"
-          ],
-          "responses": [
-            "A. Generally more reliable because it is based on observed data patterns.",
-            "B. Less reliable because it assumes patterns continue indefinitely, which may not be true."
-          ],
-          "answer": [
-            "1-A",
-            "2-B"
-          ]
-        }
-      ],
-      "tags": [
-        "interpolation",
-        "extrapolation",
-        "predictive modeling"
-      ],
-      "source_chunk": "DAA_lec_1_2",
-      "diagram_image_paths": {
-        "concise": "",
-        "analogy": "",
-        "eli5": "",
-        "real_world_use_case": "",
-        "common_mistakes": "",
-        "example": ""
-      },
-      "math_image_paths": {
-        "concise": "",
-        "analogy": "",
-        "eli5": "",
-        "real_world_use_case": "",
-        "common_mistakes": "",
-        "example": ""
-      }
-    },
-    {
-      "type": "definition",
-      "question": "What are data transformations, and why are they used in regression analysis?",
-      "answers": {
-        "concise": "Data transformations are mathematical functions (e.g., logarithm, square root, inverse) applied to one or more variables in a dataset to change their scale or distribution. They are used in regression analysis to address violations of linear regression assumptions, such as non-linearity, heteroscedasticity, and non-normality of residuals.",
-        "analogy": "Think of data transformations like adjusting the settings on a camera to take a better picture. If the image is too dark, you increase the brightness. If the relationship between variables isn't linear, you 'adjust' the data to make it linear.",
-        "eli5": "Imagine you're trying to fit a straight line to some bumpy data. Data transformations are like smoothing out the bumps so the line fits better.",
-        "real_world_use_case": "In finance, stock prices often exhibit exponential growth. Taking the logarithm of stock prices can transform this exponential relationship into a linear one, making it suitable for linear regression analysis to model trends and make predictions.",
-        "common_mistakes": "A common mistake is applying transformations without understanding their effect on the interpretation of the results. Another mistake is assuming that a transformation will always fix the problems – it's important to check the assumptions *after* the transformation to ensure it worked."
-      },
-      "context": "Data Preprocessing",
-      "relevance_score": {
-        "score": 8,
-        "justification": "Important technique for improving the performance of regression models."
-      },
-      "example": "A marketing analyst is modeling the relationship between advertising spend and sales. The scatter plot shows a curved relationship, suggesting that the effect of advertising diminishes as spending increases. To linearize this relationship, the analyst applies a logarithmic transformation to advertising spend (X' = log(X)). The transformed data now exhibits a more linear relationship with sales, allowing for a better fit of the linear regression model and more accurate predictions.",
-      "mermaid_diagrams": {
-        "concise": "flowchart TD\n    A[Original Data] --> B{Violates Assumptions?}\n    B -->|✅ YES| C[Apply Transformation]\n    C --> D[Transformed Data]\n    D --> E[Meets Assumptions]\n    B -->|❌ NO| F[Use Original Data]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px",
-        "analogy": "flowchart LR\n    A[Unadjusted Camera] --> B[Poor Image Quality]\n    B --> C[Adjust Settings]\n    C --> D[Improved Picture]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "eli5": "flowchart TD\n    A[Bumpy LEGO Tower] --> B[Hard to Build On]\n    B --> C[Smooth Out Bumps]\n    C --> D[Easy to Build On]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "real_world_use_case": "flowchart TD\n    A[Stock Prices - Exponential Growth] --> B[Non-Linear Relationship]\n    B --> C[Apply Log Transformation]\n    C --> D[Linear Relationship]\n    D --> E[Suitable for Regression]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "common_mistakes": "flowchart TD\n    A[Apply Transformation] --> B{Check Assumptions After?}\n    B -->|✅ YES| C[Proper Process]\n    B -->|❌ NO| D[Common Mistake]\n    D --> E[May Still Violate Assumptions]\n    C --> F[Verify Transformation Worked]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style D fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style E fill:#ffebee,stroke:#c62828,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "example": "flowchart TD\n    A[Ad Spend vs Sales - Curved] --> B[Non-Linear Relationship]\n    B --> C[Apply Log Transformation]\n    C --> D[X' = log(X)]\n    D --> E[Linearized Relationship]\n    E --> F[Better Model Fit]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px"
-      },
-      "math_visualizations": {
-        "concise": "/* layout=dot */\ndigraph DataTransformation {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=13, margin=\"0.5,0.3\", width=2.8, height=1.2];\n  \n  original [label=\"📊 Original\\nViolates\", fillcolor=\"#ffcdd2\", width=2.5];\n  transform [label=\"🔄 Transform\\nlog, √, 1/x\", fillcolor=\"#f3e5f5\", width=2.5];\n  new_data [label=\"📈 Fixed\\nMeets Rules\", fillcolor=\"#c8e6c9\", width=2.5];\n  \n  original -> transform [penwidth=2, color=\"#7b1fa2\"];\n  transform -> new_data [penwidth=2, color=\"#388e3c\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph CameraAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  camera [label=\"📷 Unadjusted Camera\", fillcolor=\"#e3f2fd\"];\n  poor_image [label=\"📸 Poor Image\\n(Too Dark/Blurry)\", fillcolor=\"#ffcdd2\"];\n  adjust [label=\"⚙️ Adjust Settings\\n(Brightness, Focus)\", fillcolor=\"#f3e5f5\"];\n  good_image [label=\"📸 Improved Picture\\n(Clear & Bright)\", fillcolor=\"#c8e6c9\"];\n  \n  camera -> poor_image [penwidth=2, color=\"#d32f2f\"];\n  poor_image -> adjust [penwidth=2, color=\"#7b1fa2\"];\n  adjust -> good_image [penwidth=2, color=\"#388e3c\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph LegoAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  bumpy [label=\"🧱 Bumpy LEGO Tower\", fillcolor=\"#ffcdd2\"];\n  hard_build [label=\"😤 Hard to Build On\", fillcolor=\"#ffecb3\"];\n  smooth_out [label=\"🔨 Smooth Out Bumps\", fillcolor=\"#f3e5f5\"];\n  easy_build [label=\"😊 Easy to Build On\", fillcolor=\"#c8e6c9\"];\n  \n  bumpy -> hard_build [penwidth=2, color=\"#d32f2f\"];\n  hard_build -> smooth_out [penwidth=2, color=\"#7b1fa2\"];\n  smooth_out -> easy_build [penwidth=2, color=\"#388e3c\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph StockExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  stock_prices [label=\"📈 Stock Prices\\nExponential Growth\", fillcolor=\"#e3f2fd\", width=3];\n  nonlinear [label=\"📉 Non-Linear\\nRelationship\", fillcolor=\"#ffcdd2\", width=3];\n  log_transform [label=\"📊 Log Transformation\\nlog(Price)\", fillcolor=\"#f3e5f5\", width=3];\n  linear [label=\"📏 Linear Relationship\\nSuitable for Regression\", fillcolor=\"#c8e6c9\", width=3.5];\n  \n  stock_prices -> nonlinear [penwidth=2, color=\"#d32f2f\"];\n  nonlinear -> log_transform [penwidth=2, color=\"#7b1fa2\"];\n  log_transform -> linear [penwidth=2, color=\"#388e3c\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph TransformMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  apply [label=\"🔄 Apply Transformation\", fillcolor=\"#e3f2fd\", width=3];\n  mistake [label=\"❌ Don't Check After\\n(Common Mistake)\", fillcolor=\"#ffcdd2\", width=3.5];\n  correct [label=\"✅ Check Assumptions\\nAfter Transformation\", fillcolor=\"#c8e6c9\", width=3.5];\n  still_wrong [label=\"⚠️ May Still Violate\\nAssumptions\", fillcolor=\"#ffecb3\", width=3.5];\n  verified [label=\"🎯 Transformation\\nWorked Successfully\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  apply -> mistake [penwidth=2, color=\"#d32f2f\", style=dashed];\n  apply -> correct [penwidth=2, color=\"#388e3c\"];\n  mistake -> still_wrong [penwidth=2, color=\"#f57c00\"];\n  correct -> verified [penwidth=2, color=\"#2e7d32\"];\n}",
-        "example": "/* layout=dot */\ndigraph AdSpendExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  curved [label=\"📈 Ad Spend vs Sales\\nCurved Relationship\", fillcolor=\"#ffcdd2\"];\n  log_trans [label=\"📊 Log Transform\\nX' = log(X)\", fillcolor=\"#f3e5f5\"];\n  linear [label=\"📏 Linearized\\nRelationship\", fillcolor=\"#c8e6c9\"];\n  better_fit [label=\"🎯 Better\\nModel Fit\", fillcolor=\"#e8f5e9\"];\n  \n  curved -> log_trans [penwidth=2, color=\"#7b1fa2\"];\n  log_trans -> linear [penwidth=2, color=\"#388e3c\"];\n  linear -> better_fit [penwidth=2, color=\"#2e7d32\"];\n}"
-      },
-      "recall_questions": [
-        {
-          "type": "mcq",
-          "question": "What is the primary purpose of applying data transformations in regression analysis?",
-          "options": [
-            "A. To increase the size of the dataset.",
-            "B. To address violations of linear regression assumptions.",
-            "C. To simplify the interpretation of the results.",
-            "D. To reduce the number of variables in the model."
-          ],
-          "answer": "B. To address violations of linear regression assumptions."
-        },
-        {
-          "type": "scenario_mcq",
-          "scenario": "A dataset exhibits heteroscedasticity (unequal variance of residuals).",
-          "question": "Which of the following data transformations is MOST likely to address this issue?",
-          "options": [
-            "A. Adding a constant to all values.",
-            "B. Multiplying all values by a constant.",
-            "C. Applying a logarithmic transformation.",
-            "D. Subtracting the mean from all values."
-          ],
-          "answer": "C. Applying a logarithmic transformation."
-        },
-        {
-          "type": "sequencing",
-          "question": "Arrange the following steps in the correct order when applying data transformations:",
-          "items": [
-            "Check if linear regression assumptions are met.",
-            "Apply the appropriate data transformation.",
-            "Interpret the results in the original scale (if necessary).",
-            "Identify violations of linear regression assumptions."
-          ],
-          "answer": [
-            "Identify violations of linear regression assumptions.",
-            "Apply the appropriate data transformation.",
-            "Check if linear regression assumptions are met.",
-            "Interpret the results in the original scale (if necessary)."
-          ]
-        },
-        {
-          "type": "categorization",
-          "question": "Categorize the following data transformations as either 'Linearizing Transformations' or 'Variance Stabilizing Transformations'.",
-          "items": [
-            "Logarithmic transformation",
-            "Square root transformation",
-            "Inverse transformation",
-            "Box-Cox transformation"
-          ],
-          "categories": [
-            "Linearizing Transformations",
-            "Variance Stabilizing Transformations"
-          ],
-          "answer": {
-            "Linearizing Transformations": [
-              "Logarithmic transformation",
-              "Inverse transformation"
-            ],
-            "Variance Stabilizing Transformations": [
-              "Square root transformation",
-              "Box-Cox transformation"
-            ]
-          }
-        },
-        {
-          "type": "matching",
-          "question": "Match each data transformation with its potential effect:",
-          "premises": [
-            "1. Logarithmic transformation",
-            "2. Square root transformation",
-            "3. Inverse transformation"
-          ],
-          "responses": [
-            "A. Can help linearize exponential relationships and stabilize variance for count data.",
-            "B. Can help linearize relationships and stabilize variance, especially for skewed data.",
-            "C. Can help linearize relationships when the effect of X on Y diminishes as X increases."
-          ],
-          "answer": [
-            "1-A",
-            "2-B",
-            "3-C"
-          ]
-        }
-      ],
-      "tags": [
-        "data transformation",
-        "regression",
-        "linearization"
-      ],
-      "source_chunk": "DAA_lec_1_2",
-      "diagram_image_paths": {
-        "concise": "",
-        "analogy": "diagrams/DAA_lec_1_2_card_003_analogy.png",
-        "eli5": "diagrams/DAA_lec_1_2_card_003_eli5.png",
-        "real_world_use_case": "",
-        "common_mistakes": "diagrams/DAA_lec_1_2_card_003_common_mistakes.png",
-        "example": ""
-      },
-      "math_image_paths": {
-        "concise": "",
-        "analogy": "",
-        "eli5": "",
-        "real_world_use_case": "",
-        "common_mistakes": "",
-        "example": ""
-      }
-    },
-    {
-      "type": "concept",
-      "question": "Describe the three main reasons for applying data transformations in regression analysis: linearization, stabilizing variance, and normalization.",
-      "answers": {
-        "concise": "Data transformations are used for three primary reasons: to linearize non-linear relationships between variables, to stabilize variance (address heteroscedasticity), and to normalize the distribution of residuals, which is important for valid statistical inference (hypothesis testing and confidence intervals).",
-        "analogy": "Think of linearization as straightening a curved road to make it easier to drive on. Stabilizing variance is like ensuring all the cars on the road have similar speeds to prevent accidents. Normalization is like making sure the road surface is smooth for a comfortable ride.",
-        "eli5": "Imagine you're building a LEGO tower, but some blocks are too big and some are too small. Linearization is like making sure the blocks fit together in a straight line. Stabilizing variance is like making sure all the blocks are the same size. Normalization is like making sure the blocks are all the same color.",
-        "real_world_use_case": "In environmental science, the relationship between pollutant concentration and distance from a source might be non-linear. A logarithmic transformation can linearize this relationship. Furthermore, the variance of pollutant measurements might increase with distance. Transformations can also stabilize this variance, leading to more reliable regression results.",
-        "common_mistakes": "A common mistake is to focus on only one reason for transformation (e.g., linearization) and ignore the others. All three reasons – linearization, stabilizing variance, and normalization – contribute to a well-behaved regression model and valid inference."
-      },
-      "context": "Regression Analysis",
-      "relevance_score": {
-        "score": 7,
-        "justification": "Important for understanding why transformations are applied."
-      },
-      "example": "A biologist studies the growth rate of bacteria as a function of nutrient concentration. The data shows a curved relationship (non-linearity), with the growth rate increasing rapidly at first but then leveling off. Additionally, the variability in growth rate is higher at higher nutrient concentrations (heteroscedasticity). To address these issues, the biologist applies a logarithmic transformation to both nutrient concentration and growth rate. This transformation linearizes the relationship and stabilizes the variance, allowing for a more accurate and reliable regression analysis.",
-      "mermaid_diagrams": {
-        "concise": "flowchart TD\n    A[Data Transformation] --> B[Linearization]\n    A --> C[Variance Stabilization]\n    A --> D[Normalization]\n    B --> E[Non-linear → Linear]\n    C --> F[Heteroscedasticity → Uniform Variance]\n    D --> G[Non-normal → Normal Residuals]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n    style G fill:#fce4ec,stroke:#c2185b,stroke-width:2px",
-        "analogy": "flowchart LR\n    A[Road Problems] --> B[Curved Road]\n    A --> C[Variable Speeds]\n    A --> D[Uneven Surface]\n    B --> E[Straighten Road]\n    C --> F[Equalize Speeds]\n    D --> G[Smooth Surface]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n    style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "eli5": "flowchart TD\n    A[LEGO Problems] --> B[Different Sizes]\n    A --> C[Not Straight]\n    A --> D[Different Colors]\n    B --> E[Make Same Size]\n    C --> F[Make Straight]\n    D --> G[Make Same Color]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n    style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "real_world_use_case": "flowchart TD\n    A[Environmental Data Issues] --> B[Non-linear Pollutant Relationship]\n    A --> C[Heteroscedasticity in Measurements]\n    B --> D[Apply Log Transformation]\n    C --> D\n    D --> E[Linear Relationship]\n    D --> F[Stabilized Variance]\n    E --> G[Better Regression Results]\n    F --> G\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n    style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "common_mistakes": "flowchart TD\n    A[Apply Transformation] --> B{Consider All Three Reasons?}\n    B -->|✅ YES| C[Comprehensive Approach]\n    B -->|❌ NO| D[Focus Only on One Reason]\n    C --> E[Well-behaved Model]\n    D --> F[Incomplete Solution]\n    F --> G[May Still Have Issues]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style D fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style G fill:#ffebee,stroke:#c62828,stroke-width:2px",
-        "example": "flowchart TD\n    A[Bacteria Growth Study] --> B[Curved Relationship]\n    A --> C[Heteroscedasticity]\n    B --> D[Log Transform Nutrients]\n    C --> E[Log Transform Growth Rate]\n    D --> F[Linear Relationship]\n    E --> G[Stabilized Variance]\n    F --> H[Accurate Regression Analysis]\n    G --> H\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px\n    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style G fill:#fff9c4,stroke:#f9a825,stroke-width:2px\n    style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px"
-      },
-      "math_visualizations": {
-        "concise": "/* layout=neato */\ngraph ThreeReasons {\n  layout=neato;\n  overlap=false;\n  node [shape=box, style=\"rounded,filled\", fontsize=12, width=2, height=0.8, fixedsize=true];\n  \n  transform [label=\"Transform\", pos=\"0,0!\", fillcolor=\"#e3f2fd\", width=2.2];\n  linear [label=\"Linearize\", pos=\"-2.5,1.5!\", fillcolor=\"#c8e6c9\"];\n  variance [label=\"Stabilize\\nVariance\", pos=\"0,2!\", fillcolor=\"#fff3e0\"];\n  normal [label=\"Normalize\", pos=\"2.5,1.5!\", fillcolor=\"#f3e5f5\"];\n  \n  transform -- linear [penwidth=3, color=\"#388e3c\"];\n  transform -- variance [penwidth=3, color=\"#f57c00\"];\n  transform -- normal [penwidth=3, color=\"#7b1fa2\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph RoadAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  road_problems [label=\"🛣️ Road Problems\", fillcolor=\"#e3f2fd\"];\n  curved [label=\"🌀 Curved Road\\n(Linearization)\", fillcolor=\"#ffcdd2\"];\n  speeds [label=\"🚗 Variable Speeds\\n(Variance Stabilization)\", fillcolor=\"#ffecb3\"];\n  surface [label=\"🕳️ Uneven Surface\\n(Normalization)\", fillcolor=\"#f3e5f5\"];\n  solutions [label=\"✅ Road Solutions\\nStraighten, Equalize, Smooth\", fillcolor=\"#c8e6c9\", width=4];\n  \n  road_problems -> curved [penwidth=2, color=\"#d32f2f\"];\n  road_problems -> speeds [penwidth=2, color=\"#f57c00\"];\n  road_problems -> surface [penwidth=2, color=\"#7b1fa2\"];\n  curved -> solutions [penwidth=2, color=\"#388e3c\"];\n  speeds -> solutions [penwidth=2, color=\"#388e3c\"];\n  surface -> solutions [penwidth=2, color=\"#388e3c\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph LegoAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  lego_problems [label=\"🧱 LEGO Problems\", fillcolor=\"#e3f2fd\"];\n  sizes [label=\"📏 Different Sizes\\n(Variance Stabilization)\", fillcolor=\"#ffcdd2\"];\n  straight [label=\"📐 Not Straight\\n(Linearization)\", fillcolor=\"#ffecb3\"];\n  colors [label=\"🎨 Different Colors\\n(Normalization)\", fillcolor=\"#f3e5f5\"];\n  fixed [label=\"😊 Fixed LEGO\\nSame Size, Straight, Same Color\", fillcolor=\"#c8e6c9\", width=4];\n  \n  lego_problems -> sizes [penwidth=2, color=\"#d32f2f\"];\n  lego_problems -> straight [penwidth=2, color=\"#f57c00\"];\n  lego_problems -> colors [penwidth=2, color=\"#7b1fa2\"];\n  sizes -> fixed [penwidth=2, color=\"#388e3c\"];\n  straight -> fixed [penwidth=2, color=\"#388e3c\"];\n  colors -> fixed [penwidth=2, color=\"#388e3c\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph EnvironmentalExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  env_data [label=\"🌍 Environmental Data\\nPollutant vs Distance\", fillcolor=\"#e3f2fd\", width=3];\n  nonlinear [label=\"📉 Non-linear\\nRelationship\", fillcolor=\"#ffcdd2\", width=3];\n  hetero [label=\"📊 Heteroscedasticity\\nUnequal Variance\", fillcolor=\"#ffecb3\", width=3];\n  log_transform [label=\"📊 Log Transformation\\nAddresses Both Issues\", fillcolor=\"#f3e5f5\", width=3.5];\n  results [label=\"🎯 Better Results\\nLinear + Stable Variance\", fillcolor=\"#c8e6c9\", width=3.5];\n  \n  env_data -> nonlinear [penwidth=2, color=\"#d32f2f\"];\n  env_data -> hetero [penwidth=2, color=\"#f57c00\"];\n  nonlinear -> log_transform [penwidth=2, color=\"#7b1fa2\"];\n  hetero -> log_transform [penwidth=2, color=\"#7b1fa2\"];\n  log_transform -> results [penwidth=2, color=\"#388e3c\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph TransformationMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  mistake [label=\"❌ Common Mistake\\nFocus Only on One Reason\", fillcolor=\"#ffcdd2\", width=3.5];\n  linearization_only [label=\"📏 Only Linearization\", fillcolor=\"#ffecb3\"];\n  variance_only [label=\"📊 Only Variance\", fillcolor=\"#ffecb3\"];\n  normal_only [label=\"📈 Only Normalization\", fillcolor=\"#ffecb3\"];\n  incomplete [label=\"⚠️ Incomplete Solution\\nOther Issues Remain\", fillcolor=\"#fff3e0\", width=3.5];\n  correct [label=\"✅ Correct Approach\\nConsider All Three\", fillcolor=\"#c8e6c9\", width=3.5];\n  \n  mistake -> linearization_only [penwidth=2, color=\"#f57c00\"];\n  mistake -> variance_only [penwidth=2, color=\"#f57c00\"];\n  mistake -> normal_only [penwidth=2, color=\"#f57c00\"];\n  linearization_only -> incomplete [penwidth=2, color=\"#d32f2f\"];\n  variance_only -> incomplete [penwidth=2, color=\"#d32f2f\"];\n  normal_only -> incomplete [penwidth=2, color=\"#d32f2f\"];\n  mistake -> correct [penwidth=2, color=\"#388e3c\", style=dashed];\n}",
-        "example": "/* layout=dot */\ndigraph BacteriaExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  bacteria [label=\"🦠 Bacteria Study\\nGrowth vs Nutrients\", fillcolor=\"#e3f2fd\"];\n  curved [label=\"📈 Curved Growth\\n+ Heteroscedasticity\", fillcolor=\"#ffcdd2\"];\n  log_both [label=\"📊 Log Transform\\nBoth Variables\", fillcolor=\"#f3e5f5\"];\n  linear_stable [label=\"📏 Linear +\\nStable Variance\", fillcolor=\"#c8e6c9\"];\n  accurate [label=\"🎯 Accurate\\nRegression\", fillcolor=\"#e8f5e9\"];\n  \n  bacteria -> curved [penwidth=2, color=\"#d32f2f\"];\n  curved -> log_both [penwidth=2, color=\"#7b1fa2\"];\n  log_both -> linear_stable [penwidth=2, color=\"#388e3c\"];\n  linear_stable -> accurate [penwidth=2, color=\"#2e7d32\"];\n}"
-      },
-      "recall_questions": [
-        {
-          "type": "mcq",
-          "question": "Which of the following is NOT a primary reason for applying data transformations in regression analysis?",
-          "options": [
-            "A. Linearization",
-            "B. Variance Stabilization",
-            "C. Normalization",
-            "D. Increasing the sample size"
-          ],
-          "answer": "D. Increasing the sample size"
-        },
-        {
-          "type": "scenario_mcq",
-          "scenario": "A regression model's residuals are not normally distributed. This violates a key assumption of linear regression.",
-          "question": "Which type of data transformation is MOST likely to address this issue?",
-          "options": [
-            "A. Linearization",
-            "B. Variance Stabilization",
-            "C. Normalization",
-            "D. Standardization"
-          ],
-          "answer": "C. Normalization"
-        },
-        {
-          "type": "sequencing",
-          "question": "Arrange the following steps in the correct order when deciding whether to apply data transformations:",
-          "items": [
-            "Assess the distribution of residuals.",
-            "Examine the scatter plot for non-linear patterns.",
-            "Evaluate if heteroscedasticity is present.",
-            "Decide whether to apply data transformations."
-          ],
-          "answer": [
-            "Examine the scatter plot for non-linear patterns.",
-            "Evaluate if heteroscedasticity is present.",
-            "Assess the distribution of residuals.",
-            "Decide whether to apply data transformations."
-          ]
-        },
-        {
-          "type": "categorization",
-          "question": "Categorize the following scenarios as either 'Primarily Addresses Non-Linearity' or 'Primarily Addresses Heteroscedasticity'.",
-          "items": [
-            "Applying a log transformation to sales data that shows exponential growth.",
-            "Applying a Box-Cox transformation to stabilize the variance of income data.",
-            "Applying a square root transformation to count data with unequal variance.",
-            "Applying an inverse transformation to data where the effect of X on Y diminishes as X increases."
-          ],
-          "categories": [
-            "Primarily Addresses Non-Linearity",
-            "Primarily Addresses Heteroscedasticity"
-          ],
-          "answer": {
-            "Primarily Addresses Non-Linearity": [
-              "Applying a log transformation to sales data that shows exponential growth.",
-              "Applying an inverse transformation to data where the effect of X on Y diminishes as X increases."
-            ],
-            "Primarily Addresses Heteroscedasticity": [
-              "Applying a Box-Cox transformation to stabilize the variance of income data.",
-              "Applying a square root transformation to count data with unequal variance."
-            ]
-          }
-        },
-        {
-          "type": "matching",
-          "question": "Match each data transformation goal with its corresponding description:",
-          "premises": [
-            "1. Linearization",
-            "2. Variance Stabilization",
-            "3. Normalization"
-          ],
-          "responses": [
-            "A. To make the distribution of residuals more symmetric.",
-            "B. To convert a curved relationship into a straight line.",
-            "C. To address unequal variance of residuals."
+            "A. Predicting outside the range of observed data.",
+            "B. The single best estimate for Y given X.",
+            "C. Predicting within the range of observed data."
           ],
           "answer": [
             "1-B",
@@ -541,9 +127,10 @@
         }
       ],
       "tags": [
-        "data transformation",
-        "regression assumptions",
-        "heteroscedasticity"
+        "regression",
+        "point prediction",
+        "interpolation",
+        "extrapolation"
       ],
       "source_chunk": "DAA_lec_1_2",
       "diagram_image_paths": {
@@ -551,123 +138,245 @@
         "analogy": "",
         "eli5": "",
         "real_world_use_case": "",
-        "common_mistakes": "",
+        "common_mistakes": "diagrams/DAA_lec_1_2_card_001_common_mistakes.png",
         "example": ""
+      }
+    },
+    {
+      "type": "concept",
+      "question": "Why are data transformations used in regression analysis?",
+      "answers": {
+        "concise": "Data transformations are applied to variables in regression analysis to address violations of linear regression assumptions, such as non-linear relationships, heteroscedasticity (unequal variance), and non-normal error distributions. The goal is to create a new variable that better satisfies these assumptions.",
+        "analogy": "Think of data transformation like tailoring a suit. The original data might not 'fit' the linear regression model well (like an ill-fitting suit). Transformations are like alterations, adjusting the data to better conform to the model's assumptions and provide a better fit.",
+        "eli5": "Imagine you're trying to draw a straight line through a bunch of scattered dots, but they make a curve. Data transformation is like bending the paper so the dots look more like a straight line, making it easier to draw the line.",
+        "real_world_use_case": "In financial modeling, stock prices often exhibit exponential growth. To analyze this using linear regression, analysts often apply a logarithmic transformation to the stock prices. This converts the exponential growth into a linear trend, allowing them to build a more accurate and reliable regression model.",
+        "common_mistakes": "A common mistake is applying transformations without understanding why. Randomly transforming data can make the model worse. Another mistake is forgetting to back-transform the results after the analysis, leading to incorrect interpretations in the original scale of the data."
       },
-      "math_image_paths": {
+      "context": "Data Preprocessing",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Important for ensuring the validity of regression models."
+      },
+      "example": "A company observes that sales increase exponentially with marketing spend. A linear regression model on the raw data shows a curved pattern in the residuals and unequal variance. By applying a logarithmic transformation to both sales and marketing spend (e.g., $Sales' = log(Sales)$ and $MarketingSpend' = log(MarketingSpend)$), the relationship becomes more linear, the residuals are more evenly distributed, and the regression model becomes more appropriate.",
+      "mermaid_diagrams": {
+        "concise": "graph TD; OriginalData[Original Data (Violates Assumptions)] -->|Transformation| TransformedData[Transformed Data (Meets Assumptions)];",
+        "analogy": "graph TD; IllFittingSuit[Ill-Fitting Suit (Original Data)] -->|Tailoring (Transformation)| WellFittingSuit[Well-Fitting Suit (Transformed Data)];",
+        "eli5": "graph TD; CurvedDots[Curved Dots] -->|Bending Paper (Transformation)| StraightDots[Straight Dots];",
+        "real_world_use_case": "graph TD; ExponentialSales[Exponential Sales] -->|Log Transformation| LinearSales[Linearized Sales];",
+        "common_mistakes": "graph TD; RandomTransformation[Random Transformation] -->|Without Understanding| WorseModel[Worse Model]; ForgettingBackTransformation[Forgetting Back-Transformation] -->|After Analysis| IncorrectInterpretation[Incorrect Interpretation];",
+        "example": "graph TD; RawSales[Raw Sales (Curved Residuals)] -->|Log Transformation| TransformedSales[Transformed Sales (Linear Residuals)];"
+      },
+      "math_visualizations": {
         "concise": "",
         "analogy": "",
         "eli5": "",
         "real_world_use_case": "",
         "common_mistakes": "",
         "example": ""
-      }
-    },
-    {
-      "type": "concept",
-      "question": "What is a logarithmic transformation and when is it appropriate in regression analysis?",
-      "answers": {
-        "concise": "A logarithmic transformation applies the logarithm function to either the dependent variable (Y), independent variable (X), or both, in a regression model. It's used when the relationship between X and Y is non-linear, particularly when data exhibits exponential growth or a decreasing rate of return.",
-        "analogy": "Think of a logarithmic transformation like using a special lens to flatten out a curved image. If the image is bending upwards sharply (exponential growth), the log lens can straighten it out so you can measure it more easily.",
-        "eli5": "Imagine you're blowing up a balloon. At first, it gets big quickly, but then it gets harder and harder to blow it up more. A log transformation is like changing how you measure the balloon so that the early fast growth and the later slow growth look more even.",
-        "real_world_use_case": "Consider modeling website traffic growth. Initially, traffic increases rapidly, but eventually plateaus. Applying a log transformation to the traffic data can linearize the relationship with time, allowing for a more accurate regression model to predict future traffic.",
-        "common_mistakes": "A common mistake is applying a log transformation without considering the nature of the data. Log transformations are unsuitable for data containing zero or negative values, as the logarithm of these values is undefined. Also, interpreting coefficients after the transformation requires understanding the properties of logarithms."
-      },
-      "context": "Regression Analysis: Transformations",
-      "relevance_score": {
-        "score": 9,
-        "justification": "Core concept for linearizing relationships in regression; essential for understanding non-linear models."
-      },
-      "example": "A startup tracks its monthly active users (MAU) over time. The growth is initially rapid but slows down. Applying a log-Y transformation, the model becomes log(MAU) = 2.0 + 0.1 * Month. The coefficient 0.1 suggests that log(MAU) increases by 0.1 each month. To find the percentage increase in MAU, we calculate e^(0.1) ≈ 1.105, indicating approximately a 10.5% monthly growth rate. Without the log transformation, the model would poorly fit the data and provide inaccurate predictions.",
-      "mermaid_diagrams": {
-        "concise": "flowchart TD\n    A[Original Variables] --> B[Y - Dependent Variable]\n    A --> C[X - Independent Variable]\n    B --> D[Apply log Y]\n    C --> E[Apply log X]\n    D --> F[Regression Model]\n    E --> F\n    F --> G[Linearized Relationship]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px\n    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "analogy": "flowchart LR\n    A[Curved Image] --> B[Special Lens]\n    B --> C[Straight Image]\n    D[Exponential Growth] --> E[Log Transformation]\n    E --> F[Linear Growth]\n    style A fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style D fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "eli5": "flowchart TD\n    A[Balloon Growth] --> B[Fast Growth at Start]\n    A --> C[Slow Growth Later]\n    B --> D[Log Transform]\n    C --> D\n    D --> E[Even Growth Pattern]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "real_world_use_case": "flowchart TD\n    A[Website Traffic Data] --> B[Exponential Growth Pattern]\n    B --> C[Apply Log Transformation]\n    C --> D[Fit Regression Model]\n    D --> E[Predict Future Traffic]\n    E --> F[Business Planning]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px",
-        "common_mistakes": "flowchart TD\n    A[Apply Log Transform] --> B{Check Data Values?}\n    B -->|✅ YES| C[Values > 0]\n    B -->|❌ NO| D[Skip Checking]\n    C --> E[Safe to Apply Log]\n    D --> F[Apply to Zero/Negative]\n    F --> G[❌ Error! Undefined]\n    E --> H[✅ Successful Transformation]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style D fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style G fill:#ffebee,stroke:#c62828,stroke-width:2px\n    style H fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "example": "flowchart TD\n    A[Monthly Active Users Data] --> B[Exponential Growth]\n    B --> C[Apply Log Transformation]\n    C --> D[log MAU = 2.0 + 0.1×Month]\n    D --> E[Coefficient = 0.1]\n    E --> F[e^0.1 ≈ 1.105]\n    F --> G[10.5% Monthly Growth]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style G fill:#fff9c4,stroke:#f9a825,stroke-width:2px"
-      },
-      "math_visualizations": {
-        "concise": "/* layout=dot */\ndigraph LogTransformation {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.2];\n  node [shape=box, style=\"rounded,filled\", fontsize=14, margin=\"0.5,0.3\", width=2.5, height=1];\n  \n  formula [label=\"log(Y) = f(X)\", fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2, fontsize=16, width=3, height=1.2];\n  \n  exponential [label=\"📊 Exponential\\nGrowth\", fillcolor=\"#ffcdd2\"];\n  linear [label=\"📏 Linear\\nPattern\", fillcolor=\"#c8e6c9\"];\n  \n  exponential -> formula [penwidth=2, color=\"#d32f2f\"];\n  formula -> linear [penwidth=2, color=\"#388e3c\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph LensAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  curved_image [label=\"📸 Curved Image\\n(Exponential Data)\", fillcolor=\"#ffcdd2\"];\n  special_lens [label=\"🔍 Special Lens\\n(Log Function)\", fillcolor=\"#f3e5f5\"];\n  straight_image [label=\"📐 Straight Image\\n(Linear Data)\", fillcolor=\"#c8e6c9\"];\n  \n  curved_image -> special_lens [penwidth=2, color=\"#7b1fa2\"];\n  special_lens -> straight_image [penwidth=2, color=\"#388e3c\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph BalloonAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  balloon [label=\"🎈 Balloon Growth\\nFast → Slow\", fillcolor=\"#e3f2fd\"];\n  fast_growth [label=\"🚀 Fast Growth\\n(Early Stage)\", fillcolor=\"#ffcdd2\"];\n  slow_growth [label=\"🐌 Slow Growth\\n(Later Stage)\", fillcolor=\"#ffecb3\"];\n  log_magic [label=\"✨ Log Magic\\nMakes Even\", fillcolor=\"#f3e5f5\"];\n  even_growth [label=\"📏 Even Growth\\nPattern\", fillcolor=\"#c8e6c9\"];\n  \n  balloon -> fast_growth [penwidth=2, color=\"#d32f2f\"];\n  balloon -> slow_growth [penwidth=2, color=\"#f57c00\"];\n  fast_growth -> log_magic [penwidth=2, color=\"#7b1fa2\"];\n  slow_growth -> log_magic [penwidth=2, color=\"#7b1fa2\"];\n  log_magic -> even_growth [penwidth=2, color=\"#388e3c\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph WebsiteExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  website_data [label=\"🌐 Website Traffic\\nExponential Growth\", fillcolor=\"#e3f2fd\", width=3];\n  exponential [label=\"📈 Exponential Pattern\\nHard to Model\", fillcolor=\"#ffcdd2\", width=3];\n  log_transform [label=\"📊 Log Transformation\\nlog(Traffic) vs Time\", fillcolor=\"#f3e5f5\", width=3.5];\n  linear_model [label=\"📏 Linear Model\\nEasy to Predict\", fillcolor=\"#c8e6c9\", width=3];\n  predictions [label=\"🔮 Future Traffic\\nBusiness Planning\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  website_data -> exponential [penwidth=2, color=\"#d32f2f\"];\n  exponential -> log_transform [penwidth=2, color=\"#7b1fa2\"];\n  log_transform -> linear_model [penwidth=2, color=\"#388e3c\"];\n  linear_model -> predictions [penwidth=2, color=\"#2e7d32\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph LogMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  apply_log [label=\"🔄 Apply Log Transform\", fillcolor=\"#e3f2fd\", width=3];\n  check_values [label=\"✅ Check Values > 0\\n(Correct Approach)\", fillcolor=\"#c8e6c9\", width=3.5];\n  skip_check [label=\"❌ Skip Checking\\n(Common Mistake)\", fillcolor=\"#ffcdd2\", width=3.5];\n  safe_transform [label=\"🎯 Safe Transformation\\nlog(positive values)\", fillcolor=\"#e8f5e9\", width=3.5];\n  error_result [label=\"💥 Error!\\nlog(0) or log(negative)\", fillcolor=\"#ffebee\", width=3.5];\n  \n  apply_log -> check_values [penwidth=2, color=\"#388e3c\"];\n  apply_log -> skip_check [penwidth=2, color=\"#d32f2f\", style=dashed];\n  check_values -> safe_transform [penwidth=2, color=\"#2e7d32\"];\n  skip_check -> error_result [penwidth=2, color=\"#c62828\"];\n}",
-        "example": "/* layout=dot */\ndigraph MAUExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  mau_data [label=\"👥 MAU Data\\nExponential Growth\", fillcolor=\"#e3f2fd\"];\n  log_model [label=\"📊 Log Model\\nlog(MAU) = 2.0 + 0.1×Month\", fillcolor=\"#f3e5f5\"];\n  coefficient [label=\"🔢 Coefficient\\n0.1 per month\", fillcolor=\"#fff3e0\"];\n  percentage [label=\"📈 Growth Rate\\ne^0.1 ≈ 10.5%\", fillcolor=\"#c8e6c9\"];\n  \n  mau_data -> log_model [penwidth=2, color=\"#7b1fa2\"];\n  log_model -> coefficient [penwidth=2, color=\"#f57c00\"];\n  coefficient -> percentage [penwidth=2, color=\"#388e3c\"];\n}"
       },
       "recall_questions": [
         {
           "type": "mcq",
-          "question": "When is a logarithmic transformation MOST appropriate in regression analysis?",
+          "question": "Which of the following is NOT a typical reason for applying data transformations in regression analysis?",
           "options": [
-            "A. When the relationship between X and Y is linear.",
-            "B. When the relationship between X and Y exhibits exponential growth.",
-            "C. When the relationship between X and Y is inverse.",
-            "D. When the data contains negative values."
+            "A. To linearize a non-linear relationship between variables.",
+            "B. To stabilize the variance of residuals (address heteroscedasticity).",
+            "C. To make the distribution of residuals more normal.",
+            "D. To decrease the sample size."
           ],
-          "answer": "B. When the relationship between X and Y exhibits exponential growth."
+          "answer": "D. To decrease the sample size."
         },
         {
           "type": "scenario_mcq",
-          "scenario": "A marketing team observes that increased advertising spending initially leads to a large increase in sales, but the effect diminishes as spending increases further. They want to model this relationship.",
-          "question": "Which transformation is MOST suitable for modeling this diminishing returns effect?",
+          "scenario": "A researcher finds that the residuals in their regression model exhibit heteroscedasticity. The variance of the residuals increases as the value of the independent variable increases.",
+          "question": "Which data transformation is MOST likely to help address this issue?",
           "options": [
-            "A. Linear transformation",
-            "B. Logarithmic transformation",
-            "C. Inverse transformation",
-            "D. Polynomial transformation"
+            "A. Adding a constant to all values of the dependent variable.",
+            "B. Taking the square root of the dependent variable.",
+            "C. Multiplying the independent variable by a constant.",
+            "D. Subtracting the mean from the independent variable."
           ],
-          "answer": "B. Logarithmic transformation"
+          "answer": "B. Taking the square root of the dependent variable."
         },
         {
           "type": "sequencing",
-          "question": "Place the following steps for applying a log transformation in regression analysis in the correct order:",
+          "question": "Place the following steps in the general process of using data transformations in regression analysis in the correct order:",
+          "items": [
+            "Back-transform the results (if needed) for interpretation.",
+            "Fit the regression model to the transformed data.",
+            "Apply the chosen transformation(s) to the relevant variable(s).",
+            "Assess the assumptions of the regression model with the original data."
+          ],
+          "answer": [
+            "Assess the assumptions of the regression model with the original data.",
+            "Apply the chosen transformation(s) to the relevant variable(s).",
+            "Fit the regression model to the transformed data.",
+            "Back-transform the results (if needed) for interpretation."
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize each transformation based on its primary effect:",
+          "items": [
+            "Log Transformation",
+            "Square Root Transformation",
+            "Reciprocal Transformation (1/x)",
+            "Exponential Transformation"
+          ],
+          "categories": [
+            "Linearization/Normalization",
+            "Variance Stabilization"
+          ],
+          "answer": {
+            "Linearization/Normalization": [
+              "Log Transformation",
+              "Exponential Transformation"
+            ],
+            "Variance Stabilization": [
+              "Square Root Transformation",
+              "Reciprocal Transformation (1/x)"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each problem with the type of data transformation that can help address it:",
+          "premises": [
+            "1. Non-linear relationship",
+            "2. Heteroscedasticity",
+            "3. Skewed distribution"
+          ],
+          "responses": [
+            "A. Log transformation",
+            "B. Box-Cox transformation",
+            "C. Square root transformation"
+          ],
+          "answer": [
+            "1-A",
+            "2-C",
+            "3-B"
+          ]
+        }
+      ],
+      "tags": [
+        "data transformation",
+        "linear regression",
+        "heteroscedasticity",
+        "normalization"
+      ],
+      "source_chunk": "DAA_lec_1_2",
+      "diagram_image_paths": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "diagrams/DAA_lec_1_2_card_002_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_1_2_card_002_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "concept",
+      "question": "What is a logarithmic transformation in regression analysis, and when is it typically applied?",
+      "answers": {
+        "concise": "A logarithmic transformation involves applying a logarithm function to either the dependent variable (Y) or the independent variable (X) to linearize a non-linear relationship. It's used when data exhibits exponential growth or a decreasing rate of return.",
+        "analogy": "Think of a logarithmic transformation like using a different scale on a map. If you're mapping a vast area with varying elevations, a linear scale might compress the lower elevations and exaggerate the higher ones. A logarithmic scale allows you to represent both high and low elevations more proportionally, revealing underlying patterns.",
+        "eli5": "Imagine you're blowing up a balloon, and it gets harder to blow as it gets bigger. A log transformation is like changing how you measure the balloon so that it seems like it's growing at the same rate all the time. This makes it easier to understand how much air you're adding.",
+        "real_world_use_case": "In marketing, a company might observe that initial advertising spending yields high returns, but subsequent spending has diminishing impact. Applying a log transformation to advertising spend can help model this saturation effect, revealing the true relationship between advertising and sales.",
+        "common_mistakes": "A common mistake is applying a log transformation without considering the underlying data. Log transformations are not suitable for data with zero or negative values. Additionally, interpreting the coefficients of a log-transformed model requires careful attention to the units and scaling."
+      },
+      "context": "Common Transformations: Linearizing Relationships",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Core concept for linearizing relationships; essential for regression analysis."
+      },
+      "example": "A social media company observes that the number of new users signing up on their platform increases rapidly in the early stages but then slows down as the market becomes saturated. They apply a log transformation to the number of users, resulting in the model: log(Users) = 2.0 + 0.2 * Time. This transformation allows them to more accurately predict user growth in the long term, even as the rate of new sign-ups decreases.",
+      "mermaid_diagrams": {
+        "concise": "graph LR; Y[Y (Original)] -->|log()| Y_log[log(Y)]; X[X (Original)] -->|log()| X_log[log(X)];",
+        "analogy": "graph LR; LinearScale[Linear Scale] -->|Distorts Extremes| NonLinearData[Non-Linear Data]; LogScale[Log Scale] -->|Represents Proportionally| NonLinearData;",
+        "eli5": "graph LR; Input[Air Input] -->|Harder to Blow| Balloon[Balloon Growth slows]; Input -->|Easier Measurement| LogBalloon[Log-Transformed Balloon grows steadily];",
+        "real_world_use_case": "graph LR; AdvertisingSpend[Advertising Spend] -->|Diminishing Returns| Sales[Sales Growth]; AdvertisingSpendLog[Log(Advertising Spend)] -->|Linear Relationship| Sales;",
+        "common_mistakes": "graph LR; ApplyLogTransform[Apply Log Transform] -->|Without checking data| InaccurateModel[Inaccurate Model];",
+        "example": "graph LR; Time[Time] --> NewUsers[New Users (Exponential)]; Time -->|Log Transform| LogUsers[Log(New Users) - Linear];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph LogTransformation {\n    rankdir=LR;\n    node [shape=box];\n    Y [label=\"Y\"];\n    logY [label=\"log(Y)\"];\n    X [label=\"X\"];\n    logX [label=\"log(X)\"];\n\n    Y -> logY [label=\"Apply Logarithm\"];\n    X -> logX [label=\"Apply Logarithm\"];\n}",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "When is a logarithmic transformation most appropriate in regression analysis?",
+          "options": [
+            "A. When the data exhibits a linear relationship",
+            "B. When the data exhibits exponential growth or a decreasing rate of return",
+            "C. When the data has constant variance",
+            "D. When the data contains only categorical variables"
+          ],
+          "answer": "B. When the data exhibits exponential growth or a decreasing rate of return"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company tracks its sales ($Y$) over time ($X$). The sales growth is rapid initially but slows down as the market becomes saturated. A scatter plot shows a curve. Which transformation is most appropriate?",
+          "options": [
+            "A. Inverse transformation (1/X)",
+            "B. Polynomial transformation (X^2)",
+            "C. Logarithmic transformation (log(Y) or log(X))",
+            "D. No transformation is needed"
+          ],
+          "answer": "C. Logarithmic transformation (log(Y) or log(X))"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps for applying a logarithmic transformation in the correct order:",
           "items": [
             "Interpret the coefficients of the transformed model.",
-            "Apply the logarithmic transformation to the appropriate variable(s).",
-            "Check if the data is suitable for a log transformation (no zero or negative values).",
+            "Visualize the data to assess non-linearity.",
+            "Apply the logarithmic transformation to the variable.",
             "Fit the regression model to the transformed data."
           ],
           "answer": [
-            "Check if the data is suitable for a log transformation (no zero or negative values).",
-            "Apply the logarithmic transformation to the appropriate variable(s).",
+            "Visualize the data to assess non-linearity.",
+            "Apply the logarithmic transformation to the variable.",
             "Fit the regression model to the transformed data.",
             "Interpret the coefficients of the transformed model."
           ]
         },
         {
           "type": "categorization",
-          "question": "Categorize the following regression models based on whether they involve a logarithmic transformation of the dependent variable (Y):",
+          "question": "Categorize the following models based on whether they use a logarithmic transformation on the dependent variable (Y) or the independent variable (X):",
           "items": [
             "log(Y) = b0 + b1 * X",
-            "Y = b0 + b1 * X",
+            "Y = b0 + b1 * log(X)",
             "log(Y) = b0 + b1 * log(X)",
-            "Y = b0 + b1 * X + b2 * X^2"
+            "Y = b0 + b1 * X"
           ],
           "categories": [
             "Log-Y Model",
-            "Non-Log-Y Model"
+            "Log-X Model"
           ],
           "answer": {
             "Log-Y Model": [
               "log(Y) = b0 + b1 * X",
               "log(Y) = b0 + b1 * log(X)"
             ],
-            "Non-Log-Y Model": [
-              "Y = b0 + b1 * X",
-              "Y = b0 + b1 * X + b2 * X^2"
+            "Log-X Model": [
+              "Y = b0 + b1 * log(X)"
             ]
           }
         },
         {
           "type": "matching",
-          "question": "Match each model type with its appropriate interpretation:",
+          "question": "Match each model with its interpretation:",
           "premises": [
-            "1. Log-Y Model",
-            "2. Log-Log Model"
+            "1. log(Y) = b0 + b1 * X",
+            "2. log(Y) = b0 + b1 * log(X)"
           ],
           "responses": [
-            "A. A one percent change in X is associated with a certain percentage change in Y.",
+            "A. A one percent change in X is associated with a b1 percent change in Y.",
             "B. A one-unit change in X is associated with a percentage change in Y."
           ],
           "answer": [
@@ -679,134 +388,119 @@
       "tags": [
         "logarithmic transformation",
         "regression analysis",
-        "non-linear models",
-        "exponential growth",
-        "elasticity"
+        "linearization"
       ],
       "source_chunk": "DAA_lec_1_3",
       "diagram_image_paths": {
         "concise": "",
-        "analogy": "diagrams/DAA_lec_1_3_card_005_analogy.png",
-        "eli5": "diagrams/DAA_lec_1_3_card_005_eli5.png",
-        "real_world_use_case": "diagrams/DAA_lec_1_3_card_005_real_world_use_case.png",
-        "common_mistakes": "",
-        "example": ""
-      },
-      "math_image_paths": {
-        "concise": "",
-        "analogy": "",
-        "eli5": "",
+        "analogy": "diagrams/DAA_lec_1_3_card_003_analogy.png",
+        "eli5": "diagrams/DAA_lec_1_3_card_003_eli5.png",
         "real_world_use_case": "",
-        "common_mistakes": "",
+        "common_mistakes": "diagrams/DAA_lec_1_3_card_003_common_mistakes.png",
         "example": ""
       }
     },
     {
       "type": "concept",
-      "question": "What is an inverse transformation and when is it appropriate in regression analysis?",
+      "question": "What is an inverse transformation in regression analysis, and when is it typically used?",
       "answers": {
-        "concise": "An inverse transformation involves taking the reciprocal of either the dependent variable (Y) or independent variable (X). It is used when the relationship between X and Y approaches an asymptote, indicating a capped or limited effect.",
-        "analogy": "Imagine trying to fill a bucket that's already almost full. Each additional cup of water makes less of a difference in how full the bucket is.  An inverse transformation is like re-scaling the bucket so that each cup appears to have a more consistent effect, making it easier to model.",
-        "eli5": "Think about how fast you can run. You might get faster and faster for a while, but eventually, you can't run much faster no matter how hard you try. That's like an asymptote. An inverse transformation helps us model things that have a limit like that.",
-        "real_world_use_case": "In modeling the relationship between advertising spend (X) and brand awareness (Y), awareness might increase rapidly at first, but eventually, further spending yields minimal additional awareness. An inverse transformation on brand awareness (1/Y) can help linearize the relationship for better modeling.",
-        "common_mistakes": "A common mistake is using an inverse transformation without understanding its implications. It's not suitable for data that includes zero values, as the reciprocal of zero is undefined. Also, interpreting the coefficients after the inverse transformation requires careful consideration of how the transformation affects the relationship."
+        "concise": "An inverse transformation involves transforming a variable by taking its reciprocal (e.g., 1/X or 1/Y). It's used when the relationship between variables approaches an asymptote or exhibits a decreasing rate of change, where the effect of the independent variable diminishes as its value increases.",
+        "analogy": "Think of an inverse transformation like filling a container. At first, the container fills up quickly, but as it gets closer to full, it takes more and more effort to add the same amount of liquid. The inverse transformation helps model this diminishing return effect.",
+        "eli5": "Imagine you're trying to run faster and faster, but it gets harder to improve your time the faster you go. An inverse transformation is like changing the way you measure your speed so that it looks like you're making the same amount of progress all the time.",
+        "real_world_use_case": "In manufacturing, the time it takes to complete a task might decrease rapidly with initial investments in training, but further investments yield smaller and smaller improvements. An inverse transformation can model this diminishing return on training investment.",
+        "common_mistakes": "A common mistake is using an inverse transformation without considering data with zero values, as 1/0 is undefined. Also, be cautious when interpreting the coefficients of the transformed model, as they relate to the inverse of the original variable."
       },
-      "context": "Regression Analysis: Transformations",
+      "context": "Common Transformations: Linearizing Relationships",
       "relevance_score": {
         "score": 7,
-        "justification": "Important transformation for handling asymptotic relationships; useful for modeling saturation effects."
+        "justification": "Important transformation for specific types of non-linear relationships."
       },
-      "example": "A company models the time it takes to complete a task (Y) as the number of employees (X) increases. Initially, adding employees significantly reduces the time, but the reduction diminishes as more employees are added. The model is Y = 10 + 5*(1/X). This implies that as the number of employees (X) increases, the time it takes to complete the task (Y) decreases, approaching a lower limit. The inverse transformation on X captures the decreasing rate of return.",
+      "example": "A company analyzes the relationship between the number of customer service representatives ($X$) and the average customer wait time ($Y$). The wait time decreases rapidly with the first few representatives but then plateaus. They apply an inverse transformation to the number of representatives, resulting in the model: Y = b0 + b1 * (1/X). This allows them to model the diminishing returns of adding more representatives.",
       "mermaid_diagrams": {
-        "concise": "flowchart TD\n    A[Original Variables] --> B[Y - Dependent Variable]\n    A --> C[X - Independent Variable]\n    B --> D[Apply 1/Y]\n    C --> E[Apply 1/X]\n    D --> F[Regression Model]\n    E --> F\n    F --> G[Asymptotic Relationship]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px\n    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "analogy": "flowchart LR\n    A[Almost Full Bucket] --> B[Each Cup Makes Less Difference]\n    B --> C[Re-scale the Bucket]\n    C --> D[Consistent Effect Per Cup]\n    style A fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style B fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "eli5": "flowchart TD\n    A[Start Running] --> B[Get Faster Quickly]\n    A --> C[Keep Running More]\n    B --> D[Speed Increases Slow Down]\n    C --> D\n    D --> E[Inverse Transform]\n    E --> F[Modelable Speed Pattern]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style D fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style E fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "real_world_use_case": "flowchart TD\n    A[Advertising Spend & Brand Awareness] --> B[Diminishing Returns Pattern]\n    B --> C[Apply Inverse Transform 1/Y]\n    C --> D[Fit Regression Model]\n    D --> E[Predict Brand Awareness]\n    E --> F[Marketing Strategy]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px",
-        "common_mistakes": "flowchart TD\n    A[Apply Inverse Transform] --> B{Check for Zero Values?}\n    B -->|✅ YES| C[No Zeros Found]\n    B -->|❌ NO| D[Skip Checking]\n    C --> E[Safe to Apply 1/X]\n    D --> F[Apply to Zero Values]\n    F --> G[❌ Error! Division by Zero]\n    E --> H[✅ Successful Transformation]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style D fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style G fill:#ffebee,stroke:#c62828,stroke-width:2px\n    style H fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "example": "flowchart TD\n    A[Task Completion Time vs Employees] --> B[Diminishing Returns]\n    B --> C[Apply Inverse Transform 1/X]\n    C --> D[Y = 10 + 5×(1/X)]\n    D --> E[Decreasing Rate of Return]\n    E --> F[Optimal Team Size]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px"
+        "concise": "graph LR; X[X (Original)] -->|1/X| X_inv[1/X]; Y[Y (Original)] -->|1/Y| Y_inv[1/Y];",
+        "analogy": "graph LR; InitialEffort[Initial Effort] -->|Fills Quickly| Container[Container Filling]; LaterEffort[Later Effort] -->|Fills Slowly| Container;",
+        "eli5": "graph LR; Training[Training] -->|Big Improvement Initially| RunningSpeed[Running Speed]; MoreTraining[More Training] -->|Small Improvement Later| RunningSpeed;",
+        "real_world_use_case": "graph LR; Reps[Customer Service Reps] -->|Decreasing Wait Time| WaitTime[Customer Wait Time]; InvReps[1/Reps] -->|Linear Relationship| WaitTime;",
+        "common_mistakes": "graph LR; ApplyInvTransform[Apply Inverse Transform] -->|Without checking for zero| UndefinedResult[Undefined Result];",
+        "example": "graph LR; NumReps[Number of Reps] --> WaitTimeReduction[Wait Time Reduction (Diminishing)]; NumReps -->|Inverse Transform| InvNumReps[1/Number of Reps] --> WaitTimeReductionLinear[Wait Time Reduction - Linear];"
       },
       "math_visualizations": {
-        "concise": "/* layout=dot */\ndigraph InverseTransformation {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.2];\n  node [shape=box, style=\"rounded,filled\", fontsize=14, margin=\"0.5,0.3\", width=2.5, height=1];\n  \n  formula [label=\"Y = b₀ + b₁(1/X)\", fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2, fontsize=15, width=3, height=1.2];\n  \n  asymptote [label=\"📊 Asymptotic\\nPattern\", fillcolor=\"#ffcdd2\"];\n  linear [label=\"📏 Linear\\nPattern\", fillcolor=\"#c8e6c9\"];\n  \n  asymptote -> formula [penwidth=2, color=\"#d32f2f\"];\n  formula -> linear [penwidth=2, color=\"#388e3c\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph BucketAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  full_bucket [label=\"🪣 Almost Full Bucket\\n(Diminishing Effect)\", fillcolor=\"#ffcdd2\"];\n  each_cup [label=\"☕ Each Cup\\nMakes Less Difference\", fillcolor=\"#ffecb3\"];\n  rescale [label=\"⚖️ Re-scale Bucket\\n(Inverse Transform)\", fillcolor=\"#f3e5f5\"];\n  consistent [label=\"📏 Consistent Effect\\nPer Cup\", fillcolor=\"#c8e6c9\"];\n  \n  full_bucket -> each_cup [penwidth=2, color=\"#f57c00\"];\n  each_cup -> rescale [penwidth=2, color=\"#7b1fa2\"];\n  rescale -> consistent [penwidth=2, color=\"#388e3c\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph RunningAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  start_running [label=\"🏃 Start Running\\nGet Faster Quickly\", fillcolor=\"#e3f2fd\"];\n  keep_running [label=\"🏃‍♂️ Keep Running\\nSpeed Gains Slow Down\", fillcolor=\"#ffecb3\"];\n  speed_limit [label=\"⚡ Speed Limit\\nCan't Get Much Faster\", fillcolor=\"#ffcdd2\"];\n  inverse_magic [label=\"✨ Inverse Magic\\nMakes Pattern Linear\", fillcolor=\"#f3e5f5\"];\n  modelable [label=\"📏 Modelable\\nSpeed Pattern\", fillcolor=\"#c8e6c9\"];\n  \n  start_running -> keep_running [penwidth=2, color=\"#f57c00\"];\n  keep_running -> speed_limit [penwidth=2, color=\"#d32f2f\"];\n  speed_limit -> inverse_magic [penwidth=2, color=\"#7b1fa2\"];\n  inverse_magic -> modelable [penwidth=2, color=\"#388e3c\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph BrandAwarenessExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  ad_spend [label=\"💰 Advertising Spend\\nvs Brand Awareness\", fillcolor=\"#e3f2fd\", width=3];\n  diminishing [label=\"📉 Diminishing Returns\\nMore Spend, Less Effect\", fillcolor=\"#ffcdd2\", width=3.5];\n  inverse_transform [label=\"🔄 Inverse Transform\\n1/Y (Brand Awareness)\", fillcolor=\"#f3e5f5\", width=3.5];\n  linear_model [label=\"📏 Linear Model\\nEasier to Predict\", fillcolor=\"#c8e6c9\", width=3];\n  strategy [label=\"🎯 Marketing Strategy\\nOptimal Spend Level\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  ad_spend -> diminishing [penwidth=2, color=\"#d32f2f\"];\n  diminishing -> inverse_transform [penwidth=2, color=\"#7b1fa2\"];\n  inverse_transform -> linear_model [penwidth=2, color=\"#388e3c\"];\n  linear_model -> strategy [penwidth=2, color=\"#2e7d32\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph InverseMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  apply_inverse [label=\"🔄 Apply Inverse Transform\", fillcolor=\"#e3f2fd\", width=3];\n  check_zeros [label=\"✅ Check for Zeros\\n(Correct Approach)\", fillcolor=\"#c8e6c9\", width=3.5];\n  skip_check [label=\"❌ Skip Checking\\n(Common Mistake)\", fillcolor=\"#ffcdd2\", width=3.5];\n  safe_transform [label=\"🎯 Safe Transformation\\n1/X (no zeros)\", fillcolor=\"#e8f5e9\", width=3.5];\n  division_error [label=\"💥 Division by Zero!\\n1/0 = Undefined\", fillcolor=\"#ffebee\", width=3.5];\n  \n  apply_inverse -> check_zeros [penwidth=2, color=\"#388e3c\"];\n  apply_inverse -> skip_check [penwidth=2, color=\"#d32f2f\", style=dashed];\n  check_zeros -> safe_transform [penwidth=2, color=\"#2e7d32\"];\n  skip_check -> division_error [penwidth=2, color=\"#c62828\"];\n}",
-        "example": "/* layout=dot */\ndigraph TaskExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  task_data [label=\"👥 Task Time\\nvs Employees\", fillcolor=\"#e3f2fd\"];\n  diminishing [label=\"📉 Diminishing Returns\\nMore People, Less Help\", fillcolor=\"#ffcdd2\"];\n  inverse_model [label=\"🔄 Inverse Model\\nY = 10 + 5×(1/X)\", fillcolor=\"#f3e5f5\"];\n  optimal [label=\"🎯 Optimal Team\\nSize Analysis\", fillcolor=\"#c8e6c9\"];\n  \n  task_data -> diminishing [penwidth=2, color=\"#d32f2f\"];\n  diminishing -> inverse_model [penwidth=2, color=\"#7b1fa2\"];\n  inverse_model -> optimal [penwidth=2, color=\"#388e3c\"];\n}"
+        "concise": "/* layout=dot */\ndigraph InverseTransformation {\n    rankdir=LR;\n    node [shape=box];\n    X [label=\"X\"];\n    inverseX [label=\"1/X\"];\n\n    X -> inverseX [label=\"Apply Inverse\"];\n}",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
       },
       "recall_questions": [
         {
           "type": "mcq",
-          "question": "When is an inverse transformation MOST appropriate in regression analysis?",
+          "question": "When is an inverse transformation most appropriate in regression analysis?",
           "options": [
-            "A. When the relationship between X and Y is linear.",
-            "B. When the relationship between X and Y exhibits exponential growth.",
-            "C. When the relationship between X and Y approaches an asymptote.",
-            "D. When the data contains negative values."
+            "A. When the data exhibits a linear relationship",
+            "B. When the relationship approaches an asymptote",
+            "C. When the data has constant variance",
+            "D. When the data contains only categorical variables"
           ],
-          "answer": "C. When the relationship between X and Y approaches an asymptote."
+          "answer": "B. When the relationship approaches an asymptote"
         },
         {
           "type": "scenario_mcq",
-          "scenario": "A researcher is modeling the relationship between the number of hours studied (X) and the exam score (Y). The score increases rapidly with initial study hours but plateaus as study hours increase further.",
-          "question": "Which transformation is MOST suitable for modeling this saturation effect?",
+          "scenario": "A researcher studies the relationship between fertilizer amount ($X$) and crop yield ($Y$).  The yield increases quickly with initial fertilizer, but the rate of increase slows down significantly with higher amounts. Which transformation is most suitable?",
           "options": [
-            "A. Linear transformation",
-            "B. Logarithmic transformation",
+            "A. Logarithmic transformation",
+            "B. Polynomial transformation",
             "C. Inverse transformation",
-            "D. Polynomial transformation"
+            "D. No transformation is needed"
           ],
           "answer": "C. Inverse transformation"
         },
         {
           "type": "sequencing",
-          "question": "Place the following steps for applying an inverse transformation in regression analysis in the correct order:",
+          "question": "Place the following steps for applying an inverse transformation in the correct order:",
           "items": [
             "Interpret the coefficients of the transformed model.",
-            "Apply the inverse transformation to the appropriate variable(s).",
-            "Check if the data is suitable for an inverse transformation (no zero values).",
+            "Visualize the data to assess the asymptotic relationship.",
+            "Apply the inverse transformation to the variable.",
             "Fit the regression model to the transformed data."
           ],
           "answer": [
-            "Check if the data is suitable for an inverse transformation (no zero values).",
-            "Apply the inverse transformation to the appropriate variable(s).",
+            "Visualize the data to assess the asymptotic relationship.",
+            "Apply the inverse transformation to the variable.",
             "Fit the regression model to the transformed data.",
             "Interpret the coefficients of the transformed model."
           ]
         },
         {
           "type": "categorization",
-          "question": "Categorize the following regression models based on whether they involve an inverse transformation of the independent variable (X):",
+          "question": "Classify each of the following as using an inverse transformation on the independent variable (X) or the dependent variable (Y):",
           "items": [
             "Y = b0 + b1 * (1/X)",
-            "Y = b0 + b1 * X",
-            "Y = b0 + b1 * log(X)",
-            "Y = b0 + b1 * (1/X) + b2 * X^2"
+            "(1/Y) = b0 + b1 * X"
           ],
           "categories": [
             "Inverse-X Model",
-            "Non-Inverse-X Model"
+            "Inverse-Y Model"
           ],
           "answer": {
             "Inverse-X Model": [
-              "Y = b0 + b1 * (1/X)",
-              "Y = b0 + b1 * (1/X) + b2 * X^2"
+              "Y = b0 + b1 * (1/X)"
             ],
-            "Non-Inverse-X Model": [
-              "Y = b0 + b1 * X",
-              "Y = b0 + b1 * log(X)"
+            "Inverse-Y Model": [
+              "(1/Y) = b0 + b1 * X"
             ]
           }
         },
         {
           "type": "matching",
-          "question": "Match each scenario with the MOST appropriate transformation:",
+          "question": "Match each situation with the appropriate transformation to linearize the relationship:",
           "premises": [
-            "1. Exponential Growth",
-            "2. Asymptotic Relationship"
+            "1. Time to complete a task decreases rapidly with initial training.",
+            "2. Website loading time approaches a minimum value as server capacity increases."
           ],
           "responses": [
-            "A. Inverse Transformation",
-            "B. Logarithmic Transformation"
+            "A. Inverse transformation on server capacity.",
+            "B. Inverse transformation on training."
           ],
           "answer": [
             "1-B",
@@ -817,134 +511,123 @@
       "tags": [
         "inverse transformation",
         "regression analysis",
-        "non-linear models",
-        "asymptotic relationship",
-        "capped effect"
+        "asymptotic relationship"
       ],
       "source_chunk": "DAA_lec_1_3",
       "diagram_image_paths": {
-        "concise": "diagrams/DAA_lec_1_3_card_006_concise.png",
-        "analogy": "diagrams/DAA_lec_1_3_card_006_analogy.png",
-        "eli5": "diagrams/DAA_lec_1_3_card_006_eli5.png",
-        "real_world_use_case": "",
-        "common_mistakes": "",
-        "example": ""
-      },
-      "math_image_paths": {
         "concise": "",
-        "analogy": "",
-        "eli5": "",
-        "real_world_use_case": "",
-        "common_mistakes": "",
+        "analogy": "diagrams/DAA_lec_1_3_card_004_analogy.png",
+        "eli5": "diagrams/DAA_lec_1_3_card_004_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_1_3_card_004_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_1_3_card_004_common_mistakes.png",
         "example": ""
       }
     },
     {
       "type": "concept",
-      "question": "What is a polynomial transformation, specifically the quadratic model, and when is it appropriate in regression analysis?",
+      "question": "What is a polynomial transformation, specifically the quadratic model, and when is it used in regression analysis?",
       "answers": {
-        "concise": "A polynomial transformation involves adding polynomial terms (e.g., X^2, X^3) to the regression model. The quadratic model (Y = b0 + b1*X + b2*X^2) is a common form used to model curvilinear relationships with a single turning point (maximum or minimum).",
-        "analogy": "Think of a polynomial transformation like using flexible building blocks to create a curved line. A straight line needs only two points, but a curve needs more blocks to bend it, like adding X^2 to capture a U-shape.",
-        "eli5": "Imagine throwing a ball. It goes up and then comes down. A quadratic model is like a special math equation that can draw that curved path of the ball going up and down, instead of just a straight line.",
-        "real_world_use_case": "Consider modeling the yield of a crop (Y) as a function of fertilizer amount (X). Initially, increasing fertilizer increases yield, but beyond a certain point, excessive fertilizer reduces yield. A quadratic model can capture this inverted U-shaped relationship.",
-        "common_mistakes": "A common mistake is using a quadratic model without visually inspecting the data. Overfitting can occur if a quadratic model is used when a linear model is sufficient. Also, interpreting the coefficients requires understanding that the effect of X on Y depends on both b1 and b2."
+        "concise": "A polynomial transformation involves adding polynomial terms (e.g., X^2, X^3) of the independent variable to the regression model. The quadratic model, $\\hat{Y} = b_0 + b_1 X + b_2 X^2$, is used to model curvilinear relationships with a single turning point (maximum or minimum).",
+        "analogy": "Think of a quadratic model like throwing a ball in the air. The ball goes up (positive effect), reaches a peak, and then comes down (negative effect). The quadratic model captures this 'up and down' or 'down and up' behavior.",
+        "eli5": "Imagine you're watering a plant. A little water helps it grow a lot, but too much water can hurt it. A quadratic model is like a curve that shows how much the plant likes different amounts of water, with a sweet spot in the middle.",
+        "real_world_use_case": "In agriculture, the relationship between fertilizer amount and crop yield often follows a quadratic pattern. Initially, increasing fertilizer leads to higher yields, but beyond a certain point, adding more fertilizer can damage the crops, reducing the yield. A quadratic model can identify the optimal fertilizer level.",
+        "common_mistakes": "A common mistake is overfitting the data by using high-degree polynomials when a simpler model would suffice. Also, interpreting the coefficients in a polynomial model can be challenging, as the effect of X on Y depends on the values of both X and X^2."
       },
-      "context": "Regression Analysis: Transformations",
+      "context": "Polynomial Transformation: Curvature with Limits",
       "relevance_score": {
         "score": 8,
-        "justification": "Important for modeling non-monotonic relationships; quadratic model is a frequently used polynomial transformation."
+        "justification": "Important for modeling non-linear relationships with turning points."
       },
-      "example": "An operations team analyzes the relationship between machine speed (X) and the number of defects produced (Y). The model is Y = 10 - 0.5*X + 0.01*X^2. This suggests that as speed increases, defects initially decrease (due to the negative coefficient of X), but at higher speeds, the defect rate increases (due to the positive coefficient of X^2). This quadratic model captures the non-linear relationship between speed and defects, indicating an optimal speed for minimizing defects.",
+      "example": "An online advertising company analyzes the relationship between ad frequency ($X$) and click-through rate ($Y$). Initially, increasing ad frequency increases the click-through rate, but beyond a certain point, users become annoyed, and the click-through rate declines. A quadratic model, Y = 0.1 + 0.05X - 0.002X^2, captures this inverted U-shaped relationship, helping the company optimize ad frequency.",
       "mermaid_diagrams": {
-        "concise": "flowchart TD\n    A[Original Variables] --> B[X - Independent Variable]\n    A --> C[Y - Dependent Variable]\n    B --> D[Create X²]\n    B --> E[Regression Model]\n    D --> E\n    C --> E\n    E --> F[Quadratic Relationship Y = b₀ + b₁X + b₂X²]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style C fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "analogy": "flowchart LR\n    A[Building Blocks] --> B[Straight Line]\n    A --> C[Curved Line]\n    B --> D[Simple Model - 2 Points]\n    C --> E[Complex Model - More Blocks]\n    E --> F[X² Term Added]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style C fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px",
-        "eli5": "flowchart TD\n    A[Throw Ball] --> B[Ball Goes Up]\n    A --> C[Ball Comes Down]\n    B --> D[Curved Path]\n    C --> D\n    D --> E[Quadratic Model Captures Curve]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style C fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px",
-        "real_world_use_case": "flowchart TD\n    A[Fertilizer & Crop Yield Study] --> B[Collect Data]\n    B --> C[Observe Inverted U-Shape]\n    C --> D[Fit Quadratic Model]\n    D --> E[Y = b₀ + b₁X + b₂X²]\n    E --> F[Find Optimal Fertilizer Amount]\n    F --> G[Maximize Crop Yield]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style G fill:#fff9c4,stroke:#f9a825,stroke-width:2px",
-        "common_mistakes": "flowchart TD\n    A[Apply Quadratic Model] --> B{Inspect Data First?}\n    B -->|✅ YES| C[Check for Curvilinear Pattern]\n    B -->|❌ NO| D[Skip Data Inspection]\n    C --> E[Appropriate for Quadratic]\n    D --> F[Apply Without Checking]\n    F --> G[❌ Overfitting Risk]\n    E --> H[✅ Good Model Fit]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style D fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style F fill:#ffecb3,stroke:#f57c00,stroke-width:2px\n    style G fill:#ffebee,stroke:#c62828,stroke-width:2px\n    style H fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px",
-        "example": "flowchart TD\n    A[Machine Speed vs Defects] --> B[Collect Data]\n    B --> C[U-Shaped Relationship]\n    C --> D[Fit Quadratic Model]\n    D --> E[Y = 10 - 0.5X + 0.01X²]\n    E --> F[Find Optimal Speed]\n    F --> G[Minimize Defects]\n    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    style C fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px\n    style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px\n    style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    style G fill:#fff9c4,stroke:#f9a825,stroke-width:2px"
+        "concise": "graph TD; X[X] --> X2[X^2]; X2 --> Model[Quadratic Model];",
+        "analogy": "graph LR; Upward[Ball thrown Upward] --> Peak[Peak Height]; Peak --> Downward[Ball falls Downward];",
+        "eli5": "graph LR; LittleWater[Little Water] --> HappyPlant[Happy Plant Grows]; TooMuchWater[Too Much Water] --> SadPlant[Sad Plant Withers];",
+        "real_world_use_case": "graph LR; Fertilizer[Fertilizer Amount] --> IncreaseYield[Yield Increases]; Fertilizer -->|Too Much| DecreaseYield[Yield Decreases];",
+        "common_mistakes": "graph LR; HighDegreePoly[High Degree Polynomial] --> Overfitting[Overfitting Data];",
+        "example": "graph LR; AdFrequency[Ad Frequency] --> IncreaseCTR[Click-Through Rate Increases]; AdFrequency -->|Too Frequent| DecreaseCTR[Click-Through Rate Decreases];"
       },
       "math_visualizations": {
-        "concise": "/* layout=dot */\ndigraph QuadraticModel {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.2];\n  node [shape=box, style=\"rounded,filled\", fontsize=13, margin=\"0.5,0.3\", width=2.8, height=1];\n  \n  quadratic [label=\"Y = b₀ + b₁X + b₂X²\", fillcolor=\"#e3f2fd\", color=\"#1976d2\", penwidth=2, fontsize=14, width=3.5, height=1.2];\n  \n  linear [label=\"b₁X\\nLinear\", fillcolor=\"#c8e6c9\", width=2];\n  quad [label=\"b₂X²\\nCurve\", fillcolor=\"#fff3e0\", width=2];\n  turning [label=\"🎯 Turning\\nPoint\", fillcolor=\"#e8f5e9\", width=2];\n  \n  quadratic -> linear [penwidth=2, color=\"#388e3c\"];\n  quadratic -> quad [penwidth=2, color=\"#f57c00\"];\n  quad -> turning [penwidth=2, color=\"#2e7d32\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph BuildingAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  building_blocks [label=\"🧱 Building Blocks\", fillcolor=\"#e3f2fd\"];\n  straight_line [label=\"📏 Straight Line\\n(2 Points)\", fillcolor=\"#c8e6c9\"];\n  curved_line [label=\"🌀 Curved Line\\n(More Complex)\", fillcolor=\"#ffcdd2\"];\n  simple_model [label=\"🔧 Simple Model\\nLinear Relationship\", fillcolor=\"#e8f5e9\"];\n  complex_model [label=\"⚙️ Complex Model\\nX² Term Added\", fillcolor=\"#fff3e0\"];\n  \n  building_blocks -> straight_line [penwidth=2, color=\"#388e3c\"];\n  building_blocks -> curved_line [penwidth=2, color=\"#d32f2f\"];\n  straight_line -> simple_model [penwidth=2, color=\"#2e7d32\"];\n  curved_line -> complex_model [penwidth=2, color=\"#f57c00\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph BallAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  throw_ball [label=\"⚾ Throw Ball\", fillcolor=\"#e3f2fd\"];\n  ball_up [label=\"🚀 Ball Goes Up\\n(Positive slope)\", fillcolor=\"#c8e6c9\"];\n  ball_down [label=\"⬇️ Ball Comes Down\\n(Negative slope)\", fillcolor=\"#ffecb3\"];\n  curved_path [label=\"🌈 Curved Path\\n(Parabola)\", fillcolor=\"#f3e5f5\"];\n  quadratic_captures [label=\"📊 Quadratic Model\\nCaptures This Curve\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  throw_ball -> ball_up [penwidth=2, color=\"#388e3c\"];\n  throw_ball -> ball_down [penwidth=2, color=\"#f57c00\"];\n  ball_up -> curved_path [penwidth=2, color=\"#7b1fa2\"];\n  ball_down -> curved_path [penwidth=2, color=\"#7b1fa2\"];\n  curved_path -> quadratic_captures [penwidth=2, color=\"#2e7d32\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph FertilizerExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  fertilizer_study [label=\"🌱 Fertilizer Study\\nAmount vs Crop Yield\", fillcolor=\"#e3f2fd\", width=3];\n  inverted_u [label=\"📈 Inverted U-Shape\\nToo Little: Low Yield\\nToo Much: Toxic\", fillcolor=\"#ffcdd2\", width=3.5];\n  quadratic_fit [label=\"📊 Quadratic Model\\nY = b₀ + b₁X + b₂X²\", fillcolor=\"#f3e5f5\", width=3.5];\n  optimal_amount [label=\"🎯 Optimal Amount\\nMaximize Yield\", fillcolor=\"#c8e6c9\", width=3];\n  farming_decision [label=\"🚜 Farming Decision\\nUse Optimal Fertilizer\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  fertilizer_study -> inverted_u [penwidth=2, color=\"#d32f2f\"];\n  inverted_u -> quadratic_fit [penwidth=2, color=\"#7b1fa2\"];\n  quadratic_fit -> optimal_amount [penwidth=2, color=\"#388e3c\"];\n  optimal_amount -> farming_decision [penwidth=2, color=\"#2e7d32\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph QuadraticMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  apply_quadratic [label=\"🔄 Apply Quadratic Model\", fillcolor=\"#e3f2fd\", width=3];\n  inspect_data [label=\"✅ Inspect Data First\\n(Correct Approach)\", fillcolor=\"#c8e6c9\", width=3.5];\n  skip_inspection [label=\"❌ Skip Data Inspection\\n(Common Mistake)\", fillcolor=\"#ffcdd2\", width=3.5];\n  curvilinear [label=\"📈 Curvilinear Pattern\\nAppropriate for Quadratic\", fillcolor=\"#e8f5e9\", width=3.5];\n  overfitting [label=\"⚠️ Overfitting Risk\\nQuadratic on Linear Data\", fillcolor=\"#ffebee\", width=3.5];\n  \n  apply_quadratic -> inspect_data [penwidth=2, color=\"#388e3c\"];\n  apply_quadratic -> skip_inspection [penwidth=2, color=\"#d32f2f\", style=dashed];\n  inspect_data -> curvilinear [penwidth=2, color=\"#2e7d32\"];\n  skip_inspection -> overfitting [penwidth=2, color=\"#c62828\"];\n}",
-        "example": "/* layout=dot */\ndigraph MachineExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  machine_data [label=\"⚙️ Machine Speed\\nvs Defects\", fillcolor=\"#e3f2fd\"];\n  u_shape [label=\"📈 U-Shaped\\nRelationship\", fillcolor=\"#ffcdd2\"];\n  quadratic_model [label=\"📊 Quadratic Model\\nY = 10 - 0.5X + 0.01X²\", fillcolor=\"#f3e5f5\"];\n  optimal_speed [label=\"🎯 Optimal Speed\\nMinimize Defects\", fillcolor=\"#c8e6c9\"];\n  \n  machine_data -> u_shape [penwidth=2, color=\"#d32f2f\"];\n  u_shape -> quadratic_model [penwidth=2, color=\"#7b1fa2\"];\n  quadratic_model -> optimal_speed [penwidth=2, color=\"#388e3c\"];\n}"
+        "concise": "/* layout=dot */\ndigraph QuadraticModel {\n    rankdir=LR;\n    node [shape=box];\n    Y_hat [label=\"Ŷ\"];\n    b0 [label=\"b₀\"];\n    b1X [label=\"b₁X\"];\n    b2X2 [label=\"b₂X²\"];\n    plus1 [label=\"+\", shape=none];\n    plus2 [label=\"+\", shape=none];\n\n    Y_hat -> b0 [label=\"=\", style=bold];\n    Y_hat -> plus1 [style=invis];\n    plus1 -> b1X;\n    plus1 -> plus2 [style=invis];\n    plus2 -> b2X2;\n}",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": "/* layout=neato */\ndigraph QuadraticExample {\n    node [shape=circle, fixedsize=true, width=0.5];\n    graph [splines=true];\n\n    subgraph cluster_axes {\n        style=invis;\n        a [pos=\"0,0!\", label=\"\", width=0.01];\n        b [pos=\"10,0!\", label=\"X\", width=0.01];\n        c [pos=\"0,5!\", label=\"Y\", width=0.01];\n        }\n\n    node [shape=point, width=0.01];\n    p1 [pos=\"1,1!\"];\n    p2 [pos=\"2,3!\"];\n    p3 [pos=\"3,4!\"];\n    p4 [pos=\"4,4.5!\"];\n    p5 [pos=\"5,4.7!\"];\n    p6 [pos=\"6,4.5!\"];\n    p7 [pos=\"7,4!\"];\n    p8 [pos=\"8,3!\"];\n    p9 [pos=\"9,1!\"];\n\n    a -> p1 -> p2 -> p3 -> p4 -> p5 -> p6 -> p7 -> p8 -> p9 -> b;\n    a -> c;\n}"
       },
       "recall_questions": [
         {
           "type": "mcq",
-          "question": "What is the primary characteristic of a relationship that makes a quadratic model appropriate?",
+          "question": "What is the general form of a quadratic model in regression analysis?",
           "options": [
-            "A. The relationship is linear.",
-            "B. The relationship is exponential.",
-            "C. The relationship has a single turning point (maximum or minimum).",
-            "D. The relationship approaches an asymptote."
+            "A. Y = b0 + b1 * X",
+            "B. Y = b0 + b1 * X + b2 * X^2",
+            "C. Y = b0 + b1 / X",
+            "D. log(Y) = b0 + b1 * X"
           ],
-          "answer": "C. The relationship has a single turning point (maximum or minimum)."
+          "answer": "B. Y = b0 + b1 * X + b2 * X^2"
         },
         {
           "type": "scenario_mcq",
-          "scenario": "A company observes that employee productivity increases with training hours up to a certain point, after which further training has little effect or even decreases productivity due to burnout.",
-          "question": "Which model is MOST suitable for representing this relationship?",
+          "scenario": "A farmer wants to determine the optimal amount of fertilizer to use on his crops. He notices that yield increases with more fertilizer up to a point, after which yield starts to decrease. Which model best represents this?",
           "options": [
-            "A. Linear model",
-            "B. Logarithmic model",
-            "C. Inverse model",
-            "D. Quadratic model"
+            "A. Linear Model",
+            "B. Logarithmic Model",
+            "C. Quadratic Model",
+            "D. Exponential Model"
           ],
-          "answer": "D. Quadratic model"
+          "answer": "C. Quadratic Model"
         },
         {
           "type": "sequencing",
-          "question": "Place the following steps for applying a quadratic model in regression analysis in the correct order:",
+          "question": "Place the following steps for building and interpreting a quadratic model in the correct order:",
           "items": [
             "Interpret the coefficients (b0, b1, b2).",
-            "Fit the quadratic model (Y = b0 + b1*X + b2*X^2).",
-            "Create the X^2 term.",
-            "Examine the scatter plot for curvilinear relationship."
+            "Visualize the data to identify a curvilinear relationship with a turning point.",
+            "Fit the quadratic model to the data.",
+            "Add the X^2 term to the regression model."
           ],
           "answer": [
-            "Examine the scatter plot for curvilinear relationship.",
-            "Create the X^2 term.",
-            "Fit the quadratic model (Y = b0 + b1*X + b2*X^2).",
+            "Visualize the data to identify a curvilinear relationship with a turning point.",
+            "Add the X^2 term to the regression model.",
+            "Fit the quadratic model to the data.",
             "Interpret the coefficients (b0, b1, b2)."
           ]
         },
         {
           "type": "categorization",
-          "question": "Categorize the following models based on whether they are linear in parameters:",
+          "question": "Classify each relationship as either 'Linear' or 'Curvilinear' based on whether a quadratic model is appropriate:",
           "items": [
-            "Y = b0 + b1 * X",
-            "Y = b0 + b1 * X + b2 * X^2",
-            "Y = b0 + b1 * sin(X)",
-            "Y = b0 + exp(b1) * X"
+            "Crop yield increases linearly with fertilizer.",
+            "Click-through rate increases with ad frequency up to a point, then decreases.",
+            "Sales increase proportionally with advertising spend.",
+            "Defect rate decreases with machine speed up to a point, then increases."
           ],
           "categories": [
-            "Linear in Parameters",
-            "Non-Linear in Parameters"
+            "Linear",
+            "Curvilinear"
           ],
           "answer": {
-            "Linear in Parameters": [
-              "Y = b0 + b1 * X",
-              "Y = b0 + b1 * X + b2 * X^2",
-              "Y = b0 + b1 * sin(X)"
+            "Linear": [
+              "Crop yield increases linearly with fertilizer.",
+              "Sales increase proportionally with advertising spend."
             ],
-            "Non-Linear in Parameters": [
-              "Y = b0 + exp(b1) * X"
+            "Curvilinear": [
+              "Click-through rate increases with ad frequency up to a point, then decreases.",
+              "Defect rate decreases with machine speed up to a point, then increases."
             ]
           }
         },
         {
           "type": "matching",
-          "question": "Match each term with its definition:",
+          "question": "Match the business application with the scenario where a quadratic model is most appropriate:",
           "premises": [
-            "1. Curvilinear",
-            "2. Linear in Parameters"
+            "1. Advertising effectiveness vs. spending",
+            "2. Crop yield vs. fertilizer amount"
           ],
           "responses": [
-            "A. The coefficients are not functions of the variables.",
-            "B. The relationship between X and Y is not a straight line."
+            "A. Diminishing returns due to potential damage from excessive fertilizer.",
+            "B. Diminishing returns as saturation is reached and customers become annoyed."
           ],
           "answer": [
             "1-B",
@@ -955,94 +638,82 @@
       "tags": [
         "polynomial transformation",
         "quadratic model",
-        "regression analysis",
-        "non-linear models",
-        "curvilinear",
-        "diminishing returns"
+        "curvilinear relationship"
       ],
       "source_chunk": "DAA_lec_1_3",
       "diagram_image_paths": {
-        "concise": "diagrams/DAA_lec_1_3_card_007_concise.png",
-        "analogy": "",
-        "eli5": "diagrams/DAA_lec_1_3_card_007_eli5.png",
-        "real_world_use_case": "diagrams/DAA_lec_1_3_card_007_real_world_use_case.png",
-        "common_mistakes": "",
-        "example": ""
+        "concise": "diagrams/DAA_lec_1_3_card_005_concise.png",
+        "analogy": "diagrams/DAA_lec_1_3_card_005_analogy.png",
+        "eli5": "diagrams/DAA_lec_1_3_card_005_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_1_3_card_005_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_1_3_card_005_common_mistakes.png",
+        "example": "diagrams/DAA_lec_1_3_card_005_example.png"
+      }
+    },
+    {
+      "type": "process",
+      "question": "What are the key steps involved in fitting, predicting, and interpreting a regression model, including transformations?",
+      "answers": {
+        "concise": "The process involves data visualization, model selection (including transformations), coefficient estimation using Least Squares, point prediction, and interpretation of coefficients, especially in transformed models.",
+        "analogy": "Think of building a house. First, you survey the land (data visualization). Then, you choose a blueprint (model selection). Next, you lay the foundation and build the structure (coefficient estimation). Then, you estimate the cost and value (point prediction). Finally, you understand how the house fits the environment and meets the needs (interpretation).",
+        "eli5": "Imagine you're trying to guess how many candies are in a jar. First, you look at the jar (data visualization). Then, you decide if it's a big or small jar (model selection). Next, you count some candies and guess how many more there are (coefficient estimation). Then, you say how many candies you think are in the jar (point prediction). Finally, you explain why you think that number is right (interpretation).",
+        "real_world_use_case": "A marketing team uses this process to predict sales based on advertising spend. They plot sales vs. spend, choose a log-log model, estimate the coefficients, predict future sales based on planned spend, and interpret the elasticity to understand the impact of advertising.",
+        "common_mistakes": "Common mistakes include skipping the data visualization step, choosing an inappropriate model, extrapolating beyond the data range, and misinterpreting the coefficients of transformed models."
       },
-      "math_image_paths": {
+      "context": "Review: Fitting, Prediction, and Transformation",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Summarizes the entire process; essential for understanding regression analysis."
+      },
+      "example": "A data scientist at Netflix wants to predict movie ratings based on user viewing history. They visualize the relationship, apply a polynomial transformation to account for user fatigue, estimate coefficients, predict future ratings, and interpret the model to understand user preferences.",
+      "mermaid_diagrams": {
+        "concise": "flowchart TD; DataViz[Data Visualization] --> ModelSelect[Model Selection/Transformation]; ModelSelect --> CoeffEst[Coefficient Estimation]; CoeffEst --> PointPred[Point Prediction]; PointPred --> Interpretation[Interpretation];",
+        "analogy": "graph LR; SurveyLand[Survey Land] --> ChooseBlueprint[Choose Blueprint]; ChooseBlueprint --> BuildHouse[Build House]; BuildHouse --> EstimateValue[Estimate Value]; EstimateValue --> UnderstandFit[Understand Fit];",
+        "eli5": "graph LR; LookJar[Look at Jar] --> DecideSize[Decide Big/Small]; DecideSize --> CountGuess[Count & Guess]; CountGuess --> SayNumber[Say Number]; SayNumber --> ExplainWhy[Explain Why];",
+        "real_world_use_case": "sequenceDiagram; participant Marketing; participant Model; Marketing->>Model: Plot Sales vs Spend; Model->>Model: Choose Log-Log; Model->>Model: Estimate Coefficients; Marketing->>Model: Planned Spend; Model-->>Marketing: Predicted Sales; Marketing->>Model: Interpret Elasticity;",
+        "common_mistakes": "graph LR; SkipDataViz[Skip Data Visualization] --> InappropriateModel[Inappropriate Model]; Extrapolate[Extrapolate] --> PredictionError[Prediction Error];",
+        "example": "flowchart TD; ViewHistory[User Viewing History] --> Visualize[Visualize Relationship]; Visualize --> PolyTransform[Apply Polynomial Transformation]; PolyTransform --> EstimateCoeff[Estimate Coefficients]; EstimateCoeff --> PredictRating[Predict Movie Rating]; PredictRating --> InterpretModel[Interpret Model];"
+      },
+      "math_visualizations": {
         "concise": "",
         "analogy": "",
         "eli5": "",
         "real_world_use_case": "",
         "common_mistakes": "",
         "example": ""
-      }
-    },
-    {
-      "type": "process",
-      "question": "What are the key steps in the process for predictive modeling, including data visualization and transformation?",
-      "answers": {
-        "concise": "The predictive modeling process involves: 1) Data Visualization to assess linearity; 2) Model Selection/Transformation to linearize relationships or stabilize variance; 3) Coefficient Estimation using Least Squares; 4) Point Prediction using the resulting equation; and 5) Interpretation of the coefficients.",
-        "analogy": "Think of predictive modeling like baking a cake. First, you see what ingredients you have (Data Visualization). Then, you decide what recipe to use or modify (Model Selection/Transformation). Next, you mix the ingredients (Coefficient Estimation). Then, you bake the cake (Point Prediction). Finally, you taste the cake and see if it's good (Interpretation).",
-        "eli5": "Imagine you're trying to guess how many candies are in a jar. First, you look at the jar (Data Visualization). Then, you decide if you can just guess or if you need to count some (Model Selection/Transformation). Then, you count a little and make your guess (Coefficient Estimation). Then you say your guess out loud (Point Prediction). Finally, you check how close you were (Interpretation).",
-        "real_world_use_case": "An e-commerce company wants to predict future sales. They first visualize past sales data to identify trends. Based on these trends, they select an appropriate model (e.g., linear regression with log transformation if sales are growing exponentially). They then estimate the model's coefficients using historical data, predict future sales, and interpret the results to inform marketing strategies.",
-        "common_mistakes": "A common mistake is skipping the data visualization step and blindly applying a model. This can lead to poor model fit and inaccurate predictions. Another mistake is extrapolating beyond the data range without considering the potential for the relationship to change."
-      },
-      "context": "Regression Analysis: Predictive Modeling Process",
-      "relevance_score": {
-        "score": 10,
-        "justification": "Fundamental process for building predictive models; essential for applying regression analysis effectively."
-      },
-      "example": "A real estate company wants to predict house prices based on square footage. They begin by plotting house prices versus square footage, observing a generally linear relationship. They then fit a linear regression model, estimate the coefficients, and use the resulting equation to predict the price of a new house with a given square footage. They must also remember to interpret the slope correctly, understanding that each additional square foot impacts the predicted price.",
-      "mermaid_diagrams": {
-        "concise": "flowchart TD; DataVisualization[Data Visualization] --> ModelSelection[Model Selection/Transformation]; ModelSelection --> CoefficientEstimation[Coefficient Estimation]; CoefficientEstimation --> PointPrediction[Point Prediction]; PointPrediction --> Interpretation[Interpretation];",
-        "analogy": "graph TD; Ingredients[Ingredients] --> Recipe[Recipe/Modification]; Recipe --> Mixing[Mixing]; Mixing --> Baking[Baking]; Baking --> Tasting[Tasting];",
-        "eli5": "graph TD; LookAtJar[Look at Jar] --> DecideGuess[Decide Guess/Count]; DecideGuess --> MakeGuess[Make Guess]; MakeGuess --> SayGuess[Say Guess]; SayGuess --> CheckGuess[Check Guess];",
-        "real_world_use_case": "sequenceDiagram; participant Analyst; participant Database; Analyst->>Database: Visualize Past Sales Data; Database-->>Analyst: Sales Trends; Analyst->>Analyst: Select Model (e.g., Log Transformation); Analyst->>Database: Estimate Coefficients; Database-->>Analyst: Model Coefficients; Analyst->>Analyst: Predict Future Sales; Analyst->>Analyst: Interpret Results for Marketing;",
-        "common_mistakes": "graph TD; Subgraph A [Correct Process] subgraph A1 [Predictive Modeling] A1 --> DataVisualizationCorrect[Data Visualization]; DataVisualizationCorrect --> ModelSelectionCorrect[Model Selection]; end Subgraph B [Incorrect Process] subgraph B1 [Predictive Modeling] B1 --> ModelSelectionIncorrect[Model Selection (Skipping Visualization)]; end ModelSelectionIncorrect --> PoorModelFit[Poor Model Fit and Inaccurate Predictions]; DataVisualizationCorrect --> ModelSelectionCorrect; ModelSelectionCorrect --> CoefficientEstimationCorrect[Coefficient Estimation]; ModelSelectionIncorrect --> CoefficientEstimationIncorrect[Coefficient Estimation];",
-        "example": "flowchart TD; Start --> VisualizeData[Plot House Prices vs. Square Footage]; VisualizeData --> FitLinearModel[Fit Linear Regression Model]; FitLinearModel --> EstimateCoefficients[Estimate Coefficients]; EstimateCoefficients --> PredictHousePrice[Predict House Price]; PredictHousePrice --> InterpretSlope[Interpret Slope]; InterpretSlope --> End;"
-      },
-      "math_visualizations": {
-        "concise": "/* layout=dot */\ndigraph PredictiveProcess {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=0.8];\n  node [shape=box, style=\"rounded,filled\", fontsize=12, margin=\"0.4,0.25\", width=2.8, height=0.8];\n  \n  step1 [label=\"1. Visualize\\nData\", fillcolor=\"#c8e6c9\"];\n  step2 [label=\"2. Select\\nModel\", fillcolor=\"#fff3e0\"];\n  step3 [label=\"3. Estimate\\nCoefficients\", fillcolor=\"#f3e5f5\"];\n  step4 [label=\"4. Predict\\nValues\", fillcolor=\"#fce4ec\"];\n  step5 [label=\"5. Interpret\\nResults\", fillcolor=\"#e8f5e9\"];\n  \n  step1 -> step2 [penwidth=2, color=\"#f57c00\"];\n  step2 -> step3 [penwidth=2, color=\"#7b1fa2\"];\n  step3 -> step4 [penwidth=2, color=\"#c2185b\"];\n  step4 -> step5 [penwidth=2, color=\"#2e7d32\"];\n}",
-        "analogy": "/* layout=dot */\ndigraph CakeAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  baking [label=\"🎂 Baking a Cake\", fillcolor=\"#e3f2fd\"];\n  ingredients [label=\"🥄 See Ingredients\\n(Data Visualization)\", fillcolor=\"#c8e6c9\"];\n  recipe [label=\"📖 Choose Recipe\\n(Model Selection)\", fillcolor=\"#fff3e0\"];\n  mixing [label=\"🥣 Mix Ingredients\\n(Coefficient Estimation)\", fillcolor=\"#f3e5f5\"];\n  bake [label=\"🔥 Bake Cake\\n(Point Prediction)\", fillcolor=\"#fce4ec\"];\n  taste [label=\"😋 Taste & Judge\\n(Interpretation)\", fillcolor=\"#e8f5e9\"];\n  \n  baking -> ingredients [penwidth=2, color=\"#388e3c\"];\n  ingredients -> recipe [penwidth=2, color=\"#f57c00\"];\n  recipe -> mixing [penwidth=2, color=\"#7b1fa2\"];\n  mixing -> bake [penwidth=2, color=\"#c2185b\"];\n  bake -> taste [penwidth=2, color=\"#2e7d32\"];\n}",
-        "eli5": "/* layout=dot */\ndigraph CandyJarAnalogy {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.2];\n  \n  candy_guess [label=\"🍬 Guess Candies\\nin Jar\", fillcolor=\"#e3f2fd\"];\n  look_jar [label=\"👀 Look at Jar\\n(Data Visualization)\", fillcolor=\"#c8e6c9\"];\n  decide_method [label=\"🤔 Decide Method\\n(Model Selection)\", fillcolor=\"#fff3e0\"];\n  count_some [label=\"🔢 Count Some\\n(Coefficient Estimation)\", fillcolor=\"#f3e5f5\"];\n  make_guess [label=\"🎯 Make Guess\\n(Point Prediction)\", fillcolor=\"#fce4ec\"];\n  check_answer [label=\"✅ Check How Close\\n(Interpretation)\", fillcolor=\"#e8f5e9\"];\n  \n  candy_guess -> look_jar [penwidth=2, color=\"#388e3c\"];\n  look_jar -> decide_method [penwidth=2, color=\"#f57c00\"];\n  decide_method -> count_some [penwidth=2, color=\"#7b1fa2\"];\n  count_some -> make_guess [penwidth=2, color=\"#c2185b\"];\n  make_guess -> check_answer [penwidth=2, color=\"#2e7d32\"];\n}",
-        "real_world_use_case": "/* layout=dot */\ndigraph EcommerceExample {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  ecommerce [label=\"🛒 E-commerce\\nSales Prediction\", fillcolor=\"#e3f2fd\", width=3];\n  visualize [label=\"📊 Visualize Past Sales\\nIdentify Trends\", fillcolor=\"#c8e6c9\", width=3.5];\n  select_model [label=\"📈 Select Model\\n(Log if Exponential)\", fillcolor=\"#fff3e0\", width=3.5];\n  estimate [label=\"🔢 Estimate Coefficients\\nUsing Historical Data\", fillcolor=\"#f3e5f5\", width=3.5];\n  predict [label=\"🔮 Predict Future Sales\\nInform Strategy\", fillcolor=\"#fce4ec\", width=3.5];\n  interpret [label=\"💡 Interpret Results\\nMarketing Decisions\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  ecommerce -> visualize [penwidth=2, color=\"#388e3c\"];\n  visualize -> select_model [penwidth=2, color=\"#f57c00\"];\n  select_model -> estimate [penwidth=2, color=\"#7b1fa2\"];\n  estimate -> predict [penwidth=2, color=\"#c2185b\"];\n  predict -> interpret [penwidth=2, color=\"#2e7d32\"];\n}",
-        "common_mistakes": "/* layout=dot */\ndigraph ProcessMistakes {\n  graph [rankdir=TB, margin=0.5, pad=0.5, ranksep=1.5];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3.5, height=1.2];\n  \n  mistake [label=\"❌ Common Mistake\\nSkip Data Visualization\", fillcolor=\"#ffcdd2\", width=3.5];\n  blind_model [label=\"🙈 Blindly Apply Model\\nWithout Understanding Data\", fillcolor=\"#ffecb3\", width=3.5];\n  poor_fit [label=\"📉 Poor Model Fit\\nInaccurate Predictions\", fillcolor=\"#ffebee\", width=3.5];\n  correct [label=\"✅ Correct Process\\nVisualize → Select → Estimate\", fillcolor=\"#c8e6c9\", width=3.5];\n  good_results [label=\"🎯 Good Results\\nReliable Predictions\", fillcolor=\"#e8f5e9\", width=3.5];\n  \n  mistake -> blind_model [penwidth=2, color=\"#d32f2f\"];\n  blind_model -> poor_fit [penwidth=2, color=\"#c62828\"];\n  mistake -> correct [penwidth=2, color=\"#388e3c\", style=dashed];\n  correct -> good_results [penwidth=2, color=\"#2e7d32\"];\n}",
-        "example": "/* layout=dot */\ndigraph RealEstateExample {\n  graph [rankdir=LR, margin=0.5, pad=0.5, ranksep=2];\n  node [shape=box, style=\"rounded,filled\", fontsize=16, margin=\"0.6,0.4\", width=3, height=1.5];\n  \n  real_estate [label=\"🏠 Real Estate\\nPrice Prediction\", fillcolor=\"#e3f2fd\"];\n  plot_data [label=\"📊 Plot Prices\\nvs Square Footage\", fillcolor=\"#c8e6c9\"];\n  linear_fit [label=\"📏 Linear Model\\nGood Fit Observed\", fillcolor=\"#fff3e0\"];\n  estimate_coef [label=\"🔢 Estimate\\nCoefficients\", fillcolor=\"#f3e5f5\"];\n  predict_price [label=\"💰 Predict\\nHouse Price\", fillcolor=\"#fce4ec\"];\n  \n  real_estate -> plot_data [penwidth=2, color=\"#388e3c\"];\n  plot_data -> linear_fit [penwidth=2, color=\"#f57c00\"];\n  linear_fit -> estimate_coef [penwidth=2, color=\"#7b1fa2\"];\n  estimate_coef -> predict_price [penwidth=2, color=\"#c2185b\"];\n}"
       },
       "recall_questions": [
         {
           "type": "mcq",
-          "question": "What is the FIRST step in the predictive modeling process?",
+          "question": "What is the FIRST step in the process for predictive modeling using regression?",
           "options": [
             "A. Coefficient Estimation",
-            "B. Model Selection/Transformation",
+            "B. Point Prediction",
             "C. Data Visualization",
-            "D. Point Prediction"
+            "D. Interpretation"
           ],
           "answer": "C. Data Visualization"
         },
         {
           "type": "scenario_mcq",
-          "scenario": "A data scientist is building a model to predict customer churn. They have collected data on customer demographics, purchase history, and website activity.",
-          "question": "What should the data scientist do FIRST?",
+          "scenario": "A data analyst has fitted a regression model and obtained point predictions. What is the NEXT critical step?",
           "options": [
-            "A. Fit a linear regression model.",
-            "B. Apply a log transformation to the data.",
-            "C. Visualize the data to identify trends and relationships.",
-            "D. Estimate the model's coefficients."
+            "A. Data Visualization",
+            "B. Coefficient Estimation",
+            "C. Model Selection",
+            "D. Interpretation"
           ],
-          "answer": "C. Visualize the data to identify trends and relationships."
+          "answer": "D. Interpretation"
         },
         {
           "type": "sequencing",
-          "question": "Place the following steps in the predictive modeling process in the correct order:",
+          "question": "Place the following steps in the correct order for building and using a regression model:",
           "items": [
-            "Interpretation",
-            "Model Selection/Transformation",
+            "Point Prediction",
             "Data Visualization",
+            "Model Selection/Transformation",
             "Coefficient Estimation",
-            "Point Prediction"
+            "Interpretation"
           ],
           "answer": [
             "Data Visualization",
@@ -1054,75 +725,65 @@
         },
         {
           "type": "categorization",
-          "question": "Categorize the following activities based on whether they belong to 'Model Building' or 'Model Evaluation' phases of predictive modeling:",
+          "question": "Categorize the following activities as either 'Model Building' or 'Model Application':",
           "items": [
-            "Coefficient Estimation",
             "Data Visualization",
-            "Interpretation",
-            "Model Selection/Transformation",
-            "Point Prediction"
+            "Coefficient Estimation",
+            "Point Prediction",
+            "Interpretation"
           ],
           "categories": [
             "Model Building",
-            "Model Evaluation"
+            "Model Application"
           ],
           "answer": {
             "Model Building": [
-              "Coefficient Estimation",
               "Data Visualization",
-              "Model Selection/Transformation"
+              "Coefficient Estimation"
             ],
-            "Model Evaluation": [
-              "Interpretation",
-              "Point Prediction"
+            "Model Application": [
+              "Point Prediction",
+              "Interpretation"
             ]
           }
         },
         {
           "type": "matching",
-          "question": "Match each step in the predictive modeling process with its primary objective:",
+          "question": "Match the step in the regression process with its primary goal:",
           "premises": [
             "1. Data Visualization",
-            "2. Model Selection/Transformation",
-            "3. Coefficient Estimation"
+            "2. Model Selection",
+            "3. Coefficient Estimation",
+            "4. Point Prediction"
           ],
           "responses": [
-            "A. To find the optimal values for the model's parameters.",
-            "B. To assess linearity and variance uniformity.",
-            "C. To linearize the relationship or stabilize the variance."
+            "A. Find the optimal values for the model parameters.",
+            "B. Assess linearity and variance uniformity.",
+            "C. Generate predictions using the fitted model.",
+            "D. Choose the appropriate functional form for the relationship."
           ],
           "answer": [
             "1-B",
-            "2-C",
-            "3-A"
+            "2-D",
+            "3-A",
+            "4-C"
           ]
         }
       ],
       "tags": [
-        "predictive modeling",
-        "regression analysis",
-        "data visualization",
-        "model selection",
-        "coefficient estimation",
-        "point prediction",
-        "interpretation"
+        "regression process",
+        "model fitting",
+        "prediction",
+        "transformation"
       ],
       "source_chunk": "DAA_lec_1_3",
       "diagram_image_paths": {
-        "concise": "diagrams/DAA_lec_1_3_card_008_concise.png",
-        "analogy": "diagrams/DAA_lec_1_3_card_008_analogy.png",
-        "eli5": "diagrams/DAA_lec_1_3_card_008_eli5.png",
-        "real_world_use_case": "diagrams/DAA_lec_1_3_card_008_real_world_use_case.png",
-        "common_mistakes": "",
-        "example": "diagrams/DAA_lec_1_3_card_008_example.png"
-      },
-      "math_image_paths": {
-        "concise": "",
-        "analogy": "",
-        "eli5": "",
-        "real_world_use_case": "",
-        "common_mistakes": "",
-        "example": ""
+        "concise": "diagrams/DAA_lec_1_3_card_006_concise.png",
+        "analogy": "diagrams/DAA_lec_1_3_card_006_analogy.png",
+        "eli5": "diagrams/DAA_lec_1_3_card_006_eli5.png",
+        "real_world_use_case": "diagrams/DAA_lec_1_3_card_006_real_world_use_case.png",
+        "common_mistakes": "diagrams/DAA_lec_1_3_card_006_common_mistakes.png",
+        "example": "diagrams/DAA_lec_1_3_card_006_example.png"
       }
     }
   ]

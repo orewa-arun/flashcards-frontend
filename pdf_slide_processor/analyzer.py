@@ -224,7 +224,8 @@ class GeminiVisionAnalyzer:
 - Capture exact wording for definitions and key terms
 - If the slide is mostly visual, focus heavily on describing the visual content
 - Use the course context to properly interpret subject-specific terminology
-- Output ONLY valid JSON, no additional text"""
+- Output ONLY valid JSON, no additional text
+- Do not escape special characters like $, %, or # inside the JSON string values."""
 
     def analyze_all_slides(
         self,

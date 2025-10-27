@@ -117,34 +117,34 @@ For EVERY flashcard, generate **exactly 5 recall questions** to comprehensively 
 **Philosophy:** A single answer isn't enough. True mastery requires understanding a concept from multiple angles. Each flashcard must provide **5 different answer types** that together create comprehensive understanding:
 
 **1. `concise`** - The Straightforward Answer
-   - Purpose: Provides the direct, textbook-style definition or explanation
-   - Tone: Clear, accurate, and to the point. What would you find in a glossary?
-   - Length: 1-3 sentences
-   - Example: "A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space."
+  - Purpose: Provides the direct, textbook-style definition or explanation
+  - Tone: Clear, accurate, and to the point. What would you find in a glossary?
+  - Length: 1-3 sentences
+  - Example: "A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space."
 
 **2. `analogy`** - Makes It Relatable
-   - Purpose: Connects the new concept to something familiar using a powerful metaphor or comparison
-   - Tone: Intuitive and memorable. "Think of it like..."
-   - Length: 2-4 sentences
-   - Example: "Think of a database index like the index at the back of a textbook. Instead of flipping through every page to find information about 'polymorphism,' you look it up in the index which tells you exactly which pages to turn to. Similarly, a database index lets the system jump directly to the relevant data without scanning every record."
+  - Purpose: Connects the new concept to something familiar using a powerful metaphor or comparison
+  - Tone: Intuitive and memorable. "Think of it like..."
+  - Length: 2-4 sentences
+  - Example: "Think of a database index like the index at the back of a textbook. Instead of flipping through every page to find information about 'polymorphism,' you look it up in the index which tells you exactly which pages to turn to. Similarly, a database index lets the system jump directly to the relevant data without scanning every record."
 
 **3. `eli5`** - Tests True Understanding (Explain Like I'm 5)
-   - Purpose: Forces simple, foundational explanation. The Feynman technique in action.
-   - Tone: Very simple language, no jargon. Could a child or non-expert understand this?
-   - Length: 2-4 sentences
-   - Example: "Imagine you have 1,000 toys in a big room, and you want to find your red car. Without organization, you'd have to look at every single toy. But if you make a list that says 'red car is in the blue box in the corner,' you can go straight there. That's what a database index does—it's like a helpful list that tells the computer exactly where to find things quickly."
+  - Purpose: Forces simple, foundational explanation. The Feynman technique in action.
+  - Tone: Very simple language, no jargon. Could a child or non-expert understand this?
+  - Length: 2-4 sentences
+  - Example: "Imagine you have 1,000 toys in a big room, and you want to find your red car. Without organization, you'd have to look at every single toy. But if you make a list that says 'red car is in the blue box in the corner,' you can go straight there. That's what a database index does—it's like a helpful list that tells the computer exactly where to find things quickly."
 
 **4. `real_world_use_case`** - Shows Relevance
-   - Purpose: Demonstrates practical application in a real business or technical scenario
-   - Tone: Professional, specific, and practical. When/why would you actually use this?
-   - Length: 3-5 sentences
-   - Example: "When Instagram users search for posts by hashtag (e.g., #sunset), the database doesn't scan through billions of posts one by one. Instead, Instagram maintains an index on the hashtag column. When you search #sunset, the index immediately points to all posts tagged with that hashtag, allowing Instagram to return results in milliseconds rather than minutes. Without this index, searching hashtags would be impossibly slow at Instagram's scale of 2+ billion users. This is why large-scale applications invest heavily in proper indexing strategies."
+  - Purpose: Demonstrates practical application in a real business or technical scenario
+  - Tone: Professional, specific, and practical. When/why would you actually use this?
+  - Length: 3-5 sentences
+  - Example: "When Instagram users search for posts by hashtag (e.g., #sunset), the database doesn't scan through billions of posts one by one. Instead, Instagram maintains an index on the hashtag column. When you search #sunset, the index immediately points to all posts tagged with that hashtag, allowing Instagram to return results in milliseconds rather than minutes. Without this index, searching hashtags would be impossibly slow at Instagram's scale of 2+ billion users. This is why large-scale applications invest heavily in proper indexing strategies."
 
 **5. `common_mistakes`** - Prevents Errors
-   - Purpose: Warns about typical misunderstandings, pitfalls, or misapplications of the concept
-   - Tone: Cautionary and instructive. "Watch out for..." or "Don't confuse..."
-   - Length: 2-4 sentences
-   - Example: "A common mistake is creating indexes on every column in a table, thinking 'more indexes = faster database.' However, while indexes speed up reads, they slow down writes (INSERT, UPDATE, DELETE) because the index must be updated with every data modification. Another mistake is forgetting that indexes consume significant disk space—in some cases, indexes can be larger than the data itself. The key is strategic indexing: only index columns that are frequently used in search conditions or joins."
+  - Purpose: Warns about typical misunderstandings, pitfalls, or misapplications of the concept
+  - Tone: Cautionary and instructive. "Watch out for..." or "Don't confuse..."
+  - Length: 2-4 sentences
+  - Example: "A common mistake is creating indexes on every column in a table, thinking 'more indexes = faster database.' However, while indexes speed up reads, they slow down writes (INSERT, UPDATE, DELETE) because the index must be updated with every data modification. Another mistake is forgetting that indexes consume significant disk space—in some cases, indexes can be larger than the data itself. The key is strategic indexing: only index columns that are frequently used in search conditions or joins."
 
 **CRITICAL:** ALL five answer types must be provided for EVERY flashcard. Together, they create a 360-degree understanding of the concept.
 
@@ -175,240 +175,89 @@ For EVERY flashcard, generate **exactly 5 recall questions** to comprehensively 
 
 **If a concept truly doesn't lend itself to an example, use an empty string. But challenge yourself to find creative examples—most concepts can be illustrated.**
 
-**DEEP DIVE: Mathematical Visualizations (Graphviz/DOT) - ADVANCED GUIDELINES**
+**DEEP DIVE: Mathematical Visualizations (Graphviz/DOT) - CRITICAL ENHANCED GUIDELINES**
 
-**Core Mandate:** For concepts with strong mathematical, statistical, or algorithmic foundations, it is **MANDATORY** to create a `math_visualizations` object. Generate a mathematical visualization even if there is only a slight hint of a need for one. The primary goal is to generate **insightful and pedagogically effective graphs**, not just conceptual flowcharts. You must analyze the specific concept and choose the most appropriate type of graph to explain it, as a professor would on a whiteboard.
+**ABSOLUTE MANDATE:** For ANY concept that has even the SLIGHTEST mathematical, statistical, algorithmic, or quantitative component, you MUST create mathematical visualizations across ALL answer types where applicable. This is NON-NEGOTIABLE.
 
-**Guiding Principles for Graph Selection:**
-1.  **Analyze the Concept:** First, understand the core idea. Is it about showing a relationship between variables? A distribution? A process over time? A comparison?
-2.  **Choose the Right Tool:**
-    *   **For Relationships & Data Plots (`neato`):** To show concepts like regression lines, interpolation, extrapolation, non-linear relationships (e.g., quadratic, logarithmic curves), or scatter plots, **you MUST use the `neato` layout engine**. This allows for precise `pos="x,y!"` coordinates to create an actual plot. Define axes and plot representative data points to make the concept tangible.
-    *   **For Processes & Structures (`dot`):** To illustrate sequential processes (like the steps of hypothesis testing), hierarchical structures, or cause-and-effect diagrams, the `dot` layout engine is more appropriate.
-3.  **Think Like an Educator:**
-    *   **Show, Don't Just Tell:** The graph must visually demonstrate the "why." For a quadratic model, draw a parabola. For heteroscedasticity, show a funnel shape in the residuals. For a log transformation, plot a curved relationship becoming a straight line.
-    *   **Use Annotations:** Add labels, arrows, and text to highlight the key takeaways of the graph.
-    *   **Simulate Data:** Create illustrative, well-placed data points that cleanly demonstrate the concept.
+**REVOLUTIONARY APPROACH:** Mathematical concepts exist in ALL answer types - not just `concise`. An analogy can have mathematical structure. An ELI5 explanation can benefit from simple mathematical visualization. Real-world use cases often involve mathematical relationships. Common mistakes frequently stem from mathematical misunderstandings.
 
-**Gold Standard Example (Interpolation vs. Extrapolation):**
-This example demonstrates the principle of using `neato` to create a real plot that visually explains the difference between predicting within and outside a known data range. This is the level of quality and conceptual clarity to strive for.
-
-```
-/* Save as interp_extrap.dot and render with:
-   neato -n2 -Tpng -o interp_extrap.png interp_extrap.dot
-*/
-graph interp_extrap {
-  layout=neato;
-  overlap=false;
-  splines=true;
-  sep="+15";
-  node [shape=circle, width=0.18, fixedsize=true, style=filled, fontcolor=white];
-
-  /* Interpolation Panel */
-  subgraph cluster_interp {
-    label="Interpolation";
-    labelloc=t;
-    fontsize=14;
-    color=lightgrey;
-    style=dashed;
-    ai0 [label="", pos="0,0!"];
-    ai_x [label="", pos="5,0!"];
-    ai_y [label="", pos="0,4!"];
-    ai0 -- ai_x [color=black, penwidth=1];
-    ai0 -- ai_y [color=black, penwidth=1];
-    p1_i [pos="1,1!", fillcolor=deepskyblue];
-    p2_i [pos="2,2.5!", fillcolor=deepskyblue];
-    p3_i [pos="3,2!", fillcolor=deepskyblue];
-    p4_i [pos="4,3!", fillcolor=deepskyblue];
-    p1_i -- p2_i -- p3_i -- p4_i [penwidth=2.5, color=blue, splines=true];
-    interp_pt [pos="2.6,2.25!", label="", shape=circle, width=0.15, style=filled, fillcolor=white, color=black];
-    ip_label [pos="2.6,1.95!", label="interpolated", shape=plaintext];
-  }
-
-  /* Extrapolation Panel */
-  subgraph cluster_extrap {
-    label="Extrapolation";
-    labelloc=t;
-    fontsize=14;
-    color=lightgrey;
-    style=dashed;
-    ae0 [label="", pos="7,0!"];
-    ae_x [label="", pos="12,0!"];
-    ae_y [label="", pos="7,4!"];
-    ae0 -- ae_x [color=black, penwidth=1];
-    ae0 -- ae_y [color=black, penwidth=1];
-    q1 [pos="8,1!", fillcolor=deepskyblue];
-    q2 [pos="9,2.5!", fillcolor=deepskyblue];
-    q3 [pos="10,2!", fillcolor=deepskyblue];
-    q4 [pos="11,3! M-bM-^@M-^], fillcolor=deepskyblue];
-    q1 -- q2 -- q3 -- q4 [penwidth=2.5, color=blue, splines=true];
-    ext_left [pos="6.5,0.6!"];
-    ext_right [pos="12.7,3.7!"];
-    ext_left -- q1 [style=dashed, penwidth=2, color=gray];
-    q4 -- ext_right [style=dashed, penwidth=2, color=gray];
-    pred_left [pos="6.5,0.6!", label="?", shape=plaintext];
-    pred_right [pos="12.7,3.7!", label="?", shape=plaintext];
-    ep_label [pos="9.5,0.6! M-bM-^@M-^], label="dashed = extrapolated (prediction)", shape=plaintext];
-  }
-
-  edge [arrowhead=none];
-}
-```
-
-**Final Check:** Before finalizing the Graphviz code, ask: "Does this graph make the concept easier to understand at a glance?" If the answer is no, rethink the visualization.
-
-**WHEN TO GENERATE GRAPHVIZ DOT CODE:**
-- Mathematical formulas or equations (e.g., visualizing the regression line equation, R-squared formula)
-- Statistical models or distributions (e.g., Normal Distribution curve, scatter plots)
-- Algorithms or data structures (e.g., binary tree, sorting algorithm steps)
-- Concepts requiring precise 2D coordinate placement (e.g., interpolation vs extrapolation)
-- Graph theory concepts (e.g., network diagrams, tree structures)
-- Decision boundaries in classification problems
-- Cost function optimization (e.g., gradient descent paths)
-- Matrix operations and transformations
-- Simple data distributions (histograms, scatter plots with trend lines)
-- Probability distributions (Normal, Binomial, etc.)
-
-**WHEN NOT TO GENERATE:**
-- Simple conceptual relationships (use Mermaid instead)
-- Purely textual definitions without mathematical content
-- When a Mermaid diagram already suffices for non-quantitative concepts
-
-**OUTPUT STRUCTURE:**
-- Provide a `math_visualizations` object with the same six keys as `mermaid_diagrams`
-- If mathematical visualization is not relevant for a specific answer type, use an empty string `""`
-- The code MUST be valid Graphviz DOT language syntax
-- **CRITICAL**: Include a comment at the top specifying the layout engine (e.g., `/* layout=neato */`, `/* layout=dot */`, `/* layout=fdp */`, `/* layout=circo */`)
-
-**EXAMPLE 1 (Regression Formula - Visual Mathematical Expression):**
-```
-/* layout=dot */
-digraph RegressionFormula {
-  rankdir=LR;
-  node [shape=plaintext, fontsize=16];
-  edge [fontsize=14];
-
-  // Main formula
-  Y_hat [label="Ŷ"];
-  equals [label="=", shape=none, fontsize=18];
-  intercept [label="β₀"];
-  plus1 [label="+", shape=none, fontsize=18];
-  slope1 [label="β₁X₁"];
-  plus2 [label="+", shape=none, fontsize=18];
-  slope2 [label="β₂X₂"];
-  plus3 [label="+", shape=none, fontsize=18];
-  dots [label="⋯", shape=none, fontsize=18];
-  plusk [label="+", shape=none, fontsize=18];
-  slopek [label="βₖXₖ"];
-  error [label="+ ε"];
-
-  // Connect the formula visually
-  Y_hat -> equals [style=invis];
-  equals -> intercept [style=invis];
-  intercept -> plus1 [style=invis];
-  plus1 -> slope1 [style=invis];
-  slope1 -> plus2 [style=invis];
-  plus2 -> slope2 [style=invis];
-  slope2 -> plus3 [style=invis];
-  plus3 -> dots [style=invis];
-  dots -> plusk [style=invis];
-  plusk -> slopek [style=invis];
-  slopek -> error [style=invis];
-}
-```
-
-**EXAMPLE 2 (Partial Slope - Mathematical Relationship):**
-```
-/* layout=dot */
-digraph PartialSlope {
-  rankdir=LR;
-  node [shape=plaintext, fontsize=14];
-  edge [fontsize=12, color=blue];
-
-  // Left side: Change in Y
-  deltaY [label="ΔY", fontsize=16];
-
-  // Center: Approximately equals
-  approx [label="≈", shape=none, fontsize=18, color=black];
-
-  // Right side: Partial slope times change in X
-  beta_i [label="βᵢ", fontsize=16];
-  times [label="×", shape=none, fontsize=16];
-  deltaX_i [label="ΔXᵢ", fontsize=16];
-
-  // Condition box
-  subgraph cluster_condition {
-    label="Holding all other variables constant";
-    style=dashed;
-    fontsize=10;
-    condition [label="Other Xⱼ = constant", shape=plaintext, fontsize=10];
-  }
-
-  // Connect elements
-  deltaY -> approx -> beta_i -> times -> deltaX_i [color=blue, penwidth=2];
-  beta_i -> condition [style=dotted, color=gray];
-}
-```
-
-**EXAMPLE 3 (Correlation Matrix - Visual Table):**
-```
-/* layout=dot */
-digraph CorrelationMatrix {
-  node [shape=plaintext, fontsize=12];
-  rankdir=TB;
-
-  // Header row
-  header1 [label="Variable"];
-  header2 [label="X₁"];
-  header3 [label="X₂"];
-  header4 [label="Y"];
-
-  // Row 1
-  row1_label [label="X₁"];
-  row1_val1 [label="1.0"];
-  row1_val2 [label="0.8"];
-  row1_val3 [label="0.6"];
-
-  // Row 2
-  row2_label [label="X₂"];
-  row2_val1 [label="0.8"];
-  row2_val2 [label="1.0"];
-  row2_val3 [label="0.7"];
-
-  // Row 3 (Response variable)
-  row3_label [label="Y"];
-  row3_val1 [label="0.6"];
-  row3_val2 [label="0.7"];
-  row3_val3 [label="1.0"];
-
-  // Connect headers
-  header1 -> header2 -> header3 -> header4 [style=invis];
-  row1_label -> row1_val1 -> row1_val2 -> row1_val3 [style=invis];
-  row2_label -> row2_val1 -> row2_val2 -> row2_val3 [style=invis];
-  row3_label -> row3_val3 [style=invis];
-
-  // Highlight the correlation of interest
-  row1_val2 [color=red, penwidth=2];
-  row2_val1 [color=red, penwidth=2];
-}
-```
-
-These examples show how to create **visually meaningful** mathematical diagrams that actually represent the concepts clearly.
+**GENERATE MATHEMATICAL VISUALIZATIONS FOR ALL ANSWER TYPES:**
+- **`concise`**: ALWAYS generate for any mathematical concept. Show the core formula, equation, or mathematical relationship.
+- **`analogy`**: If your analogy involves any quantitative comparison, proportions, or structured relationships, create a visualization.
+- **`eli5`**: Simple mathematical concepts (like addition, comparison, basic graphs) are perfect for ELI5 visualizations.
+- **`real_world_use_case`**: Business scenarios almost always involve numbers, trends, comparisons - visualize these relationships.
+- **`common_mistakes`**: Mathematical errors are often visual - show correct vs incorrect formulations, graphs, or calculations.
+- **`example`**: Any example with numbers, data, or quantitative relationships needs mathematical visualization.
 
 **CRITICAL VISUALIZATION REQUIREMENTS:**
-1. **VISUALLY MEANINGFUL**: Diagrams MUST be visible and show clear relationships. **NEVER use invisible edges** (`style=invis`) unless absolutely necessary for layout.
-2. **Mathematical Clarity**: Each diagram should clearly represent the mathematical concept, formula, or relationship.
-3. **Professional Quality**: Use proper layout, readable fonts, and clear visual hierarchy.
-4. **Layout Engine**: Always specify the appropriate engine (`dot` for hierarchies, `neato` for spatial layouts).
-5. **Visual Elements**: Use colors, different node shapes, edge styles, and clustering to enhance understanding.
+1. **TEXT CONTAINMENT:** All text within a node MUST be fully contained within its boundaries. Use newlines (`\n`) to break long lines of text manually. If text still overflows, use HTML-like labels (`<<TABLE>` syntax) to allow for more precise control over text wrapping and layout. **Text overflow is a critical failure that makes diagrams unusable.**
+
+2. **MANDATORY TEXT CONTAINMENT TECHNIQUES:**
+   - Break long text with `\n` every 10-15 characters
+   - Use `margin=0.3` or higher for all nodes to provide padding
+   - For complex formulas, use multiple connected nodes instead of cramming everything into one
+   - Use `fontsize=10-12` for readability without overflow
+   - Test mentally: "Would this text fit in a box this size?"
+
+3. **PROFESSIONAL QUALITY:** Use proper layout, readable fonts, clear visual hierarchy, and appropriate colors.
+
+4. **LAYOUT ENGINE WISDOM:** 
+   - Use `neato` for: scatter plots, coordinate-based visualizations, spatial relationships, data distributions
+   - Use `dot` for: hierarchical formulas, process flows, structured relationships
+   - Use `fdp` for: network-like mathematical relationships
+   - Use `circo` for: cyclic mathematical processes
+
+5. **VISUAL ELEMENTS:** Use colors, different node shapes, edge styles, and clustering to enhance mathematical understanding.
+
+**Guiding Principles for Graph Selection:**
+1. **Analyze the Mathematical Core:** Is it showing a relationship between variables? A distribution? A process over time? A comparison? A formula structure?
+2. **Choose the Right Tool:**
+   - **For Mathematical Relationships & Data Plots (`neato`):** Regression lines, scatter plots, coordinate systems, interpolation, extrapolation, distributions, correlation visualizations.
+   - **For Mathematical Structures (`dot`):** Formula decomposition, equation hierarchies, statistical test flows, mathematical proofs.
+3. **Think Like a Math Professor:** Show the mathematical "why" visually. Make abstract concepts concrete through precise mathematical visualization.
+
+**WHEN TO GENERATE GRAPHVIZ DOT CODE (EXPANDED):**
+- ANY mathematical formula or equation 
+- Statistical relationships (correlation, regression, distributions)
+- Algorithmic processes with mathematical steps
+- Data structures with quantitative properties
+- Mathematical comparisons or trade-offs
+- Probability and statistical concepts
+- Optimization problems and solutions
+- Mathematical transformations
+- Quantitative business metrics and KPIs
+- Financial calculations and models
+- Scientific measurement relationships
+- Mathematical assumptions and their violations
+
+**CRITICAL VISUALIZATION REQUIREMENTS:**
+1. **TEXT CONTAINMENT (NON-NEGOTIABLE):** All text within nodes MUST be fully contained. Use these techniques:
+   ```
+   node [margin=0.3, fontsize=11];  // Always provide margin and reasonable font size
+   long_text [label="This is\na long text\nbroken into\nmultiple lines"];  // Manual line breaks
+   ```
+2. **VISUALLY MEANINGFUL:** Diagrams MUST show clear mathematical relationships. Avoid purely decorative elements.
+3. **MATHEMATICAL ACCURACY:** Each diagram should correctly represent the mathematical concept, formula, or relationship.
+4. **LAYOUT ENGINE JUSTIFICATION:** Always specify the appropriate engine with a comment explaining why.
 
 **BEST PRACTICES FOR DOT CODE:**
-- Use `rankdir=LR` for mathematical formulas (left to right)
-- Use `fontsize=12-16` for readability
-- Use `penwidth=2` for important connections
-- Use `color=red` or `color=blue` to highlight key relationships
-- Use `subgraph cluster_*` to group related concepts
-- Use `style=dashed` for secondary relationships
-- **AVOID** `style=invis` - make connections visible!
+- Use `rankdir=LR` for mathematical formulas (left to right flow)
+- Use `fontsize=10-12` for optimal readability without overflow
+- Use `margin=0.2-0.4` for all nodes to prevent text overflow
+- Use `penwidth=2` for important mathematical relationships
+- Use colors to distinguish different types of mathematical elements
+- Use `subgraph cluster_*` to group related mathematical concepts
+- Break complex formulas into multiple connected nodes rather than cramming into one
+- **NEVER use invisible edges** - make all mathematical relationships visible
+
+**QUALITY CHECKLIST ADDITION - MATHEMATICAL VISUALIZATION MANDATE:**
+
+Before submitting, ask yourself these NON-NEGOTIABLE questions:
+✅ **Mathematical Completeness:** For EVERY answer type, have I identified any mathematical, quantitative, or structural component that could benefit from visualization?
+✅ **Cross-Type Mathematical Thinking:** Have I looked beyond just the `concise` answer and found mathematical elements in analogies, examples, real-world cases, and common mistakes?
+✅ **Text Containment Verification:** Will every piece of text in my Graphviz diagrams fit properly within its node boundaries? Have I used line breaks and appropriate margins?
+✅ **Layout Engine Justification:** For each mathematical concept, have I chosen `neato` for spatial/data relationships or `dot` for structural/hierarchical relationships? Have I avoided defaulting to the simpler option?
+✅ **Visual Mathematical Clarity:** Does each mathematical visualization immediately make the concept clearer and more understandable?
 
 **OUTPUT FORMAT (Strict JSON):**
 ```json
@@ -438,12 +287,12 @@ These examples show how to create **visually meaningful** mathematical diagrams 
       "example": "flowchart TD; RealScenario[Real Scenario] --> Application[Application] --> Result[Result]; // Diagram illustrating the specific example. Use empty string \"\" if not helpful."
     },
     "math_visualizations": {
-      "concise": "/* layout=dot */ digraph G { A -> B; } // OPTIONAL: Graphviz DOT code for mathematical/algorithmic concepts. Include layout engine in comment. Use empty string \"\" if not applicable.",
-      "analogy": "",
-      "eli5": "",
-      "real_world_use_case": "",
-      "common_mistakes": "",
-      "example": ""
+      "concise": "/* layout=dot */ digraph G { node [margin=0.3, fontsize=11]; A [label=\"Formula\nComponent\"]; } // MANDATORY for mathematical concepts. Include layout engine in comment. Use proper margins and font sizes.",
+      "analogy": "/* layout=dot */ digraph G { node [margin=0.3, fontsize=11]; } // Generate if analogy has ANY quantitative or structural mathematical component.",
+      "eli5": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; } // Generate if simple mathematical relationship can be visualized.",
+      "real_world_use_case": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; } // Generate if use case involves numbers, data, trends, or quantitative relationships.",
+      "common_mistakes": "/* layout=dot */ digraph G { node [margin=0.3, fontsize=11]; } // Generate if mistakes involve mathematical errors, formula misunderstandings, or quantitative misapplications.",
+      "example": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; } // Generate if example contains numbers, calculations, data relationships, or quantitative scenarios."
     },
     "recall_questions": [
       {
@@ -531,9 +380,15 @@ These examples show how to create **visually meaningful** mathematical diagrams 
 ]
 ```
 
-**QUALITY CHECKLIST (Review Before Submitting):**
+**ENHANCED QUALITY CHECKLIST (Review Before Submitting):**
 
 ✅ **Multi-Faceted Answers:** Does EVERY flashcard have ALL 5 answer types (concise, analogy, eli5, real_world_use_case, common_mistakes)? Is each distinct and valuable?
+
+✅ **Mathematical Visualization Completeness:** Have I generated mathematical visualizations for ALL answer types that contain even slight quantitative, structural, or mathematical elements? Have I looked beyond just `concise`?
+
+✅ **Text Containment Guarantee:** Will every piece of text in my Graphviz diagrams fit within node boundaries? Have I used `margin=0.3`, appropriate `fontsize`, and manual line breaks with `\n`?
+
+✅ **Diagram Engine Choice:** For each mathematical concept, have I considered if a `neato` plot would be more illustrative? If the concept involves a relationship between variables, a distribution, or a plot, I MUST use `neato`. I will not default to a simpler `dot` graph if a plot is more appropriate.
 
 ✅ **Diagrams:** Have I created a Mermaid diagram for EVERY process, hierarchy, relationship, or structure? Is `mermaid_code` empty only for purely definitional concepts?
 
@@ -556,7 +411,7 @@ These examples show how to create **visually meaningful** mathematical diagrams 
 - EVERY flashcard must have: ALL 5 answer types in the `answers` object, `example`, `mermaid_diagrams`, `math_visualizations`, and exactly **5 `recall_questions`**
 - The `answers` object must contain ALL 5 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`
 - The `mermaid_diagrams` object must contain ALL 6 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`, `example` (use empty string "" for diagrams that don't add value)
-- The `math_visualizations` object must contain ALL 6 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`, `example`. For mathematical concepts, strive to provide at least 1-2 visualizations (prioritize `concise` and `example`). Use empty string "" for qualitative answer types or when a diagram truly doesn't add value
+- The `math_visualizations` object must contain ALL 6 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`, `example`. **MANDATORY**: Generate mathematical visualizations for ALL answer types that contain ANY mathematical, quantitative, structural, or data-related component. Use empty string "" ONLY when there is absolutely no mathematical element possible.
 - All MCQ and scenario_mcq options must be exactly 4 items (labeled A, B, C, D)
 - For sequencing: `items` array (jumbled) and `answer` array (correct order)
 - For categorization: `items` array, `categories` array, and `answer` as JSON object
@@ -567,3 +422,4 @@ These examples show how to create **visually meaningful** mathematical diagrams 
 - All questions must be easily evaluable with objective answers
 - Mix diverse question types across the 5 recall questions per card (use at least 3 different types)
 - Each diagram in `mermaid_diagrams` must be contextually relevant to its corresponding answer type
+- **CRITICAL**: All Graphviz DOT code must use proper `margin` settings and `fontsize` to prevent text overflow. This is non-negotiable.
