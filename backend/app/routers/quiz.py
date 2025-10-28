@@ -25,7 +25,9 @@ USER_DECK_PERFORMANCE_COLLECTION = "user_deck_performance"
 QUIZ_SESSIONS_COLLECTION = "quiz_sessions"
 
 # Base path for cognitive flashcards
-FLASHCARDS_BASE_PATH = "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/backend/courses"
+# Construct path relative to this file's location to ensure portability
+_ROUTER_DIR = os.path.dirname(os.path.abspath(__file__))
+FLASHCARDS_BASE_PATH = os.path.abspath(os.path.join(_ROUTER_DIR, "..", "..", "courses"))
 
 
 async def get_user_id_from_header(x_user_id: str = Header(..., alias="X-User-ID")) -> str:
@@ -107,7 +109,8 @@ async def get_or_create_deck_performance(
         concept_perf = ConceptPerformance(
             concept_context=card.get("context", f"Concept {idx + 1}"),
             concept_index=idx,
-            relevance_score=card.get("relevance_score", {}).get("score", 5)
+            relevance_score=card.get("relevance_score", {}).get("score", 5),
+            last_attempted=None
         )
         concepts_performance.append(concept_perf)
     
@@ -116,7 +119,8 @@ async def get_or_create_deck_performance(
         course_id=course_id,
         deck_id=deck_id,
         total_concepts=total_concepts,
-        concepts_performance=concepts_performance
+        concepts_performance=concepts_performance,
+        last_quiz_date=None
     )
     
     await performance_collection.insert_one(
