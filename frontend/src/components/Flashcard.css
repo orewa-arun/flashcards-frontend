@@ -73,8 +73,8 @@
 
 /* Question Text - Clean & Bold like Quizlet */
 .question-text {
-  font-size: clamp(26px, 4.5vw, 38px);
-  font-weight: 600;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 700;
   line-height: 1.4;
   color: var(--text-question);
   text-align: center;
@@ -197,7 +197,7 @@
   font-size: 17px;
   color: #3B82F6;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
-  font-weight: 400;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
