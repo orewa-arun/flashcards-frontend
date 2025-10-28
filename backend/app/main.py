@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import connect_to_mongo, close_mongo_connection
-from app.routers import analytics, health, bookmarks, feedback, quiz_history, admin_analytics
+from app.routers import analytics, health, bookmarks, feedback, quiz_history, admin_analytics, quiz
 
 # Configure logging
 logging.basicConfig(
@@ -50,6 +50,7 @@ app.include_router(bookmarks.router)
 app.include_router(feedback.router)
 app.include_router(quiz_history.router)
 app.include_router(admin_analytics.router)
+app.include_router(quiz.router)
 
 @app.get("/")
 async def root():

@@ -167,7 +167,7 @@ function QuizHistoryView() {
                 
                 <div className="question-content">
                   <div className="question-type-badge">{question.question_type}</div>
-                  <div className="result-question">{question.question.question}</div>
+                  <div className="result-question">{question.question}</div>
 
                   <div className="answer-section">
                     <div className="user-answer">

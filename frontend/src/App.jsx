@@ -24,7 +24,7 @@ function App() {
 
   return (
     <Router>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
       <CookieBanner />
       <Navigation />
       <div className="app-container">

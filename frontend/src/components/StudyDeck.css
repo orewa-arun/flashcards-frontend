@@ -49,9 +49,15 @@
 .progress-bar {
   flex: 1;
   height: 8px;
-  background-color: var(--bg-elevated);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .progress-bar {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .progress-fill {
@@ -59,6 +65,7 @@
   background-color: var(--accent-primary);
   transition: width 0.3s ease;
   border-radius: 4px;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
 }
 
 /* Main Study Area */
