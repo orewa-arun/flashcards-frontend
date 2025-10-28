@@ -41,7 +41,7 @@ def save_flashcards_json(flashcards, metadata, output_path):
 # NEW HELPER FUNCTION FOR CHUNKING
 # ==============================================================================
 
-def chunk_content(content: str, max_chunk_size: int = 15000, overlap: int = 500) -> List[str]:
+def chunk_content(content: str, max_chunk_size: int = 6000, overlap: int = 300) -> List[str]:
     """
     Splits the large content string into smaller chunks with an overlap, respecting slide boundaries.
     
@@ -338,14 +338,19 @@ def process_course_flashcards(course: Dict[str, Any], slide_analysis_prefix: Opt
         # ======================================================================
         # CHUNKING AND ITERATIVE GENERATION LOGIC (MODIFIED)
         # ======================================================================
-        content_chunks = chunk_content(content, max_chunk_size=10000, overlap=500)
+        content_chunks = chunk_content(content, max_chunk_size=6000, overlap=300)
         print(f"📦 Splitting content into {len(content_chunks)} manageable chunk(s)")
+        print(f"   📊 Reduced chunk size to 6000 characters to prevent token limit issues")
         
         all_flashcards = []
         
         # Iterate over chunks and generate flashcards for each
         for i, chunk in enumerate(content_chunks, 1):
             chunk_info = f"Chunk {i}/{len(content_chunks)}"
+            
+            print(f"\n📦 Processing {chunk_info}")
+            print(f"   📊 Chunk size: {len(chunk):,} characters")
+            print(f"   📊 Estimated tokens: ~{len(chunk) // 4:,}")
             
             # Generate flashcards for the current chunk
             chunk_flashcards = generator.generate_flashcards(
@@ -354,11 +359,16 @@ def process_course_flashcards(course: Dict[str, Any], slide_analysis_prefix: Opt
                 chunk_info=chunk_info
             )
             
-            # Add a tracking field (optional but helpful for debugging/review)
-            for card in chunk_flashcards:
-                card['source_chunk'] = f"{lecture_name}_{i}"
-            
-            all_flashcards.extend(chunk_flashcards)
+            if chunk_flashcards:
+                print(f"   ✅ Successfully generated {len(chunk_flashcards)} flashcards from {chunk_info}")
+                # Add a tracking field (optional but helpful for debugging/review)
+                for card in chunk_flashcards:
+                    card['source_chunk'] = f"{lecture_name}_{i}"
+                
+                all_flashcards.extend(chunk_flashcards)
+            else:
+                print(f"   ⚠️  No flashcards generated from {chunk_info}")
+                print(f"   📝 This chunk will be skipped, but processing will continue")
             
         flashcards = all_flashcards
         
