@@ -1,7 +1,7 @@
 {
   "metadata": {
     "generated_at": "2025-10-28T10:19:29.018730",
-    "total_cards": 32,
+    "total_cards": 34,
     "course_name": "Management Information Systems",
     "course_id": "MS5260",
     "course_code": "MIS",
@@ -4282,6 +4282,278 @@
         "eli5": "diagrams/MIS_lec_4_11_card_032_eli5.png",
         "real_world_use_case": "diagrams/MIS_lec_4_11_card_032_real_world_use_case.png",
         "common_mistakes": "diagrams/MIS_lec_4_11_card_032_common_mistakes.png",
+        "example": ""
+      }
+    },
+    {
+      "type": "concept",
+      "question": "Describe the purpose and characteristics of Second Normal Form (2NF) and how it builds upon First Normal Form.",
+      "answers": {
+        "concise": "Second Normal Form (2NF) eliminates partial dependencies, ensuring that all nonkey attributes are fully dependent on the entire primary key, not just part of it. A table must first be in 1NF before achieving 2NF. This applies specifically to tables with composite primary keys, where nonkey attributes must depend on the complete composite key rather than just one component of it.",
+        "analogy": "Think of 2NF like organizing a library checkout system. If you have a checkout record identified by both StudentID and BookID together, information about the student (like name) shouldn't be stored here because it only relates to StudentID, not the combination. Similarly, book information (like title) should be separate because it only relates to BookID. Only information about the checkout itself (like checkout date) belongs in the combined record.",
+        "eli5": "Imagine you have a notebook where you write down 'who borrowed which toy and when.' If you also write the person's phone number in that same line, that's silly because the phone number has nothing to do with which toy they borrowed—it's just about the person! 2NF means you should keep the phone numbers in a separate list just for people.",
+        "real_world_use_case": "Consider a sales database with a QUANTITY table using a composite primary key (SalespersonNumber, ProductNumber) that also stored SalespersonName and ProductName. To achieve 2NF, this table is split: the QUANTITY table keeps only the composite key and quantity sold (which depends on both salesperson AND product), while two new tables are created—SALESPERSON (with SalespersonNumber as PK and Name) and PRODUCT (with ProductNumber as PK and Name). This eliminates redundancy where salesperson names were repeated for every product they sold.",
+        "common_mistakes": "A common mistake is thinking 2NF applies to all tables. It only matters for tables with composite primary keys. Another mistake is removing attributes that actually DO depend on the entire composite key. For example, in an order line item with OrderID and ProductID as the composite key, the quantity ordered correctly depends on both—it's specific to that product in that particular order—so it should stay. Only attributes depending on just part of the key need to be moved."
+      },
+      "context": "Database Normalization - Second Normal Form",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Critical normalization step; essential for understanding database design and eliminating partial dependencies in composite key scenarios."
+      },
+      "example": "In an e-commerce system, an ORDER_ITEMS table initially uses (OrderID, ProductID) as a composite primary key and includes columns: Quantity, OrderDate, CustomerName, ProductPrice, and ProductCategory. To achieve 2NF: (1) Keep Quantity in ORDER_ITEMS since it depends on both OrderID and ProductID; (2) Move OrderDate and CustomerName to an ORDERS table (they depend only on OrderID); (3) Move ProductPrice and ProductCategory to a PRODUCTS table (they depend only on ProductID). This eliminates the redundancy where product information was repeated for every order line, and order information was repeated for every product in that order.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    subgraph Before 2NF\n        Table1[Table with<br/>Composite PK<br/>+ Partial Dependencies]\n    end\n    subgraph After 2NF\n        Table2[Main Table:<br/>Composite PK<br/>+ Full Dependencies]\n        Table3[New Table 1:<br/>Part of PK<br/>+ Its Attributes]\n        Table4[New Table 2:<br/>Other Part of PK<br/>+ Its Attributes]\n    end\n    Table1 -->|Split| Table2\n    Table1 -->|Extract| Table3\n    Table1 -->|Extract| Table4\n    style Table2 fill:#ccffcc\n    style Table3 fill:#cce5ff\n    style Table4 fill:#ffe5cc",
+        "analogy": "graph TD\n    Before[Checkout Record:<br/>StudentID + BookID<br/>Student Name<br/>Book Title<br/>Checkout Date]\n    After1[Checkout:<br/>StudentID + BookID<br/>Checkout Date]\n    After2[Students:<br/>StudentID<br/>Student Name]\n    After3[Books:<br/>BookID<br/>Book Title]\n    Before -->|2NF Split| After1\n    Before -->|Extract Student Info| After2\n    Before -->|Extract Book Info| After3\n    After1 -.->|References| After2\n    After1 -.->|References| After3\n    style After1 fill:#ccffcc\n    style After2 fill:#cce5ff\n    style After3 fill:#ffe5cc",
+        "eli5": "graph TD\n    Messy[One Notebook:<br/>Person + Toy + Date<br/>Person's Phone<br/>Toy's Color]\n    Clean1[Borrow List:<br/>Person + Toy<br/>Date Borrowed]\n    Clean2[People List:<br/>Person<br/>Phone Number]\n    Clean3[Toy List:<br/>Toy<br/>Color]\n    Messy -->|Clean Up| Clean1\n    Messy -->|Make Separate| Clean2\n    Messy -->|Make Separate| Clean3\n    style Clean1 fill:#ccffcc\n    style Clean2 fill:#cce5ff\n    style Clean3 fill:#ffe5cc",
+        "real_world_use_case": "graph TB\n    Before[QUANTITY Table Before 2NF<br/>---------------------------------<br/>PK: SalespersonNumber + ProductNumber<br/>SalespersonName<br/>ProductName<br/>QuantitySold]\n    After1[QUANTITY Table After 2NF<br/>---------------------------------<br/>PK: SalespersonNumber + ProductNumber<br/>QuantitySold]\n    After2[SALESPERSON Table<br/>---------------------------------<br/>PK: SalespersonNumber<br/>SalespersonName]\n    After3[PRODUCT Table<br/>---------------------------------<br/>PK: ProductNumber<br/>ProductName]\n    Before -->|Keep only fully<br/>dependent attributes| After1\n    Before -->|Extract attributes<br/>dependent on SalespersonNumber| After2\n    Before -->|Extract attributes<br/>dependent on ProductNumber| After3\n    After1 -.->|FK| After2\n    After1 -.->|FK| After3\n    style After1 fill:#ccffcc\n    style After2 fill:#cce5ff\n    style After3 fill:#ffe5cc",
+        "common_mistakes": "graph TD\n    subgraph Mistake 1: Unnecessary Split\n        Right[Correct:<br/>Quantity stays in<br/>OrderID + ProductID table<br/>Depends on BOTH]\n    end\n    subgraph Mistake 2: Missing the Issue\n        Wrong[Wrong:<br/>Leaving ProductPrice in<br/>OrderID + ProductID table<br/>Depends only on ProductID]\n    end\n    style Right fill:#ccffcc\n    style Wrong fill:#ffcccc",
+        "example": "graph TB\n    Before[ORDER_ITEMS Before 2NF<br/>---------------------------------<br/>PK: OrderID + ProductID<br/>Quantity ← depends on both ✓<br/>OrderDate ← depends only on OrderID ✗<br/>CustomerName ← depends only on OrderID ✗<br/>ProductPrice ← depends only on ProductID ✗<br/>ProductCategory ← depends only on ProductID ✗]\n    After1[ORDER_ITEMS After 2NF<br/>---------------------------------<br/>PK: OrderID + ProductID<br/>Quantity]\n    After2[ORDERS<br/>---------------------------------<br/>PK: OrderID<br/>OrderDate<br/>CustomerName]\n    After3[PRODUCTS<br/>---------------------------------<br/>PK: ProductID<br/>ProductPrice<br/>ProductCategory]\n    Before -->|Keep fully dependent| After1\n    Before -->|Extract OrderID dependent| After2\n    Before -->|Extract ProductID dependent| After3\n    style After1 fill:#ccffcc\n    style After2 fill:#cce5ff\n    style After3 fill:#ffe5cc"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph SecondNormalForm {\n    rankdir=TB;\n    node [shape=box, margin=0.3, fontsize=11, style=filled];\n    \n    CompositeKey [label=\"Composite Primary Key\\n(A, B)\", fillcolor=\"#ffffcc\"];\n    \n    PartialDep [label=\"Partial Dependency\\nAttribute X depends\\nonly on A\\n(Violates 2NF)\", fillcolor=\"#ffcccc\"];\n    \n    FullDep [label=\"Full Dependency\\nAttribute Y depends\\non both A and B\\n(Satisfies 2NF)\", fillcolor=\"#ccffcc\"];\n    \n    CompositeKey -> PartialDep [label=\"✗\", color=red, penwidth=2];\n    CompositeKey -> FullDep [label=\"✓\", color=green, penwidth=2];\n}",
+        "analogy": "/* layout=dot */\ndigraph LibraryCheckoutAnalogy {\n    rankdir=TB;\n    node [shape=record, margin=0.3, fontsize=11, style=filled];\n    \n    Before [label=\"<h>CHECKOUT (Violates 2NF)|<k>StudentID + BookID|CheckoutDate|<s>StudentName|<b>BookTitle\", fillcolor=\"#ffcccc\"];\n    \n    After1 [label=\"<h>CHECKOUT (2NF)|<k>StudentID + BookID|CheckoutDate\", fillcolor=\"#ccffcc\"];\n    After2 [label=\"<h>STUDENTS|<k>StudentID|StudentName\", fillcolor=\"#cce5ff\"];\n    After3 [label=\"<h>BOOKS|<k>BookID|BookTitle\", fillcolor=\"#ffe5cc\"];\n    \n    After1 -> After2 [label=\"FK: StudentID\"];\n    After1 -> After3 [label=\"FK: BookID\"];\n    \n    Note [shape=note, label=\"StudentName depends\\nonly on StudentID\\n\\nBookTitle depends\\nonly on BookID\", fillcolor=\"#fff4e1\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph ToyBorrowingELI5 {\n    rankdir=TB;\n    node [shape=box, margin=0.3, fontsize=12, style=filled];\n    \n    Bad [label=\"❌ Messy Notebook:\\nAlice + Robot + Monday\\nAlice's Phone: 555-1234\\nRobot Color: Blue\\n\\nBob + Robot + Tuesday\\nBob's Phone: 555-5678\\nRobot Color: Blue\", fillcolor=\"#ffcccc\"];\n    \n    Good [label=\"✓ Clean Lists:\\n\\n📝 Borrow List:\\nAlice + Robot = Monday\\nBob + Robot = Tuesday\\n\\n📞 People:\\nAlice = 555-1234\\nBob = 555-5678\\n\\n🎨 Toys:\\nRobot = Blue\", fillcolor=\"#ccffcc\"];\n    \n    Bad -> Good [label=\"2NF:\\nSeparate Info!\", penwidth=2];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph SalesDatabase2NF {\n    rankdir=TB;\n    node [shape=record, margin=0.3, fontsize=10, style=filled];\n    \n    subgraph cluster_before {\n        label=\"Before 2NF: Redundant Data\";\n        style=filled;\n        fillcolor=\"#ffeeee\";\n        \n        QtyBefore [label=\"<h>QUANTITY|<k>SalespersonNum + ProductNum|SalespersonName|ProductName|Quantity\", fillcolor=\"#ffcccc\"];\n        \n        Example1 [shape=plaintext, label=\"Smith (101) + Laptop (201) = 5\\nSmith (101) + Mouse (202) = 20\\nJones (102) + Laptop (201) = 3\\nJones (102) + Mouse (202) = 15\"];\n        \n        Problem [shape=note, label=\"Problem:\\nSmith's name repeated\\nLaptop name repeated\", fillcolor=\"#ff9999\"];\n    }\n    \n    subgraph cluster_after {\n        label=\"After 2NF: No Redundancy\";\n        style=filled;\n        fillcolor=\"#eeffee\";\n        \n        QtyAfter [label=\"<h>QUANTITY|<k>SalespersonNum + ProductNum|Quantity\", fillcolor=\"#ccffcc\"];\n        Sales [label=\"<h>SALESPERSON|<k>SalespersonNum|Name\", fillcolor=\"#cce5ff\"];\n        Prod [label=\"<h>PRODUCT|<k>ProductNum|Name\", fillcolor=\"#ffe5cc\"];\n        \n        QtyAfter -> Sales [label=\"FK\"];\n        QtyAfter -> Prod [label=\"FK\"];\n    }\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph CommonMistakes2NF {\n    rankdir=LR;\n    node [shape=box, margin=0.3, fontsize=11, style=filled];\n    \n    subgraph cluster_mistake {\n        label=\"Common Mistake\";\n        style=filled;\n        fillcolor=\"#ffeeee\";\n        \n        Wrong [label=\"Removing Quantity\\nfrom ORDER_ITEMS\\n\\nWRONG!\\nQuantity depends on\\nBOTH OrderID\\nAND ProductID\", fillcolor=\"#ffcccc\"];\n    }\n    \n    subgraph cluster_correct {\n        label=\"Correct Approach\";\n        style=filled;\n        fillcolor=\"#eeffee\";\n        \n        Right [label=\"Keep Quantity\\nin ORDER_ITEMS\\n\\nCORRECT!\\nOnly remove attributes\\nthat depend on\\njust PART of the key\", fillcolor=\"#ccffcc\"];\n    }\n    \n    Rule [shape=ellipse, label=\"2NF Rule:\\nFull Functional\\nDependency\", fillcolor=\"#ffffcc\"];\n    Rule -> Right [penwidth=2];\n}",
+        "example": "/* layout=dot */\ndigraph OrderItems2NFExample {\n    rankdir=TB;\n    node [shape=record, margin=0.3, fontsize=10, style=filled];\n    \n    Before [label=\"<h>ORDER_ITEMS (Before)|<k>OrderID + ProductID|Quantity ✓|OrderDate ✗|CustomerName ✗|ProductPrice ✗|ProductCategory ✗\", fillcolor=\"#ffcccc\"];\n    \n    After1 [label=\"<h>ORDER_ITEMS (After)|<k>OrderID + ProductID|Quantity\", fillcolor=\"#ccffcc\"];\n    After2 [label=\"<h>ORDERS|<k>OrderID|OrderDate|CustomerName\", fillcolor=\"#cce5ff\"];\n    After3 [label=\"<h>PRODUCTS|<k>ProductID|ProductPrice|ProductCategory\", fillcolor=\"#ffe5cc\"];\n    \n    Before -> After1 [label=\"Keep full\\ndependencies\"];\n    Before -> After2 [label=\"Extract OrderID\\ndependencies\"];\n    Before -> After3 [label=\"Extract ProductID\\ndependencies\"];\n    \n    After1 -> After2 [label=\"FK: OrderID\"];\n    After1 -> After3 [label=\"FK: ProductID\"];\n    \n    Legend [shape=note, label=\"✓ = Depends on full key\\n✗ = Partial dependency\", fillcolor=\"#fff4e1\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is the PRIMARY requirement for a table to be in Second Normal Form (2NF)?",
+          "options": [
+            "A. The table must have no multivalued attributes",
+            "B. The table must be in 1NF and have no partial dependencies on the primary key",
+            "C. The table must have no transitive dependencies",
+            "D. The table must have a single-column primary key"
+          ],
+          "answer": "B. The table must be in 1NF and have no partial dependencies on the primary key"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A SALES table uses (SalespersonID, ProductID) as a composite primary key and also stores SalespersonName, ProductName, QuantitySold, and SalesDate. The SalespersonName depends only on SalespersonID, and ProductName depends only on ProductID.",
+          "question": "Which attributes should remain in the SALES table to achieve 2NF?",
+          "options": [
+            "A. Only SalespersonID and ProductID",
+            "B. SalespersonID, ProductID, QuantitySold, and SalesDate",
+            "C. All attributes should remain in one table",
+            "D. Only QuantitySold"
+          ],
+          "answer": "B. SalespersonID, ProductID, QuantitySold, and SalesDate"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the correct order for achieving Second Normal Form (2NF):",
+          "items": [
+            "Ensure the table is already in First Normal Form (1NF)",
+            "Create separate tables for attributes that have partial dependencies",
+            "Identify any partial dependencies (nonkey attributes depending on only part of a composite key)",
+            "Establish foreign key relationships between the new tables"
+          ],
+          "answer": [
+            "Ensure the table is already in First Normal Form (1NF)",
+            "Identify any partial dependencies (nonkey attributes depending on only part of a composite key)",
+            "Create separate tables for attributes that have partial dependencies",
+            "Establish foreign key relationships between the new tables"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Given a table with composite primary key (StudentID, CourseID), categorize the following attributes as either 'Keep in Original Table (Full Dependency)' or 'Move to Separate Table (Partial Dependency)':",
+          "items": [
+            "Grade (depends on both StudentID and CourseID)",
+            "StudentName (depends only on StudentID)",
+            "CourseName (depends only on CourseID)",
+            "EnrollmentDate (depends on both StudentID and CourseID)",
+            "StudentMajor (depends only on StudentID)",
+            "CourseCredits (depends only on CourseID)"
+          ],
+          "categories": [
+            "Keep in Original Table (Full Dependency)",
+            "Move to Separate Table (Partial Dependency)"
+          ],
+          "answer": {
+            "Keep in Original Table (Full Dependency)": [
+              "Grade (depends on both StudentID and CourseID)",
+              "EnrollmentDate (depends on both StudentID and CourseID)"
+            ],
+            "Move to Separate Table (Partial Dependency)": [
+              "StudentName (depends only on StudentID)",
+              "CourseName (depends only on CourseID)",
+              "StudentMajor (depends only on StudentID)",
+              "CourseCredits (depends only on CourseID)"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each term related to Second Normal Form with its correct description:",
+          "premises": [
+            "1. Partial Dependency",
+            "2. Composite Primary Key",
+            "3. Full Functional Dependency"
+          ],
+          "responses": [
+            "A. A nonkey attribute that depends on the entire primary key, not just part of it",
+            "B. A primary key composed of two or more attributes",
+            "C. A nonkey attribute that depends on only part of a composite primary key"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "second normal form",
+        "2NF",
+        "partial dependency",
+        "composite key",
+        "full functional dependency",
+        "database normalization"
+      ],
+      "source_chunk": "MIS_lec_4_11",
+      "diagram_image_paths": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      }
+    },
+    {
+      "type": "concept",
+      "question": "Describe the purpose and characteristics of Third Normal Form (3NF) and how it eliminates transitive dependencies.",
+      "answers": {
+        "concise": "Third Normal Form (3NF) eliminates transitive dependencies, ensuring that all nonkey attributes depend directly on the primary key and not on other nonkey attributes. A table must be in 2NF before achieving 3NF. A transitive dependency occurs when a nonkey attribute depends on another nonkey attribute, which in turn depends on the primary key, creating an indirect dependency chain.",
+        "analogy": "Think of 3NF like organizing employee information. If you store EmployeeID, DepartmentNumber, and ManagerName together, there's a problem: ManagerName doesn't directly relate to the employee—it relates to the department. An employee's manager is determined by which department they're in, not by the employee themselves. In 3NF, you'd separate department information (including managers) into its own table, so each fact is stored exactly once in the most logical place.",
+        "eli5": "Imagine you have a list of students with their classroom number and their teacher's name. But the teacher's name isn't really about the student—it's about which classroom they're in! If you write the teacher's name next to every student in that class, you're writing it many times. Instead, you should have one list of students and classrooms, and another list of classrooms and their teachers.",
+        "real_world_use_case": "Consider a SALESPERSON table with SalespersonNumber as the primary key, containing SalespersonName, DepartmentNumber, and ManagerName. Here, ManagerName has a transitive dependency: it depends on DepartmentNumber, which depends on SalespersonNumber. To achieve 3NF, create two tables: SALESPERSON (SalespersonNumber, Name, DepartmentNumber) and DEPARTMENT (DepartmentNumber, ManagerName). Now, if a manager changes, you update one record in DEPARTMENT instead of updating every salesperson in that department. This eliminates update anomalies and data inconsistency.",
+        "common_mistakes": "A common mistake is confusing transitive dependencies with multi-table relationships. Not all foreign keys create transitive dependencies—only when nonkey attributes depend on other nonkey attributes. Another mistake is over-normalizing: if an attribute like 'FullName' is derived from 'FirstName' and 'LastName,' that's not a transitive dependency requiring 3NF—it's a computed field. Focus on dependencies between stored data attributes, not calculated ones."
+      },
+      "context": "Database Normalization - Third Normal Form",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Critical final normalization step in standard practice; eliminates transitive dependencies and update anomalies for optimal database design."
+      },
+      "example": "In a university database, a STUDENT table initially contains: StudentID (PK), StudentName, AdvisorID, and AdvisorOfficeLocation. The problem: AdvisorOfficeLocation depends on AdvisorID, not directly on StudentID—this is a transitive dependency. To achieve 3NF: (1) Keep STUDENT table with StudentID, StudentName, and AdvisorID; (2) Create ADVISOR table with AdvisorID (PK) and OfficeLocation. Now, if an advisor moves offices, you update one record in ADVISOR, not every student they advise. If a student changes advisors, you only change the AdvisorID in STUDENT, not office location information.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    subgraph Before 3NF\n        Table1[Table with<br/>Transitive Dependency:<br/>PK → A → B]\n    end\n    subgraph After 3NF\n        Table2[Main Table:<br/>PK → A]  \n        Table3[New Table:<br/>A → B]\n    end\n    Table1 -->|Split| Table2\n    Table1 -->|Extract| Table3\n    Table2 -.->|References| Table3\n    style Table2 fill:#ccffcc\n    style Table3 fill:#cce5ff\n    Note[Transitive Dependency:<br/>B depends on PK<br/>through A]\n    Table1 -.-> Note\n    style Note fill:#ffcccc",
+        "analogy": "graph TD\n    Before[EMPLOYEE Table:<br/>EmployeeID → DepartmentNum → ManagerName]\n    After1[EMPLOYEE Table:<br/>EmployeeID → DepartmentNum]\n    After2[DEPARTMENT Table:<br/>DepartmentNum → ManagerName]\n    Before -->|3NF: Remove<br/>Transitive Dependency| After1\n    Before -->|Extract Department<br/>Information| After2\n    After1 -.->|FK: DepartmentNum| After2\n    style After1 fill:#ccffcc\n    style After2 fill:#cce5ff\n    Problem[Problem: Manager changes<br/>require updating ALL employees<br/>in that department]\n    Before -.-> Problem\n    style Problem fill:#ffcccc",
+        "eli5": "graph TD\n    Messy[One List:<br/>Student → Classroom → Teacher<br/>Alice → Room 5 → Mr. Smith<br/>Bob → Room 5 → Mr. Smith<br/>Carol → Room 6 → Ms. Jones]\n    Clean1[Students & Rooms:<br/>Alice → Room 5<br/>Bob → Room 5<br/>Carol → Room 6]\n    Clean2[Rooms & Teachers:<br/>Room 5 → Mr. Smith<br/>Room 6 → Ms. Jones]\n    Messy -->|3NF: Separate!| Clean1\n    Messy -->|Teacher info goes<br/>with rooms| Clean2\n    Clean1 -.->|Room number<br/>links them| Clean2\n    style Clean1 fill:#ccffcc\n    style Clean2 fill:#cce5ff\n    Why[Why Better:<br/>If Mr. Smith moves to Room 7<br/>only change 1 line not 2!]\n    Clean2 -.-> Why\n    style Why fill:#ffffcc",
+        "real_world_use_case": "graph TB\n    Before[SALESPERSON Table Before 3NF<br/>━━━━━━━━━━━━━━━━━━━━━━━━━━<br/>PK: SalespersonNumber<br/>SalespersonName<br/>DepartmentNumber<br/>ManagerName ← Transitive!]\n    After1[SALESPERSON Table After 3NF<br/>━━━━━━━━━━━━━━━━━━━━━━━━━━<br/>PK: SalespersonNumber<br/>SalespersonName<br/>DepartmentNumber FK]\n    After2[DEPARTMENT Table<br/>━━━━━━━━━━━━━━━━━━━━━━━━━━<br/>PK: DepartmentNumber<br/>ManagerName]\n    Before -->|Remove ManagerName<br/>transitive dependency| After1\n    Before -->|Extract to<br/>DEPARTMENT table| After2\n    After1 -.->|References<br/>via FK| After2\n    style After1 fill:#ccffcc\n    style After2 fill:#cce5ff\n    Benefit[Benefit:<br/>Manager change =<br/>1 update instead of<br/>updating every<br/>salesperson record]\n    After2 -.-> Benefit\n    style Benefit fill:#e1f5ff",
+        "common_mistakes": "graph TD\n    subgraph Common Mistake\n        Wrong[Thinking ALL<br/>foreign keys create<br/>transitive dependencies<br/>❌ WRONG]\n    end\n    subgraph Correct Understanding\n        Right1[Foreign Key in ORDERS<br/>to CUSTOMERS:<br/>NO transitive dependency<br/>✓ This is normal]  \n        Right2[Nonkey attribute depending<br/>on another nonkey attribute:<br/>YES transitive dependency<br/>✓ This violates 3NF]\n    end\n    style Wrong fill:#ffcccc\n    style Right1 fill:#ccffcc\n    style Right2 fill:#ffffcc\n    Example[Example:<br/>EmployeeID → DeptNum → Manager<br/>Manager depends on DeptNum<br/>not directly on EmployeeID]\n    Right2 -.-> Example",
+        "example": "graph TB\n    Before[STUDENT Table Before 3NF<br/>━━━━━━━━━━━━━━━━━━━━━━━━━━<br/>PK: StudentID<br/>StudentName ← Direct dependency ✓<br/>AdvisorID ← Direct dependency ✓<br/>AdvisorOfficeLocation ← Transitive! ✗<br/>depends on AdvisorID not StudentID]\n    After1[STUDENT Table After 3NF<br/>━━━━━━━━━━━━━━━━━━━━━━━━━━<br/>PK: StudentID<br/>StudentName<br/>AdvisorID FK]\n    After2[ADVISOR Table<br/>━━━━━━━━━━━━━━━━━━━━━━━━━━<br/>PK: AdvisorID<br/>OfficeLocation]\n    Before -->|Remove transitive<br/>dependency| After1\n    Before -->|Extract advisor<br/>information| After2\n    After1 -.->|FK: AdvisorID| After2\n    style After1 fill:#ccffcc\n    style After2 fill:#cce5ff\n    Scenario1[Scenario 1:<br/>Advisor moves offices<br/>Update 1 record in ADVISOR<br/>not all students they advise]\n    Scenario2[Scenario 2:<br/>Student changes advisors<br/>Update only AdvisorID<br/>office info stays correct]\n    After2 -.-> Scenario1\n    After1 -.-> Scenario2\n    style Scenario1 fill:#e1f5ff\n    style Scenario2 fill:#e1f5ff"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph ThirdNormalForm {\n    rankdir=LR;\n    node [shape=box, margin=0.3, fontsize=11, style=filled];\n    \n    PK [label=\"Primary Key\\n(PK)\", fillcolor=\"#ffffcc\"];\n    A [label=\"Nonkey\\nAttribute A\", fillcolor=\"#e1f5ff\"];\n    B [label=\"Nonkey\\nAttribute B\", fillcolor=\"#ffcccc\"];\n    \n    PK -> A [label=\"Direct\\nDependency\", color=green, penwidth=2];\n    A -> B [label=\"Transitive\\nDependency\\n(Violates 3NF)\", color=red, penwidth=2];\n    PK -> B [label=\"Indirect\", style=dashed, color=red];\n    \n    Note [shape=note, label=\"3NF requires:\\nAll nonkey attributes\\nmust depend directly\\non PK, not on other\\nnonkey attributes\", fillcolor=\"#fff4e1\"];\n}",
+        "analogy": "/* layout=dot */\ndigraph EmployeeDepartmentAnalogy {\n    rankdir=TB;\n    node [shape=record, margin=0.3, fontsize=11, style=filled];\n    \n    Before [label=\"<h>EMPLOYEE (Violates 3NF)|<k>EmployeeID|EmployeeName|DepartmentNum|<t>ManagerName\", fillcolor=\"#ffcccc\"];\n    \n    After1 [label=\"<h>EMPLOYEE (3NF)|<k>EmployeeID|EmployeeName|<fk>DepartmentNum FK\", fillcolor=\"#ccffcc\"];\n    After2 [label=\"<h>DEPARTMENT|<k>DepartmentNum|ManagerName\", fillcolor=\"#cce5ff\"];\n    \n    After1:fk -> After2:k [label=\"references\", penwidth=2];\n    \n    Chain [shape=plaintext, label=\"Transitive Chain:\\nEmployeeID → DepartmentNum → ManagerName\"];\n    Before -> Chain [style=dashed];\n    \n    Fix [shape=note, label=\"Fix: Extract ManagerName\\nto DEPARTMENT table\", fillcolor=\"#ffffcc\"];\n}",
+        "eli5": "/* layout=dot */\ndigraph StudentClassroomELI5 {\n    rankdir=TB;\n    node [shape=box, margin=0.3, fontsize=12, style=filled];\n    \n    Bad [label=\"❌ Repeating Teacher Names:\\n\\nAlice → Room 5 → Mr. Smith\\nBob → Room 5 → Mr. Smith\\nCarol → Room 6 → Ms. Jones\\nDan → Room 6 → Ms. Jones\\n\\nMr. Smith written 2 times!\\nMs. Jones written 2 times!\", fillcolor=\"#ffcccc\"];\n    \n    Good [label=\"✓ Each Fact Once:\\n\\nStudents & Rooms:\\nAlice → Room 5\\nBob → Room 5\\nCarol → Room 6\\nDan → Room 6\\n\\nRooms & Teachers:\\nRoom 5 → Mr. Smith\\nRoom 6 → Ms. Jones\", fillcolor=\"#ccffcc\"];\n    \n    Bad -> Good [label=\"3NF:\\nSeparate Teacher Info!\", penwidth=2];\n    \n    Why [shape=ellipse, label=\"Teacher name belongs\\nwith the room\\nNOT with each student!\", fillcolor=\"#ffffcc\"];\n    Good -> Why [style=dashed];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph SalespersonDepartment3NF {\n    rankdir=TB;\n    node [shape=record, margin=0.3, fontsize=10, style=filled];\n    \n    subgraph cluster_before {\n        label=\"Before 3NF: Update Anomaly\";\n        style=filled;\n        fillcolor=\"#ffeeee\";\n        \n        SalesBefore [label=\"<h>SALESPERSON|SalespersonNum|Name|DeptNum|ManagerName\", fillcolor=\"#ffcccc\"];\n        \n        Data [shape=plaintext, label=\"Data:\\n101 | Smith | D1 | Johnson\\n102 | Jones | D1 | Johnson\\n103 | Brown | D2 | Williams\\n104 | Davis | D2 | Williams\"];\n        \n        Problem [shape=note, label=\"Problem:\\nIf Johnson gets promoted\\nmust update 2 rows\\nIf Williams transfers\\nmust update 2 rows\", fillcolor=\"#ff9999\"];\n    }\n    \n    subgraph cluster_after {\n        label=\"After 3NF: No Anomaly\";\n        style=filled;\n        fillcolor=\"#eeffee\";\n        \n        SalesAfter [label=\"<h>SALESPERSON|SalespersonNum|Name|<fk>DeptNum FK\", fillcolor=\"#ccffcc\"];\n        Dept [label=\"<h>DEPARTMENT|<k>DeptNum PK|ManagerName\", fillcolor=\"#cce5ff\"];\n        \n        SalesAfter:fk -> Dept:k [penwidth=2];\n        \n        Benefit [shape=note, label=\"Solution:\\nManager change =\\n1 update in DEPARTMENT\\nNo matter how many\\nsalespeople in dept\", fillcolor=\"#99ff99\"];\n    }\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph Mistake3NF {\n    rankdir=TB;\n    node [shape=box, margin=0.3, fontsize=11, style=filled];\n    \n    subgraph cluster_wrong {\n        label=\"WRONG Assumption\";\n        style=filled;\n        fillcolor=\"#ffeeee\";\n        \n        Misconception [label=\"Every foreign key\\ncreates a transitive\\ndependency\", fillcolor=\"#ffcccc\"];\n    }\n    \n    subgraph cluster_correct {\n        label=\"CORRECT Understanding\";\n        style=filled;\n        fillcolor=\"#eeffee\";\n        \n        Truth [label=\"Only when\\nnonkey attribute\\ndepends on\\nanother nonkey attribute\", fillcolor=\"#ccffcc\"];\n    }\n    \n    Example1 [shape=record, label=\"<h>ORDERS|OrderID|<c>CustomerID FK|OrderDate\", fillcolor=\"#99ff99\"];\n    Example2 [shape=record, label=\"<h>EMPLOYEE|EmployeeID|<d>DeptNum|<m>ManagerName\", fillcolor=\"#ff9999\"];\n    \n    Truth -> Example1 [label=\"✓ No transitive\\ndependency\"];\n    Truth -> Example2 [label=\"✗ ManagerName\\ndepends on DeptNum\\n(transitive!)\"];\n}",
+        "example": "/* layout=dot */\ndigraph StudentAdvisor3NFExample {\n    rankdir=TB;\n    node [shape=record, margin=0.3, fontsize=10, style=filled];\n    \n    Before [label=\"<h>STUDENT (Before 3NF)|<k>StudentID PK|StudentName ✓|AdvisorID ✓|<t>AdvisorOfficeLocation ✗\", fillcolor=\"#ffcccc\"];\n    \n    TransitiveChain [shape=plaintext, label=\"Transitive Dependency Chain:\\nStudentID → AdvisorID → AdvisorOfficeLocation\\n\\nOfficeLocation depends on AdvisorID\\nNOT directly on StudentID!\"];\n    \n    Before -> TransitiveChain [style=dashed];\n    \n    After1 [label=\"<h>STUDENT (After 3NF)|<k>StudentID PK|StudentName|<fk>AdvisorID FK\", fillcolor=\"#ccffcc\"];\n    After2 [label=\"<h>ADVISOR|<k>AdvisorID PK|OfficeLocation\", fillcolor=\"#cce5ff\"];\n    \n    Before -> After1 [label=\"Remove\\noffice location\"];\n    Before -> After2 [label=\"Extract to\\nADVISOR table\"];\n    After1:fk -> After2:k [penwidth=2];\n    \n    Scenario1 [shape=note, label=\"Scenario 1:\\nAdvisor moves offices\\n→ Update 1 row in ADVISOR\", fillcolor=\"#e1f5ff\"];\n    Scenario2 [shape=note, label=\"Scenario 2:\\nStudent changes advisors\\n→ Update AdvisorID only\\n→ Office auto-correct via FK\", fillcolor=\"#e1f5ff\"];\n    \n    After2 -> Scenario1 [style=dashed];\n    After1 -> Scenario2 [style=dashed];\n    \n    Legend [shape=plaintext, label=\"Legend:\\n✓ = Direct dependency (OK)\\n✗ = Transitive dependency (violates 3NF)\"];\n}"
+      },
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "What is a transitive dependency in the context of Third Normal Form (3NF)?",
+          "options": [
+            "A. When a nonkey attribute depends on the primary key through another nonkey attribute",
+            "B. When a table has a composite primary key",
+            "C. When a nonkey attribute depends directly on the primary key",
+            "D. When a table contains foreign keys to other tables"
+          ],
+          "answer": "A. When a nonkey attribute depends on the primary key through another nonkey attribute"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "An EMPLOYEE table contains EmployeeID (PK), EmployeeName, DepartmentNumber, and ManagerName. The ManagerName depends on DepartmentNumber, not directly on EmployeeID.",
+          "question": "What is the BEST way to achieve Third Normal Form (3NF) for this table?",
+          "options": [
+            "A. Remove the DepartmentNumber column entirely",
+            "B. Create a DEPARTMENT table with DepartmentNumber (PK) and ManagerName, keeping only DepartmentNumber in EMPLOYEE as a foreign key",
+            "C. Move EmployeeName to a separate table",
+            "D. Add ManagerID as an additional primary key to EMPLOYEE"
+          ],
+          "answer": "B. Create a DEPARTMENT table with DepartmentNumber (PK) and ManagerName, keeping only DepartmentNumber in EMPLOYEE as a foreign key"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following normalization forms in the correct order from least normalized to most normalized:",
+          "items": [
+            "Third Normal Form (3NF) - No transitive dependencies",
+            "Unnormalized - May have repeating groups",
+            "First Normal Form (1NF) - No repeating groups",
+            "Second Normal Form (2NF) - No partial dependencies"
+          ],
+          "answer": [
+            "Unnormalized - May have repeating groups",
+            "First Normal Form (1NF) - No repeating groups",
+            "Second Normal Form (2NF) - No partial dependencies",
+            "Third Normal Form (3NF) - No transitive dependencies"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Given a STUDENT table with StudentID (PK), StudentName, AdvisorID, and AdvisorPhone, categorize these attributes as 'Keep in STUDENT Table' or 'Move to ADVISOR Table' to achieve 3NF:",
+          "items": [
+            "StudentID",
+            "StudentName",
+            "AdvisorID",
+            "AdvisorPhone"
+          ],
+          "categories": [
+            "Keep in STUDENT Table",
+            "Move to ADVISOR Table"
+          ],
+          "answer": {
+            "Keep in STUDENT Table": [
+              "StudentID",
+              "StudentName",
+              "AdvisorID"
+            ],
+            "Move to ADVISOR Table": [
+              "AdvisorPhone"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each normalization benefit with the specific normal form that provides it:",
+          "premises": [
+            "1. Eliminates repeating groups and ensures atomic values",
+            "2. Removes partial dependencies on composite keys",
+            "3. Eliminates transitive dependencies between nonkey attributes"
+          ],
+          "responses": [
+            "A. Third Normal Form (3NF)",
+            "B. First Normal Form (1NF)",
+            "C. Second Normal Form (2NF)"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "third normal form",
+        "3NF",
+        "transitive dependency",
+        "database normalization",
+        "update anomaly",
+        "data integrity"
+      ],
+      "source_chunk": "MIS_lec_4_11",
+      "diagram_image_paths": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
         "example": ""
       }
     }
