@@ -537,11 +537,13 @@ def compare_answers(user_answer: Any, correct_answer: Any, question_type: str) -
         if not isinstance(user_answer, dict) or not isinstance(correct_answer, dict):
             return False
         
-        # Normalize and compare
+        # Check if the set of categories is the same
+        if set(user_answer.keys()) != set(correct_answer.keys()):
+            return False
+
+        # Normalize and compare items within each category
         for category, items in correct_answer.items():
-            if category not in user_answer:
-                return False
-            user_items = set(user_answer[category])
+            user_items = set(user_answer.get(category, []))
             correct_items = set(items)
             if user_items != correct_items:
                 return False

@@ -396,6 +396,12 @@ function SequencingQuestion({ items, userAnswer, onChange }) {
   const [orderedItems, setOrderedItems] = useState(userAnswer || [...items]);
   const [draggedIndex, setDraggedIndex] = useState(null);
 
+  // Reset items when the items prop changes (new question)
+  useEffect(() => {
+    setOrderedItems(userAnswer || [...items]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]);
+
   useEffect(() => {
     onChange(orderedItems);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -465,6 +471,20 @@ function CategorizationQuestion({ items, categories, userAnswer, onChange }) {
     }
     return initial;
   });
+
+  // Reset categorization when items or categories change (new question)
+  useEffect(() => {
+    const initial = categories.reduce((acc, cat) => ({ ...acc, [cat]: [] }), {});
+    if (userAnswer) {
+      Object.keys(userAnswer).forEach(cat => {
+        if (cat in initial) {
+          initial[cat] = userAnswer[cat];
+        }
+      });
+    }
+    setCategorization(initial);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, categories]);
 
   useEffect(() => {
     onChange(categorization);
@@ -551,6 +571,12 @@ function CategorizationQuestion({ items, categories, userAnswer, onChange }) {
 // Matching Question Component
 function MatchingQuestion({ premises, responses, userAnswer, onChange }) {
   const [matches, setMatches] = useState(userAnswer || []);
+
+  // Reset matches when premises or responses change (new question)
+  useEffect(() => {
+    setMatches(userAnswer || []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [premises, responses]);
 
   useEffect(() => {
     onChange(matches);
