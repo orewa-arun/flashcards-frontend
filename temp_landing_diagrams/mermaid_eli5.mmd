@@ -1,0 +1,11 @@
+graph TD
+    Wrong[Notebook with<br/>Toy + Person + Phone]
+    Right1[Toy Borrowing<br/>List]
+    Right2[Person Phone<br/>List]
+    Wrong -->|Separate!| Right1
+    Wrong -->|Move phones here!| Right2
+    Right1 -.->|Look up person| Right2
+    style Wrong fill:#ffcccc
+    style Right1 fill:#ccffcc
+    style Right2 fill:#cce5ff
+

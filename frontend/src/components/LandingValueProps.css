@@ -1,0 +1,273 @@
+/* Value Props Section - World Class Design */
+.landing-value-props {
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-value-props::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(45, 122, 62, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Header */
+.value-props-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+}
+
+.value-props-title {
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.value-props-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-gray);
+  max-width: 600px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.subtitle-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Value Props Grid */
+.value-props-grid {
+  position: relative;
+  z-index: 2;
+  margin: clamp(50px, 6vw, 70px) auto;
+}
+
+.value-prop-card {
+  text-align: center;
+  padding: clamp(30px, 4vw, 40px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-light);
+  background: var(--pure-white);
+}
+
+.value-prop-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-green);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.value-prop-card:hover::before {
+  transform: scaleX(1);
+}
+
+.value-prop-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Icon Wrapper */
+.value-prop-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: clamp(24px, 3vw, 32px);
+}
+
+.value-prop-icon-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.value-prop-card:hover .value-prop-icon-bg {
+  opacity: 0.2;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.value-prop-icon {
+  font-size: clamp(48px, 6vw, 64px);
+  position: relative;
+  z-index: 2;
+  display: block;
+  transition: transform 0.3s ease;
+  color: var(--primary-green);
+}
+
+.value-prop-card:hover .value-prop-icon {
+  transform: scale(1.1);
+}
+
+/* Content */
+.value-prop-headline {
+  font-size: clamp(20px, 2.5vw, 24px);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: clamp(12px, 1.5vw, 16px);
+  letter-spacing: -0.01em;
+}
+
+.value-prop-description {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Card Number */
+.value-prop-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-light);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.value-prop-card:hover .value-prop-number {
+  opacity: 0.8;
+}
+
+/* Stats Section */
+.value-props-stats {
+  margin-top: clamp(60px, 8vw, 80px);
+  position: relative;
+  z-index: 2;
+}
+
+.stats-grid {
+  background: linear-gradient(135deg, var(--pure-white) 0%, var(--cream-bg) 100%);
+  border-radius: 20px;
+  padding: clamp(30px, 4vw, 50px);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--border-light);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--primary-green);
+  line-height: 1;
+  margin-bottom: clamp(8px, 1vw, 12px);
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--text-gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Floating Elements */
+.landing-value-props::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .value-props-grid {
+    margin: 40px auto;
+  }
+  
+  .value-prop-card {
+    padding: 30px 20px;
+  }
+  
+  .value-prop-icon-bg {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .value-prop-number {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .stats-grid {
+    padding: 30px 20px;
+  }
+  
+  .value-props-stats {
+    margin-top: 50px;
+  }
+}
+
+/* Animation for section entrance */
+.value-props-header,
+.value-props-grid,
+.value-props-stats {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.value-props-grid {
+  animation-delay: 0.2s;
+}
+
+.value-props-stats {
+  animation-delay: 0.4s;
+}
+
+/* Staggered card animations */
+.value-prop-card:nth-child(1) {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+.value-prop-card:nth-child(2) {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.4s;
+}
+
+.value-prop-card:nth-child(3) {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.5s;
+}

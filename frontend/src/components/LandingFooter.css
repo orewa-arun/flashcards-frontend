@@ -1,0 +1,101 @@
+.landing-footer {
+  background: linear-gradient(135deg, #1A4D2E 0%, #2D7A3E 100%);
+  color: var(--pure-white);
+  padding: clamp(40px, 6vw, 60px) clamp(20px, 4vw, 40px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-brand h3 {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-logo {
+  height: 36px; /* Adjust as needed */
+  width: auto;
+}
+
+.footer-brand p {
+  font-size: clamp(14px, 1.5vw, 18px);
+  opacity: 0.9;
+  margin-bottom: clamp(20px, 3vw, 32px);
+  line-height: 1.5;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 4vw, 40px);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: var(--pure-white);
+  text-decoration: none;
+  font-size: clamp(14px, 1.4vw, 16px);
+  font-weight: 500;
+  opacity: 0.9;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.footer-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Decorative Background Elements */
+.landing-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .landing-footer {
+    padding: 40px 20px;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .footer-link {
+    padding: 10px 20px;
+    width: fit-content;
+  }
+}

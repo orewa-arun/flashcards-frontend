@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import './App.css'
+import LandingPageView from './views/LandingPageView'
 import CourseListView from './views/CourseListView'
 import CourseDetailView from './views/CourseDetailView'
 import DeckView from './views/DeckView'
@@ -29,7 +30,8 @@ function App() {
       <Navigation />
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<CourseListView />} />
+          <Route path="/" element={<LandingPageView />} />
+          <Route path="/courses" element={<CourseListView />} />
           <Route path="/courses/:courseId" element={<CourseDetailView />} />
           <Route path="/courses/:courseId/:lectureId" element={<DeckView />} />
           <Route path="/courses/:courseId/:lectureId/quiz" element={<QuizView />} />

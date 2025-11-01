@@ -1,0 +1,12 @@
+graph LR
+    M1[Mistake:<br/>Apply 2NF to<br/>single-key tables]
+    M2[Mistake:<br/>Remove attributes<br/>that depend on<br/>full composite key]
+    C1[Correct:<br/>2NF only for<br/>composite keys]
+    C2[Correct:<br/>Keep full<br/>dependencies]
+    M1 -.->|Learn| C1
+    M2 -.->|Understand| C2
+    style M1 fill:#ffcccc
+    style M2 fill:#ffcccc
+    style C1 fill:#ccffcc
+    style C2 fill:#ccffcc
+

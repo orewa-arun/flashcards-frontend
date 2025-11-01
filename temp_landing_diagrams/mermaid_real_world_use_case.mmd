@@ -1,0 +1,15 @@
+graph TD
+    Before[QUANTITY Table<br/>SalespersonNum + ProductNum<br/>Quantity<br/>SalespersonName<br/>ProductName]
+    After1[QUANTITY<br/>SalespersonNum + ProductNum<br/>Quantity]
+    After2[SALESPERSON<br/>SalespersonNum<br/>Name]
+    After3[PRODUCT<br/>ProductNum<br/>Name]
+    Before -->|Split| After1
+    Before -->|Extract| After2
+    Before -->|Extract| After3
+    After1 -.->|FK| After2
+    After1 -.->|FK| After3
+    style Before fill:#ffcccc
+    style After1 fill:#ccffcc
+    style After2 fill:#cce5ff
+    style After3 fill:#ffe5cc
+

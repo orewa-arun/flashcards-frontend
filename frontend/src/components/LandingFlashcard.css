@@ -1,0 +1,815 @@
+/* Landing Flashcard - World Class Dynamic Design */
+.landing-flashcard-wrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  perspective: 1500px;
+  position: relative;
+  /* Reserve space for expanded card */
+  min-height: 400px;
+}
+
+.landing-flashcard {
+  width: 100%;
+  min-height: 400px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.landing-flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.landing-flashcard-front,
+.landing-flashcard-back {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  min-height: 400px;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  background: var(--pure-white);
+  border: 1px solid rgba(45, 122, 62, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.landing-flashcard-front:hover,
+.landing-flashcard-back:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.landing-flashcard-back {
+  transform: rotateY(180deg);
+  /* Allow back to expand based on content */
+  height: auto;
+}
+
+/* Front Side Styling */
+.landing-flashcard-front {
+  background: linear-gradient(135deg, var(--pure-white) 0%, var(--cream-bg) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.landing-flashcard-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-green);
+}
+
+.landing-flashcard-front .card-content {
+  padding: clamp(30px, 5vw, 50px);
+  text-align: center;
+  max-width: 90%;
+}
+
+.question-icon {
+  font-size: clamp(24px, 4vw, 32px);
+  color: var(--primary-green);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  opacity: 0.8;
+}
+
+.question-text {
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin-bottom: clamp(24px, 4vw, 32px);
+  letter-spacing: -0.01em;
+}
+
+.flip-hint {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--text-light);
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.landing-flashcard:hover .flip-hint {
+  opacity: 1;
+}
+
+/* Back Side Styling - Professional Design with Dynamic Height */
+.landing-flashcard-back {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAFBFC 100%);
+  border-left: 4px solid var(--primary-green);
+  overflow: visible;
+}
+
+.landing-flashcard-back .card-content {
+  padding: clamp(28px, 4vw, 40px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 24px);
+  min-height: 400px;
+}
+
+/* Answer Selector - Enhanced Professional Design */
+.answer-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 1.2vw, 12px);
+  padding: clamp(16px, 2vw, 20px);
+  background: linear-gradient(135deg, #F8FFFE 0%, #F0F9F4 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(45, 122, 62, 0.12);
+  box-shadow: inset 0 1px 3px rgba(45, 122, 62, 0.05);
+  flex-shrink: 0;
+}
+
+.answer-type-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 0.6vw, 6px);
+  padding: clamp(10px, 1.5vw, 14px) clamp(8px, 1vw, 12px);
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: var(--text-gray);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  min-height: clamp(55px, 8vw, 65px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.answer-type-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+.answer-type-btn:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(45, 122, 62, 0.15);
+}
+
+.answer-type-btn.active::before {
+  opacity: 1;
+}
+
+.answer-type-btn.active {
+  color: var(--pure-white);
+  border-color: var(--primary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(45, 122, 62, 0.25);
+}
+
+.shortcut-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(45, 122, 62, 0.1);
+  border-radius: 6px;
+  color: var(--primary-green);
+  position: relative;
+  z-index: 2;
+  transition: all 0.25s ease;
+}
+
+.answer-type-btn.active .shortcut-key {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--pure-white);
+}
+
+.tab-label {
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Answer Content - Enhanced Layout with Natural Flow */
+.answer-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.5vw, 28px);
+  padding: clamp(20px, 3vw, 28px) clamp(18px, 2.5vw, 24px);
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid rgba(45, 122, 62, 0.08);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+  overflow: visible;
+}
+
+.answer-text {
+  font-size: clamp(14.5px, 1.5vw, 17px);
+  line-height: 1.75;
+  color: var(--text-dark);
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0.005em;
+  margin: 0;
+}
+
+/* Mermaid Diagram Styling - Professional Enhancement */
+.mermaid-diagram-wrapper {
+  padding: clamp(24px, 3vw, 32px);
+  background: linear-gradient(135deg, #FAFBFC 0%, #F0F9F4 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(45, 122, 62, 0.15);
+  box-shadow: 0 3px 12px rgba(45, 122, 62, 0.08);
+  margin: 0;
+}
+
+.mermaid-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  color: var(--text-gray);
+}
+
+.mermaid-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-light);
+  border-top: 2px solid var(--primary-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mermaid-loading p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mermaid-diagram-container {
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.mermaid-diagram-container.loading {
+  opacity: 0.5;
+}
+
+.mermaid-diagram-container svg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.mermaid-error {
+  padding: 16px;
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 8px;
+  color: #d32f2f;
+  font-size: 14px;
+  text-align: center;
+}
+
+.mermaid-error-inline {
+  margin-top: 8px;
+  color: var(--text-light);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Hover Effects - Subtle and Elegant */
+.landing-flashcard:not(.flipped):hover {
+  transform: translateY(-6px);
+}
+
+.landing-flashcard.flipped:hover {
+  transform: rotateY(180deg);
+}
+
+/* Mobile Responsive - Optimized for Small Screens */
+@media (max-width: 768px) {
+  .landing-flashcard-wrapper {
+    max-width: 100%;
+    min-height: 350px;
+  }
+
+  .landing-flashcard {
+    min-height: 350px;
+  }
+
+  .landing-flashcard-front,
+  .landing-flashcard-back {
+    min-height: 350px;
+    border-radius: 16px;
+  }
+  
+  .landing-flashcard-back .card-content {
+    padding: 20px;
+    gap: 16px;
+    min-height: 350px;
+  }
+  
+  .answer-selector {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 14px;
+  }
+  
+  .answer-type-btn {
+    padding: 10px 8px;
+    font-size: 11px;
+    min-height: 50px;
+  }
+  
+  .shortcut-key {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+  }
+
+  .answer-content {
+    padding: 16px 14px;
+    gap: 16px;
+  }
+
+  .answer-text {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  
+  .mermaid-diagram-wrapper {
+    padding: 16px;
+  }
+  
+  .landing-flashcard:not(.flipped):hover {
+    transform: none;
+  }
+  
+  .landing-flashcard.flipped:hover {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .landing-flashcard-wrapper {
+    max-width: 650px;
+  }
+
+  .answer-selector {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Animation for first load - Elegant Entrance */
+.landing-flashcard-wrapper {
+  animation: fadeInScale 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Smooth height transition when content changes */
+.landing-flashcard {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              min-height 0.4s ease;
+}
+
+/* Ensure smooth content transitions */
+.answer-content {
+  transition: all 0.3s ease;
+}
+
+.mermaid-diagram-wrapper {
+  transition: all 0.3s ease;
+  transform-origin: top center;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mermaid Diagram Image Styling */
+.mermaid-diagram-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* Math Visualization Styles */
+.math-viz-section {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.math-lookup-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.math-lookup-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+}
+
+.math-lookup-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Compact Modal for Mathematical Diagrams */
+.math-modal-large {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  max-width: 1000px;
+  max-height: 750px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  overflow: hidden;
+  animation: modalScaleIn 0.3s ease;
+}
+
+.math-modal-large-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.math-modal-large-content {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.math-modal-header {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.math-modal-header h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  color: #1e293b;
+}
+
+.math-modal-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.math-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #f1f5f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.math-close-btn:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  transform: rotate(90deg);
+}
+
+.math-diagram-container-large {
+  flex: 1;
+  width: 100%;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.math-diagram-large {
+  width: 100%;
+  height: 100%;
+}
+
+.math-diagram-container-large svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.math-modal-controls {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.math-zoom-btn {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.math-zoom-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #1e293b;
+  transform: translateY(-1px);
+}
+
+.math-zoom-btn:active {
+  transform: translateY(0);
+  background: #f1f5f9;
+}
+
+.math-diagram-container-large .node text {
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  font-weight: 600 !important;
+  fill: #1e293b !important;
+}
+
+.math-diagram-container-large .edge path {
+  stroke: #64748b !important;
+  stroke-width: 2px !important;
+  fill: none !important;
+}
+
+.math-diagram-container-large .edge text {
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  font-size: 11px !important;
+  fill: #64748b !important;
+}
+
+.math-diagram-container-large .cluster rect {
+  fill: rgba(59, 130, 246, 0.05) !important;
+  stroke: #3b82f6 !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: 6,3 !important;
+}
+
+.math-diagram-container-large .cluster text {
+  font-weight: 600 !important;
+  fill: #3b82f6 !important;
+  font-size: 12px !important;
+}
+
+/* Graphviz Loading and Error States */
+.graphviz-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.graphviz-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.graphviz-loading p {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.graphviz-error {
+  text-align: center;
+  padding: 20px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.graphviz-error p {
+  margin: 0;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.graphviz-diagram-large {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.math-code-details {
+  margin-top: 12px;
+}
+
+.math-code-details summary {
+  cursor: pointer;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  transition: background 0.2s ease;
+}
+
+.math-code-details summary:hover {
+  background: #e2e8f0;
+}
+
+.math-code-details pre {
+  margin: 12px 0 0 0;
+  padding: 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.math-code-details code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: #e2e8f0;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+}
+
+/* Responsive design for math modal */
+@media (max-width: 768px) {
+  .math-modal-large {
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+
+  .math-modal-large-content {
+    padding: 16px;
+  }
+
+  .math-diagram-container-large {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-modal-large {
+    width: 98vw;
+    height: 95vh;
+    max-width: 98vw;
+    max-height: 95vh;
+  }
+
+  .math-modal-large-content {
+    padding: 12px;
+  }
+
+  .math-diagram-container-large {
+    padding: 12px;
+  }
+
+  .math-modal-large-content h3 {
+    font-size: 18px;
+  }
+}

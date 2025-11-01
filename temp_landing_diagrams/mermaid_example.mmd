@@ -1,0 +1,15 @@
+graph TD
+    Before[ORDER_ITEMS<br/>OrderID + ProductID<br/>Quantity, OrderDate<br/>CustomerName, ProductPrice<br/>ProductCategory]
+    After1[ORDER_ITEMS<br/>OrderID + ProductID<br/>Quantity]
+    After2[ORDERS<br/>OrderID<br/>OrderDate<br/>CustomerName]
+    After3[PRODUCTS<br/>ProductID<br/>ProductPrice<br/>ProductCategory]
+    Before -->|Keep Quantity| After1
+    Before -->|Move Order data| After2
+    Before -->|Move Product data| After3
+    After1 -.->|FK| After2
+    After1 -.->|FK| After3
+    style Before fill:#ffcccc
+    style After1 fill:#ccffcc
+    style After2 fill:#cce5ff
+    style After3 fill:#ffe5cc
+
