@@ -4,7 +4,7 @@
 }
 
 .social-proof-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
@@ -16,8 +16,24 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+.testimonial-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.testimonial-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid var(--primary-green);
+}
+
 .testimonial-rating {
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .star {
@@ -27,11 +43,15 @@
 }
 
 .testimonial-quote {
-  font-size: 24px;
+  font-size: 18px;
   font-style: italic;
   color: var(--text-dark);
   margin-bottom: 24px;
-  line-height: 1.4;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonial-attribution {
@@ -50,8 +70,13 @@
     padding: 32px 24px;
   }
   
+  .testimonial-avatar {
+    width: 60px;
+    height: 60px;
+  }
+  
   .testimonial-quote {
-    font-size: 20px;
+    font-size: 16px;
   }
   
   .star {
