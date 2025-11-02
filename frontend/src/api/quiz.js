@@ -13,25 +13,13 @@ import { authenticatedPost } from '../utils/authenticatedApi';
  */
 export async function generateQuiz(courseId, deckId, numQuestions = 20) {
   try {
-    const response = await authenticatedPost('/api/v1/quiz/generate', {
+    const data = await authenticatedPost('/api/v1/quiz/generate', {
         course_id: courseId,
         deck_id: deckId,
         num_questions: numQuestions,
     });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      
-      // Handle validation errors from FastAPI
-      if (errorData.detail && Array.isArray(errorData.detail)) {
-        const fieldErrors = errorData.detail.map(err => `${err.loc.join('.')}: ${err.msg}`).join(', ');
-        throw new Error(`Validation error: ${fieldErrors}`);
-      }
-      
-      throw new Error(errorData.detail || `Failed to generate quiz: ${response.statusText}`);
-    }
-
-    return await response.json();
+    return data;
   } catch (error) {
     console.error('Error generating quiz:', error);
     throw error;
@@ -49,7 +37,7 @@ export async function generateQuiz(courseId, deckId, numQuestions = 20) {
  */
 export async function submitQuiz(quizId, courseId, deckId, answers, timeTakenSeconds) {
   try {
-    const response = await authenticatedPost('/api/v1/quiz/submit', {
+    const data = await authenticatedPost('/api/v1/quiz/submit', {
         quiz_id: quizId,
         course_id: courseId,
         deck_id: deckId,
@@ -57,19 +45,7 @@ export async function submitQuiz(quizId, courseId, deckId, answers, timeTakenSec
         time_taken_seconds: timeTakenSeconds,
     });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      
-      // Handle validation errors from FastAPI
-      if (errorData.detail && Array.isArray(errorData.detail)) {
-        const fieldErrors = errorData.detail.map(err => `${err.loc.join('.')}: ${err.msg}`).join(', ');
-        throw new Error(`Validation error: ${fieldErrors}`);
-      }
-      
-      throw new Error(errorData.detail || `Failed to submit quiz: ${response.statusText}`);
-    }
-
-    return await response.json();
+    return data;
   } catch (error) {
     console.error('Error submitting quiz:', error);
     throw error;

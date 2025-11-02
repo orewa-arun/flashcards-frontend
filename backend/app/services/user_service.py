@@ -233,5 +233,5 @@ class UserService:
 # Dependency to get user service
 async def get_user_service() -> UserService:
     """Get user service instance."""
-    db = await get_database()
+    db = get_database()
     return UserService(db)

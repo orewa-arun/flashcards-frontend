@@ -2,21 +2,9 @@
  * API functions for bookmarks management
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
-const API_ENDPOINT = `${API_BASE_URL}/api/v1/bookmarks`;
+import { authenticatedPost, authenticatedDelete, authenticatedGet } from '../utils/authenticatedApi';
 
-/**
- * Get user ID from localStorage or generate a new one
- */
-import { getUserId } from "../utils/userTracking";
-// function getUserId() {
-//   let userId = localStorage.getItem('userId');
-//   if (!userId) {
-//     userId = crypto.randomUUID();
-//     localStorage.setItem('userId', userId);
-//   }
-//   return userId;
-// }
+const API_ENDPOINT = '/api/v1/bookmarks';
 
 /**
  * Add a bookmark for a flashcard
@@ -28,29 +16,16 @@ import { getUserId } from "../utils/userTracking";
  */
 export async function addBookmark({ courseId, deckId, index }) {
   try {
-    const response = await fetch(API_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-User-ID': getUserId(),
-      },
-      body: JSON.stringify({
+    const data = await authenticatedPost(API_ENDPOINT, {
         course_id: courseId,
         deck_id: deckId,
         flashcard_index: index,
-      }),
     });
-
-    if (!response.ok) {
-      if (response.status === 409) {
-        throw new Error('Flashcard already bookmarked');
-      }
-      throw new Error(`Failed to add bookmark: ${response.status}`);
-    }
-
-    const data = await response.json();
     return data;
   } catch (error) {
+    if (error.message.includes('409')) {
+      throw new Error('Flashcard already bookmarked');
+    }
     console.error('Error adding bookmark:', error);
     throw error;
   }
@@ -66,29 +41,16 @@ export async function addBookmark({ courseId, deckId, index }) {
  */
 export async function removeBookmark({ courseId, deckId, index }) {
   try {
-    const response = await fetch(API_ENDPOINT, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-User-ID': getUserId(),
-      },
-      body: JSON.stringify({
+    const data = await authenticatedDelete(API_ENDPOINT, {
         course_id: courseId,
         deck_id: deckId,
         flashcard_index: index,
-      }),
     });
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error('Bookmark not found');
-      }
-      throw new Error(`Failed to remove bookmark: ${response.status}`);
-    }
-
-    const data = await response.json();
     return data;
   } catch (error) {
+    if (error.message.includes('404')) {
+      throw new Error('Bookmark not found');
+    }
     console.error('Error removing bookmark:', error);
     throw error;
   }
@@ -100,18 +62,7 @@ export async function removeBookmark({ courseId, deckId, index }) {
  */
 export async function getUserBookmarks() {
   try {
-    const response = await fetch(API_ENDPOINT, {
-      method: 'GET',
-      headers: {
-        'X-User-ID': getUserId(),
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to get bookmarks: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await authenticatedGet(API_ENDPOINT);
     return data;
   } catch (error) {
     console.error('Error getting bookmarks:', error);

@@ -1,7 +1,39 @@
 import { auth } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 // Base API URL - adjust this to match your backend
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
+/**
+ * Wait for Firebase auth to be ready and return the current user
+ * @returns {Promise<User>} - Firebase user object
+ */
+const waitForAuthReady = () => {
+  return new Promise((resolve, reject) => {
+    // If user is already available, return immediately
+    if (auth.currentUser) {
+      resolve(auth.currentUser);
+      return;
+    }
+
+    // Otherwise, wait for the auth state to be determined
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
+        unsubscribe();
+        if (user) {
+          resolve(user);
+        } else {
+          reject(new Error('User not authenticated'));
+        }
+      },
+      (error) => {
+        unsubscribe();
+        reject(error);
+      }
+    );
+  });
+};
 
 /**
  * Makes an authenticated API request with Firebase ID token
@@ -11,11 +43,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000
  */
 export const authenticatedFetch = async (endpoint, options = {}) => {
   try {
-    // Get the current user's ID token
-    const user = auth.currentUser;
-    if (!user) {
-      throw new Error('User not authenticated');
-    }
+    // Wait for auth to be ready and get the current user
+    const user = await waitForAuthReady();
 
     const idToken = await user.getIdToken();
 
@@ -63,32 +92,52 @@ export const authenticatedFetch = async (endpoint, options = {}) => {
  * Convenience method for GET requests
  */
 export const authenticatedGet = async (endpoint) => {
-  return authenticatedFetch(endpoint, { method: 'GET' });
+  const response = await authenticatedFetch(endpoint, { method: 'GET' });
+  if (!response.ok) {
+    throw new Error(`GET request failed: ${response.status}`);
+  }
+  return response.json();
 };
 
 /**
  * Convenience method for POST requests
  */
 export const authenticatedPost = async (endpoint, data) => {
-  return authenticatedFetch(endpoint, {
+  const response = await authenticatedFetch(endpoint, {
     method: 'POST',
     body: JSON.stringify(data),
   });
+  if (!response.ok) {
+    throw new Error(`POST request failed: ${response.status}`);
+  }
+  return response.json();
 };
 
 /**
  * Convenience method for PUT requests
  */
 export const authenticatedPut = async (endpoint, data) => {
-  return authenticatedFetch(endpoint, {
+  const response = await authenticatedFetch(endpoint, {
     method: 'PUT',
     body: JSON.stringify(data),
   });
+  if (!response.ok) {
+    throw new Error(`PUT request failed: ${response.status}`);
+  }
+  return response.json();
 };
 
 /**
  * Convenience method for DELETE requests
  */
-export const authenticatedDelete = async (endpoint) => {
-  return authenticatedFetch(endpoint, { method: 'DELETE' });
+export const authenticatedDelete = async (endpoint, data = null) => {
+  const options = { method: 'DELETE' };
+  if (data) {
+    options.body = JSON.stringify(data);
+  }
+  const response = await authenticatedFetch(endpoint, options);
+  if (!response.ok) {
+    throw new Error(`DELETE request failed: ${response.status}`);
+  }
+  return response.json();
 };

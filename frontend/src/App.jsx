@@ -5,6 +5,7 @@ import './App.css'
 import LandingPageView from './views/LandingPageView'
 import CourseListView from './views/CourseListView'
 import CourseDetailView from './views/CourseDetailView'
+import LectureDetailView from './views/LectureDetailView'
 import DeckView from './views/DeckView'
 import QuizView from './views/QuizView'
 import ResultsView from './views/ResultsView'
@@ -17,12 +18,12 @@ import CookieBanner from './components/CookieBanner'
 import Navigation from './components/Navigation'
 import { AuthProvider } from './contexts/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
-import { initializeUserTracking } from './utils/userTracking'
+import { initializeAmplitude } from './utils/amplitude'
 
 function App() {
   useEffect(() => {
-    // Initialize user tracking on app startup
-    initializeUserTracking()
+    // Initialize Amplitude analytics on app startup
+    initializeAmplitude()
   }, [])
 
   return (
@@ -48,6 +49,11 @@ function App() {
               </ProtectedRoute>
             } />
             <Route path="/courses/:courseId/:lectureId" element={
+              <ProtectedRoute>
+                <LectureDetailView />
+              </ProtectedRoute>
+            } />
+            <Route path="/courses/:courseId/:lectureId/flashcards" element={
               <ProtectedRoute>
                 <DeckView />
               </ProtectedRoute>

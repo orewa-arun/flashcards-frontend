@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { generateQuiz, submitQuiz } from '../api/quiz';
+import { trackEvent } from '../utils/amplitude';
 import './QuizView.css';
 
 function QuizView() {
@@ -38,6 +39,14 @@ function QuizView() {
       const data = await generateQuiz(courseId, actualDeckId, 20);
       setQuizData(data);
       setQuizStartTime(Date.now());
+      
+      // Track quiz start in Amplitude
+      trackEvent('Quiz Started', {
+        courseId,
+        lectureId: actualDeckId,
+        totalQuestions: data.questions?.length || 0
+      });
+      
       setLoading(false);
     } catch (err) {
       setError(err.message || 'Failed to load quiz');
@@ -183,6 +192,16 @@ function QuizView() {
         answers,
         timeTakenSeconds
       );
+      
+      // Track quiz submission in Amplitude
+      trackEvent('Quiz Submitted', {
+        courseId,
+        lectureId: actualDeckId,
+        score: results.score,
+        totalQuestions: results.total_questions,
+        timeTakenSeconds,
+        percentageScore: (results.score / results.total_questions) * 100
+      });
       
       setQuizResults(results);
       setQuizCompleted(true);

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import StudyDeck from '../components/StudyDeck'
-import { startStudySession, updateStudySession } from '../api/analytics'
+import { trackEvent } from '../utils/amplitude'
 import './DeckView.css'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
@@ -21,21 +21,19 @@ function DeckView() {
 
   // Finish study session
   const finishStudySession = useCallback(async () => {
-    if (!sessionId || !studyStartTime.current) return
+    if (!studyStartTime.current) return
     
-    try {
       const studyDurationSeconds = Math.round((Date.now() - studyStartTime.current) / 1000)
       
-      await updateStudySession({
-        sessionId,
-        studyDurationSeconds
+    // Track flashcard session end in Amplitude
+    trackEvent('Flashcard Session Ended', {
+      courseId,
+      lectureId,
+      durationSeconds: studyDurationSeconds
       })
       
       console.log(`Study session completed. Duration: ${studyDurationSeconds}s`)
-    } catch (error) {
-      console.warn('Failed to update study session:', error)
-    }
-  }, [sessionId])
+  }, [courseId, lectureId])
 
   // Handle quiz start
   const handleStartQuiz = useCallback(async () => {
@@ -79,23 +77,13 @@ function DeckView() {
         const data = await response.json()
         setFlashcardsData(data)
         
-        // Start study session
-        try {
-          const sessionResponse = await startStudySession({
+        // Track flashcard session start in Amplitude
+        studyStartTime.current = Date.now()
+        trackEvent('Flashcard Session Started', {
             courseId,
-            deckId: lectureId
-          })
-          
-          if (sessionResponse.session_id && 
-              sessionResponse.session_id !== 'disabled' && 
-              sessionResponse.session_id !== 'error') {
-            setSessionId(sessionResponse.session_id)
-            studyStartTime.current = Date.now()
-            console.log('Study session initialized:', sessionResponse.session_id)
-          }
-        } catch (sessionError) {
-          console.warn('Failed to initialize study session:', sessionError)
-        }
+          lectureId,
+          totalCards: data.flashcards?.length || 0
+        })
         
         setLoading(false)
         sessionInitialized.current = true

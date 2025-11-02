@@ -1,20 +1,15 @@
 """Quiz history API endpoints for viewing past quiz attempts."""
 
 from typing import List, Dict, Any
-from fastapi import APIRouter, HTTPException, Header, Depends
+from fastapi import APIRouter, HTTPException, Depends
 from app.database import get_database
 from app.models.quiz import QuizResult
 from app.config import settings
+from app.firebase_auth import get_current_user
 import logging
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/quiz-history", tags=["quiz-history"])
-
-async def get_user_id_from_header(x_user_id: str = Header(..., alias="X-User-ID")) -> str:
-    """Extract user ID from header."""
-    if not x_user_id:
-        raise HTTPException(status_code=400, detail="X-User-ID header is required")
-    return x_user_id
 
 class QuizHistorySummary:
     """Quiz history summary for deck view."""
@@ -40,17 +35,18 @@ class QuizAttemptSummary:
 
 @router.get("", response_model=List[Dict[str, Any]])
 async def get_quiz_history_summary(
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Get quiz history summary grouped by deck with highest scores."""
-    logger.info(f"Fetching quiz history summary for user_id: {user_id}")
+    firebase_uid = current_user['uid']
+    logger.info(f"Fetching quiz history summary for firebase_uid: {firebase_uid}")
     try:
         quiz_collection = db[settings.QUIZ_RESULTS_COLLECTION]
         
         # Aggregate quiz results by deck
         pipeline = [
-            {"$match": {"user_id": user_id}},
+            {"$match": {"firebase_uid": firebase_uid}},
             {"$sort": {"completed_at": -1}},
             {
                 "$group": {
@@ -84,27 +80,28 @@ async def get_quiz_history_summary(
                 "latest_attempt_date": result["latest_attempt"]["completed_at"]
             })
         
-        logger.info(f"Retrieved quiz history summary for user {user_id}: {len(quiz_history)} decks")
+        logger.info(f"Retrieved quiz history summary for user {firebase_uid}: {len(quiz_history)} decks")
         
         return quiz_history
         
     except Exception as e:
-        logger.error(f"Error getting quiz history summary for user {user_id}: {e}")
+        logger.error(f"Error getting quiz history summary for user {firebase_uid}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to get quiz history: {str(e)}")
 
 @router.get("/{deck_id}", response_model=List[Dict[str, Any]])
 async def get_deck_quiz_attempts(
     deck_id: str,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Get all quiz attempts for a specific deck."""
+    firebase_uid = current_user['uid']
     try:
         quiz_collection = db[settings.QUIZ_RESULTS_COLLECTION]
         
         # Get all attempts for this deck, sorted by completion date (newest first)
         cursor = quiz_collection.find({
-            "user_id": user_id,
+            "firebase_uid": firebase_uid,
             "deck_id": deck_id
         }).sort("completed_at", -1)
         
@@ -122,21 +119,22 @@ async def get_deck_quiz_attempts(
                 "completed_at": attempt["completed_at"]
             })
         
-        logger.info(f"Retrieved {len(attempt_summaries)} quiz attempts for user {user_id}, deck {deck_id}")
+        logger.info(f"Retrieved {len(attempt_summaries)} quiz attempts for user {firebase_uid}, deck {deck_id}")
         
         return attempt_summaries
         
     except Exception as e:
-        logger.error(f"Error getting quiz attempts for user {user_id}, deck {deck_id}: {e}")
+        logger.error(f"Error getting quiz attempts for user {firebase_uid}, deck {deck_id}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to get quiz attempts: {str(e)}")
 
 @router.get("/attempt/{result_id}", response_model=Dict[str, Any])
 async def get_quiz_attempt_details(
     result_id: str,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Get detailed results for a specific quiz attempt."""
+    firebase_uid = current_user['uid']
     try:
         from bson import ObjectId
         quiz_collection = db[settings.QUIZ_RESULTS_COLLECTION]
@@ -148,7 +146,7 @@ async def get_quiz_attempt_details(
         # Get the specific quiz attempt
         quiz_result = await quiz_collection.find_one({
             "_id": ObjectId(result_id),
-            "user_id": user_id
+            "firebase_uid": firebase_uid
         })
         
         if not quiz_result:
@@ -157,7 +155,7 @@ async def get_quiz_attempt_details(
         # Format detailed results
         detailed_result = {
             "result_id": str(quiz_result["_id"]),
-            "user_id": quiz_result["user_id"],
+            "firebase_uid": quiz_result["firebase_uid"],
             "deck_id": quiz_result["deck_id"],
             "course_id": quiz_result["course_id"],
             "score": quiz_result["score"],
@@ -168,12 +166,12 @@ async def get_quiz_attempt_details(
             "question_results": quiz_result.get("question_results", [])
         }
         
-        logger.info(f"Retrieved detailed quiz results for user {user_id}, attempt {result_id}")
+        logger.info(f"Retrieved detailed quiz results for user {firebase_uid}, attempt {result_id}")
         
         return detailed_result
         
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Error getting quiz attempt details for user {user_id}, attempt {result_id}: {e}")
+        logger.error(f"Error getting quiz attempt details for user {firebase_uid}, attempt {result_id}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to get quiz attempt details: {str(e)}")

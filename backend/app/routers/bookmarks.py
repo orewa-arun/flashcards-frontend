@@ -1,48 +1,17 @@
 """Bookmarks API endpoints for flashcard bookmarking."""
 
 import json
-from typing import List, Optional
-from fastapi import APIRouter, HTTPException, Header, Depends
+from typing import List, Optional, Dict, Any
+from fastapi import APIRouter, HTTPException, Depends
 from app.database import get_database
 from app.models.bookmark import Bookmark, BookmarkRequest, BookmarkResponse
-from app.models.user import User
 from app.config import settings
+from app.firebase_auth import get_current_user
+from app.services import user_service
 import logging
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/bookmarks", tags=["bookmarks"])
-
-async def get_user_id_from_header(x_user_id: str = Header(..., alias="X-User-ID")) -> str:
-    """Extract user ID from header."""
-    if not x_user_id:
-        raise HTTPException(status_code=400, detail="X-User-ID header is required")
-    return x_user_id
-
-async def ensure_user_exists(user_id: str, db) -> User:
-    """Ensure user exists in database, create if not."""
-    users_collection = db[settings.USERS_COLLECTION]
-    
-    # Check if user exists
-    user_doc = await users_collection.find_one({"user_id": user_id})
-    
-    if not user_doc:
-        # Create new user
-        from datetime import datetime, timezone
-        new_user = User(user_id=user_id)
-        result = await users_collection.insert_one(new_user.model_dump(by_alias=True, exclude={"id"}))
-        
-        # Fetch the created user
-        user_doc = await users_collection.find_one({"_id": result.inserted_id})
-        logger.info(f"Created new user: {user_id}")
-    else:
-        # Update last_active
-        from datetime import datetime, timezone
-        await users_collection.update_one(
-            {"user_id": user_id},
-            {"$set": {"last_active": datetime.now(timezone.utc)}}
-        )
-    
-    return User(**user_doc)
 
 async def load_flashcard_data(course_id: str, deck_id: str, flashcard_index: int) -> Optional[dict]:
     """Load flashcard data from JSON file."""
@@ -72,19 +41,20 @@ async def load_flashcard_data(course_id: str, deck_id: str, flashcard_index: int
 @router.post("", response_model=BookmarkResponse)
 async def add_bookmark(
     bookmark_data: BookmarkRequest,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Add a flashcard to user's bookmarks."""
-    logger.info(f"Attempting to add bookmark for user_id: {user_id}")
+    firebase_uid = current_user['uid']
+    logger.info(f"Attempting to add bookmark for firebase_uid: {firebase_uid}")
     try:
-        # Ensure user exists
-        await ensure_user_exists(user_id, db)
+        # Ensure user exists in database
+        await user_service.get_or_create_user(current_user, db)
         
         # Check if bookmark already exists
         bookmarks_collection = db[settings.BOOKMARKS_COLLECTION]
         existing_bookmark = await bookmarks_collection.find_one({
-            "user_id": user_id,
+            "firebase_uid": firebase_uid,
             "course_id": bookmark_data.course_id,
             "deck_id": bookmark_data.deck_id,
             "flashcard_index": bookmark_data.flashcard_index
@@ -95,7 +65,7 @@ async def add_bookmark(
         
         # Create new bookmark
         new_bookmark = Bookmark(
-            user_id=user_id,
+            firebase_uid=firebase_uid,
             course_id=bookmark_data.course_id,
             deck_id=bookmark_data.deck_id,
             flashcard_index=bookmark_data.flashcard_index
@@ -116,10 +86,10 @@ async def add_bookmark(
             bookmark_data.flashcard_index
         )
         
-        logger.info(f"Added bookmark for user {user_id}: {bookmark_data.course_id}:{bookmark_data.deck_id}:{bookmark_data.flashcard_index}")
+        logger.info(f"Added bookmark for user {firebase_uid}: {bookmark_data.course_id}:{bookmark_data.deck_id}:{bookmark_data.flashcard_index}")
         
         return BookmarkResponse(
-            user_id=created_doc["user_id"],
+            firebase_uid=created_doc["firebase_uid"],
             course_id=created_doc["course_id"],
             deck_id=created_doc["deck_id"],
             flashcard_index=created_doc["flashcard_index"],
@@ -130,22 +100,23 @@ async def add_bookmark(
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Error adding bookmark for user {user_id}: {e}")
+        logger.error(f"Error adding bookmark for user {firebase_uid}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to add bookmark: {str(e)}")
 
 @router.delete("")
 async def remove_bookmark(
     bookmark_data: BookmarkRequest,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Remove a flashcard from user's bookmarks."""
+    firebase_uid = current_user['uid']
     try:
         bookmarks_collection = db[settings.BOOKMARKS_COLLECTION]
         
         # Find and delete the bookmark
         result = await bookmarks_collection.delete_one({
-            "user_id": user_id,
+            "firebase_uid": firebase_uid,
             "course_id": bookmark_data.course_id,
             "deck_id": bookmark_data.deck_id,
             "flashcard_index": bookmark_data.flashcard_index
@@ -154,28 +125,29 @@ async def remove_bookmark(
         if result.deleted_count == 0:
             raise HTTPException(status_code=404, detail="Bookmark not found")
         
-        logger.info(f"Removed bookmark for user {user_id}: {bookmark_data.course_id}:{bookmark_data.deck_id}:{bookmark_data.flashcard_index}")
+        logger.info(f"Removed bookmark for user {firebase_uid}: {bookmark_data.course_id}:{bookmark_data.deck_id}:{bookmark_data.flashcard_index}")
         
         return {"message": "Bookmark removed successfully"}
         
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Error removing bookmark for user {user_id}: {e}")
+        logger.error(f"Error removing bookmark for user {firebase_uid}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to remove bookmark: {str(e)}")
 
 @router.get("", response_model=List[BookmarkResponse])
 async def get_user_bookmarks(
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Get all bookmarks for a user."""
-    logger.info(f"Fetching bookmarks for user_id: {user_id}")
+    firebase_uid = current_user['uid']
+    logger.info(f"Fetching bookmarks for firebase_uid: {firebase_uid}")
     try:
         bookmarks_collection = db[settings.BOOKMARKS_COLLECTION]
         
         # Get all bookmarks for the user
-        cursor = bookmarks_collection.find({"user_id": user_id}).sort("created_at", -1)
+        cursor = bookmarks_collection.find({"firebase_uid": firebase_uid}).sort("created_at", -1)
         bookmarks = await cursor.to_list(length=None)
         
         # Load flashcard data for each bookmark
@@ -188,7 +160,7 @@ async def get_user_bookmarks(
             )
             
             bookmark_responses.append(BookmarkResponse(
-                user_id=bookmark["user_id"],
+                firebase_uid=bookmark["firebase_uid"],
                 course_id=bookmark["course_id"],
                 deck_id=bookmark["deck_id"],
                 flashcard_index=bookmark["flashcard_index"],
@@ -196,10 +168,10 @@ async def get_user_bookmarks(
                 flashcard_data=flashcard_data
             ))
         
-        logger.info(f"Retrieved {len(bookmark_responses)} bookmarks for user {user_id}")
+        logger.info(f"Retrieved {len(bookmark_responses)} bookmarks for user {firebase_uid}")
         
         return bookmark_responses
         
     except Exception as e:
-        logger.error(f"Error getting bookmarks for user {user_id}: {e}")
+        logger.error(f"Error getting bookmarks for user {firebase_uid}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to get bookmarks: {str(e)}")

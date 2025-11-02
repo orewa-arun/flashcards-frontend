@@ -6,6 +6,7 @@ import {
   onAuthStateChanged 
 } from 'firebase/auth';
 import { auth } from '../utils/firebase';
+import { identifyUser, resetUser } from '../utils/amplitude';
 
 const AuthContext = createContext();
 
@@ -37,6 +38,8 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await signOut(auth);
+      // Reset Amplitude user on logout
+      resetUser();
     } catch (error) {
       console.error('Error signing out:', error);
       throw error;
@@ -61,6 +64,16 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
+      
+      // Identify user in Amplitude when they sign in
+      if (user) {
+        identifyUser(user.uid, {
+          email: user.email,
+          name: user.displayName,
+          emailVerified: user.emailVerified,
+          provider: user.providerData[0]?.providerId || 'unknown'
+        });
+      }
     });
 
     return unsubscribe;

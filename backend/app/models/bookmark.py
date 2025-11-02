@@ -44,7 +44,7 @@ class Bookmark(BaseModel):
     """Bookmark document model."""
     
     id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
-    user_id: str = Field(..., description="UUID v4 string for user identification")
+    firebase_uid: str = Field(..., description="Firebase user ID")
     course_id: str = Field(..., description="Course identifier, e.g., MS5260")
     deck_id: str = Field(..., description="Deck identifier, e.g., MIS_lec_1-3")
     flashcard_index: int = Field(..., ge=0, description="0-based index of flashcard in deck")
@@ -64,7 +64,7 @@ class BookmarkRequest(BaseModel):
 class BookmarkResponse(BaseModel):
     """Response model for bookmark operations."""
     
-    user_id: str
+    firebase_uid: str
     course_id: str
     deck_id: str
     flashcard_index: int

@@ -1,0 +1,228 @@
+.lecture-detail-view {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 80px 20px 40px;
+}
+
+.lecture-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lecture-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.back-button {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 24px;
+}
+
+.back-button:hover {
+  background: #f8f9fa;
+  border-color: var(--primary-green, #2d7a3e);
+  color: var(--primary-green, #2d7a3e);
+  transform: translateX(-4px);
+}
+
+.lecture-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.lecture-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #666;
+  font-weight: 500;
+}
+
+.learning-modes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.mode-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  transition: all 0.3s ease;
+}
+
+.study-card::before {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.quiz-card::before {
+  background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+}
+
+.mode-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+.study-card:hover {
+  border-color: #667eea;
+}
+
+.quiz-card:hover {
+  border-color: #f5576c;
+}
+
+.mode-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.study-card .mode-icon {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: #667eea;
+}
+
+.quiz-card .mode-icon {
+  background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+  color: #f5576c;
+}
+
+.mode-card:hover .mode-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mode-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.mode-description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.mode-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.feature-tag {
+  background: #f8f9fa;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+}
+
+.mode-button {
+  width: 100%;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.study-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.study-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.quiz-button {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.quiz-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .learning-modes {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 40px auto 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .lecture-detail-view {
+    padding: 70px 16px 32px;
+  }
+
+  .mode-card {
+    padding: 32px 24px;
+  }
+
+  .lecture-header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mode-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .mode-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mode-title {
+    font-size: 24px;
+  }
+
+  .mode-description {
+    font-size: 15px;
+  }
+}
+

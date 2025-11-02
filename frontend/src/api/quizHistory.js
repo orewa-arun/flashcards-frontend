@@ -2,23 +2,9 @@
  * API functions for quiz history management
  */
 
-import { getUserId } from "../utils/userTracking";
+import { authenticatedGet } from '../utils/authenticatedApi';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
-const API_ENDPOINT = `${API_BASE_URL}/api/v1/quiz-history`;
-
-/**
- * Get user ID from localStorage or generate a new one
- */
-// function getUserId() {
-//   let userId = localStorage.getItem('userId');
-//   if (!userId) {
-//     userId = crypto.randomUUID();
-//     localStorage.setItem('userId', userId);
-//   }
-//   console.log(`[API Helper] Using User ID: ${userId}`); // Added for debugging
-//   return userId;
-// }
+const API_ENDPOINT = '/api/v1/quiz-history';
 
 /**
  * Get quiz history summary for the current user
@@ -26,18 +12,7 @@ const API_ENDPOINT = `${API_BASE_URL}/api/v1/quiz-history`;
  */
 export async function getQuizHistory() {
   try {
-    const response = await fetch(API_ENDPOINT, {
-      method: 'GET',
-      headers: {
-        'X-User-ID': getUserId(),
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to get quiz history: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await authenticatedGet(API_ENDPOINT);
     return data;
   } catch (error) {
     console.error('Error getting quiz history:', error);
@@ -52,18 +27,7 @@ export async function getQuizHistory() {
  */
 export async function getQuizHistoryByDeck(deckId) {
   try {
-    const response = await fetch(`${API_ENDPOINT}/${deckId}`, {
-      method: 'GET',
-      headers: {
-        'X-User-ID': getUserId(),
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to get quiz attempts for deck: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await authenticatedGet(`${API_ENDPOINT}/${deckId}`);
     return data;
   } catch (error) {
     console.error('Error getting quiz attempts for deck:', error);
@@ -78,23 +42,12 @@ export async function getQuizHistoryByDeck(deckId) {
  */
 export async function getQuizAttemptDetails(resultId) {
   try {
-    const response = await fetch(`${API_ENDPOINT}/attempt/${resultId}`, {
-      method: 'GET',
-      headers: {
-        'X-User-ID': getUserId(),
-      },
-    });
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error('Quiz attempt not found');
-      }
-      throw new Error(`Failed to get quiz attempt details: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await authenticatedGet(`${API_ENDPOINT}/attempt/${resultId}`);
     return data;
   } catch (error) {
+    if (error.message.includes('404')) {
+      throw new Error('Quiz attempt not found');
+    }
     console.error('Error getting quiz attempt details:', error);
     throw error;
   }
