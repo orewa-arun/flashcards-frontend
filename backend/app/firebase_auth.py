@@ -1,54 +1,83 @@
 import os
+import json
+import logging
 import firebase_admin
 from firebase_admin import credentials, auth
 from fastapi import HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-import logging
 
 logger = logging.getLogger(__name__)
 
-# Initialize Firebase Admin SDK
 def initialize_firebase():
-    """Initialize Firebase Admin SDK with service account credentials"""
-    try:
-        # Check if Firebase is already initialized
-        if not firebase_admin._apps:
-            # Get the path to service account key from environment variable
-            service_account_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-            
-            if service_account_path and os.path.exists(service_account_path):
-                # Initialize with service account file
+    """
+    Initialize Firebase Admin SDK with service account credentials.
+    
+    Credentials are loaded in the following order:
+    1. FIREBASE_CREDENTIALS environment variable (JSON string) - for deployment
+    2. GOOGLE_APPLICATION_CREDENTIALS environment variable (file path) - for local development
+    3. Application Default Credentials - fallback for cloud environments
+    
+    Raises:
+        HTTPException: If Firebase initialization fails
+    """
+    # Skip if already initialized
+    if firebase_admin._apps:
+        logger.info("Firebase Admin SDK already initialized")
+        return
+    
+    # Method 1: Try environment variable with JSON credentials (deployment)
+    firebase_creds_json = os.getenv('FIREBASE_CREDENTIALS')
+    if firebase_creds_json:
+        try:
+            cred_dict = json.loads(firebase_creds_json)
+            cred = credentials.Certificate(cred_dict)
+            firebase_admin.initialize_app(cred)
+            logger.info("✅ Firebase Admin SDK initialized with FIREBASE_CREDENTIALS environment variable")
+            return
+        except json.JSONDecodeError as e:
+            logger.error(f"❌ Invalid JSON in FIREBASE_CREDENTIALS: {e}")
+        except Exception as e:
+            logger.error(f"❌ Failed to initialize Firebase with FIREBASE_CREDENTIALS: {e}")
+    
+    # Method 2: Try local file path (local development)
+    service_account_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    if service_account_path:
+        if os.path.exists(service_account_path):
+            try:
                 cred = credentials.Certificate(service_account_path)
                 firebase_admin.initialize_app(cred)
-                logger.info("Firebase Admin SDK initialized successfully with service account file")
-            else:
-                # Try to initialize with default credentials (for production environments)
-                try:
-                    cred = credentials.ApplicationDefault()
-                    firebase_admin.initialize_app(cred)
-                    logger.info("Firebase Admin SDK initialized with default credentials")
-                except Exception as e:
-                    logger.error(f"Failed to initialize Firebase with default credentials: {e}")
-                    raise HTTPException(
-                        status_code=500, 
-                        detail="Firebase authentication not properly configured"
-                    )
+                logger.info(f"✅ Firebase Admin SDK initialized with service account file: {service_account_path}")
+                return
+            except Exception as e:
+                logger.error(f"❌ Failed to initialize Firebase with file {service_account_path}: {e}")
         else:
-            logger.info("Firebase Admin SDK already initialized")
-            
+            logger.warning(f"⚠️ GOOGLE_APPLICATION_CREDENTIALS path does not exist: {service_account_path}")
+    
+    # Method 3: Try application default credentials (cloud environment fallback)
+    try:
+        cred = credentials.ApplicationDefault()
+        firebase_admin.initialize_app(cred)
+        logger.info("✅ Firebase Admin SDK initialized with Application Default Credentials")
+        return
     except Exception as e:
-        logger.error(f"Failed to initialize Firebase Admin SDK: {e}")
-        raise HTTPException(
-            status_code=500, 
-            detail="Firebase authentication service unavailable"
-        )
+        logger.error(f"❌ Failed to initialize Firebase with Application Default Credentials: {e}")
+    
+    # If we reach here, all methods failed
+    error_msg = (
+        "Firebase Admin SDK initialization failed. "
+        "Please set either FIREBASE_CREDENTIALS (JSON string) or "
+        "GOOGLE_APPLICATION_CREDENTIALS (file path) environment variable."
+    )
+    logger.error(f"❌ {error_msg}")
+    raise HTTPException(status_code=500, detail=error_msg)
+
 
 # Security scheme for extracting Bearer tokens
 security = HTTPBearer()
 
 async def verify_firebase_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     """
-    Verify Firebase ID token and return user information
+    Verify Firebase ID token and return user information.
     
     Args:
         credentials: HTTP Authorization credentials containing the Bearer token
@@ -60,13 +89,9 @@ async def verify_firebase_token(credentials: HTTPAuthorizationCredentials = Depe
         HTTPException: If token is invalid or verification fails
     """
     try:
-        # Extract the token from the Authorization header
         token = credentials.credentials
-        
-        # Verify the token with Firebase Admin SDK
         decoded_token = auth.verify_id_token(token)
         
-        # Extract user information
         user_info = {
             'uid': decoded_token['uid'],
             'email': decoded_token.get('email'),
@@ -76,31 +101,23 @@ async def verify_firebase_token(credentials: HTTPAuthorizationCredentials = Depe
             'firebase_claims': decoded_token
         }
         
-        logger.info(f"Successfully verified token for user: {user_info['uid']}")
+        logger.debug(f"✅ Token verified for user: {user_info['uid']}")
         return user_info
         
     except auth.InvalidIdTokenError:
-        logger.warning("Invalid Firebase ID token provided")
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid authentication token"
-        )
+        logger.warning("⚠️ Invalid Firebase ID token")
+        raise HTTPException(status_code=401, detail="Invalid authentication token")
     except auth.ExpiredIdTokenError:
-        logger.warning("Expired Firebase ID token provided")
-        raise HTTPException(
-            status_code=401,
-            detail="Authentication token has expired"
-        )
+        logger.warning("⚠️ Expired Firebase ID token")
+        raise HTTPException(status_code=401, detail="Authentication token has expired")
     except Exception as e:
-        logger.error(f"Token verification failed: {e}")
-        raise HTTPException(
-            status_code=401,
-            detail="Authentication verification failed"
-        )
+        logger.error(f"❌ Token verification failed: {e}")
+        raise HTTPException(status_code=401, detail="Authentication verification failed")
+
 
 async def get_current_user(user_info: dict = Depends(verify_firebase_token)):
     """
-    Get current authenticated user information
+    Get current authenticated user information.
     
     Args:
         user_info: User information from Firebase token verification
@@ -110,10 +127,10 @@ async def get_current_user(user_info: dict = Depends(verify_firebase_token)):
     """
     return user_info
 
-# Optional: Create a dependency for admin users (if you need admin-only endpoints)
+
 async def get_admin_user(user_info: dict = Depends(verify_firebase_token)):
     """
-    Verify that the current user has admin privileges
+    Verify that the current user has admin privileges.
     
     Args:
         user_info: User information from Firebase token verification
@@ -124,15 +141,11 @@ async def get_admin_user(user_info: dict = Depends(verify_firebase_token)):
     Raises:
         HTTPException: If user is not an admin
     """
-    # Check if user has admin custom claims
     firebase_claims = user_info.get('firebase_claims', {})
     is_admin = firebase_claims.get('admin', False)
     
     if not is_admin:
-        logger.warning(f"Non-admin user {user_info['uid']} attempted to access admin endpoint")
-        raise HTTPException(
-            status_code=403,
-            detail="Admin privileges required"
-        )
+        logger.warning(f"⚠️ Non-admin user {user_info['uid']} attempted to access admin endpoint")
+        raise HTTPException(status_code=403, detail="Admin privileges required")
     
     return user_info
