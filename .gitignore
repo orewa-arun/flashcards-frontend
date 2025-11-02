@@ -70,3 +70,5 @@ intelligent_flashcards/
 
 # temporary
 without_slide_processor/
+
+./backend/serviceAccountKey.json

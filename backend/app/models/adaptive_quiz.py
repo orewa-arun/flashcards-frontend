@@ -64,7 +64,7 @@ class UserDeckPerformance(BaseModel):
     """Document model for tracking user's performance across all concepts in a deck."""
     
     id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
-    user_id: str = Field(..., description="UUID v4 string for user identification")
+    firebase_uid: str = Field(..., description="Firebase UID for user identification")
     course_id: str = Field(..., description="Course identifier, e.g., MS5260")
     deck_id: str = Field(..., description="Deck identifier, e.g., MIS_lec_4")
     total_concepts: int = Field(..., ge=1, description="Total number of concepts in the deck")
@@ -162,7 +162,7 @@ class QuizSubmissionResponse(BaseModel):
     """Response model for quiz submission."""
     
     quiz_id: str
-    user_id: str
+    firebase_uid: str
     course_id: str
     deck_id: str
     score: int = Field(..., description="Number of correct answers")

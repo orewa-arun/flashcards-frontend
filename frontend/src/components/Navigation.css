@@ -52,6 +52,23 @@
   gap: 8px;
 }
 
+/* Authentication Section */
+.nav-auth {
+  margin-left: 16px;
+}
+
+.auth-loading {
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.mobile-auth-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
 .nav-links {
   display: flex;
   align-items: center;

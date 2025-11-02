@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+import AuthModal from './Auth/AuthModal'
 import './LandingNavigation.css'
 
 function LandingNavigation() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const [authModalMode, setAuthModalMode] = useState('signup')
+  const { user } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +24,15 @@ function LandingNavigation() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
+  }
+
+  const openAuthModal = (mode) => {
+    setAuthModalMode(mode)
+    setIsAuthModalOpen(true)
+  }
+
+  const closeAuthModal = () => {
+    setIsAuthModalOpen(false)
   }
 
   return (
@@ -39,11 +53,34 @@ function LandingNavigation() {
             How It Works
           </button>
           
+          {user ? (
           <Link to="/courses" className="landing-nav-cta">
-            Start Free →
+              Go to Dashboard →
           </Link>
+          ) : (
+            <>
+              <button 
+                onClick={() => openAuthModal('login')}
+                className="landing-nav-login"
+              >
+                Log In
+              </button>
+              <button 
+                onClick={() => openAuthModal('signup')}
+                className="landing-nav-cta"
+              >
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
       </div>
+
+      <AuthModal 
+        isOpen={isAuthModalOpen}
+        onClose={closeAuthModal}
+        initialMode={authModalMode}
+      />
     </nav>
   )
 }

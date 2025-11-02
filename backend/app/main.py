@@ -6,7 +6,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import connect_to_mongo, close_mongo_connection
-from app.routers import analytics, health, bookmarks, feedback, quiz_history, admin_analytics, quiz
+from app.routers import analytics, health, bookmarks, feedback, quiz_history, admin_analytics, quiz, auth
+from app.firebase_auth import initialize_firebase
+from app.database_indexes import create_indexes
 
 # Configure logging
 logging.basicConfig(
@@ -21,6 +23,12 @@ async def lifespan(app: FastAPI):
     # Startup
     logger.info("Starting up Analytics API...")
     await connect_to_mongo()
+    initialize_firebase()
+    
+    # Create database indexes
+    from app.database import get_database
+    db = get_database()
+    await create_indexes(db)
     yield
     # Shutdown
     logger.info("Shutting down Analytics API...")
@@ -45,6 +53,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(health.router)
+app.include_router(auth.router)
 app.include_router(analytics.router)
 app.include_router(bookmarks.router)
 app.include_router(feedback.router)

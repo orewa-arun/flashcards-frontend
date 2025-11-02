@@ -1,0 +1,127 @@
+.protected-route-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.protected-route-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.protected-route-content {
+  max-width: 500px;
+  text-align: center;
+  background: var(--bg-secondary);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+
+.lock-icon {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  opacity: 0.7;
+}
+
+.protected-route-content h2 {
+  color: var(--text-primary);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.protected-route-content > p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.login-section {
+  margin-bottom: 40px;
+}
+
+.benefits-list {
+  text-align: left;
+}
+
+.benefits-list h3 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.benefits-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefits-list li {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .protected-route-content {
+    padding: 32px 24px;
+    margin: 0 16px;
+  }
+  
+  .protected-route-content h2 {
+    font-size: 24px;
+  }
+  
+  .lock-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .protected-route-container {
+    min-height: 70vh;
+    padding: 16px;
+  }
+  
+  .protected-route-content {
+    padding: 24px 20px;
+    margin: 0;
+  }
+  
+  .protected-route-content h2 {
+    font-size: 22px;
+  }
+  
+  .protected-route-content > p {
+    font-size: 15px;
+  }
+}

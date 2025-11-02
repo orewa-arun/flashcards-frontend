@@ -81,6 +81,9 @@
   box-shadow: var(--shadow-medium);
   position: relative;
   overflow: hidden;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .hero-cta::before {

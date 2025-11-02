@@ -73,6 +73,24 @@
   color: var(--primary-green);
 }
 
+/* Auth Buttons */
+.landing-nav-login {
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.landing-nav-login:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--primary-green);
+}
+
 .landing-nav-cta {
   background-color: var(--primary-green);
   color: var(--white);
@@ -80,11 +98,15 @@
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .landing-nav-cta:hover {
   background-color: var(--accent-green);
+  transform: translateY(-1px);
 }
 
 /* Mobile Styles */
@@ -101,8 +123,33 @@
     font-size: 14px;
   }
   
+  .landing-nav-login {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
   .landing-nav-cta {
     padding: 10px 16px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-nav-links {
+    gap: 8px;
+  }
+  
+  .landing-nav-link {
+    display: none;
+  }
+  
+  .landing-nav-login {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .landing-nav-cta {
+    padding: 8px 14px;
+    font-size: 13px;
   }
 }

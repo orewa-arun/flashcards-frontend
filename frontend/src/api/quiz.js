@@ -2,9 +2,7 @@
  * Quiz API service for adaptive quiz generation and submission.
  */
 
-import { getUserId } from '../utils/userTracking';
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+import { authenticatedPost } from '../utils/authenticatedApi';
 
 /**
  * Generate a new quiz for a specific course and deck.
@@ -14,20 +12,11 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000
  * @returns {Promise<Object>} Quiz generation response with questions
  */
 export async function generateQuiz(courseId, deckId, numQuestions = 20) {
-  const userId = getUserId();
-  
   try {
-    const response = await fetch(`${API_BASE_URL}/api/v1/quiz/generate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-User-ID': userId,
-      },
-      body: JSON.stringify({
+    const response = await authenticatedPost('/api/v1/quiz/generate', {
         course_id: courseId,
         deck_id: deckId,
         num_questions: numQuestions,
-      }),
     });
 
     if (!response.ok) {
@@ -59,22 +48,13 @@ export async function generateQuiz(courseId, deckId, numQuestions = 20) {
  * @returns {Promise<Object>} Quiz results with score and weak concepts
  */
 export async function submitQuiz(quizId, courseId, deckId, answers, timeTakenSeconds) {
-  const userId = getUserId();
-  
   try {
-    const response = await fetch(`${API_BASE_URL}/api/v1/quiz/submit`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-User-ID': userId,
-      },
-      body: JSON.stringify({
+    const response = await authenticatedPost('/api/v1/quiz/submit', {
         quiz_id: quizId,
         course_id: courseId,
         deck_id: deckId,
         answers: answers,
         time_taken_seconds: timeTakenSeconds,
-      }),
     });
 
     if (!response.ok) {

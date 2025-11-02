@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import './LandingCTA.css'
 
-function LandingCTA() {
+function LandingCTA({ onOpenAuthModal }) {
+  const { user } = useAuth()
 
   return (
     <section className="landing-cta landing-section bg-green section-padding-lg">
@@ -18,12 +20,19 @@ function LandingCTA() {
           </div>
           
           <div className="cta-button-wrapper mb-lg">
+            {user ? (
             <Link to="/courses" className="cta-button">
+                <span className="button-text">Continue Learning</span>
+                <span className="button-arrow">→</span>
+              </Link>
+            ) : (
+              <button onClick={() => onOpenAuthModal('signup')} className="cta-button">
               <span className="button-text">Get Started Free</span>
               <span className="button-arrow">→</span>
-            </Link>
+              </button>
+            )}
             <p className="cta-guarantee">
-              No credit card required • Start learning in 30 seconds
+              Free forever • No credit card required
             </p>
           </div>
         </div>

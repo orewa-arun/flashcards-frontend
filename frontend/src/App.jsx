@@ -15,6 +15,8 @@ import AdminDashboardView from './views/AdminDashboardView'
 import ThemeToggle from './components/ThemeToggle'
 import CookieBanner from './components/CookieBanner'
 import Navigation from './components/Navigation'
+import { AuthProvider } from './contexts/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
 import { initializeUserTracking } from './utils/userTracking'
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
   }, [])
 
   return (
+    <AuthProvider>
     <Router>
       {/* <ThemeToggle /> */}
       <CookieBanner />
@@ -31,19 +34,56 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<LandingPageView />} />
-          <Route path="/courses" element={<CourseListView />} />
-          <Route path="/courses/:courseId" element={<CourseDetailView />} />
-          <Route path="/courses/:courseId/:lectureId" element={<DeckView />} />
-          <Route path="/courses/:courseId/:lectureId/quiz" element={<QuizView />} />
-          <Route path="/courses/:courseId/:lectureId/results" element={<ResultsView />} />
-          <Route path="/bookmarks" element={<BookmarksView />} />
-          <Route path="/quiz-history" element={<QuizHistoryView />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyView />} />
-          <Route path="/secret-admin-dashboard-xyz" element={<AdminDashboardView />} />
+            
+            {/* Protected Routes - Require Authentication */}
+            <Route path="/courses" element={
+              <ProtectedRoute>
+                <CourseListView />
+              </ProtectedRoute>
+            } />
+            <Route path="/courses/:courseId" element={
+              <ProtectedRoute>
+                <CourseDetailView />
+              </ProtectedRoute>
+            } />
+            <Route path="/courses/:courseId/:lectureId" element={
+              <ProtectedRoute>
+                <DeckView />
+              </ProtectedRoute>
+            } />
+            <Route path="/courses/:courseId/:lectureId/quiz" element={
+              <ProtectedRoute>
+                <QuizView />
+              </ProtectedRoute>
+            } />
+            <Route path="/courses/:courseId/:lectureId/results" element={
+              <ProtectedRoute>
+                <ResultsView />
+              </ProtectedRoute>
+            } />
+            <Route path="/bookmarks" element={
+              <ProtectedRoute>
+                <BookmarksView />
+              </ProtectedRoute>
+            } />
+            <Route path="/quiz-history" element={
+              <ProtectedRoute>
+                <QuizHistoryView />
+              </ProtectedRoute>
+            } />
+            
+            {/* Admin Route - Also Protected */}
+            <Route path="/secret-admin-dashboard-xyz" element={
+              <ProtectedRoute>
+                <AdminDashboardView />
+              </ProtectedRoute>
+            } />
         </Routes>
         <Analytics />
       </div>
     </Router>
+    </AuthProvider>
   )
 }
 

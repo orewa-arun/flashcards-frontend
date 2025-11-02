@@ -3,10 +3,14 @@ import { Link, useLocation } from 'react-router-dom'
 import { FaHome, FaStar, FaHistory, FaBars, FaTimes } from 'react-icons/fa'
 import './Navigation.css'
 import LandingNavigation from './LandingNavigation'
+import { useAuth } from '../contexts/AuthContext'
+import LoginButton from './Auth/LoginButton'
+import UserProfile from './Auth/UserProfile'
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
+  const { user, loading } = useAuth()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -65,6 +69,17 @@ function Navigation() {
           </Link>
         </div>
 
+        {/* Authentication Section */}
+        <div className="nav-auth desktop-nav">
+          {loading ? (
+            <div className="auth-loading">Loading...</div>
+          ) : user ? (
+            <UserProfile />
+          ) : (
+            <LoginButton />
+          )}
+        </div>
+
         {/* Mobile Menu Button */}
         <button 
           className="mobile-menu-btn"
@@ -104,6 +119,17 @@ function Navigation() {
               <FaHistory />
               <span>Quiz History</span>
             </Link>
+
+            {/* Mobile Authentication */}
+            <div className="mobile-auth-section">
+              {loading ? (
+                <div className="auth-loading">Loading...</div>
+              ) : user ? (
+                <UserProfile />
+              ) : (
+                <LoginButton />
+              )}
+            </div>
           </div>
         </div>
       </div>

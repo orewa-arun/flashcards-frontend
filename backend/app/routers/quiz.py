@@ -9,6 +9,8 @@ from typing import List, Dict, Any
 from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Header, Depends
 from app.database import get_database
+from app.firebase_auth import get_current_user
+from app.services.user_service import get_user_service, UserService
 from app.models.adaptive_quiz import (
     QuizGenerationRequest, QuizGenerationResponse, QuizQuestion,
     QuizSubmissionRequest, QuizSubmissionResponse, QuestionResult,
@@ -82,7 +84,7 @@ def load_flashcards(course_id: str, deck_id: str) -> Dict[str, Any]:
 
 
 async def get_or_create_deck_performance(
-    user_id: str,
+    firebase_uid: str,
     course_id: str,
     deck_id: str,
     flashcards_data: Dict[str, Any],
@@ -92,7 +94,7 @@ async def get_or_create_deck_performance(
     performance_collection = db[USER_DECK_PERFORMANCE_COLLECTION]
     
     perf_doc = await performance_collection.find_one({
-        "user_id": user_id,
+        "firebase_uid": firebase_uid,
         "course_id": course_id,
         "deck_id": deck_id
     })
@@ -115,7 +117,7 @@ async def get_or_create_deck_performance(
         concepts_performance.append(concept_perf)
     
     new_performance = UserDeckPerformance(
-        user_id=user_id,
+        firebase_uid=firebase_uid,
         course_id=course_id,
         deck_id=deck_id,
         total_concepts=total_concepts,
@@ -127,7 +129,7 @@ async def get_or_create_deck_performance(
         new_performance.model_dump(by_alias=True, exclude={"id"})
     )
     
-    logger.info(f"Created new deck performance for user {user_id}, deck {deck_id}")
+    logger.info(f"Created new deck performance for user {firebase_uid}, deck {deck_id}")
     return new_performance
 
 
@@ -282,7 +284,8 @@ def build_quiz_questions(selected_questions: List[Dict[str, Any]]) -> List[QuizQ
 @router.post("/generate", response_model=QuizGenerationResponse)
 async def generate_quiz(
     request: QuizGenerationRequest,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
+    user_service: UserService = Depends(get_user_service),
     db = Depends(get_database)
 ):
     """
@@ -292,8 +295,16 @@ async def generate_quiz(
     For returning users: adapts based on performance (incorrect > unseen > correct concepts).
     """
     try:
-        # Ensure user exists
-        await ensure_user_exists(user_id, db)
+        firebase_uid = current_user["uid"]
+        
+        # Ensure user exists in database
+        await user_service.get_or_create_user(
+            firebase_uid=firebase_uid,
+            email=current_user.get("email"),
+            name=current_user.get("name"),
+            picture=current_user.get("picture"),
+            email_verified=current_user.get("email_verified", False)
+        )
         
         # Load flashcards
         flashcards_data = load_flashcards(request.course_id, request.deck_id)
@@ -309,17 +320,17 @@ async def generate_quiz(
         
         # Get or create performance tracking
         performance = await get_or_create_deck_performance(
-            user_id, request.course_id, request.deck_id, flashcards_data, db
+            firebase_uid, request.course_id, request.deck_id, flashcards_data, db
         )
         
         # Select questions based on phase
         if performance.total_quiz_attempts == 0:
             # Phase 1: First quiz - baseline assessment
-            logger.info(f"Generating Phase 1 (baseline) quiz for user {user_id}")
+            logger.info(f"Generating Phase 1 (baseline) quiz for user {firebase_uid}")
             selected_questions = select_questions_phase1(flashcards_data, quiz_size)
         else:
             # Phase 3: Adaptive quiz based on performance
-            logger.info(f"Generating Phase 3 (adaptive) quiz for user {user_id}")
+            logger.info(f"Generating Phase 3 (adaptive) quiz for user {firebase_uid}")
             selected_questions = select_questions_phase3(flashcards_data, performance, quiz_size)
         
         # Build quiz questions
@@ -329,7 +340,7 @@ async def generate_quiz(
         quiz_id = str(uuid4())
         quiz_session = {
             "quiz_id": quiz_id,
-            "user_id": user_id,
+            "firebase_uid": firebase_uid,
             "course_id": request.course_id,
             "deck_id": request.deck_id,
             "questions": [q.model_dump() for q in quiz_questions],
@@ -359,7 +370,8 @@ async def generate_quiz(
 @router.post("/submit", response_model=QuizSubmissionResponse)
 async def submit_quiz(
     submission: QuizSubmissionRequest,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
+    user_service: UserService = Depends(get_user_service),
     db = Depends(get_database)
 ):
     """
@@ -368,6 +380,11 @@ async def submit_quiz(
     Returns detailed results including weak concepts for review.
     """
     try:
+        firebase_uid = current_user["uid"]
+        
+        # Increment quiz attempts counter
+        await user_service.increment_quiz_attempts(firebase_uid)
+        
         # Retrieve quiz session
         quiz_sessions_collection = db[QUIZ_SESSIONS_COLLECTION]
         quiz_session = await quiz_sessions_collection.find_one({"quiz_id": submission.quiz_id})
@@ -418,7 +435,7 @@ async def submit_quiz(
         # Update user deck performance
         performance_collection = db[USER_DECK_PERFORMANCE_COLLECTION]
         performance_doc = await performance_collection.find_one({
-            "user_id": user_id,
+            "firebase_uid": firebase_uid,
             "course_id": submission.course_id,
             "deck_id": submission.deck_id
         })
@@ -444,7 +461,7 @@ async def submit_quiz(
         
         # Save updated performance
         await performance_collection.update_one(
-            {"user_id": user_id, "course_id": submission.course_id, "deck_id": submission.deck_id},
+            {"firebase_uid": firebase_uid, "course_id": submission.course_id, "deck_id": submission.deck_id},
             {"$set": performance.model_dump(exclude={"id"})}
         )
         
@@ -479,7 +496,7 @@ async def submit_quiz(
         # Save quiz result to quiz_results collection for history tracking
         quiz_results_collection = db[settings.QUIZ_RESULTS_COLLECTION]
         quiz_result_document = {
-            "user_id": user_id,
+            "firebase_uid": firebase_uid,
             "course_id": submission.course_id,
             "deck_id": submission.deck_id,
             "quiz_id": submission.quiz_id,
@@ -491,13 +508,13 @@ async def submit_quiz(
             "question_results": [qr.model_dump() for qr in question_results]
         }
         
-        logger.info(f"Attempting to save quiz result: user={user_id}, course={submission.course_id}, deck={submission.deck_id}, score={score}/{total_questions}")
+        logger.info(f"Attempting to save quiz result: user={firebase_uid}, course={submission.course_id}, deck={submission.deck_id}, score={score}/{total_questions}")
         result = await quiz_results_collection.insert_one(quiz_result_document)
         logger.info(f"✅ Successfully saved quiz result to history! Document ID: {result.inserted_id}")
         
         return QuizSubmissionResponse(
             quiz_id=submission.quiz_id,
-            user_id=user_id,
+            firebase_uid=firebase_uid,
             course_id=submission.course_id,
             deck_id=submission.deck_id,
             score=score,

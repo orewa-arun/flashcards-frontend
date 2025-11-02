@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import './LandingHero.css'
 
-function LandingHero() {
+function LandingHero({ onOpenAuthModal }) {
+  const { user } = useAuth()
+  
   return (
     <section className="landing-hero">
       <div className="hero-container">
@@ -18,14 +21,20 @@ function LandingHero() {
             AI flashcards + adaptive quizzes that find your weak spots and fix them. Fast.
           </p>
           
+          {user ? (
           <Link to="/courses" className="hero-cta">
+              Go to Dashboard →
+            </Link>
+          ) : (
+            <button onClick={() => onOpenAuthModal('signup')} className="hero-cta">
             Start Preparing Free →
-          </Link>
+            </button>
+          )}
           
           <div className="hero-benefits">
             <span>✓ Used by 20+ IIT students</span>
             <span>✓ 100% Free</span>
-            <span>✓ No signup required</span>
+            <span>✓ Start free in 30 seconds</span>
           </div>
         </div>
         

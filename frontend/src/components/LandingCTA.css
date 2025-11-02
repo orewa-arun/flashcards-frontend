@@ -107,6 +107,9 @@
     0 0 0 1px rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .cta-button::before {
