@@ -21,6 +21,7 @@ from datetime import datetime
 
 from config import Config
 from .generator import CognitiveFlashcardGenerator
+from .quiz_generator import QuizGenerator
 from .renderer import DiagramRenderer
 from .utils import load_courses, get_course_by_id
 
@@ -36,6 +37,19 @@ def save_flashcards_json(flashcards, metadata, output_path):
         json.dump(data, f, indent=2, ensure_ascii=False)
     
     print(f"💾 Saved JSON: {output_path}")
+
+
+def save_quiz_json(questions, metadata, output_path):
+    """Save quiz questions as JSON with metadata."""
+    data = {
+        'metadata': metadata,
+        'questions': questions
+    }
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    
+    print(f"💾 Saved Quiz JSON: {output_path}")
 
 # ==============================================================================
 # NEW HELPER FUNCTION FOR CHUNKING
@@ -377,6 +391,12 @@ def process_course_flashcards(course: Dict[str, Any], slide_analysis_prefix: Opt
             continue
         
         print(f"\n🎉 Total aggregated flashcards for {lecture_name}: {len(flashcards)}")
+        
+        # Add unique flashcard_id to each flashcard
+        print(f"🆔 Adding unique flashcard IDs...")
+        for idx, card in enumerate(flashcards, 1):
+            card['flashcard_id'] = f"{lecture_name}_{idx}"
+        print(f"   ✅ Added IDs from {lecture_name}_1 to {lecture_name}_{len(flashcards)}")
         # ======================================================================
         # END CHUNKING AND ITERATIVE GENERATION LOGIC
         # ======================================================================
@@ -452,7 +472,7 @@ def process_course_flashcards(course: Dict[str, Any], slide_analysis_prefix: Opt
         save_flashcards_json(
             flashcards,
             metadata,
-            str(lecture_output_dir / f"{lecture_name}_cognitive_flashcards.json")
+            str(lecture_output_dir / f"{lecture_name}_cognitive_flashcards_only.json")
         )
         
         print(f"\n✅ Complete! Output saved to: {lecture_output_dir}")
@@ -468,6 +488,179 @@ def process_course_flashcards(course: Dict[str, Any], slide_analysis_prefix: Opt
     print(f"   1. Review the generated flashcards JSON files")
     print(f"   2. View diagrams in the diagrams/ folders")
     print(f"   3. Use JSON for your React frontend")
+
+
+def process_course_quizzes(course: Dict[str, Any], slide_analysis_prefix: Optional[str] = None) -> None:
+    """
+    Process quiz generation for all flashcards in a course.
+    
+    Args:
+        course: Course dictionary with metadata
+        slide_analysis_prefix: Optional prefix to process only a specific lecture
+    """
+    course_id = course['course_id']
+    course_name = course['course_name']
+    
+    print(f"\n{'='*80}")
+    print(f"🎯 Generating Quizzes for: {course_name} ({course_id})")
+    print(f"{'='*80}")
+    
+    # Get course metadata
+    textbooks = course.get('reference_textbooks', [])
+    textbook_reference = "; ".join(textbooks) if textbooks else "No reference textbooks specified"
+    
+    # Define paths
+    course_base_dir = Path(f"./courses/{course_id}")
+    flashcards_base = course_base_dir / "cognitive_flashcards"
+    quiz_output_dir = course_base_dir / "quiz"
+    
+    # Check if flashcards directory exists
+    if not flashcards_base.exists():
+        print(f"⚠️  No flashcards found for this course at: {flashcards_base}")
+        print(f"   Please generate flashcards first using the flashcard generator")
+        return
+    
+    # Find all flashcard JSON files based on slide_analysis_prefix
+    if slide_analysis_prefix:
+        # Process only the specified lecture
+        specific_file = flashcards_base / slide_analysis_prefix / f"{slide_analysis_prefix}_cognitive_flashcards_only.json"
+        if not specific_file.exists():
+            print(f"⚠️  Specified lecture flashcards not found: {specific_file}")
+            print(f"   Available lectures in {flashcards_base}:")
+            for f in flashcards_base.glob("*/*_cognitive_flashcards_only.json"):
+                print(f"      • {f.parent.name}")
+            return
+        flashcard_files = [specific_file]
+        print(f"\n🎯 Processing specific lecture: {slide_analysis_prefix}")
+    else:
+        # Find all flashcard files
+        flashcard_files = list(flashcards_base.glob("*/*_cognitive_flashcards_only.json"))
+        if not flashcard_files:
+            print(f"⚠️  No flashcard files found in {flashcards_base}")
+            return
+        print(f"\n📊 Found {len(flashcard_files)} lecture(s) with flashcards")
+    
+    # Create quiz output directory
+    quiz_output_dir.mkdir(exist_ok=True)
+    
+    # Initialize quiz generator
+    quiz_generator = QuizGenerator(
+        api_key=Config.GEMINI_API_KEY,
+        model=Config.GEMINI_MODEL,
+        course_name=course_name,
+        textbook_reference=textbook_reference
+    )
+    
+    # Process each flashcard file
+    for flashcard_file in flashcard_files:
+        lecture_name = flashcard_file.parent.name
+        
+        print(f"\n{'─'*70}")
+        print(f"📄 Processing Quizzes for: {lecture_name}")
+        print(f"{'─'*70}")
+        
+        # Load flashcards
+        try:
+            with open(flashcard_file, 'r', encoding='utf-8') as f:
+                flashcard_data = json.load(f)
+        except Exception as e:
+            print(f"❌ Error loading flashcards from {flashcard_file}: {e}")
+            continue
+        
+        flashcards = flashcard_data.get('flashcards', [])
+        if not flashcards:
+            print(f"⚠️  No flashcards found in {flashcard_file}")
+            continue
+        
+        print(f"📚 Loaded {len(flashcards)} flashcard(s)")
+        
+        # Extract content from flashcards for quiz generation
+        # For each flashcard, we'll include: question, all answer types, and example
+        simplified_flashcards = []
+        for idx, card in enumerate(flashcards):
+            # Use persistent flashcard_id if available, otherwise fallback to generated ID
+            flashcard_id = card.get('flashcard_id', f"{lecture_name}_{idx + 1}")
+            
+            simplified_card = {
+                "id": flashcard_id,
+                "question": card.get('question', ''),
+                "answers": card.get('answers', {}),
+                "example": card.get('example', ''),
+                "context": card.get('context', ''),
+                "tags": card.get('tags', [])
+            }
+            simplified_flashcards.append(simplified_card)
+        
+        # Chunk flashcards into groups of 3-5 for quiz generation
+        # Each chunk will be processed separately to avoid token limits
+        chunk_size = 4  # 4 flashcards per chunk (4 * 5 = 20 questions per chunk)
+        flashcard_chunks = [simplified_flashcards[i:i + chunk_size] 
+                           for i in range(0, len(simplified_flashcards), chunk_size)]
+        
+        print(f"📦 Split into {len(flashcard_chunks)} chunk(s) of ~{chunk_size} flashcards each")
+        
+        # Generate quizzes for each level (1-4)
+        for level in range(1, 5):
+            print(f"\n{'~'*60}")
+            print(f"🎯 Generating Level {level} Quiz")
+            print(f"{'~'*60}")
+            
+            all_questions = []
+            
+            # Process each chunk
+            for chunk_idx, chunk in enumerate(flashcard_chunks, 1):
+                chunk_info = f"Chunk {chunk_idx}/{len(flashcard_chunks)}"
+                
+                # Generate questions for this chunk
+                questions = quiz_generator.generate_quiz_questions(
+                    chunk,
+                    level=level,
+                    chunk_info=chunk_info
+                )
+                
+                if questions:
+                    all_questions.extend(questions)
+                    print(f"   ✅ Generated {len(questions)} questions from {chunk_info}")
+                else:
+                    print(f"   ⚠️  No questions generated from {chunk_info}")
+            
+            if not all_questions:
+                print(f"⚠️  No Level {level} questions generated for {lecture_name}")
+                continue
+            
+            print(f"\n🎉 Total Level {level} questions: {len(all_questions)}")
+            
+            # Prepare metadata
+            metadata = {
+                'generated_at': datetime.now().isoformat(),
+                'total_questions': len(all_questions),
+                'course_name': course_name,
+                'course_id': course_id,
+                'course_code': course.get('course_code', 'N/A'),
+                'textbook_reference': textbook_reference,
+                'lecture': lecture_name,
+                'difficulty_level': level,
+                'source_flashcards': len(flashcards)
+            }
+            
+            # Save quiz JSON
+            quiz_filename = f"{lecture_name}_level_{level}_quiz.json"
+            quiz_output_path = quiz_output_dir / quiz_filename
+            
+            save_quiz_json(all_questions, metadata, str(quiz_output_path))
+            
+            print(f"✅ Level {level} quiz saved: {quiz_output_path}")
+    
+    # Summary
+    print(f"\n{'='*80}")
+    print(f"✅ QUIZ GENERATION COMPLETE: {course_name}")
+    print(f"{'='*80}")
+    print(f"📊 Summary:")
+    print(f"  • Lectures processed: {len(flashcard_files)}")
+    print(f"  • Quiz output directory: {quiz_output_dir}/")
+    print(f"\n💡 Next Steps:")
+    print(f"   1. Review the generated quiz JSON files")
+    print(f"   2. Integrate quizzes into your learning platform")
 
 
 def main():

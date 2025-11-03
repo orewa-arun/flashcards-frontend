@@ -13,7 +13,7 @@ from config import Config
 class CognitiveFlashcardGenerator:
     """Universal flashcard generator with diagram support."""
     
-    def __init__(self, api_key: str, model: str = "gemini-1.5-flash",
+    def __init__(self, api_key: str, model: str = "gemini-2.5-flash",
                  course_name: str = "", textbook_reference: str = ""):
         """
         Initialize the cognitive flashcard generator.
@@ -32,7 +32,7 @@ class CognitiveFlashcardGenerator:
     
     def load_prompt_template(self) -> str:
         """Load the generic prompt template."""
-        prompt_path = os.path.join(Config.PROMPTS_DIR, "intelligent_flashcard_prompt.txt")
+        prompt_path = os.path.join(Config.PROMPTS_DIR, "intelligent_flashcard_only_prompt_v2.txt")
         
         try:
             with open(prompt_path, 'r', encoding='utf-8') as f:
@@ -40,7 +40,7 @@ class CognitiveFlashcardGenerator:
         except FileNotFoundError:
             raise FileNotFoundError(
                 f"Prompt file not found: {prompt_path}\n"
-                "Please ensure intelligent_flashcard_prompt.txt exists in the prompts/ directory."
+                "Please ensure intelligent_flashcard_only_prompt_v2.txt exists in the prompts/ directory."
             )
     
     def generate_flashcards(self, content: str, source_name: str = "", chunk_info: str = "") -> List[Dict[str, Any]]:
@@ -125,11 +125,9 @@ class CognitiveFlashcardGenerator:
                         total_math_viz += sum(1 for viz in math_viz.values() if viz.strip())
                     
                     examples_count = sum(1 for card in flashcards if card.get('example', '').strip())
-                    recall_q_count = sum(len(card.get('recall_questions', [])) for card in flashcards)
                     print(f"   📊 Mermaid Diagrams: {total_diagrams} across all answer types")
                     print(f"   🔢 Math Visualizations: {total_math_viz} Graphviz diagrams")
                     print(f"   📝 With Examples: {examples_count} cards")
-                    print(f"   🧠 Recall Questions: {recall_q_count} total")
                     
                     return flashcards
                 else:
@@ -184,8 +182,6 @@ class CognitiveFlashcardGenerator:
                 # Ensure optional fields exist
                 if 'example' not in card:
                     card['example'] = ""
-                if 'recall_questions' not in card:
-                    card['recall_questions'] = []
                 # Ensure all diagram types exist (already validated above, but ensure they're strings)
                 if 'mermaid_diagrams' not in card:
                     card['mermaid_diagrams'] = {}
