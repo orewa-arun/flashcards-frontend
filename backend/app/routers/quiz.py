@@ -83,6 +83,30 @@ def load_flashcards(course_id: str, deck_id: str) -> Dict[str, Any]:
         raise HTTPException(status_code=500, detail=f"Error loading flashcards: {str(e)}")
 
 
+def load_hard_questions(course_id: str, deck_id: str) -> Dict[str, Any]:
+    """Load hard questions JSON file for a given course and deck."""
+    hard_questions_path = os.path.join(
+        FLASHCARDS_BASE_PATH,
+        course_id,
+        "cognitive_flashcards",
+        deck_id,
+        f"{deck_id}_hard_questions.json"
+    )
+    
+    if not os.path.exists(hard_questions_path):
+        raise HTTPException(
+            status_code=404,
+            detail=f"Hard questions not available for course {course_id}, deck {deck_id}. Please generate them first using: python generate_hard_questions.py {course_id} {deck_id}"
+        )
+    
+    try:
+        with open(hard_questions_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception as e:
+        logger.error(f"Error loading hard questions: {e}")
+        raise HTTPException(status_code=500, detail=f"Error loading hard questions: {str(e)}")
+
+
 async def get_or_create_deck_performance(
     firebase_uid: str,
     course_id: str,
@@ -256,6 +280,12 @@ def build_quiz_questions(selected_questions: List[Dict[str, Any]]) -> List[QuizQ
     
     for sq in selected_questions:
         q_data = sq["question_data"]
+        
+        # FIX: Add validation to skip questions with missing answers
+        if q_data.get("answer") is None:
+            logger.warning(f"Skipping malformed medium question (missing 'answer' key): concept_index={sq.get('concept_index')}, question={q_data.get('question', 'N/A')}")
+            continue
+
         question_id = str(uuid4())
         
         quiz_question = QuizQuestion(
@@ -281,6 +311,79 @@ def build_quiz_questions(selected_questions: List[Dict[str, Any]]) -> List[QuizQ
     return quiz_questions
 
 
+def select_hard_questions(hard_questions_data: Dict[str, Any], num_questions: int) -> List[Dict[str, Any]]:
+    """
+    Select random hard questions from the hard questions file.
+    
+    Args:
+        hard_questions_data: Loaded hard questions JSON
+        num_questions: Number of questions to select
+        
+    Returns:
+        List of selected questions with metadata
+    """
+    questions = hard_questions_data.get("questions", [])
+    
+    if not questions:
+        raise HTTPException(status_code=404, detail="No hard questions available")
+    
+    # Randomly select questions
+    num_to_select = min(num_questions, len(questions))
+    selected = random.sample(questions, num_to_select)
+    
+    # Convert to format expected by build_quiz_questions_hard
+    formatted_questions = []
+    for q in selected:
+        formatted_questions.append({
+            "question_data": q,
+            "slide_number": q.get("slide_number", 0)
+        })
+    
+    return formatted_questions
+
+
+def build_quiz_questions_hard(selected_questions: List[Dict[str, Any]]) -> List[QuizQuestion]:
+    """
+    Convert hard questions into QuizQuestion models.
+    Hard questions don't have concept_index, so we use slide_number instead.
+    """
+    quiz_questions = []
+    
+    for sq in selected_questions:
+        q_data = sq["question_data"]
+
+        # FIX: Add validation to skip questions with missing answers
+        if q_data.get("correct_answer") is None:
+            logger.warning(f"Skipping malformed hard question (missing 'correct_answer' key): slide_number={sq.get('slide_number')}, question={q_data.get('question', 'N/A')}")
+            continue
+
+        question_id = str(uuid4())
+        slide_number = sq.get("slide_number", 0)
+        
+        # For hard questions, use slide_number as concept_index
+        quiz_question = QuizQuestion(
+            question_id=question_id,
+            concept_index=slide_number,  # Using slide number as proxy
+            concept_context=f"Slide {slide_number}",
+            relevance_score=10,  # Hard questions are always high relevance
+            question_type=q_data.get("type", "mcq"),
+            question=q_data.get("question", ""),
+            options=q_data.get("options"),
+            items=q_data.get("items"),
+            categories=q_data.get("categories"),
+            scenario=q_data.get("scenario"),
+            premises=q_data.get("premises"),
+            responses=q_data.get("responses"),
+            correct_answer=q_data.get("correct_answer")
+        )
+        quiz_questions.append(quiz_question)
+    
+    # Shuffle questions
+    random.shuffle(quiz_questions)
+    
+    return quiz_questions
+
+
 @router.post("/generate", response_model=QuizGenerationResponse)
 async def generate_quiz(
     request: QuizGenerationRequest,
@@ -289,13 +392,15 @@ async def generate_quiz(
     db = Depends(get_database)
 ):
     """
-    Generate an adaptive quiz based on user's performance history.
+    Generate an adaptive quiz based on user's performance history and difficulty level.
     
-    For first-time users: selects questions from top relevance concepts.
-    For returning users: adapts based on performance (incorrect > unseen > correct concepts).
+    Difficulty levels:
+    - medium: Questions from flashcards (adaptive based on performance)
+    - hard: Challenging questions from hard_questions.json (random selection)
     """
     try:
         firebase_uid = current_user["uid"]
+        difficulty = request.difficulty or "medium"
         
         # Ensure user exists in database
         await user_service.get_or_create_user(
@@ -305,6 +410,47 @@ async def generate_quiz(
             picture=current_user.get("picture"),
             email_verified=current_user.get("email_verified", False)
         )
+        
+        # Handle hard difficulty
+        if difficulty == "hard":
+            logger.info(f"Generating HARD quiz for user {firebase_uid}")
+            
+            # Load hard questions
+            hard_questions_data = load_hard_questions(request.course_id, request.deck_id)
+            quiz_size = request.num_questions or 20
+            
+            # Select and build hard questions
+            selected_questions = select_hard_questions(hard_questions_data, quiz_size)
+            quiz_questions = build_quiz_questions_hard(selected_questions)
+            
+            # Create quiz session
+            quiz_id = str(uuid4())
+            quiz_session = {
+                "quiz_id": quiz_id,
+                "firebase_uid": firebase_uid,
+                "course_id": request.course_id,
+                "deck_id": request.deck_id,
+                "difficulty": difficulty,
+                "questions": [q.model_dump() for q in quiz_questions],
+                "created_at": datetime.now(timezone.utc),
+                "completed": False
+            }
+            
+            quiz_sessions_collection = db[QUIZ_SESSIONS_COLLECTION]
+            await quiz_sessions_collection.insert_one(quiz_session)
+            
+            return QuizGenerationResponse(
+                quiz_id=quiz_id,
+                course_id=request.course_id,
+                deck_id=request.deck_id,
+                difficulty=difficulty,
+                questions=quiz_questions,
+                total_questions=len(quiz_questions),
+                quiz_attempt_number=1  # Hard quizzes don't track attempts
+            )
+        
+        # Handle medium difficulty (existing adaptive logic)
+        logger.info(f"Generating MEDIUM quiz for user {firebase_uid}")
         
         # Load flashcards
         flashcards_data = load_flashcards(request.course_id, request.deck_id)
@@ -343,6 +489,7 @@ async def generate_quiz(
             "firebase_uid": firebase_uid,
             "course_id": request.course_id,
             "deck_id": request.deck_id,
+            "difficulty": difficulty,
             "questions": [q.model_dump() for q in quiz_questions],
             "created_at": datetime.now(timezone.utc),
             "completed": False
@@ -355,6 +502,7 @@ async def generate_quiz(
             quiz_id=quiz_id,
             course_id=request.course_id,
             deck_id=request.deck_id,
+            difficulty=difficulty,
             questions=quiz_questions,
             total_questions=len(quiz_questions),
             quiz_attempt_number=performance.total_quiz_attempts + 1
@@ -493,6 +641,9 @@ async def submit_quiz(
         total_questions = len(questions)
         percentage = (score / total_questions * 100) if total_questions > 0 else 0
         
+        # Get difficulty from quiz session or submission
+        difficulty = quiz_session.get("difficulty", submission.difficulty or "medium")
+        
         # Save quiz result to quiz_results collection for history tracking
         quiz_results_collection = db[settings.QUIZ_RESULTS_COLLECTION]
         quiz_result_document = {
@@ -500,6 +651,7 @@ async def submit_quiz(
             "course_id": submission.course_id,
             "deck_id": submission.deck_id,
             "quiz_id": submission.quiz_id,
+            "difficulty": difficulty,
             "score": score,
             "total_questions": total_questions,
             "percentage": round(percentage, 2),
@@ -508,7 +660,7 @@ async def submit_quiz(
             "question_results": [qr.model_dump() for qr in question_results]
         }
         
-        logger.info(f"Attempting to save quiz result: user={firebase_uid}, course={submission.course_id}, deck={submission.deck_id}, score={score}/{total_questions}")
+        logger.info(f"Attempting to save quiz result: user={firebase_uid}, course={submission.course_id}, deck={submission.deck_id}, difficulty={difficulty}, score={score}/{total_questions}")
         result = await quiz_results_collection.insert_one(quiz_result_document)
         logger.info(f"✅ Successfully saved quiz result to history! Document ID: {result.inserted_id}")
         
@@ -517,6 +669,7 @@ async def submit_quiz(
             firebase_uid=firebase_uid,
             course_id=submission.course_id,
             deck_id=submission.deck_id,
+            difficulty=difficulty,
             score=score,
             total_questions=total_questions,
             percentage=round(percentage, 2),

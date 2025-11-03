@@ -138,6 +138,9 @@ function QuizHistoryView() {
                 {attemptDetails.score}/{attemptDetails.total_questions}
               </span>
               <span className="score-percentage">{attemptDetails.percentage.toFixed(1)}%</span>
+              <span className={`difficulty-badge ${attemptDetails.difficulty || 'medium'}`}>
+                {attemptDetails.difficulty === 'hard' ? '🔥 Hard' : '📚 Medium'}
+              </span>
             </div>
             <div className="attempt-meta">
               <span><FaClock /> {formatTime(attemptDetails.time_taken)}</span>
@@ -230,7 +233,12 @@ function QuizHistoryView() {
                   className="attempt-card"
                   onClick={() => handleAttemptClick(attempt)}
                 >
-                  <div className="attempt-number">Attempt #{deckAttempts.length - index}</div>
+                  <div className="attempt-header-row">
+                    <div className="attempt-number">Attempt #{deckAttempts.length - index}</div>
+                    <span className={`difficulty-badge ${attempt.difficulty || 'medium'}`}>
+                      {attempt.difficulty === 'hard' ? '🔥 Hard' : '📚 Medium'}
+                    </span>
+                  </div>
                   <div className="attempt-score">
                     <span className={`score-badge ${getScoreColor(attempt.percentage)}`}>
                       {attempt.score}/{attempt.total_questions}

@@ -11,8 +11,12 @@ function QuizView() {
   // Handle both deckId and lectureId parameter names
   const actualDeckId = deckId || lectureId;
   
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
+  // Difficulty selection state
+  const [showDifficultySelector, setShowDifficultySelector] = useState(true);
+  const [selectedDifficulty, setSelectedDifficulty] = useState('medium');
   
   // Quiz state
   const [quizData, setQuizData] = useState(null);
@@ -31,12 +35,13 @@ function QuizView() {
   const [quizResults, setQuizResults] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const loadQuiz = useCallback(async () => {
+  const loadQuiz = useCallback(async (difficulty) => {
     try {
       setLoading(true);
       setError(null);
+      setShowDifficultySelector(false);
       
-      const data = await generateQuiz(courseId, actualDeckId, 20);
+      const data = await generateQuiz(courseId, actualDeckId, 20, difficulty);
       setQuizData(data);
       setQuizStartTime(Date.now());
       
@@ -44,6 +49,7 @@ function QuizView() {
       trackEvent('Quiz Started', {
         courseId,
         lectureId: actualDeckId,
+        difficulty: difficulty,
         totalQuestions: data.questions?.length || 0
       });
       
@@ -51,12 +57,13 @@ function QuizView() {
     } catch (err) {
       setError(err.message || 'Failed to load quiz');
       setLoading(false);
+      setShowDifficultySelector(true);
     }
   }, [courseId, actualDeckId]);
 
-  useEffect(() => {
-    loadQuiz();
-  }, [loadQuiz]);
+  const handleStartQuiz = () => {
+    loadQuiz(selectedDifficulty);
+  };
 
   const handleAnswerChange = (questionId, answer) => {
     setUserAnswers(prev => ({
@@ -189,6 +196,7 @@ function QuizView() {
         quizData.quiz_id,
         courseId,
         actualDeckId,
+        quizData.difficulty || selectedDifficulty,
         answers,
         timeTakenSeconds
       );
@@ -197,6 +205,7 @@ function QuizView() {
       trackEvent('Quiz Submitted', {
         courseId,
         lectureId: actualDeckId,
+        difficulty: quizData.difficulty || selectedDifficulty,
         score: results.score,
         totalQuestions: results.total_questions,
         timeTakenSeconds,
@@ -287,11 +296,67 @@ function QuizView() {
     }
   };
 
+  // Show difficulty selector before quiz starts
+  if (showDifficultySelector) {
+    return (
+      <div className="quiz-view difficulty-selector-view">
+        <div className="difficulty-selector-container">
+          <button 
+            onClick={() => navigate(`/courses/${courseId}/${actualDeckId}`)} 
+            className="btn-back"
+          >
+            ← Back
+          </button>
+          
+          <h1>Choose Quiz Difficulty</h1>
+          <p className="difficulty-description">Select the difficulty level for your quiz</p>
+          
+          <div className="difficulty-options">
+            <div 
+              className={`difficulty-card ${selectedDifficulty === 'medium' ? 'selected' : ''}`}
+              onClick={() => setSelectedDifficulty('medium')}
+            >
+              <div className="difficulty-icon">📚</div>
+              <h3>Medium</h3>
+              <p>Questions from flashcards</p>
+              <ul>
+                <li>Adaptive to your performance</li>
+                <li>Tests core concepts</li>
+                <li>Recommended for first attempt</li>
+              </ul>
+            </div>
+            
+            <div 
+              className={`difficulty-card ${selectedDifficulty === 'hard' ? 'selected' : ''}`}
+              onClick={() => setSelectedDifficulty('hard')}
+            >
+              <div className="difficulty-icon">🔥</div>
+              <h3>Hard</h3>
+              <p>Challenging tricky questions</p>
+              <ul>
+                <li>Deep conceptual understanding</li>
+                <li>Scenario-based problems</li>
+                <li>For advanced learners</li>
+              </ul>
+            </div>
+          </div>
+          
+          <button 
+            onClick={handleStartQuiz} 
+            className="btn-start-quiz"
+          >
+            Start {selectedDifficulty === 'hard' ? 'Hard' : 'Medium'} Quiz →
+          </button>
+        </div>
+      </div>
+    );
+  }
+  
   if (loading) {
     return (
       <div className="quiz-view loading">
         <div className="spinner"></div>
-        <p>Generating your personalized quiz...</p>
+        <p>Generating your {selectedDifficulty} quiz...</p>
       </div>
     );
   }

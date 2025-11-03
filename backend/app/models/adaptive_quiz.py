@@ -85,6 +85,7 @@ class QuizGenerationRequest(BaseModel):
     course_id: str = Field(..., description="Course identifier")
     deck_id: str = Field(..., description="Deck identifier")
     num_questions: Optional[int] = Field(20, ge=10, le=50, description="Number of questions to generate")
+    difficulty: Optional[str] = Field("medium", description="Quiz difficulty: 'medium' or 'hard'")
 
 
 class QuizQuestion(BaseModel):
@@ -111,6 +112,7 @@ class QuizGenerationResponse(BaseModel):
     quiz_id: str = Field(..., description="Unique identifier for this quiz session")
     course_id: str = Field(...)
     deck_id: str = Field(...)
+    difficulty: str = Field(..., description="Quiz difficulty level")
     questions: List[QuizQuestion] = Field(..., description="List of quiz questions")
     total_questions: int = Field(..., description="Total number of questions in quiz")
     quiz_attempt_number: int = Field(..., description="Which attempt this is for the user on this deck")
@@ -129,6 +131,7 @@ class QuizSubmissionRequest(BaseModel):
     quiz_id: str = Field(..., description="The quiz session ID")
     course_id: str = Field(..., description="Course identifier")
     deck_id: str = Field(..., description="Deck identifier")
+    difficulty: Optional[str] = Field("medium", description="Quiz difficulty level")
     answers: List[QuizAnswerSubmission] = Field(..., description="List of user answers")
     time_taken_seconds: int = Field(..., ge=0, description="Total time taken to complete quiz")
 
@@ -165,6 +168,7 @@ class QuizSubmissionResponse(BaseModel):
     firebase_uid: str
     course_id: str
     deck_id: str
+    difficulty: str = Field(..., description="Quiz difficulty level")
     score: int = Field(..., description="Number of correct answers")
     total_questions: int
     percentage: float

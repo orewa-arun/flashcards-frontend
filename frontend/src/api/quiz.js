@@ -9,14 +9,16 @@ import { authenticatedPost } from '../utils/authenticatedApi';
  * @param {string} courseId - Course identifier (e.g., "MS5260")
  * @param {string} deckId - Deck identifier (e.g., "MIS_lec_4")
  * @param {number} numQuestions - Number of questions (default: 20)
+ * @param {string} difficulty - Quiz difficulty: 'medium' or 'hard' (default: 'medium')
  * @returns {Promise<Object>} Quiz generation response with questions
  */
-export async function generateQuiz(courseId, deckId, numQuestions = 20) {
+export async function generateQuiz(courseId, deckId, numQuestions = 20, difficulty = 'medium') {
   try {
     const data = await authenticatedPost('/api/v1/quiz/generate', {
         course_id: courseId,
         deck_id: deckId,
         num_questions: numQuestions,
+        difficulty: difficulty,
     });
 
     return data;
@@ -31,16 +33,18 @@ export async function generateQuiz(courseId, deckId, numQuestions = 20) {
  * @param {string} quizId - Quiz session ID
  * @param {string} courseId - Course identifier
  * @param {string} deckId - Deck identifier
+ * @param {string} difficulty - Quiz difficulty level
  * @param {Array} answers - Array of {question_id, user_answer} objects
  * @param {number} timeTakenSeconds - Time taken to complete quiz
  * @returns {Promise<Object>} Quiz results with score and weak concepts
  */
-export async function submitQuiz(quizId, courseId, deckId, answers, timeTakenSeconds) {
+export async function submitQuiz(quizId, courseId, deckId, difficulty, answers, timeTakenSeconds) {
   try {
     const data = await authenticatedPost('/api/v1/quiz/submit', {
         quiz_id: quizId,
         course_id: courseId,
         deck_id: deckId,
+        difficulty: difficulty,
         answers: answers,
         time_taken_seconds: timeTakenSeconds,
     });

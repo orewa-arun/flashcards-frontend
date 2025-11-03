@@ -58,6 +58,7 @@ class QuizResult(BaseModel):
     user_id: str = Field(..., description="UUID v4 string for user identification")
     deck_id: str = Field(..., description="Deck identifier, e.g., MIS_lec_1-3")
     course_id: str = Field(..., description="Course identifier, e.g., MS5260")
+    difficulty: str = Field(default="medium", description="Quiz difficulty: medium or hard")
     score: int = Field(..., ge=0, description="Number of correct answers")
     total_questions: int = Field(..., ge=1, description="Total number of questions")
     percentage: float = Field(..., ge=0.0, le=100.0, description="Percentage score")
@@ -85,6 +86,7 @@ class QuizResultResponse(BaseModel):
     user_id: str
     deck_id: str
     course_id: str
+    difficulty: str
     score: int
     total_questions: int
     percentage: float

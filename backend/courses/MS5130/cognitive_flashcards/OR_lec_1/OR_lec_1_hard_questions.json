@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-02T17:21:58.699036",
+    "total_questions": 25,
+    "course_id": "MS5130",
+    "lecture_name": "OR_lec_1",
+    "difficulty": "hard",
+    "generator_version": "1.0.0"
+  },
+  "questions": [
+    {
+      "question_id": "hard_OR_lec_1_slide3_q1",
+      "slide_number": 3,
+      "difficulty": "hard",
+      "type": "scenario_mcq",
+      "scenario": "A logistics company wants to optimize its delivery routes to minimize fuel consumption and delivery time. They have considered using Operations Research techniques to model this complex problem. The company's manager is debating which OR technique would be most suitable for this specific problem.",
+      "question": "Which of the following Operations Research techniques would be MOST appropriate for the logistics company's route optimization problem?",
+      "options": [
+        "A. Markov Decision Processes, as it can handle the probabilistic nature of traffic conditions and route changes.",
+        "B. Queuing Theory, as it focuses on managing the flow of deliveries and minimizing waiting times at delivery locations.",
+        "C. Mathematical Optimization, as it allows for the modeling of multiple constraints (fuel, time, distance) and finding the optimal route.",
+        "D. Data Analysis, as it can reveal patterns in past delivery data to predict future delivery times and route efficiencies."
+      ],
+      "correct_answer": "C. Mathematical Optimization, as it allows for the modeling of multiple constraints (fuel, time, distance) and finding the optimal route.",
+      "explanation": "Mathematical optimization is best suited for route optimization as it can handle multiple constraints such as fuel consumption, time, and distance to find the most efficient routes. Markov Decision Processes would be useful if the delivery environment was very uncertain, which isn't the primary goal here. Queuing theory is more applicable when dealing with waiting lines. Data analysis can inform the optimization, but it's not a technique in itself."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide3_q2",
+      "slide_number": 3,
+      "difficulty": "hard",
+      "type": "sequencing",
+      "question": "Arrange the following steps in a typical Operations Research project in the correct chronological order:",
+      "items": [
+        "A. Implement the solution and monitor its performance.",
+        "B. Develop a mathematical model to represent the problem.",
+        "C. Validate the model to ensure it accurately reflects the real-world situation.",
+        "D. Identify and define the problem clearly.",
+        "E. Solve the mathematical model to obtain a proposed solution."
+      ],
+      "correct_order": [
+        "D. Identify and define the problem clearly.",
+        "B. Develop a mathematical model to represent the problem.",
+        "E. Solve the mathematical model to obtain a proposed solution.",
+        "C. Validate the model to ensure it accurately reflects the real-world situation.",
+        "A. Implement the solution and monitor its performance."
+      ],
+      "explanation": "The correct sequence starts with problem identification (D), followed by model development (B), solving the model (E), validating the model (C), and finally implementing the solution (A). This represents the standard process of an OR study."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide3_q3",
+      "slide_number": 3,
+      "difficulty": "hard",
+      "type": "categorization",
+      "question": "Categorize the following Operations Research techniques based on whether they are primarily used for optimization or analysis/prediction:",
+      "categories": {
+        "Optimization": [
+          "Linear Programming",
+          "Integer Programming"
+        ],
+        "Analysis/Prediction": [
+          "Simulation",
+          "Queuing Theory",
+          "Markov Decision Processes",
+          "Data Analysis"
+        ]
+      },
+      "items": [
+        "Linear Programming",
+        "Simulation",
+        "Queuing Theory",
+        "Integer Programming",
+        "Markov Decision Processes",
+        "Data Analysis"
+      ],
+      "explanation": "Linear Programming and Integer Programming are directly used for optimization. Simulation, Queuing Theory, Markov Decision Processes, and Data Analysis are used for analyzing systems and making predictions based on the collected data."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide3_q4",
+      "slide_number": 3,
+      "difficulty": "hard",
+      "type": "matching",
+      "question": "Match each Operations Research technique with its most suitable application area:",
+      "premises": [
+        "Linear Programming",
+        "Queuing Theory",
+        "Simulation",
+        "Markov Decision Processes"
+      ],
+      "responses": [
+        "Predicting customer wait times in a call center.",
+        "Optimizing resource allocation in a manufacturing plant.",
+        "Modeling the spread of a disease through a population.",
+        "Developing a strategy for inventory management with uncertain demand."
+      ],
+      "correct_matches": {
+        "Linear Programming": "Optimizing resource allocation in a manufacturing plant.",
+        "Queuing Theory": "Predicting customer wait times in a call center.",
+        "Simulation": "Modeling the spread of a disease through a population.",
+        "Markov Decision Processes": "Developing a strategy for inventory management with uncertain demand."
+      },
+      "explanation": "Linear Programming excels at resource allocation optimization. Queuing theory is used for analyzing waiting lines. Simulation is valuable for modeling complex systems with uncertainty. Markov Decision Processes are suitable for sequential decision-making under uncertainty, as in inventory management."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide3_q5",
+      "slide_number": 3,
+      "difficulty": "hard",
+      "type": "mcq",
+      "question": "Which of the following statements BEST distinguishes Operations Research from other quantitative fields like statistics?",
+      "options": [
+        "A. Operations Research primarily focuses on descriptive analysis of data, while statistics focuses on prescriptive modeling of systems.",
+        "B. Operations Research seeks to optimize decisions under constraints, while statistics focuses on drawing inferences from data.",
+        "C. Operations Research relies heavily on probabilistic models, while statistics relies primarily on deterministic models.",
+        "D. Operations Research uses only computational methods, while statistics uses only analytical methods."
+      ],
+      "correct_answer": "B. Operations Research seeks to optimize decisions under constraints, while statistics focuses on drawing inferences from data.",
+      "explanation": "The core of Operations Research is to find the best decision given a set of constraints and objectives, emphasizing optimization. Statistics focuses on analyzing data to draw inferences and make predictions. While both may use probabilistic and deterministic models and computational/analytical methods, the primary distinction lies in their core purpose (optimization vs. inference)."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide5_q1",
+      "slide_number": 5,
+      "difficulty": "hard",
+      "type": "scenario_mcq",
+      "scenario": "An airline company needs to schedule its flight crews efficiently to minimize costs while adhering to strict regulations regarding crew rest times and duty periods. They have explored various Operations Research techniques to find the most cost-effective solution.",
+      "question": "Which Operations Research technique would be MOST suitable for modeling and solving the airline's crew scheduling problem, given the complex constraints and the need for integer solutions (crews can't be partially assigned)?",
+      "options": [
+        "A. Linear Programming, as it allows for the modeling of linear relationships between variables and constraints, and can be solved efficiently.",
+        "B. Dynamic Programming, as it breaks down the problem into smaller subproblems and optimizes each subproblem sequentially.",
+        "C. Integer Linear Programming, as it extends Linear Programming to handle integer variables, which are essential for representing crew assignments.",
+        "D. Queuing Theory, as it can model the flow of crews through different flight segments and optimize waiting times at various airports."
+      ],
+      "correct_answer": "C. Integer Linear Programming, as it extends Linear Programming to handle integer variables, which are essential for representing crew assignments.",
+      "explanation": "Integer Linear Programming (ILP) is the most appropriate technique because crew assignments must be whole numbers (you can't assign half a crew). While Linear Programming can model the relationships, it doesn't guarantee integer solutions. Dynamic Programming could be used, but the problem is best expressed as a set of linear constraints with integer requirements. Queuing Theory is not directly applicable to crew scheduling."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide5_q2",
+      "slide_number": 5,
+      "difficulty": "hard",
+      "type": "sequencing",
+      "question": "Consider a project involving the development and implementation of a new inventory management system. Arrange the following stages of OR modeling in the logical order they would typically be applied:",
+      "items": [
+        "A. Formulate a simulation model to test different inventory policies under various demand scenarios.",
+        "B. Use queuing theory to analyze potential bottlenecks in the warehouse operations.",
+        "C. Implement the chosen inventory policy and monitor its performance.",
+        "D. Develop a linear programming model to optimize the inventory levels based on demand forecasts and storage costs.",
+        "E. Validate the simulation and linear programming models using historical data."
+      ],
+      "correct_order": [
+        "D. Develop a linear programming model to optimize the inventory levels based on demand forecasts and storage costs.",
+        "A. Formulate a simulation model to test different inventory policies under various demand scenarios.",
+        "B. Use queuing theory to analyze potential bottlenecks in the warehouse operations.",
+        "E. Validate the simulation and linear programming models using historical data.",
+        "C. Implement the chosen inventory policy and monitor its performance."
+      ],
+      "explanation": "The logical sequence is: First, formulate a linear programming model (D) to optimize basic inventory levels. Then, use simulation (A) to test different policies and queuing theory (B) to analyze warehouse bottlenecks. Validate both models (E) and, finally, implement the chosen policy (C)."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide5_q3",
+      "slide_number": 5,
+      "difficulty": "hard",
+      "type": "categorization",
+      "question": "Classify the following Operations Research techniques based on whether they are primarily used for optimization or for modeling and analysis of stochastic systems:",
+      "categories": {
+        "Optimization": [
+          "Linear Programming",
+          "Integer Programming",
+          "Dynamic Programming"
+        ],
+        "Stochastic Systems Modeling": [
+          "Queuing Theory",
+          "Simulation",
+          "Markov Decision Processes"
+        ]
+      },
+      "items": [
+        "Linear Programming",
+        "Integer Programming",
+        "Dynamic Programming",
+        "Queuing Theory",
+        "Simulation",
+        "Markov Decision Processes"
+      ],
+      "explanation": "Linear Programming, Integer Programming, and Dynamic Programming are primarily optimization techniques. Queuing Theory, Simulation, and Markov Decision Processes are used for modeling and analyzing systems with randomness or uncertainty (stochastic systems)."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide5_q4",
+      "slide_number": 5,
+      "difficulty": "hard",
+      "type": "matching",
+      "question": "Match each Operations Research modeling technique with its corresponding key characteristic or application:",
+      "premises": [
+        "Linear Programming",
+        "Integer Programming",
+        "Dynamic Programming",
+        "Simulation"
+      ],
+      "responses": [
+        "Suitable for problems with sequential decision-making and overlapping subproblems.",
+        "Used for optimizing a linear objective function subject to linear constraints.",
+        "Employed when the decision variables must take on integer values.",
+        "Useful for modeling complex systems with randomness and evaluating different scenarios."
+      ],
+      "correct_matches": {
+        "Linear Programming": "Used for optimizing a linear objective function subject to linear constraints.",
+        "Integer Programming": "Employed when the decision variables must take on integer values.",
+        "Dynamic Programming": "Suitable for problems with sequential decision-making and overlapping subproblems.",
+        "Simulation": "Useful for modeling complex systems with randomness and evaluating different scenarios."
+      },
+      "explanation": "Linear Programming focuses on linear optimization problems. Integer Programming is used when integer solutions are required. Dynamic Programming is useful for problems with sequential decisions. Simulation is for modeling complex, stochastic systems."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide5_q5",
+      "slide_number": 5,
+      "difficulty": "hard",
+      "type": "mcq",
+      "question": "Consider a scenario where a company needs to determine the optimal number of employees to hire for each shift in a 24-hour call center, considering fluctuating call volumes and employee costs. Which combination of OR techniques would be MOST effective?",
+      "options": [
+        "A. Linear Programming alone, as it can directly optimize the number of employees based on cost and call volume constraints.",
+        "B. Queuing Theory alone, as it can accurately predict waiting times and optimize service levels.",
+        "C. Simulation alone, as it can model the call center's operation and test various staffing levels.",
+        "D. A combination of Queuing Theory and Integer Programming, where Queuing Theory predicts call waiting times based on staffing levels, and Integer Programming determines the optimal integer number of employees for each shift to minimize cost while meeting service level targets."
+      ],
+      "correct_answer": "D. A combination of Queuing Theory and Integer Programming, where Queuing Theory predicts call waiting times based on staffing levels, and Integer Programming determines the optimal integer number of employees for each shift to minimize cost while meeting service level targets.",
+      "explanation": "This requires a combined approach. Queuing Theory is needed to analyze the relationship between staffing and waiting times. Integer Programming is necessary because you can only hire whole numbers of employees. Therefore, option D is the best choice."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide6_q1",
+      "slide_number": 6,
+      "difficulty": "hard",
+      "type": "scenario_mcq",
+      "scenario": "A consulting firm is hired to improve the efficiency of a hospital's emergency room. They begin by observing patient flow and identifying bottlenecks. After collecting data, they develop a mathematical model to represent the ER's operations. However, stakeholders question the model's accuracy and relevance to the actual hospital environment.",
+      "question": "According to the phases of an OR study, which of the following steps is MOST critical to address the stakeholders' concerns about the model's accuracy and relevance?",
+      "options": [
+        "A. Focus on solving the model more efficiently using advanced algorithms to get quicker results.",
+        "B. Revisit the initial problem identification phase to ensure a clear understanding of the management problem.",
+        "C. Prioritize the implementation phase to demonstrate the model's practical application and potential benefits.",
+        "D. Thoroughly validate the model by comparing its outputs with real-world data and involving stakeholders in the validation process."
+      ],
+      "correct_answer": "D. Thoroughly validate the model by comparing its outputs with real-world data and involving stakeholders in the validation process.",
+      "explanation": "Model validation is crucial for ensuring the model accurately represents the real-world system and addresses stakeholders' concerns. This involves comparing the model's outputs with real data, seeking expert opinions, and demonstrating the model's predictive capabilities. Option B is also important, but validation directly addresses the specific concern raised. Implementation before validation could lead to incorrect decisions."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide6_q2",
+      "slide_number": 6,
+      "difficulty": "hard",
+      "type": "sequencing",
+      "question": "A company is undertaking an Operations Research study to optimize its supply chain. Arrange the following activities in the correct sequence according to the phases of an OR study:",
+      "items": [
+        "A. Deploy the optimized supply chain strategy across the organization.",
+        "B. Collect data on transportation costs, warehouse capacities, and demand patterns.",
+        "C. Develop a mathematical model representing the supply chain network.",
+        "D. Compare the model's output with actual supply chain performance data to assess its validity.",
+        "E. Identify the key challenges and objectives related to the company's supply chain."
+      ],
+      "correct_order": [
+        "E. Identify the key challenges and objectives related to the company's supply chain.",
+        "B. Collect data on transportation costs, warehouse capacities, and demand patterns.",
+        "C. Develop a mathematical model representing the supply chain network.",
+        "D. Compare the model's output with actual supply chain performance data to assess its validity.",
+        "A. Deploy the optimized supply chain strategy across the organization."
+      ],
+      "explanation": "The correct order reflects the standard OR study phases: problem identification (E), data collection (B), model development (C), model validation (D), and implementation (A)."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide6_q3",
+      "slide_number": 6,
+      "difficulty": "hard",
+      "type": "categorization",
+      "question": "Categorize the following activities based on whether they belong to the 'Model Development' or 'Model Validation' phase of an Operations Research study:",
+      "categories": {
+        "Model Development": [
+          "Defining the objective function",
+          "Collecting data to estimate model parameters",
+          "Formulating the constraints"
+        ],
+        "Model Validation": [
+          "Comparing model outputs with historical data",
+          "Conducting sensitivity analysis",
+          "Seeking expert opinions on model accuracy"
+        ]
+      },
+      "items": [
+        "Defining the objective function",
+        "Collecting data to estimate model parameters",
+        "Comparing model outputs with historical data",
+        "Conducting sensitivity analysis",
+        "Formulating the constraints",
+        "Seeking expert opinions on model accuracy"
+      ],
+      "explanation": "Defining the objective function, collecting data to estimate model parameters, and formulating the constraints are part of model development. Comparing model outputs with historical data, conducting sensitivity analysis, and seeking expert opinions on model accuracy are part of model validation."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide6_q4",
+      "slide_number": 6,
+      "difficulty": "hard",
+      "type": "matching",
+      "question": "Match each activity to the corresponding phase of an OR study:",
+      "premises": [
+        "Identifying Key Performance Indicators (KPIs)",
+        "Running 'what-if' scenarios in the model",
+        "Writing the code to solve the model",
+        "Documenting assumptions and limitations"
+      ],
+      "responses": [
+        "Model Validation",
+        "Problem Identification",
+        "Model Development",
+        "Model Solution"
+      ],
+      "correct_matches": {
+        "Identifying Key Performance Indicators (KPIs)": "Problem Identification",
+        "Running 'what-if' scenarios in the model": "Model Validation",
+        "Writing the code to solve the model": "Model Solution",
+        "Documenting assumptions and limitations": "Model Development"
+      },
+      "explanation": "Identifying KPIs is part of problem definition. Running 'what-if' scenarios belongs to model validation. Writing code is a model solution activity. Documenting assumptions is integral to model development."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide6_q5",
+      "slide_number": 6,
+      "difficulty": "hard",
+      "type": "mcq",
+      "question": "A newly developed Operations Research model is producing results that are mathematically optimal but are completely impractical and unacceptable to the management team. Which phase of the OR study needs the MOST immediate attention?",
+      "options": [
+        "A. The Model Solution phase, to explore more efficient algorithms and solution methods.",
+        "B. The Model Validation phase, to ensure the model accurately reflects the real-world problem and its constraints.",
+        "C. The Implementation phase, to find creative ways to make the optimal solution more palatable to management.",
+        "D. The Problem Identification phase, to revisit the initial problem definition and ensure all relevant factors were considered."
+      ],
+      "correct_answer": "D. The Problem Identification phase, to revisit the initial problem definition and ensure all relevant factors were considered.",
+      "explanation": "If the solution is mathematically optimal but impractical, it suggests the problem was not properly defined or critical factors were overlooked. Re-examining the problem identification phase is essential to ensure the model addresses the real-world constraints and objectives."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide11_q1",
+      "slide_number": 11,
+      "difficulty": "hard",
+      "type": "scenario_mcq",
+      "scenario": "A small bakery is trying to determine the optimal mix of cakes and cookies to produce daily, given limited oven space and ingredient availability. They formulate a Linear Programming model. However, they realize that the demand for cakes increases disproportionately when they offer a promotional discount.",
+      "question": "Which property of Linear Programming is MOST directly violated by the disproportionate increase in cake demand due to the promotional discount?",
+      "options": [
+        "A. Divisibility, because the bakery cannot produce fractions of cakes or cookies.",
+        "B. Additivity, because the demands for cakes and cookies are not independent.",
+        "C. Certainty, because the demand for cakes is not known with certainty.",
+        "D. Proportionality, because the increase in cake demand is not directly proportional to the discount offered."
+      ],
+      "correct_answer": "D. Proportionality, because the increase in cake demand is not directly proportional to the discount offered.",
+      "explanation": "Proportionality assumes that the contribution of an activity (producing a cake) is directly proportional to its value. The promotional discount creates a non-linear relationship, violating this assumption. While demand uncertainty exists (C), and divisibility could be a factor (A), the disproportionate demand change due to the discount directly violates proportionality."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide11_q2",
+      "slide_number": 11,
+      "difficulty": "hard",
+      "type": "sequencing",
+      "question": "Consider a situation where you are building a Linear Programming model for optimizing the production of different types of furniture. You discover issues related to economies of scale and interdependent product demands. Arrange the steps to address these violations in a logical order.",
+      "items": [
+        "A. Revise the model to incorporate non-linear functions to account for economies of scale.",
+        "B. Identify the specific activities that violate the additivity and proportionality properties.",
+        "C. Reformulate the model using techniques like Integer Programming or Non-Linear Programming.",
+        "D. Test the revised model to ensure it provides realistic and optimal solutions.",
+        "E. Analyze the constraints and objective function to understand the nature of the violations."
+      ],
+      "correct_order": [
+        "B. Identify the specific activities that violate the additivity and proportionality properties.",
+        "E. Analyze the constraints and objective function to understand the nature of the violations.",
+        "A. Revise the model to incorporate non-linear functions to account for economies of scale.",
+        "C. Reformulate the model using techniques like Integer Programming or Non-Linear Programming.",
+        "D. Test the revised model to ensure it provides realistic and optimal solutions."
+      ],
+      "explanation": "The logical flow is: First, identify the activities causing violations (B), then analyze the constraints and objective function (E). Revise the model with non-linear functions (A), reformulate using more advanced techniques (C), and finally, test the revised model (D)."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide11_q3",
+      "slide_number": 11,
+      "difficulty": "hard",
+      "type": "categorization",
+      "question": "Classify the following scenarios based on which property of Linear Programming they violate:",
+      "categories": {
+        "Proportionality": [
+          "Bulk discounts on raw materials.",
+          "Fixed setup costs for production runs.",
+          "Sales volume influencing market price."
+        ],
+        "Additivity": [
+          "Production of complementary products (e.g., printers and ink cartridges)."
+        ],
+        "Certainty": [
+          "Unpredictable fluctuations in raw material prices."
+        ],
+        "Divisibility": [
+          "Hiring a whole number of employees."
+        ]
+      },
+      "items": [
+        "Bulk discounts on raw materials.",
+        "Production of complementary products (e.g., printers and ink cartridges).",
+        "Unpredictable fluctuations in raw material prices.",
+        "Hiring a whole number of employees.",
+        "Fixed setup costs for production runs.",
+        "Sales volume influencing market price."
+      ],
+      "explanation": "Bulk discounts and fixed setup costs violate proportionality. Complementary products violate additivity. Unpredictable price fluctuations violate certainty. Requiring whole number of employees violate divisibility and sales volume influencing market price violates proportionality."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide11_q4",
+      "slide_number": 11,
+      "difficulty": "hard",
+      "type": "matching",
+      "question": "Match the LP property violation with the most appropriate OR technique to address it:",
+      "premises": [
+        "Violation of Divisibility",
+        "Violation of Certainty",
+        "Violation of Proportionality",
+        "Violation of Additivity"
+      ],
+      "responses": [
+        "Integer Programming",
+        "Stochastic Programming",
+        "Nonlinear Programming",
+        "Goal Programming"
+      ],
+      "correct_matches": {
+        "Violation of Divisibility": "Integer Programming",
+        "Violation of Certainty": "Stochastic Programming",
+        "Violation of Proportionality": "Nonlinear Programming",
+        "Violation of Additivity": "Goal Programming"
+      },
+      "explanation": "Integer Programming handles integer decision variables. Stochastic Programming addresses uncertainty in parameters. Nonlinear Programming deals with non-linear relationships. Goal Programming allows for multiple, potentially conflicting objectives when simple additivity breaks down."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide11_q5",
+      "slide_number": 11,
+      "difficulty": "hard",
+      "type": "mcq",
+      "question": "In a Linear Programming model for a manufacturing process, the model assumes that the cost of labor is constant per unit produced. However, due to overtime pay for exceeding a certain production level, the labor cost increases significantly. Which LP property is violated and what is the implication?",
+      "options": [
+        "A. Divisibility is violated, implying that only integer quantities can be produced.",
+        "B. Certainty is violated, implying that the optimal solution is uncertain.",
+        "C. Proportionality is violated, implying that the cost per unit is no longer constant.",
+        "D. Additivity is violated, implying that the labor costs of different products are interdependent."
+      ],
+      "correct_answer": "C. Proportionality is violated, implying that the cost per unit is no longer constant.",
+      "explanation": "The violation of proportionality arises because the labor cost is no longer directly proportional to the number of units produced due to overtime pay. This makes the cost function non-linear, violating a key assumption of LP."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide15_q1",
+      "slide_number": 15,
+      "difficulty": "hard",
+      "type": "scenario_mcq",
+      "scenario": "A manufacturing company has two machines that can produce the same two products, but each machine has different processing times for each product. Product A is faster to produce on Machine 1, and Product B is faster to produce on Machine 2. The company wants to determine the optimal production plan to maximize profit, considering the different processing times and machine capacities.",
+      "question": "Which modeling approach is MOST appropriate to determine the optimal production quantities of Product A and Product B on Machine 1 and Machine 2, considering machine suitability?",
+      "options": [
+        "A. Linear Programming, with separate constraints for the total production of each product.",
+        "B. Queuing Theory, to model the waiting times of products at each machine.",
+        "C. Dynamic Programming, to break down the problem into smaller subproblems and optimize each one.",
+        "D. Linear Programming, with decision variables representing the quantity of each product produced on each machine and constraints for machine capacity and product demand."
+      ],
+      "correct_answer": "D. Linear Programming, with decision variables representing the quantity of each product produced on each machine and constraints for machine capacity and product demand.",
+      "explanation": "Linear Programming is the best approach as it allows the company to define decision variables for the production quantity of each product on each machine. The constraints will represent the machine capacities and potentially product demands. This allows the model to optimize the allocation of production to each machine based on their respective efficiencies."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide15_q2",
+      "slide_number": 15,
+      "difficulty": "hard",
+      "type": "sequencing",
+      "question": "A manufacturing company is facing a problem of allocating production of two products across two different machines with varying efficiencies. They decide to use Operations Research to optimize their production plan. Arrange the following steps in the order they would typically be performed:",
+      "items": [
+        "A. Analyze the solution from the mathematical model to determine the optimal production quantities.",
+        "B. Define the decision variables to represent the production quantities of each product on each machine.",
+        "C. Validate the mathematical model by comparing its results with historical production data.",
+        "D. Formulate the objective function to maximize profit based on production quantities and selling prices.",
+        "E. Define the constraints representing the capacity limits of each machine."
+      ],
+      "correct_order": [
+        "B. Define the decision variables to represent the production quantities of each product on each machine.",
+        "D. Formulate the objective function to maximize profit based on production quantities and selling prices.",
+        "E. Define the constraints representing the capacity limits of each machine.",
+        "A. Analyze the solution from the mathematical model to determine the optimal production quantities.",
+        "C. Validate the mathematical model by comparing its results with historical production data."
+      ],
+      "explanation": "The sequence follows the standard OR process: Define decision variables (B), formulate the objective function (D), define the constraints (E), analyze the solution (A), and validate the model (C)."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide15_q3",
+      "slide_number": 15,
+      "difficulty": "hard",
+      "type": "categorization",
+      "question": "In the extended JOBCO problem, categorize the following elements based on whether they are considered 'Decision Variables', 'Objective Function Components' or 'Constraints':",
+      "categories": {
+        "Decision Variables": [
+          "Quantity of product 1 manufactured on machine 1 (x11)",
+          "Quantity of product 2 manufactured on machine 2 (x22)",
+          "Quantity of product 1 manufactured on machine 2 (x12)"
+        ],
+        "Objective Function Components": [
+          "Profit per unit of product 2"
+        ],
+        "Constraints": [
+          "Available hours on machine 2",
+          "Hours required per unit of product 1 on machine 2"
+        ]
+      },
+      "items": [
+        "Quantity of product 1 manufactured on machine 1 (x11)",
+        "Profit per unit of product 2",
+        "Available hours on machine 2",
+        "Quantity of product 2 manufactured on machine 2 (x22)",
+        "Hours required per unit of product 1 on machine 2",
+        "Quantity of product 1 manufactured on machine 2 (x12)"
+      ],
+      "explanation": "The quantities produced are the decision variables. Profit per unit is a component of the objective function. Available hours and hours required are constraint elements."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide15_q4",
+      "slide_number": 15,
+      "difficulty": "hard",
+      "type": "matching",
+      "question": "Match the element of the extended JOBCO problem with its representation in the mathematical model:",
+      "premises": [
+        "Total profit",
+        "Machine 1 capacity",
+        "Production of product 1",
+        "Production of product 2"
+      ],
+      "responses": [
+        "x21 + x22",
+        "2x11 + x21 ≤ 8",
+        "x11 + x12",
+        "z = 3(x11 + x12) + 2(x21 + x22)"
+      ],
+      "correct_matches": {
+        "Total profit": "z = 3(x11 + x12) + 2(x21 + x22)",
+        "Machine 1 capacity": "2x11 + x21 ≤ 8",
+        "Production of product 1": "x11 + x12",
+        "Production of product 2": "x21 + x22"
+      },
+      "explanation": "The total profit is represented by the objective function. Machine 1 capacity is given by the constraint. Production of products are the sum of the variable of respective product over machines."
+    },
+    {
+      "question_id": "hard_OR_lec_1_slide15_q5",
+      "slide_number": 15,
+      "difficulty": "hard",
+      "type": "mcq",
+      "question": "What is the primary difference between the original JOBCO problem and the extended JOBCO problem presented in the slides?",
+      "options": [
+        "A. The extended problem considers more products, while the original only considers two.",
+        "B. The extended problem includes additional constraints on raw material availability.",
+        "C. The extended problem allows each product to be produced on either of two machines, while the original assumes a single machine for each product.",
+        "D. The extended problem allows for fractional production quantities, while the original requires integer production quantities."
+      ],
+      "correct_answer": "C. The extended problem allows each product to be produced on either of two machines, while the original assumes a single machine for each product.",
+      "explanation": "The key difference is the introduction of routing flexibility in the extended problem, allowing each product to be manufactured on either machine. This adds complexity by requiring the model to determine not only the quantities to produce but also where to produce them. The number of products remains two, and both problems allow for divisible production quantities."
+    }
+  ]
+}
