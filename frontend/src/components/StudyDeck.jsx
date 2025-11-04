@@ -2,8 +2,14 @@ import { useState, useEffect } from 'react'
 import Flashcard from './Flashcard'
 import './StudyDeck.css'
 
-function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessionId }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessionId, initialCardId }) {
+  const [currentIndex, setCurrentIndex] = useState(() => {
+    if (initialCardId) {
+      const index = flashcards.findIndex(card => card.flashcard_id === initialCardId)
+      return index !== -1 ? index : 0
+    }
+    return 0
+  })
 
   const currentCard = flashcards[currentIndex]
   const progress = ((currentIndex + 1) / flashcards.length) * 100

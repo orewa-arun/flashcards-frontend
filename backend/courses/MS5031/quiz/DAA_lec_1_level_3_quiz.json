@@ -1,0 +1,444 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-04T10:29:51.677612",
+    "total_questions": 18,
+    "course_name": "Data Analysis Applications",
+    "course_id": "MS5031",
+    "course_code": "DAA",
+    "textbook_reference": "Statistics for Business: Decision Making and Analysis by Robert E Stine and Dean Foster, Pearson (ISBN: 978-81-317-3347-9)",
+    "lecture": "DAA_lec_1",
+    "difficulty_level": 3,
+    "source_flashcards": 6
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce company uses a regression model to predict daily website traffic ($Y$) based on the number of social media posts ($X$). The model's equation is $\\hat{Y} = 500 + 10X$. They want to predict traffic on a day with 50 social media posts. However, they've observed that the model consistently underestimates traffic on days with major product launches. Which adjustment to the basic point prediction is most appropriate to account for this known systematic error?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Ignore the model's prediction entirely on product launch days and rely solely on historical traffic data from previous launches.",
+        "B": "Increase the number of social media posts ($X$) used in the prediction to compensate for the expected increase in traffic during product launches.",
+        "C": "Add a fixed constant to the point prediction on product launch days, determined by the average difference between the model's prediction and actual traffic during past launches.",
+        "D": "Multiply the point prediction by a scaling factor greater than 1 on product launch days, based on the ratio of actual traffic to predicted traffic during past launches."
+      },
+      "correct_answer": "Add a fixed constant to the point prediction on product launch days, determined by the average difference between the model's prediction and actual traffic during past launches.",
+      "explanation": "The question highlights a systematic underestimation of the model under specific conditions (product launches). Option C directly addresses this by adding a constant representing the average error during launches. This adjusts the point prediction to account for the known bias. Option A discards the model completely, which is wasteful. Option B is illogical, as changing the input (social media posts) doesn't correct for the launch effect. Option D, multiplying by a scaling factor, could exacerbate the error if the launch effect isn't proportional to the predicted traffic.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_1",
+      "tags": [
+        "regression",
+        "point prediction",
+        "systematic error",
+        "bias"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A car rental company is using regression analysis to predict the resale value of their vehicles (Y) based on mileage (X). They've built a model and obtained a point prediction for a car with 50,000 miles. However, they also know that cars involved in accidents have significantly lower resale values, but this information isn't included in the model. Which approach BEST integrates this additional qualitative information to refine the resale value prediction?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Disregard the regression model's point prediction for cars with accident history and rely solely on expert appraisal.",
+        "B": "Reduce the point prediction by a fixed percentage (e.g., 10%) for all cars, regardless of accident history, to account for the general risk of damage.",
+        "C": "Create a separate regression model using only data from cars with accident history.",
+        "D": "Apply a discount factor to the point prediction based on the severity of the accident (e.g., minor accident = 5% discount, major accident = 20% discount), informed by historical data on accident-related value depreciation."
+      },
+      "correct_answer": "Apply a discount factor to the point prediction based on the severity of the accident (e.g., minor accident = 5% discount, major accident = 20% discount), informed by historical data on accident-related value depreciation.",
+      "explanation": "The question requires integrating qualitative data (accident history) with a quantitative prediction (regression model). Option D is the most effective because it uses a data-driven discount factor based on accident severity. This refines the point prediction without discarding it entirely. Option A is too extreme, ignoring the mileage information. Option B is too simplistic, applying a uniform discount that doesn't account for accident severity. Option C is impractical, requiring a separate model with likely limited data on accident history.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_1",
+      "tags": [
+        "regression",
+        "point prediction",
+        "qualitative data",
+        "discount factor"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An analyst at a retail chain is predicting weekly sales (Y) for a particular product using linear regression, with advertising spend (X) as the predictor. The initial model performs well, but the analyst notices that the sales predictions are consistently high during weeks with major holidays. The store manager suggests simply subtracting a fixed amount from the predicted sales during holiday weeks. What is the MOST important consideration when evaluating the manager's suggestion?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Whether the fixed amount to be subtracted is statistically significant at a 5% significance level.",
+        "B": "Whether the fixed amount to be subtracted is large enough to completely eliminate the over-prediction during holiday weeks.",
+        "C": "Whether the effect of holidays on sales is constant across different levels of advertising spend.",
+        "D": "Whether subtracting a fixed amount will negatively impact the R-squared value of the regression model."
+      },
+      "correct_answer": "Whether the effect of holidays on sales is constant across different levels of advertising spend.",
+      "explanation": "The key here is understanding interaction effects. If the impact of holidays on sales *depends* on the advertising spend, a simple subtraction is insufficient. Option C addresses this by asking whether the effect is constant. If the holiday effect is not constant, a more complex model (e.g., with interaction terms) is needed. Option A focuses on statistical significance, but a significant adjustment might still be inappropriate if the underlying relationship is more complex. Option B focuses on eliminating the over-prediction, but doesn't consider the overall fit of the model. Option D focuses on R-squared, which is not the primary concern when addressing a known bias.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_1",
+      "tags": [
+        "regression",
+        "point prediction",
+        "interaction effects",
+        "model bias"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate company is using a regression model to predict house prices (Y) based on square footage (X). The model works reasonably well for most houses, but it significantly overestimates the price of luxury homes (top 5% of square footage). The company's data scientist suggests applying a log transformation to square footage before rebuilding the model. Which of the following is the MOST likely reason why a log transformation might improve the model's performance for luxury homes?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Log transformation will eliminate heteroscedasticity in the error terms, leading to more accurate standard errors and confidence intervals.",
+        "B": "Log transformation will make the relationship between square footage and house price more linear, especially at higher square footage values.",
+        "C": "Log transformation will ensure that the residuals are normally distributed, improving the validity of hypothesis tests.",
+        "D": "Log transformation will reduce the impact of outliers in the square footage data, making the model less sensitive to extreme values."
+      },
+      "correct_answer": "Log transformation will make the relationship between square footage and house price more linear, especially at higher square footage values.",
+      "explanation": "The problem is that the model overestimates the price of luxury homes, suggesting that the relationship between square footage and price is not linear, especially at high square footage values. A log transformation can linearize a relationship where the effect of the independent variable diminishes as its value increases (decreasing rate of return). Option B directly addresses this. Option A, while heteroscedasticity is a concern, is not the primary reason in this specific scenario. Option C, normality of residuals, is important but less directly relevant to the overestimation issue. Option D, outlier reduction, is a potential benefit, but the core issue is non-linearity, not just outliers.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_1",
+      "tags": [
+        "regression",
+        "point prediction",
+        "logarithmic transformation",
+        "linearity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing analyst is building a linear regression model to predict website conversion rates based on advertising spend. The model exhibits heteroscedasticity, with the variance of the residuals increasing as advertising spend increases. The analyst decides to apply a log transformation to the conversion rate (Y). However, after applying the transformation and rebuilding the model, the heteroscedasticity persists. What is the MOST likely reason for the continued heteroscedasticity?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The log transformation was applied incorrectly, and the analyst should double-check the transformation formula.",
+        "B": "The heteroscedasticity is caused by a non-linear relationship between advertising spend and conversion rate, and a log transformation is not the appropriate solution.",
+        "C": "The heteroscedasticity is caused by a different variable not included in the model, and transforming the dependent variable does not address the underlying cause.",
+        "D": "The log transformation should have been applied to the advertising spend (X) instead of the conversion rate (Y)."
+      },
+      "correct_answer": "The heteroscedasticity is caused by a different variable not included in the model, and transforming the dependent variable does not address the underlying cause.",
+      "explanation": "This question tests the understanding that transformations are not a universal fix. Heteroscedasticity often arises from omitted variables or model misspecification. Transforming the dependent variable only addresses heteroscedasticity *if* the variance is related to the *level* of the dependent variable itself. If a different variable (not in the model) is causing the variance to change, a transformation on Y won't help. Option C correctly identifies this. Option A is too basic. Option B conflates heteroscedasticity with non-linearity (they can co-exist but are distinct). Option D might be helpful, but it doesn't address the *reason* why the heteroscedasticity persists *after* transforming Y.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_2",
+      "tags": [
+        "data transformation",
+        "linear regression",
+        "heteroscedasticity",
+        "omitted variable bias"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is building a regression model to predict customer lifetime value (CLTV). The initial model violates the assumption of normally distributed errors. The data scientist is considering Box-Cox transformation. However, the CLTV data contains negative values (due to returns and refunds). Which course of action is MOST appropriate before applying the Box-Cox transformation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Proceed with the Box-Cox transformation directly, as the algorithm can handle negative values.",
+        "B": "Add a constant to all CLTV values to make them positive before applying the Box-Cox transformation, ensuring that the constant is large enough to shift all values above zero.",
+        "C": "Use a non-parametric regression technique that does not assume normally distributed errors.",
+        "D": "Remove all customers with negative CLTV values from the dataset before applying the Box-Cox transformation."
+      },
+      "correct_answer": "Add a constant to all CLTV values to make them positive before applying the Box-Cox transformation, ensuring that the constant is large enough to shift all values above zero.",
+      "explanation": "The question tests the limitations of Box-Cox transformations. Box-Cox requires strictly positive data. Option B correctly identifies the need to shift the data by adding a constant before applying the transformation. Option A is incorrect as Box-Cox cannot handle negative values. Option C is a valid alternative, but the question asks specifically about Box-Cox. Option D is undesirable as it discards valuable information.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_2",
+      "tags": [
+        "data transformation",
+        "linear regression",
+        "normalization",
+        "Box-Cox transformation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A research team is modeling the relationship between air pollution levels (X) and respiratory illness rates (Y) in a city. They suspect that the relationship is non-linear and that the effect of pollution is more pronounced at lower pollution levels (diminishing returns). They apply a logarithmic transformation to the pollution levels (X). However, some pollution level measurements are zero. What is the MOST appropriate way to handle these zero values before applying the log transformation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Replace all zero values with the smallest non-zero value in the dataset.",
+        "B": "Replace all zero values with the mean pollution level.",
+        "C": "Add a small constant (e.g., 0.001) to all pollution level values, including the non-zero values, before applying the log transformation.",
+        "D": "Remove all data points where the pollution level is zero."
+      },
+      "correct_answer": "Add a small constant (e.g., 0.001) to all pollution level values, including the non-zero values, before applying the log transformation.",
+      "explanation": "Logarithms are undefined for zero. Replacing zero values with a small constant is a common workaround. However, the constant *must* be added to *all* values, not just the zeros, to preserve the relative relationships in the data. Option C is therefore correct. Option A distorts the data significantly. Option B is not appropriate as the mean may not be a meaningful replacement for zero. Option D discards potentially valuable information.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_3",
+      "tags": [
+        "logarithmic transformation",
+        "regression analysis",
+        "linearization",
+        "zero values"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is modeling the relationship between years of experience (X) and employee salary (Y). They find that the relationship is non-linear, with salaries increasing rapidly in the early years but then plateauing. They apply a log transformation to salary (Y) to linearize the relationship. After the transformation, the regression equation is: log(Salary) = 10 + 0.1 * Experience. Based on this model, what is the approximate percentage increase in salary expected for each additional year of experience?",
+      "visual_type": "LaTeX",
+      "visual_code": "Let $Y$ represent salary and $X$ represent years of experience. The model is:  $\\log(Y) = 10 + 0.1X$. We want to find the percentage change in $Y$ for a unit increase in $X$.\n\n$\\frac{dY},{dX} \\approx 0.1 \\implies$ A 0.1 change in log(Y) translates into a $\\approx 10\\%$ change in Y.",
+      "alt_text": "LaTeX equation showing the derivative of log(Y) with respect to X is approximately 0.1, indicating a 10% increase in Y for each unit increase in X.",
+      "options": {
+        "A": "0.1%",
+        "B": "1%",
+        "C": "10%",
+        "D": "100%"
+      },
+      "correct_answer": "10%",
+      "explanation": "The key to this question is interpreting coefficients in a log-transformed model. When the dependent variable (Y) is log-transformed, the coefficient of the independent variable (X) represents the approximate *percentage* change in Y for a one-unit increase in X. Therefore, a coefficient of 0.1 means an approximate 10% increase. The 'trick' is to remember that it's a *percentage*, not a direct dollar amount. Option A and B are incorrect by factors of 100 and 10, respectively. Option D is a misinterpretation of the logarithmic scale.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_3",
+      "tags": [
+        "logarithmic transformation",
+        "regression analysis",
+        "linearization",
+        "coefficient interpretation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data analyst is modeling the relationship between the number of customer service representatives (X) and the average customer wait time (Y). They observe that wait times decrease rapidly with the first few representatives but then plateau, suggesting an asymptotic relationship. They decide to apply an inverse transformation. However, the business stakeholders are concerned that using a transformed variable will make it difficult to interpret the results and communicate them to non-technical audiences. Which of the following presents the MOST effective strategy for addressing this communication challenge while still leveraging the benefits of the inverse transformation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Present the regression model using the inverse-transformed variable (1/X) but avoid any interpretation of the coefficients.",
+        "B": "Back-transform the predicted wait times (Y) to the original scale and present the results as a graph showing the relationship between the number of representatives (X) and the predicted wait times (Y).",
+        "C": "Explain the inverse transformation in detail to the business stakeholders, ensuring they understand the mathematical rationale behind it.",
+        "D": "Use a different modeling technique that does not require data transformations, even if it results in a poorer fit to the data."
+      },
+      "correct_answer": "Back-transform the predicted wait times (Y) to the original scale and present the results as a graph showing the relationship between the number of representatives (X) and the predicted wait times (Y).",
+      "explanation": "The question focuses on the trade-off between model accuracy and interpretability. Option B correctly addresses this by using the inverse transformation for modeling but presenting the results in the original scale, making them easily understandable. This allows the stakeholders to see the predicted wait times for different numbers of representatives. Option A is unhelpful, as it avoids interpretation. Option C is unrealistic, as it assumes non-technical stakeholders will understand the transformation's math. Option D sacrifices accuracy for interpretability, which is not the optimal approach when a good solution exists.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_4",
+      "tags": [
+        "inverse transformation",
+        "regression analysis",
+        "asymptotic relationship",
+        "interpretability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An engineer is modeling the relationship between machine operating temperature (X) and its lifespan (Y). They observe that lifespan decreases rapidly as temperature increases initially, but the rate of decrease slows down at very high temperatures. They attempt an inverse transformation on the temperature (1/X). However, the resulting model still shows a poor fit. Upon closer inspection, they realize that the operating temperature never goes below freezing (0 degrees Celsius). What is the MOST likely reason the inverse transformation failed and what is the appropriate next step?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The inverse transformation failed because the relationship is not truly asymptotic. Try a logarithmic transformation on the temperature instead.",
+        "B": "The inverse transformation failed because temperature values are always positive. Apply a Box-Cox transformation to the temperature instead.",
+        "C": "The inverse transformation failed because the temperature values are not centered around zero. Subtract the minimum temperature from all temperature values before applying the inverse transformation.",
+        "D": "The inverse transformation failed because the lifespan data (Y) is not normally distributed. Apply a log transformation to the lifespan before applying the inverse transformation to the temperature."
+      },
+      "correct_answer": "The inverse transformation failed because the temperature values are not centered around zero. Subtract the minimum temperature from all temperature values before applying the inverse transformation.",
+      "explanation": "The 'trick' here is understanding how the scale of the independent variable affects the inverse transformation. The inverse transformation is most effective when the independent variable spans a range including values close to zero, allowing the reciprocal to have a significant effect. If all values are relatively far from zero, the inverse transformation will have a limited impact. To make the inverse transformation more effective, you need to shift the values closer to zero *first*. Option C correctly identifies this by suggesting subtracting the minimum temperature. Options A, B and D do not address the underlying scaling problem.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_4",
+      "tags": [
+        "inverse transformation",
+        "regression analysis",
+        "asymptotic relationship",
+        "data scaling"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An agricultural researcher is studying the effect of irrigation levels (in mm) on wheat yield (in kg/hectare). Initial data suggests a positive relationship, but the researcher suspects that excessive irrigation might lead to waterlogging and reduced yields. They fit a quadratic model: Yield = b0 + b1*Irrigation + b2*Irrigation^2. The estimated coefficients are b0 = 500, b1 = 2.5, and b2 = -0.005. Based on this model, a colleague suggests setting the irrigation level at the point where the derivative of the Yield function equals zero to maximize yield. However, the researcher remembers that the local water authority has imposed a maximum irrigation limit of 200mm due to water scarcity. Why might blindly following the mathematical optimum derived from the quadratic model lead to a suboptimal outcome in this scenario?",
+      "visual_type": "LaTeX",
+      "visual_code": "$\\frac{d}{dIrrigation} (b_0 + b_1*Irrigation + b_2*Irrigation^2) = b_1 + 2*b_2*Irrigation = 0$",
+      "alt_text": "Equation showing the derivative of the quadratic yield function set to zero to find the optimal irrigation level.",
+      "options": {
+        "A": "The mathematical optimum will always provide the best yield, regardless of external constraints, as it is based on the underlying data.",
+        "B": "The quadratic model is inherently flawed and cannot accurately represent agricultural yields, so any optimization based on it is unreliable.",
+        "C": "The mathematical optimum might exceed the imposed irrigation limit, making it practically infeasible and leading to a yield lower than what could be achieved within the limit.",
+        "D": "The coefficients of the quadratic model are incorrect and need to be recalculated using a different optimization technique that incorporates the irrigation limit."
+      },
+      "correct_answer": "The mathematical optimum might exceed the imposed irrigation limit, making it practically infeasible and leading to a yield lower than what could be achieved within the limit.",
+      "explanation": "The trick here is the constraint imposed by the water authority. While the quadratic model suggests an optimal irrigation level, this level might be higher than the allowed 200mm. Therefore, blindly following the mathematical optimum (derived from setting the derivative to zero) would be impractical and result in a lower yield within the imposed constraint. The researcher needs to find the best yield *within* the allowed range, which might not be the mathematical optimum. Option A ignores the practical constraint. Option B is an overly pessimistic assessment of the model. Option D suggests a more complex solution is needed when a simpler constraint check suffices.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_5",
+      "tags": [
+        "polynomial transformation",
+        "quadratic model",
+        "curvilinear relationship",
+        "optimization",
+        "constraints"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce company is analyzing the relationship between the number of promotional emails sent per week (X) and the resulting sales revenue (Y). They observe an initial increase in revenue with more emails, but beyond a certain point, customers become overwhelmed, and sales decrease. They fit a quadratic model: Y = b0 + b1*X + b2*X^2.  The estimated coefficients are b0 = 1000, b1 = 50, and b2 = -0.5.  A data analyst suggests that to maximize sales, the company should send promotional emails until the marginal increase in revenue becomes zero (i.e., where the derivative of the model is zero). However, the marketing director argues that customer churn also needs to be considered, and sending too many emails will increase churn, negatively impacting long-term profitability, even if short-term revenue is maximized. Which trade-off is most critical when deciding on the optimal number of promotional emails to send?",
+      "visual_type": "LaTeX",
+      "visual_code": "$\\text{Revenue} = b_0 + b_1 X + b_2 X^2 \\newline \\frac{d\\text{Revenue}}{dX} = b_1 + 2 b_2 X \\newline \\text{Churn} = f(X)$",
+      "alt_text": "Equations representing the quadratic revenue model, its derivative, and the churn rate as a function of the number of emails sent.",
+      "options": {
+        "A": "The trade-off between maximizing short-term revenue and minimizing customer churn, as excessive emails might increase revenue initially but lead to higher churn and lower long-term profitability.",
+        "B": "The trade-off between model complexity and interpretability, as a more complex model might capture the relationship more accurately but be harder to understand and explain to stakeholders.",
+        "C": "The trade-off between the number of emails sent and the cost of sending those emails, as each email has a cost associated with it, and the company needs to ensure that the revenue generated exceeds the cost.",
+        "D": "The trade-off between the accuracy of the quadratic model and the need for a more sophisticated machine learning algorithm, as the quadratic model might not be accurate enough to capture the true relationship between emails and revenue."
+      },
+      "correct_answer": "The trade-off between maximizing short-term revenue and minimizing customer churn, as excessive emails might increase revenue initially but lead to higher churn and lower long-term profitability.",
+      "explanation": "The core trick is recognizing that maximizing revenue (as suggested by the quadratic model alone) doesn't account for the negative impact of customer churn.  The most critical trade-off is between short-term revenue gains and the long-term cost of losing customers due to excessive emails. Option A directly addresses this conflict. Option B is a general concern but less relevant in this specific scenario. Option C is a valid consideration but secondary to churn. Option D overcomplicates the issue; the quadratic model is sufficient *if* churn is factored into the decision.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_5",
+      "tags": [
+        "polynomial transformation",
+        "quadratic model",
+        "curvilinear relationship",
+        "optimization",
+        "trade-off",
+        "customer churn"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A pharmaceutical company is developing a new drug and wants to model the relationship between drug dosage (X) and its effectiveness (Y). They hypothesize that increasing the dosage will initially increase effectiveness, but beyond a certain point, side effects will outweigh the benefits, leading to decreased effectiveness. They fit a quadratic model: Y = b0 + b1*X + b2*X^2.  During model validation, they discover that for dosages *above* a certain threshold (determined by clinical trials and safety regulations), the drug is legally prohibited.  The quadratic model, however, predicts increasing effectiveness beyond this legally permissible dosage. What is the most likely error in applying the quadratic model in this context?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The quadratic model is inherently unsuitable for modeling drug effectiveness, as it assumes a symmetrical relationship around the optimum dosage, which is unlikely in real-world scenarios.",
+        "B": "The model coefficients (b0, b1, b2) are incorrectly estimated and need to be recalculated using a non-linear regression technique that accounts for the dosage limit.",
+        "C": "Extrapolating the quadratic model beyond the range of legally permissible dosages is inappropriate, as the model's predictions in that region are not validated by clinical trials and may violate regulatory constraints.",
+        "D": "The model should be refitted using only data points within the legally permissible dosage range to ensure that the model's predictions are always within the acceptable bounds."
+      },
+      "correct_answer": "Extrapolating the quadratic model beyond the range of legally permissible dosages is inappropriate, as the model's predictions in that region are not validated by clinical trials and may violate regulatory constraints.",
+      "explanation": "The trick is the legal constraint on dosage. While the quadratic model might fit the observed data well, it's crucial to recognize that extrapolating beyond the valid data range (defined by legal limits) is dangerous. Option C correctly identifies this extrapolation problem. Option A is too general; the model might be suitable within the valid range. Option B suggests a complex fix when simply respecting the limits is sufficient. Option D might be *necessary* if the model performs poorly within the legal range, but the primary issue is the extrapolation, making C a more direct answer.  The question tests understanding of model limitations in the context of external regulations.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_5",
+      "tags": [
+        "polynomial transformation",
+        "quadratic model",
+        "curvilinear relationship",
+        "extrapolation",
+        "constraints",
+        "legal limits"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A retail company is analyzing the relationship between shelf space allocated to a product (X, in square feet) and its weekly sales (Y, in dollars). They fit a quadratic model to the data: Y = b0 + b1*X + b2*X^2. The initial analysis shows a significant positive b1 and a negative b2, indicating a curvilinear relationship. However, store managers report that products with very small shelf space (less than 2 sq ft) consistently underperform, regardless of the model's prediction. They also mention that increasing shelf space beyond 10 sq ft requires significant store reorganization costs. Why might relying solely on the quadratic model to determine optimal shelf space be problematic in this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The quadratic model is inherently unstable and prone to overfitting, making it unsuitable for shelf space optimization.",
+        "B": "The model fails to account for the fixed costs associated with store reorganization when shelf space is significantly increased.",
+        "C": "The model doesn't capture the threshold effect where very small shelf space leads to consistently poor performance, regardless of the general trend.",
+        "D": "The coefficients of the quadratic model are likely biased due to multicollinearity between X and X^2, leading to inaccurate predictions."
+      },
+      "correct_answer": "The model doesn't capture the threshold effect where very small shelf space leads to consistently poor performance, regardless of the general trend.",
+      "explanation": "The trick is recognizing the 'threshold effect' for very small shelf space. The quadratic model captures the general curvilinear trend, but it doesn't account for the *consistent* underperformance below 2 sq ft. Option C highlights this specific problem. Option A is a general criticism of polynomial models but not the primary issue here. Option B is relevant but secondary; the consistent underperformance is more immediate. Option D is a valid statistical concern (multicollinearity) but less directly impactful than the threshold effect. The question requires considering both the model's strengths and its limitations in a real-world context.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_5",
+      "tags": [
+        "polynomial transformation",
+        "quadratic model",
+        "curvilinear relationship",
+        "threshold effect",
+        "model limitations"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is tasked with modeling the relationship between website loading time (X, in seconds) and user conversion rate (Y, percentage of visitors who make a purchase). Initial data visualization suggests that as loading time increases, conversion rate initially remains stable, then drops sharply after a certain threshold. The data scientist fits a quadratic model: Y = b0 + b1*X + b2*X^2. However, the model's diagnostic plots reveal significant heteroscedasticity (non-constant variance of residuals). The head of engineering suggests that reducing loading time below 1 second is technically infeasible due to existing infrastructure limitations, regardless of what the model suggests. What is the MOST appropriate next step in addressing the problem?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Apply a variance-stabilizing transformation (e.g., Box-Cox transformation) to the conversion rate (Y) to address the heteroscedasticity, then re-estimate the quadratic model.",
+        "B": "Use a higher-degree polynomial model (e.g., cubic or quartic) to better capture the sharp drop in conversion rate, even though it might exacerbate the heteroscedasticity.",
+        "C": "Ignore the heteroscedasticity, as the quadratic model still provides a reasonable approximation of the relationship within the feasible loading time range (above 1 second).",
+        "D": "Focus on improving the accuracy of the model's predictions for loading times *below* 1 second, as this is where the greatest potential for conversion rate improvement lies."
+      },
+      "correct_answer": "Apply a variance-stabilizing transformation (e.g., Box-Cox transformation) to the conversion rate (Y) to address the heteroscedasticity, then re-estimate the quadratic model.",
+      "explanation": "The trick is balancing statistical rigor (addressing heteroscedasticity) with practical feasibility (the loading time constraint). Addressing heteroscedasticity improves model reliability. Option A is the best approach because it directly addresses the violation of regression assumptions while still using the quadratic model. Option B is wrong because increasing model complexity is not the first step when there are assumption violations; it will likely worsen the problem. Option C is incorrect because heteroscedasticity violates core regression assumptions and can lead to unreliable inference. Option D is wrong because focusing on the infeasible region is a waste of resources. The data scientist should fix the existing model *before* trying to optimize the system in a non-existent scenario.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_5",
+      "tags": [
+        "polynomial transformation",
+        "quadratic model",
+        "curvilinear relationship",
+        "heteroscedasticity",
+        "variance-stabilizing transformation",
+        "constraints"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing analyst is building a regression model to predict sales based on advertising spend. They have data on TV, radio, and online advertising. They suspect that there's a diminishing return to advertising spend, meaning that each additional dollar spent generates less and less incremental sales. They consider using a log transformation on the advertising spend variables. However, some of the advertising spend values are zero (no spend in certain weeks). The analyst knows that the logarithm of zero is undefined. What is the MOST appropriate way to handle the zero values in the advertising spend variables before applying the log transformation, while minimizing potential bias in the model?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Replace all zero values with the mean advertising spend for each channel to avoid losing data points.",
+        "B": "Simply remove all data points where advertising spend is zero for any channel.",
+        "C": "Add a small constant (e.g., 0.01) to all advertising spend values before taking the logarithm, ensuring that all values are positive.",
+        "D": "Use a quadratic transformation instead of a log transformation, as quadratic transformations can handle zero values without modification."
+      },
+      "correct_answer": "Add a small constant (e.g., 0.01) to all advertising spend values before taking the logarithm, ensuring that all values are positive.",
+      "explanation": "The trick is dealing with zero values before a log transformation.  Adding a small constant (Option C) is a common and generally accepted technique. It allows you to keep the data points and apply the log transformation while minimizing bias. Option A (replacing with the mean) is problematic because it artificially inflates the spend for those periods and distorts the relationship. Option B (removing data) leads to a loss of information and can bias the model, especially if the zero spend periods are not random. Option D (quadratic transformation) might address the zero value issue, but doesn't directly address the core problem, and might not capture the diminishing returns as effectively as the log transformation. The question tests the practical application of transformations and awareness of common data handling issues.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_6",
+      "tags": [
+        "regression process",
+        "model fitting",
+        "prediction",
+        "transformation",
+        "log transformation",
+        "data handling"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate company is developing a model to predict housing prices. They have data on house size (square feet), number of bedrooms, and location (distance to city center). They observe that the relationship between house size and price is non-linear, with diminishing returns to additional square footage (i.e., the price increase per square foot decreases as the house gets larger). They decide to apply a log transformation to the house size variable. After fitting the model, they find that the coefficient for the log-transformed house size variable is 0.65. A junior analyst interprets this coefficient as: \"For every 1% increase in house size, the price is expected to increase by 0.65%.\" However, the senior analyst points out that this interpretation is only accurate under specific conditions. What is the most critical assumption that must hold true for the junior analyst's interpretation to be valid?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The price variable must also be log-transformed for the interpretation to be accurate (a log-log model).",
+        "B": "The model must include interaction terms between house size and other variables (e.g., number of bedrooms) to account for their combined effects.",
+        "C": "The model must be adjusted for inflation to ensure that the housing prices are comparable across different time periods.",
+        "D": "The data must be free from outliers and influential observations to prevent them from unduly affecting the coefficient estimate."
+      },
+      "correct_answer": "The price variable must also be log-transformed for the interpretation to be accurate (a log-log model).",
+      "explanation": "The trick lies in understanding the correct interpretation of coefficients in *different* types of transformed models. The junior analyst's statement is a direct elasticity interpretation (percentage change in Y for percentage change in X). This interpretation *only* holds true for a log-log model (where both X and Y are log-transformed). Option A correctly identifies this critical condition. If only X is log-transformed, the interpretation is different (change in Y for a *percentage* change in X). Option B is a general concern about model complexity but not directly relevant to the coefficient interpretation. Option C is important for time series data but not the primary issue here. Option D is a general best practice but doesn't directly affect the interpretation of the coefficient in this specific context. This question tests understanding of coefficient interpretation in transformed regression models.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_6",
+      "tags": [
+        "regression process",
+        "model fitting",
+        "prediction",
+        "transformation",
+        "log transformation",
+        "coefficient interpretation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data analyst is building a linear regression model to predict customer lifetime value (CLTV) based on several predictor variables, including customer age, income, and number of transactions. After fitting the initial model, the analyst observes that the residuals exhibit a funnel shape (heteroscedasticity) and suspects that the variance of CLTV increases with income. To address this issue, the analyst decides to apply a log transformation to the CLTV variable. However, after applying the transformation, the analyst finds that the model's R-squared value has decreased significantly. Why might the R-squared value decrease after applying a log transformation to the dependent variable (CLTV) in this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The log transformation inherently reduces the explanatory power of the predictor variables, leading to a lower R-squared value regardless of the data.",
+        "B": "The decrease in R-squared is likely due to a change in the scale of the dependent variable, making the original variance decomposition no longer applicable.",
+        "C": "The log transformation has introduced bias into the model, invalidating the R-squared calculation.",
+        "D": "The heteroscedasticity was not properly addressed by the log transformation, and a different transformation technique is required."
+      },
+      "correct_answer": "The decrease in R-squared is likely due to a change in the scale of the dependent variable, making the original variance decomposition no longer applicable.",
+      "explanation": "The trick is understanding how transformations affect R-squared. R-squared measures the proportion of variance *explained* by the model. When you transform the dependent variable (CLTV), you change the scale and distribution of the variance you're trying to explain. The original variance decomposition (used to calculate R-squared before the transformation) is no longer directly comparable to the variance decomposition after the transformation. Option B is the most accurate explanation. Option A is incorrect as log transformation does not inherently reduce explanatory power. Option C is unlikely as log transformation, when applied correctly, reduces bias due to heteroscedasticity. Option D might be true, but the *primary* reason for the R-squared change is the change in scale of the dependent variable. The question tests an understanding of the properties and limitations of R-squared in the context of transformations.",
+      "difficulty_level": 3,
+      "source_flashcard_id": "DAA_lec_1_6",
+      "tags": [
+        "regression process",
+        "model fitting",
+        "prediction",
+        "transformation",
+        "log transformation",
+        "R-squared",
+        "heteroscedasticity"
+      ]
+    }
+  ]
+}

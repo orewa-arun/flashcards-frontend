@@ -116,7 +116,8 @@ async def get_deck_quiz_attempts(
                 "total_questions": attempt["total_questions"],
                 "percentage": attempt["percentage"],
                 "time_taken": attempt["time_taken"],
-                "completed_at": attempt["completed_at"]
+                "completed_at": attempt["completed_at"],
+                "difficulty": attempt.get("difficulty", "medium")  # Include difficulty field
             })
         
         logger.info(f"Retrieved {len(attempt_summaries)} quiz attempts for user {firebase_uid}, deck {deck_id}")

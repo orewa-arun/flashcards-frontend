@@ -1,0 +1,1605 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-04T10:08:50.641300",
+    "total_questions": 70,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "lecture": "SI_lec_1",
+    "difficulty_level": 1,
+    "source_flashcards": 14
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "Which of the following BEST describes the marketing definition of a 'Product'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A tangible item sold in a store.",
+        "B": "Anything offered to a market to satisfy a want or need.",
+        "C": "A physical object manufactured in a factory.",
+        "D": "Exclusively services provided to customers."
+      },
+      "correct_answer": "Anything offered to a market to satisfy a want or need.",
+      "explanation": "B is correct because the marketing definition includes anything that fulfills a want or need, including goods, services, and ideas. A, C, and D are incorrect because they only focus on specific types of products, not the broad definition.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_1",
+      "tags": [
+        "product",
+        "marketing",
+        "definition",
+        "want",
+        "need"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of a product, according to the marketing definition?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A can of soda.",
+        "B": "A haircut.",
+        "C": "A financial consulting service.",
+        "D": "All of the above."
+      },
+      "correct_answer": "All of the above.",
+      "explanation": "D is correct because all options - a can of soda, a haircut, and a consulting service - can satisfy a want or need and are therefore considered products in marketing. The marketing definition of a product is broad.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_1",
+      "tags": [
+        "product",
+        "marketing",
+        "definition",
+        "want",
+        "need"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary purpose of a product in marketing?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To generate profit for the company.",
+        "B": "To satisfy a want or need in the market.",
+        "C": "To create employment opportunities.",
+        "D": "To increase shareholder value."
+      },
+      "correct_answer": "To satisfy a want or need in the market.",
+      "explanation": "B is correct because the core purpose of a product is to fulfill a customer's want or need. While profit, employment, and shareholder value are important, they are secondary to satisfying the customer.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_1",
+      "tags": [
+        "product",
+        "marketing",
+        "definition",
+        "want",
+        "need"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which is LEAST likely to be considered a 'product' in marketing?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A software application.",
+        "B": "A training course.",
+        "C": "Unprocessed raw materials before they are sold to manufacturers.",
+        "D": "A music streaming service."
+      },
+      "correct_answer": "Unprocessed raw materials before they are sold to manufacturers.",
+      "explanation": "C is correct because unprocessed raw materials typically require further processing before being offered to a market to satisfy a consumer want or need. The other options are offered directly to a market.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_1",
+      "tags": [
+        "product",
+        "marketing",
+        "definition",
+        "want",
+        "need"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a way that customers interact with a product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Attention.",
+        "B": "Acquisition.",
+        "C": "Use.",
+        "D": "All of the above."
+      },
+      "correct_answer": "All of the above.",
+      "explanation": "D is correct because attention, acquisition, and use (or consumption) are all ways that customers engage with a product, as defined in the marketing definition. A product needs to attract attention before it can be acquired and used.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_1",
+      "tags": [
+        "product",
+        "marketing",
+        "definition",
+        "want",
+        "need"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is the MOST comprehensive description of a 'Market Offering'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A physical product sold in a store.",
+        "B": "Anything a company provides to customers to satisfy a need or want in exchange for value.",
+        "C": "A service provided to customers for a fee.",
+        "D": "An idea promoted by a company."
+      },
+      "correct_answer": "Anything a company provides to customers to satisfy a need or want in exchange for value.",
+      "explanation": "B is correct because a market offering includes goods, services, experiences, and ideas that a company provides to satisfy customer needs and wants in return for something of value (typically money). The other options are too narrow.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_2",
+      "tags": [
+        "market offering",
+        "goods",
+        "services",
+        "experiences",
+        "ideas"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of a 'Market Offering'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A new smartphone.",
+        "B": "A weekend getaway package.",
+        "C": "A consulting service for small businesses.",
+        "D": "All of the above."
+      },
+      "correct_answer": "All of the above.",
+      "explanation": "D is the correct answer. A smartphone (good), a getaway package (experience), and a consulting service (service) are all examples of what can be included in a market offering. A market offering is a broad concept.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_2",
+      "tags": [
+        "market offering",
+        "goods",
+        "services",
+        "experiences",
+        "ideas"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The 'value' component of a market offering refers to what?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The monetary cost of the product or service.",
+        "B": "What the customer gives up in exchange for the offering.",
+        "C": "The materials used to create the product.",
+        "D": "The company's profit margin."
+      },
+      "correct_answer": "What the customer gives up in exchange for the offering.",
+      "explanation": "B is the correct answer. In a market offering, 'value' refers to what the customer provides in return for the offering, which is often money but can also be time, data, or effort. Option A is related, but not the best answer.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_2",
+      "tags": [
+        "market offering",
+        "goods",
+        "services",
+        "experiences",
+        "ideas"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an intangible component of a market offering?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A bottle of shampoo.",
+        "B": "A car.",
+        "C": "Customer Service.",
+        "D": "A computer."
+      },
+      "correct_answer": "Customer Service.",
+      "explanation": "C is correct because customer service is an intangible aspect. A bottle of shampoo, a car, and a computer are all tangible goods. Market offerings contain tangible and intangible elements.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_2",
+      "tags": [
+        "market offering",
+        "goods",
+        "services",
+        "experiences",
+        "ideas"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake is to think of market offerings as solely consisting of:",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Physical products.",
+        "B": "Services.",
+        "C": "Experiences.",
+        "D": "Ideas."
+      },
+      "correct_answer": "Physical products.",
+      "explanation": "A is the correct answer. A common misconception is that market offerings are only physical products. However, they include services, experiences, and ideas as well. A comprehensive market offering contains all these components.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_2",
+      "tags": [
+        "market offering",
+        "goods",
+        "services",
+        "experiences",
+        "ideas"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary function of a product in the context of business and marketing?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To maximize company revenue.",
+        "B": "To satisfy a want or need in a market.",
+        "C": "To minimize production costs.",
+        "D": "To create innovative technology."
+      },
+      "correct_answer": "To satisfy a want or need in a market.",
+      "explanation": "B is correct because the core purpose of a product is to address a specific need or desire of consumers in the marketplace. While other options might be related, this is the primary function.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_3",
+      "tags": [
+        "product",
+        "marketing",
+        "goods",
+        "services",
+        "experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following can be considered a 'product'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A tangible good, like a car.",
+        "B": "A service, like a haircut.",
+        "C": "An experience, like a theme park visit.",
+        "D": "All of the above."
+      },
+      "correct_answer": "All of the above.",
+      "explanation": "D is correct because the definition of a product encompasses tangible goods, services, and experiences. The marketing definition is broad and inclusive.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_3",
+      "tags": [
+        "product",
+        "marketing",
+        "goods",
+        "services",
+        "experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an INCORRECT statement about products?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Products can be services.",
+        "B": "Products must always be physical items.",
+        "C": "Products aim to satisfy a want or need.",
+        "D": "Experiences can be products."
+      },
+      "correct_answer": "Products must always be physical items.",
+      "explanation": "B is correct because it is a false statement. The modern definition of a product includes not only physical items but also services, experiences, and even ideas. The other statements are true.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_3",
+      "tags": [
+        "product",
+        "marketing",
+        "goods",
+        "services",
+        "experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When defining a product, what is its central purpose?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To be innovative.",
+        "B": "To generate the most profit.",
+        "C": "To satisfy a want or need.",
+        "D": "To be technologically advanced."
+      },
+      "correct_answer": "To satisfy a want or need.",
+      "explanation": "C is correct. While innovation, profit, and technology are often important, the fundamental purpose of a product is to fulfill a consumer's want or need. This is the core of the marketing definition.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_3",
+      "tags": [
+        "product",
+        "marketing",
+        "goods",
+        "services",
+        "experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of these contributes to a product's overall value?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Tangible goods only.",
+        "B": "Services only.",
+        "C": "Experiences only.",
+        "D": "A combination of goods, services and experiences."
+      },
+      "correct_answer": "A combination of goods, services and experiences.",
+      "explanation": "D is correct because all of these elements can be part of a product and contribute to its overall value. A product is more than just a tangible object; it's a combination of factors.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_3",
+      "tags": [
+        "product",
+        "marketing",
+        "goods",
+        "services",
+        "experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the MAIN goal of a brand collaboration?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To reduce marketing costs for both brands.",
+        "B": "To create a product, service, or marketing campaign that leverages the strengths of each brand for mutual benefit.",
+        "C": "To allow one brand to take over another brand.",
+        "D": "To confuse customers with new offerings."
+      },
+      "correct_answer": "To create a product, service, or marketing campaign that leverages the strengths of each brand for mutual benefit.",
+      "explanation": "B is the correct answer. Brand collaborations aim to combine the strengths of each brand involved to achieve benefits that they couldn't achieve alone, such as reaching a wider audience or creating a more compelling product.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_4",
+      "tags": [
+        "brand collaboration",
+        "marketing",
+        "partnership",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an essential element of a brand collaboration?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "One brand simply endorsing the other.",
+        "B": "A significant integration of each brand's identity and resources.",
+        "C": "A short-term promotional campaign.",
+        "D": "One brand completely taking over the other brand's marketing."
+      },
+      "correct_answer": "A significant integration of each brand's identity and resources.",
+      "explanation": "B is correct. A true brand collaboration involves a deep integration of the brands' identities and resources. Simple endorsements or short-term promotions don't qualify as true collaborations.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_4",
+      "tags": [
+        "brand collaboration",
+        "marketing",
+        "partnership",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key characteristic of successful brand collaborations?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "They only benefit one brand.",
+        "B": "They create mutual benefit for all participating brands.",
+        "C": "They are always inexpensive.",
+        "D": "They confuse the target market."
+      },
+      "correct_answer": "They create mutual benefit for all participating brands.",
+      "explanation": "B is correct because successful collaborations result in a win-win situation where all brands involved gain something positive, such as increased reach, brand awareness, or new product offerings. Mutual benefit is key.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_4",
+      "tags": [
+        "brand collaboration",
+        "marketing",
+        "partnership",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of brand collaboration?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A local store selling products from a national brand.",
+        "B": "Two competing companies advertising similar products.",
+        "C": "Two brands working together to create a new, unique product.",
+        "D": "A company running a social media campaign."
+      },
+      "correct_answer": "Two brands working together to create a new, unique product.",
+      "explanation": "C is correct because this represents a joint effort where both brands contribute their expertise to create something new. The other options do not demonstrate a true brand collaboration.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_4",
+      "tags": [
+        "brand collaboration",
+        "marketing",
+        "partnership",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Brand collaboration is MOSTLY beneficial to:",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Only the larger brand.",
+        "B": "Only the smaller brand.",
+        "C": "Both brands involved.",
+        "D": "Neither brand involved."
+      },
+      "correct_answer": "Both brands involved.",
+      "explanation": "C is the correct answer. The purpose of brand collaboration is to create a mutually beneficial relationship. Each brand should see advantages from the partnership.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_4",
+      "tags": [
+        "brand collaboration",
+        "marketing",
+        "partnership",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is the BEST example of a raw good?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A finished wooden chair",
+        "B": "Processed tomato sauce",
+        "C": "Unrefined crude oil",
+        "D": "Packaged breakfast cereal"
+      },
+      "correct_answer": "Unrefined crude oil",
+      "explanation": "C is correct because crude oil is extracted directly from a natural resource with minimal processing. Options A, B, and D are finished or processed products. Raw goods are the starting point for manufacturing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_5",
+      "tags": [
+        "raw goods",
+        "agricultural products",
+        "supply chain",
+        "production"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of these characteristics BEST describes raw goods?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Heavily processed and refined",
+        "B": "Minimally processed and extracted from natural resources",
+        "C": "Ready for immediate consumer use",
+        "D": "Complex manufactured items"
+      },
+      "correct_answer": "Minimally processed and extracted from natural resources",
+      "explanation": "B is correct because raw goods are defined as materials in their natural or near-natural state. A, C and D all describe products further along the supply chain.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_5",
+      "tags": [
+        "raw goods",
+        "agricultural products",
+        "supply chain",
+        "production"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following industries relies HEAVILY on agricultural products as raw goods?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Software development",
+        "B": "Automobile manufacturing",
+        "C": "Food processing",
+        "D": "Financial services"
+      },
+      "correct_answer": "Food processing",
+      "explanation": "C is correct because food processing transforms crops and other agricultural materials into consumable products. The other industries rely on different raw materials.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_5",
+      "tags": [
+        "raw goods",
+        "agricultural products",
+        "supply chain",
+        "production"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key difference between raw goods and finished products?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Raw goods are ready for immediate consumption, while finished products require further processing.",
+        "B": "Raw goods are the starting point for production, while finished products are the end result of processing.",
+        "C": "Raw goods are more expensive than finished products.",
+        "D": "Raw goods are typically sold directly to consumers."
+      },
+      "correct_answer": "Raw goods are the starting point for production, while finished products are the end result of processing.",
+      "explanation": "B is correct because it accurately contrasts the position of raw goods and finished products in the production process. The other options present incorrect relationships.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_5",
+      "tags": [
+        "raw goods",
+        "agricultural products",
+        "supply chain",
+        "production"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Identify the product that is LEAST likely to be classified as a 'raw good'.",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Iron ore",
+        "B": "Harvested wheat",
+        "C": "Cut timber",
+        "D": "Bottled water"
+      },
+      "correct_answer": "Bottled water",
+      "explanation": "D is correct because bottled water has undergone processing (filtration, bottling). The other options are closer to their natural state after extraction or harvest. ",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_5",
+      "tags": [
+        "raw goods",
+        "agricultural products",
+        "supply chain",
+        "production"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is the BEST example of an experience offered as a product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A new laptop computer",
+        "B": "A haircut at a salon",
+        "C": "A bottle of shampoo",
+        "D": "A pre-packaged sandwich"
+      },
+      "correct_answer": "A haircut at a salon",
+      "explanation": "B is correct because a haircut is an intangible service provided to a customer. A, C, and D are physical goods. Experiences are intangible and often customized.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_6",
+      "tags": [
+        "service",
+        "experience",
+        "intangible",
+        "product offering"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a defining characteristic of a service or experience, as opposed to a physical product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Tangibility",
+        "B": "Intangibility",
+        "C": "Standardization",
+        "D": "Durability"
+      },
+      "correct_answer": "Intangibility",
+      "explanation": "B is correct because services and experiences are, by definition, intangible. The other options are usually associated with physical products.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_6",
+      "tags": [
+        "service",
+        "experience",
+        "intangible",
+        "product offering"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following offerings involves the MOST interaction between the provider and the customer?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Purchasing a book online",
+        "B": "Attending a live theater performance",
+        "C": "Buying a can of soda from a vending machine",
+        "D": "Subscribing to a streaming service"
+      },
+      "correct_answer": "Attending a live theater performance",
+      "explanation": "B is correct because a live theater performance involves direct interaction and a shared experience between the performers and the audience. The other options involve less direct interaction.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_6",
+      "tags": [
+        "service",
+        "experience",
+        "intangible",
+        "product offering"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key benefit that customers often seek when purchasing an experience or service?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Guaranteed resale value",
+        "B": "Tangible ownership",
+        "C": "Personalized satisfaction",
+        "D": "Long-term storage"
+      },
+      "correct_answer": "Personalized satisfaction",
+      "explanation": "C is correct because experiences and services are often customized to meet individual customer needs, leading to greater satisfaction. The other options are not typically associated with services.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_6",
+      "tags": [
+        "service",
+        "experience",
+        "intangible",
+        "product offering"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of these is LEAST likely to be considered an 'experience' as a product offering?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A guided tour",
+        "B": "A massage",
+        "C": "A software license",
+        "D": "A rock concert"
+      },
+      "correct_answer": "A software license",
+      "explanation": "C is correct because a software license grants the right to use software, but it's not inherently an experience. The other options all involve active participation and a sensory or emotional engagement.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_6",
+      "tags": [
+        "service",
+        "experience",
+        "intangible",
+        "product offering"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the MAIN factor that determines whether a product is classified as a consumer product or an industrial product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The product's physical characteristics",
+        "B": "The product's price",
+        "C": "The purpose for which the product is purchased",
+        "D": "The product's brand name"
+      },
+      "correct_answer": "The purpose for which the product is purchased",
+      "explanation": "C is correct because the *use* of the product (personal vs. for production) is the key differentiator. The other options are not the primary basis for classification.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_7",
+      "tags": [
+        "product classification",
+        "consumer products",
+        "industrial products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is the BEST example of a consumer product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A printing press used by a publishing company",
+        "B": "Steel beams used in building construction",
+        "C": "A personal laptop computer purchased for home use",
+        "D": "A specialized software program used by accountants"
+      },
+      "correct_answer": "A personal laptop computer purchased for home use",
+      "explanation": "C is correct because the laptop is being used for personal, non-business purposes. The other options are used in the production of other goods or services.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_7",
+      "tags": [
+        "product classification",
+        "consumer products",
+        "industrial products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A bakery buys flour to make bread that it sells to customers. How would this flour be classified?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Consumer product",
+        "B": "Industrial product",
+        "C": "Luxury good",
+        "D": "Commodity"
+      },
+      "correct_answer": "Industrial product",
+      "explanation": "B is correct because the flour is being used in the production of another good (bread). Industrial products are used to create other goods or services. The end product, bread, is a consumer product.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_7",
+      "tags": [
+        "product classification",
+        "consumer products",
+        "industrial products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The same product, like a computer, can be classified differently depending on...",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Its color",
+        "B": "Its brand",
+        "C": "Its intended use",
+        "D": "Its weight"
+      },
+      "correct_answer": "Its intended use",
+      "explanation": "C is correct because the purpose of the purchase (personal or industrial) determines the classification. A, B and D are irrelevant to the classification.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_7",
+      "tags": [
+        "product classification",
+        "consumer products",
+        "industrial products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement about product classification is TRUE?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "All products are either consumer or industrial; there are no exceptions.",
+        "B": "The classification depends solely on the physical characteristics of the product.",
+        "C": "A product can be both a consumer product and an industrial product depending on its use.",
+        "D": "Consumer products are always more expensive than industrial products."
+      },
+      "correct_answer": "A product can be both a consumer product and an industrial product depending on its use.",
+      "explanation": "C is correct because the *purpose* of the purchase determines the classification. This means that the same item can fall into either category. The other options present false statements.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_7",
+      "tags": [
+        "product classification",
+        "consumer products",
+        "industrial products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is the BEST example of a 'capital item' in the context of industrial products?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Raw steel used in car manufacturing",
+        "B": "A factory assembly line robot",
+        "C": "Cleaning supplies for a factory",
+        "D": "Tires installed on a new car"
+      },
+      "correct_answer": "A factory assembly line robot",
+      "explanation": "B is correct because capital items are long-lasting equipment used in the production process. Options A and D are materials/components, and C is a supply.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_8",
+      "tags": [
+        "industrial products",
+        "materials",
+        "capital items",
+        "supplies",
+        "services"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which category of industrial products becomes part of the finished product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Supplies and services",
+        "B": "Capital items",
+        "C": "Materials and component parts",
+        "D": "Operating supplies"
+      },
+      "correct_answer": "Materials and component parts",
+      "explanation": "C is correct because materials and components are incorporated into the final product. The other options are used in production but are not part of the finished item.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_8",
+      "tags": [
+        "industrial products",
+        "materials",
+        "capital items",
+        "supplies",
+        "services"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following would be classified as a 'supply' in the context of industrial products?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A computer used by an employee",
+        "B": "A delivery truck",
+        "C": "Lubricating oil for factory machinery",
+        "D": "The engine in a car"
+      },
+      "correct_answer": "Lubricating oil for factory machinery",
+      "explanation": "C is correct because lubricating oil is used in the production process but does not become part of the final product. The others are capital items (truck, computer) or components (engine).",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_8",
+      "tags": [
+        "industrial products",
+        "materials",
+        "capital items",
+        "supplies",
+        "services"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the PRIMARY purpose of industrial products?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Direct consumption by individuals",
+        "B": "Use in the production of other goods or services",
+        "C": "Resale to consumers",
+        "D": "Personal entertainment"
+      },
+      "correct_answer": "Use in the production of other goods or services",
+      "explanation": "B is correct because industrial products are used by businesses to create other products or deliver services. The other options describe consumer products.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_8",
+      "tags": [
+        "industrial products",
+        "materials",
+        "capital items",
+        "supplies",
+        "services"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of these is LEAST likely to be considered an industrial 'service'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Legal advice for a company",
+        "B": "Market research for a new product",
+        "C": "A haircut for a consumer",
+        "D": "Equipment maintenance"
+      },
+      "correct_answer": "A haircut for a consumer",
+      "explanation": "C is correct because a haircut is a service for a consumer, not for an industrial process. The other options are services used by businesses.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_8",
+      "tags": [
+        "industrial products",
+        "materials",
+        "capital items",
+        "supplies",
+        "services"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following consumer products typically requires widespread distribution?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Specialty products",
+        "B": "Shopping products",
+        "C": "Convenience products",
+        "D": "Unsought products"
+      },
+      "correct_answer": "Convenience products",
+      "explanation": "C is correct because convenience products are readily available and require widespread distribution for easy access. Specialty products have exclusive distribution. Shopping products have selective distribution. Unsought products may have varied distribution.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_9",
+      "tags": [
+        "consumer products",
+        "convenience products",
+        "distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary marketing goal for convenience products?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Building brand loyalty",
+        "B": "Creating widespread awareness and availability",
+        "C": "Highlighting unique features",
+        "D": "Emphasizing exclusive distribution"
+      },
+      "correct_answer": "Creating widespread awareness and availability",
+      "explanation": "B is correct because convenience products rely on being readily available and well-known. Brand loyalty is more important for specialty products. Highlighting unique features applies more to shopping products. Exclusive distribution is for specialty products.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_9",
+      "tags": [
+        "consumer products",
+        "convenience products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of product requires the LEAST amount of personal selling?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Specialty products",
+        "B": "Shopping products",
+        "C": "Unsought products",
+        "D": "Convenience products"
+      },
+      "correct_answer": "Convenience products",
+      "explanation": "D is correct because convenience products are typically low-cost and frequently purchased, requiring minimal personal interaction. Unsought products often require aggressive personal selling. Shopping and Specialty products may require some degree of personal selling depending on the item.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_9",
+      "tags": [
+        "consumer products",
+        "convenience products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A consumer is willing to spend considerable effort to find and purchase which type of product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Convenience product",
+        "B": "Shopping product",
+        "C": "Unsought product",
+        "D": "Specialty product"
+      },
+      "correct_answer": "Specialty product",
+      "explanation": "D is correct because specialty products are unique and consumers are willing to seek them out. Convenience products are readily available. Shopping products involve comparison. Unsought products are those consumers don't actively seek.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_9",
+      "tags": [
+        "consumer products",
+        "specialty products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of product is often marketed through aggressive advertising and personal selling?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Shopping product",
+        "B": "Convenience product",
+        "C": "Specialty product",
+        "D": "Unsought product"
+      },
+      "correct_answer": "Unsought product",
+      "explanation": "D is correct because unsought products often require convincing consumers of their need, hence aggressive marketing. Convenience products rely on widespread availability. Shopping products rely on comparison. Specialty products rely on exclusivity.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_9",
+      "tags": [
+        "consumer products",
+        "unsought products",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of product typically has the lowest price point?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Specialty Products",
+        "B": "Shopping Products",
+        "C": "Convenience Products",
+        "D": "Unsought Products"
+      },
+      "correct_answer": "Convenience Products",
+      "explanation": "C is correct because convenience products are purchased frequently and with minimal effort, necessitating a low price. Specialty products have high prices. Shopping products have mid-range prices. Unsought products can vary.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_10",
+      "tags": [
+        "marketing mix",
+        "price",
+        "consumer behavior"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which marketing consideration is MOST important for a specialty product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Mass Promotion",
+        "B": "Exclusive Distribution",
+        "C": "Widespread Availability",
+        "D": "Low Prices"
+      },
+      "correct_answer": "Exclusive Distribution",
+      "explanation": "B is correct because specialty products thrive on exclusivity. Mass promotion and widespread availability are used for convenience products, while low prices are also typical of convenience products.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_10",
+      "tags": [
+        "marketing mix",
+        "distribution",
+        "consumer behavior"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Selective distribution is a common characteristic of which type of product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Convenience Product",
+        "B": "Specialty Product",
+        "C": "Unsought Product",
+        "D": "Shopping Product"
+      },
+      "correct_answer": "Shopping Product",
+      "explanation": "D is correct because shopping products are available in select locations where consumers compare options. Convenience products have widespread distribution. Specialty products have exclusive distribution. Unsought products can vary.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_10",
+      "tags": [
+        "marketing mix",
+        "distribution",
+        "consumer behavior"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of product often requires aggressive advertising due to low initial consumer demand?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Shopping Product",
+        "B": "Convenience Product",
+        "C": "Specialty Product",
+        "D": "Unsought Product"
+      },
+      "correct_answer": "Unsought Product",
+      "explanation": "D is correct because unsought products require convincing consumers of a need they didn't realize they had. Shopping products rely on comparison. Convenience products rely on awareness. Specialty products rely on desire.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_10",
+      "tags": [
+        "marketing mix",
+        "promotion",
+        "consumer behavior"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "For which type of product is personal selling most critical in the marketing mix?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Convenience products",
+        "B": "Shopping products",
+        "C": "Specialty products",
+        "D": "Unsought products"
+      },
+      "correct_answer": "Unsought products",
+      "explanation": "D is correct because unsought products often require a salesperson to actively convince the customer of the product's value. Convenience products rely on widespread availability, shopping products on comparison, and specialty products on exclusivity.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_10",
+      "tags": [
+        "marketing mix",
+        "promotion",
+        "consumer behavior"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does the 'Core Customer Value' level of a product represent?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The physical features of the product.",
+        "B": "The fundamental benefit the customer seeks.",
+        "C": "The additional services offered with the product.",
+        "D": "The brand name and packaging."
+      },
+      "correct_answer": "The fundamental benefit the customer seeks.",
+      "explanation": "B is correct because the core customer value is the basic need the product fulfills. The actual product refers to physical features. The augmented product refers to additional services. The brand name is part of the actual product.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_11",
+      "tags": [
+        "product strategy",
+        "customer value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which level of a product includes features, design, and branding?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Core Customer Value",
+        "B": "Augmented Product",
+        "C": "Actual Product",
+        "D": "Potential Product"
+      },
+      "correct_answer": "Actual Product",
+      "explanation": "C is correct because the actual product encompasses the tangible aspects of a product. Core customer value is the fundamental benefit. Augmented product includes additional services. Potential product is not a standard level.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_11",
+      "tags": [
+        "product strategy",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does the 'Augmented Product' level primarily add to the customer experience?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Basic functionality",
+        "B": "Physical features",
+        "C": "Additional services and benefits",
+        "D": "Brand recognition"
+      },
+      "correct_answer": "Additional services and benefits",
+      "explanation": "C is correct because the augmented product enhances the offering with extra value. Basic functionality is the core customer value. Physical features are part of the actual product. Brand recognition is related to the actual product but not the primary focus of the augmented level.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_11",
+      "tags": [
+        "product strategy",
+        "customer value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of the 'Core Customer Value' for a smartphone?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The phone's camera quality",
+        "B": "The ability to connect with others",
+        "C": "The phone's operating system",
+        "D": "The warranty and customer support"
+      },
+      "correct_answer": "The ability to connect with others",
+      "explanation": "B is correct because the core value is the fundamental benefit: communication. Camera quality and OS are features (actual product). Warranty is an augmented benefit.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_11",
+      "tags": [
+        "product strategy",
+        "customer value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Focusing *only* on the 'Actual Product' can lead to neglecting which important aspect of product strategy?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Distribution channels",
+        "B": "Core customer value and augmented benefits",
+        "C": "Pricing strategies",
+        "D": "Advertising campaigns"
+      },
+      "correct_answer": "Core customer value and augmented benefits",
+      "explanation": "B is correct because neglecting the core value means misunderstanding customer needs. Distribution, pricing, and advertising are separate marketing considerations.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_11",
+      "tags": [
+        "product strategy",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the MOST accurate definition of 'Product Quality'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The product's aesthetic appeal.",
+        "B": "The product's ability to satisfy customer needs.",
+        "C": "The product's price relative to competitors.",
+        "D": "The product's availability in stores."
+      },
+      "correct_answer": "The product's ability to satisfy customer needs.",
+      "explanation": "B is the correct definition, encompassing both stated and implied needs. Aesthetic appeal is one attribute. Price and availability are marketing considerations, not core definitions of quality.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_12",
+      "tags": [
+        "product quality",
+        "customer needs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a key attribute of product quality related to consistent manufacturing?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Performance Quality",
+        "B": "Conformance Quality",
+        "C": "Durability",
+        "D": "Style"
+      },
+      "correct_answer": "Conformance Quality",
+      "explanation": "B is correct because conformance quality refers to how consistently a product meets specifications. Performance quality is about how well it functions. Durability is about its lifespan. Style is about aesthetics.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_12",
+      "tags": [
+        "product quality",
+        "product attributes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A product's lifespan is MOST directly related to which quality attribute?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Style",
+        "B": "Performance Quality",
+        "C": "Reliability",
+        "D": "Durability"
+      },
+      "correct_answer": "Durability",
+      "explanation": "D is correct because durability refers to how long a product lasts. Style is about appearance. Performance is about functionality. Reliability is about the lack of breakdowns.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_12",
+      "tags": [
+        "product quality",
+        "product attributes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which aspect of product quality relates to the likelihood of a product functioning without failure over a period of time?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Repairability",
+        "B": "Durability",
+        "C": "Reliability",
+        "D": "Packaging"
+      },
+      "correct_answer": "Reliability",
+      "explanation": "C is correct because reliability specifically addresses the likelihood of consistent function. Repairability is about ease of fixing the product. Durability is about product lifespan. Packaging is about containment and presentation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_12",
+      "tags": [
+        "product quality",
+        "product attributes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Focusing *only* on high 'Performance Quality' and neglecting 'Conformance Quality' can result in which negative outcome?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Increased customer loyalty",
+        "B": "Consistent product performance",
+        "C": "Unreliable or inconsistent products",
+        "D": "Lower production costs"
+      },
+      "correct_answer": "Unreliable or inconsistent products",
+      "explanation": "C is correct because neglecting conformance leads to inconsistent quality. Customer loyalty would decrease. Product performance would be inconsistent. Production costs might be lower initially, but overall costs due to returns could increase.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_12",
+      "tags": [
+        "product quality",
+        "product attributes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary function of branding for a seller?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To reduce production costs.",
+        "B": "To create unique value and enable market segmentation.",
+        "C": "To simplify the product development process.",
+        "D": "To ensure legal protection of product patents."
+      },
+      "correct_answer": "To create unique value and enable market segmentation.",
+      "explanation": "B is correct because branding differentiates a seller's product, creating unique value and enabling them to target specific market segments. A, C, and D are incorrect because they relate to other aspects of business but not the core function of branding.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_13",
+      "tags": [
+        "branding",
+        "marketing",
+        "brand strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a key benefit of branding for buyers?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Lower prices on all products.",
+        "B": "Guaranteed product longevity.",
+        "C": "Signals quality and consistency.",
+        "D": "Access to exclusive product features."
+      },
+      "correct_answer": "Signals quality and consistency.",
+      "explanation": "C is correct because branding helps buyers identify products with consistent quality. A, B, and D may sometimes be associated with brands, but are not the primary benefit.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_13",
+      "tags": [
+        "branding",
+        "marketing",
+        "brand strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the purpose of a brand name, according to the definition of branding?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To confuse competitors.",
+        "B": "To identify the maker or seller of a product or service.",
+        "C": "To increase manufacturing complexity.",
+        "D": "To hide the origin of the product."
+      },
+      "correct_answer": "To identify the maker or seller of a product or service.",
+      "explanation": "B is correct because the core function of a brand name is to identify the source of the product. A, C, and D are the opposite of what a brand name should do.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_13",
+      "tags": [
+        "branding",
+        "marketing",
+        "brand strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of these is an example of inconsistent branding that could harm a company?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Using a single logo across all product lines.",
+        "B": "Maintaining consistent product quality over time.",
+        "C": "Using different logos across products.",
+        "D": "Targeting a broad customer base."
+      },
+      "correct_answer": "Using different logos across products.",
+      "explanation": "C is correct because using different logos across products can confuse customers and erode brand trust. A, B, and D reflect good branding practices.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_13",
+      "tags": [
+        "branding",
+        "marketing",
+        "brand strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT a typical component of branding?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A product's cost.",
+        "B": "A unique symbol.",
+        "C": "A memorable slogan.",
+        "D": "A distinctive design."
+      },
+      "correct_answer": "A product's cost.",
+      "explanation": "A is correct because while cost is important to marketing, it is not part of the brand identity itself. B, C and D can be brand elements.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_13",
+      "tags": [
+        "branding",
+        "marketing",
+        "brand strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the dual purpose of sustainable and promotional packaging?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To increase production costs and environmental impact.",
+        "B": "Protecting the product and communicating a brand's environmental commitment.",
+        "C": "To confuse consumers and greenwash the product.",
+        "D": "To solely focus on aesthetics and ignore sustainability."
+      },
+      "correct_answer": "Protecting the product and communicating a brand's environmental commitment.",
+      "explanation": "B is correct because sustainable and promotional packaging protects the product and promotes a brand's sustainability efforts. The other answers are incorrect because they represent either negative outcomes or incomplete purposes.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_14",
+      "tags": [
+        "packaging",
+        "sustainability",
+        "promotion"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is 'greenwashing' in the context of sustainable packaging?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The process of genuinely reducing the environmental impact of packaging.",
+        "B": "Making misleading claims about the sustainability of packaging.",
+        "C": "Using only green-colored packaging materials.",
+        "D": "Recycling all packaging materials effectively."
+      },
+      "correct_answer": "Making misleading claims about the sustainability of packaging.",
+      "explanation": "B is correct because greenwashing refers to deceptive marketing practices regarding a product's environmental benefits. A, C, and D describe actual sustainability efforts, not deception.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_14",
+      "tags": [
+        "packaging",
+        "sustainability",
+        "promotion"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of promotional packaging?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Plain, unbranded cardboard boxes.",
+        "B": "Packaging with a coupon for a future purchase.",
+        "C": "Generic plastic wrap.",
+        "D": "Packaging that only protects the product during shipping."
+      },
+      "correct_answer": "Packaging with a coupon for a future purchase.",
+      "explanation": "B is correct because it provides an incentive for future sales, directly promoting the product. A, C, and D do not actively promote the product or brand.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_14",
+      "tags": [
+        "packaging",
+        "sustainability",
+        "promotion"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "For a company committed to sustainability, what might their packaging include?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Excessive layers of plastic.",
+        "B": "Materials that are difficult to recycle.",
+        "C": "Information on how to recycle the packaging.",
+        "D": "Packaging designed for single use only."
+      },
+      "correct_answer": "Information on how to recycle the packaging.",
+      "explanation": "C is correct because providing recycling information supports environmental responsibility. A, B, and D contradict sustainability goals.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_14",
+      "tags": [
+        "packaging",
+        "sustainability",
+        "promotion"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a primary benefit of using sustainable packaging for a brand's image?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "It always reduces packaging costs.",
+        "B": "It enhances brand loyalty among environmentally conscious consumers.",
+        "C": "It guarantees immediate sales increases.",
+        "D": "It eliminates the need for other marketing efforts."
+      },
+      "correct_answer": "It enhances brand loyalty among environmentally conscious consumers.",
+      "explanation": "B is correct because consumers who value sustainability are more likely to support brands that align with their values. A, C, and D are either not guaranteed or untrue.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_lec_1_14",
+      "tags": [
+        "packaging",
+        "sustainability",
+        "promotion"
+      ]
+    }
+  ]
+}

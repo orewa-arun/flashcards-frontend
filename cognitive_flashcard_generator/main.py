@@ -2,14 +2,31 @@
 Main entry point for Cognitive Flashcard Generator.
 
 Usage:
-    python -m cognitive_flashcard_generator.main [course_id] [slide_analysis_prefix]
+    python -m cognitive_flashcard_generator.main [course_id] [slide_analysis_prefix] [mode]
+    
+    Arguments:
+        course_id: Optional course ID to process (e.g., MS5150)
+        slide_analysis_prefix: Optional lecture prefix to process (e.g., SI_lec_1)
+        mode: Optional mode - "quizzes" or "quizzes-only" to generate only quizzes
     
     If course_id is not provided, all courses in courses.json will be processed.
     If slide_analysis_prefix is provided, only that specific lecture will be processed.
+    If mode is "quizzes" or "quizzes-only", only quizzes will be generated (flashcards must exist).
     
     Examples:
-        python -m cognitive_flashcard_generator.main MS5260
-        python -m cognitive_flashcard_generator.main MS5031 DAA_lec_4
+        # Generate flashcards and quizzes for a course
+        python -m cognitive_flashcard_generator.main MS5150
+        
+        # Generate flashcards and quizzes for a specific lecture
+        python -m cognitive_flashcard_generator.main MS5150 SI_lec_1
+        
+        # Generate only quizzes for a course (flashcards must already exist)
+        python -m cognitive_flashcard_generator.main MS5150 quizzes
+        
+        # Generate only quizzes for a specific lecture
+        python -m cognitive_flashcard_generator.main MS5150 SI_lec_1 quizzes
+        
+        # Process all courses
         python -m cognitive_flashcard_generator.main
 """
 
@@ -22,6 +39,9 @@ from datetime import datetime
 from config import Config
 from .generator import CognitiveFlashcardGenerator
 from .quiz_generator import QuizGenerator
+from .async_generator import AsyncCognitiveFlashcardGenerator
+from .async_quiz_generator import AsyncQuizGenerator
+from .batch_coordinator import run_batch_generation
 from .renderer import DiagramRenderer
 from .utils import load_courses, get_course_by_id
 
@@ -180,12 +200,12 @@ def extract_content_from_structured_json(json_path: Path) -> str:
             slide_content += f"{'='*60}\n"
             
             # Add title if available
-            title = analysis.get('title', '').strip()
+            title = str(analysis.get('title', '')).strip()
             if title:
                 slide_content += f"\nTITLE: {title}\n"
             
             # Add main text content
-            main_text = analysis.get('main_text', '').strip()
+            main_text = str(analysis.get('main_text', '')).strip()
             if main_text:
                 slide_content += f"\nCONTENT:\n{main_text}\n"
             
@@ -194,39 +214,28 @@ def extract_content_from_structured_json(json_path: Path) -> str:
             if key_concepts:
                 slide_content += f"\nKEY CONCEPTS:\n"
                 for concept in key_concepts:
-                    slide_content += f"• {concept}\n"
+                    slide_content += f"• {str(concept).strip()}\n"
             
             # Add definitions
             definitions = analysis.get('definitions', [])
             if definitions:
                 slide_content += f"\nDEFINITIONS:\n"
-                for defn in definitions:
-                    term = defn.get('term', '')
-                    definition = defn.get('definition', '')
-                    if term and definition:
-                        slide_content += f"• {term}: {definition}\n"
+                for definition in definitions:
+                    slide_content += f"• {str(definition).strip()}\n"
             
-            # Add examples
-            examples = analysis.get('examples', [])
-            if examples:
-                slide_content += f"\nEXAMPLES:\n"
-                for example in examples:
-                    if isinstance(example, dict):
-                        example_text = example.get('description', str(example))
-                    else:
-                        example_text = str(example)
-                    slide_content += f"• {example_text}\n"
+            # Add questions
+            questions = analysis.get('questions', [])
+            if questions:
+                slide_content += f"\nQUESTIONS:\n"
+                for question in questions:
+                    slide_content += f"• {str(question).strip()}\n"
             
-            # Add diagrams information
+            # Add diagrams
             diagrams = analysis.get('diagrams', [])
             if diagrams:
                 slide_content += f"\nDIAGRAMS:\n"
                 for diagram in diagrams:
-                    if isinstance(diagram, dict):
-                        diagram_desc = diagram.get('description', str(diagram))
-                    else:
-                        diagram_desc = str(diagram)
-                    slide_content += f"• {diagram_desc}\n"
+                    slide_content += f"• {str(diagram).strip()}\n"
             
             # Add additional notes
             notes = analysis.get('notes', '').strip()
@@ -663,6 +672,330 @@ def process_course_quizzes(course: Dict[str, Any], slide_analysis_prefix: Option
     print(f"   2. Integrate quizzes into your learning platform")
 
 
+def process_course_batch(course: Dict[str, Any], slide_analysis_prefix: Optional[str] = None) -> None:
+    """
+    Process flashcards and quizzes for a course using batch processing.
+    
+    Args:
+        course: Course dictionary with metadata
+        slide_analysis_prefix: Optional prefix to process only a specific lecture
+    """
+    if not Config.BATCH_PROCESSING_ENABLED:
+        # Fall back to sequential processing
+        print("⚠️  Batch processing disabled, using sequential mode")
+        process_course_flashcards(course, slide_analysis_prefix)
+        process_course_quizzes(course, slide_analysis_prefix)
+        return
+    
+    course_id = course['course_id']
+    course_name = course['course_name']
+    course_code = course.get('course_code', 'N/A')
+    
+    print(f"\n{'='*80}")
+    print(f"🚀 BATCH PROCESSING: {course_name} ({course_id})")
+    print(f"{'='*80}")
+    
+    # Get course metadata
+    textbooks = course.get('reference_textbooks', [])
+    textbook_reference = "; ".join(textbooks) if textbooks else "No reference textbooks specified"
+    
+    # Define paths
+    course_base_dir = Path(f"./courses/{course_id}")
+    slide_analysis_dir = course_base_dir / "slide_analysis"
+    flashcards_base = course_base_dir / "cognitive_flashcards"
+    quiz_output_dir = course_base_dir / "quiz"
+    
+    # Check if slide analysis directory exists
+    if not slide_analysis_dir.exists():
+        print(f"⚠️  No slide analysis found at: {slide_analysis_dir}")
+        return
+    
+    # Find structured analysis files
+    if slide_analysis_prefix:
+        pattern = f"{slide_analysis_prefix}_structured_analysis.json"
+        structured_analysis_files = list(slide_analysis_dir.glob(pattern))
+        if not structured_analysis_files:
+            print(f"⚠️  No structured analysis file found matching: {pattern}")
+            return
+    else:
+        structured_analysis_files = list(slide_analysis_dir.glob("*_structured_analysis.json"))
+        if not structured_analysis_files:
+            print(f"⚠️  No structured analysis files found in: {slide_analysis_dir}")
+            return
+    
+    print(f"📊 Found {len(structured_analysis_files)} lecture(s) to process")
+    
+    # Initialize async generators
+    flashcard_generator = AsyncCognitiveFlashcardGenerator(
+        api_key=Config.GEMINI_API_KEY,
+        model=Config.GEMINI_MODEL,
+        course_name=course_name,
+        textbook_reference=textbook_reference
+    )
+    
+    quiz_generator = AsyncQuizGenerator(
+        api_key=Config.GEMINI_API_KEY,
+        model="gemini-2.0-flash-exp",
+        course_name=course_name,
+        textbook_reference=textbook_reference
+    )
+    
+    # ==============================================================================
+    # PHASE 1: COLLECT ALL FLASHCARD GENERATION TASKS
+    # ==============================================================================
+    print(f"\n{'~'*80}")
+    print(f"📋 PHASE 1: Collecting flashcard generation tasks...")
+    print(f"{'~'*80}\n")
+    
+    flashcard_tasks = []
+    task_metadata = []  # Store metadata for each task
+    
+    for structured_analysis_path in structured_analysis_files:
+        lecture_name = structured_analysis_path.stem.replace("_structured_analysis", "")
+        
+        # Load and extract content
+        content = extract_content_from_structured_json(structured_analysis_path)
+        
+        if not content:
+            print(f"⚠️  No content extracted from {lecture_name}, skipping")
+            continue
+        
+        # Chunk the content
+        content_chunks = chunk_content(content, max_chunk_size=6000, overlap=300)
+        print(f"📦 {lecture_name}: {len(content_chunks)} chunk(s)")
+        
+        # Create tasks for each chunk
+        for i, chunk in enumerate(content_chunks, 1):
+            task_id = f"{lecture_name}_chunk_{i}"
+            chunk_info = f"Chunk {i}/{len(content_chunks)}"
+            
+            flashcard_tasks.append({
+                'content': chunk,
+                'source_name': lecture_name,
+                'chunk_info': chunk_info,
+                'task_id': task_id
+            })
+            
+            task_metadata.append({
+                'lecture_name': lecture_name,
+                'chunk_index': i,
+                'total_chunks': len(content_chunks)
+            })
+    
+    print(f"\n✅ Collected {len(flashcard_tasks)} flashcard generation tasks")
+    
+    # ==============================================================================
+    # PHASE 2: EXECUTE FLASHCARD GENERATION IN BATCH
+    # ==============================================================================
+    print(f"\n{'~'*80}")
+    print(f"⚡ PHASE 2: Executing flashcard generation batch...")
+    print(f"{'~'*80}\n")
+    
+    # Run batch generation (no quiz tasks yet, so pass empty list)
+    flashcard_results, _ = run_batch_generation(
+        flashcard_generator,
+        quiz_generator,
+        flashcard_tasks,
+        [],  # No quiz tasks yet
+        max_concurrent=Config.MAX_CONCURRENT_REQUESTS
+    )
+    
+    # ==============================================================================
+    # PHASE 3: ORGANIZE AND SAVE FLASHCARD RESULTS
+    # ==============================================================================
+    print(f"\n{'~'*80}")
+    print(f"💾 PHASE 3: Organizing and saving flashcards...")
+    print(f"{'~'*80}\n")
+    
+    # Group results by lecture
+    lecture_flashcards = {}
+    for result, meta in zip(flashcard_results, task_metadata):
+        lecture_name = meta['lecture_name']
+        
+        if lecture_name not in lecture_flashcards:
+            lecture_flashcards[lecture_name] = []
+        
+        if result['success']:
+            # Add source_chunk to each flashcard
+            for card in result['flashcards']:
+                card['source_chunk'] = f"{lecture_name}_{meta['chunk_index']}"
+            
+            lecture_flashcards[lecture_name].extend(result['flashcards'])
+    
+    # Save flashcards for each lecture
+    flashcards_base.mkdir(exist_ok=True)
+    
+    for lecture_name, flashcards in lecture_flashcards.items():
+        if not flashcards:
+            print(f"⚠️  No flashcards for {lecture_name}")
+            continue
+        
+        # Add unique flashcard_id
+        for idx, card in enumerate(flashcards, 1):
+            card['flashcard_id'] = f"{lecture_name}_{idx}"
+        
+        # Create lecture output directory
+        lecture_output_dir = flashcards_base / lecture_name
+        lecture_output_dir.mkdir(exist_ok=True)
+        
+        # Prepare metadata
+        metadata = {
+            'generated_at': datetime.now().isoformat(),
+            'total_cards': len(flashcards),
+            'course_name': course_name,
+            'course_id': course_id,
+            'course_code': course_code,
+            'textbook_reference': textbook_reference,
+            'source': lecture_name,
+            'chunks_processed': max(meta['chunk_index'] for meta in task_metadata if meta['lecture_name'] == lecture_name)
+        }
+        
+        # Save JSON
+        output_path = lecture_output_dir / f"{lecture_name}_cognitive_flashcards_only.json"
+        save_flashcards_json(flashcards, metadata, str(output_path))
+        
+        print(f"✅ {lecture_name}: {len(flashcards)} flashcards saved")
+    
+    # ==============================================================================
+    # PHASE 4: COLLECT ALL QUIZ GENERATION TASKS
+    # ==============================================================================
+    print(f"\n{'~'*80}")
+    print(f"📋 PHASE 4: Collecting quiz generation tasks...")
+    print(f"{'~'*80}\n")
+    
+    quiz_tasks = []
+    quiz_metadata = []
+    
+    quiz_output_dir.mkdir(exist_ok=True)
+    
+    for lecture_name, flashcards in lecture_flashcards.items():
+        if not flashcards:
+            continue
+        
+        # Simplify flashcards for quiz generation
+        simplified_flashcards = []
+        for card in flashcards:
+            simplified = {
+                'flashcard_id': card.get('flashcard_id', ''),
+                'question': card.get('question', ''),
+                'answers': card.get('answers', {}),
+                'example': card.get('example', ''),
+                'context': card.get('context', ''),
+                'tags': card.get('tags', [])
+            }
+            simplified_flashcards.append(simplified)
+        
+        # Chunk flashcards (4 per chunk)
+        chunk_size = 4
+        flashcard_chunks = [simplified_flashcards[i:i + chunk_size] 
+                           for i in range(0, len(simplified_flashcards), chunk_size)]
+        
+        print(f"📦 {lecture_name}: {len(flashcard_chunks)} quiz chunk(s) across 4 levels")
+        
+        # Create tasks for each level and chunk
+        for level in range(1, 5):
+            for chunk_idx, chunk in enumerate(flashcard_chunks, 1):
+                task_id = f"{lecture_name}_L{level}_chunk_{chunk_idx}"
+                chunk_info = f"Chunk {chunk_idx}/{len(flashcard_chunks)}"
+                
+                quiz_tasks.append({
+                    'flashcards_chunk': chunk,
+                    'level': level,
+                    'chunk_info': chunk_info,
+                    'task_id': task_id
+                })
+                
+                quiz_metadata.append({
+                    'lecture_name': lecture_name,
+                    'level': level,
+                    'chunk_index': chunk_idx,
+                    'total_chunks': len(flashcard_chunks),
+                    'total_flashcards': len(flashcards)
+                })
+    
+    print(f"\n✅ Collected {len(quiz_tasks)} quiz generation tasks")
+    
+    # ==============================================================================
+    # PHASE 5: EXECUTE QUIZ GENERATION IN BATCH
+    # ==============================================================================
+    print(f"\n{'~'*80}")
+    print(f"⚡ PHASE 5: Executing quiz generation batch...")
+    print(f"{'~'*80}\n")
+    
+    _, quiz_results = run_batch_generation(
+        flashcard_generator,
+        quiz_generator,
+        [],  # No flashcard tasks
+        quiz_tasks,
+        max_concurrent=Config.MAX_CONCURRENT_REQUESTS
+    )
+    
+    # ==============================================================================
+    # PHASE 6: ORGANIZE AND SAVE QUIZ RESULTS
+    # ==============================================================================
+    print(f"\n{'~'*80}")
+    print(f"💾 PHASE 6: Organizing and saving quizzes...")
+    print(f"{'~'*80}\n")
+    
+    # Group results by lecture and level
+    lecture_level_questions = {}
+    for result, meta in zip(quiz_results, quiz_metadata):
+        lecture_name = meta['lecture_name']
+        level = meta['level']
+        key = (lecture_name, level)
+        
+        if key not in lecture_level_questions:
+            lecture_level_questions[key] = []
+        
+        if result['success']:
+            lecture_level_questions[key].extend(result['questions'])
+    
+    # Save quizzes for each lecture and level
+    for (lecture_name, level), questions in lecture_level_questions.items():
+        if not questions:
+            print(f"⚠️  No Level {level} questions for {lecture_name}")
+            continue
+        
+        # Get metadata for this lecture
+        lecture_meta = next((m for m in quiz_metadata 
+                           if m['lecture_name'] == lecture_name and m['level'] == level), None)
+        
+        if not lecture_meta:
+            continue
+        
+        # Prepare metadata
+        metadata = {
+            'generated_at': datetime.now().isoformat(),
+            'total_questions': len(questions),
+            'course_name': course_name,
+            'course_id': course_id,
+            'course_code': course_code,
+            'textbook_reference': textbook_reference,
+            'lecture': lecture_name,
+            'difficulty_level': level,
+            'source_flashcards': lecture_meta['total_flashcards']
+        }
+        
+        # Save quiz JSON
+        quiz_filename = f"{lecture_name}_level_{level}_quiz.json"
+        quiz_output_path = quiz_output_dir / quiz_filename
+        save_quiz_json(questions, metadata, str(quiz_output_path))
+        
+        print(f"✅ {lecture_name} Level {level}: {len(questions)} questions saved")
+    
+    # Final summary
+    print(f"\n{'='*80}")
+    print(f"✅ BATCH PROCESSING COMPLETE: {course_name}")
+    print(f"{'='*80}")
+    print(f"📊 Summary:")
+    print(f"  • Lectures processed: {len(lecture_flashcards)}")
+    print(f"  • Total flashcards: {sum(len(cards) for cards in lecture_flashcards.values())}")
+    print(f"  • Total quiz questions: {sum(len(questions) for questions in lecture_level_questions.values())}")
+    print(f"  • Flashcard output: {flashcards_base}/")
+    print(f"  • Quiz output: {quiz_output_dir}/")
+    print(f"{'='*80}\n")
+
+
 def main():
     """Main execution function."""
     
@@ -684,14 +1017,29 @@ def main():
     # Check for command-line arguments
     target_course_id = None
     slide_analysis_prefix = None
+    mode = None  # "quizzes" or "quizzes-only" to generate only quizzes
     
     if len(sys.argv) > 1:
         target_course_id = sys.argv[1]
         print(f"🎯 Target course: {target_course_id}")
     
     if len(sys.argv) > 2:
-        slide_analysis_prefix = sys.argv[2]
-        print(f"🎯 Target lecture: {slide_analysis_prefix}")
+        arg2 = sys.argv[2]
+        # Check if it's a mode flag
+        if arg2.lower() in ["quizzes", "quizzes-only"]:
+            mode = arg2.lower()
+            print(f"🎯 Mode: Quizzes only")
+        else:
+            slide_analysis_prefix = arg2
+            print(f"🎯 Target lecture: {slide_analysis_prefix}")
+    
+    if len(sys.argv) > 3:
+        mode = sys.argv[3].lower()
+        if mode in ["quizzes", "quizzes-only"]:
+            print(f"🎯 Mode: Quizzes only")
+        else:
+            print(f"⚠️  Unknown mode: {mode}, ignoring")
+            mode = None
     
     # Process courses
     if target_course_id:
@@ -704,19 +1052,44 @@ def main():
                 print(f"  • {c['course_id']}: {c['course_name']}")
             return
         
-        process_course_flashcards(course, slide_analysis_prefix)
+        # Check if mode is quizzes-only
+        if mode in ["quizzes", "quizzes-only"]:
+            print(f"\n📝 Quiz-only mode: Generating quizzes only (flashcards must already exist)")
+            process_course_quizzes(course, slide_analysis_prefix)
+        else:
+            # Use batch processing if enabled, otherwise fall back to sequential
+            if Config.BATCH_PROCESSING_ENABLED:
+                process_course_batch(course, slide_analysis_prefix)
+            else:
+                process_course_flashcards(course, slide_analysis_prefix)
+                process_course_quizzes(course, slide_analysis_prefix)
     else:
         # Process all courses (slide_analysis_prefix is ignored when processing all courses)
         if slide_analysis_prefix:
             print(f"⚠️  Note: slide_analysis_prefix '{slide_analysis_prefix}' ignored when processing all courses")
             print(f"   Please specify a course_id to use slide_analysis_prefix")
         
-        print(f"\n🔄 Processing all courses...\n")
+        # Check if mode is quizzes-only for all courses
+        if mode in ["quizzes", "quizzes-only"]:
+            print(f"\n📝 Quiz-only mode: Generating quizzes only for all courses (flashcards must already exist)")
+        else:
+            print(f"\n🔄 Processing all courses...\n")
+        
         for i, course in enumerate(courses, 1):
             print(f"\n{'#'*80}")
             print(f"# Course {i}/{len(courses)}")
             print(f"{'#'*80}")
-            process_course_flashcards(course)
+            
+            # Check if mode is quizzes-only
+            if mode in ["quizzes", "quizzes-only"]:
+                process_course_quizzes(course)
+            else:
+                # Use batch processing if enabled
+                if Config.BATCH_PROCESSING_ENABLED:
+                    process_course_batch(course)
+                else:
+                    process_course_flashcards(course)
+                    process_course_quizzes(course)
         
         print(f"\n{'='*80}")
         print(f"✅ ALL COURSES COMPLETE!")

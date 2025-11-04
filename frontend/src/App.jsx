@@ -13,6 +13,8 @@ import PrivacyPolicyView from './views/PrivacyPolicyView'
 import BookmarksView from './views/BookmarksView'
 import QuizHistoryView from './views/QuizHistoryView'
 import AdminDashboardView from './views/AdminDashboardView'
+import QuizLevelSelectionView from './views/QuizLevelSelectionView'
+import QuizResultsView from './views/QuizResultsView'
 import ThemeToggle from './components/ThemeToggle'
 import CookieBanner from './components/CookieBanner'
 import Navigation from './components/Navigation'
@@ -58,11 +60,23 @@ function App() {
                 <DeckView />
               </ProtectedRoute>
             } />
+            {/* Adaptive Quiz Routes */}
             <Route path="/courses/:courseId/:lectureId/quiz" element={
+              <ProtectedRoute>
+                <QuizLevelSelectionView />
+              </ProtectedRoute>
+            } />
+            <Route path="/courses/:courseId/:lectureId/quiz/:level" element={
               <ProtectedRoute>
                 <QuizView />
               </ProtectedRoute>
             } />
+            <Route path="/courses/:courseId/:lectureId/quiz/:level/results" element={
+              <ProtectedRoute>
+                <QuizResultsView />
+              </ProtectedRoute>
+            } />
+            {/* Legacy Results Route */}
             <Route path="/courses/:courseId/:lectureId/results" element={
               <ProtectedRoute>
                 <ResultsView />

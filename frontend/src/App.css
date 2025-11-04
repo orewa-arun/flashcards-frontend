@@ -3,15 +3,17 @@
   min-height: 100vh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  display: block;
+  padding: 0;
 }
 
 .app-container.loading {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--text-primary);
+  padding: 20px;
 }
 
 /* Clean Loading Spinner */

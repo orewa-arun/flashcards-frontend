@@ -1,0 +1,1424 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-04T10:21:55.549171",
+    "total_questions": 63,
+    "course_name": "Data Analysis Applications",
+    "course_id": "MS5031",
+    "course_code": "DAA",
+    "textbook_reference": "Statistics for Business: Decision Making and Analysis by Robert E Stine and Dean Foster, Pearson (ISBN: 978-81-317-3347-9)",
+    "lecture": "DAA_lec_4",
+    "difficulty_level": 2,
+    "source_flashcards": 13
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "A company wants to predict customer spending (in dollars) using online ad clicks and email opens. They build a Multiple Linear Regression model. Which of the following scenarios best illustrates the advantage of using MLR over Simple Linear Regression?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "SLR can only handle one independent variable, while MLR can handle both ad clicks and email opens, providing a more comprehensive model.",
+        "B": "SLR can predict spending with higher accuracy if only one variable (either ad clicks or email opens) is used.",
+        "C": "MLR always produces a straight line relationship, which is easier to interpret than the curved relationship produced by SLR.",
+        "D": "SLR requires less computational power than MLR, making it preferable for large datasets."
+      },
+      "correct_answer": "SLR can only handle one independent variable, while MLR can handle both ad clicks and email opens, providing a more comprehensive model.",
+      "explanation": "The scenario describes predicting customer spending using two variables: online ad clicks and email opens. MLR's advantage lies in its ability to incorporate multiple independent variables to explain the variation in the dependent variable. SLR is limited to only one independent variable, making MLR more suitable here. Option B is incorrect because MLR aims for a more comprehensive model, not necessarily higher accuracy with a single variable. Option C is incorrect as the linearity assumption applies to both. Option D is irrelevant to the core concept.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_1",
+      "tags": [
+        "multiple linear regression",
+        "regression analysis",
+        "statistical modeling"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate company is using Multiple Linear Regression to predict house prices. They include square footage, number of bedrooms, and age of the house as independent variables. They find that square footage has a strong positive correlation with house price. How would you interpret the partial regression coefficient for 'square footage' in this context?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "For every one-unit increase in square footage, the house price increases by the amount of the partial regression coefficient, regardless of other factors.",
+        "B": "For every one-unit increase in square footage, the house price increases by the amount of the partial regression coefficient, *assuming the number of bedrooms and age of the house remain constant*.",
+        "C": "The partial regression coefficient represents the total effect of square footage on house price, including indirect effects through other variables.",
+        "D": "The partial regression coefficient indicates the percentage change in house price for every one percent increase in square footage."
+      },
+      "correct_answer": "For every one-unit increase in square footage, the house price increases by the amount of the partial regression coefficient, *assuming the number of bedrooms and age of the house remain constant*.",
+      "explanation": "The partial regression coefficient represents the change in the dependent variable (house price) for a one-unit increase in the independent variable (square footage), holding all other independent variables constant. Therefore, option B is the correct interpretation. Option A is wrong because it doesn't acknowledge the 'holding constant' aspect. Option C describes the total effect, not the partial effect. Option D describes elasticity, not the coefficient itself.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_1",
+      "tags": [
+        "multiple linear regression",
+        "regression analysis",
+        "statistical modeling"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is building a model to predict customer churn using age, income, and number of support tickets. They suspect that younger customers with lower incomes are more likely to churn. Which of the following models would be most appropriate?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A Simple Linear Regression model using only age as the predictor.",
+        "B": "A Multiple Linear Regression model using age, income, and number of support tickets as predictors.",
+        "C": "A Multiple Linear Regression model using only the number of support tickets as the predictor.",
+        "D": "A Simple Linear Regression model using the average of age, income, and number of support tickets as the predictor."
+      },
+      "correct_answer": "A Multiple Linear Regression model using age, income, and number of support tickets as predictors.",
+      "explanation": "The scenario involves predicting customer churn using multiple factors (age, income, support tickets). MLR is designed to handle multiple independent variables, making it the best choice. SLR is limited to one predictor. Combining the predictors into an average (option D) loses individual variable information. Using only support tickets (option C) ignores the other factors.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_1",
+      "tags": [
+        "multiple linear regression",
+        "regression analysis",
+        "statistical modeling"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An analyst runs an MLR model to predict website traffic based on advertising spend, number of social media posts, and website loading speed. The model shows a high R-squared value but performs poorly on new data. What's a likely reason based on common mistakes in MLR?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The analyst likely included too few independent variables, leading to underfitting.",
+        "B": "The analyst likely included too many independent variables without considering their relevance or potential multicollinearity, leading to overfitting.",
+        "C": "The analyst used the wrong type of regression (Simple Linear Regression instead of Multiple Linear Regression).",
+        "D": "The analyst forgot to standardize the independent variables before running the model."
+      },
+      "correct_answer": "The analyst likely included too many independent variables without considering their relevance or potential multicollinearity, leading to overfitting.",
+      "explanation": "The scenario describes a model that fits the training data well (high R-squared) but performs poorly on new data, which is a classic sign of overfitting. Overfitting often occurs when too many irrelevant or highly correlated variables are included in the model. Underfitting (option A) would result in a low R-squared. The correct regression type was used. Standardizing variables (option D) is good practice, but not the primary cause of overfitting in this case.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_1",
+      "tags": [
+        "multiple linear regression",
+        "regression analysis",
+        "statistical modeling"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company uses MLR to predict sales using advertising spend and competitor's price. The partial slope for advertising spend is 150. Which statement is the best interpretation of this result?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "For every dollar spent on advertising, sales increase by $150, regardless of the competitor's price.",
+        "B": "For every dollar spent on advertising, sales increase by $150, *assuming the competitor's price remains constant*.",
+        "C": "For every dollar spent on advertising, the competitor's price decreases by $150.",
+        "D": "If sales increase by $150, the company must have spent one dollar on advertising."
+      },
+      "correct_answer": "For every dollar spent on advertising, sales increase by $150, *assuming the competitor's price remains constant*.",
+      "explanation": "The partial slope represents the change in the dependent variable (sales) for a one-unit increase in the independent variable (advertising spend), holding all other independent variables constant (competitor's price). Option B is the correct interpretation. Option A is wrong because it doesn't acknowledge the 'holding constant' aspect. Option C is incorrect because it reverses the relationship. Option D is incorrect because it implies causation in the reverse direction.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_1",
+      "tags": [
+        "multiple linear regression",
+        "regression analysis",
+        "statistical modeling"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An economist is modeling GDP growth using government spending and interest rates. The partial slope for government spending is 0.8. Which of the following statements accurately describes the meaning of this coefficient?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "For every one-unit increase in government spending, GDP growth increases by 0.8 units, *assuming interest rates remain constant*.",
+        "B": "For every one-unit increase in government spending, GDP growth increases by 0.8 units, regardless of interest rates.",
+        "C": "Government spending explains 80% of the variation in GDP growth.",
+        "D": "Interest rates are 80% more influential than government spending on GDP growth."
+      },
+      "correct_answer": "For every one-unit increase in government spending, GDP growth increases by 0.8 units, *assuming interest rates remain constant*.",
+      "explanation": "The partial regression coefficient (partial slope) isolates the effect of one independent variable on the dependent variable, holding all other independent variables constant. Therefore, Option A is the correct interpretation. Option B ignores the 'holding constant' condition. Option C refers to R-squared, not the partial slope. Option D is an incorrect comparison of influence.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_2",
+      "tags": [
+        "partial slope",
+        "regression coefficient",
+        "multiple linear regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing team analyzes the effect of social media engagement and website traffic on sales using an MLR model. The partial slope for social media engagement is 5. What's a *correct* interpretation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "An increase of one unit in social media engagement causes sales to increase by 5 units, regardless of website traffic.",
+        "B": "An increase of one unit in social media engagement is associated with an increase of 5 units in sales, *assuming website traffic remains constant*.",
+        "C": "An increase of one unit in website traffic causes sales to increase by 5 units, assuming social media engagement remains constant.",
+        "D": "Social media engagement is 5 times more important than website traffic for driving sales."
+      },
+      "correct_answer": "An increase of one unit in social media engagement is associated with an increase of 5 units in sales, *assuming website traffic remains constant*.",
+      "explanation": "The partial slope represents the isolated effect of social media engagement on sales, holding website traffic constant. Therefore, option B is the correct interpretation. Option A incorrectly ignores the 'holding constant' condition. Option C misattributes the effect to website traffic. Option D is an incorrect comparison of importance based solely on the coefficient value.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_2",
+      "tags": [
+        "partial slope",
+        "regression coefficient",
+        "multiple linear regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A car dealership uses MLR to predict car prices based on mileage and age. The partial slope for mileage is -0.1. What does this mean?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "For every additional mile on the car, the price decreases by $0.1, regardless of the car's age.",
+        "B": "For every additional mile on the car, the price decreases by $0.1, *assuming the car's age remains constant*.",
+        "C": "For every additional year of age, the price decreases by $0.1, assuming the car's mileage remains constant.",
+        "D": "Mileage has a positive impact on the car price."
+      },
+      "correct_answer": "For every additional mile on the car, the price decreases by $0.1, *assuming the car's age remains constant*.",
+      "explanation": "The partial slope for mileage indicates the change in price for each additional mile, holding the other independent variable (age) constant. Option B is the correct interpretation. Option A ignores the 'holding constant' condition. Option C misattributes the effect to age. Option D misinterprets the negative sign.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_2",
+      "tags": [
+        "partial slope",
+        "regression coefficient",
+        "multiple linear regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An MLR model predicts employee performance using years of experience and training hours. The partial slope for training hours is 8. Which is the best interpretation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "For every additional training hour, employee performance increases by 8 units, regardless of their experience.",
+        "B": "For every additional training hour, employee performance increases by 8 units, *assuming their years of experience remain constant*.",
+        "C": "For every additional year of experience, employee performance increases by 8 units, assuming their training hours remain constant.",
+        "D": "Training hours are 8 times more important than years of experience for employee performance."
+      },
+      "correct_answer": "For every additional training hour, employee performance increases by 8 units, *assuming their years of experience remain constant*.",
+      "explanation": "The partial slope represents the isolated effect of training hours on performance, holding experience constant. Option B is the correct interpretation. Option A incorrectly ignores the 'holding constant' condition. Option C misattributes the effect to experience. Option D is an incorrect comparison based only on the coefficient value.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_2",
+      "tags": [
+        "partial slope",
+        "regression coefficient",
+        "multiple linear regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher builds an MLR model to predict plant growth using sunlight exposure and water amount. The partial slope for water amount is 2. What does this coefficient represent?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The total effect of water amount on plant growth, including indirect effects through sunlight.",
+        "B": "The estimated change in plant growth for a one-unit increase in water amount, *assuming sunlight exposure remains constant*.",
+        "C": "The estimated change in sunlight exposure for a one-unit increase in water amount.",
+        "D": "Water amount is twice as important as sunlight exposure for plant growth."
+      },
+      "correct_answer": "The estimated change in plant growth for a one-unit increase in water amount, *assuming sunlight exposure remains constant*.",
+      "explanation": "The partial regression coefficient (or partial slope) represents the change in the dependent variable (plant growth) for a one-unit increase in a specific independent variable (water amount), *holding all other independent variables in the model constant* (sunlight exposure). Option B is the correct answer. Option A describes the total effect. Option C reverses the variables. Option D is an incorrect comparison of importance.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_2",
+      "tags": [
+        "partial slope",
+        "regression coefficient",
+        "multiple linear regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data analyst is building an MLR model to predict customer satisfaction. After building the model, they observe that the residuals show a clear pattern when plotted against the predicted values. Which assumption of MLR is most likely violated?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Linearity",
+        "B": "Independence of Errors",
+        "C": "Normality of Errors",
+        "D": "Equal Variance (Homoscedasticity)"
+      },
+      "correct_answer": "Equal Variance (Homoscedasticity)",
+      "explanation": "A pattern in the residuals plotted against predicted values suggests that the variance of the errors is not constant across all levels of the independent variables, violating the assumption of equal variance (homoscedasticity). Linearity would be violated if the relationship between the independent and dependent variables is not linear. Independence of errors would be violated if the error terms are correlated. Normality of errors would be violated if the error terms are not normally distributed.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_3",
+      "tags": [
+        "mlr assumptions",
+        "linearity",
+        "independence",
+        "normality",
+        "equal variance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher is using MLR to predict crop yield. They suspect that weather patterns in adjacent fields might influence each other. Which assumption of MLR is most likely to be violated in this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Linearity",
+        "B": "Independence of Errors",
+        "C": "Normality of Errors",
+        "D": "Equal Variance (Homoscedasticity)"
+      },
+      "correct_answer": "Independence of Errors",
+      "explanation": "If weather patterns in adjacent fields influence each other, the error terms for those fields are likely to be correlated, violating the assumption of Independence of Errors. Linearity relates to the relationship between independent and dependent variables. Normality relates to the distribution of the errors. Equal Variance (Homoscedasticity) relates to the consistency of error variance.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_3",
+      "tags": [
+        "mlr assumptions",
+        "linearity",
+        "independence",
+        "normality",
+        "equal variance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is modeling customer spending using age and income. They discover that the relationship between income and spending is not linear; spending increases rapidly at first, then plateaus. Which MLR assumption is violated?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Linearity",
+        "B": "Independence of Errors",
+        "C": "Normality of Errors",
+        "D": "Equal Variance (Homoscedasticity)"
+      },
+      "correct_answer": "Linearity",
+      "explanation": "The scenario describes a non-linear relationship between income and spending. The linearity assumption of MLR requires a linear relationship between the independent and dependent variables. The other assumptions (Independence, Normality, and Equal Variance) concern the error terms, not the relationship between variables.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_3",
+      "tags": [
+        "mlr assumptions",
+        "linearity",
+        "independence",
+        "normality",
+        "equal variance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is building an MLR model. They plot a histogram of the residuals and find that it is heavily skewed. Which assumption of MLR is most likely violated?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Linearity",
+        "B": "Independence of Errors",
+        "C": "Normality of Errors",
+        "D": "Equal Variance (Homoscedasticity)"
+      },
+      "correct_answer": "Normality of Errors",
+      "explanation": "A skewed histogram of the residuals indicates that the error terms are not normally distributed, violating the Normality of Errors assumption. Linearity relates to the relationship between independent and dependent variables. Independence relates to correlation between errors. Equal Variance (Homoscedasticity) relates to the consistency of error variance.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_3",
+      "tags": [
+        "mlr assumptions",
+        "linearity",
+        "independence",
+        "normality",
+        "equal variance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher is analyzing housing prices and observes that the variability in prices is much higher for expensive houses than for inexpensive houses. Which assumption of MLR might be violated?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Linearity",
+        "B": "Independence of Errors",
+        "C": "Normality of Errors",
+        "D": "Equal Variance (Homoscedasticity)"
+      },
+      "correct_answer": "Equal Variance (Homoscedasticity)",
+      "explanation": "The scenario describes a situation where the variance of the errors (the difference between predicted and actual prices) is not constant across all levels of the independent variables (house value). This violates the Equal Variance (Homoscedasticity) assumption. Linearity relates to the relationship between independent and dependent variables. Independence relates to correlation between errors. Normality relates to the distribution of errors.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_3",
+      "tags": [
+        "mlr assumptions",
+        "linearity",
+        "independence",
+        "normality",
+        "equal variance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate analyst creates a scatterplot matrix before building an MLR model to predict house prices. The matrix shows a strong positive linear relationship between square footage and price, and also a strong positive linear relationship between the number of bedrooms and price. What is the *primary* reason for using a scatterplot matrix in this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To confirm the Normality of the dependent variable (house price).",
+        "B": "To visualize the relationships between all pairs of variables, including potential multicollinearity between square footage and number of bedrooms.",
+        "C": "To determine the exact coefficients for the MLR model.",
+        "D": "To identify outliers in the independent variables."
+      },
+      "correct_answer": "To visualize the relationships between all pairs of variables, including potential multicollinearity between square footage and number of bedrooms.",
+      "explanation": "The primary purpose of a scatterplot matrix is to visually examine the pairwise relationships between all variables, including the response variable and predictor variables. This helps identify potential issues like multicollinearity. While a Scatmat can show outliers (D) and help assess relationships, its *primary* role here is to check for multicollinearity. Normality (A) is assessed via residual plots. The Scatmat doesn't give coefficients (C).",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_4",
+      "tags": [
+        "EDA",
+        "scatterplot matrix",
+        "multicollinearity",
+        "visualization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing analyst creates a Scatmat to explore the relationship between sales, advertising spend, and social media engagement. The Scatmat shows a positive relationship between advertising spend and sales, but no clear relationship between social media engagement and sales. What is the *most appropriate* next step?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Conclude that social media engagement has no effect on sales and exclude it from the MLR model.",
+        "B": "Include both advertising spend and social media engagement in the MLR model, as the Scatmat only shows marginal effects.",
+        "C": "Exclude advertising spend from the MLR model since social media engagement has no effect.",
+        "D": "Run a Simple Linear Regression model with only advertising spend as the predictor."
+      },
+      "correct_answer": "Include both advertising spend and social media engagement in the MLR model, as the Scatmat only shows marginal effects.",
+      "explanation": "The Scatmat displays *marginal* relationships, not partial effects after controlling for other variables. Even if social media engagement shows no clear relationship *marginally*, it might have a significant *partial* effect in the MLR model. Concluding it has no effect (A) is premature. Excluding advertising (C) or running SLR (D) ignores potentially valuable information.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_4",
+      "tags": [
+        "EDA",
+        "scatterplot matrix",
+        "multicollinearity",
+        "visualization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data analyst is exploring a dataset with several variables before building an MLR model. They create a scatterplot matrix. What potential problem is the analyst *primarily* trying to identify using the scatterplot matrix?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Non-linear relationships between the independent and dependent variables.",
+        "B": "Missing values in the dataset.",
+        "C": "Outliers in the dependent variable.",
+        "D": "Multicollinearity between independent variables."
+      },
+      "correct_answer": "Multicollinearity between independent variables.",
+      "explanation": "While a scatterplot matrix can reveal non-linear relationships and outliers, its *primary* purpose in the context of MLR is to identify potential multicollinearity between independent variables. Multicollinearity can lead to unstable coefficient estimates and make it difficult to interpret the results of the MLR model. The matrix doesn't directly show missing values.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_4",
+      "tags": [
+        "EDA",
+        "scatterplot matrix",
+        "multicollinearity",
+        "visualization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is exploring the relationship between advertising spend on different platforms (TV, online, print) and sales using a scatterplot matrix. The Scatmat reveals a strong positive correlation between TV advertising spend and online advertising spend. What action should the analyst consider *before* building an MLR model?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Standardize all the variables.",
+        "B": "Remove the sales variable from the model.",
+        "C": "Address potential multicollinearity between TV and online advertising spend.",
+        "D": "Transform the sales variable using a logarithmic transformation."
+      },
+      "correct_answer": "Address potential multicollinearity between TV and online advertising spend.",
+      "explanation": "The strong correlation between TV and online advertising spend suggests potential multicollinearity. This needs to be addressed *before* building the MLR model, as it can cause unstable coefficient estimates. Standardizing variables (A) is good practice but doesn't directly address multicollinearity. Removing sales (B) defeats the purpose. Transforming sales (D) might be useful, but the primary concern is multicollinearity.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_4",
+      "tags": [
+        "EDA",
+        "scatterplot matrix",
+        "multicollinearity",
+        "visualization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Before building a model to predict customer satisfaction, a data scientist creates a Scatmat with customer satisfaction (Y), product quality (X1), customer service (X2), and price (X3). What information is *most directly* revealed by examining the scatterplot of product quality (X1) vs. customer satisfaction (Y) in the Scatmat?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The partial effect of product quality on customer satisfaction, controlling for customer service and price.",
+        "B": "The marginal relationship between product quality and customer satisfaction, without accounting for the other variables.",
+        "C": "The R-squared value for a model predicting customer satisfaction using only product quality.",
+        "D": "The p-value for the effect of product quality on customer satisfaction in a full MLR model."
+      },
+      "correct_answer": "The marginal relationship between product quality and customer satisfaction, without accounting for the other variables.",
+      "explanation": "The scatterplot in the Scatmat shows the *marginal* relationship between two variables, ignoring the influence of other variables. Option A describes the partial effect, which is what the MLR model estimates. Option C refers to R-squared, which is a model output. Option D refers to the p-value, which is also a model output. The Scatmat shows the raw, unadjusted relationship.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_4",
+      "tags": [
+        "EDA",
+        "scatterplot matrix",
+        "multicollinearity",
+        "visualization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data analyst is exploring a dataset of customer demographics and purchase behavior for an online retailer. They create a correlation matrix and observe a correlation coefficient of 0.8 between 'time spent on website' and 'number of products viewed'. Given this scenario, what is the most appropriate initial interpretation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Spending more time on the website directly causes customers to view more products.",
+        "B": "There is a strong linear relationship between the time spent on the website and the number of products viewed.",
+        "C": "There is no relationship between time spent on the website and the number of products viewed.",
+        "D": "The correlation coefficient indicates a causal relationship, but only if the p-value is less than 0.05."
+      },
+      "correct_answer": "There is a strong linear relationship between the time spent on the website and the number of products viewed.",
+      "explanation": "The scenario presents a correlation coefficient of 0.8 between 'time spent on website' and 'number of products viewed'. A correlation coefficient close to 1 indicates a strong positive linear relationship. Therefore, the best interpretation is that there is a strong linear relationship between these two variables. Option A incorrectly assumes causation. Option C is incorrect because 0.8 indicates a strong relationship. Option D is partially correct about the need for a p-value but misinterprets what the correlation itself indicates.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_5",
+      "tags": [
+        "correlation matrix",
+        "pearson correlation",
+        "EDA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate company is building a model to predict house prices. They create a correlation matrix and notice a high correlation (0.9) between square footage and number of bedrooms. How would you apply the information from the correlation matrix in this situation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Remove the 'number of bedrooms' variable from the model because it is redundant and will not contribute any new information.",
+        "B": "Investigate potential multicollinearity between square footage and number of bedrooms, and consider using only one of these variables or a combined variable in the model.",
+        "C": "Ignore the high correlation and include both variables in the model, as they are both important predictors of house prices.",
+        "D": "Transform the 'square footage' variable using a logarithmic transformation to reduce the correlation with the 'number of bedrooms'."
+      },
+      "correct_answer": "Investigate potential multicollinearity between square footage and number of bedrooms, and consider using only one of these variables or a combined variable in the model.",
+      "explanation": "The high correlation between square footage and number of bedrooms suggests potential multicollinearity. Multicollinearity can inflate the variance of the regression coefficients and make it difficult to interpret the individual effects of the predictors. Therefore, the best approach is to investigate multicollinearity and consider using only one of the variables or a combined variable. Option A is too aggressive; removing a variable without investigation may lose important information. Option C ignores the potential problems of multicollinearity. Option D might be useful in some cases but doesn't directly address the multicollinearity issue.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_5",
+      "tags": [
+        "correlation matrix",
+        "multicollinearity",
+        "EDA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing team analyzes the correlation matrix of their campaign data and finds a low correlation (0.1) between social media engagement and website conversions. Which of the following is the most appropriate conclusion?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Social media engagement has no impact on website conversions; the social media campaign is ineffective.",
+        "B": "There is a weak linear relationship between social media engagement and website conversions, but social media engagement might still have a significant non-linear or interaction effect on website conversions.",
+        "C": "Social media engagement is the primary driver of website conversions, but the correlation matrix is not capturing the true effect.",
+        "D": "The data must be incorrect; social media engagement always leads to website conversions."
+      },
+      "correct_answer": "There is a weak linear relationship between social media engagement and website conversions, but social media engagement might still have a significant non-linear or interaction effect on website conversions.",
+      "explanation": "A low correlation (0.1) indicates a weak linear relationship. However, the correlation matrix only captures linear relationships. Social media engagement might still have a significant non-linear or interaction effect. Option A is too strong a conclusion, as it ignores potential non-linear effects. Option C is incorrect because the correlation is low. Option D is an overgeneralization.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_5",
+      "tags": [
+        "correlation matrix",
+        "pearson correlation",
+        "EDA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is tasked with identifying potential predictors for customer satisfaction. They create a correlation matrix. Which of the following correlation values would be the *most* concerning from a multicollinearity perspective?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "0.2 between 'age' and 'income'",
+        "B": "0.6 between 'number of purchases' and 'customer tenure'",
+        "C": "0.9 between 'number of purchases' and 'total spending'",
+        "D": "-0.3 between 'customer service calls' and 'satisfaction score'"
+      },
+      "correct_answer": "0.9 between 'number of purchases' and 'total spending'",
+      "explanation": "Multicollinearity is a concern when predictors are highly correlated. A correlation of 0.9 is the highest value listed and suggests a very strong linear relationship between 'number of purchases' and 'total spending', indicating significant potential for multicollinearity. The other correlations are weaker, indicating less cause for concern. Therefore, 0.9 is the most concerning.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_5",
+      "tags": [
+        "correlation matrix",
+        "multicollinearity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher investigates the relationship between several variables and housing prices in a city. After creating a correlation matrix, they notice that the correlation between the number of parks within a 5-mile radius (X1) and average household income in the area (X2) is 0.75.  What is the most appropriate next step based on this finding?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Conclude that the number of parks directly causes higher average household income.",
+        "B": "Ignore the correlation since correlation does not imply causation.",
+        "C": "Consider the possibility of multicollinearity if both variables are used in a regression model to predict housing prices.",
+        "D": "Remove the variable with the lower correlation to housing prices from the model."
+      },
+      "correct_answer": "Consider the possibility of multicollinearity if both variables are used in a regression model to predict housing prices.",
+      "explanation": "A correlation of 0.75 between X1 and X2 suggests a potential multicollinearity issue if both are used as predictors in a regression model. Multicollinearity can lead to unstable coefficient estimates and difficulty in interpreting the individual effects of the predictors. Option A incorrectly infers causation. Option B is incomplete; while correlation doesn't imply causation, a high correlation between predictors *does* suggest multicollinearity. Option D is premature; the decision to remove a variable should be based on a deeper investigation of multicollinearity and the variable's individual significance.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_5",
+      "tags": [
+        "correlation matrix",
+        "multicollinearity",
+        "EDA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data analyst is exploring the relationship between advertising spending (in thousands of dollars) and sales revenue (in thousands of dollars) for a company's various marketing channels. They create both a scatterplot matrix and a correlation matrix. The scatterplot matrix reveals a strong, but non-linear (exponential), relationship between social media advertising and sales revenue. The correlation matrix shows a weak correlation (0.2) between the same variables. Given this information, what is the most reasonable conclusion?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Social media advertising has no effect on sales revenue.",
+        "B": "The correlation matrix is more reliable than the scatterplot matrix; therefore, social media advertising has a negligible effect on sales revenue.",
+        "C": "The weak correlation in the correlation matrix indicates a lack of *linear* relationship, but the scatterplot matrix suggests a strong *non-linear* relationship between social media advertising and sales revenue.",
+        "D": "There must be an error in either the scatterplot matrix or the correlation matrix because they contradict each other."
+      },
+      "correct_answer": "The weak correlation in the correlation matrix indicates a lack of *linear* relationship, but the scatterplot matrix suggests a strong *non-linear* relationship between social media advertising and sales revenue.",
+      "explanation": "The key point is that the correlation matrix only captures linear relationships. The scatterplot matrix reveals that the relationship is non-linear. Therefore, the most reasonable conclusion is that there is a strong non-linear relationship, even though the linear correlation is weak. Option A is incorrect as it dismisses the relationship. Option B is incorrect because the scatterplot reveals non-linear patterns not captured by the correlation. Option D is incorrect because there is no contradiction; they are measuring different aspects of the relationship.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_6",
+      "tags": [
+        "scatterplot matrix",
+        "correlation matrix",
+        "eda"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A research team is studying the relationship between several environmental factors and plant growth. They create both a scatterplot matrix and a correlation matrix. The correlation matrix shows a strong negative correlation (-0.8) between air pollution levels and plant height. The scatterplot matrix shows a fairly linear relationship. Which of the following actions would be the most appropriate next step?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Conclude that reducing air pollution will directly cause an increase in plant height.",
+        "B": "Use the correlation coefficient to quantify the linear association between air pollution and plant height in a regression model.",
+        "C": "Ignore the scatterplot matrix and focus solely on the correlation matrix because it provides a more precise numerical measure.",
+        "D": "Remove air pollution levels from the analysis because a negative correlation is not meaningful."
+      },
+      "correct_answer": "Use the correlation coefficient to quantify the linear association between air pollution and plant height in a regression model.",
+      "explanation": "The strong negative correlation (-0.8) and the linear relationship shown in the scatterplot matrix suggest a quantifiable linear association between air pollution and plant height. The correlation coefficient can be used in a regression model to estimate the effect of air pollution on plant height. Option A is incorrect because correlation does not imply causation. Option C is incorrect because both tools provide valuable insights. Option D is incorrect because negative correlations can be meaningful.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_6",
+      "tags": [
+        "scatterplot matrix",
+        "correlation matrix",
+        "eda"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A financial analyst is investigating the relationship between different economic indicators and stock market performance. They create both a scatterplot matrix and a correlation matrix. The scatterplot matrix reveals a U-shaped relationship between interest rates and stock market returns. The correlation matrix shows a correlation close to zero between the same variables. How would you interpret these findings?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Interest rates have no impact on stock market returns.",
+        "B": "There is a strong linear relationship between interest rates and stock market returns.",
+        "C": "The scatterplot matrix is incorrect; the correlation matrix is always more reliable.",
+        "D": "There is a non-linear relationship between interest rates and stock market returns, which is not captured by the correlation matrix."
+      },
+      "correct_answer": "There is a non-linear relationship between interest rates and stock market returns, which is not captured by the correlation matrix.",
+      "explanation": "Since the scatterplot matrix reveals a U-shaped (non-linear) relationship, and the correlation matrix shows a correlation close to zero (indicating a lack of linear relationship), the most appropriate interpretation is that there is a non-linear relationship. The correlation matrix only captures linear relationships. Option A is incorrect because the scatterplot shows a relationship. Option B is incorrect because the correlation is close to zero. Option C is incorrect because the scatterplot is also a reliable tool for identifying non-linear relationships.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_6",
+      "tags": [
+        "scatterplot matrix",
+        "correlation matrix",
+        "eda"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing analyst is examining customer data to understand factors influencing purchase frequency. They generate a scatterplot matrix and a correlation matrix. The scatterplot matrix shows several outliers in the relationship between customer age and purchase frequency. The correlation matrix shows a moderate positive correlation (0.4) between these two variables. Which of the following actions is most appropriate?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Remove the outliers from the dataset and re-calculate the correlation matrix.",
+        "B": "Ignore the outliers because the correlation matrix already accounts for them.",
+        "C": "Rely solely on the correlation matrix because it provides a numerical summary of the relationship.",
+        "D": "Investigate the outliers to understand why they deviate from the general trend and consider their potential impact on the analysis."
+      },
+      "correct_answer": "Investigate the outliers to understand why they deviate from the general trend and consider their potential impact on the analysis.",
+      "explanation": "Outliers can significantly influence both the visual patterns in a scatterplot and the calculated correlation. Investigating them is crucial to understanding their nature and potential impact on the analysis. Removing them (Option A) without understanding them can lead to biased results. Ignoring them (Option B) is not a good practice. Relying solely on the correlation matrix (Option C) misses the valuable information revealed by the scatterplot.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_6",
+      "tags": [
+        "scatterplot matrix",
+        "correlation matrix",
+        "eda"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data science team is exploring factors that affect customer churn at a telecommunications company. They create a scatterplot matrix and a correlation matrix. The scatterplot matrix shows a strong positive relationship between 'number of calls to customer service' and 'churn', but only for customers with contract lengths of less than 6 months. The correlation matrix, considering *all* customers, shows a weak positive correlation between these variables. Which action is most justified?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Conclude that the number of calls to customer service is not related to churn.",
+        "B": "Segment the data by contract length and re-examine the relationship between the number of calls to customer service and churn within each segment.",
+        "C": "Rely solely on the correlation matrix to determine the relationship between these variables.",
+        "D": "Use only the customers with short contract lengths for further analysis, as they exhibit a clearer relationship."
+      },
+      "correct_answer": "Segment the data by contract length and re-examine the relationship between the number of calls to customer service and churn within each segment.",
+      "explanation": "The scatterplot matrix reveals a conditional relationship: the strong positive relationship only exists for customers with short contract lengths. Therefore, it's crucial to segment the data and analyze the relationship within each segment to understand the underlying dynamics. Option A is incorrect as it ignores the scatterplot insight. Option C relies on a global measure that masks segment-specific relationships. Option D, while potentially useful, is less informative than option B.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_6",
+      "tags": [
+        "scatterplot matrix",
+        "correlation matrix",
+        "eda"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher is analyzing factors affecting crop yield, and develops a multiple linear regression model. The model includes variables for rainfall (inches), average temperature (degrees Fahrenheit), and fertilizer application (pounds per acre). The coefficient for rainfall is 2.5. Given this context, which of the following statements best describes the 'ceteris paribus' interpretation of this coefficient?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "For every one-inch increase in rainfall, crop yield is expected to increase by 2.5, regardless of temperature or fertilizer application.",
+        "B": "For every one-inch increase in rainfall, crop yield is expected to increase by 2.5, assuming temperature and fertilizer application remain constant.",
+        "C": "Rainfall is the only factor affecting crop yield, so the coefficient represents the total impact of rainfall.",
+        "D": "If rainfall increases by one inch, temperature and fertilizer application must also increase to maintain the 'ceteris paribus' condition."
+      },
+      "correct_answer": "For every one-inch increase in rainfall, crop yield is expected to increase by 2.5, assuming temperature and fertilizer application remain constant.",
+      "explanation": "'Ceteris paribus' means 'all other things being equal'. In this context, it means that the effect of rainfall is being considered while holding all other variables (temperature and fertilizer application) constant. Therefore, the correct interpretation is that for every one-inch increase in rainfall, crop yield is expected to increase by 2.5, assuming temperature and fertilizer application remain constant. Option A ignores the 'ceteris paribus' condition. Option C is incorrect because rainfall is not the only factor. Option D misinterprets the meaning of 'ceteris paribus'.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_7",
+      "tags": [
+        "MLR",
+        "Ceteris Paribus"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is using a multiple linear regression model to predict sales based on advertising spend (in thousands of dollars) on TV, radio, and online platforms. The coefficient for TV advertising spend is 5.0. If the company increases its TV advertising spend by $1,000, what is the expected increase in sales, assuming 'ceteris paribus'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Sales will increase by $5,000, regardless of spending on other advertising platforms.",
+        "B": "Sales will increase by $5,000, assuming spending on radio and online advertising remains constant.",
+        "C": "Sales will increase by $5.00, regardless of spending on other advertising platforms.",
+        "D": "The increase in sales cannot be determined without knowing the spending on radio and online advertising."
+      },
+      "correct_answer": "Sales will increase by $5,000, assuming spending on radio and online advertising remains constant.",
+      "explanation": "The coefficient for TV advertising spend is 5.0, which means that for every $1,000 increase in TV advertising, sales are expected to increase by $5,000, assuming all other variables (radio and online advertising spend) remain constant ('ceteris paribus'). Option A is incorrect because it doesn't explicitly state the 'ceteris paribus' condition. Option C uses the wrong units. Option D is incorrect because the coefficient provides the expected increase.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_7",
+      "tags": [
+        "MLR",
+        "Ceteris Paribus"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate analyst builds a multiple linear regression model to predict house prices, using square footage, number of bedrooms, and age of the house as predictors. The coefficient for 'number of bedrooms' is $20,000. Under what condition is it valid to interpret this coefficient as 'each additional bedroom increases the predicted house price by $20,000'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "When square footage and age of the house are also increasing.",
+        "B": "Only when square footage and age of the house are held constant.",
+        "C": "Regardless of square footage and age of the house.",
+        "D": "When the house is newly built."
+      },
+      "correct_answer": "Only when square footage and age of the house are held constant.",
+      "explanation": "The 'ceteris paribus' condition must hold for the interpretation of the coefficient to be valid. This means that all other variables in the model (square footage and age of the house) must be held constant. Option A violates the 'ceteris paribus' condition. Option C ignores the 'ceteris paribus' condition. Option D is irrelevant to the 'ceteris paribus' condition.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_7",
+      "tags": [
+        "MLR",
+        "Ceteris Paribus"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company uses a multiple linear regression model to predict customer satisfaction scores based on product quality, price, and customer service ratings. The coefficient for 'product quality' is 0.8. Which of the following is the *most* accurate 'ceteris paribus' interpretation of this coefficient?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A one-unit increase in product quality always leads to a 0.8 increase in customer satisfaction scores.",
+        "B": "A one-unit increase in product quality leads to a 0.8 increase in customer satisfaction scores, assuming price and customer service ratings remain constant.",
+        "C": "Product quality is the only factor influencing customer satisfaction scores.",
+        "D": "If product quality increases by one unit, price and customer service ratings must decrease to maintain customer satisfaction."
+      },
+      "correct_answer": "A one-unit increase in product quality leads to a 0.8 increase in customer satisfaction scores, assuming price and customer service ratings remain constant.",
+      "explanation": "The 'ceteris paribus' condition requires that all other variables in the model (price and customer service ratings) are held constant when interpreting the coefficient for product quality. Option A ignores the 'ceteris paribus' condition. Option C is incorrect as product quality is not the only factor. Option D misinterprets the meaning of 'ceteris paribus'.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_7",
+      "tags": [
+        "MLR",
+        "Ceteris Paribus"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data analyst is using a multiple linear regression model to predict employee performance based on years of experience, education level, and number of training hours. The regression model shows the following equation: Performance = 50 + 2*(Years of Experience) + 5*(Education Level) + 0.5*(Training Hours). What is the expected increase in an employee's performance score if they gain 2 additional years of experience, assuming 'ceteris paribus'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "52",
+        "D": "It cannot be determined without knowing the employee's current education level and training hours."
+      },
+      "correct_answer": "4",
+      "explanation": "The coefficient for 'Years of Experience' is 2. 'Ceteris paribus' implies that Education Level and Training Hours remain constant. Therefore, for each additional year of experience, the performance score is expected to increase by 2. With 2 additional years, the expected increase is 2 * 2 = 4. Option A is the coefficient for one year, not two. Option C incorrectly adds the increase to the constant. Option D is incorrect because 'ceteris paribus' means we *don't* need to know other variables' values.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_7",
+      "tags": [
+        "MLR",
+        "Ceteris Paribus"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company builds a multiple linear regression model to predict monthly sales based on advertising spend (X1), number of sales representatives (X2), and average customer income (X3). The model has an $R^2$ of 0.75. How should this $R^2$ value be interpreted?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The model is a poor fit for the data because the $R^2$ is less than 1.",
+        "B": "The model explains 75% of the variation in monthly sales, and the remaining 25% is due to other factors not included in the model.",
+        "C": "The model is 75% accurate in predicting monthly sales.",
+        "D": "75% of the time, the model will correctly predict monthly sales."
+      },
+      "correct_answer": "The model explains 75% of the variation in monthly sales, and the remaining 25% is due to other factors not included in the model.",
+      "explanation": "$R^2$ represents the proportion of variance in the dependent variable (monthly sales) that is explained by the independent variables (advertising spend, number of sales representatives, and average customer income). Therefore, an $R^2$ of 0.75 means that 75% of the variation in monthly sales is explained by the model. Option A is incorrect; an $R^2$ less than 1 is normal. Options C and D misinterpret the meaning of accuracy in this context.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_8",
+      "tags": [
+        "R-squared",
+        "Coefficient of Determination",
+        "Model Fit"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher develops a multiple linear regression model to predict student test scores based on hours studied, attendance rate, and prior GPA. The model has an $R^2$ of 0.90. Which of the following is the most appropriate interpretation of this $R^2$ value?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The model is 90% accurate in predicting student test scores.",
+        "B": "90% of the students will score within the predicted range.",
+        "C": "The model explains 90% of the variation in student test scores using hours studied, attendance rate, and prior GPA.",
+        "D": "The model is overfitting the data, as an $R^2$ of 0.90 is too high."
+      },
+      "correct_answer": "The model explains 90% of the variation in student test scores using hours studied, attendance rate, and prior GPA.",
+      "explanation": "$R^2$ represents the proportion of the variance in the dependent variable (test scores) that is explained by the independent variables (hours studied, attendance rate, and prior GPA). Therefore, the correct interpretation is that 90% of the variation in test scores is explained by these variables. Option A misinterprets the meaning of accuracy. Option B is irrelevant. Option D might be a valid concern, but it is not the primary interpretation of $R^2$.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_8",
+      "tags": [
+        "R-squared",
+        "Coefficient of Determination",
+        "Model Fit"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing team builds a regression model to predict website traffic based on advertising spend, social media activity, and email marketing efforts. The model's $R^2$ is 0.45. What does this $R^2$ value suggest about the model?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The model is a good fit for the data because the $R^2$ is positive.",
+        "B": "The model explains a moderate amount of the variation in website traffic, but a significant portion of the variation is due to other factors not included in the model.",
+        "C": "The model is 45% accurate in predicting website traffic.",
+        "D": "The model is useless because the $R^2$ is less than 0.5."
+      },
+      "correct_answer": "The model explains a moderate amount of the variation in website traffic, but a significant portion of the variation is due to other factors not included in the model.",
+      "explanation": "An $R^2$ of 0.45 indicates that the model explains 45% of the variation in website traffic. This suggests that the model has some explanatory power, but a significant portion of the variation is due to other factors not included in the model. Option A is incorrect because a positive $R^2$ does not necessarily mean the model is a good fit. Option C misinterprets the meaning of accuracy. Option D is too harsh a judgment.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_8",
+      "tags": [
+        "R-squared",
+        "Coefficient of Determination",
+        "Model Fit"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist builds two multiple linear regression models to predict customer spending. Model 1 includes variables for age, income, and number of previous purchases and has an $R^2$ of 0.65. Model 2 includes the same variables as Model 1, plus a new variable for website engagement and has an $R^2$ of 0.70. Which model is necessarily better?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Model 2 is necessarily better because it has a higher $R^2$.",
+        "B": "Model 1 is necessarily better because it has fewer variables.",
+        "C": "It is impossible to determine which model is better based solely on the $R^2$ values. Other factors, such as adjusted $R^2$, model complexity, and the significance of the added variable, must be considered.",
+        "D": "Both models are equally good, as they both explain a significant portion of the variance in customer spending."
+      },
+      "correct_answer": "It is impossible to determine which model is better based solely on the $R^2$ values. Other factors, such as adjusted $R^2$, model complexity, and the significance of the added variable, must be considered.",
+      "explanation": "While a higher $R^2$ generally indicates a better fit, it's not the only factor to consider. Adding more variables will always increase $R^2$, even if those variables are not truly predictive. Other factors, such as adjusted $R^2$, model complexity, and the significance of the added variable, must be considered to determine which model is truly better. Option A is incorrect because it relies solely on $R^2$. Option B is incorrect because fewer variables do not necessarily make a model better. Option D ignores differences between the models.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_8",
+      "tags": [
+        "R-squared",
+        "Coefficient of Determination",
+        "Model Fit"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is comparing two multiple regression models predicting customer churn. Model A uses 3 predictors and has an $R^2$ of 0.65. Model B uses 7 predictors and has an $R^2$ of 0.70. Given only this information, what is the most likely reason why simply choosing Model B based on its higher $R^2$ might be a poor decision?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Model B is guaranteed to have a lower adjusted $R^2$ than Model A.",
+        "B": "Model B is necessarily a better model because it explains more variance in the data.",
+        "C": "Model B might be overfitting the data by including irrelevant predictors, leading to poor performance on new data.",
+        "D": "Model A is more likely to be overfitting since it has fewer predictors."
+      },
+      "correct_answer": "Model B might be overfitting the data by including irrelevant predictors, leading to poor performance on new data.",
+      "explanation": "In this scenario, Model B has a higher $R^2$ but also more predictors than Model A. Because $R^2$ increases with the number of predictors, choosing Model B solely on $R^2$ could lead to overfitting. The correct answer is C because it acknowledges the risk of overfitting. Option A is incorrect as we don't know the adjusted $R^2$ values. Option B incorrectly assumes a higher $R^2$ always means a better model. Option D is the opposite of the truth; it's the model with *more* predictors that risks overfitting.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_9",
+      "tags": [
+        "R-squared",
+        "Model Comparison",
+        "Overfitting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An analyst is building a multiple regression model to predict sales revenue. They have two models: Model 1 with 4 predictors and an $R^2$ of 0.82, and Model 2 with 6 predictors and an $R^2$ of 0.85. How would you apply the concept of $R^2$ to compare these models, considering the potential for overfitting?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Select Model 2 because it has a higher $R^2$, indicating a better fit to the data.",
+        "B": "Calculate the Adjusted $R^2$ for both models and choose the model with the higher Adjusted $R^2$.",
+        "C": "Select Model 1 because it has fewer predictors, making it less prone to overfitting.",
+        "D": "Choose the model with the smallest sum of squared errors (SSE)."
+      },
+      "correct_answer": "Calculate the Adjusted $R^2$ for both models and choose the model with the higher Adjusted $R^2$.",
+      "explanation": "In this scenario, the analyst needs to compare two models with different numbers of predictors. Since R-squared increases with more predictors, Adjusted R-squared is the appropriate metric. Adjusted R-squared penalizes the inclusion of irrelevant predictors. Therefore, the best approach is to calculate and compare the Adjusted R-squared values. Option B is the correct answer. Option A is wrong because it relies on the raw R-squared. Option C might be true, but isn't guaranteed. Option D is related to R-squared, but not the best way to compare these models.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_9",
+      "tags": [
+        "R-squared",
+        "Model Comparison",
+        "Overfitting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher is developing a model to predict customer satisfaction. They start with a simple model using only 'product quality' as a predictor, resulting in an $R^2$ of 0.45. They then add 'customer service rating' to the model, and the $R^2$ increases to 0.50. Which of the following statements best describes what might happen if the researcher continues to add more predictors to the model, regardless of their relevance?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The $R^2$ will likely decrease as more irrelevant predictors are added.",
+        "B": "The $R^2$ will likely remain constant, as irrelevant predictors have no impact.",
+        "C": "The $R^2$ will likely continue to increase, potentially leading to overfitting.",
+        "D": "The $R^2$ will likely fluctuate randomly, making it impossible to draw any conclusions."
+      },
+      "correct_answer": "The $R^2$ will likely continue to increase, potentially leading to overfitting.",
+      "explanation": "In this scenario, the researcher is adding more predictors to a model. R-squared tends to increase or stay the same as more predictors are added, regardless of their relevance. This can lead to overfitting. Therefore, the correct answer is C. Option A is incorrect because R-squared rarely decreases with added predictors. Option B is incorrect because R-squared is affected by predictor count. Option D is incorrect because the trend is predictable.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_9",
+      "tags": [
+        "R-squared",
+        "Model Comparison",
+        "Overfitting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing analyst is building a model to predict website conversion rates. Model X includes only 'website load time' as a predictor and has an $R^2$ of 0.30. Model Y includes 'website load time,' 'number of images on the homepage,' and 'average session duration,' and has an $R^2$ of 0.35. Which of the following is the *most* important consideration when deciding whether Model Y is superior to Model X?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Ensuring that the $R^2$ of Model Y is statistically significant.",
+        "B": "Verifying that all predictors in Model Y are highly correlated with each other.",
+        "C": "Determining if the increase in $R^2$ from Model X to Model Y justifies the added complexity, using Adjusted $R^2$ or similar metrics.",
+        "D": "Confirming that the p-values for the coefficients of all predictors in Model Y are less than 0.05."
+      },
+      "correct_answer": "Determining if the increase in $R^2$ from Model X to Model Y justifies the added complexity, using Adjusted $R^2$ or similar metrics.",
+      "explanation": "In this scenario, the analyst is comparing two models with different numbers of predictors. The key is to determine if the added complexity of Model Y is justified by the increase in R-squared. Using Adjusted R-squared or similar metrics allows for this comparison by penalizing the addition of irrelevant predictors. Therefore, the correct answer is C. Option A is necessary but not sufficient. Option B is incorrect because multicollinearity is undesirable. Option D focuses on individual significance, not the overall model comparison.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_9",
+      "tags": [
+        "R-squared",
+        "Model Comparison",
+        "Overfitting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate analyst is building a multiple regression model to predict housing prices in a city. They have created a model with 10 predictors, including factors like square footage, number of bedrooms, and location. The model has a high $R^2$ value of 0.92. What is a potential problem with relying solely on this $R^2$ value to assess the model's performance?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The $R^2$ value is likely underestimated due to the presence of multicollinearity.",
+        "B": "The $R^2$ value does not account for the number of predictors in the model and may be artificially inflated.",
+        "C": "A high $R^2$ value always indicates that the model is a good fit for the data and will generalize well to new data.",
+        "D": "The $R^2$ value is only meaningful if the predictors are perfectly uncorrelated with each other."
+      },
+      "correct_answer": "The $R^2$ value does not account for the number of predictors in the model and may be artificially inflated.",
+      "explanation": "In this scenario, the analyst has a model with many predictors and a high R-squared. R-squared tends to increase with more predictors, even if some are irrelevant, potentially inflating the R-squared value. This means the model may be overfitting. Therefore, the correct answer is B. Option A is incorrect as multicollinearity reduces the *reliability* of the coefficients, not necessarily the R-squared. Option C is incorrect because a high R-squared doesn't guarantee good generalization. Option D is incorrect because perfect uncorrelation isn't required.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_9",
+      "tags": [
+        "R-squared",
+        "Model Comparison",
+        "Overfitting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is comparing two regression models predicting customer lifetime value. Model A includes 3 predictors and has an Adjusted R-squared of 0.55. Model B includes 6 predictors and has an Adjusted R-squared of 0.60. Given this information, what can you conclude about the models?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Model A is definitely a better model because it uses fewer predictors.",
+        "B": "Model B is definitely a better model because it has a higher Adjusted R-squared.",
+        "C": "Model B is overfitting the data since it has more predictors.",
+        "D": "Based solely on the Adjusted R-squared, Model B appears to be a better model, but further analysis might be needed."
+      },
+      "correct_answer": "Based solely on the Adjusted R-squared, Model B appears to be a better model, but further analysis might be needed.",
+      "explanation": "In this scenario, Model B has a higher Adjusted R-squared than Model A. The Adjusted R-squared accounts for the number of predictors. Therefore, Model B *appears* better, but further checks are beneficial. Option D is the correct answer. Option A is incorrect because Adjusted R-squared already accounts for the number of predictors. Option B is too definitive without further checks. Option C cannot be concluded with this information.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_10",
+      "tags": [
+        "Adjusted R-squared",
+        "Model Evaluation",
+        "Overfitting",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An analyst is building a model to predict house prices. They start with a simple model including only square footage and get an R-squared of 0.6. Adding the number of bedrooms increases the R-squared to 0.65, but the Adjusted R-squared increases only slightly from 0.58 to 0.59. What does this small increase in Adjusted R-squared suggest?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The number of bedrooms is a highly significant predictor and should definitely be included.",
+        "B": "The number of bedrooms is not a very important predictor and might be overfitting the model.",
+        "C": "The number of bedrooms is causing multicollinearity and should be removed.",
+        "D": "The model is now perfectly fit to the data and no further predictors should be added."
+      },
+      "correct_answer": "The number of bedrooms is not a very important predictor and might be overfitting the model.",
+      "explanation": "In this scenario, adding the number of bedrooms increases the R-squared but only slightly increases the Adjusted R-squared. This suggests the variable doesn't add much explanatory power and could be overfitting the model. Therefore, the correct answer is B. Option A is incorrect because Adjusted R-squared increased only slightly. Option C might be true, but can't be concluded. Option D is never true.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_10",
+      "tags": [
+        "Adjusted R-squared",
+        "Model Evaluation",
+        "Overfitting",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing team is building a regression model to predict sales based on advertising spend across different channels. They have two models: Model 1 with TV and radio advertising, and Model 2 which adds social media advertising. While the R-squared increases from 0.70 to 0.73 with the addition of social media advertising, the Adjusted R-squared decreases from 0.68 to 0.67. What does this *decrease* in Adjusted R-squared indicate?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Social media advertising is definitely a significant predictor of sales.",
+        "B": "Social media advertising is likely not a significant predictor of sales and is overfitting the model.",
+        "C": "The model is now perfectly fit to the data and no further predictors should be added.",
+        "D": "There is a problem with the data collection process."
+      },
+      "correct_answer": "Social media advertising is likely not a significant predictor of sales and is overfitting the model.",
+      "explanation": "In this scenario, the Adjusted R-squared decreases with the addition of social media advertising. This indicates the added predictor does not significantly improve the model's explanatory power and is likely overfitting the data. Therefore, the correct answer is B. Option A is the opposite of the truth. Option C is never true. Option D is possible, but less likely than B.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_10",
+      "tags": [
+        "Adjusted R-squared",
+        "Model Evaluation",
+        "Overfitting",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An economist is building a model to predict GDP growth using several economic indicators. The initial model includes inflation and unemployment rates. Adding interest rates increases the R-squared from 0.80 to 0.83. How would the economist apply the Adjusted R-squared to determine if adding interest rates is truly beneficial to the model?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "If the Adjusted R-squared increases significantly, then adding interest rates is beneficial.",
+        "B": "If the Adjusted R-squared remains the same or decreases, then adding interest rates is not beneficial and may be overfitting the model.",
+        "C": "If the Adjusted R-squared is greater than the R-squared, then adding interest rates is beneficial.",
+        "D": "If the p-value for the interest rate coefficient is less than 0.05, then adding interest rates is beneficial."
+      },
+      "correct_answer": "If the Adjusted R-squared remains the same or decreases, then adding interest rates is not beneficial and may be overfitting the model.",
+      "explanation": "In this scenario, the economist needs to determine if adding interest rates improves the model. If the Adjusted R-squared remains the same or decreases, it suggests the new variable doesn't add sufficient explanatory power to justify its inclusion. Therefore, the correct answer is B. Option A is incorrect, as a significant increase is necessary. Option C is incorrect, as Adjusted R-squared is *always* lower or equal to R-squared. Option D focuses on individual significance, not model improvement.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_10",
+      "tags": [
+        "Adjusted R-squared",
+        "Model Evaluation",
+        "Overfitting",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is building a model to predict customer satisfaction scores. They have a model with an R-squared of 0.75 and an Adjusted R-squared of 0.70. They are considering adding three more predictors to the model. What outcome of the Adjusted R-squared would definitively indicate that these additional predictors are *not* improving the model's predictive power?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The Adjusted R-squared increases to 0.78.",
+        "B": "The Adjusted R-squared remains at 0.70.",
+        "C": "The Adjusted R-squared decreases to 0.65.",
+        "D": "Any increase in the Adjusted R-squared, no matter how small."
+      },
+      "correct_answer": "The Adjusted R-squared decreases to 0.65.",
+      "explanation": "In this scenario, a decrease in Adjusted R-squared definitively indicates that the added predictors are not improving the model, and may be overfitting the data. A decrease shows the model is becoming less efficient, not more. Therefore, the correct answer is C. Option A and D indicate improvement. Option B means no change, so inconclusive.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_10",
+      "tags": [
+        "Adjusted R-squared",
+        "Model Evaluation",
+        "Overfitting",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A researcher runs a multiple regression to predict student exam scores based on hours studied, attendance, and prior GPA. The Global F-Test results in a p-value of 0.06. How should the researcher interpret this result?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The overall model is statistically significant, and the researcher can proceed to interpret the individual coefficients.",
+        "B": "The overall model is not statistically significant, and the researcher should not interpret the individual coefficients.",
+        "C": "Only the intercept of the model is statistically significant.",
+        "D": "The researcher should increase the sample size to achieve statistical significance."
+      },
+      "correct_answer": "The overall model is not statistically significant, and the researcher should not interpret the individual coefficients.",
+      "explanation": "In this scenario, the Global F-Test p-value is 0.06, exceeding the common significance level of 0.05. This means the overall model lacks significant explanatory power. Therefore, interpreting individual coefficients is inappropriate. Option B is the correct answer. Option A is incorrect because the p-value exceeds the significance level. Option C is incorrect and makes an untrue statement. Option D might help, but not guaranteed.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_11",
+      "tags": [
+        "Global F-Test",
+        "ANOVA",
+        "Hypothesis Testing",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing analyst builds a multiple regression model to predict sales based on advertising spend across different channels: TV, radio, and online. The Global F-Test results in a p-value of 0.001. Which of the following is the most appropriate next step?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Conclude that advertising spend has no impact on sales.",
+        "B": "Examine the individual t-tests for each advertising channel to determine which ones significantly predict sales.",
+        "C": "Adjust the significance level to 0.10 and rerun the Global F-Test.",
+        "D": "Remove all insignificant predictors and rerun the Global F-Test."
+      },
+      "correct_answer": "Examine the individual t-tests for each advertising channel to determine which ones significantly predict sales.",
+      "explanation": "In this scenario, the Global F-Test is significant (p-value = 0.001). This means the overall model has explanatory power. The next step is to examine the individual t-tests to determine which specific channels significantly predict sales. Therefore, the correct answer is B. Option A is wrong, as the model *is* significant. Option C is generally bad practice. Option D is premature; check individual tests first.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_11",
+      "tags": [
+        "Global F-Test",
+        "ANOVA",
+        "Hypothesis Testing",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An economist develops a regression model to predict a country's GDP based on several factors, including education level, infrastructure investment, and trade balance. The Global F-Test yields a high p-value (e.g., 0.8). What does this high p-value suggest about the model?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The model is highly significant and can be used to make accurate predictions.",
+        "B": "The model, as a whole, does not have significant explanatory power and should be re-evaluated.",
+        "C": "Each individual predictor in the model is highly significant.",
+        "D": "There is strong evidence of multicollinearity among the predictors."
+      },
+      "correct_answer": "The model, as a whole, does not have significant explanatory power and should be re-evaluated.",
+      "explanation": "In this scenario, the Global F-Test has a high p-value, meaning the model as a whole does not have significant explanatory power. Thus, it should be re-evaluated. Option B is the correct answer. Option A is the opposite of the truth. Option C is not guaranteed, and cannot be reached without a significant F-Test. Option D may be present, but F-test result is the main issue.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_11",
+      "tags": [
+        "Global F-Test",
+        "ANOVA",
+        "Hypothesis Testing",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist builds a multiple regression model to predict employee performance based on years of experience, training hours, and education level. Before analyzing the individual coefficients, what crucial step must the data scientist take to ensure the model is valid?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Check the Global F-Test to determine if the overall model is statistically significant.",
+        "B": "Examine the correlation matrix to identify potential multicollinearity issues.",
+        "C": "Standardize the predictor variables to ensure they are on the same scale.",
+        "D": "Calculate the variance inflation factor (VIF) for each predictor variable."
+      },
+      "correct_answer": "Check the Global F-Test to determine if the overall model is statistically significant.",
+      "explanation": "In this scenario, before interpreting individual coefficients, the data scientist must first verify the overall model significance using the Global F-Test. If the F-test is insignificant, the individual tests are meaningless. Therefore, the correct answer is A. Option B is important, but secondary to the F-test. Option C is a common practice, but not required for validity. Option D relates to multicollinearity, also less important than the F-test.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_11",
+      "tags": [
+        "Global F-Test",
+        "ANOVA",
+        "Hypothesis Testing",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate company is building a multiple regression model to predict house prices. The model includes square footage, number of bedrooms, and neighborhood quality as predictors. The Global F-Test is significant. However, when examining the individual coefficients, only square footage has a statistically significant t-test result. What does this suggest about the model?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The model is useless because only one predictor is significant.",
+        "B": "Only square footage is a significant predictor of house prices, given the other predictors in the model.",
+        "C": "The Global F-Test result is invalid, and the model should be discarded.",
+        "D": "The company should only use a simple linear regression model with square footage as the sole predictor."
+      },
+      "correct_answer": "Only square footage is a significant predictor of house prices, given the other predictors in the model.",
+      "explanation": "In this scenario, with a significant Global F-Test and only square footage having a significant t-test, it suggests only square footage is a significant predictor *given* the other predictors in the model. Option B is the correct answer. Option A is incorrect because the overall model *is* significant. Option C is incorrect because the F-test *is* valid. Option D might be simpler, but not necessarily better.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_11",
+      "tags": [
+        "Global F-Test",
+        "ANOVA",
+        "Hypothesis Testing",
+        "Multiple Linear Regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An analyst is building a multiple regression model to predict customer spending based on income, age, and number of children. After running the model, the t-test for the 'number of children' variable has a p-value of 0.60. How should the analyst interpret this result?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The number of children has a statistically significant effect on customer spending.",
+        "B": "The number of children has no effect on customer spending.",
+        "C": "The number of children does not have a statistically significant effect on customer spending, given that income and age are already in the model.",
+        "D": "The number of children is the only significant predictor of customer spending."
+      },
+      "correct_answer": "The number of children does not have a statistically significant effect on customer spending, given that income and age are already in the model.",
+      "explanation": "In this scenario, a t-test p-value of 0.60 exceeds the common significance level of 0.05. This means the 'number of children' is not a significant predictor *given* the other predictors. Option C is the correct answer. Option A is incorrect because the p-value exceeds the significance level. Option B is too strong a conclusion. Option D is likely incorrect.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_12",
+      "tags": [
+        "t-test",
+        "multiple regression",
+        "statistical significance",
+        "p-value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing team uses multiple regression to predict sales revenue based on advertising spend on TV, radio, and social media. The t-test for social media advertising has a p-value of 0.03. What does this p-value indicate?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Social media advertising has no impact on sales revenue.",
+        "B": "Social media advertising has a statistically significant impact on sales revenue, after accounting for TV and radio advertising.",
+        "C": "Social media advertising is the only factor influencing sales revenue.",
+        "D": "Social media advertising is perfectly correlated with TV and radio advertising."
+      },
+      "correct_answer": "Social media advertising has a statistically significant impact on sales revenue, after accounting for TV and radio advertising.",
+      "explanation": "In this scenario, a t-test p-value of 0.03 is below the common significance level of 0.05. This means social media advertising has a significant impact on sales, *given* the other predictors are in the model. Option B is the correct answer. Option A is the opposite of the truth. Option C is too strong a conclusion. Option D is about multicollinearity, not the t-test itself.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_12",
+      "tags": [
+        "t-test",
+        "multiple regression",
+        "statistical significance",
+        "p-value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An economist develops a multiple regression model to predict a country's economic growth. The model includes factors like education level, infrastructure investment, and trade balance. The t-test for education level yields a high p-value (e.g., 0.7). What is a valid interpretation of this result?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Education level is definitely not related to economic growth.",
+        "B": "Education level is a strong predictor of economic growth.",
+        "C": "Education level does not have a statistically significant effect on economic growth, given the other factors in the model.",
+        "D": "The data on education level is unreliable and should be discarded."
+      },
+      "correct_answer": "Education level does not have a statistically significant effect on economic growth, given the other factors in the model.",
+      "explanation": "In this scenario, a high p-value (0.7) for the t-test of education level means it is not a significant predictor *given* the other factors in the model. Option C is the correct answer. Option A is too strong a conclusion. Option B is the opposite of the truth. Option D is possible, but less likely than C.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_12",
+      "tags": [
+        "t-test",
+        "multiple regression",
+        "statistical significance",
+        "p-value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A data scientist is building a model to predict customer churn based on several factors. They find that the t-test for 'customer service calls' is not statistically significant (p-value > 0.05). However, they know from prior research that customer service calls are often a good indicator of churn. How should they proceed?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Immediately remove 'customer service calls' from the model to simplify it.",
+        "B": "Keep 'customer service calls' in the model, even though it is not statistically significant, because of theoretical reasons and prior research.",
+        "C": "Increase the significance level to 0.10 to make 'customer service calls' statistically significant.",
+        "D": "Collect more data on 'customer service calls' to try to achieve statistical significance."
+      },
+      "correct_answer": "Keep 'customer service calls' in the model, even though it is not statistically significant, because of theoretical reasons and prior research.",
+      "explanation": "In this scenario, even with a non-significant t-test, 'customer service calls' might be kept in the model due to theoretical reasons or prior research. Statistical significance isn't the *only* factor. Option B is the correct answer. Option A is too hasty. Option C is considered bad practice. Option D may help but doesn't address the theoretical importance.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_12",
+      "tags": [
+        "t-test",
+        "multiple regression",
+        "statistical significance",
+        "p-value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A real estate company uses multiple regression to predict house prices based on square footage, number of bedrooms, and location. They want to estimate the price range for a *specific* house that is newly listed. Which type of interval is most appropriate for this purpose?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Confidence Interval, as it provides the range for the average price of similar houses.",
+        "B": "Prediction Interval, as it provides the range for a single, new observation.",
+        "C": "Standard Error of the Estimate, as it measures the accuracy of the regression model.",
+        "D": "R-squared, as it indicates the proportion of variance explained by the model."
+      },
+      "correct_answer": "Prediction Interval, as it provides the range for a single, new observation.",
+      "explanation": "The scenario asks for the price range of a *single, newly listed* house. A Prediction Interval (PI) is designed to estimate the range for a single, new observation. A Confidence Interval (CI) estimates the range for the *average* price of similar houses, which isn't the goal here. Therefore, the PI is the correct choice. Options C and D are model evaluation metrics, not prediction intervals.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_13",
+      "tags": [
+        "prediction interval",
+        "multiple regression",
+        "forecasting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An agricultural researcher develops a regression model to predict crop yield based on rainfall, fertilizer amount, and temperature. They want to determine the range within which the *average* yield for all farms with similar conditions will fall. Which type of interval should they use?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Prediction Interval, as it accounts for the variability of individual farms.",
+        "B": "Confidence Interval, as it estimates the range for the average yield.",
+        "C": "Residual Standard Error, as it measures the spread of the residuals.",
+        "D": "Coefficient of Variation, as it measures the relative variability of the yield."
+      },
+      "correct_answer": "Confidence Interval, as it estimates the range for the average yield.",
+      "explanation": "The researcher wants to estimate the range for the *average* crop yield across all farms with similar conditions. A Confidence Interval (CI) is used to estimate the range for the population mean. A Prediction Interval (PI) is used to estimate the range for a single, new observation, which is not what the researcher is looking for. The other options are model statistics, not prediction tools.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_13",
+      "tags": [
+        "confidence interval",
+        "multiple regression",
+        "forecasting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company predicts monthly sales using advertising spend and website traffic in a multiple regression model. They calculate both a 95% Confidence Interval and a 95% Prediction Interval for next month's sales. Which interval will typically be wider, and why?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The Confidence Interval, because it only considers the uncertainty in the regression coefficients.",
+        "B": "The Prediction Interval, because it accounts for both the uncertainty in the regression coefficients and the inherent variability of a single month's sales.",
+        "C": "Both intervals will be the same width, as they both use the same level of confidence (95%).",
+        "D": "The Confidence Interval, because it is calculated using a larger sample size."
+      },
+      "correct_answer": "The Prediction Interval, because it accounts for both the uncertainty in the regression coefficients and the inherent variability of a single month's sales.",
+      "explanation": "The Prediction Interval (PI) is wider than the Confidence Interval (CI) because it accounts for both the uncertainty in estimating the population mean (like the CI) *and* the inherent variability of a single, new observation. The CI only considers the uncertainty in the estimated mean. Therefore, the PI captures more overall variation. Options A, C, and D are incorrect explanations of the difference.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_13",
+      "tags": [
+        "confidence interval",
+        "prediction interval",
+        "multiple regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A medical researcher uses a regression model to predict a patient's blood pressure based on age, weight, and sodium intake. They calculate a 99% Confidence Interval for the *average* blood pressure of all patients with similar characteristics. However, they need to know the range in which a *single, new* patient's blood pressure is likely to fall. What adjustment needs to be made?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Decrease the confidence level to 95% to narrow the interval.",
+        "B": "Calculate a Prediction Interval instead of a Confidence Interval.",
+        "C": "Increase the sample size used in the regression model.",
+        "D": "Use a one-tailed test instead of a two-tailed test."
+      },
+      "correct_answer": "Calculate a Prediction Interval instead of a Confidence Interval.",
+      "explanation": "The scenario requires estimating the range for a *single, new* patient. The Confidence Interval (CI) estimates the range for the average blood pressure. The Prediction Interval (PI) estimates the range for a single observation. Therefore, switching to a PI is the necessary adjustment. The other options don't address the fundamental difference between estimating a mean versus a single value.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_13",
+      "tags": [
+        "confidence interval",
+        "prediction interval",
+        "multiple regression"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A retail chain uses multiple regression to predict store sales based on location demographics and advertising spend. They have a 95% confidence interval of $100,000-$120,000 for the *average* sales of stores in a specific demographic area, with a specific ad spend. They mistakenly interpret this interval as the range within which *any* individual store in that area will fall. What is the most likely consequence of this misinterpretation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "They will overestimate the variability of sales across stores.",
+        "B": "They will underestimate the variability of sales across stores.",
+        "C": "They will accurately predict the sales for all stores in the area.",
+        "D": "The misinterpretation will have no significant impact on their sales predictions."
+      },
+      "correct_answer": "They will underestimate the variability of sales across stores.",
+      "explanation": "The Confidence Interval (CI) provides a range for the *average* sales, which is a narrower range than the range for individual stores. By interpreting the CI as the range for individual stores, they are failing to account for the individual store variation. This leads to an underestimation of the true variability. Option A is the opposite of what would happen. Options C and D are incorrect as the interpretation is definitely flawed.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "DAA_lec_4_13",
+      "tags": [
+        "confidence interval",
+        "prediction interval",
+        "multiple regression"
+      ]
+    }
+  ]
+}

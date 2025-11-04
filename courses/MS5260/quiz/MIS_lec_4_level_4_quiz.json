@@ -1,0 +1,1360 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-04T12:51:35.468090",
+    "total_questions": 53,
+    "course_name": "Management Information Systems",
+    "course_id": "MS5260",
+    "course_code": "MIS",
+    "textbook_reference": "Management Information Systems: Managing the Digital Firm by Laudon & Laudon",
+    "lecture": "MIS_lec_4",
+    "difficulty_level": 4,
+    "source_flashcards": 34
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "A small non-profit organization, \"Books for All,\" initially managed its book inventory using a shared spreadsheet. As they expanded, managing donations, tracking book locations, and generating reports became increasingly difficult. The spreadsheet's limitations led to data inconsistencies, errors in inventory counts, and delays in fulfilling book requests. Synthesizing the limitations of spreadsheets (MIS_lec_4_1) with the importance of data integrity and consistency (covered in data quality lectures), what is the most critical root cause of Books for All's operational challenges?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The lack of real-time collaboration features in the spreadsheet, hindering simultaneous updates by multiple volunteers.",
+        "B": "The absence of automated reporting and analytics capabilities, making it difficult to generate insights from the inventory data.",
+        "C": "The inherent inability of a spreadsheet to enforce data types, constraints, and relationships, leading to inconsistencies and errors.",
+        "D": "The limited storage capacity of the spreadsheet, restricting the organization's ability to scale its inventory."
+      },
+      "correct_answer": "The inherent inability of a spreadsheet to enforce data types, constraints, and relationships, leading to inconsistencies and errors.",
+      "explanation": "This is a synthesis question combining the limitations of spreadsheets (MIS_lec_4_1) and the importance of data integrity (from data quality discussions). While real-time collaboration, reporting, and storage capacity are valid concerns, the root cause lies in the spreadsheet's inability to enforce data integrity. Option A addresses a symptom (difficulty updating), not the root cause. Option B focuses on analytics, which are secondary to data integrity. Option D mentions storage capacity, which may be a future issue but isn't the current critical problem. The correct answer highlights the fundamental flaw: spreadsheets lack data validation mechanisms, leading to inconsistencies and errors, which cascade into all other problems.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_1",
+      "tags": [
+        "database",
+        "data management",
+        "information systems",
+        "data integrity",
+        "spreadsheet limitations"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A growing startup initially stored all its customer data, including contact information, purchase history, and website activity, in a single, large CSV file. As the company expanded, data processing became slow and inefficient. A data analyst proposed migrating the data to a relational database. Considering the differences between structured and unstructured data (MIS_lec_4_2) and the benefits of data warehouses (discussed in data warehousing lectures), what is the most crucial advantage of migrating this data to a relational database in this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The ability to store unstructured data like customer reviews and social media posts alongside the structured customer data.",
+        "B": "The improved data security features offered by relational databases compared to flat files like CSV.",
+        "C": "The enhanced scalability and performance for complex queries and reporting, especially when integrated with a data warehouse.",
+        "D": "The reduced storage space required for storing the data due to database compression techniques."
+      },
+      "correct_answer": "The enhanced scalability and performance for complex queries and reporting, especially when integrated with a data warehouse.",
+      "explanation": "This question synthesizes the differences between structured and unstructured data (MIS_lec_4_2) with the benefits of data warehousing. The core problem is slow data processing due to the flat file. Option A, storing unstructured data, is a valid benefit of *some* databases but isn't the *most* crucial for this scenario; the existing data is primarily structured. Option B, improved security, is a general advantage but not the primary driver in this context. Option D, reduced storage space, is a minor benefit compared to performance. The correct answer emphasizes the scalability and performance gains of a relational database *and* its ability to integrate with a data warehouse for advanced analytics, addressing the core problem of slow data processing and setting the stage for future data-driven decision-making.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_2",
+      "tags": [
+        "structured data",
+        "unstructured data",
+        "data types",
+        "data warehouse",
+        "scalability",
+        "performance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A medium-sized manufacturing company is planning to implement a new ERP system. They begin by defining the scope of the system (data planning) and gathering requirements from various departments (requirements specification). However, they allocate minimal time and resources to the conceptual and logical design phases, rushing to the physical design and implementation. Synthesizing the database planning steps (MIS_lec_4_3) with the principles of change management (covered in organizational change lectures), what is the most likely *second-order* consequence of this rushed database design approach?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Faster initial deployment of the ERP system, leading to quicker realization of benefits.",
+        "B": "Increased user adoption of the ERP system due to its rapid implementation.",
+        "C": "Reduced project costs due to the shorter design and development timeline.",
+        "D": "Higher resistance to change from employees due to a system that poorly aligns with their actual workflows and data needs, ultimately leading to project failure."
+      },
+      "correct_answer": "Higher resistance to change from employees due to a system that poorly aligns with their actual workflows and data needs, ultimately leading to project failure.",
+      "explanation": "This question combines the database planning steps (MIS_lec_4_3) with change management principles. Rushing the conceptual and logical design phases, while seemingly saving time and money initially, leads to a system that doesn't accurately reflect the business needs. Options A, B, and C present short-term, superficial benefits that ignore the long-term consequences. The correct answer highlights the second-order effect: a poorly designed system will face resistance from employees because it doesn't fit their workflows. This resistance can lead to low adoption rates, workarounds, and ultimately, project failure. The integration with change management underscores that technology adoption is as much about people and processes as it is about the technology itself.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_3",
+      "tags": [
+        "database planning",
+        "SDLC",
+        "database design",
+        "change management",
+        "ERP",
+        "resistance to change"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A consultant is designing a database for a car rental company. They identify 'Customer,' 'Vehicle,' and 'RentalAgreement' as key entities. 'Customer' has attributes like 'CustomerID,' 'Name,' and 'DriverLicenseNumber.' 'Vehicle' has attributes like 'VehicleID,' 'Make,' 'Model,' and 'LicensePlate.' 'RentalAgreement' has attributes like 'AgreementID,' 'RentalDate,' and 'ReturnDate.' However, they struggle to define the correct relationships between these entities. Synthesizing the principles of E-R modeling (MIS_lec_4_4) with the concept of normalization to reduce data redundancy (covered in database normalization lectures), which of the following relationship setups is most appropriate to avoid redundancy and ensure data integrity, assuming a customer can rent multiple vehicles and a vehicle can be rented by multiple customers?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "One-to-many relationships: Customer rents Vehicle, Vehicle is rented by Customer. RentalAgreement directly links Customer and Vehicle, storing all rental details.",
+        "B": "Many-to-many relationship between Customer and Vehicle, implemented using a junction table (RentalAgreement) that stores primary keys from both entities, along with rental-specific attributes.",
+        "C": "One-to-one relationships: Customer rents Vehicle, Vehicle is rented by Customer. RentalAgreement is embedded as an attribute within the Customer entity.",
+        "D": "No explicit relationships defined. The RentalAgreement entity contains redundant copies of customer and vehicle data."
+      },
+      "correct_answer": "Many-to-many relationship between Customer and Vehicle, implemented using a junction table (RentalAgreement) that stores primary keys from both entities, along with rental-specific attributes.",
+      "explanation": "This question combines E-R modeling (MIS_lec_4_4) with database normalization principles. The scenario requires a many-to-many relationship between Customer and Vehicle because a customer can rent multiple vehicles, and a vehicle can be rented by multiple customers. Option A is incorrect because a one-to-many relationship doesn't accurately capture the scenario and can lead to data duplication. Option C is incorrect because a one-to-one relationship is unsuitable for this scenario. Option D is the *worst* choice as it leads to significant data redundancy and violates normalization principles. The correct answer uses a junction table (RentalAgreement) to resolve the many-to-many relationship, storing only the necessary linking information (primary keys) and rental-specific attributes, thus avoiding redundancy and ensuring data integrity.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_4",
+      "tags": [
+        "E-R Model",
+        "Entity",
+        "Attribute",
+        "Relationship",
+        "Database Design",
+        "Normalization",
+        "many-to-many relationship"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A large e-commerce company is designing a database to store customer orders. They create an E-R model with 'Customer,' 'Order,' and 'Product' entities. 'Customer' has attributes like 'CustomerID,' 'Name,' and 'Address.' 'Order' has attributes like 'OrderID,' 'OrderDate,' and 'TotalAmount.' 'Product' has attributes like 'ProductID,' 'Name,' and 'Price.' However, they are unsure how to represent the relationship between 'Order' and 'Product,' given that each order can contain multiple products, and each product can be part of multiple orders. Synthesizing the principles of E-R modeling (MIS_lec_4_4) with the concept of database performance optimization through indexing (covered in database performance lectures), what is the most effective approach to model this relationship, considering the need for fast retrieval of products within an order and orders containing a specific product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Create a one-to-many relationship between 'Order' and 'Product,' with 'Product' containing a foreign key referencing 'Order.'",
+        "B": "Create a one-to-many relationship between 'Product' and 'Order,' with 'Order' containing a foreign key referencing 'Product.'",
+        "C": "Create a many-to-many relationship between 'Order' and 'Product' using a junction table (e.g., 'OrderLine') containing foreign keys to both 'Order' and 'Product,' and create indexes on the foreign key columns in the junction table.",
+        "D": "Embed the product details directly within the 'Order' entity as a nested array of product information."
+      },
+      "correct_answer": "Create a many-to-many relationship between 'Order' and 'Product' using a junction table (e.g., 'OrderLine') containing foreign keys to both 'Order' and 'Product,' and create indexes on the foreign key columns in the junction table.",
+      "explanation": "This question synthesizes E-R modeling (MIS_lec_4_4) with database performance optimization. The relationship between 'Order' and 'Product' is many-to-many. Options A and B are incorrect because they only represent a one-to-many relationship, which is insufficient. Option D is incorrect as it leads to data redundancy and violates normalization principles, also hindering efficient querying. The correct answer uses a junction table ('OrderLine') to represent the many-to-many relationship. Crucially, it also emphasizes creating indexes on the foreign key columns in the junction table. This is essential for optimizing query performance when retrieving products within an order or orders containing a specific product. The integration with indexing highlights the importance of considering performance during the database design phase.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_4",
+      "tags": [
+        "E-R Model",
+        "Entity",
+        "Attribute",
+        "Relationship",
+        "Database Design",
+        "Indexing",
+        "Performance Optimization",
+        "many-to-many relationship"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hospital is designing a new database to manage patient information and appointment scheduling. They initially modeled 'Appointment' as an entity with attributes like 'AppointmentDateTime', 'DoctorName', 'PatientName', and 'RoomNumber'. However, they are experiencing data redundancy issues, particularly with 'DoctorName' and 'PatientName', as these names are repeated for every appointment. Furthermore, querying for a doctor's schedule requires searching through all appointments. Considering the principles of E-R modeling (Lecture 4) and database normalization to reduce redundancy and improve query performance (Lecture 5), what is the *most fundamental* design flaw and its *most effective* solution?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph ER_Model {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_patient {\n        label = \"Patient Entity\";\n        Patient [label=\"Patient\", URL=\"#patient\"];\n        PatientID [label=\"PatientID\", shape=ellipse];\n        PatientName [label=\"PatientName\", shape=ellipse];\n        PatientAddress [label=\"PatientAddress\", shape=ellipse];\n        Patient -> PatientID;\n        Patient -> PatientName;\n        Patient -> PatientAddress;\n    }\n\n    subgraph cluster_appointment {\n        label = \"Appointment Entity (Initial)\";\n        Appointment [label=\"Appointment\", URL=\"#appointment\"];\n        AppointmentDateTime [label=\"AppointmentDateTime\", shape=ellipse];\n        DoctorName [label=\"DoctorName\", shape=ellipse];\n        PatientName_Apt [label=\"PatientName\", shape=ellipse];\n        RoomNumber [label=\"RoomNumber\", shape=ellipse];\n        Appointment -> AppointmentDateTime;\n        Appointment -> DoctorName;\n        Appointment -> PatientName_Apt;\n        Appointment -> RoomNumber;\n    }\n\n    subgraph cluster_doctor {\n        label = \"Doctor Entity\";\n        Doctor [label=\"Doctor\", URL=\"#doctor\"];\n        DoctorID [label=\"DoctorID\", shape=ellipse];\n        DoctorName_Doc [label=\"DoctorName\", shape=ellipse];\n        Specialty [label=\"Specialty\", shape=ellipse];\n        Doctor -> DoctorID;\n        Doctor -> DoctorName_Doc;\n        Doctor -> Specialty;\n    }\n\n    Appointment -> Patient [label=\"Has Patient\"];\n    Appointment -> Doctor [label=\"Is with Doctor\"];\n}",
+      "alt_text": "E-R diagram showing the initial 'Appointment' entity with redundant DoctorName and PatientName, and separate Patient and Doctor entities with their respective attributes.",
+      "options": {
+        "A": "The primary flaw is the lack of a primary key on the Appointment entity, leading to difficulty in uniquely identifying appointments. The solution is to add a composite primary key consisting of 'AppointmentDateTime', 'DoctorName', and 'PatientName'.",
+        "B": "The fundamental issue is that 'DoctorName' and 'PatientName' are attributes of the 'Appointment' entity, causing redundancy. The solution is to create separate 'Doctor' and 'Patient' entities and establish relationships between them and the 'Appointment' entity.",
+        "C": "The main problem is the absence of foreign keys linking 'Appointment' to 'Doctor' and 'Patient' tables, resulting in referential integrity issues. The solution is to add 'DoctorID' and 'PatientID' as foreign keys to the 'Appointment' table.",
+        "D": "The core issue is that 'AppointmentDateTime' is not granular enough, leading to potential conflicts and difficulties in scheduling. The solution is to split 'AppointmentDateTime' into separate 'AppointmentDate' and 'AppointmentTime' attributes."
+      },
+      "correct_answer": "The fundamental issue is that 'DoctorName' and 'PatientName' are attributes of the 'Appointment' entity, causing redundancy. The solution is to create separate 'Doctor' and 'Patient' entities and establish relationships between them and the 'Appointment' entity.",
+      "explanation": "This is a synthesis question combining E-R modeling (Lecture 4) and database normalization (Lecture 5). The scenario describes a classic case of redundancy caused by including entities as attributes. Option B correctly identifies this fundamental flaw and proposes the correct solution: creating separate 'Doctor' and 'Patient' entities and establishing relationships (likely one-to-many) with the 'Appointment' entity. This eliminates redundancy and improves query performance. Option A addresses a symptom (lack of primary key) but not the root cause (redundancy). Option C is a subsequent step, but not the *most fundamental* design flaw. Option D addresses a separate issue (granularity) and doesn't tackle the core redundancy problem.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_5",
+      "tags": [
+        "Entity",
+        "Attribute",
+        "E-R Model",
+        "Database Design",
+        "Normalization",
+        "Redundancy",
+        "Foreign Key"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce company is designing a database to store information about its products, customers, and orders. They are debating whether to include the customer's full address (street, city, state, zip code) directly within the 'Orders' table or to create a separate 'Addresses' table and link it to the 'Orders' table via a foreign key. Including the full address in the 'Orders' table would simplify queries and reporting, but would lead to significant data duplication as customers place multiple orders to the same address. Creating a separate 'Addresses' table would reduce duplication but would complicate queries and require joins. Synthesizing the concepts of E-R modeling (Lecture 4) and database performance optimization through denormalization (Lecture 8), which approach best balances data integrity and query performance, considering the trade-offs?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph ER_Model {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_orders_inline {\n        label = \"Orders (Inline Address)\";\n        OrdersInline [label=\"Orders\", URL=\"#orders_inline\"];\n        OrderID_Inline [label=\"OrderID\", shape=ellipse];\n        CustomerID_Inline [label=\"CustomerID\", shape=ellipse];\n        OrderDate_Inline [label=\"OrderDate\", shape=ellipse];\n        Street_Inline [label=\"Street\", shape=ellipse];\n        City_Inline [label=\"City\", shape=ellipse];\n        State_Inline [label=\"State\", shape=ellipse];\n        ZipCode_Inline [label=\"ZipCode\", shape=ellipse];\n        OrdersInline -> OrderID_Inline;\n        OrdersInline -> CustomerID_Inline;\n        OrdersInline -> OrderDate_Inline;\n        OrdersInline -> Street_Inline;\n        OrdersInline -> City_Inline;\n        OrdersInline -> State_Inline;\n        OrdersInline -> ZipCode_Inline;\n    }\n\n    subgraph cluster_orders_separate {\n        label = \"Orders (Separate Address)\";\n        OrdersSeparate [label=\"Orders\", URL=\"#orders_separate\"];\n        OrderID_Separate [label=\"OrderID\", shape=ellipse];\n        CustomerID_Separate [label=\"CustomerID\", shape=ellipse];\n        OrderDate_Separate [label=\"OrderDate\", shape=ellipse];\n        AddressID_Separate [label=\"AddressID\", shape=ellipse];\n        OrdersSeparate -> OrderID_Separate;\n        OrdersSeparate -> CustomerID_Separate;\n        OrdersSeparate -> OrderDate_Separate;\n        OrdersSeparate -> AddressID_Separate;\n    }\n\n    subgraph cluster_addresses {\n        label = \"Addresses\";\n        Addresses [label=\"Addresses\", URL=\"#addresses\"];\n        AddressID [label=\"AddressID\", shape=ellipse];\n        Street [label=\"Street\", shape=ellipse];\n        City [label=\"City\", shape=ellipse];\n        State [label=\"State\", shape=ellipse];\n        ZipCode [label=\"ZipCode\", shape=ellipse];\n        Addresses -> AddressID;\n        Addresses -> Street;\n        Addresses -> City;\n        Addresses -> State;\n        Addresses -> ZipCode;\n    }\n}",
+      "alt_text": "E-R diagram comparing two database designs: one with customer address inline within the Orders table, and another with a separate Addresses table linked to the Orders table via AddressID.",
+      "options": {
+        "A": "Including the full address in the 'Orders' table is the superior approach because it minimizes the need for joins, resulting in faster query performance, which is critical for e-commerce applications.",
+        "B": "Creating a separate 'Addresses' table is the better approach because it eliminates data duplication and ensures data integrity, which is essential for accurate reporting and compliance.",
+        "C": "The optimal approach is to include the full address in the 'Orders' table but implement database triggers to automatically update all instances of the same address whenever a customer updates their address, thus maintaining data integrity.",
+        "D": "The best approach is to create a separate 'Addresses' table but cache frequently accessed address data in the 'Orders' table to improve query performance while still maintaining data integrity for less frequently accessed addresses."
+      },
+      "correct_answer": "Creating a separate 'Addresses' table is the better approach because it eliminates data duplication and ensures data integrity, which is essential for accurate reporting and compliance.",
+      "explanation": "This is a synthesis question that combines E-R modeling principles (Lecture 4) with database performance optimization considerations, specifically denormalization (Lecture 8). While Option A highlights the performance benefits of denormalization, it ignores the significant data duplication and potential for inconsistency, which are critical concerns for an e-commerce business. Option B correctly prioritizes data integrity by creating a separate 'Addresses' table, reducing redundancy. Option C introduces complexity with database triggers, which can impact performance and are difficult to maintain. Option D attempts a hybrid approach but introduces complexities related to data consistency and cache management. The correct answer recognizes that, in this scenario, data integrity is paramount, and the performance overhead of joins is acceptable.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_5",
+      "tags": [
+        "Entity",
+        "Attribute",
+        "E-R Model",
+        "Database Design",
+        "Denormalization",
+        "Data Integrity",
+        "Query Performance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small library is setting up a database to manage its collection of books and borrowers. They have initially created an 'Item' entity to represent both books and other media (DVDs, CDs), with attributes like 'ItemID', 'Title', 'MediaType', 'Author/Director', and 'ISBN/UPC'. However, they are finding it difficult to enforce constraints specific to each media type (e.g., a book must have an ISBN, while a DVD must have a director). Also, queries to find all books by a specific author are slow because they have to filter by 'MediaType = Book'. Considering the principles of E-R modeling (Lecture 4) and the concept of database schema refinement for performance (Lecture 7), what is the most appropriate step to improve the database design?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph ER_Model {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_item_generic {\n        label = \"Item (Generic)\";\n        ItemGeneric [label=\"Item\", URL=\"#item_generic\"];\n        ItemID_Generic [label=\"ItemID\", shape=ellipse];\n        Title_Generic [label=\"Title\", shape=ellipse];\n        MediaType_Generic [label=\"MediaType\", shape=ellipse];\n        AuthorDirector_Generic [label=\"Author/Director\", shape=ellipse];\n        ISBNUPC_Generic [label=\"ISBN/UPC\", shape=ellipse];\n        ItemGeneric -> ItemID_Generic;\n        ItemGeneric -> Title_Generic;\n        ItemGeneric -> MediaType_Generic;\n        ItemGeneric -> AuthorDirector_Generic;\n        ItemGeneric -> ISBNUPC_Generic;\n    }\n\n    subgraph cluster_item_specialized {\n        label = \"Item (Specialized)\";\n        ItemSpecialized [label=\"Item\", URL=\"#item_specialized\"];\n        ItemID_Specialized [label=\"ItemID\", shape=ellipse];\n        Title_Specialized [label=\"Title\", shape=ellipse];\n        ItemSpecialized -> ItemID_Specialized;\n        ItemSpecialized -> Title_Specialized;\n    }\n\n    subgraph cluster_book {\n        label = \"Book\";\n        Book [label=\"Book\", URL=\"#book\"];\n        ISBN [label=\"ISBN\", shape=ellipse];\n        Author [label=\"Author\", shape=ellipse];\n        Book -> ISBN;\n        Book -> Author;\n        Book -> ItemSpecialized [label=\"Is a\"];\n    }\n\n    subgraph cluster_dvd {\n        label = \"DVD\";\n        DVD [label=\"DVD\", URL=\"#dvd\"];\n        Director [label=\"Director\", shape=ellipse];\n        UPC [label=\"UPC\", shape=ellipse];\n        DVD -> Director;\n        DVD -> UPC;\n        DVD -> ItemSpecialized [label=\"Is a\"];\n    }\n}",
+      "alt_text": "E-R diagram showing a comparison between a generic 'Item' entity and a specialized design with separate 'Book' and 'DVD' entities inheriting from a common 'Item' entity.",
+      "options": {
+        "A": "Add indexes to the 'Item' table on 'MediaType' and 'Author/Director' to improve query performance without changing the underlying schema.",
+        "B": "Create separate 'Book' and 'DVD' entities, each with their own specific attributes (e.g., 'ISBN' for 'Book', 'Director' for 'DVD'), and relate them to a common 'Item' entity with shared attributes like 'ItemID' and 'Title'.",
+        "C": "Add a 'Book' table and a 'DVD' table, but remove the 'Item' table altogether to avoid the overhead of managing a common entity.",
+        "D": "Add validation rules to the 'Item' entity to ensure that 'ISBN' is only populated for books and 'Director' is only populated for DVDs."
+      },
+      "correct_answer": "Create separate 'Book' and 'DVD' entities, each with their own specific attributes (e.g., 'ISBN' for 'Book', 'Director' for 'DVD'), and relate them to a common 'Item' entity with shared attributes like 'ItemID' and 'Title'.",
+      "explanation": "This is a synthesis question combining E-R modeling (Lecture 4) and database schema optimization (Lecture 7). Option B correctly addresses the problem by specializing the 'Item' entity into 'Book' and 'DVD' entities. This allows for specific constraints to be enforced on each media type and improves query performance by eliminating the need to filter by 'MediaType'. The common 'Item' entity provides a base for shared attributes. Option A only addresses the performance issue with indexing, but not the constraint enforcement problem. Option C loses the common attributes between books and DVDs, leading to more duplication. Option D attempts to enforce constraints at the application level, which is less robust and less efficient than enforcing them at the database level.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_5",
+      "tags": [
+        "Entity",
+        "Attribute",
+        "E-R Model",
+        "Database Design",
+        "Schema Refinement",
+        "Indexing",
+        "Constraints",
+        "Query Performance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university is designing a database to manage student enrollment in courses. They have an 'Enrollment' entity that links 'Student' and 'Course' entities. Initially, 'Grade' was included as an attribute of the 'Enrollment' entity. However, they now want to track the history of grades for each student in each course (e.g., if a student retakes a course). They also want to store additional information about each enrollment, such as the semester and year the student took the course. Considering the principles of E-R modeling (Lecture 4) and the benefits of temporal databases for tracking changes over time (Lecture 6), what is the most effective approach to model this?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph ER_Model {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_enrollment_initial {\n        label = \"Enrollment (Initial)\";\n        EnrollmentInitial [label=\"Enrollment\", URL=\"#enrollment_initial\"];\n        StudentID_Initial [label=\"StudentID\", shape=ellipse];\n        CourseID_Initial [label=\"CourseID\", shape=ellipse];\n        Grade_Initial [label=\"Grade\", shape=ellipse];\n        EnrollmentInitial -> StudentID_Initial;\n        EnrollmentInitial -> CourseID_Initial;\n        EnrollmentInitial -> Grade_Initial;\n    }\n\n    subgraph cluster_enrollment_history {\n        label = \"Enrollment (History)\";\n        EnrollmentHistory [label=\"Enrollment\", URL=\"#enrollment_history\"];\n        StudentID_History [label=\"StudentID\", shape=ellipse];\n        CourseID_History [label=\"CourseID\", shape=ellipse];\n        Semester [label=\"Semester\", shape=ellipse];\n        Year [label=\"Year\", shape=ellipse];\n        EnrollmentHistory -> StudentID_History;\n        EnrollmentHistory -> CourseID_History;\n        EnrollmentHistory -> Semester;\n        EnrollmentHistory -> Year;\n    }\n\n    subgraph cluster_grade_history {\n        label = \"Grade History\";\n        GradeHistory [label=\"GradeHistory\", URL=\"#grade_history\"];\n        StudentID_Grade [label=\"StudentID\", shape=ellipse];\n        CourseID_Grade [label=\"CourseID\", shape=ellipse];\n        Semester_Grade [label=\"Semester\", shape=ellipse];\n        Year_Grade [label=\"Year\", shape=ellipse];\n        Grade [label=\"Grade\", shape=ellipse];\n        GradeHistory -> StudentID_Grade;\n        GradeHistory -> CourseID_Grade;\n        GradeHistory -> Semester_Grade;\n        GradeHistory -> Year_Grade;\n        GradeHistory -> Grade;\n    }\n\n    EnrollmentHistory -> GradeHistory [label=\"Has Grade History\"];\n}",
+      "alt_text": "E-R diagram comparing an initial 'Enrollment' entity with a 'Grade' attribute, and a design with a separate 'GradeHistory' entity linked to the 'Enrollment' entity, capturing the history of grades over time.",
+      "options": {
+        "A": "Keep 'Grade' as an attribute of the 'Enrollment' entity and simply overwrite the grade whenever a student retakes the course, as only the most recent grade is relevant for graduation purposes.",
+        "B": "Create a separate 'GradeHistory' entity with attributes like 'StudentID', 'CourseID', 'Semester', 'Year', and 'Grade', and link it to the 'Enrollment' entity. The 'Enrollment' entity would store the current enrollment information.",
+        "C": "Add 'Semester' and 'Year' attributes to the 'Enrollment' entity, and create a new 'Retake' entity to track when a student retakes a course. The 'Retake' entity would store the new grade.",
+        "D": "Add 'Semester', 'Year', and 'GradeHistory' attributes as multi-valued attributes to the 'Enrollment' entity."
+      },
+      "correct_answer": "Create a separate 'GradeHistory' entity with attributes like 'StudentID', 'CourseID', 'Semester', 'Year', and 'Grade', and link it to the 'Enrollment' entity. The 'Enrollment' entity would store the current enrollment information.",
+      "explanation": "This is a synthesis question combining E-R modeling (Lecture 4) and temporal database concepts (Lecture 6). Option B provides the most effective solution by creating a separate 'GradeHistory' entity. This allows for tracking the history of grades over time, which addresses the core requirement. It also allows for storing additional information like 'Semester' and 'Year' for each grade. Option A loses the historical grade information. Option C adds complexity with a separate 'Retake' entity. Option D is not a standard relational database approach and would be difficult to query and manage.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_5",
+      "tags": [
+        "Entity",
+        "Attribute",
+        "E-R Model",
+        "Database Design",
+        "Temporal Database",
+        "Grade History",
+        "Enrollment"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software development company is designing a database to track employee skills and project assignments. They initially created an 'Employee' entity with attributes like 'EmployeeID', 'Name', and 'Skills' (a comma-separated list of skills). They also have a 'Project' entity with attributes like 'ProjectID' and 'RequiredSkills' (another comma-separated list). However, they are finding it difficult to query for employees with specific skills or to match employees to projects based on required skills. Furthermore, adding or removing a skill from an employee requires updating the 'Skills' attribute, which can lead to inconsistencies. Considering the principles of E-R modeling (Lecture 4) and the importance of data normalization for query efficiency and data integrity (Lecture 5), what is the most appropriate database design?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph ER_Model {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_employee_initial {\n        label = \"Employee (Initial)\";\n        EmployeeInitial [label=\"Employee\", URL=\"#employee_initial\"];\n        EmployeeID_Initial [label=\"EmployeeID\", shape=ellipse];\n        Name_Initial [label=\"Name\", shape=ellipse];\n        Skills_Initial [label=\"Skills\", shape=ellipse];\n        EmployeeInitial -> EmployeeID_Initial;\n        EmployeeInitial -> Name_Initial;\n        EmployeeInitial -> Skills_Initial;\n    }\n\n    subgraph cluster_project_initial {\n        label = \"Project (Initial)\";\n        ProjectInitial [label=\"Project\", URL=\"#project_initial\"];\n        ProjectID_Initial [label=\"ProjectID\", shape=ellipse];\n        RequiredSkills_Initial [label=\"RequiredSkills\", shape=ellipse];\n        ProjectInitial -> ProjectID_Initial;\n        ProjectInitial -> RequiredSkills_Initial;\n    }\n\n    subgraph cluster_employee_skills {\n        label = \"EmployeeSkills\";\n        EmployeeSkills [label=\"EmployeeSkills\", URL=\"#employee_skills\"];\n        EmployeeID_Skills [label=\"EmployeeID\", shape=ellipse];\n        SkillID_Skills [label=\"SkillID\", shape=ellipse];\n        EmployeeSkills -> EmployeeID_Skills;\n        EmployeeSkills -> SkillID_Skills;\n    }\n\n    subgraph cluster_skills {\n        label = \"Skills\";\n        Skills [label=\"Skills\", URL=\"#skills\"];\n        SkillID [label=\"SkillID\", shape=ellipse];\n        SkillName [label=\"SkillName\", shape=ellipse];\n        Skills -> SkillID;\n        Skills -> SkillName;\n    }\n\n    subgraph cluster_employee {\n        label = \"Employee\";\n        Employee [label=\"Employee\", URL=\"#employee\"];\n        EmployeeID [label=\"EmployeeID\", shape=ellipse];\n        Name [label=\"Name\", shape=ellipse];\n        Employee -> EmployeeID;\n        Employee -> Name;\n    }\n\n    subgraph cluster_project {\n        label = \"Project\";\n        Project [label=\"Project\", URL=\"#project\"];\n        ProjectID [label=\"ProjectID\", shape=ellipse];\n        ProjectName [label=\"ProjectName\", shape=ellipse];\n        Project -> ProjectID;\n        Project -> ProjectName;\n    }\n\n    subgraph cluster_project_skills {\n        label = \"ProjectSkills\";\n        ProjectSkills [label=\"ProjectSkills\", URL=\"#project_skills\"];\n        ProjectID_Skills [label=\"ProjectID\", shape=ellipse];\n        SkillID_Project [label=\"SkillID\", shape=ellipse];\n        ProjectSkills -> ProjectID_Skills;\n        ProjectSkills -> SkillID_Project;\n    }\n\n    Employee -> EmployeeSkills [label=\"Has Skills\"];\n    Skills -> EmployeeSkills [label=\"Uses Skill\"];\n    Project -> ProjectSkills [label=\"Requires Skills\"];\n    Skills -> ProjectSkills [label=\"Provides Skill\"];\n}",
+      "alt_text": "E-R diagram comparing an initial database design with comma-separated lists of skills in the Employee and Project entities, and a normalized design with separate Skills, EmployeeSkills, and ProjectSkills entities.",
+      "options": {
+        "A": "Keep the 'Skills' and 'RequiredSkills' attributes as comma-separated lists, but add indexes to the 'Employee' and 'Project' tables to improve query performance.",
+        "B": "Create a separate 'Skills' entity with attributes like 'SkillID' and 'SkillName', and create a many-to-many relationship between 'Employee' and 'Skills' using an 'EmployeeSkills' entity. Similarly, create a many-to-many relationship between 'Project' and 'Skills' using a 'ProjectSkills' entity.",
+        "C": "Create a separate 'Skills' entity and add a 'SkillsID' attribute to the 'Employee' and 'Project' entities, linking them to the 'Skills' entity.",
+        "D": "Use a NoSQL database with JSON documents to store employee and project information, allowing for flexible schema and easy querying of skills."
+      },
+      "correct_answer": "Create a separate 'Skills' entity with attributes like 'SkillID' and 'SkillName', and create a many-to-many relationship between 'Employee' and 'Skills' using an 'EmployeeSkills' entity. Similarly, create a many-to-many relationship between 'Project' and 'Skills' using a 'ProjectSkills' entity.",
+      "explanation": "This is a synthesis question combining E-R modeling (Lecture 4) and database normalization (Lecture 5). Option B provides the most appropriate database design by creating a separate 'Skills' entity and establishing many-to-many relationships with 'Employee' and 'Project' entities. This eliminates the need for comma-separated lists, improves query efficiency, and ensures data integrity. Option A only addresses performance but not the underlying data integrity issues. Option C doesn't allow for multiple skills per employee or project. Option D might be a valid alternative, but doesn't focus on relational DB design principles and normalization. The core issue is the violation of first normal form (1NF) due to the multi-valued attribute (Skills).",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_5",
+      "tags": [
+        "Entity",
+        "Attribute",
+        "E-R Model",
+        "Database Design",
+        "Normalization",
+        "Many-to-Many Relationship",
+        "Data Integrity",
+        "Query Performance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A healthcare provider is building a new patient management system. They need to store patient information, including contact details. They are considering two approaches for storing phone numbers: (1) store a single 'PhoneNumber' attribute within the 'Patient' entity, or (2) create a separate 'PhoneNumbers' entity with attributes like 'PhoneNumber', 'PhoneType' (e.g., 'Mobile', 'Home'), and link it to the 'Patient' entity via a foreign key. Storing a single phone number simplifies the database design but limits the ability to store multiple phone numbers per patient. Creating a separate 'PhoneNumbers' entity allows storing multiple numbers and their types, but adds complexity to the database design and queries. Synthesizing the principles of E-R modeling (Lecture 4) and the importance of data governance policies for ensuring data quality and completeness (Lecture 12), which approach is best, considering the need for comprehensive and accurate patient contact information?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph ER_Model {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_patient_single_phone {\n        label = \"Patient (Single Phone)\";\n        PatientSingle [label=\"Patient\", URL=\"#patient_single\"];\n        PatientID_Single [label=\"PatientID\", shape=ellipse];\n        Name_Single [label=\"Name\", shape=ellipse];\n        PhoneNumber_Single [label=\"PhoneNumber\", shape=ellipse];\n        PatientSingle -> PatientID_Single;\n        PatientSingle -> Name_Single;\n        PatientSingle -> PhoneNumber_Single;\n    }\n\n    subgraph cluster_patient_multiple_phones {\n        label = \"Patient (Multiple Phones)\";\n        PatientMultiple [label=\"Patient\", URL=\"#patient_multiple\"];\n        PatientID_Multiple [label=\"PatientID\", shape=ellipse];\n        Name_Multiple [label=\"Name\", shape=ellipse];\n        PatientMultiple -> PatientID_Multiple;\n        PatientMultiple -> Name_Multiple;\n    }\n\n    subgraph cluster_phone_numbers {\n        label = \"PhoneNumbers\";\n        PhoneNumbers [label=\"PhoneNumbers\", URL=\"#phone_numbers\"];\n        PhoneNumberID [label=\"PhoneNumberID\", shape=ellipse];\n        PhoneNumber [label=\"PhoneNumber\", shape=ellipse];\n        PhoneType [label=\"PhoneType\", shape=ellipse];\n        PhoneNumbers -> PhoneNumberID;\n        PhoneNumbers -> PhoneNumber;\n        PhoneNumbers -> PhoneType;\n    }\n\n    PatientMultiple -> PhoneNumbers [label=\"Has\"];\n}",
+      "alt_text": "E-R diagram comparing two database designs for storing patient phone numbers: one with a single phone number attribute within the Patient entity, and another with a separate PhoneNumbers entity linked to the Patient entity.",
+      "options": {
+        "A": "Store a single 'PhoneNumber' attribute within the 'Patient' entity, as this simplifies the database design and reduces the complexity of queries, which is important for system maintainability.",
+        "B": "Create a separate 'PhoneNumbers' entity with attributes like 'PhoneNumber' and 'PhoneType', and link it to the 'Patient' entity, as this allows storing multiple phone numbers per patient and provides more comprehensive contact information, aligning with data governance policies.",
+        "C": "Store a comma-separated list of phone numbers within a single 'PhoneNumber' attribute in the 'Patient' entity, as this allows storing multiple numbers without creating a separate entity.",
+        "D": "Store a single 'PhoneNumber' attribute in the 'Patient' entity, but implement a separate logging system to track changes to the phone number over time."
+      },
+      "correct_answer": "Create a separate 'PhoneNumbers' entity with attributes like 'PhoneNumber' and 'PhoneType', and link it to the 'Patient' entity, as this allows storing multiple phone numbers per patient and provides more comprehensive contact information, aligning with data governance policies.",
+      "explanation": "This is a synthesis question combining E-R modeling (Lecture 4) and data governance principles (Lecture 12). Option B provides the most effective solution by creating a separate 'PhoneNumbers' entity. This allows for storing multiple phone numbers per patient, which is crucial for comprehensive contact information in healthcare. It also enables categorizing phone numbers by type (e.g., mobile, home). This aligns with data governance policies that emphasize data completeness and accuracy. Option A simplifies the design but sacrifices data completeness. Option C violates normalization principles and makes querying difficult. Option D adds complexity with a separate logging system and doesn't address the fundamental need to store multiple phone numbers.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_5",
+      "tags": [
+        "Entity",
+        "Attribute",
+        "E-R Model",
+        "Database Design",
+        "Data Governance",
+        "Data Quality",
+        "Completeness"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small non-profit organization, \"CleanEarth,\" is designing a database to track volunteer activities and donations. They initially create a simple E-R diagram with two entities: 'Volunteer' and 'Activity'.  Each volunteer can participate in multiple activities, and each activity can have multiple volunteers.  However, they also want to record the specific date each volunteer participated in a particular activity, and the number of hours they contributed on that date.  The initial design only captures the overall participation.  They are considering adding a 'Participation' entity between 'Volunteer' and 'Activity' to capture this specific date/time information.  Considering the principles of normalization and the need to minimize data redundancy (Lecture 5), what adjustments should be made to their E-R diagram to accurately represent the volunteer participation details?",
+      "visual_type": "Graphviz",
+      "visual_code": "graph ERD {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_original {\n        label = \"Original Design\";\n        Volunteer [label=\"Volunteer\"];\n        Activity [label=\"Activity\"];\n        Volunteer -- Activity [label=\"Participates In (M:N)\"];\n    }\n\n    subgraph cluster_revised {\n        label = \"Revised Design\";\n        Volunteer2 [label=\"Volunteer\"];\n        Activity2 [label=\"Activity\"];\n        Participation [label=\"Participation\\n(Date, Hours)\"];\n        Volunteer2 -- Participation [label=\"Participates (1:M)\"];\n        Participation -- Activity2 [label=\"Involved In (1:M)\"];\n    }\n\n    cluster_original -- cluster_revised [style=dashed, arrowhead=none, constraint=false];\n}",
+      "alt_text": "Graphviz diagram showing the evolution of an ER diagram from a many-to-many relationship between Volunteer and Activity to using a Participation entity to resolve it, improving data granularity.",
+      "options": {
+        "A": "Maintain the direct 'Volunteer' to 'Activity' relationship (M:N) and add 'Date' and 'Hours' as attributes to the 'Activity' entity. This simplifies the diagram and reduces the number of entities.",
+        "B": "Create a new 'Participation' entity with 'Date' and 'Hours' attributes. Link 'Volunteer' and 'Activity' to 'Participation' using one-to-many relationships. Remove the direct 'Volunteer' to 'Activity' relationship.",
+        "C": "Add 'Date' and 'Hours' attributes to the 'Volunteer' entity. Keep the direct 'Volunteer' to 'Activity' relationship (M:N).  This allows tracking of volunteer-specific data.",
+        "D": "Remove the 'Activity' entity entirely and only use the 'Volunteer' entity with 'Date', 'Hours', and 'ActivityType' attributes. This simplifies the database design."
+      },
+      "correct_answer": "Create a new 'Participation' entity with 'Date' and 'Hours' attributes. Link 'Volunteer' and 'Activity' to 'Participation' using one-to-many relationships. Remove the direct 'Volunteer' to 'Activity' relationship.",
+      "explanation": "This question synthesizes the concept of binary relationships (Lecture 4) with normalization principles (Lecture 5).  The original M:N relationship between 'Volunteer' and 'Activity' cannot directly store the specific date and hours worked *for each instance* of the participation. Option B is correct because introducing the 'Participation' entity resolves the M:N relationship into two 1:M relationships, allowing 'Date' and 'Hours' to be attributes of the *relationship* itself. This avoids redundancy and maintains data integrity, aligning with normalization goals. Option A leads to redundancy because the same activity might have different dates and hours for different volunteers. Options C and D fundamentally change the data model and lose critical information about the activities themselves.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_9",
+      "tags": [
+        "E-R Diagram",
+        "Binary Relationship",
+        "Database Design",
+        "Normalization",
+        "Data Redundancy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A large e-commerce company, \"ShopAll,\" initially designed their database with a direct many-to-many relationship between 'Customers' and 'Products'.  Each customer can purchase many products, and each product can be purchased by many customers.  However, they now need to track the specific purchase date, quantity purchased, and any discounts applied for each individual customer-product transaction.  The current design only captures the overall relationship.  A database developer proposes adding a 'Purchase' entity between 'Customers' and 'Products' to capture this transactional data.  However, the lead architect is concerned about performance implications due to the increased number of tables and joins required for reporting.  Considering the trade-offs between data integrity (Lecture 4) and database performance (Lecture 7), which approach best balances these competing concerns?",
+      "visual_type": "Graphviz",
+      "visual_code": "graph ERD {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_original {\n        label = \"Original Design\";\n        Customer [label=\"Customer\"];\n        Product [label=\"Product\"];\n        Customer -- Product [label=\"Purchases (M:N)\"];\n    }\n\n    subgraph cluster_revised {\n        label = \"Revised Design\";\n        Customer2 [label=\"Customer\"];\n        Product2 [label=\"Product\"];\n        Purchase [label=\"Purchase\\n(Date, Quantity, Discount)\"];\n        Customer2 -- Purchase [label=\"Makes (1:M)\"];\n        Purchase -- Product2 [label=\"Includes (1:M)\"];\n    }\n\n    cluster_original -- cluster_revised [style=dashed, arrowhead=none, constraint=false];\n}",
+      "alt_text": "Graphviz diagram showing the evolution of an ER diagram from a many-to-many relationship between Customer and Product to using a Purchase entity to resolve it, improving data granularity but potentially impacting performance.",
+      "options": {
+        "A": "Maintain the direct 'Customers' to 'Products' relationship (M:N) and add 'PurchaseDate', 'Quantity', and 'Discount' as attributes to *both* the 'Customers' and 'Products' entities. This avoids creating a new table and simplifies queries.",
+        "B": "Create a new 'Purchase' entity with 'PurchaseDate', 'Quantity', and 'Discount' attributes. Link 'Customers' and 'Products' to 'Purchase' using one-to-many relationships. Implement database indexing and query optimization techniques on the 'Purchase' table to mitigate performance concerns.",
+        "C": "Add 'PurchaseDate', 'Quantity', and 'Discount' attributes to the 'Customers' entity. Keep the direct 'Customers' to 'Products' relationship (M:N). This prioritizes reporting speed for customer-specific data.",
+        "D": "Remove the 'Products' entity entirely and only use the 'Customers' entity with 'PurchaseDate', 'Quantity', 'Discount', and 'ProductName' attributes. This greatly simplifies the database and improves performance."
+      },
+      "correct_answer": "Create a new 'Purchase' entity with 'PurchaseDate', 'Quantity', and 'Discount' attributes. Link 'Customers' and 'Products' to 'Purchase' using one-to-many relationships. Implement database indexing and query optimization techniques on the 'Purchase' table to mitigate performance concerns.",
+      "explanation": "This question requires synthesizing the concept of binary relationships (Lecture 4) and the importance of query optimization for performance (Lecture 7). While option B increases the number of tables, it's the *only* choice that correctly captures the transaction-specific data *without redundancy* while opening the door to performance optimization. Options A, C, and D introduce significant data redundancy and violate normalization principles, leading to potential inconsistencies and difficulties in reporting. The key is to recognize that the 'Purchase' entity represents the *relationship* itself and requires its own attributes. The performance hit can be mitigated using indexing and query optimization. This illustrates a common trade-off: data integrity vs. performance, where the best solution balances both.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_9",
+      "tags": [
+        "E-R Diagram",
+        "Binary Relationship",
+        "Database Design",
+        "Normalization",
+        "Data Redundancy",
+        "Query Optimization",
+        "Database Performance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company, \"CodeCraft,\" is designing a database to manage projects, employees, and their assigned tasks. They establish a binary relationship between 'Employee' and 'Project' indicating which employees are assigned to which projects. They also have a separate 'Task' entity. Initially, they define a one-to-many relationship between 'Project' and 'Task', meaning each project has multiple tasks. However, they realize that some tasks require specific expertise that only certain employees possess, and they want to track which employee is responsible for which specific task within a project. The original ER diagram doesn't capture this employee-task assignment explicitly within the project context. Given this scenario, and considering the principles of data modeling and relationship cardinality (Lecture 4), how should CodeCraft modify their ER diagram to accurately represent the assignment of employees to specific tasks within projects?",
+      "visual_type": "Graphviz",
+      "visual_code": "graph ERD {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_original {\n        label = \"Original Design\";\n        Employee [label=\"Employee\"];\n        Project [label=\"Project\"];\n        Task [label=\"Task\"];\n        Employee -- Project [label=\"Assigned To (M:N)\"];\n        Project -- Task [label=\"Includes (1:M)\"];\n    }\n\n    subgraph cluster_revised {\n        label = \"Revised Design\";\n        Employee2 [label=\"Employee\"];\n        Project2 [label=\"Project\"];\n        Task2 [label=\"Task\"];\n        Assignment [label=\"Assignment\"];\n        Employee2 -- Assignment [label=\"Performs (1:M)\"];\n        Assignment -- Task2 [label=\"Is (1:M)\"];\n        Assignment -- Project2 [label=\"Part Of (1:M)\"];\n        Project2 -- Task2 [label=\"Includes (1:M)\"];\n    }\n\n    cluster_original -- cluster_revised [style=dashed, arrowhead=none, constraint=false];\n}",
+      "alt_text": "Graphviz diagram showing an ER diagram evolving from a many-to-many relationship between Employee and Project with a one-to-many relationship between Project and Task, to a revised design with an Assignment entity linking Employees, Tasks, and Projects.",
+      "options": {
+        "A": "Add an 'EmployeeID' attribute to the 'Task' entity, indicating the employee assigned to the task. Maintain the existing relationships.",
+        "B": "Establish a direct many-to-many relationship between 'Employee' and 'Task', bypassing the 'Project' entity altogether. This simplifies the model.",
+        "C": "Create a new 'Assignment' entity. Link 'Employee', 'Project', and 'Task' to 'Assignment' using one-to-many relationships. This allows tracking the specific employee assigned to a specific task within a specific project.",
+        "D": "Remove the 'Task' entity and add task-related attributes (e.g., 'TaskDescription', 'AssignedEmployeeID') directly to the 'Project' entity. This reduces the number of entities in the database."
+      },
+      "correct_answer": "Create a new 'Assignment' entity. Link 'Employee', 'Project', and 'Task' to 'Assignment' using one-to-many relationships. This allows tracking the specific employee assigned to a specific task within a specific project.",
+      "explanation": "This question combines the concept of binary relationships (Lecture 4) with the need to accurately model complex relationships between multiple entities. Option C is the *only* correct choice because it introduces an associative entity ('Assignment') to capture the ternary relationship between 'Employee', 'Project', and 'Task'. This allows tracking *who* is doing *what* *within which project*. Option A only links an employee to a task but doesn't explicitly tie it to a specific project. Option B loses the project context entirely. Option D overloads the 'Project' entity and violates normalization principles, leading to redundancy and potential data inconsistencies. The key is recognizing that the assignment is a separate *relationship* that needs its own entity to hold the specific connections between the three core entities.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_9",
+      "tags": [
+        "E-R Diagram",
+        "Binary Relationship",
+        "Database Design",
+        "Ternary Relationship",
+        "Associative Entity",
+        "Cardinality"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A healthcare provider, \"MediTrack,\" is designing a database to store patient information, including demographics and medical history. They initially designed a 1:1 relationship between the 'Patient' entity and a separate 'PatientProfile' entity. The 'Patient' entity stores basic information (PatientID, Name, DOB), while 'PatientProfile' stores more detailed information (Address, Insurance, EmergencyContact). However, during a security audit, concerns arise about the sensitivity of the data stored in 'PatientProfile' and the need to implement stricter access controls based on user roles (e.g., nurses vs. doctors). Considering database security (Lecture 6) and the existing 1:1 relationship (Lecture 4), what is the *most* appropriate strategy to enhance data security while maintaining data integrity?",
+      "visual_type": "Graphviz",
+      "visual_code": "graph ERD {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_original {\n        label = \"Original Design\";\n        Patient [label=\"Patient\\n(PatientID, Name, DOB)\"];\n        PatientProfile [label=\"PatientProfile\\n(Address, Insurance, EmergencyContact)\"];\n        Patient -- PatientProfile [label=\"Has Profile (1:1)\"];\n    }\n\n    subgraph cluster_revised {\n        label = \"Revised Design\";\n        Patient2 [label=\"Patient\\n(PatientID, Name, DOB)\"];\n        PatientProfile2 [label=\"PatientProfile\\n(Address, Insurance, EmergencyContact)\"];\n        Patient2 -- PatientProfile2 [label=\"Has Profile (1:1)\"];\n        subgraph cluster_security {\n          label = \"Security Measures\";\n          AccessControls [label = \"Access Controls\\n(Role-Based)\"];\n        }\n        AccessControls -- PatientProfile2 [label=\"Applies To\"];\n\n    }\n\n    cluster_original -- cluster_revised [style=dashed, arrowhead=none, constraint=false];\n}",
+      "alt_text": "Graphviz diagram depicting an ER diagram with a one-to-one relationship between Patient and PatientProfile, and the addition of access controls for enhanced security.",
+      "options": {
+        "A": "Merge the 'Patient' and 'PatientProfile' entities into a single 'Patient' entity to simplify the database and reduce the attack surface.",
+        "B": "Maintain the 1:1 relationship but implement encryption on the entire 'PatientProfile' table. Only authorized users with decryption keys can access the data.",
+        "C": "Maintain the 1:1 relationship and implement Role-Based Access Control (RBAC) on the 'PatientProfile' entity, granting different permissions to different user roles (e.g., nurses can view addresses, doctors can view insurance details).",
+        "D": "Remove the 'PatientProfile' entity and store all patient information directly in the 'Patient' entity. Implement data masking on sensitive attributes to prevent unauthorized access."
+      },
+      "correct_answer": "Maintain the 1:1 relationship and implement Role-Based Access Control (RBAC) on the 'PatientProfile' entity, granting different permissions to different user roles (e.g., nurses can view addresses, doctors can view insurance details).",
+      "explanation": "This question requires synthesizing the concept of 1:1 relationships (Lecture 4) with database security principles, specifically Role-Based Access Control (RBAC) from Lecture 6. Option C is the *most* appropriate because it leverages the existing 1:1 relationship to isolate sensitive data within 'PatientProfile' and then applies RBAC to control *who* can access *which* parts of the profile. This allows for granular access control and minimizes the risk of unauthorized data access. Option A eliminates the granularity of control. Option B is a good *start* but lacks the role-based granularity needed for a complex healthcare environment. Option D loses the benefits of the separate entity, making it harder to manage access and potentially exposing more data than necessary. The key is to leverage the existing data model to *enhance*, not hinder, security.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_11",
+      "tags": [
+        "One-to-One",
+        "Binary Relationship",
+        "Cardinality",
+        "Database Security",
+        "Role-Based Access Control",
+        "Encryption"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university is designing a database to track students and their enrollment in courses. They establish a 1:1 relationship between the 'Student' entity and a separate 'StudentRecord' entity. 'Student' contains basic student information (StudentID, Name, Major), while 'StudentRecord' stores academic history (GPA, CreditsEarned, GraduationDate). The DBA notices that while *most* students have a 'StudentRecord', newly admitted students might not have one created immediately. Moreover, the 'StudentRecord' is only ever accessed *in conjunction* with the 'Student' data. Given this scenario, and considering the principles of cardinality (Lecture 4) and database performance (Lecture 7), what is the *most* appropriate database design decision?",
+      "visual_type": "Graphviz",
+      "visual_code": "graph ERD {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_original {\n        label = \"Original Design\";\n        Student [label=\"Student\\n(StudentID, Name, Major)\"];\n        StudentRecord [label=\"StudentRecord\\n(GPA, CreditsEarned, GraduationDate)\"];\n        Student -- StudentRecord [label=\"Has Record (1:1)\"];\n    }\n\n    subgraph cluster_revised {\n        label = \"Revised Design\";\n        Student2 [label=\"Student\\n(StudentID, Name, Major,\\nGPA, CreditsEarned, GraduationDate)\"];\n    }\n\n    cluster_original -- cluster_revised [style=dashed, arrowhead=none, constraint=false];\n}",
+      "alt_text": "Graphviz diagram illustrating the evolution of an ER diagram from a one-to-one relationship between Student and StudentRecord entities to a consolidated Student entity.",
+      "options": {
+        "A": "Maintain the 1:1 relationship between 'Student' and 'StudentRecord'. It is good practice to separate the data for clarity.",
+        "B": "Change the relationship to 1:M between 'Student' and 'StudentRecord', allowing a student to have multiple records over time. This captures historical academic data.",
+        "C": "Merge the 'Student' and 'StudentRecord' entities into a single 'Student' entity. This simplifies queries and improves performance, especially given the frequent joint access and the *optional* nature of the 'StudentRecord'.",
+        "D": "Remove the 'StudentRecord' entity and create a separate 'AuditLog' table to track changes to student academic history. This provides a complete audit trail."
+      },
+      "correct_answer": "Merge the 'Student' and 'StudentRecord' entities into a single 'Student' entity. This simplifies queries and improves performance, especially given the frequent joint access and the *optional* nature of the 'StudentRecord'.",
+      "explanation": "This question requires synthesizing the concept of a 1:1 relationship (Lecture 4) with principles of database performance and design (Lecture 7). Option C is the *most* appropriate. Since the 'StudentRecord' is almost *always* accessed with the 'Student' data and is *optional* for new students, merging the entities simplifies queries and avoids unnecessary joins, improving performance. Further, the optional nature of the record suggests that the relationship isn't truly *mandatory* in both directions, weakening the argument for a separate entity. Option A ignores the performance benefits of merging and the optionality. Option B fundamentally changes the data model and doesn't address the core issue of frequent joint access. Option D introduces complexity (AuditLog) that is likely unnecessary given the described use case. The key is recognizing that in this specific edge case, the benefits of a separate entity are outweighed by the performance gains of merging.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_12",
+      "tags": [
+        "database",
+        "relationship",
+        "one-to-one",
+        "data modeling",
+        "database performance",
+        "cardinality"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small library uses a database to manage books and members. Initially, they define a 1:1 relationship between 'Member' and 'LibraryCard'. Each member has one library card, and each library card belongs to one member. However, they want to implement a system where members can have *multiple* library cards (e.g., a standard card and a special card for accessing rare books). They are also considering integrating an online borrowing system that tracks when each card is used to borrow a book. The current 1:1 relationship restricts this functionality.  Considering cardinality constraints (Lecture 4) and the need to track borrowing history for *each* card (requiring a linking table), how should the library modify the relationship between 'Member' and 'LibraryCard'?",
+      "visual_type": "Graphviz",
+      "visual_code": "graph ERD {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    subgraph cluster_original {\n        label = \"Original Design\";\n        Member [label=\"Member\"];\n        LibraryCard [label=\"LibraryCard\"];\n        Member -- LibraryCard [label=\"Has (1:1)\"];\n    }\n\n    subgraph cluster_revised {\n        label = \"Revised Design\";\n        Member2 [label=\"Member\"];\n        LibraryCard2 [label=\"LibraryCard\"];\n        BorrowingRecord [label=\"BorrowingRecord\\n(Date, BookID)\"];\n        Member2 -- LibraryCard2 [label=\"Owns (1:M)\"];\n        LibraryCard2 -- BorrowingRecord [label=\"Used For (1:M)\"];\n    }\n\n    cluster_original -- cluster_revised [style=dashed, arrowhead=none, constraint=false];\n}",
+      "alt_text": "Graphviz diagram showing an ER diagram evolving from a one-to-one relationship between Member and LibraryCard entities to a one-to-many relationship with a BorrowingRecord entity in between.",
+      "options": {
+        "A": "Maintain the 1:1 relationship and add a 'CardType' attribute to the 'LibraryCard' entity to differentiate between card types. This avoids changing the fundamental relationship.",
+        "B": "Change the relationship to 1:M between 'Member' and 'LibraryCard', allowing a member to have multiple library cards. Create a separate 'BorrowingRecord' entity linked to 'LibraryCard' to track borrowing history for each card.",
+        "C": "Remove the 'LibraryCard' entity and add card-related attributes (e.g., 'CardNumber', 'CardType') directly to the 'Member' entity. This simplifies the database design.",
+        "D": "Establish a direct M:N relationship between 'Member' and 'Book', bypassing the 'LibraryCard' entity altogether. This focuses on the core borrowing functionality."
+      },
+      "correct_answer": "Change the relationship to 1:M between 'Member' and 'LibraryCard', allowing a member to have multiple library cards. Create a separate 'BorrowingRecord' entity linked to 'LibraryCard' to track borrowing history for each card.",
+      "explanation": "This question requires synthesizing the concept of cardinality (Lecture 4) with the need to accurately model complex relationships and track history. Option B is the *only* correct answer. Changing the relationship to 1:M allows members to have multiple cards. Furthermore, the 'BorrowingRecord' entity, linked to 'LibraryCard', is *essential* for tracking the borrowing history for *each specific card*. This accurately reflects the business requirement. Option A doesn't allow multiple cards per member. Option C loses the card as a distinct entity, making it difficult to track borrowing history *per card*. Option D ignores the card concept and its role in managing borrowing privileges. The key is recognizing that the requirement for multiple cards *and* card-specific borrowing history necessitates both a 1:M relationship *and* a linking table.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_12",
+      "tags": [
+        "database",
+        "relationship",
+        "one-to-one",
+        "data modeling",
+        "cardinality",
+        "one-to-many"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software development company, 'Code Titans,' is designing a database for its project management system. They have two entities: 'Employee' and 'Project.' Each employee can work on multiple projects, and each project can have multiple employees assigned to it. Currently, they've implemented a direct Many-to-Many relationship between these entities *without* a junction table. This causes significant data redundancy as employee details are repeated for each project they're on. During a performance review (Lecture 7), the lead developer notices slow query times when generating reports on project staffing. \n\nWhat is the *root cause* of the slow query performance, synthesizing database relationships (Lecture 4) and database performance (Lecture 7)?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The direct Many-to-Many relationship is inherently inefficient due to the lack of indexing on the combined key, leading to full table scans during report generation.",
+        "B": "The data redundancy caused by the direct Many-to-Many relationship results in larger table sizes, increasing the I/O operations required for querying and slowing down report generation.",
+        "C": "The absence of a junction table prevents the database from effectively utilizing query optimization techniques, as it cannot determine the optimal join order between 'Employee' and 'Project.'",
+        "D": "The lack of referential integrity constraints in the direct Many-to-Many relationship causes the database to perform additional validation checks during report generation, slowing down the process."
+      },
+      "correct_answer": "The data redundancy caused by the direct Many-to-Many relationship results in larger table sizes, increasing the I/O operations required for querying and slowing down report generation.",
+      "explanation": "This question synthesizes Many-to-Many relationships (Lecture 4) and database performance (Lecture 7). The *direct* M-M relationship without a junction table leads to data redundancy (Employee details repeated for each project). This redundancy bloats the tables, increasing I/O operations during queries, which is the *root cause* of the slow performance. Option A focuses on indexing, which is a valid optimization technique, but doesn't address the underlying redundancy. Option C is partially correct (join optimization is affected), but the *primary* issue is the bloated data. Option D mentions referential integrity, which is important but not the main performance bottleneck in this scenario. The core issue is the increased I/O due to redundant data, making option B the best answer.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_15",
+      "tags": [
+        "database",
+        "relationship",
+        "many-to-many",
+        "ER diagram",
+        "modeling",
+        "database performance",
+        "query optimization",
+        "data redundancy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hospital is transitioning from paper records to a digital database system. They have two entities: 'Doctor' and 'Patient.' Initially, they model the relationship as Many-to-Many, assuming that a doctor can treat many patients, and a patient can be treated by many doctors (over different visits and specializations). However, they also need to track the *primary care physician* for each patient. The CIO implements the M-M relationship using a junction table called 'Doctor_Patient' with columns `DoctorID`, `PatientID`, and `VisitDate`. However, they now struggle to efficiently identify the primary care physician for a given patient, requiring complex queries and manual filtering. They also failed to consider that the primary care physician relationship needs to be explicitly modeled, not just implied through visits. \n\nSynthesizing cardinality (Lecture 4) and data governance (Lecture 6), which approach *best* addresses the need to accurately and efficiently identify each patient's primary care physician while maintaining data integrity and adhering to data governance principles?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Maintain the Many-to-Many relationship with the 'Doctor_Patient' junction table and implement a complex stored procedure that analyzes visit history to infer the primary care physician based on visit frequency.",
+        "B": "Remove the Many-to-Many relationship and enforce a One-to-Many relationship from 'Doctor' to 'Patient.' Add a 'PrimaryDoctorID' foreign key to the 'Patient' table. Implement data validation rules to ensure each patient has exactly one primary care physician.",
+        "C": "Keep the Many-to-Many relationship but add a boolean 'IsPrimaryCare' column to the 'Doctor_Patient' junction table. Modify the application logic to enforce that only one doctor can be marked as the primary care physician for a given patient.",
+        "D": "Implement a separate 'PrimaryCarePhysician' table with columns 'PatientID' and 'DoctorID' to explicitly represent the primary care relationship, while keeping the Many-to-Many 'Doctor_Patient' table for visit history."
+      },
+      "correct_answer": "Implement a separate 'PrimaryCarePhysician' table with columns 'PatientID' and 'DoctorID' to explicitly represent the primary care relationship, while keeping the Many-to-Many 'Doctor_Patient' table for visit history.",
+      "explanation": "This question synthesizes cardinality (Lecture 4) and data governance (Lecture 6). The core problem is that the *primary care physician* relationship is distinct from the general *doctor-patient visit* relationship. Option A tries to *infer* the primary care physician, violating data governance principles (explicit vs. implicit data). Option B incorrectly suggests a 1:M relationship, which doesn't capture the many doctors a patient might see. Option C adds a boolean to the junction table, which is better than A, but still mixes two distinct relationships in one table, leading to potential inconsistencies and governance issues. The *best* solution (Option D) explicitly models the primary care relationship in a separate table, ensuring data integrity and clear governance, while retaining the M-M table for visit history. The explicit representation of the primary care relationship simplifies queries and enforces the constraint that each patient has one primary doctor, aligning with data governance principles. This avoids the ambiguity and complexity of inferring the primary care physician from visit history.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_16",
+      "tags": [
+        "database",
+        "cardinality",
+        "ER diagram",
+        "relationship",
+        "modeling",
+        "data governance",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A large online retailer is designing a database to manage its product catalog and customer orders. They have two entities: 'Customer' and 'Order.' A customer can place multiple orders, and each order belongs to one customer. The lead database architect initially implements this as a One-to-Many relationship, placing the `CustomerID` as a foreign key in the `Order` table. However, during a security audit (Lecture 8), a vulnerability is discovered: a malicious user could potentially manipulate the `CustomerID` in an `Order` record to associate it with another customer's account, gaining access to their order history. This is because the application does not properly validate that the current user owns the order before displaying it. \n\nSynthesizing One-to-Many relationships (Lecture 4) and database security (Lecture 8), what is the *most effective* approach to mitigate this security risk while maintaining the integrity of the One-to-Many relationship?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Implement row-level security in the database to restrict access to `Order` records based on the currently logged-in user's `CustomerID`, ensuring that users can only view orders associated with their own account.",
+        "B": "Remove the One-to-Many relationship and store the entire order history within the `Customer` table as a JSON field to prevent unauthorized modification of the `CustomerID` in the `Order` table.",
+        "C": "Add a digital signature to each `Order` record using the customer's private key to verify the authenticity of the `CustomerID` and prevent tampering.",
+        "D": "Implement application-level input validation to prevent users from directly modifying the `CustomerID` field in the `Order` table and enforce strict access controls based on user roles."
+      },
+      "correct_answer": "Implement row-level security in the database to restrict access to `Order` records based on the currently logged-in user's `CustomerID`, ensuring that users can only view orders associated with their own account.",
+      "explanation": "This question synthesizes One-to-Many relationships (Lecture 4) and database security (Lecture 8). The core problem is unauthorized access to order data due to a lack of proper access control. Option A directly addresses this by implementing row-level security, which is a database-level mechanism to restrict data access based on user roles and permissions. This is the *most effective* solution because it enforces security at the data layer, preventing unauthorized access even if application-level controls are bypassed. Option B (storing orders as JSON) is a *terrible* idea; it violates normalization and makes querying difficult, all while not actually fixing the security issue. Option C (digital signatures) is overly complex for this scenario and adds unnecessary overhead. Option D (application-level validation) is *necessary* but *insufficient*; it's a good first step but can be bypassed. The best solution is to enforce security at the database level with row-level security, providing a robust and reliable defense against unauthorized data access.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_14",
+      "tags": [
+        "database",
+        "foreign key",
+        "relationship",
+        "one-to-many",
+        "database security",
+        "row-level security",
+        "access control",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university is designing a database to track student enrollment in courses. They have two entities: 'Student' and 'Course.' A student can enroll in multiple courses, and a course can have multiple students enrolled. The initial design includes a junction table called 'Enrollment' with columns `StudentID` and `CourseID`. However, the university also wants to track the grade each student receives in each course. The database administrator (DBA) is debating whether to add the 'Grade' column directly to the 'Enrollment' table or create a separate table for grades. During a review with the data analytics team (Lecture 12), concerns are raised about the impact on data analysis and reporting if the 'Grade' column is added directly to the 'Enrollment' table, specifically relating to trend analysis of student performance over time.\n\nSynthesizing Many-to-Many relationships (Lecture 4) and data warehousing (Lecture 12), which approach *best* balances the need to track student grades with the requirements for efficient data analysis and reporting, minimizing data redundancy and ensuring data integrity?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Add the 'Grade' column directly to the 'Enrollment' table and create a separate materialized view for data analysis and reporting, which aggregates the grade data for efficient querying.",
+        "B": "Create a separate 'Grade' table with columns `EnrollmentID`, `Grade`, and `Semester`, linked to the 'Enrollment' table via `EnrollmentID`, allowing for historical tracking of grades and easier analysis of grade trends over time.",
+        "C": "Add the 'Grade' column directly to the 'Enrollment' table and implement a complex ETL (Extract, Transform, Load) process to periodically extract grade data into a separate data warehouse for analysis and reporting.",
+        "D": "Remove the 'Enrollment' junction table and store the enrollment information as a JSON field within the 'Student' table, including the grade for each course."
+      },
+      "correct_answer": "Create a separate 'Grade' table with columns `EnrollmentID`, `Grade`, and `Semester`, linked to the 'Enrollment' table via `EnrollmentID`, allowing for historical tracking of grades and easier analysis of grade trends over time.",
+      "explanation": "This question synthesizes Many-to-Many relationships (Lecture 4) and data warehousing (Lecture 12). The core problem is balancing the need to track grades with the requirements for efficient data analysis. Option A (materialized view) is a reasonable approach, but it still tightly couples the grade data with the enrollment data, potentially hindering more complex analyses. Option B (separate 'Grade' table) is the *best* solution because it cleanly separates the grade information into a dedicated table, allowing for historical tracking (via the 'Semester' column) and easier analysis of grade trends over time. It also avoids data redundancy and maintains data integrity. Option C (ETL to data warehouse) is overkill for this scenario; it's appropriate for very large datasets, but not necessary for simply tracking grades. Option D (JSON field) is a *terrible* idea; it violates normalization and makes querying nearly impossible. The key insight is that separating the grade data into a dedicated table provides the flexibility and efficiency needed for data analysis, making option B the best answer.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_15",
+      "tags": [
+        "database",
+        "relationship",
+        "many-to-many",
+        "ER diagram",
+        "modeling",
+        "data warehousing",
+        "data analysis",
+        "ETL"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce company, 'ShopSphere,' is designing a database for managing customer reviews of products. They have two entities: 'Customer' and 'Product.' A customer can review multiple products, and a product can be reviewed by multiple customers. They implement a Many-to-Many relationship using a junction table called 'Review' with columns `CustomerID`, `ProductID`, `ReviewText`, and `Rating`. However, they notice that some customers are posting multiple reviews for the *same* product, sometimes with conflicting ratings and comments. The chief data officer (CDO) is concerned about the impact of these duplicate reviews on the overall product rating and the credibility of the review system. The CDO tasked you to find a solution, keeping in mind that you should keep a record of all the reviews, even if they are duplicates.\n\nSynthesizing Many-to-Many relationships (Lecture 4) and data quality management (Lecture 6), which approach *best* addresses the issue of duplicate reviews while maintaining data integrity, ensuring accurate product ratings, and adhering to data quality principles?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Add a unique constraint to the 'Review' table on the combination of `CustomerID` and `ProductID` to prevent customers from posting multiple reviews for the same product.",
+        "B": "Add a 'ReviewID' primary key to the 'Review' table and implement application logic to allow customers to edit their existing reviews instead of creating new ones for the same product.",
+        "C": "Add a 'ReviewID' primary key to the 'Review' table, remove the unique constraint, and implement a data quality process that identifies and flags duplicate reviews for manual review and potential removal from the aggregated product rating.",
+        "D": "Remove the Many-to-Many relationship and store all customer reviews as a JSON field within the 'Product' table to prevent data redundancy and ensure data consistency."
+      },
+      "correct_answer": "Add a 'ReviewID' primary key to the 'Review' table, remove the unique constraint, and implement a data quality process that identifies and flags duplicate reviews for manual review and potential removal from the aggregated product rating.",
+      "explanation": "This question synthesizes Many-to-Many relationships (Lecture 4) and data quality management (Lecture 6). The core problem is managing duplicate reviews while maintaining data integrity. Option A (unique constraint) *prevents* duplicate reviews, which might not be desirable if the company wants to allow customers to update their reviews. It also loses the record of previous reviews. Option B (edit existing reviews) is a good approach for user experience, but it doesn't address the underlying data quality issue of inconsistent reviews. Option C (data quality process) is the *best* solution because it allows for duplicate reviews to be recorded (for audit trail purposes) but flags them for manual review, ensuring that they don't negatively impact the overall product rating. This approach balances the need for data integrity with the flexibility to manage potentially valid (but conflicting) reviews. Option D (JSON field) is a *terrible* idea; it violates normalization and makes querying and analysis difficult. The best solution is to allow duplicate reviews but manage their impact on data quality through a dedicated process.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_15",
+      "tags": [
+        "database",
+        "relationship",
+        "many-to-many",
+        "ER diagram",
+        "modeling",
+        "data quality management",
+        "data integrity",
+        "data redundancy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small online retailer, 'CozyCrafts,' initially designed their database without considering modality in the relationship between 'Customer' and 'Order.' Every customer *must* have an order in the database. After implementing a customer loyalty program, they want to track potential customers who haven't placed an order yet but have signed up for email updates. Synthesizing the concepts of data quality (Lecture 3) and modality (Lecture 4), what is the *most critical* consequence of not adjusting the database schema to reflect the optional relationship between 'Customer' and 'Order,' and what is the *most effective* solution?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Consequence: Reduced data quality due to inaccurate representation of real-world entities; Solution: Implement a default 'dummy' order for every new customer to satisfy the mandatory relationship.",
+        "B": "Consequence: Inability to accurately track potential customers and target marketing efforts; Solution: Modify the E-R diagram to represent the relationship as optional (modality of zero) and update the database schema to allow customers without orders.",
+        "C": "Consequence: Difficulty in generating accurate sales reports due to the inclusion of potential customers; Solution: Create a separate table for potential customers, duplicating customer information.",
+        "D": "Consequence: Increased complexity in querying customer data due to the need to filter out potential customers; Solution: Add a 'CustomerType' attribute to the 'Customer' table to distinguish between regular and potential customers."
+      },
+      "correct_answer": "Consequence: Inability to accurately track potential customers and target marketing efforts; Solution: Modify the E-R diagram to represent the relationship as optional (modality of zero) and update the database schema to allow customers without orders.",
+      "explanation": "This question synthesizes data quality (Lecture 3) and modality (Lecture 4). The initial mandatory relationship between 'Customer' and 'Order' forces 'CozyCrafts' to misrepresent potential customers, leading to inaccurate data and hindering targeted marketing. The root cause is the incorrect modality. Option A attempts to solve the problem with a 'dummy' order, which violates data integrity. Option C introduces data redundancy. Option D adds complexity and doesn't address the core issue of the incorrect relationship. The correct answer updates the E-R diagram and schema to accurately reflect the optional relationship, improving data quality and enabling effective tracking of potential customers. This approach avoids data integrity issues and allows for accurate reporting and targeted marketing.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_17",
+      "tags": [
+        "database",
+        "modality",
+        "ER diagram",
+        "relationship",
+        "modeling",
+        "data quality"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A large insurance company is designing a new database for managing customer policies. They have a complex relationship between 'Customer' and 'Policy,' where a customer can have multiple policies, and a policy can cover multiple customers (e.g., family policy). The initial E-R diagram incorrectly represents the modality of the 'Customer' to 'Policy' relationship as mandatory (minimum of one). The company later discovers that some customers are 'leads' who have registered interest but haven't purchased a policy yet. Synthesizing the concepts of business processes (Lecture 2) and modality (Lecture 4), what is the *most significant* business process impact of this incorrect modality, and what is the *most appropriate* corrective action?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Impact: Inaccurate financial forecasting due to the inclusion of leads as active customers; Action: Create a separate 'Leads' table and migrate all lead data, ignoring the incorrect modality in the main 'Customer' table.",
+        "B": "Impact: Inefficient policy processing due to the need to manually verify customer information; Action: Implement a complex validation rule to prevent the creation of policies for leads.",
+        "C": "Impact: Flawed customer relationship management (CRM) due to the inability to distinguish between leads and active customers, hindering targeted marketing efforts; Action: Modify the E-R diagram to represent the relationship as optional (modality of zero) and update the database schema accordingly.",
+        "D": "Impact: Difficulty in generating accurate reports on policy distribution due to the exclusion of leads; Action: Add a 'PolicyStatus' attribute to the 'Policy' table to distinguish between active and inactive policies."
+      },
+      "correct_answer": "Impact: Flawed customer relationship management (CRM) due to the inability to distinguish between leads and active customers, hindering targeted marketing efforts; Action: Modify the E-R diagram to represent the relationship as optional (modality of zero) and update the database schema accordingly.",
+      "explanation": "This question synthesizes business processes (Lecture 2) and modality (Lecture 4). The incorrect mandatory modality leads to a flawed CRM system, as leads are treated as active customers, hindering targeted marketing. The root cause is the incorrect modality in the E-R diagram. Option A creates data redundancy and doesn't address the core issue. Option B adds unnecessary complexity. Option D addresses policy reporting but not the broader CRM impact. The correct answer updates the E-R diagram and schema to reflect the optional relationship, enabling proper distinction between leads and active customers, and improving CRM effectiveness. This aligns the database with the actual business processes.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_17",
+      "tags": [
+        "database",
+        "modality",
+        "ER diagram",
+        "relationship",
+        "modeling",
+        "business processes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce company initially designed their database with a simplified E-R diagram, representing the relationship between 'Product' and 'Category' as many-to-many without explicitly considering intersection data. They now want to implement a feature to track the 'Promotion Start Date' and 'Promotion End Date' for products within specific categories (e.g., a 20% off sale on 'Electronics' category). Synthesizing the concepts of data mining (Lecture 12 - *hypothetical future lecture*) and intersection data (Lecture 4), what is the *most critical* database design consideration for enabling effective promotion analysis and targeted marketing, and what is the *most appropriate* solution?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Consideration: The need to accurately track promotion history for each product across different categories; Solution: Add 'PromotionStartDate' and 'PromotionEndDate' attributes directly to the 'Product' entity.",
+        "B": "Consideration: The importance of capturing the specific promotion duration for each product-category combination; Solution: Create a separate 'Promotion' table with 'ProductID,' 'CategoryID,' 'PromotionStartDate,' and 'PromotionEndDate' as attributes.",
+        "C": "Consideration: The requirement to efficiently query promotion data for targeted marketing campaigns; Solution: Add 'PromotionStartDate' and 'PromotionEndDate' attributes to the 'Category' entity.",
+        "D": "Consideration: The necessity to avoid data redundancy and maintain data integrity; Solution: Represent 'PromotionStartDate' and 'PromotionEndDate' as intersection data within the relationship between 'Product' and 'Category' using a five-sided box in the E-R diagram."
+      },
+      "correct_answer": "Consideration: The necessity to avoid data redundancy and maintain data integrity; Solution: Represent 'PromotionStartDate' and 'PromotionEndDate' as intersection data within the relationship between 'Product' and 'Category' using a five-sided box in the E-R diagram.",
+      "explanation": "This question synthesizes data mining (Lecture 12 - *hypothetical future lecture*) and intersection data (Lecture 4). Accurately tracking promotion history for data mining requires avoiding redundancy and ensuring data integrity. The root cause is the lack of explicit representation of the relationship between product promotions and categories. Option A incorrectly assigns promotion data to the 'Product' entity. Option B introduces a separate table but doesn't emphasize the relational aspect. Option C incorrectly assigns promotion data to the 'Category' entity. The correct answer represents 'PromotionStartDate' and 'PromotionEndDate' as intersection data, accurately capturing the specific promotion duration for each product-category combination and enabling effective promotion analysis for targeted marketing. This approach maintains data integrity and avoids redundancy.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_19",
+      "tags": [
+        "intersection data",
+        "many-to-many relationship",
+        "database modeling",
+        "data mining"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university is implementing a new course registration system. The initial E-R diagram represents the relationship between 'Student' and 'Course' as many-to-many, with intersection data including 'Grade' and 'EnrollmentDate', visualized with a five-sided box connected to the relationship diamond. After the first semester, the university wants to track 'Attendance' for each student in each course *session* (e.g., each lecture). Synthesizing the concepts of normalization (Lecture 5) and the representation of intersection data (Lecture 4), what is the *most critical* consideration for effectively tracking attendance data while maintaining data integrity, and what is the *most appropriate* modification to the E-R diagram?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Consideration: The need to avoid redundancy by storing attendance data directly in the 'Student' entity; Solution: Add an 'Attendance' attribute to the 'Student' entity, representing the total number of sessions attended.",
+        "B": "Consideration: The importance of capturing attendance data for each student-course session; Solution: Create a new 'Attendance' entity with attributes 'StudentID', 'CourseID', 'SessionID', and 'Attended', and establish relationships with 'Student', 'Course', and a new 'Session' entity.",
+        "C": "Consideration: The requirement to efficiently query attendance data for performance analysis; Solution: Add an 'Attendance' attribute to the existing intersection data box between 'Student' and 'Course', representing a boolean value for overall attendance.",
+        "D": "Consideration: The necessity to maintain the existing E-R diagram structure; Solution: Store attendance data in a separate spreadsheet linked to the database, avoiding modifications to the E-R diagram."
+      },
+      "correct_answer": "Consideration: The importance of capturing attendance data for each student-course session; Solution: Create a new 'Attendance' entity with attributes 'StudentID', 'CourseID', 'SessionID', and 'Attended', and establish relationships with 'Student', 'Course', and a new 'Session' entity.",
+      "explanation": "This question synthesizes normalization (Lecture 5) and the representation of intersection data (Lecture 4). Tracking attendance for each session requires a more granular approach than simply adding an attribute to the existing intersection data. The root cause is the lack of representation of individual sessions. Option A violates normalization by storing attendance data directly in the 'Student' entity. Option C doesn't capture session-specific attendance. Option D avoids database modifications but sacrifices data integrity. The correct answer creates a new 'Attendance' entity and a 'Session' entity, establishing relationships to accurately capture attendance data for each student-course session, adhering to normalization principles and maintaining data integrity. This design allows for efficient querying and analysis of attendance patterns.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_20",
+      "tags": [
+        "E-R diagram",
+        "intersection data",
+        "database design",
+        "normalization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hospital database tracks patients and doctors. The relationship 'Treats' between 'Doctor' and 'Patient' has intersection data (represented by a five-sided box) including 'Diagnosis', 'Medication', and 'Date'. The hospital now wants to implement a system to track the 'EffectivenessScore' (a rating from 1-5) of each medication for each patient, assessed *one week* after the medication is administered. Synthesizing the concepts of primary keys (Lecture 5) and intersection data representation (Lecture 4), what is the *most appropriate* modification to the E-R diagram to accurately and efficiently track medication effectiveness, and what potential issue related to key design should be considered?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Modification: Add 'EffectivenessScore' to the existing intersection data box. Key Issue: Potential for data redundancy if a patient receives the same medication multiple times for the same diagnosis.",
+        "B": "Modification: Create a new entity 'MedicationEffectiveness' with attributes 'PatientID', 'DoctorID', 'Medication', 'Date', and 'EffectivenessScore', related to the 'Treats' relationship. Key Issue: Ensuring a unique composite key for 'MedicationEffectiveness' considering the potential for multiple assessments.",
+        "C": "Modification: Add 'EffectivenessScore' to the 'Medication' entity. Key Issue: Loss of patient-specific effectiveness information.",
+        "D": "Modification: Create a separate table outside the relational database to store effectiveness scores. Key Issue: Difficulty in joining the effectiveness data with patient and treatment information for reporting."
+      },
+      "correct_answer": "Modification: Create a new entity 'MedicationEffectiveness' with attributes 'PatientID', 'DoctorID', 'Medication', 'Date', and 'EffectivenessScore', related to the 'Treats' relationship. Key Issue: Ensuring a unique composite key for 'MedicationEffectiveness' considering the potential for multiple assessments.",
+      "explanation": "This question synthesizes primary keys (Lecture 5) and intersection data representation (Lecture 4). The need to track effectiveness *over time* necessitates a separate entity to avoid redundancy and accurately capture the data. Option A leads to redundancy if the same medication is given multiple times. Option C loses patient-specific information. Option D creates data integration challenges. The correct answer creates a new 'MedicationEffectiveness' entity related to the 'Treats' relationship, allowing for accurate tracking of effectiveness scores. The key design issue is ensuring a unique composite key (PatientID, DoctorID, Medication, Date) to avoid duplicate entries if multiple assessments are performed. This design maintains data integrity and enables effective analysis of medication effectiveness.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_20",
+      "tags": [
+        "E-R diagram",
+        "intersection data",
+        "database design",
+        "primary keys"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university is designing a database to track student involvement in clubs. A student can be a member of multiple clubs, and a club can have multiple student members. Each club membership has a 'JoinDate' and a 'Role' (e.g., 'President', 'Member'). A database administrator (DBA), focusing solely on normalization, creates separate 'Students' and 'Clubs' tables and a 'StudentClubs' junction table with StudentID, ClubID, JoinDate, and Role. Later, performance issues arise during peak registration times when querying for a student's clubs and their roles. Applying your understanding of intersection data and query optimization techniques, what is the most likely root cause of the performance bottleneck?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The 'StudentClubs' table lacks a composite primary key, causing slow lookups.",
+        "B": "The database system is using an outdated query optimizer, leading to inefficient execution plans.",
+        "C": "The 'StudentClubs' table is missing an index on StudentID and ClubID, resulting in full table scans during queries.",
+        "D": "The database is not properly normalized, and the 'StudentClubs' table should be further decomposed."
+      },
+      "correct_answer": "The 'StudentClubs' table is missing an index on StudentID and ClubID, resulting in full table scans during queries.",
+      "explanation": "This is a synthesis question involving intersection data (Lecture 4) and query optimization (Lecture 7). The scenario describes a many-to-many relationship between students and clubs, correctly modeled with a junction table containing intersection data (JoinDate, Role). The performance bottleneck arises during queries. Option A is incorrect because a composite key might exist but doesn't directly address query performance. Option B is possible but less likely without other evidence of outdated software. Option D suggests further normalization, which is unnecessary given the already normalized structure. The most probable root cause is the *absence of indexes* on the columns frequently used in queries (StudentID, ClubID). Without these indexes, the database performs full table scans, leading to slow query execution, especially during peak registration times.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_21",
+      "tags": [
+        "intersection data",
+        "many-to-many relationship",
+        "data modeling example",
+        "query optimization",
+        "indexing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An online learning platform is designing a database to track students and courses. Students can enroll in multiple courses, and courses can have multiple students. The 'Enrollment' junction table includes 'Grade' and 'CompletionDate' as intersection data. The platform's data analytics team wants to analyze course completion rates and average grades per course. However, the initial database design suffers from slow query performance, especially when joining the 'Enrollment' table with 'Students' and 'Courses'. A developer, familiar with NoSQL databases (covered in Lecture 9), suggests replacing the relational database with a document-oriented NoSQL database where each course document contains embedded student enrollment data, including grades and completion dates. Analyzing the trade-offs between relational database design with intersection data and NoSQL document databases, what is the most significant potential problem with the developer's proposed solution?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The NoSQL database will not support ACID properties, leading to data inconsistencies.",
+        "B": "The NoSQL database will make it difficult to perform complex analytical queries across all courses and students.",
+        "C": "The NoSQL database will require more storage space due to data redundancy, as student information will be duplicated in each course document.",
+        "D": "The NoSQL database will not be able to handle the high volume of concurrent enrollments during peak registration periods."
+      },
+      "correct_answer": "The NoSQL database will require more storage space due to data redundancy, as student information will be duplicated in each course document.",
+      "explanation": "This is a synthesis question involving intersection data (Lecture 4) and NoSQL databases (Lecture 9). The relational database correctly uses a junction table to handle the many-to-many relationship and intersection data. The proposed NoSQL solution embeds student enrollment data *within* each course document, leading to significant data redundancy. Option A is a general concern with NoSQL but not the *most significant* problem in this specific scenario. Option B is less likely; NoSQL databases can handle complex queries, though with different techniques. Option D is also possible, but redundancy is the primary concern. The most significant drawback is the increased storage costs and potential inconsistencies arising from the duplicated student data across multiple course documents. The original relational design avoids this redundancy by centralizing student information in the 'Students' table.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_21",
+      "tags": [
+        "intersection data",
+        "many-to-many relationship",
+        "data modeling example",
+        "NoSQL",
+        "data redundancy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A social media platform allows users to follow other users. A user can follow many users, and a user can be followed by many users, creating a many-to-many relationship. The platform wants to track when a user started following another user ('FollowDate'). A junior database developer, new to the platform, suggests adding 'FollowDate' as an attribute directly to the 'Users' table. Applying your knowledge of intersection data and data normalization principles, what is the primary reason why this approach is incorrect and could lead to data integrity issues?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Adding 'FollowDate' to the 'Users' table violates the first normal form (1NF) because it introduces repeating groups.",
+        "B": "Adding 'FollowDate' to the 'Users' table creates a transitive dependency, violating the third normal form (3NF).",
+        "C": "The 'Users' table will become excessively wide, leading to performance issues when retrieving user profiles.",
+        "D": "The 'FollowDate' describes the relationship between users, not the users themselves, and should be stored in a separate junction table."
+      },
+      "correct_answer": "The 'FollowDate' describes the relationship between users, not the users themselves, and should be stored in a separate junction table.",
+      "explanation": "This is a synthesis question combining intersection data (Lecture 4) and data normalization (Lecture 4). The correct approach is to use a junction table to store attributes that describe the relationship between entities. Option A is plausible if multiple follow dates were stored in a single field, but the prompt suggests only adding one 'FollowDate', making it less applicable. Option B is irrelevant as there is no transitive dependency. Option C is a potential consequence but not the *primary* reason for the error. The fundamental issue is that 'FollowDate' describes the *relationship* (who follows whom *when*), not an attribute of the user entity itself. Therefore, it belongs in a separate junction table, not in the 'Users' table. This ensures data integrity and avoids redundancy.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_21",
+      "tags": [
+        "intersection data",
+        "many-to-many relationship",
+        "data modeling example",
+        "normalization",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university database stores information about students and clubs. A student can be a member of multiple clubs, and a club can have multiple student members. An 'Enrollment' table tracks this many-to-many relationship, including the 'JoinDate' and 'MembershipStatus' (Active/Inactive) as intersection data. The university decides to implement a data warehouse (Lecture 10) to analyze student involvement over time. The data warehouse team proposes directly loading the 'Students', 'Clubs', and 'Enrollment' tables from the operational database into the data warehouse. However, initial analysis reveals significant performance issues when querying student membership trends. Considering the principles of data warehousing and the nature of intersection data, what is the MOST likely reason for these performance problems?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The data warehouse lacks sufficient storage capacity to handle the volume of student and club data.",
+        "B": "The 'Enrollment' table in the data warehouse is not indexed properly, causing slow query execution.",
+        "C": "The operational database schema is not optimized for analytical queries, requiring a star schema or snowflake schema in the data warehouse.",
+        "D": "The data warehouse is not updated frequently enough, leading to stale data and inaccurate analysis."
+      },
+      "correct_answer": "The operational database schema is not optimized for analytical queries, requiring a star schema or snowflake schema in the data warehouse.",
+      "explanation": "This is a synthesis question combining intersection data (Lecture 4) and data warehousing (Lecture 10). Directly loading operational data into a data warehouse *without transformation* is a common mistake. While options A, B, and D might contribute to performance issues, the *most likely* root cause is the mismatch between the operational database schema (optimized for transaction processing) and the analytical requirements of the data warehouse. Option B could be true, but indexing is a secondary consideration. Option A is irrelevant if queries are slow even on a small dataset. Option D is a valid concern, but doesn't directly impact initial query performance. The correct answer highlights the need for a data warehouse schema (star or snowflake) optimized for analytical queries, which typically involves denormalization and pre-aggregation of data.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_21",
+      "tags": [
+        "intersection data",
+        "many-to-many relationship",
+        "data modeling example",
+        "data warehouse",
+        "star schema",
+        "snowflake schema"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce platform is designing a database to manage products and suppliers. A product can be supplied by multiple suppliers, and a supplier can supply multiple products. The 'Supply' relationship includes 'UnitPrice' and 'DeliveryTime' as intersection data, representing the price and delivery time offered by a specific supplier for a specific product. The platform's data analytics team wants to analyze supplier performance based on price and delivery time. A senior database architect proposes creating a materialized view (Lecture 7) that pre-calculates the average 'UnitPrice' and 'DeliveryTime' for each supplier-product combination. Analyzing the trade-offs between materialized views and normalized relational database design with intersection data, what is the most significant potential drawback of using a materialized view in this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Materialized views do not support complex analytical queries, limiting the flexibility of supplier performance analysis.",
+        "B": "Materialized views consume significant storage space, increasing the overall cost of the database system.",
+        "C": "Materialized views may become stale if the underlying data changes frequently, leading to inaccurate supplier performance reports.",
+        "D": "Materialized views require significant computational resources to create and maintain, impacting the performance of the operational database."
+      },
+      "correct_answer": "Materialized views may become stale if the underlying data changes frequently, leading to inaccurate supplier performance reports.",
+      "explanation": "This is a synthesis question involving intersection data (Lecture 4) and materialized views (Lecture 7). Materialized views are pre-computed query results stored as a table. Option A is incorrect as materialized views *improve* analytical query performance. Option B is a valid concern but not the *most significant*. Option D is also a concern, especially during creation and refresh. The biggest drawback is *data staleness*. If 'UnitPrice' or 'DeliveryTime' changes frequently, the materialized view will become outdated, leading to inaccurate reports. Maintaining the materialized view's consistency with rapidly changing source data presents a significant challenge. The underlying intersection data's volatility makes the materialized view a less reliable solution.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_21",
+      "tags": [
+        "intersection data",
+        "many-to-many relationship",
+        "data modeling example",
+        "materialized view",
+        "data staleness",
+        "query optimization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company is designing a database to track developers and projects. A developer can work on multiple projects, and a project can have multiple developers. The relationship is tracked in an assignment table called 'DeveloperProjectAssignments'. Each assignment has attributes for 'HoursWorked' and 'StartDate'. After some time, the company notices that reporting on total hours worked per project is slow. A consultant suggests denormalizing the database (Lecture 8) and adding a 'TotalHours' column directly to the 'Projects' table, which is updated whenever a developer submits their hours. However, the lead database architect is concerned about data integrity. Considering your knowledge of many-to-many relationships and denormalization tradeoffs, what is the MOST significant risk associated with this proposed denormalization?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Adding 'TotalHours' to the 'Projects' table violates the third normal form (3NF), leading to data anomalies.",
+        "B": "The 'Projects' table will become excessively wide, leading to performance issues when retrieving project details.",
+        "C": "Updating 'TotalHours' in the 'Projects' table whenever a developer submits hours will create a write bottleneck, slowing down the entire system.",
+        "D": "Inconsistencies may arise between the 'TotalHours' in the 'Projects' table and the sum of 'HoursWorked' in the 'DeveloperProjectAssignments' table, leading to inaccurate reporting."
+      },
+      "correct_answer": "Inconsistencies may arise between the 'TotalHours' in the 'Projects' table and the sum of 'HoursWorked' in the 'DeveloperProjectAssignments' table, leading to inaccurate reporting.",
+      "explanation": "This is a synthesis question combining many-to-many relationships and intersection data (Lecture 4) with denormalization tradeoffs (Lecture 8). While option A correctly notes a normalization violation, the key concern is *data integrity*. Option B is a potential issue, but not the *most* significant. Option C is also a possibility, but data *inconsistency* is the most pressing risk. The primary risk is that the 'TotalHours' in 'Projects' might not always accurately reflect the sum of 'HoursWorked' in 'DeveloperProjectAssignments' due to update anomalies, concurrency issues, or errors in the update process. The normalized design inherently guarantees consistency, which is sacrificed for performance in the denormalized approach. Therefore, maintaining consistency between the two sources of information becomes a critical challenge.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_22",
+      "tags": [
+        "many-to-many",
+        "relationship",
+        "junction table",
+        "denormalization",
+        "data integrity",
+        "data consistency"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university is creating a database to manage courses and students. A student can enroll in many courses, and a course can have many students. Without using a junction table, a database designer attempts to directly link the 'Students' and 'Courses' tables. Later, when the university tries to implement a data mining system (Lecture 12) to analyze student course selection patterns, they find it very difficult to extract meaningful insights. What is the most significant reason why the *lack of a junction table* hinders effective data mining in this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Without a junction table, the database will violate the first normal form (1NF), making it difficult to store student and course information.",
+        "B": "Without a junction table, the data mining algorithms will not be able to handle the large volume of student and course data.",
+        "C": "Without a junction table, it is difficult to track the specific attributes of each student-course enrollment (e.g., grade, completion date), which are crucial for data mining.",
+        "D": "Without a junction table, the data mining system will not be able to connect to the database due to compatibility issues."
+      },
+      "correct_answer": "Without a junction table, it is difficult to track the specific attributes of each student-course enrollment (e.g., grade, completion date), which are crucial for data mining.",
+      "explanation": "This is a synthesis question combining many-to-many relationships (Lecture 4) and data mining (Lecture 12). Options A and D are incorrect. Option B is generally untrue; Data mining algorithms *can* handle large volumes. The *lack* of a junction table prevents storing enrollment-specific data (grade, completion date) that is essential for analyzing student course selection patterns. Data mining needs granular data about the relationship itself (the 'intersection data'). By not having a junction table, key information needed to identify trends like which courses students perform best in, or common course combinations leading to dropout, is missing.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_22",
+      "tags": [
+        "database",
+        "many-to-many",
+        "relationship",
+        "junction table",
+        "data mining",
+        "data analysis"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce platform is designing its database. They have 'Products' and 'Categories' entities. A product can belong to multiple categories, and a category can contain multiple products. A database designer, aiming for simplicity, decides to store a comma-separated list of CategoryIDs directly within the 'Products' table. Later, the platform implements a CRM system (Lecture 11) and wants to segment customers based on the categories of products they frequently purchase. However, they find it difficult to efficiently query and analyze this data. Synthesizing your knowledge of many-to-many relationships and CRM systems, what is the primary reason why storing CategoryIDs as a comma-separated list hinders effective customer segmentation in the CRM system?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The comma-separated list of CategoryIDs violates the second normal form (2NF), making it impossible to update category information.",
+        "B": "The CRM system is not compatible with databases that store data in a comma-separated format.",
+        "C": "Querying and analyzing data stored in a comma-separated list requires complex string manipulation, leading to poor performance and scalability.",
+        "D": "The lack of a junction table makes it impossible to track the order in which customers purchased products from different categories."
+      },
+      "correct_answer": "Querying and analyzing data stored in a comma-separated list requires complex string manipulation, leading to poor performance and scalability.",
+      "explanation": "This is a synthesis question combining many-to-many relationships (Lecture 4) and CRM systems (Lecture 11). Options A and B are incorrect. Option D is irrelevant to segmentation. The core issue is that querying a comma-separated list requires complex string parsing, impacting performance. The CRM needs to efficiently group customers based on product categories. Without a junction table, the relationship data is hard to access. The database has to parse the comma-separated strings, which is computationally expensive and doesn't scale well. A junction table provides a clean, relational structure, facilitating efficient queries for segmentation.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_22",
+      "tags": [
+        "database",
+        "many-to-many",
+        "relationship",
+        "junction table",
+        "CRM",
+        "customer segmentation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is migrating its customer database to a new system. The 'Customer' entity has attributes like 'CustomerID', 'Name', 'Address', and 'Phone'. A junior developer, unfamiliar with database design best practices, proposes directly converting the 'Customer' entity into a flat file (Lecture 6) instead of a relational table. Later, when the company tries to integrate this customer data with its new supply chain management (SCM) system (Lecture 11) to optimize inventory based on customer demand, they encounter significant integration challenges. What is the *most likely* reason for these integration problems arising from the use of a flat file instead of a relational table?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Flat files do not support encryption, making it impossible to secure customer data.",
+        "B": "Flat files are limited in size and cannot accommodate the company's growing customer base.",
+        "C": "Flat files lack a defined schema and relationships, making it difficult to ensure data consistency and integrate with the SCM system.",
+        "D": "Flat files are not compatible with modern operating systems, preventing the SCM system from accessing the customer data."
+      },
+      "correct_answer": "Flat files lack a defined schema and relationships, making it difficult to ensure data consistency and integrate with the SCM system.",
+      "explanation": "This is a synthesis question combining entity-to-table conversion (Lecture 4), flat files (Lecture 6), and SCM systems (Lecture 11). Options A, B, and D may be concerns, but are not *primary*. The key problem is the absence of a defined schema and relationships in the flat file. The SCM needs structured, consistent data. Flat files lack data types, constraints, and relationships enforced by a relational database. This makes integration complex, error-prone, and costly. Without a schema, the SCM system can't reliably interpret and use the customer data.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_23",
+      "tags": [
+        "entity",
+        "relational table",
+        "conversion",
+        "primary key",
+        "flat file",
+        "SCM",
+        "data integration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small retail company is setting up a database. They have an 'Employee' entity with attributes 'EmployeeID', 'Name', 'JobTitle' and an 'Office' entity with attributes 'OfficeID', 'Location', 'Capacity'. Each employee is assigned to one office, and each office has one assigned employee who manages it. The database designer chooses to represent this one-to-one relationship by merging the 'Employee' and 'Office' tables into a single 'EmployeeOffice' table. Later, the company decides to implement a Business Intelligence (BI) system (Lecture 10) to analyze employee performance and office utilization. However, they find that certain types of analysis are difficult and inefficient. What is the MOST likely reason for these analytical challenges arising from merging the tables?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Merging the tables violates the first normal form (1NF), making it impossible to perform accurate analysis.",
+        "B": "The BI system is not compatible with merged tables, preventing it from accessing employee and office data.",
+        "C": "Merging the tables makes it difficult to analyze employee and office data separately, hindering certain types of performance and utilization analysis.",
+        "D": "Merging the tables reduces the overall storage capacity of the database, limiting the amount of historical data that can be analyzed."
+      },
+      "correct_answer": "Merging the tables makes it difficult to analyze employee and office data separately, hindering certain types of performance and utilization analysis.",
+      "explanation": "This is a synthesis question combining one-to-one relationship conversion (Lecture 4) and Business Intelligence (Lecture 10). Option A is generally false. Option B is unlikely. Option D may be true, but is not the *most* direct reason. The merging makes *separate* analysis difficult. The BI system needs to analyze employee performance (e.g., sales per employee) and office utilization (e.g., average occupancy). When the tables are merged, these analyses become more complex, requiring more complex queries and potentially impacting performance. If they had separate, linked tables, such reports would be much easier to generate.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_24",
+      "tags": [
+        "one-to-one",
+        "relationship",
+        "conversion",
+        "foreign key",
+        "Business Intelligence",
+        "data analysis"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is designing a database for employees and their parking spots. Each employee is assigned *one* parking spot, and each parking spot is assigned to *one* employee. The company anticipates needing to frequently query which employee has a specific parking spot and which parking spot is assigned to a specific employee. A database administrator (DBA) decides to create separate 'Employees' and 'ParkingSpots' tables and a *third* linking table, 'EmployeeParkingSpots', to represent the one-to-one relationship. Later, performance issues arise. Applying your knowledge of one-to-one relationship conversion and query optimization techniques (Lecture 7), what is the MOST likely *root cause* of the performance problems?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The third linking table introduces unnecessary complexity and overhead, requiring an extra join operation for common queries.",
+        "B": "The database system is using an outdated query optimizer, leading to inefficient execution plans for queries involving the linking table.",
+        "C": "The 'EmployeeParkingSpots' table lacks a primary key, causing slow lookups.",
+        "D": "The database is not properly normalized, and the 'EmployeeParkingSpots' table should be further decomposed."
+      },
+      "correct_answer": "The third linking table introduces unnecessary complexity and overhead, requiring an extra join operation for common queries.",
+      "explanation": "This is a synthesis question involving one-to-one relationship conversion (Lecture 4) and query optimization (Lecture 7). While options B and C could be true, they are less likely without further information. Option D is incorrect because the design is already normalized. Creating a third linking table in a 1:1 relationship is often *unnecessary*. It adds complexity and requires an extra join operation for common queries (finding an employee's parking spot or vice versa). A better approach would be to either merge the tables or add a foreign key in one table referencing the other. The *extra join* is the performance bottleneck.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_24",
+      "tags": [
+        "one-to-one",
+        "relationship",
+        "conversion",
+        "foreign key",
+        "query optimization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hospital is redesigning its database. Currently, each patient has one and only one assigned doctor. Each doctor also has one and only one assigned patient. They are considering three options: Option A) Combine the Patient and Doctor tables into a single PatientDoctor table. Option B) Keep Patient and Doctor tables separate, with the DoctorID as a foreign key in the Patient table. Option C) Keep Patient and Doctor tables separate, with the PatientID as a foreign key in the Doctor table. \n\nHowever, after implementing Option B, the hospital discovers that retrieving a doctor's information requires a full table scan of the Patient table because there's no index on the DoctorID foreign key. Considering the principles of database design for 1:1 relationships (MIS_lec_4_25) and the importance of indexing for query performance (MIS_lec_7_37), what is the MOST appropriate long-term solution to balance data integrity and query performance?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Revert to Option A (combine the tables) to avoid the foreign key and indexing issues altogether.",
+        "B": "Implement Option C (PatientID as foreign key in Doctor table) instead, as it avoids the need for an index on the Patient table.",
+        "C": "Maintain Option B, but create an index on the DoctorID column in the Patient table to improve query performance.",
+        "D": "Remove the foreign key constraint on DoctorID in the Patient table to improve write performance, accepting the risk of data inconsistency."
+      },
+      "correct_answer": "Maintain Option B, but create an index on the DoctorID column in the Patient table to improve query performance.",
+      "explanation": "This is a synthesis question combining 1:1 relationship conversion (Lecture 4) and indexing for query performance (Lecture 7). The initial choice of Option B was valid for representing the 1:1 relationship. However, the lack of an index on the foreign key (DoctorID) caused performance issues. Option A is technically feasible, but combines the tables unnecessarily and may lead to redundancy in the future if the 1:1 constraint is relaxed. Option D sacrifices data integrity, which is unacceptable. Option C is incorrect because it would require indexing the Patient table anyway when querying for patient information. The *root cause* is the missing index on the foreign key. The correct answer adds the index, addressing the *performance symptom* without compromising data integrity or database design principles.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_25",
+      "tags": [
+        "1:1 relationship",
+        "database design",
+        "foreign key",
+        "relational tables",
+        "indexing",
+        "query performance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small e-commerce company is designing a database to manage its products and suppliers. Each product is supplied by only one supplier, and each supplier can supply multiple products. The company initially chooses to represent this 1:M relationship by including the SupplierID (primary key of the Suppliers table) as a foreign key in the Products table. However, they anticipate that the Products table will grow very large, and they need to generate reports showing the average price of products supplied by each supplier. They are concerned about the performance implications of querying such a large table. Considering the principles of 1:M relationship representation (MIS_lec_4_26) and the techniques for data warehousing and reporting (MIS_lec_6_33), what is the BEST approach to balance data integrity, query performance, and reporting needs?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Denormalize the database by including supplier information (e.g., supplier name, contact details) directly in the Products table to avoid joins during reporting.",
+        "B": "Maintain the foreign key relationship between Suppliers and Products, but create a separate data warehouse with a star schema, where the Suppliers and Products tables are dimensions and the average price is a fact.",
+        "C": "Store the product and supplier information in a NoSQL document database, which can handle large volumes of data and complex queries more efficiently than a relational database.",
+        "D": "Remove the foreign key constraint between Suppliers and Products to improve write performance, and rely on application-level logic to enforce data integrity."
+      },
+      "correct_answer": "Maintain the foreign key relationship between Suppliers and Products, but create a separate data warehouse with a star schema, where the Suppliers and Products tables are dimensions and the average price is a fact.",
+      "explanation": "This is a synthesis question combining 1:M relationship conversion (Lecture 4) and data warehousing (Lecture 6). The initial foreign key setup is correct for the 1:M relationship. However, generating reports on the operational database can impact performance. Option A introduces data redundancy and violates normalization principles. Option D compromises data integrity. Option C, while potentially suitable for other scenarios, is overkill for this relatively simple reporting requirement and introduces unnecessary complexity. The *root cause* is the strain on the operational database due to reporting queries. The correct answer addresses this by creating a separate data warehouse optimized for reporting, using a star schema that efficiently supports the required aggregation. This *isolates* the reporting workload, preserving the integrity and performance of the operational database while enabling efficient report generation.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_26",
+      "tags": [
+        "1:M relationship",
+        "database design",
+        "foreign key",
+        "relational tables",
+        "data warehousing",
+        "star schema",
+        "reporting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university is building a database to track students and their enrolled courses. One student can enroll in many courses, and each course can have many students enrolled. The database designers initially create 'Students' and 'Courses' tables and attempt to represent the M:M relationship by adding a multi-valued attribute 'CourseIDs' to the 'Students' table. However, they encounter difficulties with querying and maintaining this structure. Considering the rules for M:M relationship conversion (MIS_lec_4_28) and the principles of normalization (MIS_lec_4_29), what is the MOST appropriate approach to resolve this issue and ensure data integrity and query efficiency?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Continue using the multi-valued attribute 'CourseIDs' in the 'Students' table, but implement custom functions to parse and query the data.",
+        "B": "Create an 'Enrollments' table as an associative entity, with StudentID (FK) and CourseID (FK) as a composite primary key, linking students to their enrolled courses.",
+        "C": "Add a 'StudentID' foreign key to the 'Courses' table, representing the student who created the course.",
+        "D": "Remove the relationship between students and courses altogether, and manage enrollment information in a separate spreadsheet."
+      },
+      "correct_answer": "Create an 'Enrollments' table as an associative entity, with StudentID (FK) and CourseID (FK) as a composite primary key, linking students to their enrolled courses.",
+      "explanation": "This is a synthesis question combining M:M relationship conversion (Lecture 4) and normalization principles (Lecture 4/5). The initial attempt to use a multi-valued attribute violates 1NF and makes querying difficult. Option A perpetuates the 1NF violation. Option C incorrectly represents the relationship as 1:M. Option D is impractical and loses data. The *root cause* is the improper representation of the M:M relationship. The correct answer introduces an associative entity ('Enrollments' table), which is the standard solution for resolving M:M relationships. This adheres to normalization principles, ensures data integrity, and allows for efficient querying of student enrollment data. This approach also avoids future scalability problems associated with multi-valued attributes.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_28",
+      "tags": [
+        "M:M Relationship",
+        "Associative Entity",
+        "Relational Model",
+        "normalization",
+        "database design"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An online retailer is designing a database to manage its products and customer reviews. One product can have many customer reviews. They initially create 'Products' and 'Reviews' tables, placing the ProductID as a foreign key in the Reviews table to represent the 1:M relationship. However, they also want to track which customers have reviewed which products. They realize that one customer can review many products, and one product can be reviewed by many customers. They are considering different approaches to handle the customer-product review relationship. Considering the principles of 1:M and M:M relationship conversion (MIS_lec_4_26, MIS_lec_4_28) and the importance of data integrity (MIS_lec_4_29), what is the MOST appropriate approach to represent both relationships correctly?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Add a CustomerID foreign key directly to the Products table, indicating the customer who created the product.",
+        "B": "Add a multi-valued attribute 'CustomerIDs' to the Reviews table, listing all customers who have reviewed the product.",
+        "C": "Create a 'ProductReviews' table (associative entity) with ProductID (FK) and CustomerID (FK) as a composite primary key, and maintain the ProductID foreign key in the Reviews table.",
+        "D": "Remove the Reviews table entirely and store all review data in a NoSQL document database."
+      },
+      "correct_answer": "Create a 'ProductReviews' table (associative entity) with ProductID (FK) and CustomerID (FK) as a composite primary key, and maintain the ProductID foreign key in the Reviews table.",
+      "explanation": "This is a synthesis question combining 1:M and M:M relationship conversion (Lecture 4). The initial 1:M relationship between Products and Reviews is correctly represented with the ProductID foreign key in the Reviews table. However, the M:M relationship between Customers and Products through Reviews requires an associative entity. Option A misrepresents the relationship as 1:1. Option B violates 1NF. Option D discards valuable review data. The *root cause* is the need to represent both a 1:M and a M:M relationship simultaneously. The correct answer introduces the 'ProductReviews' table as an associative entity to handle the M:M relationship between Customers and Products, while retaining the ProductID foreign key in the Reviews table to maintain the 1:M relationship between Products and Reviews. This ensures data integrity and allows for efficient querying of both relationships.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_28",
+      "tags": [
+        "1:M relationship",
+        "M:M Relationship",
+        "Associative Entity",
+        "Relational Model",
+        "database design",
+        "foreign key"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A consulting company is hired to optimize the database of a large online learning platform. The platform has tables for 'Students', 'Courses', and an associative entity 'Enrollments' to represent the many-to-many relationship between students and courses. The 'Enrollments' table contains StudentID (FK), CourseID (FK), and a 'Grade' attribute. The platform wants to track student progress not just by overall course grade, but also by individual module completion within each course. Initially, they consider adding a 'Modules' table and linking it directly to the 'Enrollments' table. However, each course has a different set of modules. Considering the principles of M:M relationship conversion (MIS_lec_4_28) and the need for flexible schema design for semi-structured data (MIS_lec_6_35), what is the MOST appropriate approach to represent module completion data without compromising the existing database structure?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Add a 'ModuleID' foreign key to the 'Enrollments' table, referencing a new 'Modules' table. Create a generic 'Modules' table with all possible modules across all courses.",
+        "B": "Add a JSON column to the 'Enrollments' table to store module completion data as a flexible document, allowing for different module structures per course.",
+        "C": "Create a separate table for each course, storing module completion data for that course. Link these tables to the 'Enrollments' table.",
+        "D": "Remove the 'Enrollments' table and store all enrollment and module completion data in a NoSQL document database."
+      },
+      "correct_answer": "Add a JSON column to the 'Enrollments' table to store module completion data as a flexible document, allowing for different module structures per course.",
+      "explanation": "This is a synthesis question combining M:M relationship conversion (Lecture 4) and flexible schema design (Lecture 6). The existing 'Enrollments' table correctly represents the M:M relationship between students and courses. The challenge is to represent module completion data, which is semi-structured and varies per course. Option A forces a rigid structure onto the module data, which doesn't accommodate the variability. Option C creates a proliferation of tables. Option D abandons the relational structure altogether. The *root cause* is the need to represent semi-structured data within a relational database. The correct answer utilizes a JSON column in the 'Enrollments' table, allowing for a flexible schema that can accommodate different module structures per course. This leverages the benefits of both relational and semi-structured data models, preserving the integrity of the existing M:M relationship while providing a flexible way to track module completion data.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_28",
+      "tags": [
+        "M:M Relationship",
+        "Associative Entity",
+        "Relational Model",
+        "database design",
+        "foreign key",
+        "semi-structured data",
+        "JSON"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university database stores information about students and courses. Originally, the database contained 'Students' and 'Courses' tables. A new requirement emerges: students can now enroll in multiple courses, and each course can have multiple students. A database developer, Sarah, implements the 'Enrollments' table to manage this many-to-many relationship, as per the three-table rule. However, Sarah *also* adds a 'CourseID' column to the 'Students' table. Synthesizing the three-table rule for M:M relationships (Lecture 4) and the principles of data normalization (Lecture 4), what is the root cause of the potential data integrity issues in Sarah's design?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph G {\n  rankdir=LR;\n  subgraph cluster_0 {\n    label = \"Initial (Incorrect)\";\n    Students [label=\"Students\\n(StudentID, Name, CourseID)\"];\n    Courses [label=\"Courses\\n(CourseID, Title)\"];\n    Enrollments [label=\"Enrollments\\n(StudentID, CourseID, Grade)\"];\n    Students -> Courses [label=\"One-to-Many (Incorrect)\", style=dashed];\n    Students -> Enrollments [label=\"One-to-Many\"];\n    Courses -> Enrollments [label=\"One-to-Many\"];\n  }\n\n  subgraph cluster_1 {\n    label = \"Corrected Design\";\n    StudentsCorrect [label=\"Students\\n(StudentID, Name)\"];\n    CoursesCorrect [label=\"Courses\\n(CourseID, Title)\"];\n    EnrollmentsCorrect [label=\"Enrollments\\n(StudentID, CourseID, Grade)\"];\n    StudentsCorrect -> EnrollmentsCorrect [label=\"One-to-Many\"];\n    CoursesCorrect -> EnrollmentsCorrect [label=\"One-to-Many\"];\n  }\n  {rank=same; Students; StudentsCorrect}\n  {rank=same; Courses; CoursesCorrect}\n  {rank=same; Enrollments; EnrollmentsCorrect}\n\n  Students -> StudentsCorrect [style=invis];\n}",
+      "alt_text": "Graphviz diagram showing an incorrect initial database design with a CourseID column in the Students table and a corrected design following the three-table rule.",
+      "options": {
+        "A": "The 'Enrollments' table is unnecessary because the 'CourseID' in the 'Students' table already represents the many-to-many relationship.",
+        "B": "The addition of 'CourseID' to the 'Students' table introduces data redundancy and potential update anomalies, violating data normalization principles, as each student should only have one CourseID directly in the Students table.",
+        "C": "Sarah should have added a 'StudentID' column to the 'Courses' table instead of creating the 'Enrollments' table, as this would have been a more efficient design.",
+        "D": "The 'Enrollments' table should contain additional student information, such as address and phone number, to avoid having to join the 'Students' table."
+      },
+      "correct_answer": "The addition of 'CourseID' to the 'Students' table introduces data redundancy and potential update anomalies, violating data normalization principles, as each student should only have one CourseID directly in the Students table.",
+      "explanation": "This question synthesizes the three-table rule (Lecture 4) and data normalization (Lecture 4). The three-table rule dictates a separate associative table for M:M relationships. Adding 'CourseID' to 'Students' violates normalization because it implies a one-to-many relationship from student to course, when the relationship is actually many-to-many. This leads to redundancy if a student takes multiple courses, and update anomalies if a course changes. Option A incorrectly dismisses the 'Enrollments' table, which is essential for M:M. Option C proposes an equally flawed design. Option D suggests denormalizing the 'Enrollments' table, compounding the initial error. The root cause is the violation of normalization principles by representing a many-to-many relationship as a one-to-many relationship within the 'Students' table.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_29",
+      "tags": [
+        "Three-Table Rule",
+        "M:M Relationship",
+        "Relational Model",
+        "data normalization",
+        "redundancy",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An e-commerce company initially used a single 'Orders' table to store order information, including customer details (name, address) and product details (name, price). As the company grew, the 'Orders' table became massive, leading to performance issues. To address this, a database administrator, David, decides to implement the three-table rule to resolve the implicit many-to-many relationship between orders and products. However, David incorrectly designates the original 'Orders' table to serve as the associative entity. Synthesizing the 'three-table rule' for M:M relationships (Lecture 4) and the purpose of data normalization (Lecture 4), what is the likely root cause of the *continued* performance and data integrity issues?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph G {\n  rankdir=LR;\n\n  subgraph cluster_initial {\n    label = \"Initial Table (Denormalized)\";\n    OrdersInitial [label=\"Orders\\n(OrderID, CustomerName, CustomerAddress, ProductName, ProductPrice, ...)\"];\n  }\n\n  subgraph cluster_incorrect {\n    label = \"Incorrect Three-Table Implementation\";\n    OrdersIncorrect [label=\"Orders\\n(OrderID, CustomerName, CustomerAddress, ProductName, ProductPrice, ...)\"];\n    Products [label=\"Products\\n(ProductID, ProductName, ProductPrice)\"];\n    Customers [label=\"Customers\\n(CustomerID, CustomerName, CustomerAddress)\"];\n    OrdersIncorrect -> Products [label=\"Contains FK ProductID\"];\n    OrdersIncorrect -> Customers [label=\"Contains FK CustomerID\"];\n  }\n\n  subgraph cluster_correct {\n    label = \"Correct Three-Table Implementation\";\n    OrdersCorrect [label=\"Orders\\n(OrderID, CustomerID)\"];\n    ProductsCorrect [label=\"Products\\n(ProductID, ProductName, ProductPrice)\"];\n    CustomersCorrect [label=\"Customers\\n(CustomerID, CustomerName, CustomerAddress)\"];\n    OrderProducts [label=\"OrderProducts\\n(OrderID, ProductID, Quantity)\"];\n\n    OrdersCorrect -> CustomersCorrect [label=\"FK CustomerID\"];\n    OrderProducts -> OrdersCorrect [label=\"FK OrderID\"];\n    OrderProducts -> ProductsCorrect [label=\"FK ProductID\"];\n\n  }\n  {rank=same; OrdersInitial; OrdersIncorrect; OrdersCorrect}\n}",
+      "alt_text": "Graphviz diagram showing the initial denormalized table, the incorrect three-table implementation with the original Orders table as the associative entity, and the correct three-table implementation.",
+      "options": {
+        "A": "The 'Orders' table, even when acting as an associative entity, efficiently links customers and products, thus improving performance.",
+        "B": "By designating the original 'Orders' table as the associative entity, David eliminated the need to create a new table, simplifying the database design.",
+        "C": "The continued performance issues are due to the lack of indexing on the 'Orders' table, not the incorrect application of the three-table rule.",
+        "D": "The 'Orders' table still contains redundant customer and product information, violating normalization principles, leading to continued data redundancy, update anomalies, and performance bottlenecks."
+      },
+      "correct_answer": "The 'Orders' table still contains redundant customer and product information, violating normalization principles, leading to continued data redundancy, update anomalies, and performance bottlenecks.",
+      "explanation": "This is a synthesis question combining the three-table rule (Lecture 4) and data normalization (Lecture 4). The core issue is that even with the attempted three-table implementation, the original 'Orders' table *still* contains redundant data. The purpose of the three-table rule, driven by normalization, is to eliminate redundancy. By keeping customer and product details in the 'Orders' table, David failed to achieve this. Option A is incorrect as it claims performance is improved, which it isn't. Option B incorrectly claims simplification; the design is flawed, not simplified. Option C is a symptom, not the root cause; even with indexing, the underlying redundancy will cause problems. The correct answer identifies the root cause: the continued violation of normalization due to redundant data in the 'Orders' table.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_29",
+      "tags": [
+        "Three-Table Rule",
+        "M:M Relationship",
+        "Relational Model",
+        "data normalization",
+        "redundancy",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small online bookstore initially managed its data using a single 'BookDetails' table, which included book title, author name, author nationality, genre, and publisher. Over time, the author names were often entered inconsistently (e.g., 'J.R.R. Tolkien' vs. 'Tolkien, J.R.R.'). A database administrator, Emily, decides to implement an intersection table to resolve the many-to-many relationship between books and authors. However, she only includes the BookID and AuthorID in the intersection table, omitting author nationality. Synthesizing the concept of an intersection table (Lecture 4) and the purpose of data normalization (Lecture 4), what is the most likely consequence of Emily's design?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph G {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    BookDetails [label=\"BookDetails\\n(BookID, Title, AuthorName, AuthorNationality, Genre, Publisher)\"];\n\n    subgraph cluster_incorrect {\n        label = \"Incorrect\";\n        Books [label=\"Books\\n(BookID, Title, Genre, Publisher)\"];\n        Authors [label=\"Authors\\n(AuthorID, AuthorName, AuthorNationality)\"];\n        BookAuthors [label=\"BookAuthors\\n(BookID, AuthorID)\"];\n    }\n\n    subgraph cluster_correct {\n        label = \"Correct\";\n        BooksCorrect [label=\"Books\\n(BookID, Title, Genre, Publisher)\"];\n        AuthorsCorrect [label=\"Authors\\n(AuthorID, AuthorName)\"];\n        BookAuthorsCorrect [label=\"BookAuthors\\n(BookID, AuthorID, AuthorNationality)\"];\n    }\n\n\n    BookDetails -> Books [style=dashed, label=\"Splitting (partial)\"];\n    BookDetails -> Authors [style=dashed, label=\"Splitting (partial)\"];\n\n    Books -> BookAuthors [label=\"FK BookID\"];\n    Authors -> BookAuthors [label=\"FK AuthorID\"];\n\n    BooksCorrect -> BookAuthorsCorrect [label=\"FK BookID\"];\n    AuthorsCorrect -> BookAuthorsCorrect [label=\"FK AuthorID\"];\n\n    {rank = same; BookDetails; Books; BooksCorrect}\n    {rank = same; Authors; AuthorsCorrect}\n    {rank = same; BookAuthors; BookAuthorsCorrect}\n\n}",
+      "alt_text": "Graphviz diagram showing the original BookDetails table, the incorrect implementation with BookAuthors omitting AuthorNationality, and the correct implementation including AuthorNationality in BookAuthors.",
+      "options": {
+        "A": "The database will efficiently track which books are written by which authors, resolving the many-to-many relationship without any data integrity issues.",
+        "B": "Queries will be faster because the 'BookAuthors' table is smaller, leading to improved performance overall.",
+        "C": "Author nationality will be lost completely, as it's no longer stored anywhere in the database.",
+        "D": "Author nationality will still be redundantly stored in the 'Books' table (or a similar table if BookDetails was normalized), leading to potential inconsistencies and update anomalies if an author's nationality changes."
+      },
+      "correct_answer": "Author nationality will still be redundantly stored in the 'Books' table (or a similar table if BookDetails was normalized), leading to potential inconsistencies and update anomalies if an author's nationality changes.",
+      "explanation": "This question tests the understanding of intersection tables (Lecture 4) and data normalization (Lecture 4). While Emily correctly identifies the need for an intersection table, she fails to fully eliminate redundancy. The original 'BookDetails' table contained author nationality, which should ideally be moved to either the 'Authors' table *or* the 'BookAuthors' intersection table if it's relationship-specific (e.g., an author was only a particular nationality when writing a specific book). Since it's omitted from the intersection table, it will likely remain redundantly stored in a table like 'Books', leading to the problems normalization aims to solve. Options A and B are incorrect because they highlight benefits that don't outweigh the data integrity problems. Option C is incorrect because the AuthorNationality may exist in another table. The key insight is that the intersection table should, whenever possible, contain all attributes *specific* to that relationship to fully resolve redundancy issues.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_30",
+      "tags": [
+        "intersection table",
+        "associative entity",
+        "many-to-many",
+        "composite key",
+        "data normalization",
+        "redundancy",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hospital initially stored patient information and appointment details in a single 'PatientAppointments' table. This table included attributes like patient name, address, phone number, appointment date, time, and doctor's name. The database suffered from frequent update anomalies (e.g., patient address changes required multiple updates). A database administrator, Alex, decides to normalize the database, creating separate 'Patients' and 'Appointments' tables. However, Alex *also* creates a third table called 'Billing' which contains PatientID, AppointmentID, and InsuranceCompany attributes. Synthesizing the concepts of intersection tables (Lecture 4) and data normalization (Lecture 4), what is the *most* significant risk associated with Alex's database design?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph G {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    PatientAppointments [label=\"PatientAppointments\\n(PatientName, Address, Phone, ApptDate, ApptTime, Doctor)\"];\n\n    subgraph cluster_alex {\n        label = \"Alex's Design\";\n        Patients [label=\"Patients\\n(PatientID, Name, Address, Phone)\"];\n        Appointments [label=\"Appointments\\n(AppointmentID, Date, Time, DoctorID)\"];\n        Billing [label=\"Billing\\n(PatientID, AppointmentID, InsuranceCompany)\"];\n    }\n\n    subgraph cluster_ideal {\n        label = \"Ideal Design\";\n        PatientsIdeal [label=\"Patients\\n(PatientID, Name, Address, Phone)\"];\n        AppointmentsIdeal [label=\"Appointments\\n(AppointmentID, Date, Time, DoctorID)\"];\n        AppointmentPatient [label=\"AppointmentPatient\\n(PatientID, AppointmentID)\"];\n        BillingIdeal [label=\"Billing\\n(AppointmentID, InsuranceCompany)\"];\n    }\n\n\n    PatientAppointments -> Patients [style=dashed, label=\"Splitting\"];\n    PatientAppointments -> Appointments [style=dashed, label=\"Splitting\"];\n\n    Patients -> Billing [label=\"FK PatientID\"];\n    Appointments -> Billing [label=\"FK AppointmentID\"];\n\n\n    PatientsIdeal -> AppointmentPatient [label=\"FK PatientID\"];\n    AppointmentsIdeal -> AppointmentPatient [label=\"FK AppointmentID\"];\n    AppointmentsIdeal -> BillingIdeal [label=\"FK AppointmentID\"];\n\n    {rank = same; PatientAppointments; Patients; PatientsIdeal}\n    {rank = same; Appointments; AppointmentsIdeal}\n    {rank = same; Billing; BillingIdeal}\n}",
+      "alt_text": "Graphviz diagram comparing Alex's database design with a single Billing table linked to Patients and Appointments versus an ideal design with an AppointmentPatient intersection table and Billing table linked only to Appointments.",
+      "options": {
+        "A": "The 'Billing' table simplifies querying for patient billing information, improving performance.",
+        "B": "The design eliminates redundancy and update anomalies, resulting in a highly efficient and maintainable database.",
+        "C": "The 'Billing' table directly links patients to their insurance company, making it easy to track insurance coverage.",
+        "D": "The 'Billing' table creates a dependency between patients and billing information that is not directly related, potentially leading to data integrity issues if a patient has multiple appointments with different insurance companies for each."
+      },
+      "correct_answer": "The 'Billing' table creates a dependency between patients and billing information that is not directly related, potentially leading to data integrity issues if a patient has multiple appointments with different insurance companies for each.",
+      "explanation": "This question combines understanding of intersection tables (Lecture 4) and data normalization (Lecture 4). Alex correctly normalized the patient and appointment information. However, linking the 'Billing' table directly to 'Patients' *and* 'Appointments' introduces a subtle but significant problem. The insurance company is related to the *appointment*, not directly to the patient. A patient could have different insurance for different appointments. By including PatientID in 'Billing', Alex has created a potential data anomaly: if a patient changes insurance companies between appointments, it's not clear which insurance applies to which appointment. An ideal design would link 'Billing' *only* to 'Appointments'. Option A is superficially appealing but doesn't address the underlying problem. Option B is incorrect; the design is flawed. Option C focuses on a benefit that masks the underlying integrity risk. The core synthesis is recognizing that normalization isn't just about splitting tables; it's about ensuring relationships are accurately represented and that dependencies are minimized where appropriate.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_30",
+      "tags": [
+        "intersection table",
+        "associative entity",
+        "many-to-many",
+        "composite key",
+        "data normalization",
+        "redundancy",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A product database initially stored product information, including product ID, name, description, and a 'RelatedProducts' field containing a comma-separated list of IDs of related products. This design led to performance issues and difficulties in managing relationships between products. A database administrator, Chris, decides to normalize the database to 1NF to address these issues. However, Chris only removes the 'RelatedProducts' field and creates a separate table called 'ProductRelations' with columns ProductID and RelatedProductID. He *doesn't* address the potentially multi-valued attributes in the product description field itself. Synthesizing the purpose of First Normal Form (1NF) (Lecture 4) and the broader goals of data normalization (Lecture 4), what is the *most* significant remaining problem with Chris's database design?",
+      "visual_type": "Graphviz",
+      "visual_code": "digraph G {\n    rankdir=LR;\n    node [shape=rectangle];\n\n    ProductsInitial [label=\"Products\\n(ProductID, Name, Description, RelatedProducts)\"];\n\n    subgraph cluster_chris {\n        label = \"Chris's Design\";\n        Products [label=\"Products\\n(ProductID, Name, Description)\"];\n        ProductRelations [label=\"ProductRelations\\n(ProductID, RelatedProductID)\"];\n    }\n\n    subgraph cluster_ideal {\n        label = \"Ideal 1NF Design\";\n        ProductsIdeal [label=\"Products\\n(ProductID, Name, Description)\"];\n        ProductRelationsIdeal [label=\"ProductRelations\\n(ProductID, RelatedProductID)\"];\n        ProductFeatures [label=\"ProductFeatures\\n(FeatureID, ProductID, FeatureDescription)\"];\n    }\n\n\n    ProductsInitial -> Products [style=dashed, label=\"Splitting RelatedProducts\"];\n    ProductsInitial -> ProductRelations [style=dashed, label=\"Splitting RelatedProducts\"];\n\n    Products -> ProductRelations [label=\"FK ProductID\"];\n\n    ProductsIdeal -> ProductRelationsIdeal [label=\"FK ProductID\"];\n    ProductsIdeal -> ProductFeatures [label=\"FK ProductID\"];\n\n    {rank = same; ProductsInitial; Products; ProductsIdeal}\n    {rank = same; ProductRelations; ProductFeatures}\n}",
+      "alt_text": "Graphviz diagram comparing Chris's design, which only addresses the RelatedProducts field, with an ideal 1NF design that also addresses multi-valued attributes in the product description.",
+      "options": {
+        "A": "Chris has successfully achieved 1NF by removing the repeating group in the 'RelatedProducts' field, resulting in a fully normalized database.",
+        "B": "The 'ProductRelations' table is unnecessary, as the relationships between products could be managed through application logic.",
+        "C": "The lack of indexing on the 'ProductRelations' table will lead to performance issues when querying for related products.",
+        "D": "The 'Description' field may still contain multi-valued attributes or repeating groups (e.g., multiple features listed in a single text field), violating 1NF and hindering efficient querying and analysis of product features."
+      },
+      "correct_answer": "The 'Description' field may still contain multi-valued attributes or repeating groups (e.g., multiple features listed in a single text field), violating 1NF and hindering efficient querying and analysis of product features.",
+      "explanation": "This question requires synthesizing 1NF (Lecture 4) and the broader principles of data normalization (Lecture 4). Chris correctly addresses the 'RelatedProducts' field, which *was* a clear violation of 1NF. However, the question highlights a *second-order* effect: the 'Description' field may *also* contain multi-valued attributes. For example, a product might have 'Color: Red, Material: Cotton, Size: Large' all within the Description field. This *also* violates 1NF. To fully achieve 1NF, the description would need to be further broken down into separate attributes/tables. Option A is incorrect because it overstates the success. Option B is technically incorrect; the ProductRelations table *is* necessary. Option C focuses on a symptom, not the root cause. The correct answer identifies the remaining 1NF violation within the description field as the *primary* issue.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_32",
+      "tags": [
+        "first normal form",
+        "1NF",
+        "atomic value",
+        "repeating group",
+        "multivalued attribute",
+        "data normalization",
+        "redundancy",
+        "data integrity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A national retail chain, \"GlobalMart\", is migrating its legacy sales database to a modern, cloud-based system. The legacy system's `SALES` table has a composite primary key of `(TransactionID, ItemID)` and includes the following attributes: `TransactionDate`, `CustomerID`, `CustomerName`, `ItemPrice`, and `ItemCategory`. During the data migration, the database administrator (DBA) notices that `CustomerName` is repeated for every item purchased in a single transaction and `ItemCategory` is repeated for every transaction involving a specific item. The DBA wants to optimize the database schema to improve data integrity and reduce storage redundancy. However, the CIO is concerned about the potential performance impact of excessive joins in frequently executed sales reports. Synthesizing the principles of 2NF (Lecture 4) and the trade-offs of denormalization (Lecture 8), what is the MOST appropriate action for the DBA to take to balance data integrity and query performance?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Split the `SALES` table into three tables: `TRANSACTIONS` (`TransactionID`, `TransactionDate`, `CustomerID`), `ITEMS` (`ItemID`, `ItemPrice`, `ItemCategory`), and `SALES_ITEMS` (`TransactionID`, `ItemID`, `Quantity`). Keep `CustomerName` in the `TRANSACTIONS` table.",
+        "B": "Split the `SALES` table into two tables: `SALES_TRANSACTIONS` (`TransactionID`, `TransactionDate`, `CustomerID`, `CustomerName`) and `SALES_ITEMS` (`TransactionID`, `ItemID`, `ItemPrice`, `ItemCategory`).",
+        "C": "Create a new `CUSTOMERS` table (`CustomerID`, `CustomerName`) and an `ITEMS` table (`ItemID`, `ItemPrice`, `ItemCategory`). Modify the `SALES` table to include only `TransactionID`, `TransactionDate`, `CustomerID`, `ItemID`, and `Quantity`. Then, create a materialized view joining `SALES`, `CUSTOMERS`, and `ITEMS` for faster reporting.",
+        "D": "Leave the `SALES` table as is, but create indexes on `CustomerID` and `ItemID` to speed up queries. The redundancy is acceptable given the potential complexity and performance overhead of normalization."
+      },
+      "correct_answer": "C: Create a new `CUSTOMERS` table (`CustomerID`, `CustomerName`) and an `ITEMS` table (`ItemID`, `ItemPrice`, `ItemCategory`). Modify the `SALES` table to include only `TransactionID`, `TransactionDate`, `CustomerID`, `ItemID`, and `Quantity`. Then, create a materialized view joining `SALES`, `CUSTOMERS`, and `ITEMS` for faster reporting.",
+      "explanation": "This question synthesizes 2NF and denormalization considerations. Option C correctly addresses the 2NF violation by creating separate `CUSTOMERS` and `ITEMS` tables, eliminating partial dependencies. However, recognizing the CIO's concerns about performance, it *also* creates a materialized view. This pre-computed join avoids the runtime cost of joining tables for common reports, thus mitigating the negative performance impact of normalization. Option A over-normalizes, splitting `SALES_ITEMS` unnecessarily and potentially hurting performance. Option B fails to address the partial dependencies adequately by not separating `CustomerName` or `ItemCategory`. Option D ignores the data integrity issues entirely, which is unacceptable in the long run. The key is balancing normalization for data integrity with denormalization techniques for query performance.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_33",
+      "tags": [
+        "second normal form",
+        "2NF",
+        "partial dependency",
+        "denormalization",
+        "materialized view",
+        "database performance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university registrar's office is upgrading its student information system. The existing `STUDENT_RECORDS` table includes `StudentID` (primary key), `StudentName`, `MajorCode`, `MajorDescription`, `AdvisorID`, and `AdvisorOffice`. The system suffers from frequent data inconsistencies. Specifically, when the `MajorDescription` for a `MajorCode` changes, it often requires updating numerous records. Similarly, when an advisor moves to a different office, the `AdvisorOffice` information must be updated across many student records. Synthesizing 3NF (Lecture 4) and change management principles (Lecture 12), what is the MOST comprehensive solution to address these data inconsistencies while minimizing disruption to existing reporting processes?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Implement database triggers that automatically update all related records whenever `MajorDescription` or `AdvisorOffice` is changed. This ensures data consistency without changing the underlying table structure.",
+        "B": "Normalize the database by creating separate `MAJOR` (`MajorCode`, `MajorDescription`) and `ADVISOR` (`AdvisorID`, `AdvisorOffice`) tables. Update the `STUDENT_RECORDS` table to only include `StudentID`, `StudentName`, `MajorCode`, and `AdvisorID`. Then, thoroughly test all existing reports to ensure compatibility with the new schema.",
+        "C": "Create a report that identifies inconsistencies in `MajorDescription` and `AdvisorOffice` and manually correct the data periodically. This avoids complex database changes and allows for human oversight.",
+        "D": "Normalize the database as in option B. Additionally, create views that mimic the original `STUDENT_RECORDS` table structure for existing reports, and implement a phased rollout, starting with a pilot group of students and staff."
+      },
+      "correct_answer": "D: Normalize the database as in option B. Additionally, create views that mimic the original `STUDENT_RECORDS` table structure for existing reports, and implement a phased rollout, starting with a pilot group of students and staff.",
+      "explanation": "This question requires synthesizing 3NF and change management. Option D is the most comprehensive. Normalizing the database (creating `MAJOR` and `ADVISOR` tables) eliminates the transitive dependencies (`MajorCode` -> `MajorDescription` and `AdvisorID` -> `AdvisorOffice`), resolving the root cause of data inconsistencies. However, it *also* addresses the change management aspect by creating views to maintain compatibility with existing reports and implementing a phased rollout to minimize disruption. Option A only addresses the symptom (data inconsistency) with triggers, not the underlying transitive dependency, leading to potential performance issues. Option B correctly normalizes but lacks a change management strategy, making it risky. Option C is a reactive approach that doesn't prevent future inconsistencies and is labor-intensive. The key is to not only fix the data model but also manage the transition effectively.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_34",
+      "tags": [
+        "third normal form",
+        "3NF",
+        "transitive dependency",
+        "database normalization",
+        "change management",
+        "views",
+        "phased rollout"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A large hospital is implementing a new electronic health record (EHR) system. The current `PATIENT_RECORDS` table includes `PatientID` (primary key), `PatientName`, `Address`, `InsurancePlanID`, `InsuranceCompanyName`, and `PolicyNumber`. The database team discovers that `InsuranceCompanyName` is dependent on `InsurancePlanID`. Furthermore, the CIO is pushing for faster report generation on patient demographics and insurance coverage. Considering 3NF (Lecture 4) and data warehousing best practices (Lecture 11), which approach BEST balances data integrity requirements with the need for efficient analytical reporting?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Create a separate `INSURANCE_PLANS` table (`InsurancePlanID`, `InsuranceCompanyName`) and update the `PATIENT_RECORDS` table to include only `PatientID`, `PatientName`, `Address`, `InsurancePlanID`, and `PolicyNumber`. Create a nightly job to synchronize the `PATIENT_RECORDS` table with a separate data warehouse for reporting.",
+        "B": "Create a separate `INSURANCE_PLANS` table (`InsurancePlanID`, `InsuranceCompanyName`) and update the `PATIENT_RECORDS` table as in option A. Create a materialized view joining `PATIENT_RECORDS` and `INSURANCE_PLANS` for faster reporting directly from the transactional database.",
+        "C": "Leave the `PATIENT_RECORDS` table as is, but create a separate data warehouse with a star schema, including a `Patient` dimension table and an `Insurance` dimension table. Extract and transform data from the `PATIENT_RECORDS` table into the data warehouse on a nightly basis.",
+        "D": "Create a separate `INSURANCE_PLANS` table (`InsurancePlanID`, `InsuranceCompanyName`) and update the `PATIENT_RECORDS` table as in option A. Implement real-time replication of data from the transactional database to a separate analytical database optimized for reporting."
+      },
+      "correct_answer": "C: Leave the `PATIENT_RECORDS` table as is, but create a separate data warehouse with a star schema, including a `Patient` dimension table and an `Insurance` dimension table. Extract and transform data from the `PATIENT_RECORDS` table into the data warehouse on a nightly basis.",
+      "explanation": "This question requires synthesizing 3NF with data warehousing principles. Option C is the best approach. While normalizing the `PATIENT_RECORDS` table is important, the primary driver here is *efficient reporting*. A separate data warehouse with a star schema is designed specifically for analytical queries. ETL processes can handle the data transformation, and the star schema provides optimized data access for reporting. Although the `PATIENT_RECORDS` table still contains a 3NF violation, the impact is minimized by the fact that it's the *source* for the data warehouse. Option A correctly normalizes and uses a data warehouse, but doesn't specify the critical *star schema* optimization. Option B is problematic because materialized views on a transactional database can negatively impact performance. Option D introduces complexity with real-time replication, which may not be necessary for the hospital's reporting needs. The key is recognizing that a data warehouse is the optimal solution for analytical reporting, even if the source system has minor normalization issues.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_34",
+      "tags": [
+        "third normal form",
+        "3NF",
+        "transitive dependency",
+        "data warehouse",
+        "star schema",
+        "ETL",
+        "database normalization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software development company, \"CodeCraft\", uses a relational database to manage its projects. The `EMPLOYEE` table includes `EmployeeID` (primary key), `EmployeeName`, `DepartmentID`, `DepartmentLocation`, and `ProjectID`. The company experiences issues with data redundancy and update anomalies: when the location of a department changes, multiple employee records need to be updated. Additionally, project assignments are not clearly tracked, leading to confusion. Synthesizing 2NF/3NF (Lecture 4) and project management principles (Lecture 13), which database design and process change combination would BEST address these issues?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Create a `DEPARTMENT` table (`DepartmentID`, `DepartmentLocation`) and an `EMPLOYEE_PROJECT` table (`EmployeeID`, `ProjectID`). Update the `EMPLOYEE` table to include only `EmployeeID`, `EmployeeName`, and `DepartmentID`. Implement a daily script to identify and correct any inconsistencies in project assignments.",
+        "B": "Create a `DEPARTMENT` table (`DepartmentID`, `DepartmentLocation`) and an `EMPLOYEE_PROJECT` table (`EmployeeID`, `ProjectID`). Update the `EMPLOYEE` table as in option A. Implement a formal project assignment process using project management software to ensure clear tracking of employee roles and responsibilities.",
+        "C": "Leave the `EMPLOYEE` table as is, but implement a project management system with role-based access control to restrict updates to project assignments. The database structure can remain unchanged as long as access is controlled.",
+        "D": "Create a `DEPARTMENT` table (`DepartmentID`, `DepartmentLocation`) and update the `EMPLOYEE` table to include only `EmployeeID`, `EmployeeName`, `DepartmentID`, and `ProjectID`. Rely on employee training to ensure accurate project assignment updates."
+      },
+      "correct_answer": "B: Create a `DEPARTMENT` table (`DepartmentID`, `DepartmentLocation`) and an `EMPLOYEE_PROJECT` table (`EmployeeID`, `ProjectID`). Update the `EMPLOYEE` table as in option A. Implement a formal project assignment process using project management software to ensure clear tracking of employee roles and responsibilities.",
+      "explanation": "This question requires synthesizing database normalization and project management. Option B is the optimal solution. Creating the `DEPARTMENT` table eliminates the transitive dependency (`DepartmentID` -> `DepartmentLocation`) and addresses the data redundancy issue. Creating the `EMPLOYEE_PROJECT` table addresses the lack of clear project tracking by implementing a many-to-many relationship between employees and projects. Crucially, the *process change* (formal project assignment) is *equally important* as the database change. This combination ensures both data integrity and clear project assignment tracking. Option A only addresses the database normalization and lacks a strong process component. Option C ignores the underlying data redundancy issues. Option D includes database normalization but relies solely on employee training, which is insufficient without a proper process and tools. The key is to recognize that database design and process are intertwined and both must be addressed for a comprehensive solution.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_34",
+      "tags": [
+        "third normal form",
+        "3NF",
+        "transitive dependency",
+        "database normalization",
+        "project management",
+        "process change",
+        "many-to-many relationship"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An online retailer, \"eShop\", uses a database to manage product inventory and customer orders. The `ORDER_ITEMS` table has a composite primary key of `(OrderID, ProductID)` and includes attributes: `Quantity`, `UnitPrice`, `ProductName`, `ProductCategory`, and `ShippingAddress`. The retailer notices significant data redundancy: `ProductName` and `ProductCategory` are repeated for every order involving a specific product, and `ShippingAddress` is repeated for every item within a single order.  They are also struggling with slow query performance when generating reports on product sales by category and shipping region. Synthesizing 2NF (Lecture 4) with database performance optimization techniques (Lecture 7), what is the MOST effective strategy to improve data integrity and reporting performance?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Split the `ORDER_ITEMS` table into `ORDERS` (`OrderID`, `ShippingAddress`) and `PRODUCTS` (`ProductID`, `ProductName`, `ProductCategory`) tables, and create a new `ORDER_ITEM_DETAILS` table (`OrderID`, `ProductID`, `Quantity`, `UnitPrice`). Create indexes on `OrderID` and `ProductID` in the `ORDER_ITEM_DETAILS` table.",
+        "B": "Split the `ORDER_ITEMS` table into `ORDERS` (`OrderID`, `ShippingAddress`) and `PRODUCTS` (`ProductID`, `ProductName`, `ProductCategory`) tables, and a new `ORDER_ITEM_DETAILS` table (`OrderID`, `ProductID`, `Quantity`, `UnitPrice`). Create a clustered index on `ProductCategory` and `ShippingAddress` in a separate data mart specifically designed for reporting.",
+        "C": "Leave the `ORDER_ITEMS` table as is, but implement database caching and query optimization techniques. The redundancy is acceptable given the performance benefits of avoiding complex joins.",
+        "D": "Split the `ORDER_ITEMS` table into `ORDERS` (`OrderID`, `ShippingAddress`), `PRODUCTS` (`ProductID`, `ProductName`, `ProductCategory`), and `ORDER_ITEM_DETAILS` (`OrderID`, `ProductID`, `Quantity`, `UnitPrice`) tables. Implement stored procedures for all report generation to minimize data transfer between the database and application server."
+      },
+      "correct_answer": "B: Split the `ORDER_ITEMS` table into `ORDERS` (`OrderID`, `ShippingAddress`) and `PRODUCTS` (`ProductID`, `ProductName`, `ProductCategory`) tables, and a new `ORDER_ITEM_DETAILS` table (`OrderID`, `ProductID`, `Quantity`, `UnitPrice`). Create a clustered index on `ProductCategory` and `ShippingAddress` in a separate data mart specifically designed for reporting.",
+      "explanation": "This question integrates 2NF normalization with database performance. Option B provides the best solution. Normalizing the database by creating separate `ORDERS` and `PRODUCTS` tables addresses the 2NF violations (partial dependencies). Crucially, creating a separate data mart with a *clustered index* on `ProductCategory` and `ShippingAddress` significantly improves reporting performance for the specified queries. Clustered indexes physically sort the data on disk, making range scans and aggregations on these columns much faster. Option A correctly normalizes and adds indexes, but indexes on `OrderID` and `ProductID` are less effective for the *reporting* queries. Option C ignores the data integrity issues, which is unacceptable. Option D normalizes and uses stored procedures, but lacks the crucial data mart and clustered index optimization for the specific reporting requirements. The key is to recognize that different indexing strategies are required for transactional and analytical workloads, and that a data mart with clustered indexes is a superior approach for reporting performance.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "MIS_lec_4_33",
+      "tags": [
+        "second normal form",
+        "2NF",
+        "partial dependency",
+        "database normalization",
+        "clustered index",
+        "data mart",
+        "database performance",
+        "query optimization"
+      ]
+    }
+  ]
+}

@@ -31,6 +31,14 @@ class Config:
     # ==================== Processing Configuration ====================
     MAX_CHUNK_SIZE: int = int(os.getenv("MAX_CHUNK_SIZE", "4000"))
     
+    # ==================== Batch Processing Configuration ====================
+    # Enable batch processing for concurrent API calls
+    BATCH_PROCESSING_ENABLED: bool = os.getenv("BATCH_PROCESSING_ENABLED", "true").lower() == "true"
+    # Maximum number of concurrent API requests
+    MAX_CONCURRENT_REQUESTS: int = int(os.getenv("MAX_CONCURRENT_REQUESTS", "10"))
+    # Batch size for grouping tasks (0 = no limit, process all at once)
+    BATCH_SIZE: int = int(os.getenv("BATCH_SIZE", "0"))
+    
     # ==================== LaTeX Configuration ====================
     LATEX_ENABLED: bool = os.getenv("LATEX_ENABLED", "true").lower() == "true"
     LATEX_COMPILE_COMMAND: str = os.getenv("LATEX_COMPILE_COMMAND", "pdflatex")
@@ -74,6 +82,10 @@ class Config:
         print(f"  • Input Directory: {cls.INPUT_DIR}")
         print(f"  • Output Directory: {cls.OUTPUT_DIR}")
         print(f"  • Max Chunk Size: {cls.MAX_CHUNK_SIZE} chars")
+        print(f"  • Batch Processing: {'Enabled' if cls.BATCH_PROCESSING_ENABLED else 'Disabled'}")
+        if cls.BATCH_PROCESSING_ENABLED:
+            print(f"  • Max Concurrent Requests: {cls.MAX_CONCURRENT_REQUESTS}")
+            print(f"  • Batch Size: {cls.BATCH_SIZE if cls.BATCH_SIZE > 0 else 'Unlimited'}")
         print(f"  • LaTeX Enabled: {cls.LATEX_ENABLED}")
         print(f"  • Anki Enabled: {cls.ANKI_ENABLED}")
         api_key_preview = cls.GEMINI_API_KEY[:10] + "..." if cls.GEMINI_API_KEY else "NOT SET"

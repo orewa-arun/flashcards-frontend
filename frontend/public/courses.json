@@ -89,6 +89,7 @@
     "course_description": "Regression models are among the most powerful statistical models used in business analysis. This course introduces students to the concepts of regression by modeling dependent behavior and relationships among variables, followed by analysis of covariance and logistic regression as a classifier. The objective is to help students identify relationships, use predictive models and analyze correlations.",
     "lecture_slides": [
       {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_1.pdf",
         "lecture_name": "DAA Lecture 1",
         "lecture_number": "1",
         "topics": [
@@ -126,6 +127,7 @@
         ]
       },
       {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_4.pdf",
         "lecture_name": "DAA Lecture 4",
         "lecture_number": "4",
         "topics": [

@@ -13,6 +13,23 @@ function QuizHistoryView() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  // Helper function to format difficulty level for display
+  const formatDifficulty = (difficulty) => {
+    if (!difficulty) return { emoji: '📚', label: 'Medium', class: 'medium' };
+    
+    const difficultyMap = {
+      'level_1': { emoji: '🟢', label: 'Easy', class: 'easy' },
+      'level_2': { emoji: '🟡', label: 'Medium', class: 'medium' },
+      'level_3': { emoji: '🔴', label: 'Hard', class: 'hard' },
+      'level_4': { emoji: '💀', label: 'Boss Level', class: 'boss' },
+      'easy': { emoji: '🟢', label: 'Easy', class: 'easy' },
+      'medium': { emoji: '🟡', label: 'Medium', class: 'medium' },
+      'hard': { emoji: '🔴', label: 'Hard', class: 'hard' }
+    };
+    
+    return difficultyMap[difficulty] || { emoji: '📚', label: difficulty, class: 'medium' };
+  }
+
   useEffect(() => {
     loadQuizHistory()
   }, [])
@@ -138,8 +155,8 @@ function QuizHistoryView() {
                 {attemptDetails.score}/{attemptDetails.total_questions}
               </span>
               <span className="score-percentage">{attemptDetails.percentage.toFixed(1)}%</span>
-              <span className={`difficulty-badge ${attemptDetails.difficulty || 'medium'}`}>
-                {attemptDetails.difficulty === 'hard' ? '🔥 Hard' : '📚 Medium'}
+              <span className={`difficulty-badge ${formatDifficulty(attemptDetails.difficulty).class}`}>
+                {formatDifficulty(attemptDetails.difficulty).emoji} {formatDifficulty(attemptDetails.difficulty).label}
               </span>
             </div>
             <div className="attempt-meta">
@@ -235,8 +252,8 @@ function QuizHistoryView() {
                 >
                   <div className="attempt-header-row">
                     <div className="attempt-number">Attempt #{deckAttempts.length - index}</div>
-                    <span className={`difficulty-badge ${attempt.difficulty || 'medium'}`}>
-                      {attempt.difficulty === 'hard' ? '🔥 Hard' : '📚 Medium'}
+                    <span className={`difficulty-badge ${formatDifficulty(attempt.difficulty).class}`}>
+                      {formatDifficulty(attempt.difficulty).emoji} {formatDifficulty(attempt.difficulty).label}
                     </span>
                   </div>
                   <div className="attempt-score">

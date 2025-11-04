@@ -1,0 +1,171 @@
+.quiz-level-selection {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.quiz-level-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  padding: 10px 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  background: #f5f5f5;
+  transform: translateX(-2px);
+}
+
+.quiz-level-header h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.quiz-level-header .subtitle {
+  font-size: 1.1em;
+  color: #666;
+}
+
+.level-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.level-card {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 25px 30px;
+  background: #fff;
+  border: 3px solid;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.level-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.level-icon {
+  font-size: 3em;
+  min-width: 70px;
+  text-align: center;
+}
+
+.level-info {
+  flex: 1;
+}
+
+.level-info h2 {
+  font-size: 1.8em;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.level-info h3 {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #666;
+  margin: 0 0 10px 0;
+}
+
+.level-description {
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.level-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9em;
+  color: #999;
+}
+
+.level-arrow {
+  font-size: 2em;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.level-card:hover .level-arrow {
+  opacity: 1;
+}
+
+.quiz-info-box {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px 30px;
+  border-left: 4px solid #2196f3;
+}
+
+.quiz-info-box h3 {
+  font-size: 1.3em;
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.quiz-info-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.quiz-info-box li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.quiz-info-box strong {
+  color: #2196f3;
+}
+
+@media (max-width: 768px) {
+  .quiz-level-selection {
+    padding: 20px 15px;
+  }
+
+  .back-button {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .quiz-level-header h1 {
+    font-size: 2em;
+  }
+
+  .level-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .level-icon {
+    font-size: 2.5em;
+  }
+
+  .level-arrow {
+    display: none;
+  }
+}
+
+

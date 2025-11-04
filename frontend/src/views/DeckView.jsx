@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import StudyDeck from '../components/StudyDeck'
 import { trackEvent } from '../utils/amplitude'
 import './DeckView.css'
@@ -9,10 +9,12 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000
 function DeckView() {
   const { courseId, lectureId } = useParams()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [flashcardsData, setFlashcardsData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [sessionId, setSessionId] = useState(null)
+  const [initialCardId, setInitialCardId] = useState(null)
   
   // Track if session has been initialized for this specific deck
   const sessionInitialized = useRef(false)
@@ -65,7 +67,7 @@ function DeckView() {
     const initializeDeck = async () => {
       try {
         // Load flashcards
-        const flashcardsPath = `/courses/${courseId}/cognitive_flashcards/${lectureId}/${lectureId}_cognitive_flashcards.json`
+        const flashcardsPath = `/courses/${courseId}/cognitive_flashcards/${lectureId}/${lectureId}_cognitive_flashcards_only.json`
         const response = await fetch(flashcardsPath)
 
         console.log('Fetching flashcards from:', flashcardsPath)
@@ -76,6 +78,15 @@ function DeckView() {
         
         const data = await response.json()
         setFlashcardsData(data)
+        
+        // Check for deep link to specific flashcard
+        const cardIdParam = searchParams.get('card')
+        if (cardIdParam && data.flashcards) {
+          const cardIndex = data.flashcards.findIndex(card => card.flashcard_id === cardIdParam)
+          if (cardIndex !== -1) {
+            setInitialCardId(cardIdParam)
+          }
+        }
         
         // Track flashcard session start in Amplitude
         studyStartTime.current = Date.now()
@@ -154,6 +165,7 @@ function DeckView() {
         courseId={courseId}
         deckId={lectureId}
         sessionId={sessionId}
+        initialCardId={initialCardId}
       />
     </div>
   )

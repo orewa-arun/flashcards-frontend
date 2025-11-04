@@ -1,0 +1,1622 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-03T18:40:37.268790",
+    "total_questions": 71,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "lecture": "SI_PLC",
+    "difficulty_level": 2,
+    "source_flashcards": 15
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "A small startup has developed a revolutionary new type of biodegradable packaging. They are launching it with a targeted social media campaign and offering free samples to key influencers. Given this scenario, what stage of the Product Life Cycle are they most likely in?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Decline, as they are trying to revive a dying product category.",
+        "B": "Maturity, as they are focused on maintaining market share.",
+        "C": "Introduction, as they are focused on creating awareness and driving initial adoption.",
+        "D": "Growth, as they are experiencing rapid sales increases."
+      },
+      "correct_answer": "Introduction, as they are focused on creating awareness and driving initial adoption.",
+      "explanation": "The startup is using targeted marketing and free samples to build awareness for their new packaging. This aligns with the introduction stage, which focuses on creating product awareness and driving initial adoption. Decline involves reviving a product, maturity focuses on maintaining share, and growth involves rapid sales increases. Option B uses the right approach (marketing efforts) but in the wrong context (maturity phase)",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_1",
+      "tags": [
+        "product life cycle",
+        "marketing",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that produces a well-established brand of breakfast cereal has noticed a slight dip in sales over the past year. They respond by launching a new advertising campaign emphasizing the cereal's nutritional benefits and introducing a limited-edition flavor. Given this scenario, what is the MOST likely stage of the Product Life Cycle for this cereal?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Introduction, as the new campaign signals a product launch.",
+        "B": "Growth, as sales are expected to increase rapidly.",
+        "C": "Maturity, as the company is trying to maintain sales and extend the product's life.",
+        "D": "Decline, as sales are inevitably decreasing regardless of the campaign."
+      },
+      "correct_answer": "Maturity, as the company is trying to maintain sales and extend the product's life.",
+      "explanation": "The cereal brand is well-established and experiencing a slight sales dip. The company's actions (new campaign, limited edition flavor) are aimed at maintaining sales and extending the product's life. This is characteristic of the maturity stage. Introduction involves launching a new product, growth involves rapid sales increases, and while decline might be happening, the actions suggest an attempt to prolong maturity. Option A is the incorrect stage because the campaign is not a new product launch, but a refresh of an old one.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_1",
+      "tags": [
+        "product life cycle",
+        "marketing",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A local bakery is struggling to stay afloat. They decide to introduce a new line of gluten-free and vegan pastries. They've hired a social media manager to promote the new line and are offering discounts to attract customers. Given this scenario, what is the MOST likely intention of the bakery in terms of the Product Life Cycle?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To enter the Maturity stage by optimizing production costs.",
+        "B": "To initiate the Decline stage by phasing out old products.",
+        "C": "To restart the Introduction stage with a new product line.",
+        "D": "To accelerate the Growth stage of their existing product line."
+      },
+      "correct_answer": "To restart the Introduction stage with a new product line.",
+      "explanation": "The bakery is introducing a new product line with marketing efforts and discounts, which indicates a focus on creating awareness and driving initial adoption. This aligns with the introduction stage. While they are struggling, they aren't necessarily in decline, and the gluten-free line is new, not optimized for maturity or part of an existing product. Option D is an incomplete solution because the question is about a new product line, not an existing one.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_1",
+      "tags": [
+        "product life cycle",
+        "marketing",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company releases a new smartphone app. Initially, the app is only available to a small group of beta testers. After receiving positive feedback, the company launches a large-scale marketing campaign to promote the app to a wider audience. Given this scenario, what stage of the Product Life Cycle is the app currently in?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Decline, as the app will eventually be replaced by newer apps.",
+        "B": "Maturity, as the company is focused on maintaining its user base.",
+        "C": "Introduction, as the company is launching a marketing campaign after beta testing.",
+        "D": "Growth, as the positive feedback from beta testers indicates rapid adoption is guaranteed."
+      },
+      "correct_answer": "Introduction, as the company is launching a marketing campaign after beta testing.",
+      "explanation": "The app has moved beyond beta testing and is now being promoted to a wider audience through a marketing campaign. This signifies the introduction stage, where the focus is on creating awareness and driving initial adoption. The app is not yet in decline or maturity. While growth is expected, the campaign signifies the *start* of that phase. Option D makes a common mistake by assuming that good feedback automatically guarantees growth.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_1",
+      "tags": [
+        "product life cycle",
+        "marketing",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A tech company initially releases a niche product for advanced users. After a few months, they begin to simplify the product's interface and add features that appeal to a broader audience, while also significantly increasing their advertising budget. Given this scenario, what stage of the Product Life Cycle are they trying to transition into?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Decline, by targeting a wider audience to maximize remaining profits.",
+        "B": "Maturity, by focusing on maintaining market share among advanced users.",
+        "C": "Growth, by appealing to a broader audience and increasing marketing efforts.",
+        "D": "Introduction, by making the product more user-friendly and accessible."
+      },
+      "correct_answer": "Growth, by appealing to a broader audience and increasing marketing efforts.",
+      "explanation": "The company is simplifying the product and increasing advertising to attract a wider audience. This aligns with the growth stage, which involves expanding market reach and increasing sales. They are not in decline, nor are they only focusing on maintaining share among advanced users. The simplification suggests moving *beyond* the initial introduction to a broader market. Option B uses a correct strategy (focusing on market share) but in the wrong context (maturity).",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_1",
+      "tags": [
+        "product life cycle",
+        "marketing",
+        "strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company developing a new line of electric scooters is deciding on its initial marketing strategy. They have limited funding and need to prioritize their efforts. Which of the following approaches would be MOST appropriate for the Introduction stage of the Product Life Cycle?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Focusing on cost reduction and process optimization to maximize profit margins.",
+        "B": "Investing heavily in mass media advertising to reach the largest possible audience.",
+        "C": "Targeting early adopters and influencers through niche online communities and events.",
+        "D": "Implementing aggressive pricing strategies to quickly capture market share from competitors."
+      },
+      "correct_answer": "Targeting early adopters and influencers through niche online communities and events.",
+      "explanation": "In the introduction stage, the focus is on creating awareness and driving initial adoption, often with limited resources. Targeting early adopters and influencers is a cost-effective way to generate buzz and build credibility. Mass media advertising is too expensive and broad for this stage, cost reduction is more relevant in later stages, and aggressive pricing is risky without established demand. Option B is a common oversimplification by assuming that more advertising is always better.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_2",
+      "tags": [
+        "product life cycle",
+        "stages",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that manufactures a popular brand of athletic shoes is launching a new model designed for marathon runners. They have already conducted extensive market research and developed a high-performance shoe. They are now preparing to ramp up production and distribution. In what stage of the Product Life Cycle is the company's new shoe?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Decline, as athletic shoe sales are generally decreasing.",
+        "B": "Maturity, as the company already has a strong market presence.",
+        "C": "Growth, as the shoe is designed for a niche market (marathon runners).",
+        "D": "Product Development, as they are preparing to ramp up production and distribution."
+      },
+      "correct_answer": "Product Development, as they are preparing to ramp up production and distribution.",
+      "explanation": "The company has completed market research and developed the shoe but is still in the process of preparing for production and distribution. This indicates that they are in the Product Development stage. They haven't yet launched the product, so it's not in introduction, growth, maturity, or decline. Option C might be true *later*, but right now the correct answer is Product Development. ",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_2",
+      "tags": [
+        "product life cycle",
+        "stages",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company releases a new version of its flagship product. Initial sales are slow, but positive reviews and word-of-mouth are gradually increasing demand. The company is focused on improving the product based on user feedback and expanding its marketing efforts. Which stage of the Product Life Cycle is this software MOST likely in?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Decline, as sales are initially slow.",
+        "B": "Maturity, as the company is improving the product based on user feedback.",
+        "C": "Growth, as demand is increasing due to positive reviews and marketing efforts.",
+        "D": "Introduction, as initial sales are slow, but demand is gradually increasing."
+      },
+      "correct_answer": "Introduction, as initial sales are slow, but demand is gradually increasing.",
+      "explanation": "The software is experiencing slow initial sales but gradually increasing demand due to positive reviews and marketing. This is a hallmark of the Introduction stage. Growth would involve rapid sales, maturity would involve maintaining market share, and decline would involve decreasing sales. Option C is a common oversimplification, assuming that marketing always equals growth.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_2",
+      "tags": [
+        "product life cycle",
+        "stages",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that sells a line of organic baby food has seen consistent sales and profits for several years. They face increasing competition from new brands and private-label products. To maintain their market position, they are focusing on brand loyalty programs and introducing new flavors. Which stage of the Product Life Cycle is this product MOST likely in?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Decline, as they face increasing competition.",
+        "B": "Introduction, as they are introducing new flavors.",
+        "C": "Growth, as they have consistent sales and profits.",
+        "D": "Maturity, as they are focusing on brand loyalty and facing increasing competition."
+      },
+      "correct_answer": "Maturity, as they are focusing on brand loyalty and facing increasing competition.",
+      "explanation": "The company is experiencing consistent sales and profits but faces increasing competition. Their focus on brand loyalty and new flavors is a strategy to maintain their market position. This is characteristic of the maturity stage. Introduction involves launching a new product, growth involves rapid sales increases, and decline involves decreasing sales. Option A only addresses a symptom, not the root cause (maturity).",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_2",
+      "tags": [
+        "product life cycle",
+        "stages",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that manufactures CRT televisions has seen a significant decline in sales over the past decade. They have tried various strategies to revive the product, such as lowering prices and offering discounts, but sales continue to fall. The company is now considering phasing out CRT televisions and focusing on newer technologies. Which stage of the Product Life Cycle are CRT televisions currently in?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Maturity, as the company is trying to revive the product.",
+        "B": "Introduction, as the company is considering phasing out the product.",
+        "C": "Growth, as the company has tried various strategies to revive the product.",
+        "D": "Decline, as sales have been significantly decreasing over the past decade."
+      },
+      "correct_answer": "Decline, as sales have been significantly decreasing over the past decade.",
+      "explanation": "The product has experienced a significant decline in sales, and the company is considering phasing it out. This is indicative of the decline stage. While they tried to revive it (maturity strategies), the continued decline confirms the stage. Introduction and growth are not applicable as sales are decreasing, not increasing. Option A is an incomplete solution because just trying to revive a product does not guarantee that is in the maturity stage.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_2",
+      "tags": [
+        "product life cycle",
+        "stages",
+        "marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company launches a new line of smartwatches. Initially, research and development costs are high, and sales are low as the company focuses on educating consumers about the product's features. As sales gradually increase, production costs decrease due to economies of scale. How would you describe the profit trend during the *initial* part of this smartwatch's product life cycle?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Profits are high and increasing rapidly.",
+        "B": "Profits are nonexistent or negative due to high initial costs.",
+        "C": "Profits are stable and plateauing.",
+        "D": "Profits are decreasing as competition increases."
+      },
+      "correct_answer": "Profits are nonexistent or negative due to high initial costs.",
+      "explanation": "In the early stages of a product life cycle, particularly the introduction phase, high research and development costs, combined with low initial sales, typically result in nonexistent or negative profits. As sales increase and production costs decrease, profits will eventually become positive. The other options describe profit trends in later stages. Option A is a common oversimplification by assuming that low production costs automatically equals high profits.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_3",
+      "tags": [
+        "sales",
+        "profits",
+        "product life cycle"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small business owner starts selling handmade jewelry at a local craft fair. At first, sales are slow, but they gradually increase as more people discover their unique designs. After a few months, sales plateau, and the owner decides to start selling their jewelry online to reach a wider audience. How would you describe the sales trend during the period *before* the owner starts selling online?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Sales are rapidly increasing.",
+        "B": "Sales are nonexistent.",
+        "C": "Sales are declining.",
+        "D": "Sales start low and gradually increase before plateauing."
+      },
+      "correct_answer": "Sales start low and gradually increase before plateauing.",
+      "explanation": "The scenario describes sales starting slow and gradually increasing before reaching a plateau. This indicates a pattern of initial growth followed by stabilization, which is typical of the introduction transitioning into the growth and then maturity stages. Other options do not align with the described trend. Option A is an incomplete solution because it doesn't reflect the initial slow sales period.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_3",
+      "tags": [
+        "sales",
+        "profits",
+        "product life cycle"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A pharmaceutical company's patent for a blockbuster drug expires. As a result, generic versions of the drug enter the market, significantly reducing the company's sales and profits. What stage of the Product Life Cycle is this drug MOST likely in, and how are sales and profits typically affected?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Maturity; sales and profits remain stable due to strong brand loyalty.",
+        "B": "Introduction; sales are increasing as the drug becomes more widely available.",
+        "C": "Growth; sales and profits are rapidly increasing due to lower prices.",
+        "D": "Decline; sales and profits are decreasing due to generic competition."
+      },
+      "correct_answer": "Decline; sales and profits are decreasing due to generic competition.",
+      "explanation": "The entry of generic versions due to patent expiration signals the decline stage. Generic competition leads to decreased sales and profits for the original drug. Maturity would involve stable sales, introduction would involve increasing sales for a new drug, and growth would involve rapidly increasing sales. Option A addresses the symptom, but not the root cause. Sales may decline despite brand loyalty.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_3",
+      "tags": [
+        "sales",
+        "profits",
+        "product life cycle"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new tech startup launches a revolutionary virtual reality headset. Initially, sales are slow, and the company invests heavily in marketing and educating consumers about the technology. However, as the technology gains popularity, sales increase rapidly, and production costs decrease, leading to significant profit growth. How would you describe the profit trend as the product transitions from the *initial launch* to *gaining popularity*?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Profits remain consistently high throughout both periods.",
+        "B": "Profits transition from negative to positive.",
+        "C": "Profits transition from positive to negative.",
+        "D": "Profits remain consistently negative throughout both periods."
+      },
+      "correct_answer": "Profits transition from negative to positive.",
+      "explanation": "In the initial launch phase, high investment in marketing and low sales would result in negative profits. As the technology gains popularity and sales increase, profits would transition from negative to positive. The other options do not accurately reflect this progression. Option A is a common oversimplification by assuming that tech sales automatically equals high profits.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_3",
+      "tags": [
+        "sales",
+        "profits",
+        "product life cycle"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company develops a new type of electric car. They invest heavily in research and development, marketing, and building a charging infrastructure. Initially, sales are slow, but they expect them to increase as more consumers adopt electric vehicles. At this stage, what is the MOST likely relationship between sales and profits?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Sales are high, and profits are high.",
+        "B": "Sales are low, and profits are high.",
+        "C": "Sales are high, and profits are low.",
+        "D": "Sales are low, and profits are low or negative."
+      },
+      "correct_answer": "Sales are low, and profits are low or negative.",
+      "explanation": "The scenario describes high initial investment and slow sales, which means the company is likely experiencing low or negative profits. Profits typically lag sales, especially during the introduction stage. Other options do not align with this pattern. Option A is incorrect because it assumes that investment automatically leads to high sales and profits.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_3",
+      "tags": [
+        "sales",
+        "profits",
+        "product life cycle"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is launching a new type of energy drink targeted at athletes. They are investing heavily in sponsoring sporting events and creating social media campaigns to raise awareness. Given this scenario, what is the MOST likely financial characteristic of this product during the Introduction stage?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "High sales volume and low promotion expenses.",
+        "B": "Low sales volume and high promotion expenses.",
+        "C": "High sales volume and high promotion expenses.",
+        "D": "Low sales volume and low promotion expenses."
+      },
+      "correct_answer": "Low sales volume and high promotion expenses.",
+      "explanation": "The Introduction stage is characterized by high promotion expenses to create awareness and drive initial adoption, coupled with slow sales growth. Therefore, the most likely financial characteristic is low sales volume and high promotion expenses. Option A might be the *goal*, but it doesn't reflect the reality of the introduction phase. Option C is the right approach (sales and promotions) but the wrong context (not the introduction phase).",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_4",
+      "tags": [
+        "PLC",
+        "Introduction Stage",
+        "Marketing",
+        "Product Launch",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company has just released a new mobile app. They are offering free trials, running online advertising campaigns, and partnering with influencers to promote the app. They are carefully monitoring user feedback and making frequent updates to improve the app's functionality. What challenge is the company PRIMARILY trying to overcome during this Introduction stage?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Minimizing production costs to maximize profits.",
+        "B": "Creating product awareness and driving initial adoption.",
+        "C": "Maintaining market share against established competitors.",
+        "D": "Managing declining sales and extending the product's life cycle."
+      },
+      "correct_answer": "Creating product awareness and driving initial adoption.",
+      "explanation": "The company's activities (free trials, advertising, influencer partnerships) are all aimed at creating awareness and driving initial adoption, which is the primary focus of the Introduction stage. Other options are relevant to later stages. Option C is an incomplete solution because it doesn't explain the need for awareness.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_4",
+      "tags": [
+        "PLC",
+        "Introduction Stage",
+        "Marketing",
+        "Product Launch",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A startup is launching a new type of electric bicycle. They have a limited marketing budget and need to prioritize their spending. Which of the following promotional activities would be MOST appropriate for the Introduction stage of the Product Life Cycle?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Offering deep discounts to quickly capture market share.",
+        "B": "Investing in mass media advertising to reach a broad audience.",
+        "C": "Focusing on targeted social media campaigns and partnerships with local bike shops.",
+        "D": "Reducing promotional spending to minimize losses during the initial phase."
+      },
+      "correct_answer": "Focusing on targeted social media campaigns and partnerships with local bike shops.",
+      "explanation": "Targeted social media and local partnerships are cost-effective ways to reach early adopters and build awareness during the Introduction stage. Deep discounts can hurt profitability, mass media is expensive, and reducing promotion would hinder adoption. Option B is a common oversimplification by assuming that more advertising is always better.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_4",
+      "tags": [
+        "PLC",
+        "Introduction Stage",
+        "Marketing",
+        "Product Launch",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company has launched a new line of organic baby food. After a few months, sales are slow, and they are not yet making a profit. They are considering different strategies to improve their performance. What should the company PRIMARILY focus on during this Introduction stage?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Reducing production costs to increase profit margins.",
+        "B": "Increasing distribution channels to reach a wider audience.",
+        "C": "Building brand awareness and educating consumers about the benefits of organic baby food.",
+        "D": "Lowering prices to compete with established brands."
+      },
+      "correct_answer": "Building brand awareness and educating consumers about the benefits of organic baby food.",
+      "explanation": "Building brand awareness and educating consumers is critical during the Introduction stage to drive initial adoption. Cost reduction, wider distribution, and price competition are important, but secondary to creating awareness. Option B might be true *later*, but not now. ",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_4",
+      "tags": [
+        "PLC",
+        "Introduction Stage",
+        "Marketing",
+        "Product Launch",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company launches a new software product. They offer a free version with limited features and a paid version with advanced capabilities. They are heavily promoting the paid version through online advertising and offering discounts to early adopters. However, initial sales of the paid version are low. What is the MOST likely reason for the low sales during this Introduction stage?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Consumers are already familiar with the product and its benefits.",
+        "B": "The product is priced too low, signaling poor quality.",
+        "C": "The company has underestimated the promotional expenses required to create awareness.",
+        "D": "There is no demand for the product in the market."
+      },
+      "correct_answer": "The company has underestimated the promotional expenses required to create awareness.",
+      "explanation": "Low sales during the Introduction stage often result from insufficient market awareness. The company may be underestimating the promotional expenses needed to educate consumers about the product's value. The other options are less likely explanations. Option A is incorrect because if consumers were already familiar with the product, sales would be higher.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_4",
+      "tags": [
+        "PLC",
+        "Introduction Stage",
+        "Marketing",
+        "Product Launch",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small, local coffee shop has been steadily increasing its sales over the past few years. They are considering strategies to further grow their business. According to the concept of the trade-off between market share and current profit during the Growth stage of the PLC, which of the following actions would MOST likely prioritize market share?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Increasing prices on all menu items to maximize profit margins.",
+        "B": "Reducing advertising spending to lower operating costs.",
+        "C": "Offering significant discounts and running promotional campaigns to attract new customers and increase foot traffic.",
+        "D": "Limiting the number of staff during peak hours to reduce labor expenses."
+      },
+      "correct_answer": "Offering significant discounts and running promotional campaigns to attract new customers and increase foot traffic.",
+      "explanation": "The scenario describes a coffee shop in a growth stage. Prioritizing market share means focusing on expanding the customer base. Offering discounts and promotions (Option C) directly incentivizes new customers to try the coffee shop, growing market share. Option A focuses on current profit; Option B reduces market visibility; Option D could hurt customer service and brand image.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_5",
+      "tags": [
+        "PLC",
+        "Growth Stage",
+        "Market Share",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A tech startup has developed a new fitness tracking app. They are experiencing rapid user growth but have limited financial resources. They are debating whether to focus on aggressive marketing or maintaining high profit margins. Applying the principles of balancing market share and current profit during the Growth Stage of the PLC, which action would best align with a market share prioritization?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Implementing a strict paywall with a high subscription fee for premium features to maximize immediate revenue.",
+        "B": "Partnering with a larger company in a different industry to gain immediate access to their marketing resources, even if it means giving up a significant percentage of equity.",
+        "C": "Slowing down the development of new features to reduce R&D expenses and improve profitability.",
+        "D": "Focusing solely on user retention by improving customer support and ignoring new user acquisition."
+      },
+      "correct_answer": "Partnering with a larger company in a different industry to gain immediate access to their marketing resources, even if it means giving up a significant percentage of equity.",
+      "explanation": "The scenario presents a startup in the growth phase. Prioritizing market share involves actions that rapidly expand the user base. Partnering with a larger company (Option B) provides immediate marketing resources, which is crucial for capturing market share quickly, even if it means sacrificing some equity. Option A prioritizes profit; Option C slows down product development and user acquisition. Option D focuses on retention and ignores new user acquisition.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_5",
+      "tags": [
+        "PLC",
+        "Growth Stage",
+        "Market Share",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company selling a popular brand of organic snack bars is experiencing rapid growth. They have a limited marketing budget. Which of the following strategies best exemplifies prioritizing market share over current profits during this growth stage?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Increasing the price of the snack bars by 15% to increase profit margins.",
+        "B": "Reducing the size of the snack bars while maintaining the same price to improve profitability.",
+        "C": "Offering free samples and running promotional events in new geographic regions to attract new customers.",
+        "D": "Decreasing advertising spend and focusing solely on word-of-mouth marketing to reduce costs."
+      },
+      "correct_answer": "Offering free samples and running promotional events in new geographic regions to attract new customers.",
+      "explanation": "The scenario describes a growing organic snack bar company. Prioritizing market share involves actions that quickly expand the customer base. Offering free samples and promotions in new regions (Option C) is a direct way to attract new customers and expand the brand's reach. Option A increases prices, which could deter new customers; Option B reduces product value; Option D limits market visibility.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_5",
+      "tags": [
+        "PLC",
+        "Growth Stage",
+        "Market Share",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A fast-fashion retailer is experiencing significant growth in online sales. They are trying to decide how to allocate resources. Which of the following decisions indicates a prioritization of market share over current profits during this growth phase?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Implementing a strict return policy with high restocking fees to minimize losses from returned items.",
+        "B": "Investing heavily in influencer marketing and social media advertising to reach a wider audience, even if it means reduced profit margins per sale.",
+        "C": "Reducing the number of new product releases per season to lower design and production costs.",
+        "D": "Increasing shipping fees to offset rising transportation expenses."
+      },
+      "correct_answer": "Investing heavily in influencer marketing and social media advertising to reach a wider audience, even if it means reduced profit margins per sale.",
+      "explanation": "The scenario describes a fast-fashion retailer growing online. Prioritizing market share means investing in strategies to reach more customers. Investing in influencer marketing (Option B) directly increases brand visibility and attracts new customers, even if it reduces immediate profits. Option A discourages purchases; Option C limits product offerings; Option D increases cost to customers.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_5",
+      "tags": [
+        "PLC",
+        "Growth Stage",
+        "Market Share",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new energy drink company is experiencing rapid growth in a competitive market. They are considering two options: increase advertising or increase prices. According to the market share vs. profit trade-off in the Growth stage, what is the MOST likely outcome of prioritizing market share in this situation?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Higher immediate profits due to increased revenue per unit sold.",
+        "B": "Slower customer acquisition due to reduced brand visibility.",
+        "C": "Faster customer acquisition but potentially lower short-term profits.",
+        "D": "Decreased brand awareness due to lower advertising spend."
+      },
+      "correct_answer": "Faster customer acquisition but potentially lower short-term profits.",
+      "explanation": "The scenario describes an energy drink company in a growth stage. Prioritizing market share means focusing on acquiring more customers. Investing in strategies to increase brand visibility leads to faster customer acquisition (Option C). This often comes at the cost of lower short-term profits due to increased expenses (e.g., advertising). Option A is wrong because increased prices would deter new customer. Option B and D are wrong because increased advertising increases brand visibility.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_5",
+      "tags": [
+        "PLC",
+        "Growth Stage",
+        "Market Share",
+        "Profitability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A well-established brand of laundry detergent has been experiencing stable sales for several years. Which of the following actions would BEST exemplify 'modifying the market' as a strategy during the Maturity stage of the Product Life Cycle?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Introducing a new, concentrated formula that requires less packaging.",
+        "B": "Launching a marketing campaign emphasizing the detergent's historical reliability and consistent performance.",
+        "C": "Targeting college students and young professionals with smaller, single-use detergent packs.",
+        "D": "Offering a limited-edition scent during the holiday season."
+      },
+      "correct_answer": "Targeting college students and young professionals with smaller, single-use detergent packs.",
+      "explanation": "The scenario involves a mature laundry detergent brand. Modifying the market involves finding new customer segments or increasing usage. Targeting a new segment like college students (Option C) with tailored packaging expands the market. Option A is product modification; Option B focuses on existing customers; Option D is marketing modification.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_6",
+      "tags": [
+        "PLC",
+        "Maturity Stage",
+        "Market Modification"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A popular brand of bottled water has reached the maturity stage. Sales have plateaued, and competition is fierce. Which of the following actions would be considered 'modifying the product' as a strategic option?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Launching a social media campaign targeting health-conscious consumers.",
+        "B": "Offering discounts and promotions to increase sales volume.",
+        "C": "Introducing a new line of flavored sparkling water with added vitamins.",
+        "D": "Expanding distribution to new geographic regions."
+      },
+      "correct_answer": "Introducing a new line of flavored sparkling water with added vitamins.",
+      "explanation": "The scenario involves a mature bottled water brand. Modifying the product involves changing the product offering. Introducing a new line of flavored sparkling water (Option C) directly changes the product itself. Option A is marketing modification; Option B is marketing modification; Option D is market modification.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_6",
+      "tags": [
+        "PLC",
+        "Maturity Stage",
+        "Product Modification"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A successful chain of coffee shops has been operating for over 20 years and is in the maturity stage of the PLC. Which action BEST exemplifies 'modifying the marketing mix' to reinvigorate sales?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Developing a new line of organic coffee beans sourced from a different region.",
+        "B": "Offering a loyalty program with tiered rewards based on purchase frequency.",
+        "C": "Opening new locations in underserved urban areas.",
+        "D": "Creating smaller, more portable coffee cups for customers on the go."
+      },
+      "correct_answer": "Offering a loyalty program with tiered rewards based on purchase frequency.",
+      "explanation": "The scenario presents a mature coffee shop chain. Modifying the marketing mix involves changing price, promotion, or service. A loyalty program (Option B) is a promotional tactic that directly adjusts the customer experience. Option A is product modification; Option C is market modification; Option D is product modification (packaging).",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_6",
+      "tags": [
+        "PLC",
+        "Maturity Stage",
+        "Marketing Mix"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company producing traditional film cameras is facing declining sales due to the rise of digital photography. Which of the following strategic options BEST represents a 'harvesting' strategy during the Decline stage of the Product Life Cycle?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Investing heavily in research and development to create a new type of film camera with advanced features.",
+        "B": "Launching a marketing campaign targeting young consumers to revive interest in film photography.",
+        "C": "Reducing marketing expenses, closing underperforming retail locations, and focusing on selling remaining inventory to niche markets.",
+        "D": "Acquiring a digital camera company to diversify its product portfolio."
+      },
+      "correct_answer": "Reducing marketing expenses, closing underperforming retail locations, and focusing on selling remaining inventory to niche markets.",
+      "explanation": "The scenario involves a film camera company in decline. Harvesting involves minimizing costs and extracting remaining profits. Reducing expenses and focusing on niche markets (Option C) aligns with this. Option A is maintaining; Option B is maintaining; Option D is diversification, not decline-stage strategy.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_7",
+      "tags": [
+        "PLC",
+        "Decline Stage",
+        "Harvesting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company's flagship desktop application is experiencing declining usage as users shift to mobile alternatives. Which of the following strategies represents an attempt to 'maintain' the product during the Decline stage of the Product Life Cycle?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Announcing the end-of-life for the application and encouraging users to migrate to a new product.",
+        "B": "Significantly reducing the development team and only providing critical bug fixes.",
+        "C": "Repositioning the application as a specialized tool for a niche market and adding features tailored to their needs.",
+        "D": "Selling the application to another company that specializes in legacy software."
+      },
+      "correct_answer": "Repositioning the application as a specialized tool for a niche market and adding features tailored to their needs.",
+      "explanation": "The scenario involves a declining desktop application. Maintaining involves trying to revive the product. Repositioning for a niche market (Option C) is a way to reinvigorate the product. Option A is dropping; Option B is harvesting; Option D is a form of dropping.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_7",
+      "tags": [
+        "PLC",
+        "Decline Stage",
+        "Maintaining"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A video game console manufacturer has seen sales of its older console plummet drastically. They are trying to decide what to do. Which option demonstrates the 'dropping the product' strategy in the decline stage?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Lowering the price of the console to clear out remaining inventory.",
+        "B": "Announcing that they will no longer manufacture the console or release new games for it.",
+        "C": "Releasing a new software update that improves the console's performance.",
+        "D": "Shifting production to a cheaper factory to cut costs."
+      },
+      "correct_answer": "Announcing that they will no longer manufacture the console or release new games for it.",
+      "explanation": "The scenario describes a video game console in decline. Dropping the product is to cease production and support. Announcing the end of manufacturing and game releases (Option B) clearly indicates dropping the product. Option A is harvesting; Option C is maintaining; Option D is harvesting.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_7",
+      "tags": [
+        "PLC",
+        "Decline Stage",
+        "Dropping Products"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A local bakery currently sells only bread and pastries (existing products) in its neighborhood (existing market). According to the Ansoff Matrix, which growth strategy would involve the LEAST amount of risk for the bakery?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Market Development: Opening a new branch in a neighboring town.",
+        "B": "Product Development: Introducing a new line of gluten-free cakes and desserts.",
+        "C": "Market Penetration: Offering a loyalty program to existing customers to increase their purchase frequency.",
+        "D": "Diversification: Starting a catering business for corporate events."
+      },
+      "correct_answer": "Market Penetration: Offering a loyalty program to existing customers to increase their purchase frequency.",
+      "explanation": "The scenario describes a bakery. Market penetration involves selling existing products in existing markets. A loyalty program (Option C) encourages existing customers to buy more, which is the least risky strategy. Option A is market development; Option B is product development; Option D is diversification.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_8",
+      "tags": [
+        "Ansoff Matrix",
+        "Growth Strategy",
+        "Market Penetration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company specializes in developing accounting software for small businesses. According to the Ansoff Matrix, which growth strategy would be BEST described as 'Market Development'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Adding new features to the existing accounting software, such as payroll management.",
+        "B": "Offering discounts and promotions to existing customers to encourage upgrades.",
+        "C": "Selling the existing accounting software to larger enterprise clients.",
+        "D": "Developing a new CRM (Customer Relationship Management) software for small businesses."
+      },
+      "correct_answer": "Selling the existing accounting software to larger enterprise clients.",
+      "explanation": "The scenario describes an accounting software company. Market development involves selling existing products in new markets. Selling to larger enterprises (Option C) expands the customer base. Option A is product development; Option B is market penetration; Option D is diversification.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_8",
+      "tags": [
+        "Ansoff Matrix",
+        "Growth Strategy",
+        "Market Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that produces high-end bicycles currently sells them through specialty bike shops (existing market). According to the Ansoff Matrix, which growth strategy would be classified as 'Product Development'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Offering discounts to existing customers to encourage them to purchase more bicycles.",
+        "B": "Expanding sales to new geographic regions by opening stores in different countries.",
+        "C": "Introducing a new line of electric scooters targeted at urban commuters.",
+        "D": "Developing a new line of bicycle accessories, such as helmets and cycling apparel."
+      },
+      "correct_answer": "Developing a new line of bicycle accessories, such as helmets and cycling apparel.",
+      "explanation": "The scenario describes a bicycle company. Product development involves selling new products in existing markets. Introducing bicycle accessories (Option D) expands the product line for existing customers. Option A is market penetration; Option B is market development; Option C is diversification.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_8",
+      "tags": [
+        "Ansoff Matrix",
+        "Growth Strategy",
+        "Product Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that manufactures paper is considering ways to grow. According to the Ansoff Matrix, which of the following represents 'Diversification'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Selling the existing paper products to new customers, such as schools and universities.",
+        "B": "Developing a new type of recycled paper for existing customers.",
+        "C": "Acquiring a software company that develops document management systems.",
+        "D": "Increasing advertising spending to attract more customers to the existing paper products."
+      },
+      "correct_answer": "Acquiring a software company that develops document management systems.",
+      "explanation": "The scenario involves a paper manufacturing company. Diversification involves selling new products in new markets. Acquiring a software company (Option C) represents a move into a new industry and market. Option A is market development; Option B is product development; Option D is market penetration.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_8",
+      "tags": [
+        "Ansoff Matrix",
+        "Growth Strategy",
+        "Diversification"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small bookstore is looking for growth opportunities. They are currently only selling books in their physical store. Which strategy best represents 'Market Penetration' according to the Ansoff Matrix?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Starting an online store to sell books nationwide.",
+        "B": "Hosting book readings and signings to attract more local customers.",
+        "C": "Selling coffee and pastries in addition to books.",
+        "D": "Publishing books written by local authors."
+      },
+      "correct_answer": "Hosting book readings and signings to attract more local customers.",
+      "explanation": "The scenario describes a bookstore. Market penetration involves selling existing products in existing markets. Hosting book readings (Option B) attracts more local customers to buy books. Option A is market development; Option C is product development; Option D is product development.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_8",
+      "tags": [
+        "Ansoff Matrix",
+        "Growth Strategy",
+        "Market Penetration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small, local bakery is known for its sourdough bread. They recently introduced a new line of gluten-free pastries. Given the PLC concept, how would you advise them to analyze the market?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Only track the sales of individual sourdough loaves to optimize production.",
+        "B": "Focus solely on the overall bakery brand's reputation and ignore individual product performance.",
+        "C": "Analyze the PLC of sourdough bread (product form), gluten-free pastries (product form), and the overall bakery brand to understand market trends.",
+        "D": "Only analyze the product class 'baked goods' as all products will have the same life cycle."
+      },
+      "correct_answer": "Analyze the PLC of sourdough bread (product form), gluten-free pastries (product form), and the overall bakery brand to understand market trends.",
+      "explanation": "The PLC concept allows for analysis at the product form, product class, and brand levels. Analyzing each allows the bakery to understand specific product performance and overall brand health. Option C is correct as it considers all three levels. Option A focuses too narrowly. Option B ignores individual product performance. Option D incorrectly assumes all baked goods have the same PLC.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_9",
+      "tags": [
+        "PLC",
+        "Product Class",
+        "Product Form",
+        "Brand",
+        "Scope"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company initially known for producing desktop computers has expanded into laptops, tablets, and smartphones. They are now deciding whether to invest in developing a new line of wearable technology. How would applying the PLC concept at the 'product class' level inform their strategic decision?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "It would provide no useful information as the PLC only applies to individual products.",
+        "B": "It would allow them to track the decline of desktop computers and the rise of mobile devices, informing their decision to diversify into a new product class.",
+        "C": "It would allow them to predict the exact sales figures for the next five years for each type of product.",
+        "D": "It would only be useful for determining the best marketing strategy for their existing desktop computers."
+      },
+      "correct_answer": "It would allow them to track the decline of desktop computers and the rise of mobile devices, informing their decision to diversify into a new product class.",
+      "explanation": "Analyzing the PLC at the product class level allows a company to see overall market trends. Seeing the decline of desktops and rise of mobile devices informs decisions about diversification. Option B is correct. Option A incorrectly states the PLC isn't useful at the product class level. Option C is unrealistic. Option D focuses too narrowly on desktops.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_9",
+      "tags": [
+        "PLC",
+        "Product Class",
+        "Product Form",
+        "Brand",
+        "Scope"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A popular clothing brand, 'StyleCo,' is considering launching a new line of sustainable clothing.  They want to use the PLC concept to inform their strategy. Which approach best reflects applying the PLC concept to the 'brand' level?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Analyzing only the sales data of their most popular current clothing item.",
+        "B": "Analyzing the overall brand perception, customer loyalty, and the performance of various product lines under the StyleCo brand.",
+        "C": "Assuming that the new sustainable line will follow the exact same PLC as their existing fast-fashion lines.",
+        "D": "Focusing exclusively on the marketing campaigns for the sustainable line."
+      },
+      "correct_answer": "Analyzing the overall brand perception, customer loyalty, and the performance of various product lines under the StyleCo brand.",
+      "explanation": "Applying the PLC concept at the 'brand' level involves assessing the overall health and trajectory of the brand itself. Option B correctly focuses on brand perception, customer loyalty, and overall product line performance. Option A is too narrow. Option C assumes all products have the same PLC. Option D is too focused on marketing.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_9",
+      "tags": [
+        "PLC",
+        "Product Class",
+        "Product Form",
+        "Brand",
+        "Scope"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that manufactures both traditional film cameras and digital cameras is observing a decline in film camera sales and a rise in digital camera sales.  Which of the following strategic actions best demonstrates applying the PLC concept at the 'product class' level?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Increasing marketing efforts for film cameras to revive their sales.",
+        "B": "Shifting resources and investment from film camera production to digital camera innovation.",
+        "C": "Ignoring the sales trends and maintaining equal investment in both product lines.",
+        "D": "Selling off the film camera division to focus solely on digital cameras."
+      },
+      "correct_answer": "Shifting resources and investment from film camera production to digital camera innovation.",
+      "explanation": "Understanding the PLC at the product class level (cameras) allows the company to recognize the shift from film to digital. Shifting resources reflects adapting to this change. Option B is correct. Option A goes against the trend. Option C ignores the market. Option D is a more extreme action that could be considered but is not the best *demonstration* of applying PLC knowledge.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_9",
+      "tags": [
+        "PLC",
+        "Product Class",
+        "Product Form",
+        "Brand",
+        "Scope"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company has developed a new project management tool. They want to analyze the market using the PLC concept. Which scenario best illustrates applying the PLC to the 'product form' level?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Analyzing the overall trend of software solutions in the market.",
+        "B": "Analyzing the specific trends and sales data of project management tools compared to other types of business software.",
+        "C": "Analyzing the company's overall brand reputation in the software industry.",
+        "D": "Analyzing the sales data of all products sold by the company."
+      },
+      "correct_answer": "Analyzing the specific trends and sales data of project management tools compared to other types of business software.",
+      "explanation": "Product form refers to a specific type of product within a broader class. Analyzing the trends of project management tools specifically (compared to other software) applies the PLC at the correct level. Option B is correct. Option A is too broad. Option C focuses on the brand. Option D is too broad and company-centric.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_9",
+      "tags": [
+        "PLC",
+        "Product Class",
+        "Product Form",
+        "Brand",
+        "Scope"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new social media app gains significant traction in its first few months, but user engagement starts to decline rapidly after six months. An established productivity software maintains a steady user base for several years. How does this example demonstrate that the PLC is unique for each product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "It doesn't; all software products have the same PLC.",
+        "B": "It shows that the social media app has a longer PLC than the productivity software.",
+        "C": "It shows that the social media app has a shorter PLC than the productivity software, demonstrating that different products have different lifecycles.",
+        "D": "It only proves that marketing is more important for social media apps."
+      },
+      "correct_answer": "It shows that the social media app has a shorter PLC than the productivity software, demonstrating that different products have different lifecycles.",
+      "explanation": "The scenario describes a social media app with a short, rapid growth and decline, and productivity software with a long, steady maturity. This shows differing PLCs. Option C is correct. Option A is incorrect based on the flashcard. Option B reverses the lifecycles. Option D doesn't address the PLC concept.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_10",
+      "tags": [
+        "PLC",
+        "Variations",
+        "Lifecycle",
+        "Growth",
+        "Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Company A launches a new type of fitness tracker that becomes highly popular within a year, but sales plummet the following year as newer models with more features emerge. Company B sells a classic board game that has maintained consistent sales for decades. Which statement best applies the concept that the PLC is unique for each product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Both products are in the growth stage of their PLC.",
+        "B": "Both products are in the decline stage of their PLC.",
+        "C": "The fitness tracker has a short PLC, while the board game has a long PLC, demonstrating the unique PLC for each product.",
+        "D": "Both products will eventually have the same PLC."
+      },
+      "correct_answer": "The fitness tracker has a short PLC, while the board game has a long PLC, demonstrating the unique PLC for each product.",
+      "explanation": "The fitness tracker's rapid rise and fall contrasts with the board game's sustained popularity, demonstrating that each product has a unique PLC. Option C is correct. Options A and B misinterpret the stages. Option D contradicts the core concept.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_10",
+      "tags": [
+        "PLC",
+        "Variations",
+        "Lifecycle",
+        "Growth",
+        "Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An online learning platform releases a new course on data science. Initial enrollment is high, but it drops significantly after a few months. Conversely, a physical therapy clinic maintains a steady stream of patients for many years. How does this illustrate the concept that the PLC is unique?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "It doesn't, because both are service-based offerings and will have similar PLCs.",
+        "B": "It highlights that the online course has a shorter PLC compared to the physical therapy clinic, showcasing the unique PLC for each.",
+        "C": "It only shows that online courses are more difficult to market than physical therapy.",
+        "D": "It implies that the physical therapy clinic will eventually experience a decline similar to the online course."
+      },
+      "correct_answer": "It highlights that the online course has a shorter PLC compared to the physical therapy clinic, showcasing the unique PLC for each.",
+      "explanation": "The online course's rapid decline contrasts with the clinic's long-term stability. Option B correctly identifies this difference as evidence of unique PLCs. Option A incorrectly assumes similar PLCs. Option C is about marketing, not the PLC. Option D projects a decline without evidence.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_10",
+      "tags": [
+        "PLC",
+        "Variations",
+        "Lifecycle",
+        "Growth",
+        "Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A tech company launches a new virtual reality headset. Sales surge initially, but competitors release similar products with better features within a year, causing a sharp drop in sales. A local coffee shop, however, has maintained steady sales for the past decade. How does this example demonstrate that the Product Life Cycle (PLC) is unique for each product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The VR headset and the coffee shop are in the same stage of their respective product life cycles.",
+        "B": "The VR headset's PLC is longer because it is a tech product.",
+        "C": "The VR headset experienced a short PLC, while the coffee shop has had a longer PLC, illustrating that each product has a unique PLC.",
+        "D": "The sales decline of the VR headset is due to poor marketing, not the PLC."
+      },
+      "correct_answer": "The VR headset experienced a short PLC, while the coffee shop has had a longer PLC, illustrating that each product has a unique PLC.",
+      "explanation": "The VR headset's rapid rise and fall contrast with the coffee shop's sustained sales, indicating different PLC lengths. Option C is the correct application of the PLC concept. Option A is incorrect because they are in different stages. Option B is incorrect because tech products don't automatically have longer PLCs. Option D focuses on marketing, not the PLC.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_10",
+      "tags": [
+        "PLC",
+        "Variations",
+        "Lifecycle",
+        "Growth",
+        "Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small business creates handcrafted leather goods. A particular style of wallet becomes extremely popular for a few months, then fades into obscurity. A classic leather belt design, however, maintains consistent sales year after year. Which statement best reflects the understanding that the PLC is unique for each product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The wallet and the belt are both examples of products with long maturity stages.",
+        "B": "The wallet experienced a short PLC, while the belt has a longer PLC, showcasing the unique PLC for each product.",
+        "C": "The success of the belt guarantees the wallet will also regain popularity in the future.",
+        "D": "Both products are in the decline stage because leather goods are becoming less popular."
+      },
+      "correct_answer": "The wallet experienced a short PLC, while the belt has a longer PLC, showcasing the unique PLC for each product.",
+      "explanation": "The wallet's short-lived popularity contrasts with the belt's sustained sales, illustrating the principle of unique PLCs. Option B is correct. Option A misinterprets the stages. Option C makes an unwarranted assumption. Option D may be true, but is not the best answer.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_10",
+      "tags": [
+        "PLC",
+        "Variations",
+        "Lifecycle",
+        "Growth",
+        "Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A toy company launches a new action figure that becomes incredibly popular during the holiday season, but sales drop sharply after January. The company then re-releases the same action figure with new accessories the following year, and sales spike again. What PLC pattern is this company experiencing?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Growth-Decline",
+        "B": "Innovative Maturity",
+        "C": "Cycle-Recycle",
+        "D": "Continuous Growth"
+      },
+      "correct_answer": "Cycle-Recycle",
+      "explanation": "The action figure's sales spike, decline, and then spike again with a new release. This represents a cycle that repeats, aligning with the Cycle-Recycle pattern. Option C is correct. Growth-Decline only has one peak. Innovative Maturity involves continuous improvement. Continuous Growth doesn't have declines.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_11",
+      "tags": [
+        "PLC",
+        "Patterns",
+        "Growth-Decline",
+        "Cycle-Recycle",
+        "Innovative Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company launches a new mobile game. It gains massive popularity within weeks, but interest quickly fades, and within months, almost no one is playing it. Which PLC pattern best describes this scenario?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Innovative Maturity",
+        "B": "Cycle-Recycle",
+        "C": "Growth-Decline",
+        "D": "Stable Maturity"
+      },
+      "correct_answer": "Growth-Decline",
+      "explanation": "The game experienced a rapid surge in popularity followed by a rapid decline. This corresponds to the Growth-Decline pattern. Option C is correct. Innovative Maturity has sustained growth through innovation. Cycle-Recycle has recurring cycles. Stable Maturity has consistent sales.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_11",
+      "tags": [
+        "PLC",
+        "Patterns",
+        "Growth-Decline",
+        "Cycle-Recycle",
+        "Innovative Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company releases a new line of smartphones. Each year, they introduce a new model with improved features, maintaining consistent sales growth. What PLC pattern are they most likely following?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Growth-Decline",
+        "B": "Cycle-Recycle",
+        "C": "Innovative Maturity",
+        "D": "Fad"
+      },
+      "correct_answer": "Innovative Maturity",
+      "explanation": "Continuous improvement and new features leading to sustained growth exemplifies Innovative Maturity. Option C is correct. Growth-Decline features a single peak. Cycle-Recycle has repeating cycles of growth and decline. A Fad has a rapid climb and fall.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_11",
+      "tags": [
+        "PLC",
+        "Patterns",
+        "Growth-Decline",
+        "Cycle-Recycle",
+        "Innovative Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A fashion brand launches a new clothing line. It becomes popular for a season, then fades. The brand then re-releases a similar line a few years later, and it becomes popular again. Which PLC pattern does this represent?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Growth-Decline",
+        "B": "Innovative Maturity",
+        "C": "Cycle-Recycle",
+        "D": "Fad"
+      },
+      "correct_answer": "Cycle-Recycle",
+      "explanation": "Recurring peaks and valleys of popularity indicate a Cycle-Recycle pattern. Option C is correct. Growth-Decline has one peak. Innovative Maturity involves continuous improvement. A Fad declines quickly.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_11",
+      "tags": [
+        "PLC",
+        "Patterns",
+        "Growth-Decline",
+        "Cycle-Recycle",
+        "Innovative Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company introduces a new kitchen gadget that experiences high sales initially, but competitors quickly copy the design and offer it at a lower price, leading to a rapid decline in the original product's sales. What PLC pattern is most evident?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Innovative Maturity",
+        "B": "Cycle-Recycle",
+        "C": "Growth-Decline",
+        "D": "Style"
+      },
+      "correct_answer": "Growth-Decline",
+      "explanation": "The initial surge in sales followed by a rapid decline due to competition indicates a Growth-Decline pattern. Option C is correct. Innovative Maturity requires sustained innovation. Cycle-Recycle involves recurring cycles. Style maintains consistent popularity.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_11",
+      "tags": [
+        "PLC",
+        "Patterns",
+        "Growth-Decline",
+        "Cycle-Recycle",
+        "Innovative Maturity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company sells a line of classic leather jackets that have been consistently popular for decades. A new type of toy becomes extremely popular for a few months, then quickly disappears. Which statement accurately compares the PLC of the jackets and the toy?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Both products are examples of a 'Fashion' PLC.",
+        "B": "The jackets represent a 'Style' PLC, while the toy represents a 'Fad' PLC.",
+        "C": "Both products are examples of a 'Fad' PLC.",
+        "D": "The jackets represent a 'Fad' PLC, while the toy represents a 'Style' PLC."
+      },
+      "correct_answer": "The jackets represent a 'Style' PLC, while the toy represents a 'Fad' PLC.",
+      "explanation": "Classic leather jackets maintain consistent popularity (Style). The toy had a short-lived popularity (Fad). Option B is correct. Options A and C misclassify the PLCs. Option D reverses the classifications.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_12",
+      "tags": [
+        "Product Life Cycle",
+        "Style",
+        "Fashion",
+        "Fad"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A clothing company designs seasonal collections that are trendy for a year or two, then fade away. A particular type of simple white t-shirt remains consistently popular, year after year. A novelty item gains viral attention and sells rapidly for a few weeks, then no one buys it anymore. Which statement correctly identifies the PLC type of each product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Seasonal collections are 'Style,' t-shirts are 'Fashion,' and the novelty item is a 'Fad.'",
+        "B": "Seasonal collections are 'Fashion,' t-shirts are 'Style,' and the novelty item is a 'Fad.'",
+        "C": "Seasonal collections are 'Fad,' t-shirts are 'Style,' and the novelty item is 'Fashion.'",
+        "D": "All three products follow the same 'Style' PLC."
+      },
+      "correct_answer": "Seasonal collections are 'Fashion,' t-shirts are 'Style,' and the novelty item is a 'Fad.'",
+      "explanation": "Trendy collections reflect Fashion. Consistently popular items represent Style. Short-lived viral items are Fads. Option B is correct. The other options misclassify one or more of the PLC types.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_12",
+      "tags": [
+        "Product Life Cycle",
+        "Style",
+        "Fashion",
+        "Fad"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A design company creates high-end, minimalist furniture that maintains consistent sales for decades. A clothing line releases items based on current trends, with popularity fluctuating each season. An internet meme leads to a surge in sales for a related product, but the sales quickly disappear after the meme fades. What PLC types do these products represent?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Furniture is 'Fashion,' clothing is 'Fad,' and the meme product is 'Style.'",
+        "B": "Furniture is 'Style,' clothing is 'Fashion,' and the meme product is 'Fad.'",
+        "C": "Furniture is 'Fad,' clothing is 'Style,' and the meme product is 'Fashion.'",
+        "D": "All products are examples of 'Fashion' PLCs."
+      },
+      "correct_answer": "Furniture is 'Style,' clothing is 'Fashion,' and the meme product is 'Fad.'",
+      "explanation": "Long-lasting furniture represents Style. Trend-based clothing is Fashion. The meme-driven product is a Fad. Option B is correct. The other options misclassify the PLC types.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_12",
+      "tags": [
+        "Product Life Cycle",
+        "Style",
+        "Fashion",
+        "Fad"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company manufactures a line of basic t-shirts that have been consistently popular for many years. They also create a limited-edition line of clothing based on a current internet trend. Sales for the t-shirts remain stable, while sales for the trend-based line spike and then quickly decline. How do these sales patterns relate to the different PLC types?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The t-shirts are a 'Fad,' and the trend-based line is 'Style.'",
+        "B": "The t-shirts are 'Style,' and the trend-based line is 'Fashion.'",
+        "C": "The t-shirts are 'Style,' and the trend-based line is a 'Fad.'",
+        "D": "Both the t-shirts and the trend-based line are examples of 'Style' PLCs."
+      },
+      "correct_answer": "The t-shirts are 'Style,' and the trend-based line is a 'Fad.'",
+      "explanation": "The t-shirts have consistent appeal (Style). The trend-based clothing's rapid rise and fall is characteristic of a Fad. Option C is correct. The other options misclassify one or both of the PLCs.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_12",
+      "tags": [
+        "Product Life Cycle",
+        "Style",
+        "Fashion",
+        "Fad"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company produces a line of luxury watches that have maintained steady sales for decades. They also release a limited-edition watch based on a viral internet challenge, which experiences a massive sales surge and then disappears within weeks. Which statement accurately describes the PLC types of these products?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The luxury watches represent a 'Fashion' PLC, while the limited-edition watch represents a 'Style' PLC.",
+        "B": "The luxury watches represent a 'Style' PLC, while the limited-edition watch represents a 'Fad' PLC.",
+        "C": "Both the luxury watches and the limited-edition watch follow the same 'Style' PLC.",
+        "D": "Both products are examples of a 'Fad' PLC."
+      },
+      "correct_answer": "The luxury watches represent a 'Style' PLC, while the limited-edition watch represents a 'Fad' PLC.",
+      "explanation": "The long-lasting popularity of the luxury watches signifies a Style PLC. The short-lived viral watch represents a Fad. Option B is correct. The other options misclassify one or both of the products.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_12",
+      "tags": [
+        "Product Life Cycle",
+        "Style",
+        "Fashion",
+        "Fad"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small startup, \"GreenTech Solutions,\" has developed a new type of solar panel that is highly efficient but expensive to produce. Sales are slowly picking up as early adopters embrace the technology. Given this scenario, which stage of the Product Life Cycle (PLC) is GreenTech Solutions' solar panel currently in, and what marketing strategy would be most appropriate?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Maturity stage; focus on maintaining market share through price reductions and loyalty programs.",
+        "B": "Growth stage; focus on building brand preference through mass advertising and distribution expansion.",
+        "C": "Introduction stage; focus on creating product awareness and educating potential customers through demonstrations and trials.",
+        "D": "Decline stage; focus on reducing costs and harvesting remaining profits through minimal marketing efforts."
+      },
+      "correct_answer": "Introduction stage; focus on creating product awareness and educating potential customers through demonstrations and trials.",
+      "explanation": "GreenTech's solar panel is in the Introduction stage due to low sales and the need to educate the market about its new technology. The appropriate strategy is to focus on creating awareness through demonstrations and trials to encourage adoption. Option A is incorrect because it describes the Maturity stage. Option B is incorrect because it describes the Growth stage. Option D is incorrect as it describes the decline stage.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_13",
+      "tags": [
+        "Product Life Cycle",
+        "Introduction",
+        "Marketing Strategies"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A beverage company, \"AquaFizz,\" launched a new flavored sparkling water. Initially, there was high demand, leading to increased production and distribution. However, after a few years, sales have plateaued, and profits are starting to decline slightly due to increased competition. Which stage of the Product Life Cycle is AquaFizz likely in, and what is the MOST suitable marketing approach?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Growth; invest heavily in expanding distribution channels and increasing production capacity.",
+        "B": "Decline; reduce marketing spend and prepare to phase out the product.",
+        "C": "Introduction; focus on building awareness and educating consumers about the product's benefits.",
+        "D": "Maturity; emphasize product differentiation, loyalty programs, and explore new market segments."
+      },
+      "correct_answer": "Maturity; emphasize product differentiation, loyalty programs, and explore new market segments.",
+      "explanation": "AquaFizz is likely in the Maturity stage because sales have plateaued, and profits are declining slightly. The best approach is to focus on differentiation, loyalty programs, and exploring new segments to maintain market share. Option A is incorrect because it describes the Growth stage. Option B is incorrect as it describes the decline stage. Option C is incorrect because it describes the Introduction stage.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_13",
+      "tags": [
+        "Product Life Cycle",
+        "Maturity",
+        "Marketing Strategies"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An established software company, \"CodeCraft Inc.,\" is facing declining sales for its flagship desktop application. Newer, cloud-based solutions are gaining popularity. What Product Life Cycle stage is CodeCraft's desktop application likely in, and what strategy is MOST appropriate?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Growth; aggressively expand into new international markets.",
+        "B": "Introduction; invest heavily in marketing and product development.",
+        "C": "Decline; reduce marketing expenses and focus on harvesting remaining profits from loyal customers.",
+        "D": "Maturity; implement price reductions and loyalty programs to maintain market share."
+      },
+      "correct_answer": "Decline; reduce marketing expenses and focus on harvesting remaining profits from loyal customers.",
+      "explanation": "The desktop application is likely in the Decline stage due to declining sales and the emergence of competing technologies. The most suitable strategy is to reduce marketing expenses and focus on profiting from remaining loyal customers. Option A is incorrect because it describes the Growth stage. Option B is incorrect because it describes the Introduction stage. Option D is incorrect because it describes the maturity stage.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_13",
+      "tags": [
+        "Product Life Cycle",
+        "Decline",
+        "Marketing Strategies"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company, \"InnovateTech,\" has just released a new virtual reality headset with limited distribution and high production costs. Initial sales are low, but customer feedback is positive. Which Product Life Cycle stage is the VR headset in, and what marketing strategy is MOST suitable?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Growth: Focus on mass marketing and expanding distribution to capture a larger market share.",
+        "B": "Maturity: Focus on product differentiation and loyalty programs to maintain market share.",
+        "C": "Decline: Focus on reducing marketing expenses and harvesting remaining profits.",
+        "D": "Introduction: Focus on building product awareness and educating potential customers about the benefits."
+      },
+      "correct_answer": "Introduction: Focus on building product awareness and educating potential customers about the benefits.",
+      "explanation": "The VR headset is in the Introduction stage due to low sales, limited distribution, and the need to educate customers. The MOST suitable strategy is to focus on creating awareness and educating potential customers. Option A is incorrect because it describes the Growth stage. Option B is incorrect because it describes the Maturity stage. Option C is incorrect as it describes the decline stage.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_13",
+      "tags": [
+        "Product Life Cycle",
+        "Introduction",
+        "Marketing Strategies"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company selling a well-established brand of bottled water has experienced stable sales for several years. Profit margins are high due to efficient production and distribution. However, there is little room for significant growth in the market. Which Product Life Cycle stage BEST describes this product, and what marketing strategy is MOST appropriate?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Growth: Focus on aggressive marketing campaigns to rapidly increase market share.",
+        "B": "Introduction: Focus on creating awareness and educating consumers about the product.",
+        "C": "Decline: Focus on reducing costs and preparing to exit the market.",
+        "D": "Maturity: Focus on maintaining market share, optimizing profitability, and exploring line extensions."
+      },
+      "correct_answer": "Maturity: Focus on maintaining market share, optimizing profitability, and exploring line extensions.",
+      "explanation": "The bottled water brand is in the Maturity stage because sales are stable, and profit margins are high, but growth is limited. The most appropriate strategy is to focus on maintaining market share, optimizing profitability, and potentially exploring line extensions. Option A is incorrect because it describes the Growth stage. Option B is incorrect because it describes the Introduction stage. Option C is incorrect as it describes the decline stage.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_13",
+      "tags": [
+        "Product Life Cycle",
+        "Maturity",
+        "Marketing Strategies"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A pharmaceutical company has a portfolio of products, including a blockbuster drug with high market share in a growing market, a generic drug with high market share in a stable market, a newly developed drug with low market share in a high-growth market, and an old drug with low market share in a declining market. According to the BCG matrix, which product would be classified as a 'Cash Cow'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The blockbuster drug with high market share in a growing market.",
+        "B": "The generic drug with high market share in a stable market.",
+        "C": "The newly developed drug with low market share in a high-growth market.",
+        "D": "The old drug with low market share in a declining market."
+      },
+      "correct_answer": "The generic drug with high market share in a stable market.",
+      "explanation": "A 'Cash Cow' in the BCG matrix is characterized by high market share in a low-growth market. The generic drug fits this description, generating consistent revenue with minimal investment. Option A describes a Star. Option C describes a Question Mark. Option D describes a Dog.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_14",
+      "tags": [
+        "BCG Matrix",
+        "Cash Cow"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A technology company has several business units. Unit A has a small market share in a rapidly growing market. Unit B has a large market share in a slow-growing market. Unit C has a small market share in a slow-growing market. Unit D has a large market share in a rapidly growing market. Using the BCG matrix, which unit would be categorized as a 'Star'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Unit A: Small market share in a rapidly growing market.",
+        "B": "Unit B: Large market share in a slow-growing market.",
+        "C": "Unit C: Small market share in a slow-growing market.",
+        "D": "Unit D: Large market share in a rapidly growing market."
+      },
+      "correct_answer": "Unit D: Large market share in a rapidly growing market.",
+      "explanation": "A 'Star' in the BCG Matrix has a high market share in a high-growth market, requiring continued investment to maintain its position. Option A describes a Question Mark. Option B describes a Cash Cow. Option C describes a Dog.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_14",
+      "tags": [
+        "BCG Matrix",
+        "Star"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A consumer goods company is evaluating its product portfolio. Product X has a low market share in a mature, slow-growing market. Product Y has a high market share in a mature, slow-growing market. Product Z has a high market share in a rapidly growing market. Which product, according to the BCG matrix, would be classified as a 'Dog'?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Product X: Low market share in a mature, slow-growing market.",
+        "B": "Product Y: High market share in a mature, slow-growing market.",
+        "C": "Product Z: High market share in a rapidly growing market.",
+        "D": "All of the products should receive similar investment."
+      },
+      "correct_answer": "Product X: Low market share in a mature, slow-growing market.",
+      "explanation": "A 'Dog' in the BCG Matrix is characterized by low market share in a low-growth market. Product X fits this description. Option B describes a Cash Cow. Option C describes a Star. Option D is incorrect because each product type requires a different strategy.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_14",
+      "tags": [
+        "BCG Matrix",
+        "Dog"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company has a new product that has a low relative market share in a high-growth industry. According to the BCG matrix, what is the MOST appropriate strategy for this product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Invest heavily to try and increase market share and turn it into a Star.",
+        "B": "Maintain current investment levels and harvest profits.",
+        "C": "Divest or liquidate the product as it is unlikely to become profitable.",
+        "D": "Reduce investment and focus on short-term profitability."
+      },
+      "correct_answer": "Invest heavily to try and increase market share and turn it into a Star.",
+      "explanation": "A product with low market share in a high-growth market is classified as a 'Question Mark' in the BCG matrix. The MOST appropriate strategy is to invest heavily to attempt to increase market share and transform it into a Star. Option B is incorrect because it is more suitable for a Cash Cow. Options C and D are incorrect because they are more suitable for a Dog.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_14",
+      "tags": [
+        "BCG Matrix",
+        "Question Mark"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A media conglomerate owns a variety of businesses: a streaming service with a high market share in a fast-growing market, a traditional television network with a high market share in a slow-growing market, a new podcasting platform with a low market share in a fast-growing market, and a print newspaper with a low market share in a slow-growing market. According to the BCG Matrix, which business requires the MOST careful evaluation of its potential before further investment?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The streaming service.",
+        "B": "The traditional television network.",
+        "C": "The new podcasting platform.",
+        "D": "The print newspaper."
+      },
+      "correct_answer": "The new podcasting platform.",
+      "explanation": "The new podcasting platform, with low market share in a fast-growing market, is a 'Question Mark'. Question Marks require careful evaluation to determine if they should be built into Stars or phased out. Option A, the streaming service, is a Star and requires continued investment. Option B, the television network, is a Cash Cow and requires minimal investment. Option D, the newspaper, is a Dog and may be divested.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_14",
+      "tags": [
+        "BCG Matrix",
+        "Question Mark"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company's product portfolio includes a 'Star' product, a 'Cash Cow' product, a 'Question Mark' product, and a 'Dog' product according to the BCG Matrix. Which product would MOST likely receive the largest portion of new investment?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The 'Star' product, to sustain its growth and market leadership.",
+        "B": "The 'Cash Cow' product, to maximize its profitability.",
+        "C": "The 'Question Mark' product, to determine if it can become a 'Star'.",
+        "D": "The 'Dog' product, to try and turn it into a 'Star'."
+      },
+      "correct_answer": "The 'Star' product, to sustain its growth and market leadership.",
+      "explanation": "Stars require heavy investment to sustain their growth and market leadership. Cash Cows need minimal investment. Question Marks need evaluation to determine investment. Dogs may not warrant further investment. Option B focuses on maximizing profits from an already profitable product. Option C would only occur after an evaluation. Option D is generally not recommended.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_15",
+      "tags": [
+        "BCG Matrix",
+        "Star Strategy",
+        "Investment Needs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A large corporation has a business unit that generates a significant amount of cash but has limited growth potential. Based on the BCG matrix, what is the MOST appropriate strategy for this business unit?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Invest heavily in marketing and product development to stimulate growth.",
+        "B": "Maintain investment at a minimal level and focus on maximizing cash flow.",
+        "C": "Divest the business unit and reinvest the proceeds in higher-growth areas.",
+        "D": "Aggressively cut costs to improve profitability."
+      },
+      "correct_answer": "Maintain investment at a minimal level and focus on maximizing cash flow.",
+      "explanation": "A business unit that generates significant cash with limited growth is a 'Cash Cow'. The most appropriate strategy is to maintain minimal investment and focus on maximizing cash flow. Option A is incorrect as Cash Cows have limited growth potential. Option C might be considered, but maximizing cash flow is generally the primary goal. Option D should already be in place in the maturity stage.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_15",
+      "tags": [
+        "BCG Matrix",
+        "Cash Cow Strategy",
+        "Investment Needs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company is evaluating a new venture that has a low market share in a high-growth industry. According to the BCG matrix, what would be the MOST appropriate initial action for this venture?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Immediately invest heavily to gain market share.",
+        "B": "Conduct a thorough analysis to determine its potential and viability.",
+        "C": "Divest the venture as it is unlikely to succeed.",
+        "D": "Maintain minimal investment and harvest any profits."
+      },
+      "correct_answer": "Conduct a thorough analysis to determine its potential and viability.",
+      "explanation": "A venture with low market share in a high-growth industry is a 'Question Mark'. The most appropriate initial action is to conduct a thorough analysis to determine its potential and viability. Option A is premature without proper analysis. Option C is too hasty before evaluating its potential. Option D is a passive approach that does not align with the growth potential.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_15",
+      "tags": [
+        "BCG Matrix",
+        "Question Mark Strategy",
+        "Investment Needs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A manufacturing company has a product line that has a low market share in a slow-growing market. According to the BCG Matrix, what is the MOST suitable strategy for this product line?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Invest heavily to try to increase market share.",
+        "B": "Maintain current investment levels and focus on profitability.",
+        "C": "Divest or liquidate the product line.",
+        "D": "Reposition the product line to target a different market segment."
+      },
+      "correct_answer": "Divest or liquidate the product line.",
+      "explanation": "A product line with low market share in a slow-growing market is classified as a 'Dog'. The most suitable strategy is to divest or liquidate the product line. Option A is unlikely to be successful in a slow-growing market. Option B may not be sustainable. Option D could be considered, but the potential for success is low.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_15",
+      "tags": [
+        "BCG Matrix",
+        "Dog Strategy",
+        "Investment Needs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company, following the BCG Matrix, decides to heavily invest in a 'Dog' product, hoping to turn it into a 'Star' product. What is the MOST likely outcome of this strategy?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The 'Dog' will successfully become a 'Star' due to the increased investment.",
+        "B": "The company will likely waste resources with little to no return on investment.",
+        "C": "The 'Dog' will become a 'Cash Cow' and generate stable profits.",
+        "D": "The 'Dog' will maintain its current position, but with improved profitability."
+      },
+      "correct_answer": "The company will likely waste resources with little to no return on investment.",
+      "explanation": "Over-investing in 'Dogs' is a common mistake. Dogs, by definition, have low market share in slow-growing markets, making it unlikely that investment will result in significant growth. Option A is an unrealistic expectation. Option C and D are unlikely scenarios given the inherent characteristics of a 'Dog'.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PLC_15",
+      "tags": [
+        "BCG Matrix",
+        "Dog Strategy",
+        "Investment Needs"
+      ]
+    }
+  ]
+}
