@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import connect_to_mongo, close_mongo_connection
-from app.routers import health, bookmarks, feedback, quiz_history, admin_analytics, quiz, auth, adaptive_quiz
+from app.routers import health, bookmarks, feedback, quiz_history, admin_analytics, quiz, auth, adaptive_quiz, timetable, profile
 from app.firebase_auth import initialize_firebase
 from app.database_indexes import create_indexes
 
@@ -60,6 +60,8 @@ app.include_router(quiz_history.router)
 app.include_router(admin_analytics.router)
 app.include_router(quiz.router)
 app.include_router(adaptive_quiz.router)
+app.include_router(timetable.router)
+app.include_router(profile.router)
 
 @app.get("/")
 async def root():

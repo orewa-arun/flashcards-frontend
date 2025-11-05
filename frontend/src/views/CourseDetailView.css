@@ -35,6 +35,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .course-title-row h1 {
@@ -115,6 +116,58 @@
   border-left: 4px solid #667eea;
 }
 
+/* Quick Actions Section */
+.quick-actions-section {
+  margin: 2rem 0;
+}
+
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.action-card.timetable-card {
+  border-color: transparent;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.action-card.timetable-card:hover {
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.action-icon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+.action-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.action-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
 .lectures-section {
   margin-top: 2rem;
 }
@@ -122,6 +175,9 @@
 .lectures-section h2 {
   margin-bottom: 1.5rem;
   color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .lectures-grid {
@@ -139,6 +195,8 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  height: 280px;
+  position: relative;
 }
 
 .lecture-card:hover {
@@ -163,12 +221,18 @@
   font-size: 1.2rem;
 }
 
+.topics-container {
+  flex: 1;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
 .topics-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex: 1;
+  overflow: hidden;
+  max-height: 100px;
 }
 
 .topic-tag {
@@ -177,6 +241,98 @@
   border-radius: 16px;
   font-size: 0.85rem;
   color: #666;
+  white-space: nowrap;
+}
+
+.topic-tag.more-topics {
+  background: #e7eaff;
+  color: #667eea;
+  font-weight: 600;
+  cursor: help;
+}
+
+/* Tooltip */
+.topics-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 100%; /* remove gap so cursor can move directly up */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  width: 350px;
+  max-height: 400px;
+  z-index: 1000;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  pointer-events: auto; /* allow hover/scroll inside */
+}
+
+.topics-container:hover .topics-tooltip,
+.topics-tooltip:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-header {
+  font-weight: 700;
+  color: #667eea;
+  font-size: 0.95rem;
+  border-bottom: 2px solid #e7eaff;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 12px 12px 0 0;
+}
+
+.tooltip-content {
+  padding: 12px 16px;
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for tooltip */
+.tooltip-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tooltip-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.tooltip-content::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.tooltip-content::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}
+
+.tooltip-topic {
+  padding: 8px 0;
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tooltip-topic:not(:last-child) {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Arrow for tooltip */
+.topics-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: white;
 }
 
 .btn-study {
@@ -209,5 +365,366 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* Weak Concepts Section */
+.weak-concepts-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  border-left: 4px solid #f59e0b;
+}
+
+.weak-concepts-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.weak-concepts-section h2 svg {
+  color: #f59e0b;
+}
+
+.no-attempts-message,
+.no-weak-concepts {
+  text-align: center;
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.no-attempts-message p:first-child,
+.no-weak-concepts p:first-child {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.hint {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+.weak-concepts-summary {
+  background: #fef3c7;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid #f59e0b;
+}
+
+.weak-concepts-summary p {
+  margin: 0;
+  color: #78350f;
+  line-height: 1.6;
+}
+
+.weak-concepts-summary strong {
+  color: #92400e;
+  font-weight: 700;
+}
+
+.view-all-weak-concepts-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.view-all-weak-concepts-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
+}
+
+.view-all-weak-concepts-btn:active {
+  transform: translateY(0);
+}
+
+.weak-concepts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weak-concept-card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.weak-concept-card:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.concept-header {
+  padding: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.concept-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lecture-badge {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.concept-question {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.concept-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.accuracy-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.accuracy-badge.weak {
+  background: #fed7aa;
+  color: #92400e;
+}
+
+.accuracy-badge.critical {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.attempts-count {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.expand-icon {
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+.concept-details {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid #f3f4f6;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.stat-item {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.stat-item.correct {
+  background: #d1fae5;
+  border-left: 3px solid #10b981;
+}
+
+.stat-item.incorrect {
+  background: #fee2e2;
+  border-left: 3px solid #ef4444;
+}
+
+.stat-item.weakness {
+  background: #fef3c7;
+  border-left: 3px solid #f59e0b;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.practice-btn {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.practice-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Weak Concepts Compact Card */
+.weak-concepts-compact-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 2px solid #fbbf24;
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.weak-concepts-compact-card:hover {
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+  transform: translateY(-2px);
+}
+
+.compact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.compact-card-header .warning-icon {
+  font-size: 2.5rem;
+  color: #f59e0b;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.3));
+}
+
+.compact-card-header .header-content {
+  flex: 1;
+}
+
+.compact-card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #78350f;
+  margin: 0 0 0.5rem 0;
+}
+
+.compact-card-header p {
+  font-size: 0.95rem;
+  color: #92400e;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.compact-card-header strong {
+  color: #78350f;
+  font-weight: 700;
+}
+
+.view-weak-concepts-btn {
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.view-weak-concepts-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.5);
+}
+
+.view-weak-concepts-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .weak-concepts-section .concept-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .weak-concepts-section .concept-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .weak-concepts-section .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weak-concepts-compact-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .view-weak-concepts-btn {
+    width: 100%;
+  }
 }
 

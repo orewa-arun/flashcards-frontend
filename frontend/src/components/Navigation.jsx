@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { FaHome, FaStar, FaHistory, FaBars, FaTimes } from 'react-icons/fa'
+import { FaHome, FaStar, FaHistory, FaBars, FaTimes, FaCalendarAlt, FaExclamationTriangle } from 'react-icons/fa'
 import './Navigation.css'
 import LandingNavigation from './LandingNavigation'
 import { useAuth } from '../contexts/AuthContext'
@@ -48,6 +48,24 @@ function Navigation() {
           >
             <FaHome />
             <span>Home</span>
+          </Link>
+          
+          <Link 
+            to="/my-schedule" 
+            className={`nav-link ${isActive('/my-schedule') ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
+            <FaCalendarAlt />
+            <span>My Schedule</span>
+          </Link>
+          
+          <Link 
+            to="/weak-concepts" 
+            className={`nav-link ${isActive('/weak-concepts') ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
+            <FaExclamationTriangle />
+            <span>Weak Concepts</span>
           </Link>
           
           <Link 
@@ -100,6 +118,24 @@ function Navigation() {
             >
               <FaHome />
               <span>Home</span>
+            </Link>
+            
+            <Link 
+              to="/my-schedule" 
+              className={`nav-link ${isActive('/my-schedule') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              <FaCalendarAlt />
+              <span>My Schedule</span>
+            </Link>
+            
+            <Link 
+              to="/weak-concepts" 
+              className={`nav-link ${isActive('/weak-concepts') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              <FaExclamationTriangle />
+              <span>Weak Concepts</span>
             </Link>
             
             <Link 

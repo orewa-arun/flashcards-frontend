@@ -15,6 +15,10 @@ import QuizHistoryView from './views/QuizHistoryView'
 import AdminDashboardView from './views/AdminDashboardView'
 import QuizLevelSelectionView from './views/QuizLevelSelectionView'
 import QuizResultsView from './views/QuizResultsView'
+import TimetableView from './views/TimetableView'
+import MyScheduleView from './views/MyScheduleView'
+import WeakConceptsView from './views/WeakConceptsView'
+import CourseLayout from './layouts/CourseLayout'
 import ThemeToggle from './components/ThemeToggle'
 import CookieBanner from './components/CookieBanner'
 import Navigation from './components/Navigation'
@@ -45,43 +49,32 @@ function App() {
                 <CourseListView />
               </ProtectedRoute>
             } />
+            {/* Nested course routes under CourseLayout to inject ExamCountdown */}
             <Route path="/courses/:courseId" element={
               <ProtectedRoute>
-                <CourseDetailView />
+                <CourseLayout />
               </ProtectedRoute>
-            } />
-            <Route path="/courses/:courseId/:lectureId" element={
+            }>
+              <Route index element={<CourseDetailView />} />
+              <Route path="timetable" element={<TimetableView />} />
+              <Route path=":lectureId" element={<LectureDetailView />} />
+              <Route path=":lectureId/flashcards" element={<DeckView />} />
+              <Route path=":lectureId/quiz" element={<QuizLevelSelectionView />} />
+              <Route path=":lectureId/quiz/:level" element={<QuizView />} />
+              <Route path=":lectureId/quiz/:level/results" element={<QuizResultsView />} />
+              <Route path=":lectureId/results" element={<ResultsView />} />
+            </Route>
+            <Route path="/my-schedule" element={
               <ProtectedRoute>
-                <LectureDetailView />
+                <MyScheduleView />
               </ProtectedRoute>
             } />
-            <Route path="/courses/:courseId/:lectureId/flashcards" element={
+            <Route path="/weak-concepts" element={
               <ProtectedRoute>
-                <DeckView />
+                <WeakConceptsView />
               </ProtectedRoute>
             } />
-            {/* Adaptive Quiz Routes */}
-            <Route path="/courses/:courseId/:lectureId/quiz" element={
-              <ProtectedRoute>
-                <QuizLevelSelectionView />
-              </ProtectedRoute>
-            } />
-            <Route path="/courses/:courseId/:lectureId/quiz/:level" element={
-              <ProtectedRoute>
-                <QuizView />
-              </ProtectedRoute>
-            } />
-            <Route path="/courses/:courseId/:lectureId/quiz/:level/results" element={
-              <ProtectedRoute>
-                <QuizResultsView />
-              </ProtectedRoute>
-            } />
-            {/* Legacy Results Route */}
-            <Route path="/courses/:courseId/:lectureId/results" element={
-              <ProtectedRoute>
-                <ResultsView />
-              </ProtectedRoute>
-            } />
+            {/* Note: quiz/lecture routes moved under nested course routes above */}
             <Route path="/bookmarks" element={
               <ProtectedRoute>
                 <BookmarksView />

@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import EnrollButton from '../components/EnrollButton'
+import CourseCountdownDock from '../components/CourseCountdownDock'
+import CourseCardBadge from '../components/CourseCardBadge'
 import './CourseListView.css'
 
 function CourseListView() {
@@ -31,6 +34,7 @@ function CourseListView() {
 
   return (
     <div className="course-list-view">
+      <CourseCountdownDock />
       <header className="page-header">
         <img src="/logo.png" alt="exammate.ai logo" className="logo-icon" />
         <h1>exammate.ai</h1>
@@ -45,6 +49,7 @@ function CourseListView() {
               key={course.course_id} 
               className="course-card"
               onClick={() => navigate(`/courses/${course.course_id}`)}
+              data-course-id={course.course_id}
             >
               <div className="course-header">
                 <h3>{course.course_name}</h3>
@@ -68,8 +73,22 @@ function CourseListView() {
                 )}
               </div>
               
+              {/* Badge with countdown anchored above footer */}
+              <CourseCardBadge courseId={course.course_id} />
+
               <div className="card-footer">
-                <button className="btn-primary">
+                <EnrollButton 
+                  courseId={course.course_id} 
+                  variant="compact"
+                  onEnrollmentChange={() => {}}
+                />
+                <button 
+                  className="btn-primary"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/courses/${course.course_id}`);
+                  }}
+                >
                   View Course →
                 </button>
               </div>

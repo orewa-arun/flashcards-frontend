@@ -43,6 +43,7 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  position: relative; /* allow anchored badge */
 }
 
 .course-card:hover {
@@ -102,10 +103,13 @@
 
 .card-footer {
   margin-top: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-.btn-primary {
-  width: 100%;
+.card-footer .btn-primary {
+  flex: 1;
   padding: 0.75rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;

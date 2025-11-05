@@ -1,0 +1,83 @@
+.exam-countdown {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 2000;
+  display: inline-flex;
+  align-items: center;
+}
+
+.exam-countdown.docked { position: static; right: auto; bottom: auto; margin-bottom: 10px; }
+
+.exam-countdown .orb {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  cursor: pointer;
+}
+
+.exam-countdown.future .orb { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.exam-countdown.soon .orb { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.exam-countdown.urgent .orb { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+
+.exam-countdown .orb .mini { font-size: 14px; }
+
+.exam-countdown .panel {
+  width: 320px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  padding: 14px;
+  margin-right: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: all 0.18s ease;
+}
+
+/* Label next to orb for more verbal information */
+.exam-countdown .mini-label {
+  margin-right: 10px;
+  background: rgba(17,24,39,0.85);
+  color: white;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.mini-label .course { font-weight: 800; opacity: 0.95; }
+.mini-label .dot { opacity: 0.6; }
+.mini-label .exam { opacity: 0.95; font-weight: 600; }
+
+.exam-countdown.open .panel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.panel-header { display: flex; justify-content: space-between; align-items: center; }
+.badge {
+  background: #e0e7ff; color: #3730a3; font-weight: 700; border-radius: 999px; padding: 4px 10px; font-size: 12px;
+}
+.time-left { font-weight: 800; color: #111827; letter-spacing: 0.5px; }
+.panel-title { margin: 8px 0; font-size: 16px; font-weight: 700; color: #111827; }
+.panel-row { display: flex; align-items: center; gap: 8px; color: #374151; font-size: 14px; }
+.panel-lectures { margin-top: 8px; }
+.panel-lectures .label { color: #6b7280; font-size: 12px; margin-right: 6px; }
+.lectures { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.chip { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; }
+.panel-action { margin-top: 10px; width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #d1d5db; background: #f9fafb; color: #374151; font-weight: 600; cursor: pointer; }
+.panel-action:hover { background: #f3f4f6; }
+
+

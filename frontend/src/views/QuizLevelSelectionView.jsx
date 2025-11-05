@@ -11,6 +11,17 @@ const QuizLevelSelectionView = () => {
   const navigate = useNavigate();
   const { courseId, lectureId } = useParams();
 
+  // Format lecture ID for display (e.g., "SI_lec_1" -> "SI Lecture 1")
+  const formatLectureTitle = (id) => {
+    if (!id) return '';
+    return id
+      .replace(/_/g, ' ')
+      .replace(/lec/i, 'Lecture')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   const levels = [
     {
       level: 1,
@@ -64,6 +75,11 @@ const QuizLevelSelectionView = () => {
         <button className="back-button" onClick={handleBackToLecture}>
           ← Back to Lecture
         </button>
+        <div className="course-lecture-info">
+          <span className="course-badge">{courseId}</span>
+          <span className="separator">•</span>
+          <span className="lecture-name">{formatLectureTitle(lectureId)}</span>
+        </div>
         <h1>Choose Your Challenge</h1>
         <p className="subtitle">Select a difficulty level to start your personalized quiz</p>
       </div>

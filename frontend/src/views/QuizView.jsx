@@ -57,7 +57,7 @@ const QuizView = () => {
     // Update score
     if (isCorrect) {
       setScore(score + 1);
-    }
+      }
 
     // Record answer in userAnswers
     const answerRecord = {
@@ -102,7 +102,7 @@ const QuizView = () => {
       setCurrentIndex(currentIndex + 1);
       setSelectedAnswer(null);
       setShowFeedback(false);
-    }
+  }
   };
   
   if (loading) {
@@ -125,11 +125,11 @@ const QuizView = () => {
   const getOptionClass = (option) => {
     if (!showFeedback) {
       return selectedAnswer === option ? 'selected' : '';
-    }
+  }
 
     if (option === currentQuestion.correct_answer) {
       return 'correct';
-    }
+  }
 
     if (option === selectedAnswer && option !== currentQuestion.correct_answer) {
       return 'incorrect';

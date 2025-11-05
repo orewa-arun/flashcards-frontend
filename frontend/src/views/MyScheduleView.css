@@ -1,0 +1,522 @@
+/* My Schedule View */
+
+.my-schedule-view {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.my-schedule-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Header */
+.schedule-header {
+  margin-bottom: 32px;
+}
+
+.header-content {
+  text-align: center;
+}
+
+.force-normal,
+.force-normal * {
+  /* Hard stop for any inherited animations/rotations leaking from elsewhere */
+  animation: none !important;
+  transform: none !important;
+}
+
+.schedule-header,
+.header-content,
+.page-title,
+.page-title *,
+.page-subtitle {
+  /* Defensive override against any inherited spinners/rotations */
+  transform: none !important;
+  animation: none !important;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.title-icon {
+  color: #3b82f6;
+  font-size: 28px;
+}
+
+.page-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Error Banner */
+.error-banner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent any inherited rotations/animations inside the empty state */
+.empty-state,
+.empty-state * {
+  transform: none !important;
+  animation: none !important;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: #d1d5db;
+  margin-bottom: 24px;
+}
+
+.empty-state h2 {
+  font-size: 24px;
+  color: #374151;
+  margin: 0 0 12px 0;
+}
+
+.empty-state p {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0 0 24px 0;
+}
+
+.browse-courses-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.browse-courses-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.enrolled-courses-info {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.enrolled-courses-info p {
+  margin: 0;
+  color: #4b5563;
+}
+
+.enrolled-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.enrolled-course-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.enrollment-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 2px dashed #d1d5db;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #374151;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Schedule Stats */
+.schedule-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Exam Timeline */
+.exams-timeline {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.exam-timeline-card {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 20px;
+  position: relative;
+  align-items: center;
+}
+
+.exam-timeline-card:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+/* Timeline Indicator */
+.exam-timeline-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.indicator-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d1d5db;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px #d1d5db;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.indicator-line {
+  width: 2px;
+  flex: 1;
+  background: #e5e7eb;
+  margin-top: 8px;
+  min-height: 40px;
+}
+
+/* Urgency States */
+.exam-timeline-card.today .indicator-dot {
+  background: #ef4444;
+  box-shadow: 0 0 0 2px #ef4444, 0 0 12px rgba(239, 68, 68, 0.5);
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+.exam-timeline-card.urgent .indicator-dot {
+  background: #f59e0b;
+  box-shadow: 0 0 0 2px #f59e0b;
+}
+
+.exam-timeline-card.soon .indicator-dot {
+  background: #eab308;
+  box-shadow: 0 0 0 2px #eab308;
+}
+
+.exam-timeline-card.future .indicator-dot {
+  background: #3b82f6;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.exam-timeline-card.past .indicator-dot {
+  background: #9ca3af;
+  box-shadow: 0 0 0 2px #9ca3af;
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    box-shadow: 0 0 0 2px #ef4444, 0 0 12px rgba(239, 68, 68, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 2px #ef4444, 0 0 20px rgba(239, 68, 68, 0.8);
+  }
+}
+
+/* Timeline Content */
+.exam-timeline-content {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.exam-readiness-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.exam-timeline-card.today .exam-timeline-content {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.exam-timeline-card.urgent .exam-timeline-content {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.exam-timeline-card.soon .exam-timeline-content {
+  background: #fefce8;
+  border-color: #fef08a;
+}
+
+.exam-timeline-card.past .exam-timeline-content {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  opacity: 0.7;
+}
+
+.exam-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.course-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.days-until {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.exam-timeline-card.today .days-until {
+  background: #ef4444;
+  color: white;
+}
+
+.exam-timeline-card.urgent .days-until {
+  background: #f59e0b;
+  color: white;
+}
+
+.exam-timeline-card.soon .days-until {
+  background: #eab308;
+  color: white;
+}
+
+.exam-timeline-card.future .days-until {
+  background: #3b82f6;
+  color: white;
+}
+
+.exam-timeline-card.past .days-until {
+  background: #6b7280;
+  color: white;
+}
+
+.exam-subject {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+}
+
+.exam-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.meta-item svg {
+  color: #9ca3af;
+}
+
+/* Lectures */
+.exam-lectures {
+  margin: 12px 0;
+}
+
+.lectures-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.lectures-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lecture-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Notes */
+.exam-notes {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+/* View Course Timetable Button */
+.view-course-timetable-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #4b5563;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 12px;
+}
+
+.view-course-timetable-btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  color: #1f2937;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .my-schedule-view {
+    padding: 16px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .schedule-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .exams-timeline {
+    padding: 20px;
+  }
+  
+  .exam-timeline-card {
+    grid-template-columns: 30px 1fr;
+    gap: 16px;
+  }
+  
+  .exam-timeline-content {
+    padding: 16px;
+  }
+}
+

@@ -318,3 +318,128 @@ async def get_user_performance(
             detail=f"Failed to fetch performance data: {str(e)}"
         )
 
+
+@router.get("/weak-concepts/{course_id}")
+async def get_weak_concepts_for_course(
+    course_id: str,
+    current_user: dict = Depends(get_current_user),
+    db=Depends(get_database)
+) -> Dict[str, Any]:
+    """
+    Get aggregated weak concepts across all lectures in a course.
+    
+    Returns flashcards where the user has:
+    - Accuracy < 60% (weak)
+    - At least 2 attempts
+    
+    Args:
+        course_id: Course identifier
+        current_user: Authenticated user from Firebase
+        db: MongoDB database connection
+        
+    Returns:
+        {
+            "has_attempts": bool,
+            "weak_concepts": [
+                {
+                    "lecture_id": str,
+                    "flashcard_id": str,
+                    "question": str,
+                    "correct": int,
+                    "incorrect": int,
+                    "accuracy": float,
+                    "weakness_score": float
+                }
+            ]
+        }
+    """
+    try:
+        from pathlib import Path
+        import json
+        
+        user_id = current_user['uid']
+        
+        # Get all performance records for this user and course
+        performance_collection = db.user_performance
+        performances = await performance_collection.find({
+            "user_id": user_id,
+            "course_id": course_id
+        }).to_list(length=None)
+        
+        if not performances:
+            return {
+                "has_attempts": False,
+                "weak_concepts": [],
+                "message": "No quiz attempts found. Take a quiz first to assess your weak areas."
+            }
+        
+        # Load flashcard data for the course
+        base_path = Path("/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/courses")
+        course_path = base_path / course_id / "cognitive_flashcards"
+        
+        weak_concepts = []
+        
+        for perf in performances:
+            lecture_id = perf.get("lecture_id")
+            flashcards_data = perf.get("flashcards", {})
+            
+            # Load flashcard details from file
+            lecture_folder = course_path / lecture_id
+            flashcard_file = lecture_folder / f"{lecture_id}_cognitive_flashcards_only.json"
+            
+            flashcard_lookup = {}
+            if flashcard_file.exists():
+                with open(flashcard_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    flashcards = data.get("flashcards", []) if isinstance(data, dict) else data
+                    for fc in flashcards:
+                        if "flashcard_id" in fc:
+                            flashcard_lookup[fc["flashcard_id"]] = fc
+            
+            # Analyze each flashcard
+            for flashcard_id, stats in flashcards_data.items():
+                correct = stats.get("correct", 0)
+                incorrect = stats.get("incorrect", 0)
+                total = correct + incorrect
+                
+                # Filter: must have at least 2 attempts and < 60% accuracy
+                if total >= 2:
+                    accuracy = (correct / total) * 100
+                    
+                    if accuracy < 60:
+                        # Get full flashcard data
+                        flashcard = flashcard_lookup.get(flashcard_id, {})
+                        
+                        weakness_score = (incorrect + 1) / (correct + 1)
+                        
+                        weak_concepts.append({
+                            "lecture_id": lecture_id,
+                            "flashcard_id": flashcard_id,
+                            "question": flashcard.get("question", "Unknown concept"),
+                            "answers": flashcard.get("answers", {}),
+                            "example": flashcard.get("example", ""),
+                            "mermaid_diagrams": flashcard.get("mermaid_diagrams", {}),
+                            "math_visualizations": flashcard.get("math_visualizations", {}),
+                            "correct": correct,
+                            "incorrect": incorrect,
+                            "total_attempts": total,
+                            "accuracy": round(accuracy, 1),
+                            "weakness_score": round(weakness_score, 2)
+                        })
+        
+        # Sort by weakness score (worst first)
+        weak_concepts.sort(key=lambda x: x["weakness_score"], reverse=True)
+        
+        return {
+            "has_attempts": True,
+            "weak_concepts": weak_concepts,
+            "total_weak": len(weak_concepts)
+        }
+    
+    except Exception as e:
+        logger.error(f"Error fetching weak concepts for course {course_id}: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to fetch weak concepts: {str(e)}"
+        )
+

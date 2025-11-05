@@ -68,8 +68,18 @@ class AdaptiveQuizService:
             for card in flashcards:
                 flashcard_id = card.get('flashcard_id')
                 if flashcard_id:
+                    # relevance_score in our JSON is an object: { score: number, justification: string }
+                    # Store the numeric score only for sorting/comparisons
+                    numeric_relevance = 0
+                    try:
+                        numeric_relevance = (
+                            card.get('relevance_score', {}) or {}
+                        ).get('score', 0)
+                    except Exception:
+                        numeric_relevance = 0
+
                     flashcard_map[flashcard_id] = {
-                        'relevance_score': card.get('relevance_score', 0),
+                        'relevance_score': numeric_relevance,
                         'question': card.get('question', ''),
                         'tags': card.get('tags', [])
                     }

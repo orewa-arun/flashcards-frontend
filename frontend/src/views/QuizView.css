@@ -50,11 +50,11 @@
   0%, 80%, 100% { 
     transform: scale(0);
     opacity: 0.5;
-  } 
+}
   40% { 
     transform: scale(1);
     opacity: 1;
-  }
+}
 }
 
 /* Brand New Progress Bar Design */
@@ -305,7 +305,7 @@
 
   .option-button {
     padding: 15px;
-  }
+}
 
   .option-text {
     font-size: 0.95em;

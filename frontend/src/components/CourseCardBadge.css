@@ -1,0 +1,27 @@
+.course-card-badge {
+  position: absolute;
+  right: 14px;
+  bottom: 74px; /* sit above footer buttons */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none; /* avoid blocking card clicks */
+}
+
+.course-card-badge .dot {
+  height: 34px; min-width: 34px; border-radius: 999px; padding: 0 8px; display: inline-flex; align-items: center; gap: 6px; color: white; font-weight: 800; box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+}
+.course-card-badge .dot.future { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.course-card-badge .dot.soon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.course-card-badge .dot.urgent { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+.course-card-badge .dot .time { font-size: 12px; }
+
+.course-card-badge .label { background: rgba(17,24,39,0.86); color: white; border-radius: 999px; padding: 6px 10px; font-size: 12px; display: inline-flex; gap: 6px; align-items: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+.course-card-badge .label .course { font-weight: 800; }
+.course-card-badge .label .sep { opacity: 0.6; }
+.course-card-badge .label .exam { font-weight: 600; }
+
+@media (max-width: 640px) {
+  .course-card-badge { bottom: 68px; right: 10px; }
+}
+
