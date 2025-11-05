@@ -95,9 +95,9 @@ async def create_indexes(db: AsyncIOMotorDatabase):
         bookmarks_collection = db.bookmarks
         bookmark_indexes = [
             IndexModel([("firebase_uid", ASCENDING)], name="firebase_uid_bookmarks_index"),
-            IndexModel([("course_id", ASCENDING), ("lecture_id", ASCENDING)], name="course_lecture_bookmarks_index"),
+            IndexModel([("course_id", ASCENDING), ("deck_id", ASCENDING)], name="course_deck_bookmarks_index"),
             IndexModel([("created_at", ASCENDING)], name="bookmarks_created_at_index"),
-            IndexModel([("firebase_uid", ASCENDING), ("course_id", ASCENDING), ("lecture_id", ASCENDING), ("card_index", ASCENDING)], 
+            IndexModel([("firebase_uid", ASCENDING), ("course_id", ASCENDING), ("deck_id", ASCENDING), ("flashcard_index", ASCENDING)], 
                       unique=True, name="user_bookmark_unique")
         ]
         

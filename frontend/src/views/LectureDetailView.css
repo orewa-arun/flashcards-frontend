@@ -1,228 +1,336 @@
+/* ========================================
+   $5M LECTURE DETAIL VIEW - SCHOLAR'S NOTEBOOK
+   Brand-aligned, minimal, premium design
+   ======================================== */
+
+:root {
+  --brand-green: #2d7a3e;
+  --brand-green-dark: #245c30;
+  --brand-green-light: #e8f5e9;
+  --page-bg: #f9f7f3;
+  --card-bg: #ffffff;
+  --text-charcoal: #1a1a1a;
+  --text-gray: #666666;
+  --text-lightgray: #999999;
+  --border-light: #e5e7eb;
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+
 .lecture-detail-view {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 80px 20px 40px;
+  background: var(--page-bg);
+  padding: 100px 2rem 4rem;
 }
 
 .lecture-detail-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.lecture-header {
-  text-align: center;
-  margin-bottom: 60px;
+/* ========================================
+   BREADCRUMB NAVIGATION
+   ======================================== */
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.875rem;
 }
 
-.back-button {
-  background: white;
-  border: 2px solid #e0e0e0;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #666;
+.breadcrumb-link {
+  background: none;
+  border: none;
+  color: var(--text-gray);
   cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 24px;
-}
-
-.back-button:hover {
-  background: #f8f9fa;
-  border-color: var(--primary-green, #2d7a3e);
-  color: var(--primary-green, #2d7a3e);
-  transform: translateX(-4px);
-}
-
-.lecture-title {
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
-}
-
-.lecture-subtitle {
-  font-size: clamp(16px, 2vw, 20px);
-  color: #666;
+  transition: color 0.2s ease;
+  padding: 0;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
-.learning-modes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 32px;
-  margin-top: 40px;
+.breadcrumb-link:hover {
+  color: var(--brand-green);
 }
 
-.mode-card {
-  background: white;
+.breadcrumb-separator {
+  color: var(--text-lightgray);
+  font-size: 0.75rem;
+}
+
+.breadcrumb-current {
+  color: var(--text-charcoal);
+  font-weight: 600;
+}
+
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.page-title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--text-charcoal);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-gray);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ========================================
+   ACTION PANELS LAYOUT
+   ======================================== */
+
+.action-panels {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* ========================================
+   PANEL DESIGN
+   ======================================== */
+
+.action-panel {
+  background: var(--card-bg);
   border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  border: 2px solid var(--border-light);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 3px solid transparent;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.mode-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  transition: all 0.3s ease;
+.action-panel:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
 }
 
-.study-card::before {
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+/* Primary Panel (Study Flashcards) */
+.primary-panel:hover {
+  border-color: var(--brand-green);
 }
 
-.quiz-card::before {
-  background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+/* Secondary Panel (Take Quiz) */
+.secondary-panel:hover {
+  border-color: var(--text-gray);
 }
 
-.mode-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-}
+/* ========================================
+   PANEL ICONS
+   ======================================== */
 
-.study-card:hover {
-  border-color: #667eea;
-}
-
-.quiz-card:hover {
-  border-color: #f5576c;
-}
-
-.mode-icon {
-  width: 80px;
-  height: 80px;
+.panel-icon {
+  width: 72px;
+  height: 72px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
   transition: all 0.3s ease;
 }
 
-.study-card .mode-icon {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-  color: #667eea;
+.primary-icon {
+  background: var(--brand-green-light);
+  color: var(--brand-green);
 }
 
-.quiz-card .mode-icon {
-  background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
-  color: #f5576c;
+.secondary-icon {
+  background: #f5f5f5;
+  color: var(--text-charcoal);
 }
 
-.mode-card:hover .mode-icon {
-  transform: scale(1.1) rotate(5deg);
+.action-panel:hover .panel-icon {
+  transform: scale(1.08);
 }
 
-.mode-title {
-  font-size: 28px;
+/* ========================================
+   PANEL CONTENT
+   ======================================== */
+
+.panel-title {
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 12px;
+  color: var(--text-charcoal);
+  margin: 0 0 0.875rem 0;
+  letter-spacing: -0.01em;
 }
 
-.mode-description {
-  font-size: 16px;
-  color: #666;
+.panel-description {
+  font-size: 1rem;
+  color: var(--text-gray);
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin: 0 0 1.5rem 0;
+  flex: 1;
 }
 
-.mode-features {
+/* ========================================
+   FEATURE BADGES
+   ======================================== */
+
+.panel-features {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
+  gap: 0.625rem;
+  margin-bottom: 2rem;
 }
 
-.feature-tag {
-  background: #f8f9fa;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
+.feature-badge {
+  background: var(--page-bg);
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: #666;
+  color: var(--text-gray);
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
 }
 
-.mode-button {
+.action-panel:hover .feature-badge {
+  background: var(--card-bg);
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+}
+
+/* ========================================
+   PANEL BUTTONS
+   ======================================== */
+
+.panel-button {
   width: 100%;
-  padding: 16px 32px;
+  padding: 0.875rem 1.5rem;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
-  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  margin-top: auto;
+}
+
+/* Primary Button (Solid Green) */
+.primary-button {
+  background: var(--brand-green);
   color: white;
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.2);
 }
 
-.study-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.primary-button:hover {
+  background: var(--brand-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(45, 122, 62, 0.3);
 }
 
-.study-button:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+.primary-button:active {
+  transform: translateY(0);
 }
 
-.quiz-button {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+/* Secondary Button (Ghost/Outline) */
+.secondary-button {
+  background: transparent;
+  color: var(--brand-green);
+  border: 2px solid var(--brand-green);
 }
 
-.quiz-button:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
+.secondary-button:hover {
+  background: var(--brand-green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.2);
 }
 
-/* Responsive Design */
+.secondary-button:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
 @media (max-width: 900px) {
-  .learning-modes {
+  .action-panels {
     grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 40px auto 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
   }
 }
 
 @media (max-width: 768px) {
   .lecture-detail-view {
-    padding: 70px 16px 32px;
+    padding: 80px 1.5rem 3rem;
   }
 
-  .mode-card {
-    padding: 32px 24px;
+  .action-panel {
+    padding: 2rem;
   }
 
-  .lecture-header {
-    margin-bottom: 40px;
+  .panel-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.75rem;
+  }
+
+  .panel-title {
+    font-size: 1.5rem;
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .mode-icon {
-    width: 64px;
-    height: 64px;
+  .lecture-detail-view {
+    padding: 70px 1rem 2.5rem;
   }
 
-  .mode-icon svg {
-    width: 36px;
-    height: 36px;
+  .action-panel {
+    padding: 1.75rem;
   }
 
-  .mode-title {
-    font-size: 24px;
+  .panel-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
-  .mode-description {
-    font-size: 15px;
+  .panel-title {
+    font-size: 1.375rem;
+  }
+
+  .panel-description {
+    font-size: 0.9375rem;
+  }
+
+  .breadcrumb-nav {
+    font-size: 0.8125rem;
   }
 }
-

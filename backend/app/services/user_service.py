@@ -231,7 +231,8 @@ class UserService:
             raise
 
 # Dependency to get user service
-async def get_user_service() -> UserService:
+def get_user_service() -> UserService:
     """Get user service instance."""
+    from ..database import get_database
     db = get_database()
     return UserService(db)

@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { FaCalendarAlt, FaBook, FaExclamationTriangle, FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import { FaCalendarAlt, FaBook, FaExclamationTriangle, FaChalkboardTeacher, FaChevronRight } from 'react-icons/fa'
 import EnrollButton from '../components/EnrollButton'
+import NextDeadline from '../components/NextDeadline'
 import { getWeakConcepts } from '../api/weakConcepts'
 import './CourseDetailView.css'
 
@@ -12,7 +13,7 @@ function CourseDetailView() {
   const [loading, setLoading] = useState(true)
   const [weakConcepts, setWeakConcepts] = useState(null)
   const [weakConceptsLoading, setWeakConceptsLoading] = useState(true)
-  const [expandedConcepts, setExpandedConcepts] = useState(new Set())
+  const [hoveredLecture, setHoveredLecture] = useState(null)
 
   useEffect(() => {
     fetch('/courses.json')
@@ -28,11 +29,7 @@ function CourseDetailView() {
       })
   }, [courseId])
 
-  useEffect(() => {
-    loadWeakConcepts()
-  }, [courseId])
-
-  const loadWeakConcepts = async () => {
+  const loadWeakConcepts = useCallback(async () => {
     try {
       setWeakConceptsLoading(true)
       const data = await getWeakConcepts(courseId)
@@ -43,17 +40,11 @@ function CourseDetailView() {
     } finally {
       setWeakConceptsLoading(false)
     }
-  }
+  }, [courseId])
 
-  const toggleConceptExpanded = (flashcardId) => {
-    const newExpanded = new Set(expandedConcepts)
-    if (newExpanded.has(flashcardId)) {
-      newExpanded.delete(flashcardId)
-    } else {
-      newExpanded.add(flashcardId)
-    }
-    setExpandedConcepts(newExpanded)
-  }
+  useEffect(() => {
+    loadWeakConcepts()
+  }, [loadWeakConcepts])
 
   if (loading) {
     return (
@@ -68,142 +59,185 @@ function CourseDetailView() {
     return (
       <div className="error-container">
         <h2>Course not found</h2>
-        <button onClick={() => navigate('/')}>← Back to Courses</button>
+        <button onClick={() => navigate('/courses')}>← Back to Courses</button>
       </div>
     )
   }
 
   const handleLectureClick = (deck) => {
-    // Extract lecture ID from PDF path (e.g., "MIS_lec_1-3.pdf" -> "MIS_lec_1-3")
     const pdfFilename = deck.pdf_path.split('/').pop()
     const lectureId = pdfFilename.replace('.pdf', '')
     navigate(`/courses/${courseId}/${lectureId}`)
   }
 
+  const truncateTopics = (topics, maxVisible = 3) => {
+    if (!topics || topics.length === 0) return []
+    return topics.slice(0, maxVisible)
+  }
+
   return (
     <div className="course-detail-view">
-      <button className="back-button" onClick={() => navigate('/')}>
-        ← Back to Courses
-      </button>
+      {/* Breadcrumb Navigation */}
+      <nav className="breadcrumb">
+        <button onClick={() => navigate('/courses')} className="breadcrumb-link">
+          Courses
+        </button>
+        <FaChevronRight className="breadcrumb-separator" />
+        <span className="breadcrumb-current">{course.course_name}</span>
+      </nav>
 
-      <div className="course-header-section">
-        <div className="course-title-row">
-          <h1>{course.course_name}</h1>
-          <span className="course-code-badge">{course.course_code}</span>
-          <EnrollButton courseId={courseId} variant="large" />
-        </div>
-        
-        {course.course_description && (
-          <p className="course-description-full">{course.course_description}</p>
-        )}
-
-        <div className="course-info-grid">
-          {course.instructor && (
-            <div className="info-card">
-              <span className="info-icon">👨‍🏫</span>
-              <div>
-                <div className="info-label">Instructor</div>
-                <div className="info-value">{course.instructor}</div>
-              </div>
-            </div>
+      {/* Header: The Binder's Title Page */}
+      <header className="course-header">
+        <div className="course-title-block">
+          <div className="title-row">
+            <h1 className="course-title">{course.course_name}</h1>
+            <span className="course-code-tab">{course.course_code}</span>
+          </div>
+          {course.course_description && (
+            <p className="course-subtitle">{course.course_description}</p>
           )}
         </div>
-      </div>
-
-      {/* Quick Actions */}
-      <div className="quick-actions-section">
-        <button 
-          className="action-card timetable-card"
-          onClick={() => navigate(`/courses/${courseId}/timetable`)}
-        >
-          <FaCalendarAlt className="action-icon" />
-          <div className="action-content">
-            <h3>Exam Timetable</h3>
-            <p>View and manage your exam schedule</p>
-          </div>
-        </button>
-      </div>
-
-      {/* Weak Concepts Section - Compact Summary Card */}
-      {!weakConceptsLoading && weakConcepts && weakConcepts.has_attempts && weakConcepts.total_weak > 0 && (
-        <div className="weak-concepts-compact-card">
-          <div className="compact-card-header">
-            <FaExclamationTriangle className="warning-icon" />
-            <div className="header-content">
-              <h3>Concepts You Need to Review</h3>
-              <p>
-                You have <strong>{weakConcepts.total_weak}</strong> concept{weakConcepts.total_weak !== 1 ? 's' : ''} with accuracy below 60%. 
-                Focus on these to improve your exam readiness.
-              </p>
-            </div>
-          </div>
-          <button 
-            className="view-weak-concepts-btn"
-            onClick={() => navigate('/weak-concepts')}
-          >
-            View All Weak Concepts →
-          </button>
+        <div className="header-actions">
+          <EnrollButton courseId={courseId} variant="large" />
         </div>
-      )}
+      </header>
 
-      <div className="lectures-section">
-        <h2><FaBook /> Lectures</h2>
-        {course.lecture_slides && course.lecture_slides.length > 0 ? (
-          <div className="lectures-grid">
-            {course.lecture_slides.map((deck, index) => (
-              <div 
-                key={deck.lecture_number || index} 
-                className="lecture-card"
-              >
-                <div className="lecture-number">Lecture {deck.lecture_number || index + 1}</div>
-                <h3>{deck.lecture_name}</h3>
-                
-                {deck.topics && deck.topics.length > 0 && (
-                  <div className="topics-container">
-                    <div className="topics-list">
-                      {deck.topics.slice(0, 3).map((topic, idx) => (
-                        <span key={idx} className="topic-tag">{topic}</span>
-                      ))}
-                      {deck.topics.length > 3 && (
-                        <span className="topic-tag more-topics">
-                          +{deck.topics.length - 3} more
-                        </span>
-                      )}
-                    </div>
+      {/* Two-Column Layout */}
+      <div className="course-content-layout">
+        
+        {/* Main Content: Lecture Cards */}
+        <main className="lectures-main">
+          <h2 className="section-title">
+            <FaBook /> Lectures
+          </h2>
+          
+          {course.lecture_slides && course.lecture_slides.length > 0 ? (
+            <div className="lectures-grid">
+              {course.lecture_slides.map((deck, index) => (
+                <div 
+                  key={deck.lecture_number || index} 
+                  className="lecture-card"
+                  onClick={() => handleLectureClick(deck)}
+                  onMouseEnter={() => setHoveredLecture(index)}
+                  onMouseLeave={() => setHoveredLecture(null)}
+                >
+                  {/* Lecture Number Tab (like course code tab) */}
+                  <div className="lecture-number-tab">
+                    Lecture {deck.lecture_number || index + 1}
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="lecture-content">
+                    <h3 className="lecture-title">{deck.lecture_name}</h3>
                     
-                    {/* Tooltip with all topics */}
-                    {deck.topics.length > 3 && (
-                      <div className="topics-tooltip">
-                        <div className="tooltip-header">All Topics Covered ({deck.topics.length}):</div>
-                        <div className="tooltip-content">
-                          {deck.topics.map((topic, idx) => (
-                            <div key={idx} className="tooltip-topic">• {topic}</div>
+                    {/* Topics Preview */}
+                    {deck.topics && deck.topics.length > 0 && (
+                      <div className="topics-preview">
+                        <div className="topics-list">
+                          {truncateTopics(deck.topics, 3).map((topic, idx) => (
+                            <span key={idx} className="topic-bullet">• {topic}</span>
                           ))}
+                          {deck.topics.length > 3 && (
+                            <span className="topic-bullet more-indicator">
+                              +{deck.topics.length - 3} more topics
+                            </span>
+                          )}
                         </div>
+
+                        {/* Tooltip with all topics (on hover) */}
+                        {deck.topics.length > 3 && hoveredLecture === index && (
+                          <div className="topics-tooltip">
+                            <div className="tooltip-header">
+                              All Topics Covered ({deck.topics.length}):
+                            </div>
+                            <div className="tooltip-topics">
+                              {deck.topics.map((topic, idx) => (
+                                <div key={idx} className="tooltip-topic">• {topic}</div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
-                )}
-                
-                <button 
-                  className="btn-study"
-                  onClick={() => handleLectureClick(deck)}
-                >
-                  Start Studying →
-                </button>
+
+                  {/* Action Button */}
+                  <div className="lecture-footer">
+                    <button 
+                      className="btn-start-studying"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleLectureClick(deck);
+                      }}
+                    >
+                      Start Studying →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="no-lectures">
+              <p>No lectures available yet for this course.</p>
+            </div>
+          )}
+        </main>
+
+        {/* Right Sidebar: Status & Tools Panel */}
+        <aside className="course-sidebar">
+          
+          {/* Instructor Card */}
+          {course.instructor && (
+            <div className="sidebar-card instructor-card">
+              <div className="card-label">Instructor</div>
+              <div className="instructor-info">
+                <FaChalkboardTeacher className="instructor-icon" />
+                <span className="instructor-name">{course.instructor}</span>
               </div>
-            ))}
+            </div>
+          )}
+
+          {/* Next Deadline Card */}
+          <div className="sidebar-card deadline-card">
+            <div className="card-label">Next Deadline</div>
+            <NextDeadline courseId={courseId} />
           </div>
-        ) : (
-          <div className="no-lectures">
-            <p>No lectures available yet for this course.</p>
-          </div>
-        )}
+
+          {/* Exam Timetable Link */}
+          <button 
+            className="sidebar-card timetable-link"
+            onClick={() => navigate(`/courses/${courseId}/timetable`)}
+          >
+            <FaCalendarAlt className="timetable-icon" />
+            <div className="timetable-content">
+              <h4>View Full Schedule</h4>
+              <p>Manage your exam timetable</p>
+            </div>
+          </button>
+
+          {/* Weak Concepts Panel */}
+          {!weakConceptsLoading && weakConcepts && weakConcepts.has_attempts && weakConcepts.total_weak > 0 && (
+            <div className="sidebar-card weak-concepts-card">
+              <div className="card-header-with-icon">
+                <FaExclamationTriangle className="warning-icon" />
+                <div className="card-label">Concepts to Review</div>
+              </div>
+              <p className="weak-concepts-summary">
+                You have <strong>{weakConcepts.total_weak}</strong> concept{weakConcepts.total_weak !== 1 ? 's' : ''} with accuracy below 60%. 
+                Focus on these to improve your exam readiness.
+              </p>
+              <button 
+                className="btn-view-weak-concepts"
+                onClick={() => navigate('/weak-concepts')}
+              >
+                View All Weak Concepts →
+              </button>
+            </div>
+          )}
+        </aside>
       </div>
     </div>
   )
 }
 
 export default CourseDetailView
-
-

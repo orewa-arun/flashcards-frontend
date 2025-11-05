@@ -1,8 +1,19 @@
-/* Bookmarks View Styling */
+/* Bookmarks View - The Study Sheet */
+:root {
+  --page-bg: #f9f7f3;
+  --card-bg: white;
+  --brand-green: #2d7a3e;
+  --text-charcoal: #333333;
+  --text-muted: #6c757d;
+  --border-subtle: #e5e1d8;
+  --amber: #f59e0b;
+}
+
 .bookmarks-view {
   min-height: 100vh;
-  background: var(--bg-primary);
-  padding: 24px;
+  background: var(--page-bg);
+  padding: 32px 24px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Loading and Error States */
@@ -19,32 +30,34 @@
 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent-primary);
+  border: 3px solid var(--border-subtle);
+  border-top-color: var(--brand-green);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 16px;
 }
 
 .error-message {
-  color: var(--text-secondary);
+  color: var(--text-muted);
   font-size: 18px;
   margin-bottom: 16px;
 }
 
 .retry-btn {
-  background: var(--accent-primary);
+  background: var(--brand-green);
   color: white;
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .retry-btn:hover {
-  background: var(--accent-hover);
+  background: #246b32;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.2);
 }
 
 /* Header Styles */
@@ -64,16 +77,16 @@
   gap: 12px;
   font-size: 32px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-charcoal);
   margin-bottom: 8px;
 }
 
 .title-icon {
-  color: #f59e0b;
+  color: var(--amber);
 }
 
 .page-subtitle {
-  color: var(--text-secondary);
+  color: var(--text-muted);
   font-size: 16px;
   margin: 0;
 }
@@ -91,19 +104,20 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
   padding: 12px 16px;
   border-radius: 8px;
   cursor: pointer;
-  color: var(--text-primary);
+  color: var(--text-charcoal);
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .back-btn:hover {
-  background: var(--bg-tertiary);
-  box-shadow: var(--shadow-subtle);
+  background: var(--page-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateX(-2px);
 }
 
 .bookmark-detail-info {
@@ -118,12 +132,12 @@
 }
 
 .flashcard-unavailable {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 48px;
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--text-muted);
 }
 
 .flashcard-unavailable p {
@@ -141,12 +155,12 @@
 .empty-state {
   text-align: center;
   padding: 80px 24px;
-  color: var(--text-secondary);
+  color: var(--text-muted);
 }
 
 .empty-icon {
   font-size: 64px;
-  color: var(--border);
+  color: var(--border-subtle);
   margin-bottom: 24px;
 }
 
@@ -154,7 +168,7 @@
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 12px;
-  color: var(--text-primary);
+  color: var(--text-charcoal);
 }
 
 .empty-state p {
@@ -164,127 +178,84 @@
   line-height: 1.5;
 }
 
-/* Deck Groups */
-.deck-group {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  margin-bottom: 24px;
-  overflow: hidden;
+/* Course Sections */
+.course-section {
+  margin-bottom: 40px;
 }
 
-.deck-header {
+.course-section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
-  background: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--brand-green);
 }
 
-.deck-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.deck-icon {
-  color: var(--accent-primary);
-  font-size: 18px;
-}
-
-.deck-details {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.deck-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-.course-badge {
-  background: var(--accent-primary);
+.course-badge-large {
+  background: var(--brand-green);
   color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .bookmark-count {
-  color: var(--text-secondary);
+  color: var(--text-muted);
   font-size: 14px;
   font-weight: 500;
 }
 
-/* Bookmarks Grid */
-.bookmarks-grid {
+/* Masonry Grid for Bookmarks */
+.bookmarks-masonry {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 16px;
-  padding: 24px;
+  align-items: start;
 }
 
-.bookmark-card {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+.bookmark-mini-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
   overflow: hidden;
   transition: all 0.2s ease;
-  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
 }
 
-.bookmark-card:hover {
-  box-shadow: var(--shadow-card);
+.bookmark-mini-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+  border-color: var(--brand-green);
 }
 
-.bookmark-content {
-  padding: 16px;
-  cursor: pointer;
-}
-
-.bookmark-question {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-primary);
-  line-height: 1.4;
-  margin-bottom: 12px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.bookmark-meta {
+.bookmark-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--page-bg);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bookmark-source {
   font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.flashcard-index {
   font-weight: 600;
-  color: var(--accent-primary);
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  margin-right: 8px;
 }
 
-.bookmark-date {
-  font-weight: 500;
-}
-
-/* Remove Bookmark Button */
 .remove-bookmark-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border: none;
   background: rgba(245, 158, 11, 0.1);
   border-radius: 6px;
@@ -293,12 +264,11 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  opacity: 0.7;
+  flex-shrink: 0;
 }
 
 .remove-bookmark-btn:hover {
   background: rgba(245, 158, 11, 0.2);
-  opacity: 1;
 }
 
 .remove-bookmark-btn:disabled {
@@ -307,23 +277,138 @@
 }
 
 .remove-bookmark-btn svg {
-  width: 14px;
-  height: 14px;
-  color: #f59e0b;
+  width: 12px;
+  height: 12px;
+  color: var(--amber);
 }
 
-.bookmark-card:hover .remove-bookmark-btn {
-  opacity: 1;
-}
-
-/* Button Spinner */
 .btn-spinner {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border: 2px solid transparent;
-  border-top-color: #f59e0b;
+  border-top-color: var(--amber);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+}
+
+.bookmark-card-body {
+  padding: 16px;
+  flex: 1;
+}
+
+.bookmark-question {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-charcoal);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.bookmark-answer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  animation: expandAnswer 0.2s ease;
+}
+
+@keyframes expandAnswer {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.answer-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brand-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.answer-text {
+  font-size: 14px;
+  color: var(--text-charcoal);
+  line-height: 1.6;
+}
+
+.bookmark-card-footer {
+  padding: 12px 16px;
+  background: var(--page-bg);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookmark-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.bookmark-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.bookmark-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expand-btn,
+.goto-deck-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-subtle);
+  background: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+}
+
+.expand-btn:hover {
+  background: var(--brand-green);
+  color: white;
+  border-color: var(--brand-green);
+}
+
+.goto-deck-btn:hover {
+  background: var(--brand-green);
+  color: white;
+  border-color: var(--brand-green);
+}
+
+.expand-btn svg,
+.goto-deck-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.course-badge {
+  background: var(--brand-green);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.deck-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-charcoal);
 }
 
 /* Responsive Design */
@@ -342,21 +427,14 @@
     gap: 12px;
   }
   
-  .deck-header {
+  .course-section-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    padding: 16px 20px;
+    gap: 8px;
   }
   
-  .bookmarks-grid {
+  .bookmarks-masonry {
     grid-template-columns: 1fr;
-    padding: 16px;
-    gap: 12px;
-  }
-  
-  .bookmark-card {
-    margin-bottom: 0;
   }
 }
 
@@ -371,23 +449,8 @@
     gap: 8px;
   }
   
-  .deck-header {
-    padding: 12px 16px;
-  }
-  
-  .bookmarks-grid {
-    padding: 12px;
-  }
-  
-  .bookmark-content {
-    padding: 12px;
-  }
-  
-  .remove-bookmark-btn {
-    top: 8px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
+  .bookmark-mini-card {
+    margin-bottom: 0;
   }
 }
 

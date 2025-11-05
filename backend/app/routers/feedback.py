@@ -4,7 +4,6 @@ from typing import List
 from fastapi import APIRouter, HTTPException, Header, Depends
 from app.database import get_database
 from app.models.feedback import FlashcardFeedback, FeedbackRequest, FeedbackResponse, UserFeedbackSummary
-from app.models.user import User
 from app.config import settings
 import logging
 
@@ -17,22 +16,28 @@ async def get_user_id_from_header(x_user_id: str = Header(..., alias="X-User-ID"
         raise HTTPException(status_code=400, detail="X-User-ID header is required")
     return x_user_id
 
-async def ensure_user_exists(user_id: str, db) -> User:
-    """Ensure user exists in database, create if not."""
+async def ensure_user_exists(user_id: str, db) -> dict:
+    """Ensure user exists in database, create if not. For anonymous users."""
     users_collection = db[settings.USERS_COLLECTION]
     
-    # Check if user exists
+    # Check if user exists (legacy anonymous user with user_id field)
     user_doc = await users_collection.find_one({"user_id": user_id})
     
     if not user_doc:
-        # Create new user
+        # Create new anonymous user document
         from datetime import datetime, timezone
-        new_user = User(user_id=user_id)
-        result = await users_collection.insert_one(new_user.model_dump(by_alias=True, exclude={"id"}))
+        new_user_doc = {
+            "user_id": user_id,
+            "created_at": datetime.now(timezone.utc),
+            "last_active": datetime.now(timezone.utc),
+            "total_decks_studied": 0,
+            "total_quiz_attempts": 0
+        }
+        result = await users_collection.insert_one(new_user_doc)
         
         # Fetch the created user
         user_doc = await users_collection.find_one({"_id": result.inserted_id})
-        logger.info(f"Created new user: {user_id}")
+        logger.info(f"Created new anonymous user: {user_id}")
     else:
         # Update last_active
         from datetime import datetime, timezone
@@ -41,7 +46,7 @@ async def ensure_user_exists(user_id: str, db) -> User:
             {"$set": {"last_active": datetime.now(timezone.utc)}}
         )
     
-    return User(**user_doc)
+    return user_doc
 
 @router.post("", response_model=FeedbackResponse)
 async def submit_feedback(

@@ -1,0 +1,71 @@
+/* ScoreRing Component Styles */
+.score-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.score-ring-svg {
+  transform: rotate(0deg);
+}
+
+.score-ring-progress {
+  transition: stroke-dashoffset 0.6s ease, stroke 0.3s ease;
+}
+
+.score-ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-weight: 700;
+  color: #333333;
+  line-height: 1;
+}
+
+.score-ring-percentage {
+  display: block;
+  font-weight: 700;
+}
+
+/* Size variants */
+.score-ring-sm {
+  width: 60px;
+  height: 60px;
+}
+
+.score-ring-md {
+  width: 80px;
+  height: 80px;
+}
+
+.score-ring-lg {
+  width: 100px;
+  height: 100px;
+}
+
+/* Urgency color classes for text */
+.score-ring-ready .score-ring-percentage {
+  color: #10b981;
+}
+
+.score-ring-needs-work .score-ring-percentage {
+  color: #f59e0b;
+}
+
+.score-ring-critical .score-ring-percentage {
+  color: #ef4444;
+}
+
+/* Hover effect */
+.score-ring {
+  transition: transform 0.2s ease;
+}
+
+.score-ring:hover {
+  transform: scale(1.05);
+}
+

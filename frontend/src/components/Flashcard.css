@@ -1,273 +1,282 @@
-/* Quizlet-Inspired Flashcard Container */
+/* ========================================
+   $5M FLASHCARD - THE DIGITAL NOTECARD
+   Brand-aligned, premium, tactile design
+   ======================================== */
+
+:root {
+  --brand-green: #2d7a3e;
+  --brand-green-dark: #245c30;
+  --brand-green-light: #e8f5e9;
+  --page-bg: #f9f7f3;
+  --card-bg: #ffffff;
+  --text-charcoal: #1a1a1a;
+  --text-gray: #666666;
+  --text-lightgray: #999999;
+  --border-light: #e5e7eb;
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-notecard: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================
+   FLASHCARD CONTAINER & 3D FLIP
+   ======================================== */
+
 .flashcard-wrapper {
-  perspective: 1000px;
+  perspective: 1200px;
   width: 100%;
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
 .flashcard {
   width: 100%;
-  min-height: 400px;
+  min-height: 450px;
   display: grid;
   transform-style: preserve-3d;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
 }
 
 .flashcard.flipped {
   transform: rotateY(180deg);
 }
 
+/* ========================================
+   FLASHCARD FRONT & BACK (THE NOTECARD)
+   ======================================== */
+
 .flashcard-front,
 .flashcard-back {
   grid-row: 1;
   grid-column: 1;
   width: 100%;
-  min-height: 400px;
+  min-height: 450px;
   backface-visibility: hidden;
-  border-radius: 12px;
-  border: 2px solid var(--border);
-  box-shadow: var(--shadow-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-notecard);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px;
+  padding: 3rem;
   position: relative;
-  background-color: var(--bg-secondary);
-  transition: box-shadow 0.2s ease;
+  background: var(--card-bg);
+  transition: box-shadow 0.3s ease;
 }
 
 .flashcard-front:hover,
 .flashcard-back:hover {
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Front Card - Clean White with Question */
-.flashcard-front {
-  background-color: var(--bg-secondary);
-}
-
-/* Back Card - Answer Display */
 .flashcard-back {
-  background-color: var(--bg-secondary);
   transform: rotateY(180deg);
 }
 
-[data-theme="dark"] .flashcard-back {
-  background-color: #1a1d29;
+/* ========================================
+   BOOKMARK BUTTON
+   ======================================== */
+
+.bookmark-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-lightgray);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  z-index: 10;
 }
 
-/* Card Content Layout */
-.card-content {
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background: transparent !important;
+.bookmark-btn:hover {
+  color: var(--brand-green);
+  transform: scale(1.1);
 }
 
-/* Question Text - Clean & Bold like Quizlet */
-.question-text {
-  font-size: clamp(30px, 5vw, 44px);
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--text-question);
-  text-align: center;
-  max-width: 95%;
-  word-wrap: break-word;
-  letter-spacing: -0.02em;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.bookmark-btn.bookmarked {
+  color: var(--brand-green);
 }
 
-/* Ensure question text is always visible in dark mode */
-[data-theme="dark"] .question-text {
-  color: #FFFFFF;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border-light);
+  border-top-color: var(--brand-green);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
 }
 
-/* Answer Section Layout */
-.answer-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  background: transparent !important;
-}
-
-/* Simple spin animation for loaders */
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-/* Beautiful Color-Coded Tab System */
+/* ========================================
+   CARD CONTENT LAYOUT
+   ======================================== */
+
+.card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* ========================================
+   QUESTION TEXT (FRONT OF CARD)
+   ======================================== */
+
+.question-text {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-charcoal);
+  text-align: center;
+  max-width: 95%;
+  word-wrap: break-word;
+  letter-spacing: -0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* ========================================
+   ANSWER SECTION (BACK OF CARD)
+   ======================================== */
+
+.answer-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ========================================
+   ANSWER TYPE TABS (BRAND GREEN)
+   ======================================== */
+
 .answer-selector {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
   justify-content: center;
   width: 100%;
-  padding: 4px;
+  padding: 0.25rem;
 }
 
 .answer-type-btn {
-  background-color: var(--bg-tertiary);
-  border: 2px solid var(--border);
+  background: var(--page-bg);
+  border: 2px solid var(--border-light);
   border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 13px;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-gray);
   cursor: pointer;
   transition: all 0.2s ease;
   flex: 1;
-  min-width: 85px;
+  min-width: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 0.25rem;
 }
 
 .shortcut-key {
-  font-size: 9px;
-  font-weight: 600;
+  font-size: 0.625rem;
+  font-weight: 700;
   opacity: 0.6;
-  background: var(--bg-elevated);
-  padding: 2px 5px;
-  border-radius: 3px;
+  background: var(--card-bg);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
 }
 
 .tab-label {
-  font-size: 12px;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
 .answer-type-btn:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-subtle);
+  border-color: var(--brand-green);
 }
 
-/* Color-coded active states for each tab */
+/* Active Tab - Brand Green */
 .answer-type-btn.active {
+  background: var(--brand-green);
   color: white;
-  border-color: currentColor;
+  border-color: var(--brand-green);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.2);
 }
 
-.answer-type-btn:nth-child(1).active {
-  background-color: var(--tab-concise);
+.answer-type-btn.active .shortcut-key {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
 }
 
-.answer-type-btn:nth-child(2).active {
-  background-color: var(--tab-analogy);
-}
+/* ========================================
+   ANSWER TEXT DISPLAY
+   ======================================== */
 
-.answer-type-btn:nth-child(3).active {
-  background-color: var(--tab-eli5);
-}
-
-.answer-type-btn:nth-child(4).active {
-  background-color: var(--tab-usecase);
-}
-
-.answer-type-btn:nth-child(5).active {
-  background-color: var(--tab-mistakes);
-}
-
-.answer-type-btn:nth-child(6).active {
-  background-color: var(--tab-example);
-}
-
-/* Clean Answer Text Display - Minimalist & Elegant */
 .answer-text {
   width: 100%;
   text-align: left;
-  padding: 24px 0;
-  line-height: 1.9;
-  font-size: 17px;
-  color: #3B82F6;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
-  font-weight: 600;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.03em;
-  background: transparent !important;
-  border: none !important;
-}
-
-[data-theme="dark"] .answer-text {
-  color: #60A5FA !important;
-  text-shadow: none !important;
-}
-
-.answer-text p {
-  margin: 0 0 16px 0;
-  font-weight: 400;
-}
-
-.answer-text p:last-child {
-  margin-bottom: 0;
-}
-
-/* Mermaid Diagram Wrapper */
-.mermaid-diagram-wrapper {
-  position: relative;
-  margin-top: 20px;
-}
-
-/* Clean Mermaid Loading State */
-.mermaid-loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.mermaid-spinner {
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--border);
-  border-top-color: var(--accent-primary);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-.mermaid-loading p {
-  margin: 0;
-  font-size: 12px;
-  color: var(--text-secondary);
+  padding: 1.5rem 0;
+  line-height: 1.8;
+  font-size: 1.0625rem;
+  color: var(--text-charcoal);
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   font-weight: 500;
 }
 
-/* Clean Mermaid Diagram Container */
+/* ========================================
+   MERMAID DIAGRAMS
+   ======================================== */
+
+.mermaid-diagram-wrapper {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.mermaid-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--text-gray);
+  font-size: 0.875rem;
+}
+
+.mermaid-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--brand-green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 0.75rem;
+}
+
 .mermaid-diagram-container {
   width: 100%;
-  max-width: 100%;
-  background-color: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: var(--page-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-light);
   overflow-x: auto;
-  min-height: 100px;
 }
 
 .mermaid-diagram-container.loading {
@@ -279,786 +288,355 @@
   height: auto;
 }
 
-/* Mermaid Error State */
 .mermaid-error {
-  text-align: center;
-  color: var(--text-muted);
-  padding: 20px;
-}
-
-.mermaid-error p {
-  margin: 0 0 12px 0;
-  font-size: 14px;
-}
-
-.mermaid-error details {
-  margin-top: 8px;
-}
-
-.mermaid-error summary {
-  cursor: pointer;
-  font-size: 12px;
-  color: var(--accent-primary);
-}
-
-.mermaid-error pre {
-  background: var(--bg-tertiary);
-  padding: 12px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
   border-radius: 8px;
-  font-size: 11px;
-  overflow-x: auto;
-  margin-top: 8px;
-  border: 1px solid var(--border);
+  padding: 1rem;
+  color: #856404;
+  font-size: 0.875rem;
 }
 
-/* Override global code styling for diagram code blocks */
-.mermaid-error code,
-.math-code-details code {
-  background: transparent !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  color: var(--text-primary) !important;
-  font-size: inherit !important;
+.mermaid-error-inline {
+  color: #dc3545;
+  font-size: 0.8125rem;
+  margin-top: 0.5rem;
 }
 
-/* Dark Mode - Diagram Containers */
-[data-theme="dark"] .mermaid-diagram-container {
-  background-color: rgba(55, 65, 81, 0.3);
-  border-color: #4B5563;
-}
+/* ========================================
+   MATH VISUALIZATION BUTTON
+   ======================================== */
 
-[data-theme="dark"] .mermaid-diagram-container svg {
-  filter: brightness(1.1) contrast(0.95);
-}
-
-/* Clean Mobile Experience */
-@media (max-width: 768px) {
-  .flashcard-wrapper {
-    max-width: 100%;
-    margin: 0 12px;
-  }
-  
-  .flashcard-front,
-  .flashcard-back {
-    min-height: 350px;
-    padding: 32px 24px;
-  }
-  
-  .question-text {
-    font-size: clamp(22px, 6vw, 32px);
-  }
-  
-  .answer-selector {
-    gap: 6px;
-  }
-  
-  .answer-type-btn {
-    font-size: 11px;
-    padding: 8px 10px;
-    min-width: 70px;
-  }
-  
-  .answer-text {
-    font-size: 15px;
-    padding: 20px;
-  }
-  
-  .mermaid-diagram-container {
-    padding: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .flashcard-front,
-  .flashcard-back {
-    padding: 24px 20px;
-    min-height: 300px;
-  }
-  
-  .question-text {
-    font-size: clamp(20px, 7vw, 26px);
-  }
-  
-  .answer-selector {
-    gap: 4px;
-  }
-  
-  .answer-type-btn {
-    font-size: 10px;
-    padding: 7px 8px;
-    min-width: 60px;
-  }
-  
-  .shortcut-key {
-    font-size: 8px;
-    padding: 1px 4px;
-  }
-}
-
-/* Bookmark Button */
-.bookmark-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: var(--bg-tertiary);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow-subtle);
-  z-index: 10;
-}
-
-.bookmark-btn:hover {
-  background: var(--bg-secondary);
-  box-shadow: var(--shadow-card);
-  transform: translateY(-1px);
-}
-
-.bookmark-btn:active {
-  transform: translateY(0);
-}
-
-.bookmark-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.bookmark-btn svg {
-  width: 18px;
-  height: 18px;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-}
-
-.bookmark-btn.bookmarked svg {
-  color: #f59e0b;
-}
-
-.bookmark-btn:hover svg {
-  color: var(--accent-primary);
-}
-
-.bookmark-btn.bookmarked:hover svg {
-  color: #d97706;
-}
-
-/* Feedback Buttons */
-.feedback-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-
-.feedback-btn {
-  width: 44px;
-  height: 44px;
-  border: none;
-  background: var(--bg-tertiary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow-subtle);
-}
-
-.feedback-btn:hover {
-  background: var(--bg-secondary);
-  box-shadow: var(--shadow-card);
-  transform: translateY(-1px);
-}
-
-.feedback-btn:active {
-  transform: translateY(0);
-}
-
-.feedback-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.feedback-btn svg {
-  width: 18px;
-  height: 18px;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-}
-
-.feedback-btn.like-btn.active {
-  background: #dcfce7;
-  border: 1px solid #16a34a;
-}
-
-.feedback-btn.like-btn.active svg {
-  color: #16a34a;
-}
-
-.feedback-btn.like-btn:hover:not(.active) svg {
-  color: #16a34a;
-}
-
-.feedback-btn.dislike-btn.active {
-  background: #fef2f2;
-  border: 1px solid #dc2626;
-}
-
-.feedback-btn.dislike-btn.active svg {
-  color: #dc2626;
-}
-
-.feedback-btn.dislike-btn:hover:not(.active) svg {
-  color: #dc2626;
-}
-
-/* Button Spinner */
-.btn-spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid transparent;
-  border-top-color: currentColor;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-/* Mobile adjustments for new buttons */
-@media (max-width: 768px) {
-  .bookmark-btn {
-    width: 36px;
-    height: 36px;
-    top: 12px;
-    right: 12px;
-  }
-  
-  .bookmark-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .feedback-buttons {
-    gap: 16px;
-    margin-top: 20px;
-    padding-top: 16px;
-  }
-  
-  .feedback-btn {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .feedback-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .bookmark-btn {
-    width: 32px;
-    height: 32px;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .bookmark-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-  
-  .feedback-buttons {
-    gap: 20px;
-  }
-  
-  .feedback-btn {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .feedback-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-/* Math Visualization Styles */
 .math-viz-section {
-  margin-top: 16px;
-  width: 100%;
+  margin-top: 1rem;
 }
 
 .math-lookup-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white;
-  border: none;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--brand-green-light);
+  color: var(--brand-green);
+  border: 2px solid var(--brand-green);
   border-radius: 10px;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 0.9375rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
 }
 
 .math-lookup-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  background: var(--brand-green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.2);
 }
 
-.math-lookup-btn:active {
-  transform: translateY(-1px);
-}
-
-/* Compact Modal for Mathematical Diagrams */
-.math-modal-large {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  height: 90vh;
-  max-width: 1000px;
-  max-height: 750px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  overflow: hidden;
-  animation: modalScaleIn 0.3s ease;
-}
+/* ========================================
+   MATH MODAL (LARGE VIEW)
+   ======================================== */
 
 .math-modal-large-backdrop {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 999;
-  backdrop-filter: blur(4px);
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
 }
 
-.math-modal-large-content {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.math-modal-header {
-  width: 100%;
-  text-align: center;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e2e8f0;
-  margin-bottom: 16px;
-  flex-shrink: 0;
-}
-
-.math-modal-header h3 {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 20px;
-  color: #1e293b;
-}
-
-.math-modal-header p {
-  margin: 4px 0 0;
-  font-size: 14px;
-  color: #64748b;
-  text-transform: capitalize;
-}
-
-@keyframes modalScaleIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
+}
+
+.math-modal-large {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1100px;
+  max-height: 90vh;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.math-modal-large-content {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
 .math-close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: #f1f5f9;
+  top: 1rem;
+  right: 1rem;
+  background: var(--page-bg);
+  border: 2px solid var(--border-light);
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-charcoal);
+  cursor: pointer;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  line-height: 1;
-  color: #64748b;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  z-index: 10;
 }
 
 .math-close-btn:hover {
-  background-color: #e2e8f0;
-  color: #1e293b;
+  background: var(--brand-green);
+  color: white;
+  border-color: var(--brand-green);
   transform: rotate(90deg);
 }
 
+.math-modal-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.math-modal-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  margin: 0 0 0.5rem 0;
+}
+
+.math-modal-header p {
+  font-size: 0.9375rem;
+  color: var(--text-gray);
+  margin: 0;
+}
+
 .math-diagram-container-large {
-  flex: 1;
-  width: 100%;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: var(--page-bg);
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e2e8f0;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+  padding: 2rem;
+  border: 1px solid var(--border-light);
+  min-height: 400px;
   position: relative;
-  overflow: hidden;
 }
 
-.math-diagram-large {
-  width: 100%;
-  height: 100%;
-}
-
-.math-diagram-container-large svg {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  background: transparent;
-  box-shadow: none;
-}
-
-.math-modal-controls {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  display: flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 8px;
-  border-radius: 8px;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.math-zoom-btn {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 0;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #475569;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-.math-zoom-btn:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  color: #1e293b;
-  transform: translateY(-1px);
-}
-
-.math-zoom-btn:active {
-  transform: translateY(0);
-  background: #f1f5f9;
-}
-
-.math-diagram-container-large .node text {
-  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  font-weight: 600 !important;
-  fill: #1e293b !important;
-}
-
-.math-diagram-container-large .edge path {
-  stroke: #64748b !important;
-  stroke-width: 2px !important;
-  fill: none !important;
-}
-
-.math-diagram-container-large .edge text {
-  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  font-size: 11px !important;
-  fill: #64748b !important;
-}
-
-.math-diagram-container-large .cluster rect {
-  fill: rgba(59, 130, 246, 0.05) !important;
-  stroke: #3b82f6 !important;
-  stroke-width: 1.5px !important;
-  stroke-dasharray: 6,3 !important;
-}
-
-.math-diagram-container-large .cluster text {
-  font-weight: 600 !important;
-  fill: #3b82f6 !important;
-  font-size: 12px !important;
-}
-
-/* Dark Mode - Math Diagram Container */
-[data-theme="dark"] .math-diagram-container-large {
-  background: linear-gradient(135deg, #1e293b 0%, #1a202c 100%);
-  border-color: #4B5563;
-}
-
-[data-theme="dark"] .math-diagram-container-large .node text {
-  fill: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .math-diagram-container-large .edge path {
-  stroke: #94a3b8 !important;
-}
-
-[data-theme="dark"] .math-diagram-container-large .edge text {
-  fill: #94a3b8 !important;
-}
-
-[data-theme="dark"] .math-diagram-container-large .cluster rect {
-  fill: rgba(59, 130, 246, 0.15) !important;
-  stroke: #60a5fa !important;
-}
-
-[data-theme="dark"] .math-diagram-container-large .cluster text {
-  fill: #60a5fa !important;
-}
-
-/* Remove old modal styles */
-.math-modal {
-  display: none;
-}
-
-/* Responsive design for math modal */
-@media (max-width: 768px) {
-  .math-modal-large {
-    width: 95vw;
-    height: 90vh;
-    max-width: 95vw;
-    max-height: 90vh;
-  }
-
-  .math-modal-large-content {
-    padding: 16px;
-  }
-
-  .math-diagram-container-large {
-    padding: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .math-modal-large {
-    width: 98vw;
-    height: 95vh;
-    max-width: 98vw;
-    max-height: 95vh;
-  }
-
-  .math-modal-large-content {
-    padding: 12px;
-  }
-
-  .math-diagram-container-large {
-    padding: 12px;
-  }
-
-  .math-modal-large-content h3 {
-    font-size: 18px;
-  }
-}
-
-/* Graphviz Diagram Styles */
-.graphviz-container {
-  width: 100%;
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  position: relative;
-  min-height: 200px;
-}
-
-.graphviz-loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.graphviz-loading,
+.graphviz-error {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  z-index: 10;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--text-gray);
 }
 
 .graphviz-spinner {
-  width: 32px;
-  height: 32px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent-primary);
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--brand-green);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
 }
 
-.graphviz-loading p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.graphviz-error {
-  text-align: center;
-  padding: 20px;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  border-radius: 6px;
-  margin-bottom: 16px;
-}
-
-.graphviz-error p {
-  margin: 0;
-  color: #dc2626;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.graphviz-diagram {
+.graphviz-diagram-large {
   width: 100%;
+  min-height: 300px;
+}
+
+.math-modal-controls {
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.math-zoom-btn {
+  padding: 0.625rem 1rem;
+  background: var(--card-bg);
+  border: 2px solid var(--border-light);
   border-radius: 8px;
-  padding: 20px;
+  color: var(--text-charcoal);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.graphviz-diagram svg {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: white;
-  padding: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Enhanced Graphviz styling */
-.graphviz-diagram .node text {
-  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  font-weight: 600 !important;
-  fill: #1e293b !important;
-}
-
-.graphviz-diagram .edge path {
-  stroke: #475569 !important;
-  stroke-width: 2px !important;
-  fill: none !important;
-}
-
-.graphviz-diagram .edge text {
-  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  font-size: 11px !important;
-  fill: #64748b !important;
-}
-
-.graphviz-diagram .cluster rect {
-  fill: rgba(59, 130, 246, 0.05) !important;
-  stroke: #3b82f6 !important;
-  stroke-width: 1.5px !important;
-  stroke-dasharray: 8,4 !important;
-}
-
-.graphviz-diagram .cluster text {
-  font-weight: 600 !important;
-  fill: #3b82f6 !important;
-  font-size: 12px !important;
-}
-
-/* Dark Mode - Graphviz Diagrams */
-[data-theme="dark"] .graphviz-diagram .node text {
-  fill: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .graphviz-diagram .edge path {
-  stroke: #94a3b8 !important;
-}
-
-[data-theme="dark"] .graphviz-diagram .edge text {
-  fill: #94a3b8 !important;
-}
-
-[data-theme="dark"] .graphviz-diagram .cluster rect {
-  fill: rgba(59, 130, 246, 0.15) !important;
-  stroke: #60a5fa !important;
-}
-
-[data-theme="dark"] .graphviz-diagram .cluster text {
-  fill: #60a5fa !important;
+.math-zoom-btn:hover {
+  background: var(--brand-green);
+  color: white;
+  border-color: var(--brand-green);
+  transform: translateY(-2px);
 }
 
 .math-code-details {
-  margin-top: 12px;
+  margin-top: 1.5rem;
+  background: var(--page-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
 }
 
 .math-code-details summary {
   cursor: pointer;
-  padding: 8px 12px;
-  background: var(--bg-secondary);
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: background 0.2s ease;
-}
-
-.math-code-details summary:hover {
-  background: var(--border);
+  font-weight: 600;
+  color: var(--text-charcoal);
+  font-size: 0.875rem;
 }
 
 .math-code-details pre {
-  margin: 12px 0 0 0;
-  padding: 12px;
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
   border-radius: 6px;
   overflow-x: auto;
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.5;
 }
 
-.math-code-details code {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  color: var(--text-primary);
+/* ========================================
+   FEEDBACK BUTTONS
+   ======================================== */
+
+.feedback-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.feedback-btn {
+  padding: 0.625rem 1.25rem;
+  background: var(--page-bg);
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  color: var(--text-gray);
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+}
+
+.feedback-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-subtle);
+}
+
+.feedback-btn.like-btn.active {
+  background: var(--brand-green);
+  color: white;
+  border-color: var(--brand-green);
+}
+
+.feedback-btn.dislike-btn.active {
+  background: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+.feedback-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .flashcard-front,
+  .flashcard-back {
+    min-height: 400px;
+    padding: 2rem 1.5rem;
+  }
+
+  .question-text {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .answer-text {
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+
+  .answer-type-btn {
+    min-width: 75px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .bookmark-btn {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .math-modal-large {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .math-modal-large-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcard-front,
+  .flashcard-back {
+    min-height: 350px;
+    padding: 1.5rem 1rem;
+  }
+
+  .answer-selector {
+    gap: 0.375rem;
+  }
+
+  .answer-type-btn {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.625rem;
+    min-width: 70px;
+  }
+
+  .tab-label {
+    font-size: 0.75rem;
+  }
+
+  .feedback-buttons {
+    gap: 0.75rem;
+  }
+
+  .feedback-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    min-width: 50px;
+  }
 }

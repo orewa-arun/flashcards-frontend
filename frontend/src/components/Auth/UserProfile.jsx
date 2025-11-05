@@ -7,7 +7,6 @@ const UserProfile = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
-  const [imageError, setImageError] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -42,18 +41,9 @@ const UserProfile = () => {
         className="profile-trigger"
         onClick={() => setShowDropdown(!showDropdown)}
       >
-        {user.photoURL && !imageError ? (
-          <img 
-            src={user.photoURL} 
-            alt={displayName} 
-            className="profile-avatar"
-            onError={() => setImageError(true)}
-          />
-        ) : (
-          <div className="profile-avatar-fallback">
-            {initials}
-          </div>
-        )}
+        <div className="profile-avatar-fallback">
+          {initials}
+        </div>
         <span className="profile-name">{displayName}</span>
         <svg 
           className={`dropdown-arrow ${showDropdown ? 'open' : ''}`} 
@@ -68,18 +58,9 @@ const UserProfile = () => {
       {showDropdown && (
         <div className="profile-dropdown">
           <div className="dropdown-header">
-            {user.photoURL && !imageError ? (
-              <img 
-                src={user.photoURL} 
-                alt={displayName} 
-                className="dropdown-avatar"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              <div className="dropdown-avatar-fallback">
-                {initials}
-              </div>
-            )}
+            <div className="dropdown-avatar-fallback">
+              {initials}
+            </div>
             <div className="dropdown-info">
               <div className="dropdown-name">{displayName}</div>
               <div className="dropdown-email">{user.email}</div>

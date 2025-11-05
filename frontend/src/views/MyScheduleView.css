@@ -1,10 +1,37 @@
-/* My Schedule View */
+/* ========================================
+   $5M MY SCHEDULE VIEW - THE ACADEMIC PLANNER
+   Brand-aligned, intelligent, chronological design
+   ======================================== */
+
+:root {
+  --brand-green: #2d7a3e;
+  --brand-green-dark: #245c30;
+  --brand-green-light: #e8f5e9;
+  --page-bg: #f9f7f3;
+  --card-bg: #ffffff;
+  --text-charcoal: #1a1a1a;
+  --text-gray: #666666;
+  --text-lightgray: #999999;
+  --border-light: #e5e7eb;
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --amber-accent: #b45309;
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
 
 .my-schedule-view {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+  min-height: 100vh;
+  background: var(--page-bg);
+  padding: 100px 2rem 4rem;
 }
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
 
 .my-schedule-loading {
   display: flex;
@@ -12,511 +39,535 @@
   align-items: center;
   justify-content: center;
   min-height: 400px;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 4px solid #e5e7eb;
-  border-top-color: #3b82f6;
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--brand-green);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Header */
+/* ========================================
+   HEADER
+   ======================================== */
+
 .schedule-header {
-  margin-bottom: 32px;
-}
-
-.header-content {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
   text-align: center;
-}
-
-.force-normal,
-.force-normal * {
-  /* Hard stop for any inherited animations/rotations leaking from elsewhere */
-  animation: none !important;
-  transform: none !important;
-}
-
-.schedule-header,
-.header-content,
-.page-title,
-.page-title *,
-.page-subtitle {
-  /* Defensive override against any inherited spinners/rotations */
-  transform: none !important;
-  animation: none !important;
 }
 
 .page-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  font-size: 32px;
+  gap: 1rem;
+  font-size: 2.25rem;
   font-weight: 700;
-  color: #1f2937;
-  margin: 0 0 8px 0;
+  color: var(--text-charcoal);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
 }
 
 .title-icon {
-  color: #3b82f6;
-  font-size: 28px;
+  color: var(--brand-green);
+  font-size: 2rem;
 }
 
 .page-subtitle {
-  font-size: 16px;
-  color: #6b7280;
+  font-size: 1.125rem;
+  color: var(--text-gray);
   margin: 0;
+  font-weight: 500;
 }
 
-/* Error Banner */
+/* ========================================
+   ERROR BANNER
+   ======================================== */
+
 .error-banner {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
   background: #fef2f2;
-  border: 1px solid #fecaca;
+  border: 2px solid #fecaca;
   color: #991b1b;
-  padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 24px;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
   text-align: center;
+  font-weight: 600;
 }
 
-/* Empty State */
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+
 .empty-state {
+  max-width: 700px;
+  margin: 0 auto;
   text-align: center;
-  padding: 60px 20px;
-  background: white;
+  padding: 4rem 2rem;
+  background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Prevent any inherited rotations/animations inside the empty state */
-.empty-state,
-.empty-state * {
-  transform: none !important;
-  animation: none !important;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
 }
 
 .empty-icon {
-  font-size: 64px;
-  color: #d1d5db;
-  margin-bottom: 24px;
+  font-size: 4rem;
+  color: var(--text-lightgray);
+  margin-bottom: 1.5rem;
 }
 
 .empty-state h2 {
-  font-size: 24px;
-  color: #374151;
-  margin: 0 0 12px 0;
+  font-size: 1.75rem;
+  color: var(--text-charcoal);
+  margin: 0 0 0.75rem 0;
+  font-weight: 700;
 }
 
 .empty-state p {
-  font-size: 16px;
-  color: #6b7280;
-  margin: 0 0 24px 0;
+  font-size: 1.0625rem;
+  color: var(--text-gray);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
 }
 
 .browse-courses-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  gap: 0.625rem;
+  padding: 0.875rem 2rem;
+  background: var(--brand-green);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.2);
 }
 
 .browse-courses-btn:hover {
+  background: var(--brand-green-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 6px 16px rgba(45, 122, 62, 0.3);
 }
 
-.enrolled-courses-info {
-  margin-top: 20px;
-  padding: 16px;
-  background: #f3f4f6;
-  border-radius: 8px;
+.browse-courses-btn:active {
+  transform: translateY(0);
 }
 
-.enrolled-courses-info p {
-  margin: 0;
-  color: #4b5563;
-}
+/* ========================================
+   PLANNER TIMELINE (THE VERTICAL SPINE)
+   ======================================== */
 
-.enrolled-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.enrolled-course-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  background: #eef2ff;
-  border: 1px solid #c7d2fe;
-  color: #3730a3;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.enrollment-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 24px 0;
-  padding: 20px;
-  background: #f9fafb;
-  border-radius: 12px;
-  border: 2px dashed #d1d5db;
-}
-
-.step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  color: #374151;
-}
-
-.step-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  color: white;
-  border-radius: 50%;
-  font-weight: 700;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-/* Schedule Stats */
-.schedule-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.stat-card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.stat-label {
-  font-size: 14px;
-  color: #6b7280;
-  font-weight: 500;
-}
-
-.stat-value {
-  font-size: 32px;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-/* Exam Timeline */
-.exams-timeline {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.exam-timeline-card {
-  display: grid;
-  grid-template-columns: 40px 1fr auto;
-  gap: 20px;
+.planner-timeline {
+  max-width: 1100px;
+  margin: 0 auto;
   position: relative;
-  align-items: center;
+  padding-left: 60px;
 }
 
-.exam-timeline-card:not(:last-child) {
-  margin-bottom: 32px;
+/* The Vertical Spine */
+.planner-timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--border-light);
 }
 
-/* Timeline Indicator */
-.exam-timeline-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ========================================
+   PLANNER ENTRY
+   ======================================== */
+
+.planner-entry {
   position: relative;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.4s ease-out;
 }
 
-.indicator-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #d1d5db;
-  border: 3px solid white;
-  box-shadow: 0 0 0 2px #d1d5db;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.planner-entry.past {
+  opacity: 0.5;
+}
+
+/* ========================================
+   SPINE CONNECTION
+   ======================================== */
+
+.spine-connection {
+  position: absolute;
+  left: -60px;
+  top: 60px;
+  display: flex;
+  align-items: center;
   z-index: 2;
-  flex-shrink: 0;
 }
 
-.indicator-line {
-  width: 2px;
-  flex: 1;
-  background: #e5e7eb;
-  margin-top: 8px;
-  min-height: 40px;
+.connection-line {
+  width: 30px;
+  height: 3px;
+  background: var(--border-light);
 }
 
-/* Urgency States */
-.exam-timeline-card.today .indicator-dot {
-  background: #ef4444;
-  box-shadow: 0 0 0 2px #ef4444, 0 0 12px rgba(239, 68, 68, 0.5);
-  animation: pulse-red 2s ease-in-out infinite;
+.connection-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  border: 4px solid var(--page-bg);
+  box-shadow: 0 0 0 3px var(--brand-green);
 }
 
-.exam-timeline-card.urgent .indicator-dot {
-  background: #f59e0b;
-  box-shadow: 0 0 0 2px #f59e0b;
+.planner-entry.past .connection-dot {
+  background: var(--text-lightgray);
+  box-shadow: 0 0 0 3px var(--text-lightgray);
 }
 
-.exam-timeline-card.soon .indicator-dot {
-  background: #eab308;
-  box-shadow: 0 0 0 2px #eab308;
-}
+/* ========================================
+   READINESS RING (LEFT - THE INTELLIGENCE)
+   ======================================== */
 
-.exam-timeline-card.future .indicator-dot {
-  background: #3b82f6;
-  box-shadow: 0 0 0 2px #3b82f6;
-}
-
-.exam-timeline-card.past .indicator-dot {
-  background: #9ca3af;
-  box-shadow: 0 0 0 2px #9ca3af;
-}
-
-@keyframes pulse-red {
-  0%, 100% {
-    box-shadow: 0 0 0 2px #ef4444, 0 0 12px rgba(239, 68, 68, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 0 2px #ef4444, 0 0 20px rgba(239, 68, 68, 0.8);
-  }
-}
-
-/* Timeline Content */
-.exam-timeline-content {
-  background: #f9fafb;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-}
-
-.exam-readiness-section {
+.entry-readiness {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 0 16px;
+  padding-top: 1rem;
 }
 
-.exam-timeline-card.today .exam-timeline-content {
-  background: #fef2f2;
-  border-color: #fecaca;
+/* ========================================
+   ENTRY DETAILS (RIGHT)
+   ======================================== */
+
+.entry-details {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
 }
 
-.exam-timeline-card.urgent .exam-timeline-content {
-  background: #fffbeb;
-  border-color: #fde68a;
+.entry-details:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
 }
 
-.exam-timeline-card.soon .exam-timeline-content {
-  background: #fefce8;
-  border-color: #fef08a;
-}
+/* ========================================
+   ENTRY HEADER
+   ======================================== */
 
-.exam-timeline-card.past .exam-timeline-content {
-  background: #f3f4f6;
-  border-color: #e5e7eb;
-  opacity: 0.7;
-}
-
-.exam-header-row {
+.entry-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.course-badge {
+.course-tag {
   display: inline-block;
-  padding: 4px 12px;
-  background: #dbeafe;
-  color: #1e40af;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.days-until {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-}
-
-.exam-timeline-card.today .days-until {
-  background: #ef4444;
+  padding: 0.5rem 1rem;
+  background: var(--brand-green);
   color: white;
-}
-
-.exam-timeline-card.urgent .days-until {
-  background: #f59e0b;
-  color: white;
-}
-
-.exam-timeline-card.soon .days-until {
-  background: #eab308;
-  color: white;
-}
-
-.exam-timeline-card.future .days-until {
-  background: #3b82f6;
-  color: white;
-}
-
-.exam-timeline-card.past .days-until {
-  background: #6b7280;
-  color: white;
-}
-
-.exam-subject {
-  font-size: 20px;
+  border-radius: 8px;
+  font-size: 0.8125rem;
   font-weight: 700;
-  color: #1f2937;
-  margin: 0 0 12px 0;
+  box-shadow: 0 2px 6px rgba(45, 122, 62, 0.2);
 }
 
-.exam-meta {
+/* ========================================
+   LIVE COUNTDOWN
+   ======================================== */
+
+.live-countdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--page-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.countdown-icon {
+  color: var(--amber-accent);
+  font-size: 0.875rem;
+}
+
+.countdown-text {
+  font-size: 0.875rem;
+  color: var(--text-gray);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.countdown-text strong {
+  color: var(--amber-accent);
+  font-weight: 700;
+}
+
+.past-badge {
+  padding: 0.5rem 1rem;
+  background: var(--text-lightgray);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+/* ========================================
+   ENTRY TITLE & META
+   ======================================== */
+
+.entry-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.entry-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 12px;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: #6b7280;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-gray);
 }
 
-.meta-item svg {
-  color: #9ca3af;
+.meta-icon {
+  color: var(--brand-green);
+  font-size: 1rem;
 }
 
-/* Lectures */
-.exam-lectures {
-  margin: 12px 0;
+/* ========================================
+   COVERED LECTURES
+   ======================================== */
+
+.entry-lectures {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--page-bg);
+  border-radius: 10px;
 }
 
 .lectures-label {
-  font-size: 13px;
-  color: #6b7280;
+  font-size: 0.875rem;
+  color: var(--text-gray);
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 0.625rem;
   display: block;
 }
 
 .lectures-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 0.5rem;
 }
 
 .lecture-tag {
   display: inline-block;
-  padding: 4px 10px;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1e40af;
+  padding: 0.375rem 0.75rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  color: var(--text-charcoal);
   border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 0.8125rem;
+  font-weight: 600;
 }
 
-/* Notes */
-.exam-notes {
-  font-size: 14px;
-  color: #6b7280;
-  margin: 12px 0;
-  line-height: 1.5;
+/* ========================================
+   ENTRY NOTES
+   ======================================== */
+
+.entry-notes {
+  font-size: 0.9375rem;
+  color: var(--text-gray);
+  margin: 1rem 0;
+  line-height: 1.6;
+  font-style: italic;
 }
 
-/* View Course Timetable Button */
-.view-course-timetable-btn {
+/* ========================================
+   INTELLIGENT CTA BUTTONS
+   ======================================== */
+
+.entry-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: white;
-  border: 1px solid #d1d5db;
-  color: #4b5563;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 12px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
 }
 
-.view-course-timetable-btn:hover {
-  background: #f3f4f6;
-  border-color: #9ca3af;
-  color: #1f2937;
+.action-btn.primary {
+  background: var(--amber-accent);
+  color: white;
+  box-shadow: 0 4px 12px rgba(180, 83, 9, 0.2);
 }
 
-/* Responsive */
+.action-btn.primary:hover {
+  background: #a0450a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(180, 83, 9, 0.3);
+}
+
+.action-btn.secondary {
+  background: var(--card-bg);
+  color: var(--text-charcoal);
+  border: 2px solid var(--border-light);
+}
+
+.action-btn.secondary:hover {
+  background: var(--page-bg);
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+  transform: translateY(-2px);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
 @media (max-width: 768px) {
   .my-schedule-view {
-    padding: 16px;
+    padding: 80px 1rem 3rem;
   }
-  
+
   .page-title {
-    font-size: 24px;
+    font-size: 1.75rem;
+    gap: 0.75rem;
   }
-  
-  .schedule-stats {
+
+  .title-icon {
+    font-size: 1.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .planner-timeline {
+    padding-left: 40px;
+  }
+
+  .planner-timeline::before {
+    left: 20px;
+  }
+
+  .planner-entry {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  
-  .exams-timeline {
-    padding: 20px;
+
+  .spine-connection {
+    left: -40px;
+    top: 20px;
   }
-  
-  .exam-timeline-card {
-    grid-template-columns: 30px 1fr;
-    gap: 16px;
+
+  .connection-line {
+    width: 20px;
   }
-  
-  .exam-timeline-content {
-    padding: 16px;
+
+  .connection-dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .entry-readiness {
+    justify-content: flex-start;
+    padding-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .entry-details {
+    padding: 1.5rem;
+  }
+
+  .entry-title {
+    font-size: 1.25rem;
+  }
+
+  .entry-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
+@media (max-width: 480px) {
+  .my-schedule-view {
+    padding: 70px 0.75rem 2.5rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .entry-details {
+    padding: 1.25rem;
+  }
+
+  .entry-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .live-countdown {
+    width: 100%;
+  }
+}

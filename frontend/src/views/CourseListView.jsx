@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FaBook, FaChalkboardTeacher, FaCheckCircle } from 'react-icons/fa'
 import EnrollButton from '../components/EnrollButton'
 import CourseCountdownDock from '../components/CourseCountdownDock'
+import NextDeadline from '../components/NextDeadline'
 import CourseCardBadge from '../components/CourseCardBadge'
 import './CourseListView.css'
 
 function CourseListView() {
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(true)
+  const [hoveredCard, setHoveredCard] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -23,6 +26,12 @@ function CourseListView() {
       })
   }, [])
 
+  const truncateText = (text, maxLength = 150) => {
+    if (!text) return ''
+    if (text.length <= maxLength) return text
+    return text.substring(0, maxLength).trim() + '...'
+  }
+
   if (loading) {
     return (
       <div className="loading-container">
@@ -35,62 +44,93 @@ function CourseListView() {
   return (
     <div className="course-list-view">
       <CourseCountdownDock />
+      
+      {/* Refined Header */}
       <header className="page-header">
-        <img src="/logo.png" alt="exammate.ai logo" className="logo-icon" />
-        <h1>exammate.ai</h1>
-        <p className="subtitle">Study smart, when time is short</p>
+        <h1 className="page-title">Select a Course</h1>
       </header>
 
+      {/* Spiral Binding Divider */}
+      <div className="spiral-divider">
+        <div className="spiral-ring"></div>
+        <div className="spiral-ring"></div>
+        <div className="spiral-ring"></div>
+        <div className="spiral-ring"></div>
+        <div className="spiral-ring"></div>
+      </div>
+
       <div className="courses-container">
-        <h2>Select a Course</h2>
         <div className="courses-grid">
           {courses.map(course => (
             <div 
               key={course.course_id} 
               className="course-card"
               onClick={() => navigate(`/courses/${course.course_id}`)}
+              onMouseEnter={() => setHoveredCard(course.course_id)}
+              onMouseLeave={() => setHoveredCard(null)}
               data-course-id={course.course_id}
             >
-              <div className="course-header">
-                <h3>{course.course_name}</h3>
-                <span className="course-code">{course.course_code}</span>
+              {/* Course Code Tab */}
+              <div className="course-code-tab">
+                {course.course_code}
               </div>
-              
-              {course.course_description && (
-                <p className="course-description">{course.course_description}</p>
-              )}
-              
-              <div className="course-meta">
-                <div className="meta-item">
-                  <span className="icon">📖</span>
-                  <span>{course.lecture_slides?.length || 0} lecture{course.lecture_slides?.length !== 1 ? 's' : ''}</span>
-                </div>
-                {course.instructor && (
-                  <div className="meta-item">
-                    <span className="icon">👨‍🏫</span>
-                    <span>{course.instructor}</span>
+
+              {/* Course Content */}
+              <div className="course-content">
+                <h3 className="course-title">{course.course_name}</h3>
+                
+                {course.course_description && (
+                  <div className="course-description-wrapper">
+                    <p className="course-description">
+                      {truncateText(course.course_description, 120)}
+                    </p>
+                    {course.course_description.length > 120 && hoveredCard === course.course_id && (
+                      <div className="description-tooltip">
+                        {course.course_description}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
-              
-              {/* Badge with countdown anchored above footer */}
-              <CourseCardBadge courseId={course.course_id} />
 
-              <div className="card-footer">
-                <EnrollButton 
-                  courseId={course.course_id} 
-                  variant="compact"
-                  onEnrollmentChange={() => {}}
-                />
-                <button 
-                  className="btn-primary"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/courses/${course.course_id}`);
-                  }}
-                >
-                  View Course →
-                </button>
+              {/* Badge with countdown */}
+              {/* <CourseCardBadge courseId={course.course_id} /> */}
+
+              {/* Metadata Footer */}
+              <div className="course-footer">
+                <div className="course-meta">
+                  <div className="meta-item">
+                    <FaBook className="meta-icon" />
+                    <span className="meta-text">
+                      {course.lecture_slides?.length || 0} lecture{course.lecture_slides?.length !== 1 ? 's' : ''}
+                    </span>
+                  </div>
+                  {course.instructor && (
+                    <div className="meta-item">
+                      <FaChalkboardTeacher className="meta-icon" />
+                      <span className="meta-text">{course.instructor}</span>
+                    </div>
+                  )}
+                  <NextDeadline courseId={course.course_id} />
+                </div>
+
+                {/* Action Buttons */}
+                <div className="card-actions">
+                  <EnrollButton 
+                    courseId={course.course_id} 
+                    variant="compact"
+                    onEnrollmentChange={() => {}}
+                  />
+                  <button 
+                    className="btn-view-course"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/courses/${course.course_id}`);
+                    }}
+                  >
+                    View Course →
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -101,4 +141,3 @@ function CourseListView() {
 }
 
 export default CourseListView
-

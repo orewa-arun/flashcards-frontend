@@ -1,227 +1,313 @@
-/* Study Deck Container */
+/* ========================================
+   $5M STUDY DECK - THE DIGITAL NOTECARD
+   Brand-aligned, minimal, focused design
+   ======================================== */
+
+:root {
+  --brand-green: #2d7a3e;
+  --brand-green-dark: #245c30;
+  --brand-green-light: #e8f5e9;
+  --page-bg: #f9f7f3;
+  --card-bg: #ffffff;
+  --text-charcoal: #1a1a1a;
+  --text-gray: #666666;
+  --text-lightgray: #999999;
+  --border-light: #e5e7eb;
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+
 .study-deck {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
 }
 
-/* Clean Quizlet-Style Top Navigation */
+/* ========================================
+   TOP NAVIGATION & PROGRESS
+   ======================================== */
+
 .top-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  box-shadow: var(--shadow-card);
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-light);
 }
 
 .deck-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  flex-shrink: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  letter-spacing: -0.01em;
 }
 
 .progress-section {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1rem;
   flex: 1;
-  max-width: 350px;
+  max-width: 400px;
 }
 
 .progress-counter {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  min-width: 50px;
-  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--brand-green);
+  min-width: 60px;
+  text-align: right;
+  font-family: 'Courier New', Courier, monospace;
 }
 
+/* Brand Green Progress Bar */
 .progress-bar {
   flex: 1;
-  height: 8px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  height: 10px;
+  background-color: var(--border-light);
+  border-radius: 6px;
   overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-[data-theme="dark"] .progress-bar {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
   height: 100%;
-  background-color: var(--accent-primary);
-  transition: width 0.3s ease;
-  border-radius: 4px;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  background: var(--brand-green);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(45, 122, 62, 0.3);
 }
 
-/* Main Study Area */
+/* ========================================
+   MAIN STUDY AREA
+   ======================================== */
+
 .study-main {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
-  gap: 20px;
+  padding: 2rem 1rem;
+  gap: 2rem;
 }
 
-/* Card Navigation Below Flashcard */
+/* ========================================
+   CARD NAVIGATION
+   ======================================== */
+
 .card-navigation {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
 }
 
-.card-navigation .nav-arrow {
-  flex: 0 0 auto;
-  min-width: 120px;
-  padding: 12px 24px;
-  background-color: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text-primary);
-  font-size: 14px;
+.nav-arrow {
+  min-width: 140px;
+  padding: 0.875rem 1.75rem;
+  background: var(--card-bg);
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  color: var(--text-charcoal);
+  font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: var(--shadow-subtle);
 }
 
-.card-navigation .nav-arrow:hover:not(:disabled) {
-  background-color: var(--accent-primary);
+.nav-arrow:hover:not(:disabled) {
+  background: var(--brand-green);
   color: white;
-  border-color: var(--accent-primary);
-  transform: translateY(-1px);
+  border-color: var(--brand-green);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-card);
 }
 
-.card-navigation .nav-arrow:active:not(:disabled) {
+.nav-arrow:active:not(:disabled) {
   transform: translateY(0);
 }
 
-.card-navigation .nav-arrow:disabled {
+.nav-arrow:disabled {
   opacity: 0.3;
   cursor: not-allowed;
-  background-color: var(--bg-elevated);
+  background: var(--page-bg);
 }
 
-.card-navigation .nav-hint {
+.nav-hint {
   flex: 1;
   text-align: center;
-  color: var(--text-muted);
-  font-size: 13px;
+  color: var(--text-lightgray);
+  font-size: 0.875rem;
   font-style: italic;
   font-weight: 500;
 }
 
-/* Clean Keyboard Hints */
+/* ========================================
+   KEYBOARD HINTS
+   ======================================== */
+
 .keyboard-hints {
   display: flex;
-  gap: 16px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  background-color: var(--bg-tertiary);
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-gray);
+  background: var(--card-bg);
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-subtle);
 }
 
 .keyboard-hints span {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.375rem;
 }
 
-/* Clean Quiz Section */
+/* ========================================
+   QUIZ SECTION (END OF DECK)
+   ======================================== */
+
 .quiz-section {
   position: fixed;
-  bottom: 20px;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 28px;
+  background: var(--card-bg);
+  border: 2px solid var(--brand-green);
+  border-radius: 16px;
+  padding: 1.75rem 2.5rem;
   text-align: center;
-  box-shadow: var(--shadow-elevated);
-  z-index: 50;
+  box-shadow: 0 8px 32px rgba(45, 122, 62, 0.15);
+  z-index: 100;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .quiz-prompt h3 {
-  margin: 0 0 6px 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  letter-spacing: -0.01em;
 }
 
 .quiz-prompt p {
-  margin: 0 0 16px 0;
-  font-size: 14px;
-  color: var(--text-secondary);
+  margin: 0 0 1.25rem 0;
+  font-size: 0.9375rem;
+  color: var(--text-gray);
 }
 
-/* Mobile Responsiveness */
+.btn-primary {
+  width: 100%;
+  padding: 0.875rem 2rem;
+  background: var(--brand-green);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--brand-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(45, 122, 62, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
 @media (max-width: 768px) {
   .top-nav {
-    padding: 12px 16px;
-    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
-  
+
   .deck-title {
-    font-size: 16px;
+    font-size: 1rem;
   }
-  
+
   .progress-section {
-    max-width: 200px;
+    width: 100%;
+    max-width: none;
   }
-  
+
   .study-main {
-    padding: 20px 16px;
+    padding: 1.5rem 0.75rem;
+    gap: 1.5rem;
   }
-  
+
   .card-navigation {
     flex-direction: column;
-    gap: 12px;
-    margin-top: 1.5rem;
+    gap: 1rem;
+    margin-top: 2rem;
   }
-  
-  .card-navigation .nav-arrow {
+
+  .nav-arrow {
     width: 100%;
     min-width: unset;
   }
-  
-  .card-navigation .nav-hint {
+
+  .nav-hint {
     order: -1;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
   }
-  
+
   .keyboard-hints {
-    font-size: 11px;
-    gap: 16px;
+    font-size: 0.75rem;
+    gap: 1rem;
+    padding: 0.625rem 1rem;
   }
-  
+
   .quiz-section {
-    left: 16px;
-    right: 16px;
+    left: 1rem;
+    right: 1rem;
     transform: none;
-    bottom: 16px;
+    bottom: 1rem;
+    padding: 1.5rem 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .keyboard-hints {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

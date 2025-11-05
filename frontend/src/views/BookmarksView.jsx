@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { FaStar, FaArrowLeft, FaBook, FaFolder } from 'react-icons/fa'
+import { FaStar, FaArrowLeft, FaBook, FaChevronDown, FaChevronUp, FaExternalLinkAlt } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 import { getUserBookmarks, removeBookmark } from '../api/bookmarks'
 import Flashcard from '../components/Flashcard'
 import './BookmarksView.css'
@@ -10,6 +11,8 @@ function BookmarksView() {
   const [error, setError] = useState(null)
   const [selectedBookmark, setSelectedBookmark] = useState(null)
   const [removeLoading, setRemoveLoading] = useState({})
+  const [expandedCards, setExpandedCards] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
     loadBookmarks()
@@ -29,7 +32,8 @@ function BookmarksView() {
     }
   }
 
-  const handleRemoveBookmark = async (courseId, deckId, index) => {
+  const handleRemoveBookmark = async (courseId, deckId, index, e) => {
+    e.stopPropagation()
     const bookmarkKey = `${courseId}:${deckId}:${index}`
     
     try {
@@ -54,36 +58,44 @@ function BookmarksView() {
       
     } catch (err) {
       console.error('Error removing bookmark:', err)
-      // Optionally show error toast
     } finally {
       setRemoveLoading(prev => ({ ...prev, [bookmarkKey]: false }))
     }
   }
 
-  const groupBookmarksByDeck = () => {
+  const groupBookmarksByCourse = () => {
     const grouped = {}
     
     bookmarks.forEach(bookmark => {
-      const deckKey = `${bookmark.course_id}:${bookmark.deck_id}`
-      if (!grouped[deckKey]) {
-        grouped[deckKey] = {
-          course_id: bookmark.course_id,
-          deck_id: bookmark.deck_id,
-          bookmarks: []
-        }
+      const courseKey = bookmark.course_id
+      if (!grouped[courseKey]) {
+        grouped[courseKey] = []
       }
-      grouped[deckKey].bookmarks.push(bookmark)
+      grouped[courseKey].push(bookmark)
     })
     
     return grouped
   }
 
-  const handleViewFlashcard = (bookmark) => {
-    setSelectedBookmark(bookmark)
+  const toggleCardExpanded = (bookmarkKey, e) => {
+    e.stopPropagation()
+    setExpandedCards(prev => ({
+      ...prev,
+      [bookmarkKey]: !prev[bookmarkKey]
+    }))
   }
 
-  const handleBackToList = () => {
-    setSelectedBookmark(null)
+  const handleGoToDeck = (courseId, deckId, index, e) => {
+    e.stopPropagation()
+    navigate(`/courses/${courseId}/${deckId}/flashcards?card=${index}`)
+  }
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    })
   }
 
   if (loading) {
@@ -115,7 +127,7 @@ function BookmarksView() {
     return (
       <div className="bookmarks-view">
         <div className="bookmark-detail-header">
-          <button onClick={handleBackToList} className="back-btn">
+          <button onClick={() => setSelectedBookmark(null)} className="back-btn">
             <FaArrowLeft />
             Back to Bookmarks
           </button>
@@ -132,7 +144,7 @@ function BookmarksView() {
               courseId={selectedBookmark.course_id}
               deckId={selectedBookmark.deck_id}
               index={selectedBookmark.flashcard_index}
-              sessionId="bookmark-view" // Special session ID for bookmark viewing
+              sessionId="bookmark-view"
             />
           ) : (
             <div className="flashcard-unavailable">
@@ -145,9 +157,9 @@ function BookmarksView() {
     )
   }
 
-  // Main bookmarks list view
-  const groupedBookmarks = groupBookmarksByDeck()
-  const deckKeys = Object.keys(groupedBookmarks)
+  // Main bookmarks list view - The Study Sheet
+  const groupedBookmarks = groupBookmarksByCourse()
+  const courseKeys = Object.keys(groupedBookmarks)
 
   return (
     <div className="bookmarks-view">
@@ -155,7 +167,7 @@ function BookmarksView() {
         <div className="header-content">
           <h1 className="page-title">
             <FaStar className="title-icon" />
-            My Bookmarks
+            The Study Sheet
           </h1>
           <p className="page-subtitle">
             {bookmarks.length} flashcard{bookmarks.length !== 1 ? 's' : ''} bookmarked
@@ -171,61 +183,93 @@ function BookmarksView() {
         </div>
       ) : (
         <div className="bookmarks-content">
-          {deckKeys.map(deckKey => {
-            const deckData = groupedBookmarks[deckKey]
+          {courseKeys.map(courseKey => {
+            const courseBookmarks = groupedBookmarks[courseKey]
             return (
-              <div key={deckKey} className="deck-group">
-                <div className="deck-header">
-                  <div className="deck-info">
-                    <FaBook className="deck-icon" />
-                    <div className="deck-details">
-                      <h3 className="deck-title">{deckData.deck_id}</h3>
-                      <span className="course-badge">{deckData.course_id}</span>
-                    </div>
-                  </div>
+              <div key={courseKey} className="course-section">
+                <div className="course-section-header">
+                  <span className="course-badge-large">{courseKey}</span>
                   <span className="bookmark-count">
-                    {deckData.bookmarks.length} bookmark{deckData.bookmarks.length !== 1 ? 's' : ''}
+                    {courseBookmarks.length} bookmark{courseBookmarks.length !== 1 ? 's' : ''}
                   </span>
                 </div>
                 
-                <div className="bookmarks-grid">
-                  {deckData.bookmarks.map(bookmark => {
+                <div className="bookmarks-masonry">
+                  {courseBookmarks.map(bookmark => {
                     const bookmarkKey = `${bookmark.course_id}:${bookmark.deck_id}:${bookmark.flashcard_index}`
+                    const isExpanded = expandedCards[bookmarkKey]
                     const isRemoving = removeLoading[bookmarkKey]
                     
                     return (
-                      <div key={bookmarkKey} className="bookmark-card">
-                        <div className="bookmark-content" onClick={() => handleViewFlashcard(bookmark)}>
+                      <div key={bookmarkKey} className="bookmark-mini-card">
+                        <div className="bookmark-card-header">
+                          <div className="bookmark-source">
+                            {bookmark.course_id} / {bookmark.deck_id}
+                          </div>
+                          <button
+                            className="remove-bookmark-btn"
+                            onClick={(e) => handleRemoveBookmark(
+                              bookmark.course_id, 
+                              bookmark.deck_id, 
+                              bookmark.flashcard_index,
+                              e
+                            )}
+                            disabled={isRemoving}
+                            title="Remove bookmark"
+                          >
+                            {isRemoving ? (
+                              <div className="btn-spinner"></div>
+                            ) : (
+                              <FaStar />
+                            )}
+                          </button>
+                        </div>
+                        
+                        <div className="bookmark-card-body">
                           <div className="bookmark-question">
                             {bookmark.flashcard_data?.question || 'Question not available'}
                           </div>
-                          <div className="bookmark-meta">
-                            <span className="flashcard-index">Card #{bookmark.flashcard_index + 1}</span>
-                            <span className="bookmark-date">
-                              Saved {new Date(bookmark.created_at).toLocaleDateString()}
-                            </span>
-                          </div>
+                          
+                          {isExpanded && bookmark.flashcard_data?.answers && (
+                            <div className="bookmark-answer">
+                              <div className="answer-label">Answer:</div>
+                              <div className="answer-text">
+                                {bookmark.flashcard_data.answers.concise || 
+                                 bookmark.flashcard_data.answers.detailed || 
+                                 'Answer not available'}
+                              </div>
+                            </div>
+                          )}
                         </div>
                         
-                        <button
-                          className="remove-bookmark-btn"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            handleRemoveBookmark(
-                              bookmark.course_id, 
-                              bookmark.deck_id, 
-                              bookmark.flashcard_index
-                            )
-                          }}
-                          disabled={isRemoving}
-                          title="Remove bookmark"
-                        >
-                          {isRemoving ? (
-                            <div className="btn-spinner"></div>
-                          ) : (
-                            <FaStar />
-                          )}
-                        </button>
+                        <div className="bookmark-card-footer">
+                          <div className="bookmark-meta">
+                            <span className="bookmark-date">
+                              Saved {formatDate(bookmark.created_at)}
+                            </span>
+                          </div>
+                          <div className="bookmark-actions">
+                            <button
+                              className="expand-btn"
+                              onClick={(e) => toggleCardExpanded(bookmarkKey, e)}
+                              title={isExpanded ? "Hide answer" : "Show answer"}
+                            >
+                              {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                            </button>
+                            <button
+                              className="goto-deck-btn"
+                              onClick={(e) => handleGoToDeck(
+                                bookmark.course_id,
+                                bookmark.deck_id,
+                                bookmark.flashcard_index,
+                                e
+                              )}
+                              title="Go to deck"
+                            >
+                              <FaExternalLinkAlt />
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     )
                   })}

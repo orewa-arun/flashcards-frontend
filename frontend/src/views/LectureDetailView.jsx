@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FaChevronRight, FaLayerGroup, FaClipboardCheck } from 'react-icons/fa';
 import { trackEvent } from '../utils/amplitude';
 import './LectureDetailView.css';
 
 function LectureDetailView() {
   const { courseId, lectureId } = useParams();
   const navigate = useNavigate();
+  const [courseData, setCourseData] = useState(null);
+  const [lectureData, setLectureData] = useState(null);
+
+  useEffect(() => {
+    // Load course and lecture data
+    fetch('/courses.json')
+      .then(response => response.json())
+      .then(data => {
+        const course = data.find(c => c.course_id === courseId);
+        if (course) {
+          setCourseData(course);
+          // Find the lecture by matching the lectureId with the pdf_path
+          const lecture = course.lecture_slides?.find(slide => {
+            const pdfFilename = slide.pdf_path.split('/').pop().replace('.pdf', '');
+            return pdfFilename === lectureId;
+          });
+          setLectureData(lecture);
+        }
+      })
+      .catch(error => console.error('Error loading course data:', error));
+  }, [courseId, lectureId]);
 
   const handleStudyClick = () => {
     trackEvent('Selected Study Mode', { courseId, lectureId });
@@ -30,57 +52,65 @@ function LectureDetailView() {
   return (
     <div className="lecture-detail-view">
       <div className="lecture-detail-container">
-        <div className="lecture-header">
-          <button 
-            className="back-button"
-            onClick={() => navigate(`/courses/${courseId}`)}
-          >
-            ← Back to Course
+        {/* Breadcrumb Navigation */}
+        <nav className="breadcrumb-nav">
+          <button onClick={() => navigate('/courses')} className="breadcrumb-link">
+            Courses
           </button>
-          <h1 className="lecture-title">{formatLectureTitle(lectureId)}</h1>
-          <p className="lecture-subtitle">Choose how you want to learn</p>
-        </div>
+          <FaChevronRight className="breadcrumb-separator" />
+          <button onClick={() => navigate(`/courses/${courseId}`)} className="breadcrumb-link">
+            {courseData?.course_name || courseId}
+          </button>
+          <FaChevronRight className="breadcrumb-separator" />
+          <span className="breadcrumb-current">
+            {lectureData?.lecture_name || formatLectureTitle(lectureId)}
+          </span>
+        </nav>
 
-        <div className="learning-modes">
-          <div className="mode-card study-card" onClick={handleStudyClick}>
-            <div className="mode-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+        {/* Page Header */}
+        <header className="page-header">
+          <h1 className="page-title">
+            {lectureData?.lecture_name || formatLectureTitle(lectureId)}
+          </h1>
+          <p className="page-subtitle">Choose how you want to learn</p>
+        </header>
+
+        {/* Action Panels */}
+        <div className="action-panels">
+          {/* Primary Panel: Study Flashcards */}
+          <div className="action-panel primary-panel" onClick={handleStudyClick}>
+            <div className="panel-icon primary-icon">
+              <FaLayerGroup />
             </div>
-            <h2 className="mode-title">Study Flashcards</h2>
-            <p className="mode-description">
+            <h2 className="panel-title">Study Flashcards</h2>
+            <p className="panel-description">
               Review concepts with interactive flashcards. Perfect for learning and memorization.
             </p>
-            <div className="mode-features">
-              <span className="feature-tag">📚 Interactive</span>
-              <span className="feature-tag">🔖 Bookmarkable</span>
-              <span className="feature-tag">⏱️ Self-paced</span>
+            <div className="panel-features">
+              <span className="feature-badge">Interactive</span>
+              <span className="feature-badge">Bookmarkable</span>
+              <span className="feature-badge">Self-paced</span>
             </div>
-            <button className="mode-button study-button">
+            <button className="panel-button primary-button">
               Start Studying →
             </button>
           </div>
 
-          <div className="mode-card quiz-card" onClick={handleQuizClick}>
-            <div className="mode-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                <path d="M9 11L12 14L22 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+          {/* Secondary Panel: Take Quiz */}
+          <div className="action-panel secondary-panel" onClick={handleQuizClick}>
+            <div className="panel-icon secondary-icon">
+              <FaClipboardCheck />
             </div>
-            <h2 className="mode-title">Take Quiz</h2>
-            <p className="mode-description">
+            <h2 className="panel-title">Take Quiz</h2>
+            <p className="panel-description">
               Test your knowledge with adaptive quizzes. Get instant feedback and track your progress.
             </p>
-            <div className="mode-features">
-              <span className="feature-tag">🎯 Adaptive</span>
-              <span className="feature-tag">📊 Scored</span>
-              <span className="feature-tag">📈 Tracked</span>
+            <div className="panel-features">
+              <span className="feature-badge">Adaptive</span>
+              <span className="feature-badge">Scored</span>
+              <span className="feature-badge">Tracked</span>
             </div>
-            <button className="mode-button quiz-button">
+            <button className="panel-button secondary-button">
               Start Quiz →
             </button>
           </div>
@@ -91,4 +121,3 @@ function LectureDetailView() {
 }
 
 export default LectureDetailView;
-

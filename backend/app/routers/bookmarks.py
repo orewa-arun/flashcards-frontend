@@ -7,7 +7,7 @@ from app.database import get_database
 from app.models.bookmark import Bookmark, BookmarkRequest, BookmarkResponse
 from app.config import settings
 from app.firebase_auth import get_current_user
-from app.services import user_service
+from app.services.user_service import UserService, get_user_service
 import logging
 
 logger = logging.getLogger(__name__)
@@ -17,9 +17,13 @@ async def load_flashcard_data(course_id: str, deck_id: str, flashcard_index: int
     """Load flashcard data from JSON file."""
     try:
         import os
-        # Construct path to flashcard JSON file
-        json_path = f"courses/{course_id}/cognitive_flashcards/{deck_id}/{deck_id}_cognitive_flashcards.json"
-        # json_path = "../"
+        # Construct path to flashcard JSON file - try _only variant first
+        json_path = f"courses/{course_id}/cognitive_flashcards/{deck_id}/{deck_id}_cognitive_flashcards_only.json"
+        
+        # Fallback to full file if _only doesn't exist
+        if not os.path.exists(json_path):
+            json_path = f"courses/{course_id}/cognitive_flashcards/{deck_id}/{deck_id}_cognitive_flashcards.json"
+        
         if not os.path.exists(json_path):
             logger.warning(f"Flashcard JSON file not found: {json_path}")
             return None
@@ -42,6 +46,7 @@ async def load_flashcard_data(course_id: str, deck_id: str, flashcard_index: int
 async def add_bookmark(
     bookmark_data: BookmarkRequest,
     current_user: Dict[str, Any] = Depends(get_current_user),
+    user_service: UserService = Depends(get_user_service),
     db = Depends(get_database)
 ):
     """Add a flashcard to user's bookmarks."""
@@ -49,7 +54,13 @@ async def add_bookmark(
     logger.info(f"Attempting to add bookmark for firebase_uid: {firebase_uid}")
     try:
         # Ensure user exists in database
-        await user_service.get_or_create_user(current_user, db)
+        await user_service.get_or_create_user(
+            firebase_uid=firebase_uid,
+            email=current_user.get("email"),
+            name=current_user.get("name"),
+            picture=current_user.get("picture"),
+            email_verified=current_user.get("email_verified", False)
+        )
         
         # Check if bookmark already exists
         bookmarks_collection = db[settings.BOOKMARKS_COLLECTION]

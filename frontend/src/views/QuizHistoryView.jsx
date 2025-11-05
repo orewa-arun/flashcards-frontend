@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
-import { FaHistory, FaArrowLeft, FaTrophy, FaClock, FaCheck, FaTimes, FaBook } from 'react-icons/fa'
+import { FaHistory, FaArrowLeft, FaTrophy, FaClock, FaCheck, FaTimes, FaBook, FaFire, FaExclamationTriangle } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 import { getQuizHistory, getQuizHistoryByDeck, getQuizAttemptDetails } from '../api/quizHistory'
+import ScoreRing from '../components/ScoreRing'
 import './QuizHistoryView.css'
 
 function QuizHistoryView() {
@@ -12,6 +14,7 @@ function QuizHistoryView() {
   const [attemptDetails, setAttemptDetails] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const navigate = useNavigate()
 
   // Helper function to format difficulty level for display
   const formatDifficulty = (difficulty) => {
@@ -70,7 +73,6 @@ function QuizHistoryView() {
       setSelectedAttempt(attempt)
       const details = await getQuizAttemptDetails(attempt.result_id)
       setAttemptDetails(details)
-      // console.log("attempt details", details);
       setView('attempt')
       setError(null)
     } catch (err) {
@@ -93,17 +95,21 @@ function QuizHistoryView() {
     setAttemptDetails(null)
   }
 
+  const handleTackleWeakConcepts = (courseId, deckId) => {
+    navigate(`/weak-concepts?course=${courseId}&deck=${deckId}`)
+  }
+
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
     return `${mins}:${secs.toString().padStart(2, '0')}`
   }
 
-  const formatDate = (dateString) => {
+  const formatDateTime = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
       month: 'short',
       day: 'numeric',
+      year: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
     })
@@ -114,6 +120,38 @@ function QuizHistoryView() {
     if (percentage >= 80) return 'good'
     if (percentage >= 70) return 'fair'
     return 'poor'
+  }
+
+  // Calculate study streak and stats
+  const calculateStats = () => {
+    if (quizHistory.length === 0) return { totalQuizzes: 0, averageScore: 0, studyStreak: 0 }
+    
+    const totalQuizzes = quizHistory.reduce((sum, deck) => sum + deck.attempt_count, 0)
+    const averageScore = quizHistory.reduce((sum, deck) => sum + deck.highest_percentage, 0) / quizHistory.length
+    
+    // Simple streak calculation (consecutive days with quiz attempts)
+    const dates = quizHistory.map(deck => new Date(deck.latest_attempt_date).toDateString())
+    const uniqueDates = [...new Set(dates)].sort((a, b) => new Date(b) - new Date(a))
+    
+    let streak = 0
+    const today = new Date().toDateString()
+    
+    if (uniqueDates.length > 0 && (uniqueDates[0] === today || uniqueDates[0] === new Date(Date.now() - 86400000).toDateString())) {
+      streak = 1
+      for (let i = 1; i < uniqueDates.length; i++) {
+        const prevDate = new Date(uniqueDates[i - 1])
+        const currDate = new Date(uniqueDates[i])
+        const diffDays = Math.floor((prevDate - currDate) / 86400000)
+        
+        if (diffDays === 1) {
+          streak++
+        } else {
+          break
+        }
+      }
+    }
+    
+    return { totalQuizzes, averageScore, studyStreak: streak }
   }
 
   if (loading) {
@@ -161,7 +199,7 @@ function QuizHistoryView() {
             </div>
             <div className="attempt-meta">
               <span><FaClock /> {formatTime(attemptDetails.time_taken)}</span>
-              <span>{formatDate(attemptDetails.completed_at)}</span>
+              <span>{formatDateTime(attemptDetails.completed_at)}</span>
             </div>
           </div>
         </div>
@@ -264,7 +302,7 @@ function QuizHistoryView() {
                   </div>
                   <div className="attempt-details-summary">
                     <span><FaClock /> {formatTime(attempt.time_taken)}</span>
-                    <span className="attempt-date">{formatDate(attempt.completed_at)}</span>
+                    <span className="attempt-date">{formatDateTime(attempt.completed_at)}</span>
                   </div>
                 </div>
               ))}
@@ -275,18 +313,41 @@ function QuizHistoryView() {
     )
   }
 
-  // Main Summary View
+  // Main Timeline View - The Living Academic Journal
+  const stats = calculateStats()
+  const sortedHistory = [...quizHistory].sort((a, b) => new Date(b.latest_attempt_date) - new Date(a.latest_attempt_date))
+
   return (
     <div className="quiz-history-view">
       <div className="history-header">
         <div className="header-content">
           <h1 className="page-title">
             <FaHistory className="title-icon" />
-            Quiz History
+            Performance Timeline
           </h1>
-          <p className="page-subtitle">
-            {quizHistory.length} deck{quizHistory.length !== 1 ? 's' : ''} attempted
-          </p>
+          <div className="stats-dashboard">
+            {stats.studyStreak > 0 && (
+              <div className="stat-card streak-card">
+                <FaFire className="stat-icon fire-icon" />
+                <div className="stat-content">
+                  <div className="stat-value">{stats.studyStreak}-Day</div>
+                  <div className="stat-label">Study Streak</div>
+                </div>
+              </div>
+            )}
+            <div className="stat-card">
+              <div className="stat-content">
+                <div className="stat-value">{stats.totalQuizzes}</div>
+                <div className="stat-label">Total Quizzes</div>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-content">
+                <div className="stat-value">{Math.round(stats.averageScore)}%</div>
+                <div className="stat-label">Average Score</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -294,42 +355,47 @@ function QuizHistoryView() {
         <div className="empty-state">
           <FaHistory className="empty-icon" />
           <h2>No quiz history yet</h2>
-          <p>Complete some quizzes to see your performance history here.</p>
+          <p>Complete some quizzes to see your performance timeline here.</p>
         </div>
       ) : (
         <div className="history-content">
-          <div className="decks-grid">
-            {quizHistory.map(deck => (
+          <div className="timeline">
+            <div className="timeline-spine"></div>
+            {sortedHistory.map((deck, index) => (
               <div
                 key={`${deck.course_id}:${deck.deck_id}`}
-                className="deck-card"
+                className={`timeline-entry ${index % 2 === 0 ? 'timeline-entry-left' : 'timeline-entry-right'}`}
                 onClick={() => handleDeckClick(deck)}
               >
-                <div className="deck-card-header">
-                  <div className="deck-title">
-                    <FaBook className="deck-icon" />
-                    <span>{deck.deck_id}</span>
-                  </div>
-                  <span className="course-badge">{deck.course_id}</span>
+                <div className="timeline-connector"></div>
+                <div className="timeline-node">
+                  <ScoreRing 
+                    score={deck.highest_percentage} 
+                    size="md"
+                  />
                 </div>
-                
-                <div className="deck-stats">
-                  <div className="stat-item">
-                    <span className="stat-label">Best Score</span>
-                    <span className={`stat-value ${getScoreColor(deck.highest_percentage)}`}>
-                      {deck.highest_percentage.toFixed(1)}%
-                    </span>
+                <div className="timeline-card">
+                  <h3 className="timeline-title">{deck.deck_id}</h3>
+                  <span className="timeline-course-tag">{deck.course_id}</span>
+                  <div className="timeline-meta">
+                    <span className="timeline-datetime">{formatDateTime(deck.latest_attempt_date)}</span>
+                    <span className="timeline-attempts">{deck.attempt_count} Attempt{deck.attempt_count !== 1 ? 's' : ''}</span>
                   </div>
-                  <div className="stat-item">
-                    <span className="stat-label">Attempts</span>
-                    <span className="stat-value">{deck.attempt_count}</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-label">Last Attempt</span>
-                    <span className="stat-value">
-                      {formatDate(deck.latest_attempt_date)}
-                    </span>
-                  </div>
+                  {deck.highest_percentage < 60 ? (
+                    <button 
+                      className="timeline-cta timeline-cta-warning"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleTackleWeakConcepts(deck.course_id, deck.deck_id)
+                      }}
+                    >
+                      <FaExclamationTriangle /> Tackle Weak Concepts
+                    </button>
+                  ) : (
+                    <button className="timeline-cta timeline-cta-secondary">
+                      Review Attempt →
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
