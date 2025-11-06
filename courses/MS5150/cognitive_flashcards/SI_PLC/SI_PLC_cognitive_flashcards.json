@@ -1,0 +1,1121 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-22T21:00:09.684678",
+    "total_cards": 10,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "source": "SI_PLC",
+    "chunks_processed": 2
+  },
+  "flashcards": [
+    {
+      "type": "definition",
+      "question": "What is the Product Life Cycle (PLC)?",
+      "answers": {
+        "concise": "The Product Life Cycle (PLC) describes the stages a product goes through from when it is first introduced into the market until it declines and is eventually removed or replaced.",
+        "analogy": "Think of the PLC like a human life: a product is 'born' (introduced), 'grows up' (growth stage), becomes 'mature' (maturity stage), and eventually 'declines' and 'passes away' (decline stage).",
+        "eli5": "Imagine you plant a seed (the product). It sprouts (introduction), grows big and strong (growth), stays big for a while (maturity), and then gets old and weak (decline). That's the product life cycle!",
+        "real_world_use_case": "Apple uses the PLC to manage its iPhone product line. They introduce a new model (introduction), rapidly increase sales (growth), saturate the market (maturity), and eventually discontinue older models as new ones are introduced (decline). Understanding the PLC allows Apple to optimize marketing spend, production, and pricing for each iPhone generation.",
+        "common_mistakes": "A common mistake is assuming all products follow the same PLC curve. Some products have very short lifecycles (fads), while others have long maturity stages. Ignoring these variations can lead to incorrect forecasting and poor strategic decisions."
+      },
+      "context": "Core Marketing Concepts",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Fundamental concept in marketing strategy and product management."
+      },
+      "example": "Consider Coca-Cola: It was introduced in 1886 (introduction), experienced rapid growth in the early 20th century (growth), achieved widespread market saturation and brand recognition (maturity), and now faces challenges from healthier alternatives (decline), requiring constant innovation and marketing efforts to maintain market share. Coca-Cola's ongoing efforts to innovate with new flavors and marketing campaigns are examples of extending the maturity stage.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes the Product Life Cycle?",
+          "options": [
+            "A. The stages a product goes through from introduction to decline.",
+            "B. The process of developing new products.",
+            "C. A marketing strategy focused on promoting products.",
+            "D. The financial performance of a company over time."
+          ],
+          "answer": "A. The stages a product goes through from introduction to decline."
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following stages of the Product Life Cycle in the correct order.",
+          "items": [
+            "Decline",
+            "Introduction",
+            "Maturity",
+            "Growth"
+          ],
+          "answer": [
+            "Introduction",
+            "Growth",
+            "Maturity",
+            "Decline"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify each of the following product characteristics as belonging to either the 'Growth' or 'Maturity' stage of the Product Life Cycle.",
+          "items": [
+            "Rapidly rising sales",
+            "Peak sales",
+            "Increasing profits",
+            "Profits level off or decline"
+          ],
+          "categories": [
+            "Growth",
+            "Maturity"
+          ],
+          "answer": {
+            "Growth": [
+              "Rapidly rising sales",
+              "Increasing profits"
+            ],
+            "Maturity": [
+              "Peak sales",
+              "Profits level off or decline"
+            ]
+          }
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A product is experiencing slow sales growth and nonexistent profits due to high promotion expenses. The company is focused on creating awareness about the product.",
+          "question": "Which stage of the Product Life Cycle is this product MOST likely in?",
+          "options": [
+            "A. Introduction",
+            "B. Growth",
+            "C. Maturity",
+            "D. Decline"
+          ],
+          "answer": "A. Introduction"
+        },
+        {
+          "type": "matching",
+          "question": "Match each Product Life Cycle stage with its corresponding marketing objective.",
+          "premises": [
+            "1. Introduction",
+            "2. Growth",
+            "3. Maturity",
+            "4. Decline"
+          ],
+          "responses": [
+            "A. Maximize profit while defending market share",
+            "B. Reduce expenditure and milk the brand",
+            "C. Build awareness and trial",
+            "D. Maximize market share"
+          ],
+          "answer": [
+            "1-C",
+            "2-D",
+            "3-A",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "product life cycle",
+        "marketing",
+        "product management"
+      ],
+      "source_chunk": "SI_PLC_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "Illustrate the typical Product Life Cycle (PLC) stages and their impact on Sales and Profits.",
+      "answers": {
+        "concise": "The PLC consists of four main stages: Introduction (slow sales, negative profits), Growth (rapid sales increase, rising profits), Maturity (sales peak, profits level off), and Decline (sales and profits decrease).",
+        "analogy": "Imagine a tree: it starts as a seedling (introduction), grows rapidly (growth), reaches its full size (maturity), and eventually withers and dies (decline). Sales and profits follow a similar trajectory.",
+        "eli5": "Think of selling lemonade. At first, no one knows about it (introduction), then lots of people buy it (growth), then everyone has tried it (maturity), and finally, people want something new (decline).",
+        "real_world_use_case": "Nintendo uses the PLC to manage its gaming consoles. The Nintendo Switch was launched (introduction), quickly gained popularity (growth), is now in its mature phase with steady sales, and will eventually be replaced by a new console (decline). Understanding this cycle helps Nintendo plan for new hardware releases and software development.",
+        "common_mistakes": "A common mistake is ignoring the decline stage and failing to innovate or adapt. Companies that don't plan for the end of a product's life often experience significant losses and struggle to maintain market share."
+      },
+      "context": "Product Life Cycle",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core visual representation of the product life cycle concept."
+      },
+      "example": "The sales of physical CDs followed a classic PLC curve. Initially, CD sales were low (introduction), then they surged as CDs replaced cassettes (growth). They reached a peak during the late 1990s and early 2000s (maturity), but then declined rapidly with the rise of digital music and streaming services (decline). The music industry had to adapt to this shift by embracing digital distribution models.",
+      "mermaid_code": "graph LR;\n    A[Product Development] --> B(Introduction);\n    B --> C(Growth);\n    C --> D(Maturity);\n    D --> E(Decline);\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style B fill:#ccf,stroke:#333,stroke-width:2px\n    style C fill:#ccf,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px\n    style E fill:#ccf,stroke:#333,stroke-width:2px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "During which stage of the Product Life Cycle do sales typically peak?",
+          "options": [
+            "A. Introduction",
+            "B. Growth",
+            "C. Maturity",
+            "D. Decline"
+          ],
+          "answer": "C. Maturity"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company is experiencing rapidly increasing sales and rising profits for its new product. Market acceptance is high.",
+          "question": "Which stage of the Product Life Cycle is this product MOST likely in?",
+          "options": [
+            "A. Introduction",
+            "B. Growth",
+            "C. Maturity",
+            "D. Decline"
+          ],
+          "answer": "B. Growth"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following events in the Product Life Cycle in the order they typically occur:",
+          "items": [
+            "Profits decline",
+            "Rapid market acceptance",
+            "Slow sales growth",
+            "Sales slowdown"
+          ],
+          "answer": [
+            "Slow sales growth",
+            "Rapid market acceptance",
+            "Sales slowdown",
+            "Profits decline"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following characteristics as belonging to either the 'Introduction' or 'Decline' stage of the Product Life Cycle.",
+          "items": [
+            "High promotion expenses",
+            "Declining sales",
+            "Nonexistent profits",
+            "Dropping prices"
+          ],
+          "categories": [
+            "Introduction",
+            "Decline"
+          ],
+          "answer": {
+            "Introduction": [
+              "High promotion expenses",
+              "Nonexistent profits"
+            ],
+            "Decline": [
+              "Declining sales",
+              "Dropping prices"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each Product Life Cycle stage with its typical profit characteristic.",
+          "premises": [
+            "1. Introduction",
+            "2. Growth",
+            "3. Maturity",
+            "4. Decline"
+          ],
+          "responses": [
+            "A. Rising profits",
+            "B. Declining profits",
+            "C. Negative profits",
+            "D. High or declining profits"
+          ],
+          "answer": [
+            "1-C",
+            "2-A",
+            "3-D",
+            "4-B"
+          ]
+        }
+      ],
+      "tags": [
+        "product life cycle",
+        "stages",
+        "sales",
+        "profits"
+      ],
+      "source_chunk": "SI_PLC_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "Explain the strategic considerations during the Maturity stage of the Product Life Cycle.",
+      "answers": {
+        "concise": "During the Maturity stage, sales growth slows down, and profits level off or decline. Companies focus on maintaining market share, maximizing profit, and extending the product's life through market modification, product modification, or marketing mix modification.",
+        "analogy": "Think of a mature tree: it's no longer growing rapidly, so you need to prune it (cut costs), fertilize it (improve the product), or find new ways to use its fruit (find new markets) to keep it healthy.",
+        "eli5": "Imagine your lemonade stand is popular, but everyone in the neighborhood has already tried it. To keep selling lemonade, you can try selling it to people in other neighborhoods, adding new flavors, or offering special deals.",
+        "real_world_use_case": "Procter & Gamble (P&G) has maintained the maturity of Tide detergent for decades by continuously modifying the product offering (new formulas, packaging), modifying the marketing mix (price promotions, advertising), and modifying the market (targeting new segments). This constant innovation and adaptation have allowed Tide to remain a leading laundry detergent brand.",
+        "common_mistakes": "A common mistake is becoming complacent during the maturity stage and failing to innovate. This can lead to a rapid decline as competitors introduce newer, more appealing products."
+      },
+      "context": "PLC Stages",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important for understanding strategic decision-making in product management."
+      },
+      "example": "Heinz Ketchup is a classic example of a product in the maturity stage. To maintain its market position, Heinz introduces new variations like flavored ketchups (jalapeño, balsamic), offers different packaging sizes, and runs promotional campaigns. These strategies aim to increase usage among existing customers and attract new customers who might be looking for something different.",
+      "mermaid_code": "",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is a PRIMARY strategic focus during the Maturity stage of the Product Life Cycle?",
+          "options": [
+            "A. Creating product awareness",
+            "B. Maximizing market share",
+            "C. Defending market share and maximizing profit",
+            "D. Harvesting the product"
+          ],
+          "answer": "C. Defending market share and maximizing profit"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A product's sales growth has slowed down, and profits are leveling off. The company is considering modifying the product offering to attract new customers.",
+          "question": "Which stage of the Product Life Cycle is this product MOST likely in?",
+          "options": [
+            "A. Introduction",
+            "B. Growth",
+            "C. Maturity",
+            "D. Decline"
+          ],
+          "answer": "C. Maturity"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following strategic actions in the order they are typically considered during the Maturity stage:",
+          "items": [
+            "Modifying the marketing mix",
+            "Modifying the market",
+            "Modifying the product offering"
+          ],
+          "answer": [
+            "Modifying the market",
+            "Modifying the product offering",
+            "Modifying the marketing mix"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following actions as either 'Market Modification' or 'Product Modification' strategies during the Maturity stage.",
+          "items": [
+            "Introducing new product features",
+            "Targeting new user segments",
+            "Increasing product usage among existing customers",
+            "Offering new packaging options"
+          ],
+          "categories": [
+            "Market Modification",
+            "Product Modification"
+          ],
+          "answer": {
+            "Market Modification": [
+              "Targeting new user segments",
+              "Increasing product usage among existing customers"
+            ],
+            "Product Modification": [
+              "Introducing new product features",
+              "Offering new packaging options"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each strategic option with its description during the Maturity stage.",
+          "premises": [
+            "1. Modifying the Market",
+            "2. Modifying the Product",
+            "3. Modifying the Marketing Mix"
+          ],
+          "responses": [
+            "A. Changing price, promotion, or distribution strategies",
+            "B. Introducing new features, quality improvements, or models",
+            "C. Entering new market segments or increasing usage among existing customers"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "maturity stage",
+        "product life cycle",
+        "marketing strategy"
+      ],
+      "source_chunk": "SI_PLC_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "Explain the Ansoff Matrix and its four growth strategies.",
+      "answers": {
+        "concise": "The Ansoff Matrix is a strategic tool for identifying growth opportunities by considering new and existing products in new and existing markets. It outlines four strategies: Market Penetration, Market Development, Product Development, and Diversification.",
+        "analogy": "Think of a restaurant. Market Penetration is selling more of your current menu to your current customers. Market Development is opening a new location. Product Development is adding new items to your menu. Diversification is starting a catering business.",
+        "eli5": "Imagine you sell lemonade. Market Penetration is getting your current customers to buy more lemonade. Market Development is selling lemonade in a new neighborhood. Product Development is selling cookies with your lemonade. Diversification is starting a lawn mowing service.",
+        "real_world_use_case": "Starbucks uses the Ansoff Matrix extensively. Market Penetration: offering loyalty programs to increase purchase frequency. Market Development: expanding into new countries like China. Product Development: introducing new drinks like the Pumpkin Spice Latte. Diversification: selling merchandise like mugs and coffee machines.",
+        "common_mistakes": "A common mistake is pursuing diversification without sufficient resources or expertise. Diversification is the riskiest strategy and requires careful planning and execution."
+      },
+      "context": "Strategic Planning",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Key strategic tool for growth and market analysis."
+      },
+      "example": "Netflix's growth can be analyzed using the Ansoff Matrix. Initially, they focused on Market Penetration by increasing subscriptions among existing DVD rental customers. Then, they pursued Market Development by expanding into international markets. Next, they implemented Product Development by creating original content like 'Stranger Things.' Finally, they engaged in Diversification by producing films and video games.",
+      "mermaid_code": "graph TD;\n    A[Existing Products] -- Market Penetration --> B(Existing Markets);\n    A -- Product Development --> C(New Markets);\n    D[New Products] -- Market Development --> B;\n    D -- Diversification --> C;\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style B fill:#ccf,stroke:#333,stroke-width:2px\n    style C fill:#ccf,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which strategy in the Ansoff Matrix involves selling existing products in existing markets?",
+          "options": [
+            "A. Market Development",
+            "B. Product Development",
+            "C. Market Penetration",
+            "D. Diversification"
+          ],
+          "answer": "C. Market Penetration"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company decides to launch its existing line of products in a new geographic region.",
+          "question": "According to the Ansoff Matrix, which growth strategy is the company pursuing?",
+          "options": [
+            "A. Market Penetration",
+            "B. Product Development",
+            "C. Market Development",
+            "D. Diversification"
+          ],
+          "answer": "C. Market Development"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following Ansoff Matrix strategies in order of generally increasing risk (lowest to highest):",
+          "items": [
+            "Diversification",
+            "Market Penetration",
+            "Product Development",
+            "Market Development"
+          ],
+          "answer": [
+            "Market Penetration",
+            "Market Development",
+            "Product Development",
+            "Diversification"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following activities as either 'Market Penetration' or 'Product Development' strategies.",
+          "items": [
+            "Introducing a loyalty program",
+            "Developing a new product feature",
+            "Increasing advertising spending",
+            "Launching a new product line"
+          ],
+          "categories": [
+            "Market Penetration",
+            "Product Development"
+          ],
+          "answer": {
+            "Market Penetration": [
+              "Introducing a loyalty program",
+              "Increasing advertising spending"
+            ],
+            "Product Development": [
+              "Developing a new product feature",
+              "Launching a new product line"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each Ansoff Matrix strategy with its corresponding description.",
+          "premises": [
+            "1. Market Penetration",
+            "2. Market Development",
+            "3. Product Development",
+            "4. Diversification"
+          ],
+          "responses": [
+            "A. Introducing new products in existing markets",
+            "B. Selling existing products in new markets",
+            "C. Selling new products in new markets",
+            "D. Increasing sales of existing products in existing markets"
+          ],
+          "answer": [
+            "1-D",
+            "2-B",
+            "3-A",
+            "4-C"
+          ]
+        }
+      ],
+      "tags": [
+        "ansoff matrix",
+        "growth strategy",
+        "market development",
+        "product development"
+      ],
+      "source_chunk": "SI_PLC_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "diagram",
+      "question": "Explain the BCG Matrix and its four quadrants: Stars, Cash Cows, Question Marks, and Dogs.",
+      "answers": {
+        "concise": "The BCG Matrix classifies business units based on market growth rate and relative market share. Stars are high-growth, high-share; Cash Cows are low-growth, high-share; Question Marks are high-growth, low-share; and Dogs are low-growth, low-share.",
+        "analogy": "Think of a farm: Stars are rapidly growing crops needing lots of fertilizer. Cash Cows are mature crops providing steady income. Question Marks are new crops with uncertain potential. Dogs are crops that barely yield anything.",
+        "eli5": "Imagine you have toys. Stars are your most popular toys that everyone wants. Cash Cows are your old reliable toys that you still like. Question Marks are new toys you're not sure about. Dogs are toys you don't play with anymore.",
+        "real_world_use_case": "General Electric (GE) uses the BCG Matrix to manage its diverse portfolio of businesses. GE Healthcare (high market share in a growing industry) is a Star. GE's power turbine business (high market share in a slow-growing industry) is a Cash Cow. Newly acquired startups might be Question Marks. Underperforming business units might be Dogs.",
+        "common_mistakes": "A common mistake is investing too heavily in Dogs or failing to invest enough in Stars. The BCG Matrix is a simplified model and should be used in conjunction with other strategic tools."
+      },
+      "context": "Portfolio Management",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Important for portfolio planning and resource allocation."
+      },
+      "example": "Apple's iPhone was a Star during its initial growth phase, requiring significant investment in production and marketing. Now, it is more like a Cash Cow, generating substantial profits with less investment. The Apple Watch might be considered a Question Mark, requiring strategic decisions on whether to invest further or phase it out. Products like the iPod Classic, which are no longer actively marketed, would be considered Dogs.",
+      "mermaid_code": "graph TD;\n    A[High Market Growth] --> B{High Relative Market Share};\n    A --> C{Low Relative Market Share};\n    D[Low Market Growth] --> B;\n    D --> C;\n    B -- Star --> E(Invest);\n    C -- Question Mark --> F(Analyze);\n    D -- Cash Cow --> G(Harvest);\n    A -- Dog --> H(Divest);\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style B fill:#ccf,stroke:#333,stroke-width:2px\n    style C fill:#ccf,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "According to the BCG Matrix, which quadrant represents businesses with high market share in a low-growth market?",
+          "options": [
+            "A. Star",
+            "B. Cash Cow",
+            "C. Question Mark",
+            "D. Dog"
+          ],
+          "answer": "B. Cash Cow"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A business unit has a low market share in a high-growth market. Management is unsure whether to invest more resources or phase it out.",
+          "question": "According to the BCG Matrix, which quadrant does this business unit belong to?",
+          "options": [
+            "A. Star",
+            "B. Cash Cow",
+            "C. Question Mark",
+            "D. Dog"
+          ],
+          "answer": "C. Question Mark"
+        },
+        {
+          "type": "sequencing",
+          "question": "Arrange the following BCG Matrix quadrants in order of decreasing investment needs (highest to lowest):",
+          "items": [
+            "Cash Cow",
+            "Star",
+            "Dog",
+            "Question Mark"
+          ],
+          "answer": [
+            "Star",
+            "Question Mark",
+            "Cash Cow",
+            "Dog"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following characteristics as belonging to either 'Star' or 'Dog' businesses according to the BCG Matrix.",
+          "items": [
+            "High market share",
+            "Low market growth",
+            "High market growth",
+            "Low market share"
+          ],
+          "categories": [
+            "Star",
+            "Dog"
+          ],
+          "answer": {
+            "Star": [
+              "High market share",
+              "High market growth"
+            ],
+            "Dog": [
+              "Low market growth",
+              "Low market share"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each BCG Matrix quadrant with its typical strategic recommendation.",
+          "premises": [
+            "1. Star",
+            "2. Cash Cow",
+            "3. Question Mark",
+            "4. Dog"
+          ],
+          "responses": [
+            "A. Divest or liquidate",
+            "B. Invest heavily to maintain or increase market share",
+            "C. Harvest profits and maintain market share",
+            "D. Analyze carefully to determine if investment is warranted"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-D",
+            "4-A"
+          ]
+        }
+      ],
+      "tags": [
+        "bcg matrix",
+        "portfolio management",
+        "strategic planning"
+      ],
+      "source_chunk": "SI_PLC_1",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is a 'Star' strategy within the BCG Matrix?",
+      "answers": {
+        "concise": "A 'Star' represents a business unit or product with high market share in a high-growth market. Stars require significant investment to fuel further growth and maintain their market leadership.",
+        "analogy": "Think of a Star as a promising athlete in a rapidly growing sport. They have incredible potential but need constant training, coaching, and equipment to stay ahead of the competition and reach their peak performance.",
+        "eli5": "Imagine a toy that everyone wants, and it's getting more popular every day. To keep making it and selling it to everyone, you need to spend lots of money on making more toys, telling people about it, and making sure you have enough to sell. That's a 'Star'.",
+        "real_world_use_case": "Consider Tesla's electric vehicles in the mid-2010s. The electric vehicle market was rapidly expanding, and Tesla held a significant market share. To maintain its position and capitalize on the growth, Tesla invested heavily in expanding its production capacity (Gigafactories), developing new models, and building out its charging infrastructure. This continuous investment was essential to remain a 'Star' in the EV market.",
+        "common_mistakes": "A common mistake is underinvesting in a 'Star' because it already has a high market share. This can lead to competitors gaining ground and the 'Star' losing its leadership position. Another mistake is not planning for the 'Star' to eventually become a 'Cash Cow' by improving efficiency and reducing costs."
+      },
+      "context": "BCG Matrix",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept within the BCG Matrix."
+      },
+      "example": "Apple's iPhone was a 'Star' product in the smartphone market for many years. To maintain its leadership, Apple continuously invested in research and development, marketing, and supply chain optimization. They released new iPhone models annually, incorporating innovative features and expanding into new markets. This constant investment was crucial to staying ahead of competitors like Samsung and maintaining its 'Star' status.",
+      "mermaid_code": "graph TD;\n    A[High Market Share] --> B(High Growth Rate);\n    B --> C{Star Strategy: Invest Heavily};",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which characteristic BEST describes a 'Star' in the BCG Matrix?",
+          "options": [
+            "A. Low market share in a low-growth market",
+            "B. High market share in a high-growth market",
+            "C. High market share in a low-growth market",
+            "D. Low market share in a high-growth market"
+          ],
+          "answer": "B. High market share in a high-growth market"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company's new product, a smart home security system, has quickly gained popularity in a rapidly expanding market. The company is facing increasing competition and needs to decide on its investment strategy.",
+          "question": "According to the BCG Matrix, what is the MOST appropriate strategy for this product?",
+          "options": [
+            "A. Divest and liquidate the product line.",
+            "B. Invest heavily to maintain and grow market share.",
+            "C. Milk the product for short-term cash flow.",
+            "D. Selectively invest to focus on niche segments."
+          ],
+          "answer": "B. Invest heavily to maintain and grow market share."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following stages of a 'Star' product's lifecycle in the BCG Matrix in the correct order.",
+          "items": [
+            "Potential shift to Cash Cow",
+            "Initial launch as Question Mark",
+            "Maturity as Star",
+            "Possible decline to Dog"
+          ],
+          "answer": [
+            "Initial launch as Question Mark",
+            "Maturity as Star",
+            "Potential shift to Cash Cow",
+            "Possible decline to Dog"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following investment strategies as either 'Appropriate for Stars' or 'Inappropriate for Stars'.",
+          "items": [
+            "Aggressive marketing campaigns",
+            "Cutting R&D spending to improve short-term profits",
+            "Expanding production capacity",
+            "Limiting distribution channels to reduce costs"
+          ],
+          "categories": [
+            "Appropriate for Stars",
+            "Inappropriate for Stars"
+          ],
+          "answer": {
+            "Appropriate for Stars": [
+              "Aggressive marketing campaigns",
+              "Expanding production capacity"
+            ],
+            "Inappropriate for Stars": [
+              "Cutting R&D spending to improve short-term profits",
+              "Limiting distribution channels to reduce costs"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each strategic action to its primary objective for a 'Star' business unit.",
+          "premises": [
+            "1. Increase market share",
+            "2. Maintain competitive advantage",
+            "3. Optimize profitability"
+          ],
+          "responses": [
+            "A. Invest in research and development",
+            "B. Implement aggressive pricing strategies",
+            "C. Streamline operations and reduce costs"
+          ],
+          "answer": [
+            "1-B",
+            "2-A",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "BCG Matrix",
+        "Star Strategy",
+        "Market Share",
+        "Growth"
+      ],
+      "source_chunk": "SI_PLC_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is a 'Cash Cow' strategy in the BCG Matrix?",
+      "answers": {
+        "concise": "A 'Cash Cow' represents a business unit or product with high market share in a low-growth market. These units generate more cash than they require and should be 'milked' to fund other SBUs.",
+        "analogy": "Think of a Cash Cow as a reliable, well-established farm that consistently produces milk. It doesn't need much investment to keep producing, and the extra milk (cash) can be used to support other parts of the farm (other SBUs).",
+        "eli5": "Imagine a toy that everyone already has and still likes, but not many new people want it. It still makes you money, but you don't need to spend much to keep selling it. You can use that money to make new toys. That's a 'Cash Cow'.",
+        "real_world_use_case": "Gillette's razor blade business is a classic 'Cash Cow'. While the razor market is relatively mature with low growth, Gillette maintains a dominant market share due to its brand recognition and established distribution channels. They generate significant cash flow from blade refills, which requires relatively little investment compared to developing entirely new product categories. This cash is then used to fund other Procter & Gamble divisions.",
+        "common_mistakes": "A common mistake is over-investing in a 'Cash Cow' in an attempt to stimulate growth. This is often a waste of resources since the market has limited growth potential. Another mistake is neglecting a 'Cash Cow,' leading to declining market share due to lack of maintenance and innovation."
+      },
+      "context": "BCG Matrix",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept within the BCG Matrix."
+      },
+      "example": "Coca-Cola's classic soda business (Coca-Cola, Diet Coke) is a 'Cash Cow'. The market for traditional soda is mature with limited growth, but Coca-Cola maintains a large market share due to its brand recognition and established distribution network. They focus on operational efficiency, cost reduction, and brand maintenance rather than aggressive growth initiatives. The profits generated from the soda business are then used to invest in new beverage categories and emerging markets.",
+      "mermaid_code": "graph TD;\n    A[High Market Share] --> B(Low Growth Rate);\n    B --> C{Cash Cow Strategy: Milk and Maintain};",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which strategy is MOST appropriate for a 'Cash Cow' in the BCG Matrix?",
+          "options": [
+            "A. Aggressively invest to increase market share.",
+            "B. Divest and liquidate the business unit.",
+            "C. Milk the business unit for cash flow while maintaining market share.",
+            "D. Heavily invest in research and development."
+          ],
+          "answer": "C. Milk the business unit for cash flow while maintaining market share."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company's established product line of basic household cleaning supplies has a large market share but is experiencing slow growth. The company needs to decide how to allocate resources.",
+          "question": "According to the BCG Matrix, what is the BEST approach for this product line?",
+          "options": [
+            "A. Increase marketing spending to stimulate growth.",
+            "B. Focus on cost reduction and efficiency to maximize cash flow.",
+            "C. Discontinue the product line to focus on newer products.",
+            "D. Invest heavily in new product development within the same category."
+          ],
+          "answer": "B. Focus on cost reduction and efficiency to maximize cash flow."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following strategic actions for a 'Cash Cow' in order of priority.",
+          "items": [
+            "Explore adjacent markets for limited growth opportunities",
+            "Maintain market share through brand management",
+            "Minimize investment and maximize cash flow",
+            "Identify cost reduction opportunities"
+          ],
+          "answer": [
+            "Minimize investment and maximize cash flow",
+            "Identify cost reduction opportunities",
+            "Maintain market share through brand management",
+            "Explore adjacent markets for limited growth opportunities"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following activities as either 'Suitable for Cash Cows' or 'Unsuitable for Cash Cows'.",
+          "items": [
+            "Investing heavily in new product features",
+            "Optimizing supply chain efficiency",
+            "Reducing marketing expenses",
+            "Expanding into new geographic markets"
+          ],
+          "categories": [
+            "Suitable for Cash Cows",
+            "Unsuitable for Cash Cows"
+          ],
+          "answer": {
+            "Suitable for Cash Cows": [
+              "Optimizing supply chain efficiency",
+              "Reducing marketing expenses"
+            ],
+            "Unsuitable for Cash Cows": [
+              "Investing heavily in new product features",
+              "Expanding into new geographic markets"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each characteristic to its corresponding strategic implication for a 'Cash Cow'.",
+          "premises": [
+            "1. High market share",
+            "2. Low growth rate",
+            "3. Strong brand recognition"
+          ],
+          "responses": [
+            "A. Focus on maintaining brand loyalty",
+            "B. Maximize cash flow with minimal investment",
+            "C. Defend market position against competitors"
+          ],
+          "answer": [
+            "1-C",
+            "2-B",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "BCG Matrix",
+        "Cash Cow Strategy",
+        "Market Share",
+        "Cash Flow"
+      ],
+      "source_chunk": "SI_PLC_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is a 'Question Mark' strategy in the BCG Matrix?",
+      "answers": {
+        "concise": "A 'Question Mark' (also known as a 'Problem Child') represents a business unit or product with low market share in a high-growth market. These units require significant investment to gain market share, and strategic decisions must be made about whether to build them into Stars or phase them out.",
+        "analogy": "Think of a Question Mark as a promising startup in a booming industry. They have a great idea and potential for growth, but they need significant funding and strategic guidance to succeed and capture a larger market share. It's uncertain whether they will become a major player or fail.",
+        "eli5": "Imagine a new toy that lots of kids want, but not many kids have yours yet. You need to spend a lot of money to try to make more kids want it, but it's not sure if it will work. You have to decide if it's worth spending the money or giving up. That's a 'Question Mark'.",
+        "real_world_use_case": "A small biotech company developing a new drug for a disease with a large patient population is a 'Question Mark'. The market is large and growing, but the company has low market share due to competition from established pharmaceutical giants. They need to invest heavily in clinical trials, marketing, and sales to gain market share, but the outcome is uncertain due to regulatory hurdles and the risk of clinical trial failures.",
+        "common_mistakes": "A common mistake is investing in all 'Question Marks' without careful evaluation. Some 'Question Marks' may have limited potential and are not worth the investment. Another mistake is underestimating the resources required to turn a 'Question Mark' into a 'Star'. It's crucial to have a clear plan and sufficient funding."
+      },
+      "context": "BCG Matrix",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept within the BCG Matrix."
+      },
+      "example": "Netflix's entry into the video game streaming market with Netflix Games is a 'Question Mark'. The cloud gaming market is growing rapidly, but Netflix faces competition from established players like Xbox Cloud Gaming and PlayStation Now. Netflix needs to invest heavily in content acquisition, technology development, and marketing to gain a significant market share, and it's unclear whether they will succeed in this new venture.",
+      "mermaid_code": "graph TD;\n    A[Low Market Share] --> B(High Growth Rate);\n    B --> C{Question Mark Strategy: Invest or Divest};",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes a 'Question Mark' in the BCG Matrix?",
+          "options": [
+            "A. High market share in a low-growth market.",
+            "B. Low market share in a low-growth market.",
+            "C. High market share in a high-growth market.",
+            "D. Low market share in a high-growth market."
+          ],
+          "answer": "D. Low market share in a high-growth market."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company launches a new line of plant-based meat alternatives in a rapidly expanding market. However, their market share is currently low compared to established brands. The company is debating whether to invest heavily in marketing and production.",
+          "question": "According to the BCG Matrix, what strategic decision should the company make regarding this product line?",
+          "options": [
+            "A. Divest the product line to cut losses.",
+            "B. Milk the product line for short-term profits.",
+            "C. Invest heavily to increase market share and become a Star.",
+            "D. Maintain current investment levels and monitor the market."
+          ],
+          "answer": "C. Invest heavily to increase market share and become a Star."
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following potential outcomes for a 'Question Mark' in the BCG Matrix in a possible chronological order.",
+          "items": [
+            "Decline and become a Dog",
+            "Remain a Question Mark with little progress",
+            "Successful growth into a Star",
+            "Initial launch as a Question Mark"
+          ],
+          "answer": [
+            "Initial launch as a Question Mark",
+            "Successful growth into a Star",
+            "Remain a Question Mark with little progress",
+            "Decline and become a Dog"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following actions as either 'Appropriate for managing Question Marks' or 'Inappropriate for managing Question Marks'.",
+          "items": [
+            "Conducting thorough market research",
+            "Implementing aggressive marketing campaigns",
+            "Harvesting profits immediately to reduce risk",
+            "Focusing on a specific niche market"
+          ],
+          "categories": [
+            "Appropriate for managing Question Marks",
+            "Inappropriate for managing Question Marks"
+          ],
+          "answer": {
+            "Appropriate for managing Question Marks": [
+              "Conducting thorough market research",
+              "Implementing aggressive marketing campaigns",
+              "Focusing on a specific niche market"
+            ],
+            "Inappropriate for managing Question Marks": [
+              "Harvesting profits immediately to reduce risk"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each strategic action to its corresponding potential outcome for a 'Question Mark'.",
+          "premises": [
+            "1. Significant investment and product differentiation",
+            "2. Limited investment and lack of differentiation",
+            "3. Strategic partnership and market focus"
+          ],
+          "responses": [
+            "A. Increased market share and potential Star status",
+            "B. Stagnation and potential Dog status",
+            "C. Improved market position and competitive advantage"
+          ],
+          "answer": [
+            "1-A",
+            "2-B",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "BCG Matrix",
+        "Question Mark Strategy",
+        "Market Share",
+        "Growth"
+      ],
+      "source_chunk": "SI_PLC_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is a 'Dog' strategy in the BCG Matrix?",
+      "answers": {
+        "concise": "A 'Dog' represents a business unit or product with low market share in a low-growth market. These units typically generate little profit and may require divestment or liquidation.",
+        "analogy": "Think of a 'Dog' as an old, worn-out machine that doesn't produce much and is expensive to maintain. It's often best to replace it with a newer, more efficient model.",
+        "eli5": "Imagine a toy that nobody wants anymore. It doesn't make you much money, and it costs money to keep it around. It's probably best to stop making it. That's a 'Dog'.",
+        "real_world_use_case": "Kodak's film camera business after the rise of digital photography became a 'Dog'. The market for film cameras declined rapidly, and Kodak lost significant market share to digital cameras. They eventually filed for bankruptcy and restructured, focusing on other areas.",
+        "common_mistakes": "A common mistake is continuing to invest in a 'Dog' in the hope of a turnaround. This is often a waste of resources that could be better allocated to other SBUs. Another mistake is failing to recognize a 'Dog' and allowing it to drain resources from more promising areas."
+      },
+      "context": "BCG Matrix",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition and foundational concept within the BCG Matrix."
+      },
+      "example": "Blockbuster's physical video rental stores became a 'Dog' as streaming services like Netflix gained popularity. The market for physical rentals declined significantly, and Blockbuster's market share plummeted. They failed to adapt to the changing market and eventually filed for bankruptcy.",
+      "mermaid_code": "graph TD;\n    A[Low Market Share] --> B(Low Growth Rate);\n    B --> C{Dog Strategy: Divest or Liquidate};",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following BEST describes a 'Dog' in the BCG Matrix?",
+          "options": [
+            "A. High market share in a high-growth market",
+            "B. Low market share in a high-growth market",
+            "C. High market share in a low-growth market",
+            "D. Low market share in a low-growth market"
+          ],
+          "answer": "D. Low market share in a low-growth market"
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A company's product, a traditional pager device, has a low market share in a declining market due to the popularity of smartphones. The product is barely breaking even.",
+          "question": "According to the BCG Matrix, what is the MOST appropriate strategy for this product?",
+          "options": [
+            "A. Invest heavily to revive the product and increase market share",
+            "B. Divest the product or liquidate its assets",
+            "C. Maintain current investment levels and monitor the market closely",
+            "D. Increase marketing efforts to target a niche market"
+          ],
+          "answer": "B. Divest the product or liquidate its assets"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following strategic actions for a 'Dog' product in the BCG Matrix in order of consideration.",
+          "items": [
+            "Implement cost-cutting measures",
+            "Explore niche market opportunities",
+            "Divest or liquidate the business unit",
+            "Assess the potential for a turnaround"
+          ],
+          "answer": [
+            "Assess the potential for a turnaround",
+            "Implement cost-cutting measures",
+            "Explore niche market opportunities",
+            "Divest or liquidate the business unit"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Categorize the following strategic moves as either 'Appropriate for a Dog' or 'Inappropriate for a Dog'.",
+          "items": [
+            "Significant investment in research and development",
+            "Divesting the business unit",
+            "Implementing aggressive marketing campaigns",
+            "Focusing on cost reduction and efficiency"
+          ],
+          "categories": [
+            "Appropriate for a Dog",
+            "Inappropriate for a Dog"
+          ],
+          "answer": {
+            "Appropriate for a Dog": [
+              "Divesting the business unit",
+              "Focusing on cost reduction and efficiency"
+            ],
+            "Inappropriate for a Dog": [
+              "Significant investment in research and development",
+              "Implementing aggressive marketing campaigns"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each characteristic to its corresponding strategic recommendation for a 'Dog' business unit.",
+          "premises": [
+            "1. Low market share",
+            "2. Low growth rate",
+            "3. Limited cash generation"
+          ],
+          "responses": [
+            "A. Consider divestment or liquidation",
+            "B. Minimize investment and reduce costs",
+            "C. Focus on maximizing short-term profits"
+          ],
+          "answer": [
+            "1-A",
+            "2-B",
+            "3-C"
+          ]
+        }
+      ],
+      "tags": [
+        "BCG Matrix",
+        "Dog Strategy",
+        "Market Share",
+        "Growth"
+      ],
+      "source_chunk": "SI_PLC_2",
+      "diagram_image_path": ""
+    },
+    {
+      "type": "concept",
+      "question": "What is a Strategic Business Unit (SBU)?",
+      "answers": {
+        "concise": "A Strategic Business Unit (SBU) is a relatively autonomous division of a large company that operates as an independent entity with its own mission, objectives, resources, and competitors. SBUs are responsible for their own strategic planning and performance.",
+        "analogy": "Think of a large university as a corporation. Each department (e.g., Engineering, Business, Arts & Sciences) is like an SBU, managing its own budget, faculty, curriculum, and competing for students and research grants.",
+        "eli5": "Imagine a big company that makes lots of different things. Each part of the company that makes one main thing, like toys or cars, and has its own boss and rules, is like a separate little company inside the big one. That's an SBU.",
+        "real_world_use_case": "General Electric (GE) is organized into multiple SBUs, such as GE Aviation, GE Healthcare, and GE Renewable Energy. Each SBU operates independently, developing its own strategies, managing its own resources, and competing in its respective market. This allows GE to effectively manage a diverse portfolio of businesses.",
+        "common_mistakes": "A common mistake is treating all SBUs the same, regardless of their market position or growth potential. This can lead to misallocation of resources and suboptimal performance. Another mistake is failing to foster collaboration and knowledge sharing between SBUs, which can limit innovation and synergies."
+      },
+      "context": "Strategic Management",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Important concept for understanding organizational strategy."
+      },
+      "example": "Procter & Gamble (P&G) manages its diverse portfolio through SBUs like Beauty, Grooming, Health Care, and Fabric & Home Care. Each SBU has its own dedicated management team, marketing budget, and product development pipeline. This structure allows P&G to tailor its strategies to the specific needs and opportunities of each market segment, maximizing overall performance.",
+      "mermaid_code": "graph TD;\n    A[Large Corporation] --> B(SBU 1: Division A);\n    A --> C(SBU 2: Division B);\n    A --> D(SBU 3: Division C);\n    B --> E[Own Mission & Objectives];\n    C --> E;\n    D --> E;",
+      "recall_questions": [
+        {
+          "type": "mcq",
+          "question": "Which of the following is a key characteristic of a Strategic Business Unit (SBU)?",
+          "options": [
+            "A. It operates as a single, unified entity with the parent company.",
+            "B. It is a small department within a larger division.",
+            "C. It operates as a relatively autonomous unit with its own mission and objectives.",
+            "D. It shares all resources and strategies with other SBUs."
+          ],
+          "answer": "C. It operates as a relatively autonomous unit with its own mission and objectives."
+        },
+        {
+          "type": "scenario_mcq",
+          "scenario": "A large conglomerate operates in various industries, including automotive, aerospace, and consumer electronics. Each division has its own unique market dynamics and competitive landscape.",
+          "question": "Which organizational structure would BEST suit this conglomerate?",
+          "options": [
+            "A. Centralized functional structure",
+            "B. Matrix structure",
+            "C. Strategic Business Unit (SBU) structure",
+            "D. Simple hierarchical structure"
+          ],
+          "answer": "C. Strategic Business Unit (SBU) structure"
+        },
+        {
+          "type": "sequencing",
+          "question": "Place the following steps in the process of establishing and managing an SBU in the correct order.",
+          "items": [
+            "Allocate resources and budget",
+            "Define the SBU's mission and objectives",
+            "Analyze the external environment and competitive landscape",
+            "Develop a strategic plan for the SBU"
+          ],
+          "answer": [
+            "Define the SBU's mission and objectives",
+            "Analyze the external environment and competitive landscape",
+            "Develop a strategic plan for the SBU",
+            "Allocate resources and budget"
+          ]
+        },
+        {
+          "type": "categorization",
+          "question": "Classify the following activities as either 'SBU-level responsibilities' or 'Corporate-level responsibilities'.",
+          "items": [
+            "Developing a marketing strategy for a specific product line",
+            "Setting overall financial goals for the corporation",
+            "Managing day-to-day operations of a manufacturing plant",
+            "Allocating capital across different SBUs"
+          ],
+          "categories": [
+            "SBU-level responsibilities",
+            "Corporate-level responsibilities"
+          ],
+          "answer": {
+            "SBU-level responsibilities": [
+              "Developing a marketing strategy for a specific product line",
+              "Managing day-to-day operations of a manufacturing plant"
+            ],
+            "Corporate-level responsibilities": [
+              "Setting overall financial goals for the corporation",
+              "Allocating capital across different SBUs"
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "question": "Match each characteristic to its corresponding benefit of using an SBU structure.",
+          "premises": [
+            "1. Increased accountability",
+            "2. Improved strategic focus",
+            "3. Enhanced responsiveness"
+          ],
+          "responses": [
+            "A. Faster decision-making and adaptation to market changes",
+            "B. Clear responsibility for performance and results",
+            "C. Tailored strategies for specific market segments"
+          ],
+          "answer": [
+            "1-B",
+            "2-C",
+            "3-A"
+          ]
+        }
+      ],
+      "tags": [
+        "Strategic Business Unit",
+        "SBU",
+        "Organizational Structure",
+        "Strategic Management"
+      ],
+      "source_chunk": "SI_PLC_2",
+      "diagram_image_path": ""
+    }
+  ]
+}
