@@ -138,8 +138,8 @@ class ExamReadinessService:
         """
         flashcards_by_lecture = {}
         
-        # Base path to courses
-        base_path = Path("/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/courses")
+        # Base path to courses (relative to backend directory)
+        base_path = Path(__file__).parent.parent.parent / "courses"
         course_path = base_path / course_id / "cognitive_flashcards"
         
         for lecture_id in lecture_ids:
