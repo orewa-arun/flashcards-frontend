@@ -46,7 +46,8 @@ async def ensure_user_exists(user_id: str, db) -> User:
     user_doc = await users_collection.find_one({"user_id": user_id})
     
     if not user_doc:
-        new_user = User(user_id=user_id)
+        # Create minimal user document with required firebase_uid; keep legacy user_id for compatibility
+        new_user = User(firebase_uid=user_id, email=None, name=None, picture=None, user_id=user_id)
         result = await users_collection.insert_one(new_user.model_dump(by_alias=True, exclude={"id"}))
         user_doc = await users_collection.find_one({"_id": result.inserted_id})
         logger.info(f"Created new user: {user_id}")
@@ -560,10 +561,9 @@ async def submit_quiz(
             if question.question_type == "mca":
                 # For MCA, use partial credit score
                 score += partial_credit if partial_credit is not None else 0.0
-            else:
+            elif is_correct:
                 # For other types, binary scoring
-                if is_correct:
-                    score += 1.0
+                score += 1.0
             
             question_results.append(QuestionResult(
                 question_id=question.question_id,

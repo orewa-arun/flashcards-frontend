@@ -409,8 +409,8 @@ async def get_weak_concepts_for_course(
                         for fc in flashcards:
                             if "flashcard_id" in fc:
                                 flashcard_lookup[fc["flashcard_id"]] = fc
-                        file_load_success = True
-                        logger.info(f"✅ Loaded {len(flashcard_lookup)} flashcards from {flashcard_file.name}")
+                    file_load_success = True
+                    logger.info(f"✅ Loaded {len(flashcard_lookup)} flashcards from {flashcard_file.name}")
                 except json.JSONDecodeError as e:
                     logger.error(f"❌ JSON decode error in {flashcard_file}: {str(e)}")
                 except Exception as e:

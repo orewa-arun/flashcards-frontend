@@ -39,6 +39,22 @@
   color: var(--text-secondary);
 }
 
+/* Global safety: never animate or spin primary page headers */
+.page-title,
+.view-header h1,
+.history-header .page-title,
+.schedule-header .page-title {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Guard against accidental spinners inside header areas */
+.view-header .loading-spinner,
+.history-header .spinner,
+.schedule-header .loading-spinner {
+  display: none !important;
+}
+
 /* Quizlet-Inspired Button Styles */
 .btn-primary {
   background-color: var(--accent-primary);
