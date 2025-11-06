@@ -14,14 +14,15 @@ import { authenticatedPost, authenticatedGet } from '../utils/authenticatedApi';
  */
 export const startQuizSession = async (courseId, lectureId, level) => {
   try {
-    const data = await authenticatedPost('/api/v1/quiz/session/start', {
+    const data = await authenticatedPost('/api/v1/adaptive-quiz/session/start', {
       course_id: courseId,
       lecture_id: lectureId,
       level: level
     });
+    console.log('✅ Quiz session started:', data);
     return data;
   } catch (error) {
-    console.error('Error starting quiz session:', error);
+    console.error('❌ Error starting quiz session:', error);
     throw error;
   }
 };
@@ -38,7 +39,7 @@ export const startQuizSession = async (courseId, lectureId, level) => {
  */
 export const submitQuizAnswer = async (courseId, lectureId, questionHash, flashcardId, isCorrect, level) => {
   try {
-    const data = await authenticatedPost('/api/v1/quiz/session/submit', {
+    const data = await authenticatedPost('/api/v1/adaptive-quiz/session/submit', {
       course_id: courseId,
       lecture_id: lectureId,
       question_hash: questionHash,
@@ -48,7 +49,7 @@ export const submitQuizAnswer = async (courseId, lectureId, questionHash, flashc
     });
     return data;
   } catch (error) {
-    console.error('Error submitting quiz answer:', error);
+    console.error('❌ Error submitting quiz answer:', error);
     throw error;
   }
 };
@@ -66,7 +67,7 @@ export const submitQuizAnswer = async (courseId, lectureId, questionHash, flashc
  */
 export const completeQuizSession = async (courseId, lectureId, level, score, totalQuestions, timeTakenSeconds, questionResults) => {
   try {
-    const data = await authenticatedPost('/api/v1/quiz/session/complete', {
+    const data = await authenticatedPost('/api/v1/adaptive-quiz/session/complete', {
       course_id: courseId,
       lecture_id: lectureId,
       level: level,
@@ -75,9 +76,10 @@ export const completeQuizSession = async (courseId, lectureId, level, score, tot
       time_taken_seconds: timeTakenSeconds,
       question_results: questionResults
     });
+    console.log('✅ Quiz session completed and saved to history:', data);
     return data;
   } catch (error) {
-    console.error('Error completing quiz session:', error);
+    console.error('❌ Error completing quiz session:', error);
     throw error;
   }
 };
@@ -90,10 +92,10 @@ export const completeQuizSession = async (courseId, lectureId, level, score, tot
  */
 export const getUserPerformance = async (courseId, lectureId) => {
   try {
-    const data = await authenticatedGet(`/api/v1/quiz/performance/${courseId}/${lectureId}`);
+    const data = await authenticatedGet(`/api/v1/adaptive-quiz/performance/${courseId}/${lectureId}`);
     return data;
   } catch (error) {
-    console.error('Error fetching user performance:', error);
+    console.error('❌ Error fetching user performance:', error);
     throw error;
   }
 };
