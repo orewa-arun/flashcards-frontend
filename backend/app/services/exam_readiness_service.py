@@ -164,12 +164,21 @@ class ExamReadinessService:
         course_id: str
     ) -> List[Dict]:
         """Get all quiz attempts for this user and course."""
+        import logging
+        logger = logging.getLogger(__name__)
+        
         collection = self.db["quiz_results"]
         cursor = collection.find({
             "firebase_uid": user_id,
             "course_id": course_id
         })
-        return await cursor.to_list(length=None)
+        attempts = await cursor.to_list(length=None)
+        
+        logger.info(f"🔍 READINESS DEBUG: user_id={user_id}, course_id={course_id}, found {len(attempts)} quiz attempts")
+        if attempts:
+            logger.info(f"   Sample attempt: lecture={attempts[0].get('lecture_id')}, score={attempts[0].get('score')}/{attempts[0].get('total_questions')}")
+        
+        return attempts
     
     async def _calculate_coverage(
         self,

@@ -47,7 +47,7 @@ export async function startQuizSession(courseId, lectureId, level, size = 20) {
 export async function submitQuizAnswer(courseId, lectureId, questionHash, flashcardId, isCorrect, level) {
   try {
     const data = await authenticatedPost('/api/v1/adaptive-quiz/session/submit', {
-      course_id: courseId,
+        course_id: courseId,
       lecture_id: lectureId,
       question_hash: questionHash,
       flashcard_id: flashcardId,
@@ -77,12 +77,12 @@ export async function submitQuizAnswer(courseId, lectureId, questionHash, flashc
 export async function completeQuizSession(courseId, lectureId, level, score, totalQuestions, timeTakenSeconds, questionResults) {
   try {
     const data = await authenticatedPost('/api/v1/adaptive-quiz/session/complete', {
-      course_id: courseId,
+        course_id: courseId,
       lecture_id: lectureId,
       level: level,
       score: score,
       total_questions: totalQuestions,
-      time_taken_seconds: timeTakenSeconds,
+        time_taken_seconds: timeTakenSeconds,
       question_results: questionResults,
     });
 

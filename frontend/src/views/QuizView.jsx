@@ -377,13 +377,13 @@ const QuizView = () => {
                 
                 if (!isFullyCorrect) {
                   return (
-                    <p className="correct-answer-note">
+                <p className="correct-answer-note">
                       <strong>Correct answer{correctAnswers.length > 1 ? 's' : ''}:</strong>{' '}
                       {correctAnswers.map(key => {
                         const optText = currentQuestion.options?.[key];
                         return optText !== undefined ? `${key}: ${optText}` : String(key);
                       }).join(', ')}
-                    </p>
+                </p>
                   );
                 }
               })()}

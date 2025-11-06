@@ -234,6 +234,7 @@ async def complete_quiz_session(
         quiz_result_document = {
             "firebase_uid": user_id,
             "course_id": completion.course_id,
+            "lecture_id": completion.lecture_id,  # CRITICAL: needed for exam readiness calculation
             "deck_id": deck_id,
             "difficulty": f"level_{completion.level}",
             "score": completion.score,
@@ -261,7 +262,8 @@ async def complete_quiz_session(
         
         logger.info(f"✅ Saved adaptive quiz session to history: user={user_id}, "
                    f"course={completion.course_id}, lecture={completion.lecture_id}, "
-                   f"level={completion.level}, score={completion.score}/{completion.total_questions}")
+                   f"level={completion.level}, score={completion.score}/{completion.total_questions}, "
+                   f"result_id={result.inserted_id}, lecture_id={completion.lecture_id}")
         
         return {
             "success": True,
