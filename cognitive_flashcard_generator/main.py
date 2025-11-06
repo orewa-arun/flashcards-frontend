@@ -238,7 +238,10 @@ def extract_content_from_structured_json(json_path: Path) -> str:
                     slide_content += f"• {str(diagram).strip()}\n"
             
             # Add additional notes
-            notes = analysis.get('notes', '').strip()
+            notes = analysis.get('notes')
+            if notes is None:
+                notes = ''
+            notes = notes.strip()
             if notes:
                 slide_content += f"\nNOTES: {notes}\n"
             

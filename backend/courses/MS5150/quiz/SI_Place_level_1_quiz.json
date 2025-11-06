@@ -1,0 +1,3910 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-06T08:51:14.733646",
+    "total_questions": 160,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "lecture": "SI_Place",
+    "difficulty_level": 1,
+    "source_flashcards": 32
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "Which element of the marketing mix focuses on making products and services available and accessible to target customers?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product",
+        "B": "Price",
+        "C": "Place",
+        "D": "Promotion"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because 'Place' in the marketing mix specifically deals with distribution channels, supply chain, and accessibility to ensure products reach target customers. Options A, B, and D are other elements of the marketing mix that focus on different aspects like product features, cost, and communication, respectively.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_1",
+      "tags": [
+        "Marketing Mix",
+        "Place",
+        "Distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What are the primary components encompassed by the 'Place' element of the marketing mix?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product features and quality",
+        "B": "Distribution channels and supply chain",
+        "C": "Advertising and public relations",
+        "D": "Pricing strategies and discounts"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The 'Place' element primarily involves distribution channels, the supply chain, and overall product accessibility. Options A, C, and D relate to the Product, Promotion, and Price elements of the marketing mix, respectively.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_1",
+      "tags": [
+        "Place",
+        "Distribution",
+        "Supply Chain"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The main goal of the 'Place' strategy in the marketing mix is to ensure products are:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Low-priced for mass appeal",
+        "B": "Widely advertised to create awareness",
+        "C": "Available and accessible to target customers",
+        "D": "Designed with innovative features"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The core objective of 'Place' is to make sure products or services are conveniently available and accessible to the intended customer base. Options A, B, and D relate to Price, Promotion, and Product strategies, not 'Place'.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_1",
+      "tags": [
+        "Place",
+        "Accessibility",
+        "Customer Reach"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement about 'Place' in the marketing mix is FALSE?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It only refers to the physical location where a product is sold.",
+        "B": "It includes online sales channels.",
+        "C": "It involves logistics and inventory management.",
+        "D": "It covers the entire network for getting a product from producer to consumer."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "A is false. A common mistake is thinking 'Place' only means physical location. In reality, it's much broader, including online channels, logistics, inventory management, and the entire network of getting the product from producer to consumer. Options B, C, and D correctly describe aspects of 'Place'.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_1",
+      "tags": [
+        "Place",
+        "Common Mistakes",
+        "Distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Distribution channels are a core part of the 'Place' strategy because they determine:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "How products are priced competitively.",
+        "B": "The specific features and design of a product.",
+        "C": "How and where products reach the end consumer.",
+        "D": "The advertising messages used to promote a product."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Distribution channels are fundamental to 'Place' as they dictate the routes and methods products use to get from the producer to the final customer, directly impacting availability and accessibility. Options A, B, and D relate to Price, Product, and Promotion respectively.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_1",
+      "tags": [
+        "Place",
+        "Distribution Channels",
+        "Consumer Reach"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary role of a marketing channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To set the final price of a product for consumers.",
+        "B": "To help make a product or service available for use or consumption.",
+        "C": "To design new product features based on market research.",
+        "D": "To create advertising campaigns for brand awareness."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A marketing channel's primary role is to make a product or service available and accessible to the consumer or business user. Options A, C, and D describe activities related to Price, Product, and Promotion, respectively.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_2",
+      "tags": [
+        "Marketing Channel",
+        "Distribution Channel",
+        "Product Availability"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Organizations operating within a marketing channel are best described as:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Solely focused on their own individual profits.",
+        "B": "A simple, one-way transaction from producer to consumer.",
+        "C": "Interdependent organizations that collaborate.",
+        "D": "Always in direct competition with each other."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Marketing channels consist of interdependent organizations that collaborate to deliver value, as highlighted in the definition. Options A, B, and D represent common misconceptions or incorrect descriptions of channel relationships.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_2",
+      "tags": [
+        "Marketing Channel",
+        "Interdependent Organizations",
+        "Collaboration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The main purpose of a distribution channel is to make products available for:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Internal company research and development.",
+        "B": "Competitor analysis and benchmarking.",
+        "C": "Use or consumption by the consumer or business user.",
+        "D": "Inventory storage only, to reduce costs."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Distribution channels exist to ensure products reach the final consumer or business user for their intended use or consumption. The other options describe internal company functions or limited aspects, not the main purpose of the channel.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_2",
+      "tags": [
+        "Distribution Channel",
+        "Consumer Use",
+        "Business User"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following statements about a marketing channel is INCORRECT?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It involves multiple independent organizations.",
+        "B": "It facilitates product availability to end-users.",
+        "C": "It is a simple, one-way transaction from producer to consumer.",
+        "D": "It requires careful management and collaboration."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is incorrect. A common mistake is viewing the channel as a simple, one-way transaction. It's actually a complex network of interdependent organizations requiring careful management and collaboration. Options A, B, and D are correct statements about marketing channels.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_2",
+      "tags": [
+        "Marketing Channel",
+        "Common Mistakes",
+        "Complexity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The relationship between organizations in a marketing channel is primarily characterized by:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Strict hierarchy and command control.",
+        "B": "Constant conflict and lack of communication.",
+        "C": "Interdependence and collaboration.",
+        "D": "Complete independence with no shared goals."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The definition emphasizes 'interdependent organizations that collaborate' to make products available. Options A, B, and D describe relationships that would hinder an effective marketing channel.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_2",
+      "tags": [
+        "Marketing Channel",
+        "Interdependence",
+        "Collaboration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which concept describes all parties involved in getting a product from raw materials to the final customer?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product Lifecycle",
+        "B": "Promotion Mix",
+        "C": "Supply Chain",
+        "D": "Brand Equity"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A Supply Chain encompasses all parties involved in moving a product from raw materials through production to the final customer. Options A, B, and D refer to different concepts in marketing and business management.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_3",
+      "tags": [
+        "Supply Chain",
+        "Raw Materials",
+        "Final Customer"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A holistic view that includes a company's suppliers, distributors, and ultimately customers, who partner to improve the performance of the entire system in delivering customer value, is known as a:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Production line",
+        "B": "Value Delivery Network",
+        "C": "Sales funnel",
+        "D": "Market segmentation strategy"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The Value Delivery Network is a broader, more holistic concept than a simple supply chain, integrating suppliers, distributors, and customers to enhance overall system performance and customer value. Options A, C, and D are related but distinct business concepts.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_3",
+      "tags": [
+        "Value Delivery Network",
+        "Customer Value",
+        "Collaboration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In a value delivery network, what do 'upstream activities' primarily involve?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Selling products directly to final customers.",
+        "B": "Sourcing raw materials from suppliers.",
+        "C": "Developing advertising campaigns.",
+        "D": "Providing post-purchase customer service."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Upstream activities in a value delivery network focus on the processes involved in sourcing inputs, such as raw materials and components, from suppliers. Options A, C, and D are typically considered downstream or marketing activities.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_3",
+      "tags": [
+        "Upstream",
+        "Supply Chain",
+        "Suppliers"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best describes 'downstream activities' in a value delivery network?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Sourcing raw materials and components.",
+        "B": "Manufacturing and production processes.",
+        "C": "Marketing channels reaching customers.",
+        "D": "Internal company administrative tasks."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Downstream activities involve the marketing channels and processes that bring the product to the final customer. Options A and B are upstream or internal production activities, while D is an internal function not specific to the value delivery network's external focus.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_3",
+      "tags": [
+        "Downstream",
+        "Marketing Channels",
+        "Customers"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following statements accurately describe aspects of a Supply Chain or Value Delivery Network? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A Supply Chain focuses on getting products from raw materials to customers.",
+        "B": "A Value Delivery Network is solely focused on cost reduction.",
+        "C": "Upstream activities involve sourcing from suppliers.",
+        "D": "Downstream activities primarily involve raw material extraction.",
+        "E": "A Value Delivery Network includes customers as partners."
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "E"
+      ],
+      "explanation": "A, C, and E are correct. A Supply Chain indeed encompasses all parties from raw materials to the final customer. Upstream activities are centered on sourcing from suppliers. A Value Delivery Network takes a holistic view, including customers as partners to enhance overall value. B is incorrect because a Value Delivery Network is focused on delivering customer value, not solely cost reduction. D is incorrect because downstream activities involve reaching customers through marketing channels, while raw material extraction is an upstream activity.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_3",
+      "tags": [
+        "Supply Chain",
+        "Value Delivery Network",
+        "Upstream",
+        "Downstream",
+        "Collaboration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Producers typically manufacture products in:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Small, diverse quantities.",
+        "B": "Huge quantities of a narrow assortment.",
+        "C": "Varied, unpredictable quantities based on daily demand.",
+        "D": "Moderate quantities with flexible assortment options."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Producers are characterized by offering a narrow assortment in huge quantities due to economies of scale in manufacturing. Options A, C, and D describe consumer preferences or less typical production models.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_4",
+      "tags": [
+        "Producer Characteristics",
+        "Marketing Gaps",
+        "Quantity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Consumers generally desire a product assortment that is:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Very narrow and highly specialized.",
+        "B": "Limited to a single brand or producer.",
+        "C": "Broad and available in small quantities.",
+        "D": "Only available in bulk for cost savings."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Consumers typically seek a broad assortment of products, often from different producers, and in small quantities suitable for individual or household use. Options A, B, and D describe producer characteristics or less common consumer behaviors.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_4",
+      "tags": [
+        "Consumer Characteristics",
+        "Marketing Gaps",
+        "Assortment"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which marketing gap arises because producers are often geographically concentrated, while consumers are dispersed across various locations?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Time Gap",
+        "B": "Place Gap",
+        "C": "Assortment Gap",
+        "D": "Possession Gap"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The Place Gap specifically refers to the disparity between where products are produced (concentrated) and where consumers desire to obtain them (dispersed). The other gaps relate to timing, variety, and ownership.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_4",
+      "tags": [
+        "Marketing Gaps",
+        "Place Gap",
+        "Producer Characteristics",
+        "Consumer Characteristics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The primary role of marketing channels in relation to the differences between producers and consumers is to:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Create more marketing gaps for competitive advantage.",
+        "B": "Increase production costs for higher quality.",
+        "C": "Bridge the fundamental gaps (Time, Place, Assortment, Possession).",
+        "D": "Focus solely on producer efficiency."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Marketing channels are essential for bridging the inherent differences between how producers make products and how consumers want to buy them, specifically addressing the Time, Place, Assortment, and Possession gaps. Options A, B, and D describe incorrect or incomplete roles.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_4",
+      "tags": [
+        "Marketing Channels",
+        "Marketing Gaps",
+        "Bridging Gaps"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A consumer wanting a wide variety of products from different manufacturers, while a producer offers a narrow range of a single type, highlights which marketing gap?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Time Gap",
+        "B": "Place Gap",
+        "C": "Assortment Gap",
+        "D": "Possession Gap"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The Assortment Gap arises from the difference between the narrow range of products offered by a single producer and the broad variety of products a consumer desires. The other gaps relate to when, where, and how ownership is transferred.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_4",
+      "tags": [
+        "Marketing Gaps",
+        "Assortment Gap",
+        "Consumer Characteristics",
+        "Producer Characteristics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary role of a Distributor in a supply chain?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To produce raw materials for manufacturing.",
+        "B": "To sell products directly to the end consumer in small quantities.",
+        "C": "To act as an intermediary, purchasing from manufacturers and reselling to retailers or businesses.",
+        "D": "To manage the advertising campaigns for a product.",
+        "E": "To transport goods from the retailer to the customer."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a Distributor's primary role is to serve as an intermediary, buying products in bulk from manufacturers and then selling them to other businesses, such as retailers or institutional clients. Option B describes a retailer's role, not a distributor's.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_5",
+      "tags": [
+        "Distributor",
+        "Supply Chain",
+        "Intermediary",
+        "Role"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement best describes how a Distributor typically differs from a Retailer?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Distributors always sell products at a higher price than retailers.",
+        "B": "Distributors produce goods, while retailers sell them.",
+        "C": "Distributors primarily sell to other businesses, while retailers primarily sell to end consumers.",
+        "D": "Retailers manage inventory, while distributors do not.",
+        "E": "Distributors only operate online, while retailers have physical stores."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A key distinction is that distributors typically sell in larger quantities to other businesses (like retailers), whereas retailers focus on selling directly to the end consumer. Option B is incorrect as distributors do not produce goods.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_5",
+      "tags": [
+        "Distributor",
+        "Retailer",
+        "Supply Chain",
+        "Distinction"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key benefit a manufacturer gains by utilizing a distributor?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Increased direct control over end-consumer pricing.",
+        "B": "Reduced need for product innovation.",
+        "C": "Streamlined supply chain and reduced number of direct contacts with individual customers.",
+        "D": "Elimination of all logistical costs.",
+        "E": "Exclusive rights to sell products in all markets."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Distributors help streamline the supply chain by reducing the number of direct contacts a manufacturer needs to manage, allowing the manufacturer to focus on production and innovation. Option A is incorrect as distributors may reduce direct control over pricing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_5",
+      "tags": [
+        "Distributor",
+        "Efficiency",
+        "Supply Chain",
+        "Manufacturer Benefits"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the context of a supply chain, which term best describes a business that buys products from manufacturers and resells them to other businesses?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "End Consumer",
+        "B": "Retailer",
+        "C": "Manufacturer",
+        "D": "Distributor",
+        "E": "Logistics Provider"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct. A distributor acts as an intermediary, purchasing products from manufacturers and then reselling them to other businesses, such as retailers or institutional clients. An end consumer buys for personal use, a retailer sells to end consumers, and a manufacturer produces the goods.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_5",
+      "tags": [
+        "Distributor",
+        "Supply Chain",
+        "Intermediary",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake is to underestimate the value of a distributor, thinking direct-to-consumer is always better. For which reason might a distributor be indispensable?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To reduce the manufacturer's product development costs.",
+        "B": "For products requiring complex logistics or broad market penetration.",
+        "C": "To eliminate the need for any marketing efforts.",
+        "D": "To ensure higher per-unit profit margins for the manufacturer.",
+        "E": "To exclusively handle customer service and returns."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. For many products, especially those requiring complex logistics or broad market penetration, a distributor's specialized infrastructure and market reach are indispensable. Option D is incorrect as distributors typically take a margin, which can reduce the manufacturer's per-unit profit.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_5",
+      "tags": [
+        "Distributor",
+        "Value",
+        "Common Mistakes",
+        "Logistics",
+        "Market Penetration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary way a distributor reduces the 'Number of Contacts' in a supply chain?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "By forcing manufacturers to sell directly to consumers.",
+        "B": "By centralizing the flow of goods, so manufacturers interact with one distributor instead of many customers.",
+        "C": "By eliminating the need for any communication between supply chain partners.",
+        "D": "By increasing the number of intermediaries.",
+        "E": "By only serving a single, exclusive customer."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A distributor centralizes the flow of goods, meaning manufacturers only need to interact with one or a few distributors, who then handle contact with multiple customers. This consolidation significantly reduces the total number of direct contacts. Option D is incorrect as while a distributor is an intermediary, its role is to reduce *contact complexity*, not just add steps.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_6",
+      "tags": [
+        "Distributor",
+        "Number of Contacts",
+        "Efficiency",
+        "Supply Chain"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Consider a scenario where 4 manufacturers each need to sell their products to 5 different customers. If they all sell directly without a distributor, how many total direct contacts are required between manufacturers and customers?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "9",
+        "D": "20",
+        "E": "40"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct. If each of the 4 manufacturers sells to each of the 5 customers directly, the total number of contacts is 4 manufacturers * 5 customers = 20 direct contacts.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_6",
+      "tags": [
+        "Distributor",
+        "Number of Contacts",
+        "Calculation",
+        "Supply Chain"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a direct benefit of a distributor reducing the number of contacts in a supply chain?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Increased complexity in logistics.",
+        "B": "Higher administrative overhead for manufacturers.",
+        "C": "Streamlined communication and logistics.",
+        "D": "Reduced market penetration.",
+        "E": "Slower delivery times to customers."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Reducing the number of contacts through a distributor leads to simplified communication, logistics, and overall management, enhancing efficiency. Options A and B are the opposite of the benefits, and D and E are typically not outcomes.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_6",
+      "tags": [
+        "Distributor",
+        "Efficiency",
+        "Logistics",
+        "Communication"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake is thinking a distributor *adds* a step, making the supply chain longer. What is the strategic counter-argument to this misconception?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Distributors always work for free, so there's no added cost.",
+        "B": "The distributor's role is to reduce the complexity and cost of contacts, not just to lengthen the chain.",
+        "C": "Distributors only handle very small volumes, so their impact is minimal.",
+        "D": "Distributors only serve manufacturers, never customers.",
+        "E": "The supply chain becomes longer but always faster with a distributor."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. While a distributor is an additional entity, its strategic role is to *reduce the complexity and cost of contacts* for both manufacturers and customers, leading to overall efficiency gains that often outweigh the distributor's margin. Option A is incorrect as distributors operate for profit.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_6",
+      "tags": [
+        "Distributor",
+        "Efficiency",
+        "Common Mistakes",
+        "Supply Chain Complexity"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are benefits of a distributor centralizing the flow of goods in a supply chain? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Simplifies communication between manufacturers and customers.",
+        "B": "Increases the administrative burden for manufacturers.",
+        "C": "Streamlines logistics and delivery processes.",
+        "D": "Reduces overall supply chain management complexity.",
+        "E": "Ensures manufacturers have direct relationships with every end customer."
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A, C, and D are correct. By centralizing the flow of goods, a distributor simplifies communication (A), streamlines logistics (C), and reduces overall supply chain management complexity (D). Option B is incorrect as it reduces, not increases, administrative burden. Option E is incorrect because distributors often *reduce* the need for manufacturers to have direct relationships with every end customer.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_6",
+      "tags": [
+        "Distributor",
+        "Benefits",
+        "Efficiency",
+        "Supply Chain",
+        "MCA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary function of the 'Information' function in a marketing channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To physically transport goods from producers to consumers.",
+        "B": "To negotiate pricing and terms of sale between parties.",
+        "C": "To gather and distribute vital data about consumers, producers, and market forces.",
+        "D": "To store products until they are needed by customers.",
+        "E": "To promote products through advertising campaigns."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The 'Information' function is specifically about collecting and sharing crucial data to enable informed decision-making throughout the marketing environment. The other options describe different functions of a marketing channel.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_7",
+      "tags": [
+        "Information Function",
+        "Marketing Channel",
+        "Data Gathering",
+        "Role"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Why is the 'Information' function considered crucial for effective exchange in a marketing channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It eliminates the need for any other marketing functions.",
+        "B": "It ensures that product prices are always the lowest possible.",
+        "C": "It enables informed decision-making by aligning offers with market needs.",
+        "D": "It guarantees direct-to-consumer sales for all products.",
+        "E": "It primarily focuses on competitor espionage."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The 'Information' function is crucial because the data it gathers and distributes helps ensure that product offers effectively meet market needs, enabling informed decision-making. Option B is incorrect; while information can help optimize pricing, it doesn't guarantee the lowest prices.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_7",
+      "tags": [
+        "Information Function",
+        "Crucial",
+        "Decision Making",
+        "Market Needs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake regarding the 'Information' function is treating it as a one-way street. What is the correct understanding of information flow in an effective marketing channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Information only flows from producers to consumers.",
+        "B": "Information only flows from consumers to producers.",
+        "C": "Information flow is bidirectional, involving both producers and consumers/intermediaries.",
+        "D": "Information is only collected once at the beginning of the product lifecycle.",
+        "E": "Information is not shared with intermediaries."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Effective information flow is bidirectional, meaning it involves producers sharing product updates and availability, and consumers/intermediaries sharing feedback and demand data. Options A and B describe one-way flows, which are common mistakes.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_7",
+      "tags": [
+        "Information Function",
+        "Bidirectional",
+        "Common Mistakes",
+        "Marketing Channel"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "If a grocery chain collects point-of-sale data on what customers buy and shares this with product manufacturers to inform their production schedules, which marketing channel function is being demonstrated?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Physical Distribution",
+        "B": "Financing",
+        "C": "Negotiation",
+        "D": "Information",
+        "E": "Risk Taking"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct. The act of collecting and sharing data about customer purchases and market demand directly relates to the 'Information' function, which aids in planning and decision-making for manufacturers. The other options represent different functions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_7",
+      "tags": [
+        "Information Function",
+        "Real World Use Case",
+        "Data Sharing",
+        "Marketing Channel"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The 'Information' function in a marketing channel helps ensure that product offers effectively meet what key aspect?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Competitor pricing strategies.",
+        "B": "Internal company budgets.",
+        "C": "Market needs and consumer preferences.",
+        "D": "Employee training requirements.",
+        "E": "Government regulations only."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. By gathering and distributing vital data, the 'Information' function ensures that product offers are aligned with market needs and consumer preferences, leading to more successful exchanges. While competitor pricing and regulations are part of market forces, 'market needs and consumer preferences' is a broader and more direct answer to 'product offers effectively meet what'.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_7",
+      "tags": [
+        "Information Function",
+        "Market Needs",
+        "Consumer Preferences",
+        "Marketing Channel"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What do 'Channel Levels' refer to in the context of distribution?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The number of different products offered by a single producer.",
+        "B": "The pricing tiers for a product.",
+        "C": "The number of intermediaries a product passes through from producer to consumer.",
+        "D": "The geographical reach of a distribution network.",
+        "E": "The hierarchy of management within a logistics company."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Channel levels define the number of distinct intermediaries involved in moving a product from its producer to the end consumer. The other options describe unrelated concepts.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_8",
+      "tags": [
+        "Channel Levels",
+        "Definition",
+        "Intermediaries",
+        "Distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of distribution channel involves no intermediaries between the producer and the consumer?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Two-level channel",
+        "B": "Indirect distribution",
+        "C": "Zero-level channel",
+        "D": "Wholesale channel",
+        "E": "Multi-channel"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A zero-level channel, also known as direct distribution, means the producer sells directly to the consumer without any intermediaries. Options A, B, and D all involve intermediaries.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_8",
+      "tags": [
+        "Zero-Level Channel",
+        "Direct Distribution",
+        "Intermediaries",
+        "Channel Levels"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small artisanal jam maker sells jars directly from their farm stand to customers. This is an example of which channel level?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "One-level channel",
+        "B": "Two-level channel",
+        "C": "Indirect channel",
+        "D": "Zero-level channel",
+        "E": "Third-party channel"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct. Selling directly from a farm stand to customers means there are no intermediaries between the producer (jam maker) and the consumer, which defines a zero-level channel (direct distribution).",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_8",
+      "tags": [
+        "Zero-Level Channel",
+        "Direct Distribution",
+        "Example",
+        "Channel Levels"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What differentiates indirect distribution from direct distribution?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Indirect distribution is always more profitable.",
+        "B": "Direct distribution always involves online sales.",
+        "C": "Indirect distribution involves one or more intermediaries between the producer and consumer.",
+        "D": "Direct distribution offers less control to the producer.",
+        "E": "Indirect distribution is only used for services, not physical products."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Indirect distribution inherently means that there are intermediaries (like retailers or wholesalers) between the producer and the consumer, whereas direct distribution bypasses them. Option D is incorrect; direct distribution typically offers *more* control.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_8",
+      "tags": [
+        "Indirect Distribution",
+        "Direct Distribution",
+        "Distinction",
+        "Intermediaries"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "If a manufacturer sells products through a wholesaler, who then sells to a retailer, and finally the retailer sells to the consumer, how many channel levels are involved in this distribution path?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Zero-level",
+        "B": "One-level",
+        "C": "Two-level",
+        "D": "Three-level",
+        "E": "Four-level"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. This path involves two intermediaries: the wholesaler and the retailer. Therefore, it is a two-level channel (Producer → Wholesaler → Retailer → Consumer).",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_8",
+      "tags": [
+        "Two-Level Channel",
+        "Channel Levels",
+        "Wholesaler",
+        "Retailer",
+        "Application"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the defining characteristic of entities within a conventional distribution channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "They are centrally controlled by a single owner.",
+        "B": "They operate as independent businesses.",
+        "C": "They prioritize the overall channel's profit above individual gains.",
+        "D": "They share all profits equally among members."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because a conventional distribution channel consists of independent businesses (producers, wholesalers, retailers) that operate separately. Option A is incorrect as central control is characteristic of a vertically integrated system, not a conventional channel. Options C and D are incorrect as individual profit maximization is the primary goal, sometimes at the expense of overall channel profit.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_9",
+      "tags": [
+        "Conventional Distribution Channel",
+        "Independent Businesses",
+        "Profit Maximization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In a conventional distribution channel, what is the primary goal of each independent entity regarding profit?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To maximize the profit of the entire channel system.",
+        "B": "To minimize overall channel costs.",
+        "C": "To maximize its own individual profit.",
+        "D": "To distribute profits equally among all members."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because each independent entity in a conventional distribution channel primarily seeks to maximize its own individual profits. Option A is incorrect as optimizing the entire channel's profit is often not the case, and can even be at the expense of it. Options B and D are not the primary, overarching goal for independent entities in this setup.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_9",
+      "tags": [
+        "Conventional Distribution Channel",
+        "Profit Maximization",
+        "Independent Businesses"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a potential outcome when independent entities in a conventional distribution channel each seek to maximize their own profits?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Guaranteed optimization of the entire channel's profit.",
+        "B": "Reduced overall channel costs due to competition.",
+        "C": "Conflict of interest among channel members.",
+        "D": "Complete vertical integration of the channel."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because when each independent entity prioritizes its own profit, it can lead to conflicting objectives and inefficiencies for the channel as a whole. Option A is incorrect as the opposite is often true; overall channel profit might be sacrificed. Option D is incorrect as vertical integration is a different channel structure, not an outcome of conventional channel operation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_9",
+      "tags": [
+        "Conventional Distribution Channel",
+        "Conflict",
+        "Channel/System Profit"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A small clothing brand sells its products to various independent boutiques, each of which sets its own prices and promotional strategies. This scenario best illustrates which type of distribution channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A vertically integrated system.",
+        "B": "A conventional distribution channel.",
+        "C": "A horizontal marketing system.",
+        "D": "A corporate vertical marketing system."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because the scenario describes independent entities (clothing brand and boutiques) each making their own decisions, which is the hallmark of a conventional distribution channel. Option A is incorrect as a vertically integrated system would involve unified ownership or control. Options C and D describe other, more integrated channel structures.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_9",
+      "tags": [
+        "Conventional Distribution Channel",
+        "Real-world use case"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement accurately describes a conventional distribution channel, distinguishing it from a vertically integrated system?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It features unified control under a single owner.",
+        "B": "It prioritizes the overall system's profit above all else.",
+        "C": "Its members are independent businesses operating with potentially conflicting objectives.",
+        "D": "It is designed to eliminate all inefficiencies through central planning."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because the independence and potential for conflicting objectives among members are defining characteristics of a conventional distribution channel, contrasting it with a vertically integrated system. Options A, B, and D describe features more aligned with vertically integrated or highly coordinated systems, where control and optimization are centralized.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_9",
+      "tags": [
+        "Conventional Distribution Channel",
+        "Common Mistakes",
+        "Independent Businesses"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best describes a 'forward flow' in a distribution channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The movement of customer feedback to the producer.",
+        "B": "The return of defective products to the manufacturer.",
+        "C": "The delivery of a product from the producer to the consumer.",
+        "D": "The recycling of packaging materials from the consumer."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because forward flows represent the movement of goods, services, information, and payment from the producer towards the consumer. Options A, B, and D all describe movements from the consumer back towards the producer, which are characteristic of backward flows.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_10",
+      "tags": [
+        "Forward Flows",
+        "Distribution Channels",
+        "Logistics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A customer sends a damaged product back to the manufacturer for repair. This action represents which type of flow in a distribution channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A forward flow.",
+        "B": "A lateral flow.",
+        "C": "A backward flow.",
+        "D": "A transactional flow."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because backward flows involve the movement of returned products, repair services, and feedback information from the consumer back towards the producer. Option A, a forward flow, would be the product moving to the customer. Options B and D are not standard classifications for this type of movement in distribution channels.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_10",
+      "tags": [
+        "Backward Flows",
+        "Distribution Channels",
+        "Returns"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of these items is typically considered part of a forward flow in a distribution channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Returned merchandise.",
+        "B": "Product warranty information.",
+        "C": "Customer complaint forms.",
+        "D": "Recycled product components."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because product warranty information moves from the producer to the consumer, making it a forward flow of information. Options A, C, and D are all examples of backward flows, as they involve movement or information from the consumer back towards the producer.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_10",
+      "tags": [
+        "Forward Flows",
+        "Distribution Channels",
+        "Information Flow"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are examples of backward flows in a distribution channel? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A customer submitting a product review online.",
+        "B": "A retailer returning unsold inventory to a wholesaler.",
+        "C": "A manufacturer shipping new products to a distributor.",
+        "D": "A consumer sending an old electronic device for recycling."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "Options A, B, and D are correct because they all represent movements or information from the consumer or a downstream channel member back towards the producer. A product review (A) is feedback, returning unsold inventory (B) is a product return, and recycling (D) is a form of product movement back up the channel. Option C is incorrect as shipping new products to a distributor is a forward flow.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_10",
+      "tags": [
+        "Backward Flows",
+        "Distribution Channels",
+        "Returns",
+        "Feedback"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Neglecting to manage backward flows effectively in a distribution channel can primarily lead to which of the following?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Increased efficiency in product delivery.",
+        "B": "Enhanced customer loyalty.",
+        "C": "Damage to brand reputation and financial losses.",
+        "D": "Streamlined forward logistics."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because poorly managed backward flows (e.g., complex returns, ignored feedback) can significantly damage customer loyalty, brand reputation, and lead to financial losses. Options A, B, and D are incorrect as they represent positive outcomes, whereas neglecting backward flows typically leads to negative consequences.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_10",
+      "tags": [
+        "Backward Flows",
+        "Common Mistakes",
+        "Customer Satisfaction"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary purpose of a distribution network?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To solely manage the production of goods.",
+        "B": "To move products from the producer to the final consumer.",
+        "C": "To conduct market research for new products.",
+        "D": "To handle customer service inquiries exclusively."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because a distribution network is fundamentally the system designed to move products from where they are produced to where they are consumed. Options A, C, and D describe other important business functions, but not the primary purpose of a distribution network.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_11",
+      "tags": [
+        "Distribution Network",
+        "Logistics",
+        "Supply Chain"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is identified as a key component of a distribution network for moving products from producer to consumer?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Human Resources Department.",
+        "B": "Manufacturing Plant's R&D team.",
+        "C": "Retailers.",
+        "D": "Legal Department."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because retailers are intermediaries that sell products to final consumers, making them a crucial component of a distribution network. Options A, B, and D are internal departments within a company and are not direct channel members in the distribution network's structure.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_11",
+      "tags": [
+        "Distribution Network",
+        "Channel Members"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake is to think a distribution network is just about transport. What broader aspect does it also encompass?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Only the financial accounting of the producer.",
+        "B": "All channel members, their relationships, and information flow.",
+        "C": "Exclusively the advertising campaigns.",
+        "D": "Only the raw material sourcing."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because a distribution network is a comprehensive system that includes all channel members (intermediaries), their relationships, and the flow of information and financial transactions, not just the physical movement of goods. Options A, C, and D are too narrow or unrelated to the core definition of a distribution network.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_11",
+      "tags": [
+        "Distribution Network",
+        "Common Mistakes",
+        "Channel Members"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In a distribution network, what is the typical role of a 'depot'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To produce the goods.",
+        "B": "To serve as a storage and transfer point for goods.",
+        "C": "To conduct primary market research.",
+        "D": "To directly sell to individual end-consumers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because depots, or warehouses, are facilities within a distribution network primarily used for storing products and acting as transfer points before goods move further down the channel. Option A describes a producer, Option C describes a research function, and Option D describes a retailer.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_11",
+      "tags": [
+        "Distribution Network",
+        "Logistics",
+        "Depots"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company like Coca-Cola uses a system of bottling plants, regional distributors, and various stores to get its products to customers worldwide. This entire system is best described as a:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Production assembly line.",
+        "B": "Distribution network.",
+        "C": "Marketing research firm.",
+        "D": "Customer support center."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because the described system, involving multiple intermediaries and facilities to move products from manufacturing to the consumer, perfectly aligns with the definition of a distribution network. Options A, C, and D refer to other specific business functions, not the overarching system of product delivery.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_11",
+      "tags": [
+        "Distribution Network",
+        "Real-world use case",
+        "Supply Chain"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary role of 'channel members' in a distribution network?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To manufacture the products.",
+        "B": "To facilitate the movement of goods from producer to consumer.",
+        "C": "To design new product packaging.",
+        "D": "To manage internal company finances."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because channel members are the intermediaries whose main function is to facilitate the flow of goods and services from the point of production to the point of consumption. Options A, C, and D describe roles outside the primary function of channel members.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_12",
+      "tags": [
+        "Channel Members",
+        "Distribution",
+        "Intermediaries"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is explicitly mentioned as a typical channel member in a distribution network for products like Parle G?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Raw Material Suppliers.",
+        "B": "Human Resources Managers.",
+        "C": "Retailers.",
+        "D": "Product Development Teams."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because retailers are directly mentioned as channel members for Parle G, responsible for selling products to the final consumer. Options A, B, and D are either upstream suppliers or internal company departments, not typically considered direct channel members in the distribution network context.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_12",
+      "tags": [
+        "Channel Members",
+        "Distribution",
+        "Retailers"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key function of a 'Carry Forward Agent' in a distribution network, as described for fast-moving consumer goods (FMCG) products?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To conduct market research for consumer preferences.",
+        "B": "To manage inventory holding and regional distribution.",
+        "C": "To manufacture finished goods at the factory.",
+        "D": "To provide after-sales customer support directly."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Option B is correct because Carry Forward Agents play a crucial role in inventory holding, breaking bulk, and regional distribution, especially important for FMCG. Option A, C, and D describe roles of market research, manufacturing, or customer service, respectively, which are not the primary functions of a Carry Forward Agent.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_12",
+      "tags": [
+        "Channel Members",
+        "Carry Forward Agents",
+        "Logistics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake is to overlook 'Depots' as distinct channel members. What distinguishes a depot's role in the distribution network?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "They are the final point of sale to consumers.",
+        "B": "They are primarily responsible for product manufacturing.",
+        "C": "They serve as strategic inventory holding and regional distribution points.",
+        "D": "They handle the initial raw material procurement."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because depots are strategic facilities for storing large quantities of products and facilitating their regional distribution, making them distinct channel members. Option A describes a retailer, Option B describes a producer, and Option D describes a supplier or procurement function.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_12",
+      "tags": [
+        "Channel Members",
+        "Depots",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A grocery store that sells a variety of products directly to end-consumers is an example of which type of channel member?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A producer.",
+        "B": "A wholesaler.",
+        "C": "A retailer.",
+        "D": "A Carry Forward Agent."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Option C is correct because a grocery store that sells directly to end-consumers fits the definition of a retailer. Option A is the manufacturer of the goods, Option B sells to other businesses (like retailers), and Option D manages inventory and regional distribution, typically not directly selling to consumers.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_12",
+      "tags": [
+        "Channel Members",
+        "Retailers",
+        "Distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best defines a Vertical Marketing System (VMS)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A system where producers, wholesalers, and retailers operate as independent entities, each maximizing their own profits.",
+        "B": "A distribution channel structure where producers, wholesalers, and retailers act as a unified system.",
+        "C": "A network of competing firms at the same channel level collaborating on marketing efforts.",
+        "D": "A system focused solely on direct-to-consumer sales, bypassing intermediaries."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a VMS is defined by its unified structure, where channel members (producers, wholesalers, retailers) work together as a single system. Option A describes a traditional or conventional distribution channel, which is distinct from a VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_13",
+      "tags": [
+        "VMS",
+        "Distribution Channel",
+        "Marketing Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary goal of establishing a Vertical Marketing System (VMS)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To increase competition among channel members.",
+        "B": "To maximize individual profits for each independent channel member.",
+        "C": "To maximize efficiency and market impact through system-wide coordination.",
+        "D": "To eliminate the need for any intermediaries in the distribution process."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a VMS aims for system-wide coordination to enhance overall efficiency and market impact, rather than individual profit maximization. Option B describes the goal of a conventional channel, not a VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_13",
+      "tags": [
+        "VMS",
+        "Efficiency",
+        "Market Impact",
+        "Channel Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In a Vertical Marketing System (VMS), how do channel members typically achieve cooperation?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Through informal agreements and handshake deals.",
+        "B": "By each member independently setting their own profit targets.",
+        "C": "One member owns the others, has contracts with them, or wields significant power.",
+        "D": "By focusing solely on short-term gains at each stage of distribution."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because VMS coordination is achieved through strong mechanisms like ownership, formal contracts, or the dominant power of one channel member. Option A describes a less structured, informal approach, which is not characteristic of a VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_13",
+      "tags": [
+        "VMS",
+        "Coordination",
+        "Power",
+        "Ownership",
+        "Contracts"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key difference between a Vertical Marketing System (VMS) and a traditional (conventional) distribution channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A VMS has fewer channel members than a traditional channel.",
+        "B": "A VMS focuses on individual member profits, while a traditional channel focuses on system-wide profits.",
+        "C": "A VMS operates as a unified system, whereas a traditional channel has independent firms prioritizing their own profits.",
+        "D": "A VMS uses only online distribution, while a traditional channel uses physical stores."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the defining characteristic of a VMS is its unified, coordinated operation, contrasting with traditional channels where independent firms often prioritize their own profits, potentially at the expense of the overall system. Option B reverses the focus of each channel type.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_13",
+      "tags": [
+        "VMS",
+        "Traditional Channel",
+        "Comparison",
+        "Channel Structure"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT a characteristic of a Vertical Marketing System (VMS)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Maximizing efficiency across the entire distribution channel.",
+        "B": "Channel members acting as a unified system.",
+        "C": "Independent firms prioritizing their own short-term profits.",
+        "D": "Coordination achieved through ownership, contracts, or power."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a VMS aims for system-wide optimization and coordination, often requiring members to sacrifice individual short-term gains for collective long-term success. Independent firms prioritizing their own short-term profits is characteristic of a conventional distribution channel, not a VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_13",
+      "tags": [
+        "VMS",
+        "Anti-concept",
+        "Channel Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the defining characteristic of a Corporate Vertical Marketing System (VMS)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Coordination through formal contracts between independent firms.",
+        "B": "Coordination through the power and influence of a dominant channel member.",
+        "C": "Single ownership of successive stages of production and distribution.",
+        "D": "A loose association of firms collaborating informally."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a Corporate VMS is distinguished by a single company owning and controlling multiple levels of the distribution channel. Option A describes a Contractual VMS, and Option B describes an Administered VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_14",
+      "tags": [
+        "Corporate VMS",
+        "Ownership",
+        "Integration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which benefit is primarily associated with a Corporate VMS due to its structure?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Increased flexibility for individual channel members to pursue their own strategies.",
+        "B": "Lower capital investment due to reliance on external partners.",
+        "C": "Tight coordination and control over the entire value chain.",
+        "D": "Reduced risk of conflicts between independent firms."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because single ownership in a Corporate VMS allows for tight coordination and control from design to retail. Option A is characteristic of less integrated channels, while B is often true for Contractual VMS, and D is a general benefit of any VMS over conventional channels, but C is specific to Corporate VMS's ownership structure.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_14",
+      "tags": [
+        "Corporate VMS",
+        "Control",
+        "Value Chain",
+        "Coordination"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Zara, a fast-fashion retailer, is often cited as an example of which type of Vertical Marketing System?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Administered VMS",
+        "B": "Contractual VMS",
+        "C": "Conventional Distribution Channel",
+        "D": "Corporate VMS"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct because Zara (Inditex) owns its design, manufacturing, logistics, and retail stores, representing a Corporate VMS. Options A and B are other types of VMS that rely on power or contracts, respectively, not direct ownership of the entire chain.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_14",
+      "tags": [
+        "Corporate VMS",
+        "Example",
+        "Zara"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company that designs its products, manufactures them in its own factories, and sells them exclusively through its own retail stores is operating under which type of system?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Administered Marketing System",
+        "B": "Contractual Marketing System",
+        "C": "Corporate Vertical Marketing System",
+        "D": "Horizontal Marketing System"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the scenario describes a single company owning and controlling multiple successive stages of production and distribution, which is the definition of a Corporate VMS. Options A and B represent other VMS types, while D is a different channel structure altogether.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_14",
+      "tags": [
+        "Corporate VMS",
+        "Application",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement about a Corporate VMS is FALSE?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It involves direct ownership of production and distribution stages.",
+        "B": "It allows for tight control over product quality and brand image.",
+        "C": "It relies primarily on formal contracts between independent firms.",
+        "D": "It can achieve significant speed-to-market advantages."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a Corporate VMS achieves coordination through direct ownership and hierarchical control, not through formal contracts between independent firms. Formal contracts are characteristic of a Contractual VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_14",
+      "tags": [
+        "Corporate VMS",
+        "Anti-concept",
+        "Comparison"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary mechanism for coordination in a Contractual Vertical Marketing System (VMS)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Direct ownership of all channel stages by a single company.",
+        "B": "The dominant power and influence of a market leader.",
+        "C": "Formal, legally binding agreements between independent firms.",
+        "D": "Informal understandings and goodwill among partners."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a Contractual VMS relies on formal contracts to bind independent firms together for collective benefit. Option A describes a Corporate VMS, and Option B describes an Administered VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_15",
+      "tags": [
+        "Contractual VMS",
+        "Coordination",
+        "Contracts"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are main forms of a Contractual Vertical Marketing System? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Wholesaler-sponsored voluntary chains",
+        "B": "Corporate ownership of retail outlets",
+        "C": "Retailer cooperatives",
+        "D": "Franchise organizations"
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A, C, and D are correct because wholesaler-sponsored voluntary chains, retailer cooperatives, and franchise organizations are the three main forms of a Contractual VMS, where independent firms join through contracts. B is incorrect as it describes a Corporate VMS, which relies on ownership, not contracts between independent firms.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_15",
+      "tags": [
+        "Contractual VMS",
+        "Forms",
+        "MCA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Independent grocery stores forming a wholesaler-sponsored voluntary chain like IGA to gain purchasing power is an example of which VMS type?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Administered VMS",
+        "B": "Corporate VMS",
+        "C": "Contractual VMS",
+        "D": "Horizontal Marketing System"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because wholesaler-sponsored voluntary chains are a specific form of Contractual VMS, where independent firms contractually agree to cooperate for mutual benefit, such as increased purchasing power. Options A and B rely on power or ownership, respectively.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_15",
+      "tags": [
+        "Contractual VMS",
+        "Example",
+        "Wholesaler Chain"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary reason independent firms might choose to form a Contractual VMS?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To become a single, unified corporate entity.",
+        "B": "To achieve greater economies or sales impact than they could alone.",
+        "C": "To establish a dominant position through sheer market power.",
+        "D": "To avoid any formal commitments or responsibilities."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because independent firms enter into a Contractual VMS specifically to gain collective benefits like greater economies of scale or increased sales impact that would be difficult to achieve individually. Option A describes a Corporate VMS, and Option C relates to an Administered VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_15",
+      "tags": [
+        "Contractual VMS",
+        "Benefits",
+        "Collaboration"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT a characteristic of a Contractual Vertical Marketing System?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Involves independent firms at different levels of the channel.",
+        "B": "Relies on formal, legally binding contracts for coordination.",
+        "C": "Aims to obtain greater economies or sales impact collectively.",
+        "D": "Achieves coordination through direct ownership of successive stages."
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct because achieving coordination through direct ownership of successive stages is the defining characteristic of a Corporate VMS, not a Contractual VMS. A Contractual VMS explicitly involves independent firms bound by contracts.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_15",
+      "tags": [
+        "Contractual VMS",
+        "Anti-concept",
+        "Comparison"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "How does an Administered Vertical Marketing System (VMS) achieve coordination among channel members?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Through a single company owning all stages of production and distribution.",
+        "B": "Through formal contracts signed between independent firms.",
+        "C": "Through the size and power of one dominant channel member.",
+        "D": "Through informal conversations and mutual respect."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because an Administered VMS coordinates activities based on the significant market power and influence of one dominant party. Option A describes a Corporate VMS, and Option B describes a Contractual VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_16",
+      "tags": [
+        "Administered VMS",
+        "Coordination",
+        "Power",
+        "Influence"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following companies is a classic example of operating through an Administered VMS due to its brand power and market share?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Zara (owning its manufacturing and retail)",
+        "B": "Starbucks (franchising model)",
+        "C": "Procter & Gamble (P&G)",
+        "D": "A small, local craft brewery selling only through farmers' markets"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because Procter & Gamble (P&G) uses its immense brand power and market share to influence retailers, making it a prime example of an Administered VMS. Zara is a Corporate VMS, and Starbucks uses a Contractual (franchise) VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_16",
+      "tags": [
+        "Administered VMS",
+        "Example",
+        "P&G",
+        "Brand Power"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In an Administered VMS, the dominant channel member's influence ensures cooperation without the need for:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Market impact",
+        "B": "System unity",
+        "C": "Formal contracts or direct ownership",
+        "D": "Product distribution"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because an Administered VMS achieves coordination through power and influence, specifically differentiating it from Corporate VMS (ownership) and Contractual VMS (formal contracts). Market impact, system unity, and product distribution are all goals or outcomes of a VMS.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_16",
+      "tags": [
+        "Administered VMS",
+        "Distinction",
+        "Power"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common mistake when understanding an Administered VMS?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Recognizing the importance of brand power.",
+        "B": "Confusing it with a system based on formal contracts or ownership.",
+        "C": "Understanding its goal of system unity.",
+        "D": "Identifying the dominant channel member."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a common mistake is to confuse an Administered VMS (which relies on power) with a Corporate VMS (ownership) or a Contractual VMS (formal contracts). The key is to differentiate the source of coordination.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_16",
+      "tags": [
+        "Administered VMS",
+        "Common Mistakes",
+        "Anti-concept"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following scenarios best illustrates an Administered Vertical Marketing System?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A car manufacturer buying out its key dealerships.",
+        "B": "A group of independent hotels agreeing to use a common reservation system.",
+        "C": "A major soft drink company dictating shelf space and promotional terms to grocery stores.",
+        "D": "A small business selling handmade crafts directly to consumers online."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a major soft drink company (like Coca-Cola or Pepsi) using its market power to influence retailers' behavior is a classic example of an Administered VMS. Option A is a Corporate VMS, Option B could be a Contractual VMS (e.g., a voluntary chain), and Option D is a direct marketing channel.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_16",
+      "tags": [
+        "Administered VMS",
+        "Application",
+        "Influence"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What was a primary innovative aspect of the Starbucks and iTunes collaboration?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It was a simple advertising campaign for iTunes in Starbucks stores.",
+        "B": "It involved Starbucks selling iTunes gift cards at a discount.",
+        "C": "It integrated digital music services into a physical retail environment.",
+        "D": "It focused solely on promoting Starbucks coffee through iTunes music downloads."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the collaboration innovated by integrating digital music services (iTunes Wi-Fi Music Store) directly within Starbucks' physical locations, allowing for wireless music downloads. Options A, B, and D describe less strategic or incorrect aspects of the partnership.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_17",
+      "tags": [
+        "Partnership",
+        "Innovation",
+        "Marketing Strategy",
+        "Digital Services"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The Starbucks and iTunes partnership primarily aimed to enhance which aspect of the customer experience?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The speed of coffee preparation.",
+        "B": "The convenience of accessing digital entertainment while in-store.",
+        "C": "The variety of food options available.",
+        "D": "The seating capacity of Starbucks locations."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the collaboration allowed customers to wirelessly download music, enhancing their in-store experience by providing convenient access to digital entertainment. The other options are not directly related to the purpose of this specific partnership.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_17",
+      "tags": [
+        "Customer Experience",
+        "Innovation",
+        "Partnership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which term best describes the Starbucks and iTunes initiative, emphasizing a deep connection rather than just a simple promotion?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Co-promotion",
+        "B": "Strategic integration of services",
+        "C": "Advertising campaign",
+        "D": "Product placement"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The partnership was a strategic integration of services, meaning it combined the core offerings of both companies to create a new customer experience. Options A, C, and D are common mistakes, as they suggest a more superficial or less impactful relationship.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_17",
+      "tags": [
+        "Strategic Integration",
+        "Innovation",
+        "Partnership",
+        "Marketing Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What type of innovation did the Starbucks and iTunes collaboration primarily demonstrate in the context of business strategy?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product innovation",
+        "B": "Process innovation",
+        "C": "Marketing innovation through partnership",
+        "D": "Technological innovation in coffee brewing"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The flashcard explicitly states that the collaboration demonstrated 'innovation in marketing through partnership' by creating a unique way to reach customers and enhance their experience. The other options describe different types of innovation not central to this particular partnership.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_17",
+      "tags": [
+        "Marketing Innovation",
+        "Partnership",
+        "Innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What was the main function of the iTunes Wi-Fi Music Store feature within Starbucks locations?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To provide free Wi-Fi for general internet browsing.",
+        "B": "To sell physical music CDs to customers.",
+        "C": "To enable wireless digital music downloads.",
+        "D": "To allow customers to order coffee using the iTunes app."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The iTunes Wi-Fi Music Store specifically allowed customers to wirelessly download music directly from Starbucks stores. While Starbucks did offer general Wi-Fi, the 'iTunes Wi-Fi Music Store' was a distinct feature for music downloads.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_17",
+      "tags": [
+        "Digital Services",
+        "Customer Experience",
+        "Starbucks",
+        "iTunes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is one of the three primary operating models Hyatt uses for its hotels?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Leasing",
+        "B": "Franchise",
+        "C": "Rental",
+        "D": "Licensing"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Hyatt uses Franchise, Management, and Ownership as its three primary operating models. Leasing, Rental, and Licensing are not identified as primary models in this context.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_18",
+      "tags": [
+        "Hyatt",
+        "Operating Models"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "How many primary operating models does Hyatt employ for its hotels and business segments?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "One",
+        "B": "Two",
+        "C": "Three",
+        "D": "Four"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The flashcard explicitly states that Hyatt uses 'three primary models: Franchise, Management, and Ownership.'",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_18",
+      "tags": [
+        "Hyatt",
+        "Operating Models"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT one of Hyatt's three primary operating models?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Franchise",
+        "B": "Management",
+        "C": "Partnership",
+        "D": "Ownership"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Hyatt's three primary operating models are Franchise, Management, and Ownership. Partnership is a broader concept but not one of the specific operating models mentioned.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_18",
+      "tags": [
+        "Hyatt",
+        "Operating Models",
+        "Anti-Concept"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of Hyatt's operating models means the company fully owns and directly runs the hotel property?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Franchise",
+        "B": "Management",
+        "C": "Ownership",
+        "D": "Leasing"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The Ownership model implies that Hyatt entirely owns and runs the hotel. In Franchise and Management models, the physical asset is typically owned by an independent entity.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_18",
+      "tags": [
+        "Hyatt",
+        "Operating Models",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hotel company following an 'asset-light strategy' would typically prioritize which operating models?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Ownership only",
+        "B": "Franchise and Management",
+        "C": "Direct operation of all properties",
+        "D": "Acquisition of real estate assets"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. An 'asset-light strategy' means a company reduces its direct ownership of physical assets, relying more on models like Franchise and Management where others own the properties. This typically leads to lower capital expenditure.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_18",
+      "tags": [
+        "Business Strategy",
+        "Operating Models",
+        "Implicit Concept"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In Hyatt's franchise model, who typically owns the hotel property?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Hyatt Corporation",
+        "B": "An independent hotel owner",
+        "C": "A joint venture between Hyatt and the owner",
+        "D": "The hotel's general manager"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. In the franchise model, independent hotel owners are allowed to use one of Hyatt's brand names, meaning they own the physical asset.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_19",
+      "tags": [
+        "Franchise Model",
+        "Hyatt",
+        "Hotel Operating Models"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary basis for the franchise fee Hyatt charges in its franchise model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A fixed monthly payment",
+        "B": "A percentage of the hotel's operating profits",
+        "C": "A percentage of the hotel's gross revenues",
+        "D": "A one-time upfront payment"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Hyatt charges a franchise fee which is a percentage of the hotel's gross revenues. It is not based on operating profits in this model, nor is it a fixed or one-time payment.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_19",
+      "tags": [
+        "Franchise Model",
+        "Franchise Fee",
+        "Gross Revenues"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "For Hyatt's select service brands, what is a typical franchise fee percentage of gross revenues?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "2%",
+        "B": "5%",
+        "C": "10%",
+        "D": "15%"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The flashcard states that franchise fees are typically 5% for select service brands and 6% for full-service brands.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_19",
+      "tags": [
+        "Franchise Fee",
+        "Select Service Brands",
+        "Hyatt"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following responsibilities primarily belongs to the franchisee (hotel owner) in Hyatt's franchise model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Setting global brand standards",
+        "B": "Providing the central reservation system",
+        "C": "Managing all operational costs and staffing",
+        "D": "Conducting global marketing campaigns for the brand"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The franchisee (hotel owner) is responsible for all operational costs, staffing, and local management. Hyatt (the franchisor) provides brand standards, reservation systems, and global marketing, but not daily operational management.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_19",
+      "tags": [
+        "Franchise Model",
+        "Franchisee Responsibilities",
+        "Anti-Concept"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are benefits for an independent hotel owner choosing Hyatt's franchise model? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Leveraging Hyatt's established brand recognition.",
+        "B": "Receiving direct financial investment from Hyatt for property construction.",
+        "C": "Accessing Hyatt's global marketing and reservation systems.",
+        "D": "Having Hyatt directly manage all daily operational staffing."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "A and C are correct. An independent owner benefits from Hyatt's brand recognition and access to its global marketing and reservation systems, which helps attract guests. B is incorrect because Hyatt does not typically provide direct financial investment for construction in a franchise model. D is incorrect because the franchisee is responsible for daily operational staffing and local management.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_19",
+      "tags": [
+        "Franchise Model",
+        "Benefits",
+        "Brand Recognition",
+        "Marketing",
+        "MCA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In Hyatt's management model, what type of fee is specifically tied to the hotel's operating profits?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Base fee",
+        "B": "Franchise fee",
+        "C": "Incentive fee",
+        "D": "Licensing fee"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. In the management model, Hyatt charges an incentive fee that is pegged to operating profits, in addition to a base fee pegged to revenues. A franchise fee applies to the franchise model, and a licensing fee is not specified.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_20",
+      "tags": [
+        "Management Model",
+        "Incentive Fee",
+        "Operating Profit"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a service typically provided by Hyatt in its management model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Only providing brand guidelines for independent operation.",
+        "B": "Comprehensive operations support including hiring and budgeting.",
+        "C": "Selling the hotel property to an independent owner.",
+        "D": "Providing a one-time setup consultation."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. In the management model, Hyatt provides professional oversight and comprehensive operations support, encompassing hiring, training, budgeting, and other daily operational aspects. Options A and D are too limited, and C describes a different business activity.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_20",
+      "tags": [
+        "Management Model",
+        "Operations Support",
+        "Professional Oversight"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "How is the 'base fee' structured in Hyatt's management model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It is a fixed annual payment.",
+        "B": "It is pegged to the hotel's gross revenues.",
+        "C": "It is a percentage of the hotel's net profit.",
+        "D": "It is a one-time fee for brand usage."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The base fee in Hyatt's management model is pegged to hotel revenues. This is distinct from the incentive fee which is tied to operating profits.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_20",
+      "tags": [
+        "Management Model",
+        "Base Fee",
+        "Revenue"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key difference in responsibility between Hyatt's management model and its franchise model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The franchise model gives Hyatt more operational control.",
+        "B": "The management model gives Hyatt more operational control and day-to-day responsibility.",
+        "C": "Both models have the same level of operational control for Hyatt.",
+        "D": "The management model focuses only on brand marketing, not operations."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. In the management model, Hyatt takes on significantly more operational control and responsibility for the day-to-day running of the hotel compared to the franchise model, where the independent owner handles daily operations.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_20",
+      "tags": [
+        "Management Model",
+        "Franchise Model",
+        "Operational Control",
+        "Anti-Concept"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the management model, which party typically owns the physical hotel asset?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Hyatt Corporation",
+        "B": "The hotel's general manager",
+        "C": "An independent hotel owner or investment fund",
+        "D": "A government entity"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. In the management model, an independent hotel owner or investment fund typically owns the physical asset, while Hyatt is contracted to manage its operations. Hyatt does not own the property in this model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_20",
+      "tags": [
+        "Management Model",
+        "Hotel Ownership",
+        "Real World Use Case"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a defining characteristic of the Ownership Model in hotel operations?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The brand exclusively collects management fees.",
+        "B": "The operating company bears all financial risks and rewards.",
+        "C": "Third-party owners dictate day-to-day operations.",
+        "D": "The brand only licenses its name to independent operators."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the Ownership Model is characterized by the operating company holding complete responsibility for operations and fully bearing the financial risks and rewards. Options A, C, and D describe aspects of other business models like management contracts or franchises, where control and risk are shared or outsourced.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_21",
+      "tags": [
+        "Ownership Model",
+        "Hotel Operations",
+        "Risk and Rewards"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the Ownership Model for hotels, who is primarily responsible for the day-to-day operations of a property?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A third-party management company.",
+        "B": "The operating company itself.",
+        "C": "Independent franchisees.",
+        "D": "The property's real estate landlord."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the Ownership Model means the operating company directly manages and is fully responsible for all day-to-day operations. Options A and C represent alternative models where operational control is delegated or licensed, and D refers to property ownership, not operational management.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_21",
+      "tags": [
+        "Ownership Model",
+        "Day-to-day Operations",
+        "Operational Control"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement accurately describes the financial arrangement for the operating company in the Ownership Model for hotels?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The operating company shares most financial risks with a third-party owner.",
+        "B": "The operating company bears full financial risks and rewards.",
+        "C": "Revenue is primarily generated through franchise fees.",
+        "D": "The brand provides management services for a fixed fee."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct as the Ownership Model places full financial accountability, including both risks and rewards, directly on the operating company. Options A, C, and D describe financial structures typical of management contracts, franchise models, or other arrangements where financial exposure is distributed differently.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_21",
+      "tags": [
+        "Ownership Model",
+        "Financial Risks",
+        "Financial Rewards"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An operating company following the Ownership Model for a hotel means it has complete responsibility for which of the following?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Only the marketing campaigns.",
+        "B": "Only the property's physical maintenance.",
+        "C": "The day-to-day operations of its properties.",
+        "D": "Only the long-term strategic planning."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the Ownership Model signifies that the operating company has complete responsibility for all aspects of the hotel's day-to-day operations. Options A, B, and D represent only partial aspects of this comprehensive responsibility, not the 'complete responsibility' inherent in the model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_21",
+      "tags": [
+        "Ownership Model",
+        "Day-to-day Operations",
+        "Operational Control"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common mistake when trying to understand the Ownership Model in hotel operations?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Believing the brand also owns the physical property.",
+        "B": "Confusing it with a management contract or franchise model.",
+        "C": "Thinking it involves less financial risk for the operating company.",
+        "D": "Assuming it leads to lower operational control."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a common mistake is to confuse the Ownership Model with other models like management contracts or franchises, where the brand's role, risk, and control differ significantly. Option C and D are incorrect as the Ownership Model typically involves higher financial risk and maximum operational control.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_21",
+      "tags": [
+        "Ownership Model",
+        "Common Mistakes",
+        "Business Models"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the Ownership Model, what percentage of the gross revenue generated from an owned or leased hotel property does the operating company typically retain?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A negotiated percentage, typically 10-20%.",
+        "B": "100% of the gross revenue.",
+        "C": "Only a fixed management fee.",
+        "D": "A percentage of the net profit after all expenses."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because, under the Ownership Model, the operating company directly earns and retains 100% of the gross revenue generated by its properties. Options A, C, and D describe revenue attribution in other business models such as management contracts or franchise agreements, not the full revenue capture of the ownership model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_22",
+      "tags": [
+        "Revenue Generation",
+        "Ownership Model",
+        "Financials"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The full retention of revenue in the Ownership Model is a direct consequence of the operating company bearing what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Only the marketing costs.",
+        "B": "All operational risks and rewards.",
+        "C": "Only the property's capital depreciation.",
+        "D": "The brand licensing fees."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the operating company's ability to retain 100% of the revenue in the Ownership Model is directly linked to its full responsibility for all operational risks and rewards. Options A, C, and D represent specific costs or fees, not the comprehensive burden that justifies full revenue capture.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_22",
+      "tags": [
+        "Revenue Generation",
+        "Risk and Rewards",
+        "Ownership Model"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a common misconception about an operating company retaining 100% of revenue in the Ownership Model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It means the company also retains 100% of the *profit*.",
+        "B": "It means the company has no operational costs.",
+        "C": "It implies the company has less control over pricing.",
+        "D": "It suggests the company is not responsible for market performance."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "A is correct because a common mistake is to confuse gross revenue with net profit; while the company receives all gross revenue, it also bears 100% of substantial operational costs. Options B, C, and D are incorrect as the Ownership Model implies full responsibility for costs, control over pricing, and market performance.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_22",
+      "tags": [
+        "Revenue Generation",
+        "Profit vs. Revenue",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What kind of financial exposure does an operating company face when retaining 100% of revenue under the Ownership Model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Limited to a fixed management fee.",
+        "B": "High capital intensity and full market fluctuation risk.",
+        "C": "Primarily exposure to brand licensing disputes.",
+        "D": "Only exposure to property maintenance costs."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. By retaining 100% of revenue and bearing all operational risks, the operating company in an Ownership Model faces high capital intensity and is fully exposed to market fluctuations. Options A, C, and D describe limited or incorrect forms of financial exposure for this model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_22",
+      "tags": [
+        "Financials",
+        "Risk and Rewards",
+        "Capital Intensity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "If a hotel operates under the Ownership Model, where does the revenue from its rooms, dining, and events primarily flow?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To a third-party property owner.",
+        "B": "Directly into the operating company's income statement.",
+        "C": "To an independent franchisee.",
+        "D": "To a separate asset management firm."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. In the Ownership Model, all revenue generated by the hotel, from various sources, directly contributes to the operating company's income statement. Options A, C, and D represent scenarios found in other business models where revenue might be attributed to external entities or shared.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_22",
+      "tags": [
+        "Revenue Generation",
+        "Financials",
+        "Ownership Model"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Within the Ownership Model, what is the critical factor that remains constant whether a hotel company owns or leases the physical property?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The amount of property tax paid.",
+        "B": "The company's full responsibility for day-to-day operations.",
+        "C": "The eligibility for real estate appreciation.",
+        "D": "The requirement for a long-term capital investment."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the core of the Ownership Model is the company's complete responsibility for day-to-day operations and full bearing of business risks and rewards, regardless of whether it owns or leases the property. Options A, C, and D are specific to property ownership or capital structure, which can vary within the model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_23",
+      "tags": [
+        "Ownership Model",
+        "Lease vs. Ownership",
+        "Operational Control"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hotel company operating under the Ownership Model decides to lease a property instead of buying it. What is a primary benefit of this decision?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It transfers all operational risks to the landlord.",
+        "B": "It typically requires a lower initial capital outlay.",
+        "C": "It allows the company to collect higher franchise fees.",
+        "D": "It means the company is no longer responsible for staff salaries."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because leasing a property, as opposed to owning it, generally involves a lower initial capital outlay, allowing for faster market entry or greater flexibility. Options A and D are incorrect as operational risks and staffing responsibilities remain with the operating company. Option C refers to a different business model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_23",
+      "tags": [
+        "Lease vs. Ownership",
+        "Capital Expenditure",
+        "Ownership Model"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement best describes 'operational ownership' in the context of the Ownership Model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It refers exclusively to owning the physical land and buildings.",
+        "B": "It means having full control over the hotel's business operations and assuming all financial outcomes.",
+        "C": "It implies delegating most daily tasks to a third-party manager.",
+        "D": "It is synonymous with a franchise agreement."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because 'operational ownership' emphasizes the full control over business operations and the assumption of all financial outcomes, irrespective of whether the physical property is owned or leased. Option A is a common misconception, and C and D describe different operational models.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_23",
+      "tags": [
+        "Operational Control",
+        "Ownership Model",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a hotel company opts to lease a property within the Ownership Model, what remains true regarding its business responsibility?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It primarily acts as a landlord, collecting rent.",
+        "B": "It fully bears all associated business risks and rewards.",
+        "C": "It only provides brand licensing to the property owner.",
+        "D": "It shares operational control with the property landlord."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because even when leasing, the operating company in the Ownership Model fully bears all business risks and rewards associated with the hotel's performance. Options A, C, and D are incorrect as they misrepresent the operational control and financial accountability of this model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_23",
+      "tags": [
+        "Lease vs. Ownership",
+        "Risk and Rewards",
+        "Operational Control"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The choice between owning and leasing a physical property within the Ownership Model is primarily considered a decision related to what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Marketing strategy.",
+        "B": "Human resources management.",
+        "C": "Capital structure or real estate strategy.",
+        "D": "Daily guest service protocols."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the decision to own or lease the physical property within the Ownership Model is fundamentally a capital structure or real estate strategy choice. It affects asset control and capital outlay, but not the core operational responsibility, marketing, HR, or daily service protocols directly.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_23",
+      "tags": [
+        "Real Estate Strategy",
+        "Capital Expenditure",
+        "Ownership Model"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary method by which products are sold in a Multi-Level Marketing (MLM) model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Through traditional retail stores.",
+        "B": "Directly to consumers via a network of distributors.",
+        "C": "Exclusively through online marketplaces managed by the company.",
+        "D": "By salaried employees in company-owned outlets."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because MLM is characterized by products being sold directly to consumers through a decentralized network of non-salaried distributors. Options A, C, and D describe other forms of distribution that are not central to the MLM model.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_24",
+      "tags": [
+        "Multi-Level Marketing",
+        "Direct Sales",
+        "Business Model"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "In a Multi-Level Marketing (MLM) model, how do non-salaried distributors typically earn income? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Commission on their own direct product sales.",
+        "B": "A fixed annual salary from the parent company.",
+        "C": "Commission on sales generated by distributors they recruited.",
+        "D": "Primarily through upfront recruitment fees paid by new members."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "A and C are correct because MLM distributors earn income from both their personal product sales and a percentage of the sales made by their 'downline' (recruited distributors). Option B is incorrect as MLM distributors are typically non-salaried independent contractors. Option D is incorrect because legitimate MLM models focus on product sales, not recruitment fees, as the primary source of income, which differentiates them from illegal pyramid schemes.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_24",
+      "tags": [
+        "Multi-Level Marketing",
+        "Network Marketing",
+        "Compensation Structure"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key characteristic of the compensation structure in Multi-Level Marketing (MLM)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It is based solely on a single tier of sales.",
+        "B": "It involves a multi-tiered structure where earnings come from own sales and recruited sales.",
+        "C": "Distributors earn a flat fee for every product sold, regardless of source.",
+        "D": "All earnings are derived from the company's overall profit sharing."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because MLM is defined by its multi-tiered compensation structure, where distributors earn from their own direct sales and also from the sales made by the distributors they recruit. Options A, C, and D do not accurately describe the multi-level, commission-based nature of MLM compensation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_24",
+      "tags": [
+        "Multi-Level Marketing",
+        "Compensation Structure",
+        "Network Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the crucial distinction between a legitimate Multi-Level Marketing (MLM) model and an illegal pyramid scheme?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "MLM involves selling products, while pyramid schemes only involve services.",
+        "B": "Legitimate MLM focuses on product sales to end consumers, while pyramid schemes rely on recruitment fees.",
+        "C": "MLM operates online, whereas pyramid schemes are always in-person.",
+        "D": "MLM has salaried employees, while pyramid schemes use independent contractors."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the critical difference lies in the primary source of income: legitimate MLM models emphasize product sales to actual consumers, whereas illegal pyramid schemes primarily generate revenue from recruitment fees rather than genuine product sales. Options A, C, and D present inaccurate or irrelevant distinctions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_24",
+      "tags": [
+        "Multi-Level Marketing",
+        "Pyramid Scheme",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In an MLM company, what is the term used for the network of distributors recruited by an existing distributor?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Uplink.",
+        "B": "Downline.",
+        "C": "Affiliate.",
+        "D": "Franchisee."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. In MLM, distributors recruit others who become part of their 'downline,' forming a multi-tiered sales network. Option A, 'Uplink,' is the opposite direction (the person who recruited you). Options C and D refer to different types of business relationships.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_24",
+      "tags": [
+        "Multi-Level Marketing",
+        "Network Marketing",
+        "MLM Terminology"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a core characteristic of the Direct Sales business model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Products are exclusively sold through large retail chains.",
+        "B": "Sales always involve a multi-level marketing structure.",
+        "C": "Products are sold directly to consumers outside a fixed retail location.",
+        "D": "The primary focus is on business-to-business (B2B) transactions."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because Direct Sales is defined by selling products directly to consumers, bypassing traditional fixed retail locations. Option B is incorrect as not all direct sales businesses are MLMs, which is a common misconception.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_25",
+      "tags": [
+        "Direct Sales",
+        "Business Model"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which aspect is a key benefit of a Direct Sales approach for a company?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Increased reliance on traditional distributors.",
+        "B": "Elimination of direct customer interaction.",
+        "C": "Bypassing traditional intermediary channels.",
+        "D": "Higher costs due to retail markups."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct as Direct Sales models are designed to bypass traditional intermediary channels, allowing for direct interaction. Option A is incorrect because direct sales reduces reliance on such distributors, not increases it.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_25",
+      "tags": [
+        "Direct Sales",
+        "Retail Bypass"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement about Direct Sales is FALSE?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Direct sales can involve selling products through home parties.",
+        "B": "All direct sales businesses operate under a multi-level marketing (MLM) structure.",
+        "C": "Direct sales often involves personalized customer interaction.",
+        "D": "An e-commerce website can be used for direct sales."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because it is a common mistake to assume all direct sales companies are MLMs; direct sales simply refers to the method of selling directly to the consumer. Options A, C, and D are all true aspects of direct sales.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_25",
+      "tags": [
+        "Direct Sales",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of a direct sales method?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Selling products exclusively through a major supermarket chain.",
+        "B": "A Tupperware consultant selling products at a home party.",
+        "C": "Distributing goods through a network of wholesalers and retailers.",
+        "D": "Placing products on consignment in multiple department stores."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct as a Tupperware consultant selling at a home party represents a classic example of direct sales, involving personal interaction outside a fixed retail location. Options A, C, and D describe traditional, indirect sales channels.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_25",
+      "tags": [
+        "Direct Sales",
+        "Real World Use Case"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The primary goal of a Direct Sales model is to:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Maximize the number of intermediaries in the sales process.",
+        "B": "Sell products directly to consumers without fixed retail locations.",
+        "C": "Focus solely on online advertising without customer interaction.",
+        "D": "Establish complex multi-tiered distribution networks."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the essence of Direct Sales is to sell directly to the end customer, often through personal interaction, bypassing traditional retail. Option A is incorrect as it describes the opposite approach.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_25",
+      "tags": [
+        "Direct Sales",
+        "Business Model"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What defines the D2C (Direct-to-Consumer) business model?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Selling products exclusively through third-party retailers.",
+        "B": "Distributing goods via a network of wholesalers and agents.",
+        "C": "A brand selling its products directly to the end customer.",
+        "D": "Focusing primarily on business-to-business (B2B) transactions."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the D2C model involves a brand selling its products directly to the end consumer, bypassing traditional intermediaries. Options A and B describe traditional retail distribution, which D2C aims to avoid.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_26",
+      "tags": [
+        "D2C",
+        "Business Model"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A key benefit of the D2C model for a brand is:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Reduced need for direct customer feedback.",
+        "B": "Fostering a direct customer connection.",
+        "C": "Increased reliance on traditional distribution channels.",
+        "D": "Outsourcing all customer service responsibilities."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the D2C model explicitly aims to foster a direct connection with customers, allowing for better engagement and feedback. Option C is incorrect as D2C reduces reliance on traditional channels.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_26",
+      "tags": [
+        "D2C",
+        "Customer Experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is often a result of a brand adopting a D2C strategy?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Lower profit margins due to increased overhead.",
+        "B": "Higher profit margins by eliminating retail markups.",
+        "C": "Complete loss of control over brand perception.",
+        "D": "Decreased ability to gather direct customer data."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because by cutting out intermediaries, D2C brands can retain the profit margins that would otherwise go to retailers and distributors. Option A is incorrect as D2C aims for higher margins, despite potential new overheads.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_26",
+      "tags": [
+        "D2C",
+        "Higher Margins"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common challenge for D2C brands that they must manage themselves?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Relying on retailers for customer service.",
+        "B": "The complexity and cost of logistics and shipping.",
+        "C": "Losing control over their brand story.",
+        "D": "Reduced need for direct advertising."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because D2C brands take on responsibilities like logistics and shipping that intermediaries typically handle, which can be complex and costly. Option A is incorrect because D2C means handling customer service directly, not relying on retailers.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_26",
+      "tags": [
+        "D2C",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In a D2C model, what does a brand bypass to reach customers?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product development and design.",
+        "B": "Direct customer interaction.",
+        "C": "Traditional retailers and distributors.",
+        "D": "Marketing and advertising efforts."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct as the fundamental principle of D2C is to sell directly to the consumer, thereby bypassing traditional retail and distribution channels. Options A, B, and D are aspects that D2C brands actively manage or engage with.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_26",
+      "tags": [
+        "D2C",
+        "Startup Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does \"Channel Behaviour\" primarily describe within a marketing channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The pricing strategies used by a single manufacturer.",
+        "B": "The various ways channel members interact with each other.",
+        "C": "The final purchase decisions of consumers.",
+        "D": "The process of product manufacturing."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Channel Behaviour focuses on how different members of a marketing channel, such as manufacturers and retailers, interact. Option C refers to consumer behavior, not channel dynamics.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_27",
+      "tags": [
+        "channel management",
+        "channel dynamics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT considered a primary form of channel behaviour?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Cooperation.",
+        "B": "Conflict.",
+        "C": "Consolidation.",
+        "D": "Competition."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because cooperation, conflict, and competition are the three primary forms of channel behaviour. Consolidation, while a business strategy, is not described as a form of interaction within the definition of channel behaviour.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_27",
+      "tags": [
+        "channel management",
+        "marketing strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a car manufacturer works with its dealerships on a joint promotional campaign, this is an example of what channel behaviour?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Channel conflict.",
+        "B": "Channel competition.",
+        "C": "Channel cooperation.",
+        "D": "Channel disruption."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because when channel members work together towards a common goal, such as a joint promotional campaign, it exemplifies channel cooperation. Options A and B represent different forms of channel interaction.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_27",
+      "tags": [
+        "channel management",
+        "channel dynamics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Two authorized retailers selling the same brand's products in the same city are likely to engage in which type of channel behaviour?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Vertical conflict.",
+        "B": "Channel cooperation.",
+        "C": "Channel competition.",
+        "D": "Channel integration."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because retailers selling the same products in the same market will naturally compete for customers and sales. Option A is incorrect as vertical conflict occurs between different levels of the channel.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_27",
+      "tags": [
+        "channel management",
+        "channel dynamics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement accurately describes channel behaviour?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Channel behaviour exclusively refers to conflicts between channel members.",
+        "B": "Channel behaviour encompasses cooperation, competition, and conflict.",
+        "C": "Channel behaviour is only relevant in online sales channels.",
+        "D": "Channel behaviour primarily focuses on consumer buying habits."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because channel behaviour is a broad concept that includes all forms of interaction between channel members: cooperation, competition, and conflict. Option A is a common mistake, as conflict is only one aspect.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_27",
+      "tags": [
+        "channel management",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Channel conflict occurs when channel members:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Agree perfectly on all goals and roles.",
+        "B": "Disagree on goals, roles, or perceptions.",
+        "C": "Only compete for market share.",
+        "D": "Exclusively cooperate on marketing campaigns."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because channel conflict is defined by disagreements among channel members regarding goals, roles, or perceptions. Option A describes a state of ideal cooperation, which is the opposite of conflict.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_28",
+      "tags": [
+        "channel conflict",
+        "marketing strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Two different authorized dealers of the same electronics brand, operating in the same city, start a price war to attract customers. This is an example of what type of conflict?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Vertical conflict.",
+        "B": "Intra-brand conflict.",
+        "C": "Horizontal conflict.",
+        "D": "Inter-brand conflict."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because horizontal conflict occurs between firms at the same level of the channel, such as two retailers. Option A is incorrect as vertical conflict occurs between different levels (e.g., manufacturer and retailer).",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_28",
+      "tags": [
+        "channel conflict",
+        "horizontal conflict"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A clothing manufacturer decides to launch its own online store, selling directly to consumers at a lower price than its traditional retail partners. This situation represents what type of channel conflict?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Horizontal conflict.",
+        "B": "Lateral conflict.",
+        "C": "Vertical conflict.",
+        "D": "Inter-channel conflict."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because vertical conflict arises between different levels of the same channel, such as a manufacturer and its retailers. Option A is incorrect as horizontal conflict occurs between members at the same level.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_28",
+      "tags": [
+        "channel conflict",
+        "vertical conflict"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following can be primary causes of channel conflict? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Disagreement over channel members' goals.",
+        "B": "Clear and agreed-upon roles for all channel members.",
+        "C": "Misaligned perceptions among channel partners.",
+        "D": "Competition among channel members for the same customer segment."
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A and C are correct because channel conflict typically stems from disagreements on goals, roles, or perceptions among channel members. D is also correct as competition for the same customers can lead to conflict. B is incorrect because clear and agreed-upon roles would prevent, not cause, conflict.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_28",
+      "tags": [
+        "channel conflict",
+        "marketing strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement correctly distinguishes between horizontal and vertical channel conflict?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Horizontal conflict occurs between different levels of the same channel, while vertical conflict occurs between firms at the same level.",
+        "B": "Horizontal conflict involves firms at the same channel level, and vertical conflict involves different levels of the same channel.",
+        "C": "Both horizontal and vertical conflicts only occur between different brands.",
+        "D": "Channel conflict is always initiated by the consumer."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct as horizontal conflict is between firms at the same channel level (e.g., two retailers), and vertical conflict is between different levels (e.g., manufacturer and retailer). Option A incorrectly swaps the definitions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_28",
+      "tags": [
+        "channel conflict",
+        "horizontal conflict",
+        "vertical conflict",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What defines a Multichannel Distribution System for a single firm?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Using only one channel for all products.",
+        "B": "Establishing two or more marketing channels to reach customers.",
+        "C": "Selling products exclusively through intermediaries.",
+        "D": "Focusing solely on direct-to-consumer sales."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct as a Multichannel Distribution System involves a single firm utilizing two or more distinct marketing channels to engage with various customer segments. Options A, C, and D describe single-channel approaches or specific channel types, not the broader multichannel concept.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_29",
+      "tags": [
+        "distribution",
+        "marketing channels",
+        "multichannel"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which characteristic best describes a Hybrid Marketing Channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It exclusively uses direct sales channels.",
+        "B": "It combines both direct and indirect marketing channels.",
+        "C": "It relies solely on third-party intermediaries.",
+        "D": "It focuses on a single customer segment through one channel."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a hybrid marketing channel is a specific type of multichannel system that strategically combines both direct channels (e.g., company website) and indirect channels (e.g., retailers) to reach customers. Options A, C, and D describe non-hybrid or single-channel approaches.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_29",
+      "tags": [
+        "marketing channels",
+        "hybrid channels",
+        "multichannel"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "According to common mistakes in managing multichannel systems, which of the following is a potential negative consequence if not managed strategically?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Decreased operational complexity.",
+        "B": "Guaranteed reduction in costs.",
+        "C": "Increased potential for channel conflict.",
+        "D": "Enhanced channel synergy in all cases."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a common mistake is underestimating the potential for channel conflict, such as price discrepancies or competition between a firm's various channels, if not managed strategically. Options A, B, and D represent ideal outcomes that are not guaranteed and often contradicted by mismanagement.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_29",
+      "tags": [
+        "multichannel",
+        "channel conflict",
+        "distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company sells its products through its own website, its branded physical stores, and also through large national retailers. This approach is an example of what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A single-channel distribution system.",
+        "B": "Disintermediation.",
+        "C": "A Multichannel Distribution System.",
+        "D": "Intensive distribution."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the company is using multiple distinct channels (website, own stores, national retailers) to reach customers, which is the definition of a Multichannel Distribution System. Option A is incorrect as it uses more than one channel. Options B and D describe different concepts.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_29",
+      "tags": [
+        "multichannel",
+        "marketing channels",
+        "distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a primary reason a firm might adopt a Multichannel Distribution System?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To exclusively sell through a single, specialized retailer.",
+        "B": "To reach a broader range of customer segments.",
+        "C": "To eliminate all marketing intermediaries.",
+        "D": "To solely focus on reducing immediate distribution costs."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a primary benefit of a Multichannel Distribution System is its ability to reach and serve a broader and more diverse range of customer segments by offering various purchasing and interaction options. Options A, C, and D do not accurately capture the main strategic intent of a multichannel approach.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_29",
+      "tags": [
+        "multichannel",
+        "customer segments",
+        "marketing channels"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement accurately defines disintermediation in marketing channels?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It's when producers add more intermediaries to their channel.",
+        "B": "It's when producers sell directly to final buyers, bypassing traditional intermediaries.",
+        "C": "It's a strategy to increase the number of distribution channels.",
+        "D": "It's when intermediaries take over production responsibilities."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because disintermediation specifically refers to producers bypassing traditional intermediaries to sell directly to the final buyers. Options A, C, and D describe different channel strategies or roles.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_30",
+      "tags": [
+        "disintermediation",
+        "marketing channels",
+        "e-commerce"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A local artisanal coffee roaster decides to stop selling through grocery stores and instead opens its own online store to ship coffee directly to consumers. This business move is an example of:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Channel conflict.",
+        "B": "Disintermediation.",
+        "C": "Intensive distribution.",
+        "D": "Multichannel distribution."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the coffee roaster is bypassing traditional intermediaries (grocery stores) to sell directly to consumers, which is the core definition of disintermediation. Options A, C, and D represent different marketing channel concepts.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_30",
+      "tags": [
+        "disintermediation",
+        "marketing channels",
+        "e-commerce"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a producer adopts disintermediation, what new responsibility often shifts to the producer?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Relying more on traditional intermediaries.",
+        "B": "Managing customer service and logistics directly.",
+        "C": "Reducing direct interaction with customers.",
+        "D": "Focusing solely on manufacturing without distribution concerns."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because disintermediation often shifts responsibilities like customer service and logistics directly to the producer, who now handles these functions previously managed by intermediaries. Options A, C, and D describe outcomes contrary to the nature of disintermediation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_30",
+      "tags": [
+        "disintermediation",
+        "logistics",
+        "customer service"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the context of disintermediation, which entity is typically bypassed or displaced?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The final consumer.",
+        "B": "Product manufacturers.",
+        "C": "Traditional channel intermediaries.",
+        "D": "Raw material suppliers."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because disintermediation involves producers either selling directly to final buyers, thus bypassing traditional intermediaries, or new types of intermediaries displacing the old ones. Options A, B, and D are not the entities typically bypassed in this process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_30",
+      "tags": [
+        "disintermediation",
+        "marketing channels",
+        "distribution"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following can be implications of a firm pursuing disintermediation? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Reduced direct control over customer experience.",
+        "B": "Shifting logistics responsibilities to the producer.",
+        "C": "Potential for channel conflict with existing partners.",
+        "D": "Increased direct interaction with end-users."
+      },
+      "correct_answer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "B, C, and D are correct. Disintermediation often means the producer takes on more direct responsibilities, including logistics (B), and can lead to conflict with any remaining or displaced intermediaries (C). By bypassing traditional channels, producers also gain more direct interaction with their end-users (D). Option A is incorrect because disintermediation typically increases, not reduces, direct control over the customer experience.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_30",
+      "tags": [
+        "disintermediation",
+        "channel conflict",
+        "logistics",
+        "customer experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "According to the process of designing a marketing channel, what is the initial key step?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Identifying alternative channel structures.",
+        "B": "Analyzing consumer needs.",
+        "C": "Evaluating economic criteria.",
+        "D": "Setting channel objectives and constraints."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the first crucial step in designing a marketing channel is to analyze consumer needs, understanding what customers value in terms of service, convenience, and purchasing experience. Options A, C, and D are subsequent steps in the channel design process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_31",
+      "tags": [
+        "channel design",
+        "consumer needs",
+        "marketing strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When evaluating alternative marketing channel structures, which of the following is a key criterion to consider?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Competitor's current market share.",
+        "B": "The adaptability of the channel to future changes.",
+        "C": "The number of product features.",
+        "D": "Employee satisfaction levels."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because evaluating channel alternatives involves assessing their adaptability to future market changes, technological shifts, and evolving consumer preferences. Options A, C, and D are not primary criteria for evaluating channel structures.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_31",
+      "tags": [
+        "channel design",
+        "channel objectives",
+        "marketing strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in marketing channel design is to focus solely on which aspect, potentially leading to negative outcomes?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Consumer needs.",
+        "B": "Brand reputation.",
+        "C": "Cost efficiency.",
+        "D": "Channel control."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a common mistake is designing a channel solely based on cost efficiency without considering other vital factors like consumer needs, desired control, or potential impact on brand reputation. Options A, B, and D are crucial considerations that should not be overlooked.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_31",
+      "tags": [
+        "channel design",
+        "common mistakes",
+        "marketing strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a key consideration when setting channel objectives in the design process?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The color of the product packaging.",
+        "B": "The desired level of customer service.",
+        "C": "The personal preferences of the CEO.",
+        "D": "The number of production facilities."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because setting channel objectives involves determining the desired level of customer service and experience the channel should provide. Options A, C, and D are not relevant considerations for setting marketing channel objectives.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_31",
+      "tags": [
+        "channel design",
+        "channel objectives",
+        "customer needs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Identifying alternative channel structures primarily involves making decisions about which two elements?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product pricing and promotional strategies.",
+        "B": "Types of intermediaries and their number.",
+        "C": "Manufacturing processes and raw material sourcing.",
+        "D": "Employee training and compensation plans."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because identifying alternative channel structures focuses on determining the different types of intermediaries (e.g., retailers, wholesalers) and the number of each type (e.g., intensive, exclusive) that will be used. Options A, C, and D relate to other business functions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_31",
+      "tags": [
+        "channel design",
+        "channel objectives",
+        "intermediaries"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary role of a Marketing Channel?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To develop new products for a company.",
+        "B": "To conduct market research for consumer insights.",
+        "C": "To make a product or service available for use or consumption.",
+        "D": "To set the overall pricing strategy for a brand."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the primary role of a Marketing Channel is to facilitate the availability of products or services to consumers or business users. Options A, B, and D describe other functions within the broader marketing mix or product development.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_32",
+      "tags": [
+        "marketing channels",
+        "distribution",
+        "core concepts"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a marketing channel ensures that products are conveniently accessible to target customers, it is fulfilling which of the 'rights'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Right quantity.",
+        "B": "Right time.",
+        "C": "Right place.",
+        "D": "Right price."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because ensuring products are conveniently accessible to target customers refers to providing the product at the 'right place'. Options A, B, and D refer to different aspects of customer value delivery.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_32",
+      "tags": [
+        "marketing channels",
+        "7 rights",
+        "distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in marketing channel design is focusing solely on making a product available (right place) without considering which other crucial aspect?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The product's color scheme.",
+        "B": "The desired assortment of products.",
+        "C": "The CEO's favorite marketing campaign.",
+        "D": "The company's internal meeting schedule."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a common mistake is neglecting other 'rights' like the desired assortment, price, or credit facilities, even if the product is available at the right place. Options A, C, and D are not crucial considerations for channel design and the 'rights' framework.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_32",
+      "tags": [
+        "marketing channels",
+        "7 rights",
+        "common mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing channel that offers a variety of product options and configurations to meet diverse customer preferences is providing the:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Right quantity.",
+        "B": "Right assortment.",
+        "C": "Right time.",
+        "D": "Right credit facilities."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because offering a variety of product options and configurations to satisfy diverse customer preferences directly relates to providing the 'right assortment'. Options A, C, and D refer to different aspects of customer value.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_32",
+      "tags": [
+        "marketing channels",
+        "7 rights",
+        "customer value"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A marketing channel is described as a set of 'interdependent organizations'. What does 'interdependent' primarily imply in this context?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Each organization operates completely in isolation.",
+        "B": "Organizations within the channel rely on and influence each other.",
+        "C": "Only one organization controls the entire channel.",
+        "D": "Organizations compete without collaboration."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because 'interdependent' means that the organizations within a marketing channel rely on each other and their actions influence the performance and success of the entire channel. Options A, C, and D describe scenarios contrary to interdependence.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_Place_32",
+      "tags": [
+        "marketing channels",
+        "distribution",
+        "core concepts"
+      ]
+    }
+  ]
+}

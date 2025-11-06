@@ -216,7 +216,7 @@ const QuizView = () => {
         return Array.isArray(selectedAnswer) && selectedAnswer.includes(optionKey) ? 'selected' : '';
       } else {
         return selectedAnswer === optionKey ? 'selected' : '';
-      }
+  }
     }
 
     // After feedback - show correctness
@@ -296,7 +296,7 @@ const QuizView = () => {
                   value={key}
                   checked={isOptionSelected(key)}
                   onChange={() => handleAnswerSelect(key)}
-                  disabled={showFeedback}
+                disabled={showFeedback}
                   className="option-input"
                 />
                 <span className="option-label">{key}</span>
@@ -349,10 +349,10 @@ const QuizView = () => {
                 
                 if (!isFullyCorrect) {
                   return (
-                    <p className="correct-answer-note">
+                <p className="correct-answer-note">
                       <strong>Correct answer{correctAnswers.length > 1 ? 's' : ''}:</strong>{' '}
                       {correctAnswers.map(key => `${key}: ${currentQuestion.options[key]}`).join(', ')}
-                    </p>
+                </p>
                   );
                 }
               })()}

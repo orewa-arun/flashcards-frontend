@@ -1,0 +1,265 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-06T09:16:14.947117",
+    "total_cards": 6,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "source": "SI_PS_Experience",
+    "chunks_processed": 1
+  },
+  "flashcards": [
+    {
+      "type": "concept",
+      "question": "What is the fundamental distinction and relationship between Products, Services, and Experiences in value creation?",
+      "answers": {
+        "concise": "Products are tangible goods, services are intangible activities, and experiences are the holistic, memorable engagements customers have, representing a higher level of value creation as products and services become commoditized.",
+        "analogy": "Think of it like building a house. The 'product' is the lumber, bricks, and nails. The 'service' is the carpenter building the walls or the plumber installing pipes. The 'experience' is the feeling of warmth, security, and joy the family has living in their new, custom-designed home, where every detail contributed to their overall happiness.",
+        "eli5": "Imagine you want a toy car. The toy car itself is a 'product'. If someone fixes your broken toy car, that's a 'service'. But if you go to a special toy store where you can design your own car, build it with help, and then race it on a cool track, that whole fun time is an 'experience'. Businesses are trying to make things more like the fun toy store.",
+        "real_world_use_case": "Starbucks doesn't just sell coffee (a product) or just serve it (a service). They aim to create a 'third place' experience between home and work. This includes the ambiance, music, comfortable seating, friendly baristas, and personalized orders. As coffee became a commodity, Starbucks differentiated itself by focusing on the overall customer experience, allowing them to charge a premium.",
+        "common_mistakes": "A common mistake is treating an experience as merely an add-on to a product or service, rather than a distinct and often superior form of value creation. Businesses might focus solely on optimizing product features or service efficiency, missing the opportunity to design a holistic, memorable customer journey that truly differentiates them in a commoditized market."
+      },
+      "context": "Foundational Concepts of Value Creation",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Introduces the three core concepts that form the basis of the course and sets the stage for understanding strategic innovation."
+      },
+      "example": "Consider Apple. While they sell 'products' like iPhones and MacBooks, and provide 'services' like AppleCare and iCloud, their true success lies in the 'experience'. This encompasses the intuitive software, the sleek design, the seamless ecosystem integration, the unboxing ritual, and the premium feel of visiting an Apple Store. This integrated experience is what fosters brand loyalty and allows Apple to command higher prices, especially as competitors offer similar products and services.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Product[Product: Tangible Good] --> Value1[Basic Value]\n    Service[Service: Intangible Activity] --> Value2[Added Value]\n    Experience[Experience: Holistic Engagement] --> Value3[Differentiated Value / Higher Value]",
+        "analogy": "graph TD\n    Lumber[Lumber, Bricks\n(Product)]\n    Plumber[Plumber Installing Pipes\n(Service)]\n    DreamHome[Dream Home\nLiving Experience]",
+        "eli5": "graph TD\n    ToyCar[Toy Car\n(Product)]\n    FixToy[Fixing Toy Car\n(Service)]\n    FunToyStore[Fun Toy Store Trip\n(Experience)]",
+        "real_world_use_case": "graph TD\n    CoffeeBeans[Coffee Beans\n(Product)]\n    ServingCoffee[Serving Coffee\n(Service)]\n    StarbucksAmbiance[Starbucks 'Third Place'\n(Experience)]",
+        "common_mistakes": "graph TD\n    ProductFocus[Focus Only on Product Features] --> LimitedValue[Limited Value Creation]\n    ServiceEfficiency[Focus Only on Service Efficiency] --> LimitedValue\n    ExperienceDesign[Design Holistic Customer Journey] --> DifferentiatedValue[Differentiated Value & Loyalty]",
+        "example": "graph TD\n    iPhone[iPhone\n(Product)]\n    AppleCare[AppleCare Support\n(Service)]\n    AppleEcosystem[Seamless Apple Ecosystem & Store Visit\n(Experience)]"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "tags": [
+        "Product",
+        "Service",
+        "Experience",
+        "Value Creation",
+        "Commoditization"
+      ],
+      "source_chunk": "SI_PS_Experience_1",
+      "flashcard_id": "SI_PS_Experience_1"
+    },
+    {
+      "type": "comparison",
+      "question": "What are the fundamental differences between Services and Products?",
+      "answers": {
+        "concise": "Services are intangible activities, benefits, or satisfactions offered for sale that do not result in ownership, whereas products are tangible goods that can be owned.",
+        "analogy": "Imagine going to a concert versus buying a CD. The CD (product) is a physical item you own and can hold. The concert (service) is an experience you participate in; you don't own the performance itself, but you enjoy the activity. One is a 'thing,' the other is a 'doing.'",
+        "eli5": "A 'product' is something you can touch, like a ball, and it's yours to keep. A 'service' is when someone does something for you, like giving you a haircut or telling you a story. You can't hold the haircut or the story, and it's not 'yours' to keep forever like a ball.",
+        "real_world_use_case": "A car manufacturer sells cars (products). These are physical assets that customers own. An auto repair shop provides car maintenance and repair (services). Customers pay for the activity of fixing the car, but they don't own the mechanic's labor or the repair process itself. They own the car, which is then improved by the service.",
+        "common_mistakes": "A common mistake is failing to recognize the distinct operational and marketing challenges inherent in services due to their intangible nature. Companies might try to market a service like a product, focusing on features rather than benefits or experiences, or neglecting the critical role of the service provider in quality delivery."
+      },
+      "context": "Product vs. Service Distinction",
+      "relevance_score": {
+        "score": 9,
+        "justification": "This is a core comparison explicitly highlighted in the slides and foundational to understanding different business models."
+      },
+      "example": "Consider a software company that sells packaged software (like Microsoft Office in a box, a product) versus a Software-as-a-Service (SaaS) provider (like Adobe Creative Cloud, a service). With packaged software, you own a perpetual license to the physical media or download. With SaaS, you pay a subscription for access to the software functionality, but you don't 'own' the software itself; you're paying for the ongoing benefit of using it. This highlights the shift from ownership of a tangible item to access of an intangible benefit.",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n    Service[Service: Intangible, No Ownership] --> Activity[Activity, Benefit, Satisfaction]\n    Product[Product: Tangible, Ownership] --> Good[Physical Good]",
+        "analogy": "graph LR\n    Concert[Concert: Experience] -.->|Is like| Service\n    CD[CD: Physical Item] -.->|Is like| Product",
+        "eli5": "graph LR\n    Ball[Ball (Product)]\n    Haircut[Haircut (Service)]",
+        "real_world_use_case": "graph LR\n    Car[Car (Product)]\n    AutoRepair[Auto Repair (Service)]",
+        "common_mistakes": "graph TD\n    MarketingServiceLikeProduct[Marketing Service Like Product] --> MisalignedStrategy[Misaligned Strategy]\n    FocusOnTangibles[Focus Only on Tangible Aspects of Service] --> MissedValue[Missed Value Proposition]",
+        "example": "graph LR\n    PackagedSoftware[Packaged Software: Ownership] --> Product\n    SaaS[SaaS Subscription: Access] --> Service"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "tags": [
+        "Services",
+        "Products",
+        "Intangibility",
+        "Ownership"
+      ],
+      "source_chunk": "SI_PS_Experience_1",
+      "flashcard_id": "SI_PS_Experience_2"
+    },
+    {
+      "type": "concept",
+      "question": "What is 'Customer Experience' and why is it becoming crucial for businesses in an era of 'commoditization'?",
+      "answers": {
+        "concise": "Customer Experience refers to the holistic journey and overall impression a customer has with a business. It becomes crucial as products and services become 'commoditized' (undifferentiated and interchangeable), forcing businesses to create value through unique and memorable engagements.",
+        "analogy": "Think of it like buying groceries. If all grocery stores sell the exact same apples at the exact same price (commoditization), you'll choose based on convenience or how pleasant your shopping trip is. The friendly staff, clean aisles, easy parking, and quick checkout (the experience) become the real differentiators, not just the apples themselves.",
+        "eli5": "Imagine all the toy stores sell the same exact toy cars for the same price. If you want people to buy from YOUR store, you have to make visiting your store super fun and special. Maybe you have a play area or friendly helpers. That 'super fun and special' feeling is the customer experience, and it helps your store stand out when the toys are all the same.",
+        "real_world_use_case": "In the airline industry, flying has largely become commoditized; many carriers offer similar routes and basic services. To differentiate, airlines invest in customer experience initiatives, such as personalized in-flight entertainment, loyalty programs, improved booking interfaces, and responsive customer service. These elements create a distinct experience that goes beyond simply transporting a passenger from A to B, encouraging repeat business even with similar pricing.",
+        "common_mistakes": "A common mistake is confusing customer service with customer experience. Customer service is a component of the overall experience, often reactive and transactional (e.g., handling a complaint). Customer experience, however, is proactive and holistic, encompassing every touchpoint before, during, and after a purchase. Another mistake is failing to understand that commoditization isn't just about price; it's about perceived lack of differentiation."
+      },
+      "context": "Value Creation & Strategic Differentiation",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Explains a key strategic shift in business, directly addresses the 'Strategies and Innovation' course theme, and defines critical terms."
+      },
+      "example": "Netflix revolutionized entertainment by shifting from DVD rentals (a product/service) to a streaming 'experience'. While many platforms now offer streaming, Netflix differentiates through its personalized recommendations, seamless multi-device viewing, original content, and user-friendly interface. This focus on a tailored, convenient, and engaging experience, rather than just delivering content, combats the commoditization of streaming services and drives subscriber loyalty. They understand that customers aren't just buying access to movies; they're buying an evening of effortless entertainment.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Commoditization[Products & Services Commoditized] --> NeedForDiff[Need for Differentiation]\n    NeedForDiff --> CustomerExperience[Customer Experiences: New Level of Value Creation]",
+        "analogy": "graph TD\n    SameApples[Same Apples, Same Price]\n     commoditization \n    SupermarketA[Supermarket A: Friendly Staff, Clean] --> PreferredChoice[Preferred Choice]\n    SupermarketB[Supermarket B: Unpleasant, Messy] --> AvoidedChoice[Avoided Choice]",
+        "eli5": "graph TD\n    SameToys[Same Toys, Same Price] --> NeedFunStore[Need a Fun Store]\n    FunStore[Fun Store (Customer Experience)] --> BuyFromHere[Buy from Here]",
+        "real_world_use_case": "graph TD\n    AirlineTicket[Airline Ticket: Commodity] --> ExperienceFocus[Customer Experience Focus]\n    ExperienceFocus --> PersonalIFE[Personalized In-Flight Entertainment]\n    ExperienceFocus --> LoyaltyPrograms[Loyalty Programs]\n    ExperienceFocus --> SeamlessBooking[Seamless Booking]\n    PersonalIFE & LoyaltyPrograms & SeamlessBooking --> Differentiation[Differentiation & Repeat Business]",
+        "common_mistakes": "graph TD\n    CustomerService[Customer Service: Reactive, Transactional] --> PartOfExperience[Part of CX]\n    CustomerExperience[Customer Experience: Proactive, Holistic] --> OverallJourney[Overall Journey]\n    Mistake[Confusing CS with CX] --> MissedOpportunity[Missed Strategic Opportunity]",
+        "example": "graph TD\n    DVDs[DVD Rentals & Basic Streaming: Commodity] --> NetflixExperience[Netflix: Personalized, Seamless, Original Content]\n    NetflixExperience --> SubscriberLoyalty[Subscriber Loyalty & Premium Value]"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "tags": [
+        "Customer Experience",
+        "Commoditization",
+        "Value Creation",
+        "Differentiation",
+        "Strategic Innovation"
+      ],
+      "source_chunk": "SI_PS_Experience_1",
+      "flashcard_id": "SI_PS_Experience_3"
+    },
+    {
+      "type": "definition",
+      "question": "What is the definition of a 'Service' and what is its most fundamental characteristic?",
+      "answers": {
+        "concise": "A service is defined as an activity, benefit, or satisfaction offered for sale that is essentially intangible and does not result in the ownership of anything. Its most fundamental characteristic is intangibility.",
+        "analogy": "Think of hiring a gardener. You pay for the 'activity' of gardening, the 'benefit' of a tidy yard, and the 'satisfaction' of not having to do it yourself. You don't 'own' the gardener's time or the act of gardening, just the result. It's like renting someone's skill, not buying their tools.",
+        "eli5": "A service is like when your mom cooks dinner for you. She does something nice (an activity), you get to eat yummy food (a benefit), and you're happy (satisfaction). You don't get to keep the cooking forever, and you don't own her cooking skills, but you get to enjoy it right then.",
+        "real_world_use_case": "When you visit a dentist for a check-up, you are purchasing a service. The dentist performs an activity (examination, cleaning), provides a benefit (oral health), and aims for satisfaction (a pain-free, reassuring experience). You do not gain ownership of the dental tools, the dentist's expertise, or the process itself, only the outcome of better dental health.",
+        "common_mistakes": "A common mistake is confusing a physical good that facilitates a service with the service itself. For instance, a coffee cup is a product, but serving coffee in a cafe with skilled baristas and ambiance is a service. Another mistake is underestimating the challenge of marketing intangibles, as customers cannot 'test drive' a service in the same way they can a product."
+      },
+      "context": "Core Service Definition",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Provides the explicit definition of a core concept, essential for understanding the distinctions discussed in the course."
+      },
+      "example": "Consider a personal trainer. When you hire a personal trainer, you are purchasing a service. You receive an activity (guided workouts), a benefit (improved fitness, health advice), and satisfaction (motivation, results). You do not own the trainer's knowledge, the gym equipment (unless it's your own), or the workout plan itself as a tangible item you can resell. The value lies entirely in the intangible interaction and expertise provided at a specific time.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Service[Service] --> Activity[Activity]\n    Service --> Benefit[Benefit]\n    Service --> Satisfaction[Satisfaction]\n    Service -- Essentially --> Intangible[Intangible]\n    Service -- Does NOT result in --> Ownership[Ownership of Anything]",
+        "analogy": "graph TD\n    Gardener[Gardener's Service]\n    Gardener --> Activity[Gardening]\n    Gardener --> Benefit[Tidy Yard]\n    Gardener --> Satisfaction[Peace of Mind]\n    Gardener -- NOT --> Ownership[Ownership of Gardener's Tools]",
+        "eli5": "graph TD\n    MomCooks[Mom Cooks Dinner]\n    MomCooks --> Activity[Cooking]\n    MomCooks --> Benefit[Yummy Food]\n    MomCooks --> Satisfaction[Happy Tummy]",
+        "real_world_use_case": "graph TD\n    DentistVisit[Dentist Visit]\n    DentistVisit --> Activity[Examination, Cleaning]\n    DentistVisit --> Benefit[Oral Health]\n    DentistVisit --> Satisfaction[Reassurance]\n    DentistVisit -- NO --> OwnershipOfTools[Ownership of Dental Tools]",
+        "common_mistakes": "graph TD\n    ProductFacilitatesService[Product Facilitates Service] --> NOTService[NOT the Service Itself]\n    IntangibleNature[Intangible Nature] --> MarketingChallenge[Marketing Challenge]",
+        "example": "graph TD\n    PersonalTrainer[Personal Trainer]\n    PersonalTrainer --> Activity[Guided Workouts]\n    PersonalTrainer --> Benefit[Improved Fitness]\n    PersonalTrainer --> Satisfaction[Motivation, Results]\n    PersonalTrainer -- NO --> OwnershipOfKnowledge[Ownership of Trainer's Knowledge]"
+      },
+      "math_visualizations": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Definition",
+        "Marketing"
+      ],
+      "source_chunk": "SI_PS_Experience_1",
+      "flashcard_id": "SI_PS_Experience_4"
+    },
+    {
+      "type": "concept",
+      "question": "Explain the four key characteristics of services: Intangibility, Variability, Inseparability, and Perishability.",
+      "answers": {
+        "concise": "Services are characterized by Intangibility (cannot be physically perceived before purchase), Variability (quality depends on who, when, where, and how they are provided), Inseparability (cannot be separated from their providers), and Perishability (cannot be stored for later use or sale).",
+        "analogy": "Think of a live music concert. The music itself is 'intangible'—you can't touch it. The quality might 'vary' depending on the band's mood or venue acoustics. The performance is 'inseparable' from the musicians; without them, there's no concert. And once the concert is over, it's 'perishable'—you can't store that specific live performance for later, only memories or recordings.",
+        "eli5": "Imagine getting a balloon animal from a clown. You can't touch the fun feeling *before* he makes it (Intangibility). Sometimes his animals are super good, sometimes just okay (Variability). You have to be there with the clown for him to make it (Inseparability). And once the balloon animal pops, it's gone forever; you can't save the 'making of' for tomorrow (Perishability).",
+        "real_world_use_case": "A hair salon provides a service. The haircut itself is 'intangible' until it's done. Its quality 'varies' significantly depending on the stylist, their mood, and the client's hair type. The haircut is 'inseparable' from the stylist who provides it; you can't get the haircut without the person. Finally, a vacant appointment slot is 'perishable'; if a client doesn't show up, the revenue from that time slot is lost forever and cannot be stored or resold later.",
+        "common_mistakes": "A common mistake is to overlook the management implications of these characteristics. For example, ignoring variability can lead to inconsistent customer experiences and dissatisfaction. Not addressing perishability can result in inefficient capacity management (e.g., empty hotel rooms or flight seats). Businesses often try to 'tangibilize' services (e.g., fancy waiting rooms) or standardize processes to mitigate variability, but failing to acknowledge these fundamental differences can lead to poor service design."
+      },
+      "context": "Characteristics of Services",
+      "relevance_score": {
+        "score": 10,
+        "justification": "This framework (the 4 I's) is a fundamental, widely recognized concept for understanding services and is explicitly detailed with definitions and a diagram in the slides."
+      },
+      "example": "Consider a consulting firm providing strategic advice. The advice itself is 'intangible'—it's knowledge and recommendations, not a physical product. The quality of advice can 'vary' greatly depending on the consultant's experience, the client's specific situation, and even the day. The advice is 'inseparable' from the consultant delivering it; you can't get the specific insights without their direct involvement. If a consultant has an unbilled hour, that hour of potential advice is 'perishable'—it cannot be saved and sold later if not utilized, representing lost potential revenue. Firms combat this by ensuring high utilization rates and robust knowledge management systems.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Services[Services]\n    Services --> Intangibility[Intangibility: Cannot be perceived before purchase]\n    Services --> Variability[Variability: Quality depends on provider, when, where, how]\n    Services --> Inseparability[Inseparability: Cannot be separated from providers]\n    Services --> Perishability[Perishability: Cannot be stored for later use]",
+        "analogy": "graph TD\n    Concert[Live Concert]\n    Concert --> Intangible[Music: Cannot touch]\n    Concert --> Variable[Quality: Band's mood, acoustics]\n    Concert --> Inseparable[Performance: From musicians]\n    Concert --> Perishable[Moment: Once over, it's gone]",
+        "eli5": "graph TD\n    BalloonAnimal[Balloon Animal]\n    BalloonAnimal --> Intangibility[Fun feeling before]\n    BalloonAnimal --> Variability[Good vs. Okay]\n    BalloonAnimal --> Inseparability[With the clown]\n    BalloonAnimal --> Perishability[Pops, gone]",
+        "real_world_use_case": "graph TD\n    HairSalon[Hair Salon Service]\n    HairSalon --> Intangibility[Haircut: Not tangible until done]\n    HairSalon --> Variability[Quality: Stylist, mood, hair type]\n    HairSalon --> Inseparability[From Stylist]\n    HairSalon --> Perishability[Vacant slot: Lost revenue]",
+        "common_mistakes": "graph TD\n    IgnoringVariability[Ignoring Variability] --> InconsistentCX[Inconsistent Customer Experience]\n    IgnoringPerishability[Ignoring Perishability] --> InefficientCapacity[Inefficient Capacity Management]\n    IgnoringInseparability[Ignoring Inseparability] --> ProviderQualityIssues[Provider Quality Issues]\n    IgnoringIntangibility[Ignoring Intangibility] --> PoorMarketing[Poor Marketing of Abstract Benefit]",
+        "example": "graph TD\n    ConsultingFirm[Consulting Service]\n    ConsultingFirm --> Intangibility[Advice: Knowledge & Recommendations]\n    ConsultingFirm --> Variability[Quality: Consultant's experience, situation]\n    ConsultingFirm --> Inseparability[From Consultant]\n    ConsultingFirm --> Perishability[Unbilled hour: Lost revenue]"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=box, style=filled, fillcolor=\"#E0F7FA\", margin=0.3, fontsize=11];\n    edge [color=\"#00796B\", penwidth=1.5];\n\n    Services [label=\"SERVICES\"];\n    Intangibility [label=\"Intangibility\\n(Cannot be perceived)\"];\n    Variability [label=\"Variability\\n(Quality depends)\"];\n    Inseparability [label=\"Inseparability\\n(From providers)\"];\n    Perishability [label=\"Perishability\\n(Cannot be stored)\"];\n\n    Services -> Intangibility;\n    Services -> Variability;\n    Services -> Inseparability;\n    Services -> Perishability;\n}",
+        "analogy": "/* layout=dot */\ndigraph G {\n    rankdir=LR;\n    node [shape=oval, style=filled, fillcolor=\"#FFFDE7\", margin=0.3, fontsize=11];\n    edge [color=\"#FBC02D\", penwidth=1.5];\n\n    Concert [label=\"Live Concert\"];\n    Music [label=\"Music (Intangible)\"];\n    Quality [label=\"Variability (Mood, Acoustics)\"];\n    Musicians [label=\"Inseparability (From Musicians)\"];\n    Moment [label=\"Perishability (Gone after)\"];\n\n    Concert -> Music;\n    Concert -> Quality;\n    Concert -> Musicians;\n    Concert -> Moment;\n}",
+        "eli5": "/* layout=dot */\ndigraph G {\n    rankdir=LR;\n    node [shape=circle, style=filled, fillcolor=\"#FFECB3\", margin=0.3, fontsize=11];\n    edge [color=\"#FFA000\", penwidth=1.5];\n\n    Clown [label=\"Clown\"];\n    BalloonAnimal [label=\"Balloon\nAnimal\"];\n    Intangible [label=\"Fun (before)\"];\n    Variability [label=\"Good/Okay\"];\n    Inseparability [label=\"With Clown\"];\n    Perishability [label=\"Pops, gone\"];\n\n    Clown -> BalloonAnimal;\n    BalloonAnimal -> Intangible;\n    BalloonAnimal -> Variability;\n    BalloonAnimal -> Inseparability;\n    BalloonAnimal -> Perishability;\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph G {\n    rankdir=LR;\n    node [shape=box, style=filled, fillcolor=\"#E8F5E9\", margin=0.3, fontsize=11];\n    edge [color=\"#4CAF50\", penwidth=1.5];\n\n    HairSalon [label=\"Hair Salon\"];\n    Haircut [label=\"Haircut\"];\n    Intangible [label=\"Intangible\n(until done)\"];\n    Variability [label=\"Variability\n(Stylist, mood)\"];\n    Inseparability [label=\"Inseparable\n(from Stylist)\"];\n    Perishability [label=\"Perishable\n(vacant slot)\"];\n\n    HairSalon -> Haircut;\n    Haircut -> Intangible;\n    Haircut -> Variability;\n    Haircut -> Inseparability;\n    Haircut -> Perishability;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=box, margin=0.3, fontsize=11];\n    edge [color=\"#D32F2F\", penwidth=1.5];\n\n    subgraph cluster_correct {\n        label=\"Correct Approach\";\n        color=\"#388E3C\";\n        style=filled;\n        fillcolor=\"#E8F5E9\";\n        CorrectMgt[label=\"Manage 4 I's\nStrategically\"];\n        ConsistentCX[label=\"Consistent CX\nEfficient Capacity\"];\n        CorrectMgt -> ConsistentCX;\n    }\n\n    subgraph cluster_mistake {\n        label=\"Common Mistakes\";\n        color=\"#D32F2F\";\n        style=filled;\n        fillcolor=\"#FFEBEE\";\n        Ignore4Is[label=\"Ignore 4 I's\"];\n        InconsistentCX_M[label=\"Inconsistent CX\"];\n        LostRevenue_M[label=\"Lost Revenue\"];\n        Ignore4Is -> InconsistentCX_M;\n        Ignore4Is -> LostRevenue_M;\n    }\n\n    Ignore4Is -> CorrectMgt [style=dashed, label=\"Avoid\"];\n}",
+        "example": "/* layout=dot */\ndigraph G {\n    rankdir=LR;\n    node [shape=box, style=filled, fillcolor=\"#E1F5FE\", margin=0.3, fontsize=11];\n    edge [color=\"#0288D1\", penwidth=1.5];\n\n    Consulting [label=\"Consulting Firm\"];\n    Advice [label=\"Strategic Advice\"];\n    Intangible [label=\"Intangible\\n(Knowledge)\"];\n    Variability [label=\"Variability\\n(Consultant, situation)\"];\n    Inseparability [label=\"Inseparable\\n(from Consultant)\"];\n    Perishability [label=\"Perishable\\n(unbilled hour)\"];\n\n    Consulting -> Advice;\n    Advice -> Intangible;\n    Advice -> Variability;\n    Advice -> Inseparability;\n    Advice -> Perishability;\n}"
+      },
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Variability",
+        "Inseparability",
+        "Perishability",
+        "Service Management"
+      ],
+      "source_chunk": "SI_PS_Experience_1",
+      "flashcard_id": "SI_PS_Experience_5"
+    },
+    {
+      "type": "framework",
+      "question": "Describe the three types of marketing crucial for service businesses: Internal, External, and Interactive marketing.",
+      "answers": {
+        "concise": "Service marketing involves three types: External marketing (company to customers), Internal marketing (company to employees), and Interactive marketing (employees to customers). All three are essential for delivering high-quality service.",
+        "analogy": "Imagine a theater production. 'External marketing' is the advertising that gets people to buy tickets. 'Internal marketing' is the director motivating and training the actors to perform their best. 'Interactive marketing' is the actual performance where the actors engage with the audience, and the quality of that interaction shapes the audience's experience.",
+        "eli5": "It's like a restaurant. 'External marketing' is when the restaurant tells people outside about their yummy food. 'Internal marketing' is when the boss makes sure the cooks and waiters are happy and know how to do their jobs well. 'Interactive marketing' is when the waiter smiles, takes your order nicely, and brings your food, making you feel good.",
+        "real_world_use_case": "A leading hotel chain utilizes all three. 'External marketing' promotes their luxury amenities and brand image to potential guests. 'Internal marketing' involves training staff on service standards, fostering a positive work environment, and empowering them to resolve guest issues. 'Interactive marketing' is evident when a front desk agent greets a guest warmly, anticipates their needs, and quickly resolves a room request, directly influencing the guest's perception of the hotel's service quality.",
+        "common_mistakes": "A common mistake in service businesses is to focus almost exclusively on external marketing, neglecting the crucial roles of internal and interactive marketing. Without strong internal marketing, employees may be unmotivated or untrained, leading to poor service delivery. Without effective interactive marketing, even well-marketed services will fail to satisfy customers if the actual employee-customer interaction is subpar. This often results in a disconnect between brand promise and actual experience."
+      },
+      "context": "Service Marketing Framework",
+      "relevance_score": {
+        "score": 10,
+        "justification": "This triangle diagram and its components represent a critical framework for service marketing strategy, directly relevant to the course on 'Strategies and Innovation'."
+      },
+      "example": "Southwest Airlines is renowned for its strong 'interactive marketing' driven by exceptional 'internal marketing'. Their 'external marketing' advertises low fares and a fun atmosphere. However, their true strength comes from hiring employees with 'Southwest Spirit' and fostering a culture of empowerment and fun ('internal marketing'). This translates into highly engaged flight attendants and gate agents who provide memorable, friendly, and efficient service ('interactive marketing'), even during flight delays, turning potential frustrations into positive experiences. This cohesive approach ensures the brand promise is consistently delivered at every customer touchpoint.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n    Company[Company]\n    Employees[Employees]\n    Customers[Customers]\n\n    Company -- External Marketing --> Customers\n    Company -- Internal Marketing --> Employees\n    Employees -- Interactive Marketing --> Customers",
+        "analogy": "graph TD\n    Director[Director]\n    Actors[Actors]\n    Audience[Audience]\n\n    Director -- External Marketing (Advertising) --> Audience\n    Director -- Internal Marketing (Training) --> Actors\n    Actors -- Interactive Marketing (Performance) --> Audience",
+        "eli5": "graph TD\n    Boss[Boss]\n    CooksWaiters[Cooks & Waiters]\n    You[You (Customer)]\n\n    Boss -- Tells about food (External) --> You\n    Boss -- Makes happy (Internal) --> CooksWaiters\n    CooksWaiters -- Smiles, serves (Interactive) --> You",
+        "real_world_use_case": "graph TD\n    HotelChain[Hotel Chain]\n    Staff[Hotel Staff]\n    Guests[Guests]\n\n    HotelChain -- External Marketing (Promotions) --> Guests\n    HotelChain -- Internal Marketing (Training, Culture) --> Staff\n    Staff -- Interactive Marketing (Warm greetings, solutions) --> Guests",
+        "common_mistakes": "graph TD\n    FocusOnlyExternal[Focus ONLY on External Marketing] --> Mismatch[Mismatch: Brand Promise vs. Actual Experience]\n    NoInternal[No Internal Marketing] --> UnmotivatedStaff[Unmotivated/Untrained Staff]\n    NoInteractive[No Interactive Marketing] --> PoorCustomerInteraction[Poor Customer Interaction]\n    Mismatch & UnmotivatedStaff & PoorCustomerInteraction --> DissatisfiedCustomers[Dissatisfied Customers]",
+        "example": "graph TD\n    Southwest[Southwest Airlines]\n    Employees[Employees (Flight Attendants, Agents)]\n    Customers[Customers]\n\n    Southwest -- External Mktg (Low Fares, Fun) --> Customers\n    Southwest -- Internal Mktg (Empowerment, Spirit) --> Employees\n    Employees -- Interactive Mktg (Friendly, Efficient Service) --> Customers"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=triangle, style=filled, fillcolor=\"#E0F2F7\", margin=0.3, fontsize=11];\n    edge [color=\"#01579B\", penwidth=1.5];\n\n    Company [label=\"Company\"];\n    Employees [label=\"Employees\"];\n    Customers [label=\"Customers\"];\n\n    Company -> Customers [label=\"External Marketing\", dir=both];\n    Company -> Employees [label=\"Internal Marketing\", dir=both];\n    Employees -> Customers [label=\"Interactive Marketing\", dir=both];\n}",
+        "analogy": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=triangle, style=filled, fillcolor=\"#FFE0B2\", margin=0.3, fontsize=11];\n    edge [color=\"#FF8F00\", penwidth=1.5];\n\n    Director [label=\"Director\"];\n    Actors [label=\"Actors\"];\n    Audience [label=\"Audience\"];\n\n    Director -> Audience [label=\"Advertising\", dir=both];\n    Director -> Actors [label=\"Training\", dir=both];\n    Actors -> Audience [label=\"Performance\", dir=both];\n}",
+        "eli5": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=triangle, style=filled, fillcolor=\"#DCEDC8\", margin=0.3, fontsize=11];\n    edge [color=\"#689F38\", penwidth=1.5];\n\n    Boss [label=\"Boss\"];\n    Staff [label=\"Cooks & Waiters\"];\n    You [label=\"You\"];\n\n    Boss -> You [label=\"Tell about food\", dir=both];\n    Boss -> Staff [label=\"Make happy\", dir=both];\n    Staff -> You [label=\"Smile, serve\", dir=both];\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=triangle, style=filled, fillcolor=\"#F8BBD0\", margin=0.3, fontsize=11];\n    edge [color=\"#C2185B\", penwidth=1.5];\n\n    Hotel [label=\"Hotel Chain\"];\n    Staff [label=\"Hotel Staff\"];\n    Guests [label=\"Guests\"];\n\n    Hotel -> Guests [label=\"Promotions\", dir=both];\n    Hotel -> Staff [label=\"Training, Culture\", dir=both];\n    Staff -> Guests [label=\"Warm greetings, solutions\", dir=both];\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=box, margin=0.3, fontsize=11];\n    edge [color=\"#D32F2F\", penwidth=1.5];\n\n    FocusExternal [label=\"Focus ONLY on\nExternal Marketing\"];\n    NoInternal [label=\"Neglect Internal\nMarketing\"];\n    NoInteractive [label=\"Neglect Interactive\nMarketing\"];\n    PoorExperience [label=\"Poor Customer\nExperience\"];\n\n    FocusExternal -> PoorExperience [label=\"Leads to\"];\n    NoInternal -> PoorExperience [label=\"Leads to\"];\n    NoInteractive -> PoorExperience [label=\"Leads to\"];\n}",
+        "example": "/* layout=dot */\ndigraph G {\n    rankdir=TB;\n    node [shape=triangle, style=filled, fillcolor=\"#BBDEFB\", margin=0.3, fontsize=11];\n    edge [color=\"#1976D2\", penwidth=1.5];\n\n    Southwest [label=\"Southwest Airlines\"];\n    Employees [label=\"Employees\"];\n    Customers [label=\"Customers\"];\n\n    Southwest -> Customers [label=\"Low Fares, Fun\", dir=both];\n    Southwest -> Employees [label=\"Empowerment, Spirit\", dir=both];\n    Employees -> Customers [label=\"Friendly, Efficient Service\", dir=both];\n}"
+      },
+      "tags": [
+        "Service Marketing",
+        "Internal Marketing",
+        "External Marketing",
+        "Interactive Marketing",
+        "Service Quality"
+      ],
+      "source_chunk": "SI_PS_Experience_1",
+      "flashcard_id": "SI_PS_Experience_6"
+    }
+  ]
+}

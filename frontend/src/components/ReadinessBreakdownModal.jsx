@@ -184,21 +184,21 @@ const ReadinessBreakdownModal = ({ readiness, examName, courseId, onClose, onRef
               {/* Background arc */}
               <path
                 d="M 20 100 A 80 80 0 0 1 180 100"
-                fill="none"
+                  fill="none"
                 stroke="rgba(255, 255, 255, 0.1)"
                 strokeWidth="20"
                 strokeLinecap="round"
-              />
+                />
               {/* Animated progress arc */}
               <path
                 d="M 20 100 A 80 80 0 0 1 180 100"
-                fill="none"
+                  fill="none"
                 stroke="url(#gaugeGradient)"
                 strokeWidth="20"
-                strokeLinecap="round"
+                  strokeLinecap="round"
                 strokeDasharray={`${(animatedScore / 100) * 251.2} 251.2`}
                 className="gauge-progress"
-              />
+                />
               {/* Gradient definition */}
               <defs>
                 <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -206,7 +206,7 @@ const ReadinessBreakdownModal = ({ readiness, examName, courseId, onClose, onRef
                   <stop offset="100%" stopColor="#00DFD8" />
                 </linearGradient>
               </defs>
-            </svg>
+              </svg>
             <div className="gauge-content">
               <div className="gauge-score">{animatedScore}%</div>
               <div className="gauge-label">Overall Readiness</div>

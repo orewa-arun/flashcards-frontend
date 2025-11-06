@@ -1,0 +1,764 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-06T09:17:32.736980",
+    "total_questions": 30,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "lecture": "SI_PS_Experience",
+    "difficulty_level": 2,
+    "source_flashcards": 6
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "A new startup, 'EcoRide,' offers electric scooter rentals by the minute through a mobile app. Users locate a scooter, unlock it, ride to their destination, and leave it within designated zones. The company focuses heavily on the ease of finding a scooter, the smooth app interface, and the feeling of freedom and sustainability while riding. Which of the following best describes EcoRide's primary value creation focus?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Primarily a product, as the electric scooter is a tangible good.",
+        "B": "Primarily a service, as it provides transportation without ownership.",
+        "C": "Primarily an experience, leveraging products and services to create memorable engagement.",
+        "D": "A hybrid model equally balancing product, service, and experience without a primary focus."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "EcoRide offers electric scooters (products) and the rental mechanism (service), but its core differentiator and value proposition, as indicated by the focus on 'ease of finding,' 'smooth app,' and 'feeling of freedom and sustainability,' is the holistic, memorable engagement it creates for the customer. This aligns with the definition of an experience, which integrates products and services to deliver a superior form of value.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Experience",
+        "Value Creation",
+        "Strategic Innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A traditional bookstore is struggling against online retailers due to price competition and convenience. To differentiate, the owner decides to transform the store into a 'literary hub' by hosting author readings, book clubs, poetry slams, and offering a cozy reading lounge with artisanal coffee. The books themselves remain standard products. What strategic shift is the bookstore primarily attempting to make in its value creation model?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Shifting from a product-centric model to a service-centric model by adding literary events.",
+        "B": "Shifting from a product-centric model to an experience-centric model by creating a holistic engagement.",
+        "C": "Enhancing product features by making the books more accessible and engaging.",
+        "D": "Focusing on operational efficiency to better compete on price with online retailers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "The bookstore's strategy goes beyond merely selling products (books) or offering basic services (like ordering). By creating a 'literary hub' with author readings, book clubs, and a cozy lounge, it's designing a holistic, memorable engagement for customers. This is a clear shift towards an experience-centric model, where the overall feeling and atmosphere differentiate the business, even if the core product (books) remains the same.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Experience",
+        "Value Creation",
+        "Differentiation",
+        "Commoditization"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company manufacturing high-end kitchen appliances (e.g., blenders, coffee makers) has noticed that competitors are quickly replicating their product features, leading to market commoditization. To sustain premium pricing and brand loyalty, the company launches 'Culinary Mastery Workshops' where customers learn advanced cooking techniques using the company's appliances, led by renowned chefs. Which of the following best describes the strategic intent behind these workshops?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "To reinforce the product's functional benefits by demonstrating its capabilities.",
+        "B": "To offer a supplementary service that justifies the product's higher cost.",
+        "C": "To create a unique customer experience that differentiates the brand beyond the product itself.",
+        "D": "To gather direct customer feedback for future product development and iteration."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "While the workshops demonstrate product capabilities (A) and offer a service (B), their primary strategic intent, especially in a commoditized market aiming for premium pricing and brand loyalty, is to create a unique, memorable 'experience'. This holistic engagement with the brand, where customers learn and interact, differentiates the company beyond just the features of its appliances, which are easily copied.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Experience",
+        "Differentiation",
+        "Commoditization",
+        "Strategic Innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company develops an enterprise resource planning (ERP) system. They initially sold it as a one-time license with installation on a client's servers. Now, they are transitioning to a cloud-based subscription model, offering ongoing support, updates, and data analytics dashboards. The company emphasizes the 'peace of mind' and 'seamless operations' this new model provides. How does this transition illustrate the relationship between products, services, and experiences?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "It moves from a product (software license) to a service (subscription) but does not yet create an experience.",
+        "B": "It shifts from selling a product to providing a service, with elements designed to enhance the overall customer experience.",
+        "C": "It demonstrates that services are merely add-ons to products, increasing their perceived value.",
+        "D": "It shows that an experience can be created without any underlying product or service components."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "The initial one-time license was product-centric. The shift to a subscription model with ongoing support and updates is a move towards a service model, as customers are paying for ongoing access and benefits rather than ownership. The emphasis on 'peace of mind' and 'seamless operations' indicates an intention to craft a positive, memorable customer journey, leveraging the service to create a superior experience. This highlights how services can be designed to deliver an experience.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Product",
+        "Service",
+        "Experience",
+        "Value Creation"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A luxury hotel chain aims to move beyond offering just 'rooms' (products) and 'hospitality' (services). They want to create a distinctive 'stay experience' for their guests. Which of the following initiatives would primarily contribute to developing this experience? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Implementing a new, more efficient online booking system to reduce reservation time.",
+        "B": "Offering personalized welcome amenities based on guest preferences gathered from past stays.",
+        "C": "Designing themed suites with unique decor and integrated local cultural elements.",
+        "D": "Providing complimentary high-speed Wi-Fi in all rooms and common areas."
+      },
+      "correct_answer": [
+        "B",
+        "C"
+      ],
+      "explanation": "Option B, offering personalized welcome amenities, directly contributes to a memorable and tailored engagement, making the stay feel special and unique to the guest, which is a hallmark of an experience. Option C, designing themed suites with unique decor and cultural elements, transforms a standard room (product) into a distinctive environment that evokes specific feelings and memories, creating a richer experience. Option A is about service efficiency, and Option D is a basic service expectation, both of which support an experience but do not define it as primarily as B and C do.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Experience",
+        "Value Creation",
+        "Differentiation",
+        "Customer Journey"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A local artisan sells handmade ceramic mugs. Each mug is unique, crafted with care, and customers physically select the one they wish to purchase. The artisan also offers pottery classes where participants learn to throw clay and glaze their own pieces. Which statement accurately distinguishes between the mugs and the pottery classes in terms of product vs. service?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The mugs are products because they are tangible goods that customers own, while the classes are services because they are intangible activities without ownership of the teaching itself.",
+        "B": "Both the mugs and the classes are products, as customers receive a tangible item (mug or self-made pottery).",
+        "C": "Both the mugs and the classes are services, as they involve the artisan's skill and time.",
+        "D": "The mugs are services due to their unique craftsmanship, and the classes are products because they result in a physical item."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "The ceramic mugs are tangible goods that customers purchase and own, fitting the definition of a product. The pottery classes, however, are activities where participants engage in learning and creating; they pay for the instruction and the experience of making, not for ownership of the teaching process itself. This makes the classes a service, characterized by intangibility and the lack of ownership over the activity.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Products",
+        "Services",
+        "Intangibility",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company launches a new line of smart home devices, such as intelligent thermostats and lighting systems, which users purchase and install. Alongside this, they offer an optional subscription for 'Predictive Maintenance and Energy Optimization,' where AI analyzes usage patterns and automatically adjusts settings to save energy and preemptively identifies potential device malfunctions. How should the company primarily categorize the smart home devices versus the subscription service?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Both are products, as they provide tangible benefits to the customer.",
+        "B": "Both are services, as they rely on technology and ongoing interaction.",
+        "C": "The devices are products, and the subscription is a service, based on tangibility and ownership.",
+        "D": "The devices are services, and the subscription is a product, due to their respective complexities."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "The smart home devices are physical, tangible goods that customers purchase and own, making them products. The 'Predictive Maintenance and Energy Optimization' subscription, however, provides an ongoing, intangible benefit (analysis, adjustments, malfunction identification) without the customer owning the AI or the analytical process itself. This makes the subscription a service.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Products",
+        "Services",
+        "Intangibility",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A fitness center offers gym memberships. Members gain access to exercise equipment, locker rooms, and group classes. While the equipment is tangible, members do not own it. They pay for the right to use the facilities and participate in activities. Which of the following best explains why the gym membership is primarily a service rather than a product?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The gym's physical location and equipment are tangible assets.",
+        "B": "Members pay a recurring fee, which is a characteristic of many product subscriptions.",
+        "C": "The core offering is an intangible activity and benefit (fitness access, instruction) that does not result in ownership of the facilities or equipment.",
+        "D": "The gym provides a community aspect, which is a feature of many successful products."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Despite the presence of tangible equipment (which facilitates the service), the gym membership's core value lies in the intangible activities (workouts, classes) and benefits (fitness, health) it provides. Customers do not gain ownership of the gym, its equipment, or the instructors' expertise. They are paying for access and participation, which are hallmarks of a service.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company traditionally sold physical board games (products). They are now considering launching a new venture: an escape room experience. They are developing marketing materials for this new offering. Based on the fundamental differences between products and services, what marketing challenge should the company anticipate for the escape room that was less prominent for their board games?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Difficulty in establishing a consistent price point across different customer segments.",
+        "B": "The challenge of communicating the intangible benefits and experience to potential customers.",
+        "C": "Managing inventory levels and supply chain logistics for the physical components.",
+        "D": "Ensuring the physical durability and quality of the game components over time."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Board games are tangible products that can be easily demonstrated, reviewed, and 'owned.' An escape room, however, is an intangible experience. The primary challenge for marketing a service like an escape room is conveying its unique benefits and the 'feeling' of the experience before a customer has actually participated, as it cannot be physically 'held' or 'tried' in the same way a product can. This directly relates to the intangibility characteristic of services.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Marketing"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A startup is developing a new business model. They are debating whether their core offering is a product or a service. Which of the following characteristics, if true, would strongly indicate their offering is primarily a service? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Customers acquire a physical item that they can resell or keep indefinitely.",
+        "B": "The value is derived from an activity performed by or for the customer.",
+        "C": "The offering cannot be stored or inventoried in advance of consumption.",
+        "D": "Customers pay for access to a benefit or skill rather than ownership of an asset."
+      },
+      "correct_answer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "Option A describes a product, where customers gain ownership of a tangible item. Options B, C, and D are all fundamental characteristics of services. Services derive value from activities (B), are often perishable and cannot be inventoried (C), and customers typically pay for access to benefits or skills rather than outright ownership (D).",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Perishability",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A coffee shop chain faces intense competition, with many similar cafes offering comparable products (coffee) and services (barista preparation). To maintain market share and profitability, the chain decides to redesign its stores with unique decor, comfortable seating zones, curated background music, and a loyalty program that offers personalized recommendations and exclusive events. What strategic challenge is the chain primarily addressing with these initiatives?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Improving the core product quality to justify premium pricing.",
+        "B": "Reducing operational costs to offer more competitive pricing.",
+        "C": "Combating the commoditization of its offerings by creating a distinctive customer experience.",
+        "D": "Expanding its product line to attract a wider range of customers."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "The scenario explicitly states 'intense competition' and 'comparable products and services,' which are indicators of commoditization. The initiatives (unique decor, music, loyalty programs, personalized recommendations) are all geared towards creating a holistic, memorable 'customer experience' that differentiates the brand beyond the basic product or service. This directly addresses the challenge of commoditization by creating unique value.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Commoditization",
+        "Differentiation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A popular streaming service (e.g., 'StreamFlix') is facing increased competition from new entrants offering similar content libraries at comparable prices. To retain subscribers, StreamFlix invests heavily in a new user interface, personalized content recommendations, seamless playback across devices, and exclusive early access to certain shows for loyal members. What is StreamFlix primarily leveraging to maintain its competitive edge?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A product differentiation strategy by acquiring exclusive content.",
+        "B": "A cost leadership strategy by offering lower subscription prices.",
+        "C": "A customer experience strategy to create a unique and engaging user journey.",
+        "D": "An operational efficiency strategy to deliver content faster."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "The scenario describes 'similar content libraries at comparable prices,' indicating commoditization of the core service. StreamFlix's initiatives (new UI, personalized recommendations, seamless playback, exclusive early access) are all elements that enhance the holistic 'customer experience' of using the service. This strategy aims to differentiate the offering and retain subscribers by making the overall interaction more enjoyable and personalized, rather than relying solely on content or price.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Commoditization",
+        "Differentiation",
+        "Strategic Innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "An online clothing retailer has a highly efficient website, fast shipping, and competitive pricing. However, their customer satisfaction scores are mediocre, and repeat purchases are low. Upon investigation, they find that customers often feel overwhelmed by the sheer volume of choices, struggle with sizing guides, and receive generic email communications. The company's CEO states, 'We need to improve our customer service.' Why might this CEO's assessment be an incomplete understanding of the problem?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Customer service only addresses complaints, not proactive engagement.",
+        "B": "The problem extends beyond reactive service to the entire customer experience journey.",
+        "C": "Improving customer service would increase costs, making prices less competitive.",
+        "D": "The issue is with product quality, not how customers interact with the brand."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "The CEO's assessment is an incomplete solution (Distractor Type A). While customer service is a component, the issues described (overwhelmed by choices, sizing struggles, generic communications) point to failures across the entire 'customer experience' journey, from browsing to post-purchase engagement. Customer service is often reactive, but the problems here require a proactive, holistic approach to designing a better overall impression and interaction, which is the domain of customer experience.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Customer Service",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A small independent bookstore is struggling against large online retailers and chains. The owner wants to enhance the 'customer experience' to differentiate and build loyalty. Which of the following initiatives would be most effective in achieving this goal, assuming the core product (books) remains the same? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Offering a wider selection of best-selling books at discounted prices.",
+        "B": "Creating cozy reading nooks, organizing author meet-and-greets, and providing personalized book recommendations from staff.",
+        "C": "Implementing a faster checkout system and streamlining inventory management.",
+        "D": "Launching a local book delivery service with eco-friendly packaging."
+      },
+      "correct_answer": [
+        "B",
+        "D"
+      ],
+      "explanation": "Option B directly focuses on creating a unique, memorable, and personalized engagement within the store, which is the essence of enhancing customer experience. The cozy nooks, author events, and personalized recommendations make the visit special. Option D, a local book delivery service with eco-friendly packaging, extends the positive experience beyond the physical store, emphasizing convenience and values alignment, contributing to a holistic journey. Option A focuses on price and product selection, which are less about experience differentiation in a commoditized market. Option C improves service efficiency but doesn't necessarily create a unique, memorable experience on its own.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Differentiation",
+        "Value Creation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new online platform connects freelance graphic designers with clients. Clients submit project briefs, designers bid on projects, and the platform facilitates payments and file transfers. The platform's primary value proposition is making it easier for clients to find talent and for designers to find work. What is the most fundamental characteristic of this platform's core offering?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "It creates a tangible product (finished design files) for the client.",
+        "B": "It is a service, fundamentally characterized by intangibility.",
+        "C": "It is a hybrid model, equally balanced between tangible and intangible elements.",
+        "D": "It is an experience, focusing on the joy of collaboration."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "The platform itself facilitates activities (connecting, bidding, transferring funds/files) and provides benefits (easier talent discovery, work finding) but does not result in the ownership of a tangible good by the platform's users. The core offering is the facilitation of an interaction and a process, which is inherently intangible. While design files are tangible products, the platform's offering is the *service* of connecting and managing, which is intangible.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A consulting firm offers strategic advice to businesses. Clients pay for insights, recommendations, and action plans. They do not receive a physical product that they can own or resell. Which statement best describes how the fundamental characteristic of this service impacts its marketing?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The tangibility of the final reports allows for easy demonstration of value.",
+        "B": "The intangibility requires marketing to focus on trust, expertise, and demonstrated results from past clients.",
+        "C": "The perishability means the service must be marketed as a one-time, urgent purchase.",
+        "D": "The inseparability dictates that the service can be easily mass-produced and distributed."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "The core of consulting is strategic advice, which is intangible. Because potential clients cannot 'test' or 'see' the advice before purchasing, marketing must overcome this intangibility by emphasizing the firm's credibility, the expertise of its consultants, and successful outcomes (results) achieved for previous clients. Options A, C, and D misinterpret the characteristics of services or their impact on marketing.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company sells pre-packaged meal kits that contain all the ingredients and instructions needed to cook a specific dish at home. They also offer online cooking classes where a chef guides participants through preparing a different dish using common ingredients. Which of the following accurately identifies the primary nature of the meal kit versus the online cooking class?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The meal kit is a service, and the cooking class is a product.",
+        "B": "Both the meal kit and the cooking class are products.",
+        "C": "The meal kit is a product, and the cooking class is a service.",
+        "D": "Both the meal kit and the cooking class are services."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "The meal kit is a tangible collection of ingredients and instructions that customers purchase and own, making it a product. The online cooking class, however, is an activity provided by a chef, offering instruction and guidance. Customers pay for the benefit of learning and participating in the activity; they do not own the chef's performance or the lesson itself as a tangible good, making it a service.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Products",
+        "Services",
+        "Intangibility"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A new company, 'CleanWheels,' offers mobile car detailing. They come to the customer's location, clean the car thoroughly, and apply protective coatings. The company is considering how to best articulate its core offering. Which of the following statements accurately describe the 'service' nature of CleanWheels' offering? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The customer receives ownership of the cleaning products used during the detailing process.",
+        "B": "The value is primarily derived from the activity of cleaning and applying coatings.",
+        "C": "The core offering is intangible; customers don't own the detailing process itself.",
+        "D": "The service is perishable; the detailing cannot be stored or performed in advance for a specific customer."
+      },
+      "correct_answer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "Option A is incorrect because customers do not own the cleaning products; they pay for their application. Options B, C, and D accurately describe the service nature of CleanWheels' offering. The value comes from the activity performed (B). The process itself is intangible (C), and the service cannot be stored or pre-produced for a specific customer, making it perishable (D).",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Perishability",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A digital marketing agency provides SEO optimization, social media management, and content creation for its clients. They are trying to explain to a potential client, who is used to purchasing tangible goods, why their offering is a service. Which of the following arguments would best highlight the fundamental characteristics of a service in this context? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "You are paying for our expertise and the ongoing activities we perform, not for a physical item you can hold.",
+        "B": "The results of our work, like increased website traffic, are tangible and measurable.",
+        "C": "Our services are produced and consumed simultaneously; you experience the benefit as we implement the strategies.",
+        "D": "We use advanced software tools, which are physical products, to deliver our services."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "Option A directly addresses the core definition of a service: it's about activities and expertise, not tangible ownership. Option C highlights the characteristic of 'inseparability' (production and consumption occurring simultaneously) and the experience of benefit, which is fundamental to services. Option B describes the *outcome* of the service, not the service itself, and while results can be measured, the service process is intangible. Option D mentions facilitating products, but these do not define the core offering as a product.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Inseparability",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A popular restaurant chain, 'The Gourmet Grill,' is experiencing declining customer numbers despite consistently high ratings for its food quality. Feedback indicates that customers complain about long wait times, inconsistent service from staff, and a noisy, uninviting ambiance. The management decides to invest in staff training on customer interaction, redesign the restaurant layout for better flow and acoustics, and implement a new table reservation system. What strategic concept is 'The Gourmet Grill' primarily focusing on to reverse its fortunes?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "Improving product quality to justify higher prices.",
+        "B": "Enhancing operational efficiency to reduce costs.",
+        "C": "Optimizing the customer experience to differentiate and build loyalty.",
+        "D": "Expanding its menu offerings to cater to diverse tastes."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Despite good food quality (product), the issues cited (wait times, inconsistent service, ambiance) all relate to the overall 'customer experience' of dining at the restaurant. By addressing these pain points through staff training, layout redesign, and a better reservation system, 'The Gourmet Grill' is strategically focusing on improving the holistic journey and impression a customer has, aiming to differentiate beyond just the food and foster loyalty.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Differentiation",
+        "Value Creation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new online platform, 'MindRefresh,' offers personalized cognitive behavioral therapy sessions delivered via video call. The platform's marketing team is struggling to convey the value of the therapy to potential clients, as customers cannot 'see' or 'touch' the service before purchasing. Which characteristic of services is MindRefresh primarily grappling with, and what is a common strategy to mitigate its impact?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Variability; by standardizing therapist training and session protocols.",
+        "B": "Inseparability; by allowing clients to choose their preferred therapist.",
+        "C": "Intangibility; by offering free introductory consultations and testimonials from past clients.",
+        "D": "Perishability; by implementing a flexible scheduling system to maximize therapist utilization.",
+        "E": "Intangibility; by focusing solely on the credentials of their therapists."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "MindRefresh is dealing with the Intangibility of its service, where the benefit (therapy) cannot be physically perceived before purchase. A common strategy to 'tangibilize' services or make their value more concrete is to offer tangible evidence, such as free introductory consultations, client testimonials, or case studies, allowing potential clients to experience or perceive the benefits. Option A addresses Variability, Option B addresses Inseparability, and Option D addresses Perishability. Option E is an incomplete solution as focusing only on credentials doesn't directly address the inability to experience the service beforehand.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A boutique hotel, 'The Urban Retreat,' experiences significant fluctuations in occupancy rates throughout the week, with weekends often fully booked but weekdays having many empty rooms. If a room is not booked for a night, the potential revenue from that room is permanently lost. Which service characteristic is the hotel primarily struggling with, and what is a direct consequence of this challenge?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Intangibility; leading to difficulty in marketing the unique ambiance of the hotel.",
+        "B": "Variability; resulting in inconsistent guest experiences depending on staff availability.",
+        "C": "Perishability; causing lost revenue from unused capacity.",
+        "D": "Inseparability; making it hard to outsource front-desk services.",
+        "E": "Perishability; leading to higher operational costs due to overstaffing."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "The hotel's challenge with empty rooms and lost revenue directly relates to the Perishability of services. A service cannot be stored; if a hotel room is not sold for a night, the revenue for that specific night is lost forever. This characteristic necessitates careful capacity management. Option A relates to Intangibility, Option B to Variability, and Option D to Inseparability. Option E is a possible *management response* to perishability if not handled well, but the direct consequence of perishability itself is the lost revenue from unused capacity.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Perishability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A chain of 'QuickFix' auto repair shops is receiving inconsistent customer satisfaction scores across its various locations. While some customers praise the efficiency and quality of service, others report long wait times, different repair recommendations for the same issue, and varied pricing. The management wants to improve consistency. Which of the following actions would directly address the 'Variability' characteristic of QuickFix's service? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Implementing standardized diagnostic checklists and repair procedures for all technicians.",
+        "B": "Launching a national advertising campaign highlighting QuickFix's trusted brand.",
+        "C": "Providing comprehensive and recurring training for all technicians on new repair techniques and customer service protocols.",
+        "D": "Offering a loyalty program where customers earn points for each service visit.",
+        "E": "Installing customer feedback kiosks at each location to capture real-time service ratings."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "Variability in services means that quality can differ depending on who provides it, when, where, and how. To address this, businesses aim to standardize processes and enhance skill levels. Implementing standardized checklists (A) ensures consistency in diagnosis and repair, reducing differences in recommendations and quality. Comprehensive and recurring training (C) directly improves technician skills and adherence to service protocols, minimizing variations in service delivery. Option B is external marketing, Option D is a customer retention strategy, and Option E is a measurement tool, not a direct action to reduce variability in service delivery.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Variability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A startup, 'EduMentor,' provides personalized online tutoring services. They've found that the quality of the tutoring session is highly dependent on the individual tutor and the real-time interaction with the student. Students often rate their experience based on the tutor's ability to adapt to their learning style and provide immediate feedback. Which of the following scenarios best illustrate the 'Inseparability' characteristic of EduMentor's service and its implications? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "EduMentor cannot pre-record a 'perfect' tutoring session and sell it as a standalone product, as the value comes from live interaction.",
+        "B": "A student cancels a session last minute, resulting in an unutilized time slot for the tutor that cannot be filled or saved.",
+        "C": "Tutors must be highly skilled in communication and empathy, as their personal performance directly impacts the service quality experienced by the student.",
+        "D": "EduMentor struggles to market its service effectively because potential clients cannot physically 'sample' a session before committing.",
+        "E": "The service delivery and consumption occur simultaneously; the student actively participates in the co-creation of the learning experience during the session."
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "E"
+      ],
+      "explanation": "Inseparability means that services cannot be separated from their providers; production and consumption often occur simultaneously, and the customer is often involved in the service delivery. Option A illustrates that the service's core value (live interaction) cannot be separated from the tutor's presence. Option C highlights that the provider's (tutor's) quality is integral to the service itself. Option E directly describes the simultaneous production/consumption and co-creation aspect central to inseparability. Option B relates to Perishability. Option D relates to Intangibility.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Inseparability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new 'Farm-to-Table' restaurant, 'The Root Cellar,' prides itself on fresh, locally sourced ingredients. However, the owner is concerned about fluctuating demand, especially during off-peak hours and weekdays, which leads to staff standing idle and potential waste of fresh, perishable ingredients. To address these challenges, the owner decides to offer early-bird specials and develop a new reservation system to better manage customer flow. Which specific service characteristic is the owner primarily trying to mitigate with these strategies?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Intangibility, by making the dining experience more concrete.",
+        "B": "Variability, by standardizing the food preparation process.",
+        "C": "Inseparability, by enhancing the interaction between diners and chefs.",
+        "D": "Perishability, by managing capacity and demand.",
+        "E": "Intangibility, by focusing on the physical ambiance of the restaurant."
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "The owner's concern about staff standing idle and unused capacity during off-peak hours, coupled with the perishable nature of ingredients, directly points to the Perishability of the restaurant's service. Strategies like early-bird specials and reservation systems are designed to manage demand and capacity, ensuring that the 'service slots' (tables, staff time) are utilized, thus mitigating the losses associated with perishability. Options A and E relate to Intangibility, Option B to Variability, and Option C to Inseparability.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Perishability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new online fitness coaching platform, 'FitFlow,' has just launched. To attract its initial user base, FitFlow's management decides to run targeted social media ads, partner with health influencers, and offer a limited-time discounted subscription. Which type of service marketing is FitFlow primarily engaging in with these activities?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Internal marketing, by motivating its fitness coaches.",
+        "B": "Interactive marketing, by facilitating live coaching sessions.",
+        "C": "External marketing, by communicating value to potential customers.",
+        "D": "Relationship marketing, by building long-term client loyalty.",
+        "E": "Experiential marketing, by allowing users to try free trial workouts."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "FitFlow is primarily engaging in External marketing, which involves the company's efforts to communicate its value proposition and attract new customers. Running social media ads, partnering with influencers, and offering discounts are all classic strategies used to promote a service to the broader market and entice potential clients to try or purchase it. Internal marketing focuses on employees, and interactive marketing focuses on the real-time interaction between employees and customers. Options D and E are related marketing concepts but not the primary type described by the actions.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "External Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A regional airline, 'SkyLink,' is struggling with flight delays and customer complaints about unhelpful ground staff. The CEO believes that improving employee morale and ensuring staff are fully equipped to handle stressful situations is crucial for improving customer satisfaction. Which type of marketing should SkyLink prioritize to address these internal challenges and improve service delivery?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External marketing, by promoting their on-time performance guarantees.",
+        "B": "Interactive marketing, by empowering ground staff to offer immediate compensation for delays.",
+        "C": "Internal marketing, by investing in better training programs and employee recognition initiatives.",
+        "D": "Relationship marketing, by creating a premium loyalty club for frequent flyers.",
+        "E": "Digital marketing, by enhancing their mobile app for flight tracking and self-service."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "SkyLink's challenges with employee morale and staff preparedness point directly to the need for stronger Internal marketing. This type of marketing focuses on motivating and training employees to deliver high-quality service. Investing in better training and recognition (C) directly addresses these internal issues, ensuring employees are happy, knowledgeable, and empowered to perform well, which in turn improves service delivery. Option A is external marketing. Option B is an aspect of interactive marketing, but the root cause here is internal. Options D and E are other marketing tactics but don't address the core internal employee issues.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Internal Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A high-end restaurant, 'Gastronome,' is known for its exquisite dining experience. While their menu and ambiance are widely praised, the restaurant owner noticed that customer reviews often highlight the exceptional personal interaction they have with their servers, from detailed menu explanations to anticipating needs and handling special requests. This direct, real-time engagement between staff and diners significantly shapes the overall perception of the restaurant. Which type of service marketing is 'Gastronome' excelling at through these interactions?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External marketing, by consistently promoting their Michelin-star chefs.",
+        "B": "Internal marketing, by ensuring their kitchen staff are highly motivated.",
+        "C": "Interactive marketing, by fostering personalized and attentive service during customer encounters.",
+        "D": "Brand marketing, by maintaining a consistent luxury image across all platforms.",
+        "E": "Guerrilla marketing, by creating unique, unexpected dining events."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Gastronome is excelling at Interactive marketing, which occurs at the point of contact between employees and customers. The personalized menu explanations, anticipation of needs, and handling of special requests by servers are all examples of direct interactions that shape the customer's service experience and perception of quality. Option A is external marketing. Option B relates to internal marketing, which might *enable* good interactive marketing but isn't the direct interaction itself. Options D and E are other marketing approaches.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Interactive Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A new 'SmartHome' installation company, 'ConnectUp,' invests heavily in advertising its innovative technology and competitive pricing (External Marketing). However, after installation, many customers express dissatisfaction due to technicians arriving late, not fully explaining the system, or failing to resolve minor issues on the first visit. Despite the strong initial interest generated by advertising, ConnectUp is struggling to retain customers. What is the most likely reason for ConnectUp's customer retention problem, according to the service marketing framework?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Their external marketing is too effective, attracting customers with unrealistic expectations.",
+        "B": "A lack of effective internal marketing is leading to poor interactive marketing.",
+        "C": "Their pricing strategy is misaligned with customer expectations for a premium service.",
+        "D": "They are not leveraging digital marketing channels sufficiently for post-installation support.",
+        "E": "The product itself is flawed, regardless of the marketing efforts."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "ConnectUp's strong external marketing is generating interest, but the issues arise during service delivery (late arrivals, poor explanations, unresolved issues). This points to a disconnect between the brand promise and the actual customer experience. This is typically a result of weak Internal marketing (employees are not adequately trained, motivated, or empowered) leading to poor Interactive marketing (the actual employee-customer interactions are subpar). Option A is a plausible distractor but less fundamental than the marketing framework. Options C, D, and E are possible issues but don't directly address the marketing types' interplay.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Internal Marketing",
+        "Interactive Marketing",
+        "Service Quality"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A leading spa and wellness center, 'Serenity Now,' aims to deliver a consistently exceptional customer experience. They understand that the actual interaction between their staff and clients is paramount. Which of the following actions taken by 'Serenity Now' would primarily fall under the umbrella of Interactive Marketing? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A massage therapist adjusting their technique based on a client's real-time feedback during a session.",
+        "B": "The front desk receptionist warmly greeting a client by name and offering a complimentary beverage upon arrival.",
+        "C": "A social media manager creating engaging posts about the spa's new seasonal treatments.",
+        "D": "A spa manager conducting weekly training sessions for new aestheticians on advanced facial techniques.",
+        "E": "A wellness coach providing personalized post-treatment advice and follow-up recommendations to a client."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "E"
+      ],
+      "explanation": "Interactive marketing encompasses the direct interactions between service employees and customers that shape the service experience. Option A (therapist adjusting technique based on feedback) is a clear example of real-time, adaptive interaction. Option B (receptionist greeting by name and offering beverage) demonstrates personalized service at a key touchpoint. Option E (wellness coach providing personalized advice) involves a direct, tailored interaction. Option C is external marketing. Option D is internal marketing, focusing on employee training, which *enables* good interactive marketing but is not the interaction itself.",
+      "difficulty_level": 2,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Interactive Marketing"
+      ]
+    }
+  ]
+}

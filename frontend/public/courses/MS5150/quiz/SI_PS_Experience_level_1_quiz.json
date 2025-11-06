@@ -1,0 +1,738 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-06T09:17:32.732833",
+    "total_questions": 30,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "lecture": "SI_PS_Experience",
+    "difficulty_level": 1,
+    "source_flashcards": 6
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "Which term describes tangible goods that can be owned by a customer?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Service",
+        "B": "Product",
+        "C": "Experience",
+        "D": "Commodity"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "A product is defined as a tangible good that can be owned. Services are intangible activities, and experiences are holistic engagements. A commodity is a product that has become undifferentiated.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Product",
+        "Value Creation",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What type of value creation involves intangible activities, benefits, or satisfactions offered for sale?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product",
+        "B": "Commodity",
+        "C": "Service",
+        "D": "Experience"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Services are characterized by their intangible nature, representing activities or benefits provided rather than physical goods. Products are tangible, and experiences are holistic engagements.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Service",
+        "Value Creation",
+        "Intangibility"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a business aims to create a 'holistic, memorable engagement' for customers, it is primarily focusing on delivering what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A standardized product",
+        "B": "An efficient service",
+        "C": "A unique experience",
+        "D": "A low-cost commodity"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Experiences are defined as holistic, memorable engagements that customers have with a business, representing a higher level of value creation beyond just products or services. Standardized products or efficient services may be components, but the focus on 'memorable engagement' points to an experience.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Experience",
+        "Value Creation",
+        "Differentiation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "According to the concept of value creation, why might businesses increasingly focus on providing 'experiences'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To reduce overall production costs.",
+        "B": "Because products and services are becoming commoditized.",
+        "C": "To avoid direct competition entirely.",
+        "D": "To simplify their marketing efforts."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Businesses focus on experiences because products and services often become commoditized, meaning they are seen as undifferentiated and interchangeable. Creating a unique experience helps a business stand out and create greater value. Options A, C, and D are not the primary reasons for focusing on experiences in this context.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Commoditization",
+        "Experience",
+        "Value Creation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best describes a common mistake businesses make regarding 'experiences'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Treating an experience as merely an add-on to a product or service.",
+        "B": "Over-investing in customer experience design.",
+        "C": "Focusing too much on the overall customer journey.",
+        "D": "Prioritizing intangible benefits over tangible goods."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "A common mistake is treating an experience as a mere add-on, rather than recognizing it as a distinct and often superior form of value creation that requires holistic design. Over-investing (B) or focusing on the journey (C) are typically not considered mistakes in this context, and prioritizing intangible benefits (D) aligns with service/experience creation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_1",
+      "tags": [
+        "Experience",
+        "Common Mistakes",
+        "Value Creation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the key characteristic that distinguishes a 'product' from a 'service'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Its cost",
+        "B": "Its tangibility and potential for ownership",
+        "C": "Its marketing strategy",
+        "D": "Its ability to satisfy a need"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "The fundamental difference between a product and a service is that a product is a tangible good that can be owned, whereas a service is an intangible activity that does not result in ownership. While other options may relate to both, tangibility and ownership are the core distinctions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Products",
+        "Services",
+        "Tangibility",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of a 'product'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A haircut",
+        "B": "A concert performance",
+        "C": "A physical book",
+        "D": "A financial consultation"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "A physical book is a tangible item that can be owned, making it a product. A haircut, concert performance, and financial consultation are all examples of services, as they are intangible activities or benefits.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Products",
+        "Example",
+        "Tangibility"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A customer pays for an activity or benefit but does not gain ownership of a physical item. This scenario most accurately describes which of the following?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A product purchase",
+        "B": "A service consumption",
+        "C": "A commodity exchange",
+        "D": "An experience design"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Services are intangible activities, benefits, or satisfactions that do not result in ownership of a physical item. Product purchases involve ownership of tangible goods. While services can contribute to an experience, the core definition here is 'service consumption'.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Ownership"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best describes a common marketing challenge for 'services' compared to 'products'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Services are easier to store and inventory.",
+        "B": "Services often require more complex distribution channels.",
+        "C": "Services are intangible and harder for customers to evaluate before purchase.",
+        "D": "Services have fixed costs that are easier to manage."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Services' intangibility makes them difficult for customers to 'test drive' or evaluate before purchase, posing a significant marketing challenge. Services are generally not easier to store (they are often perishable), may or may not have more complex distribution, and cost structures vary.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Marketing Challenges"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a company provides car maintenance and repair, what is it primarily offering?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A product (the car parts)",
+        "B": "A service (the repair activity)",
+        "C": "An experience (the feeling of a fixed car)",
+        "D": "A commodity (generic repair)"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Car maintenance and repair involve performing an activity or benefit (fixing the car) rather than selling a tangible item that the customer owns (though parts may be products, the labor is the service). The core offering is the service of repair. While a fixed car contributes to an experience, the direct offering is the service.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_2",
+      "tags": [
+        "Services",
+        "Real-world Use Case",
+        "Application"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is 'Customer Experience' primarily concerned with?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The price of a product or service.",
+        "B": "The efficiency of a single transaction.",
+        "C": "The holistic journey and overall impression a customer has with a business.",
+        "D": "The technical specifications of a product."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Customer Experience (CX) refers to the holistic journey and overall impression a customer has with a business, encompassing all touchpoints. It goes beyond just price, single transactions, or product specifications.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Definition",
+        "Holistic Journey"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Why is 'Customer Experience' becoming increasingly crucial for businesses in today's market?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Because customers prefer lower prices over quality.",
+        "B": "To reduce the need for product innovation.",
+        "C": "As products and services become commoditized and undifferentiated.",
+        "D": "To simplify operational processes."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Customer experience becomes crucial when products and services become commoditized, meaning they are perceived as similar and interchangeable. In such an environment, a unique and memorable customer experience serves as a key differentiator. It's not about preferring lower prices, reducing product innovation, or simplifying operations.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Commoditization",
+        "Differentiation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does the term 'commoditization' refer to in the context of business strategy?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The process of making products more expensive.",
+        "B": "When products or services become undifferentiated and interchangeable.",
+        "C": "A strategy to increase customer loyalty through exclusive features.",
+        "D": "The act of expanding into new market segments."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Commoditization occurs when products or services become undifferentiated and interchangeable in the eyes of the customer, often leading to price being the primary factor for competition. It is not about increasing prices, creating exclusive features, or expanding markets.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Commoditization",
+        "Definition",
+        "Market Dynamics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement accurately differentiates 'customer service' from 'customer experience'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Customer service is proactive, while customer experience is reactive.",
+        "B": "Customer service focuses on pricing, while customer experience focuses on features.",
+        "C": "Customer service is a component of the overall experience, often reactive and transactional.",
+        "D": "Customer service applies only to products, while customer experience applies only to services."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "Customer service is a part of the broader customer experience, often dealing with specific, reactive interactions (like handling a complaint). Customer experience is the holistic, proactive journey across all touchpoints. Options A, B, and D misrepresent the relationship or scope.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Customer Service",
+        "Distinction",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "In an era of commoditization, which of the following are key reasons why focusing on Customer Experience is crucial for businesses? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It helps to differentiate a business from competitors.",
+        "B": "It reduces the need for any product or service quality.",
+        "C": "It allows businesses to create unique and memorable engagements.",
+        "D": "It primarily focuses on offering the lowest possible prices."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "A and C are correct because a strong customer experience helps differentiate a business when products and services become commoditized, and it allows for the creation of unique and memorable engagements that add value. B is incorrect because quality remains important, and D is incorrect because CX aims to create value beyond just price competition.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_3",
+      "tags": [
+        "Customer Experience",
+        "Commoditization",
+        "Differentiation",
+        "Value Creation",
+        "Strategic Innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the most fundamental characteristic of a 'service'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Its tangibility",
+        "B": "Its ability to be stored",
+        "C": "Its intangibility",
+        "D": "Its low cost"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "The most fundamental characteristic of a service is its intangibility, meaning it cannot be physically touched or held. Services are not tangible, typically cannot be stored, and their cost varies.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an essential aspect of the definition of a 'service'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It always results in the ownership of a physical good.",
+        "B": "It is an activity, benefit, or satisfaction offered for sale.",
+        "C": "It can be easily inventoried and transported.",
+        "D": "It has a fixed price across all providers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "A service is defined as an activity, benefit, or satisfaction offered for sale. It specifically does NOT result in ownership of a physical good, cannot be easily inventoried (due to intangibility), and its price is not fixed across providers.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Definition",
+        "Characteristics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When you hire a personal trainer for fitness coaching, what are you primarily purchasing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A tangible product (the workout plan)",
+        "B": "An intangible service (the coaching and guidance)",
+        "C": "A commodity (generic fitness advice)",
+        "D": "A physical good (the trainer's equipment)"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "Hiring a personal trainer involves purchasing an intangible service, which includes their expertise, guidance, and motivation. While a workout plan might be provided, the core value is in the ongoing activity and benefit, not a tangible product or the trainer's equipment. It's not a commodity if the trainer is differentiated.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Application",
+        "Intangibility"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement represents a common mistake when thinking about services?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Confusing a physical good that facilitates a service with the service itself.",
+        "B": "Recognizing the importance of the service provider in quality delivery.",
+        "C": "Understanding that services are often consumed at the point of production.",
+        "D": "Acknowledging the role of customer satisfaction in service success."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "A common mistake is confusing a physical good (like a coffee cup) that is part of a service delivery with the service itself (serving coffee in a cafe). The other options represent correct understandings or best practices regarding services.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Common Mistakes",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A dental check-up is an example of a service because the customer primarily pays for what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Ownership of dental tools.",
+        "B": "The dentist's tangible products.",
+        "C": "An activity and benefit (examination and oral health).",
+        "D": "A permanent physical item to take home."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "A dental check-up is a service because the customer pays for the activity (examination, cleaning) and the benefit (improved oral health), not for ownership of tools or a permanent physical item. Dentists provide services, not tangible products for sale.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_4",
+      "tags": [
+        "Services",
+        "Real-world Use Case",
+        "Application"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which characteristic of services implies that they cannot be physically perceived or touched before they are purchased and experienced?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Variability",
+        "B": "Intangibility",
+        "C": "Inseparability",
+        "D": "Perishability"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Intangibility means services lack a physical form, so they cannot be touched or seen before consumption. Option A (Variability) refers to inconsistent quality.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Intangibility",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hair salon has an empty appointment slot that goes unfilled. This lost revenue from the unbooked time is an example of which service characteristic?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Intangibility",
+        "B": "Variability",
+        "C": "Inseparability",
+        "D": "Perishability"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct because Perishability means services cannot be stored or inventoried, so unused capacity (like an empty appointment slot) is lost forever. Option C (Inseparability) refers to the service being produced and consumed simultaneously.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Perishability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a customer receives a massage, the service is produced and consumed at the same moment, and the customer is often present during its delivery. This illustrates which service characteristic?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Perishability",
+        "B": "Intangibility",
+        "C": "Inseparability",
+        "D": "Variability"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because Inseparability means that services cannot be separated from their providers; they are produced and consumed simultaneously. Option B (Intangibility) refers to the lack of physical form.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Inseparability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which service characteristic highlights that the quality of a service can differ significantly depending on who provides it, when, where, and how it is provided?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Intangibility",
+        "B": "Perishability",
+        "C": "Inseparability",
+        "D": "Variability"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct because Variability refers to the potential for inconsistency in service quality due to human elements and differing circumstances. Option A (Intangibility) describes the non-physical nature of services.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Variability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common challenge for service businesses, such as airlines or hotels, is managing unused capacity because services cannot be stored for later sale. This challenge is directly related to which service characteristic?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Inseparability",
+        "B": "Intangibility",
+        "C": "Perishability",
+        "D": "Variability"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the inability to store services, leading to issues with managing unused capacity (like empty hotel rooms or flight seats), is a direct consequence of perishability. Option A (Inseparability) relates to simultaneous production and consumption.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_5",
+      "tags": [
+        "Services",
+        "Perishability",
+        "Service Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of service marketing involves a company communicating its value proposition and brand promise to its target customers through advertising and promotions?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Internal marketing",
+        "B": "Interactive marketing",
+        "C": "External marketing",
+        "D": "Relationship marketing"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because External marketing focuses on traditional marketing efforts from the company to its customers to attract them. Option A (Internal marketing) is directed at employees.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "External Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A hotel chain conducts extensive training programs for its front desk staff on customer service standards and empowers them to resolve guest complaints quickly. This is an example of which type of marketing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External marketing",
+        "B": "Internal marketing",
+        "C": "Interactive marketing",
+        "D": "Strategic marketing"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Internal marketing involves training, motivating, and empowering employees to deliver excellent service, ensuring staff are prepared to uphold the brand promise. Option C (Interactive marketing) is the actual interaction between employees and customers.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Internal Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of service marketing occurs at the moment of truth when employees directly engage with customers, influencing the customer's perception of service quality?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External marketing",
+        "B": "Internal marketing",
+        "C": "Interactive marketing",
+        "D": "Digital marketing"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because Interactive marketing is the critical moment when the service is delivered by employees to customers, directly shaping the customer's experience. Option A (External marketing) is about attracting customers.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Interactive Marketing",
+        "Service Quality"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following types of marketing are primarily focused on the interactions involving a company's employees, either with each other or with customers? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External marketing",
+        "B": "Internal marketing",
+        "C": "Interactive marketing",
+        "D": "Promotional marketing"
+      },
+      "correct_answer": [
+        "B",
+        "C"
+      ],
+      "explanation": "B and C are correct. Internal marketing (B) focuses on the company's relationship with its employees, motivating and training them. Interactive marketing (C) focuses on the direct interactions between employees and customers during service delivery. External marketing (A) is communication from the company to customers, and Promotional marketing (D) is a component of external marketing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Internal Marketing",
+        "Interactive Marketing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Many service businesses mistakenly focus only on attracting new customers through advertising, often neglecting to properly train and motivate their own staff. Which type of marketing is most likely being neglected in this scenario?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External marketing",
+        "B": "Interactive marketing",
+        "C": "Internal marketing",
+        "D": "Digital marketing"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because neglecting to train and motivate staff directly relates to a lack of effective internal marketing, which is crucial for ensuring employees are prepared to deliver on the service promise. External marketing (A) is what they are focusing on in this scenario.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_PS_Experience_6",
+      "tags": [
+        "Service Marketing",
+        "Internal Marketing"
+      ]
+    }
+  ]
+}

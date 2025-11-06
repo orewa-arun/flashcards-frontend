@@ -2,10 +2,10 @@
 2. remove the \\ from the json file!
 3. Then you apply the flashcard_generation.main script
 4. Then you ask claude from cursor to fix the mermaid_diagrams and math_visualizations: using something like this:
-Here's the thing, you are not to recreate/tamper any other field except the following in @DAA_lec_4_cognitive_flashcards.json 
+Here's the thing, you are not to recreate/tamper any other field except the following in <mentioned flashcard json>
 
 mermaid_diagrams, math_visualizations.
-Read the  @intelligent_flashcard_prompt.txt , to get an idea of what must go into these objects.
+Read the  @intelligent_flashcard_only_prompt_v2.txt , to get an idea of what must go into these objects.
 Don't tamper with anything else. Make all the changes in the existing file itself.
 Update only the mermaid_diagrams and math_visualizations fields in the existing MIS_lec_4_cognitive_flashcards.json file by reading the content and regenerating just those specific fields
 I want you to manually read the json file and regenerate each and every single by creating a better, correct version of it.
@@ -16,3 +16,13 @@ I don't want you to create any script, do it manually, whatever it takes.
 5. You copy the courses to public/ and backend/
 
 cd /Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai && cp courses/MS5031/cognitive_flashcards/DAA_lec_4/DAA_lec_4_cognitive_flashcards.json frontend/public/courses/MS5031/cognitive_flashcards/DAA_lec_4/DAA_lec_4_cognitive_flashcards.json && echo "✓ Copied to frontend/public" && cp courses/MS5031/cognitive_flashcards/DAA_lec_4/DAA_lec_4_cognitive_flashcards.json backend/courses/MS5031/cognitive_flashcards/DAA_lec_4/DAA_lec_4_cognitive_flashcards.json && echo "✓ Copied to backend"
+
+6. To generate flashcards with quizzes:
+# Quiz-only mode (fastest - just regenerates quizzes)
+python -m cognitive_flashcard_generator.main MS5150 quizzes
+
+# Quiz-only for a specific lecture
+python -m cognitive_flashcard_generator.main MS5150 SI_lec_1 quizzes
+
+# Full generation (flashcards + quizzes) for a course
+python -m cognitive_flashcard_generator.main MS5150
