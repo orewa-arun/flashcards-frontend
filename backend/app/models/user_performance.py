@@ -1,7 +1,7 @@
 """User performance tracking models for adaptive quiz engine."""
 
 from datetime import datetime
-from typing import Dict, Optional
+from typing import Dict, Optional, Union, List
 from pydantic import BaseModel, Field
 
 
@@ -48,8 +48,8 @@ class QuizAnswerSubmission(BaseModel):
 class QuestionResult(BaseModel):
     """Model for a single question result in the quiz session."""
     question_text: str
-    user_answer: str
-    correct_answer: str
+    user_answer: Union[str, List[str]]  # String for MCQ, array for MCA
+    correct_answer: Union[str, List[str]]  # String for MCQ, array for MCA
     is_correct: bool
     explanation: str
     source_flashcard_id: Optional[str] = None

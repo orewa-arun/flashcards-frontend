@@ -241,7 +241,7 @@ class AsyncQuizGenerator:
         elif question_type == 'mca':
             # MCA must have at least 1 correct answer (typically 2-3)
             if len(question['correct_answer']) < 1:
-                return False
+            return False
         
         return True
 

@@ -247,20 +247,20 @@ const WeakConceptsView = () => {
                     </p>
                   </div>
                 ) : (
-                  <Flashcard 
-                    card={{
-                      flashcard_id: currentConcept.flashcard_id,
-                      question: currentConcept.question,
-                      answers: currentConcept.answers,
-                      example: currentConcept.example,
-                      mermaid_diagrams: currentConcept.mermaid_diagrams,
-                      math_visualizations: currentConcept.math_visualizations,
-                    }}
-                    courseId={currentConcept.courseId}
-                    deckId={currentConcept.lecture_id}
-                    index={currentIndex}
-                    sessionId={null} // No session tracking for weak concepts review
-                  />
+                <Flashcard 
+                  card={{
+                    flashcard_id: currentConcept.flashcard_id,
+                    question: currentConcept.question,
+                    answers: currentConcept.answers,
+                    example: currentConcept.example,
+                    mermaid_diagrams: currentConcept.mermaid_diagrams,
+                    math_visualizations: currentConcept.math_visualizations,
+                  }}
+                  courseId={currentConcept.courseId}
+                  deckId={currentConcept.lecture_id}
+                  index={currentIndex}
+                  sessionId={null} // No session tracking for weak concepts review
+                />
                 )}
 
                 {/* Performance Stats Below Card */}

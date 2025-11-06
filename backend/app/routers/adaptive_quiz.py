@@ -204,11 +204,22 @@ async def complete_quiz_session(
         
         user_id = current_user['uid']
         
+        logger.info(f"📝 Completing quiz session: user={user_id}, course={completion.course_id}, "
+                   f"lecture={completion.lecture_id}, level={completion.level}, "
+                   f"score={completion.score}/{completion.total_questions}")
+        
         # Calculate percentage
         percentage = round((completion.score / completion.total_questions * 100), 2) if completion.total_questions > 0 else 0
         
         # Create the deck_id from lecture_id and level
         deck_id = f"{completion.lecture_id}"
+        
+        # Helper function to normalize answers for storage
+        def normalize_answer(answer):
+            """Convert answer to appropriate format for storage."""
+            if isinstance(answer, list):
+                return answer  # Keep as array for MCA
+            return answer  # Keep as string for MCQ
         
         # Prepare quiz result document matching the old quiz system format
         quiz_result_document = {
@@ -224,12 +235,12 @@ async def complete_quiz_session(
             "question_results": [
                 {
                     "question": result.question_text,
-                    "user_answer": result.user_answer,
-                    "correct_answer": result.correct_answer,
+                    "user_answer": normalize_answer(result.user_answer),
+                    "correct_answer": normalize_answer(result.correct_answer),
                     "is_correct": result.is_correct,
                     "explanation": result.explanation,
                     "source_flashcard_id": result.source_flashcard_id,
-                    "question_type": "multiple_choice"
+                    "question_type": "mca" if isinstance(result.correct_answer, list) and len(result.correct_answer) > 1 else "mcq"
                 }
                 for result in completion.question_results
             ]
