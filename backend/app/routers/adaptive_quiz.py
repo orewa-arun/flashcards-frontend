@@ -9,10 +9,12 @@ from app.firebase_auth import get_current_user
 from app.models.user_performance import QuizSessionRequest, QuizAnswerSubmission, QuizSessionCompletion
 from app.services.user_performance_service import UserPerformanceService
 from app.services.adaptive_quiz_service import AdaptiveQuizService
+from app.config import get_settings
 
 logger = logging.getLogger(__name__)
+settings = get_settings()
 
-router = APIRouter(prefix="/api/v1/quiz", tags=["adaptive-quiz"])
+router = APIRouter(prefix="/api/v1/adaptive-quiz", tags=["adaptive-quiz"])
 
 
 @router.post("/session/start")
