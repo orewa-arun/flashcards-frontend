@@ -143,6 +143,28 @@
   margin-bottom: 30px;
 }
 
+.question-type-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.mcq-badge {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 2px solid #2196f3;
+}
+
+.mca-badge {
+  background: #f3e5f5;
+  color: #7b1fa2;
+  border: 2px solid #9c27b0;
+}
+
 .question-text {
   font-size: 1.5em;
   color: #333;
@@ -196,9 +218,37 @@
   cursor: not-allowed;
 }
 
+.option-button.missed {
+  border: 2px dashed #ff9800;
+  background: #fff3e0;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.option-button.missed::after {
+  content: '⚠️ Missed';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #f57c00;
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid #ff9800;
+}
+
 .option-button.disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+/* Hide default checkbox/radio, we'll style the label */
+.option-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .option-label {

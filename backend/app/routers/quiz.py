@@ -5,7 +5,7 @@ import os
 import random
 import logging
 from datetime import datetime, timezone
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Header, Depends
 from app.database import get_database
@@ -549,15 +549,21 @@ async def submit_quiz(
         
         # Grade the quiz
         question_results = []
-        score = 0
+        score = 0.0  # Changed to float to support partial credit
         concept_results = {}  # Track results by concept_index
         
         for question in questions:
             user_answer = answers_dict.get(question.question_id)
-            is_correct = compare_answers(user_answer, question.correct_answer, question.question_type)
+            is_correct, partial_credit = compare_answers(user_answer, question.correct_answer, question.question_type)
             
-            if is_correct:
-                score += 1
+            # Calculate score contribution
+            if question.question_type == "mca":
+                # For MCA, use partial credit score
+                score += partial_credit if partial_credit is not None else 0.0
+            else:
+                # For other types, binary scoring
+                if is_correct:
+                    score += 1.0
             
             question_results.append(QuestionResult(
                 question_id=question.question_id,
@@ -568,7 +574,8 @@ async def submit_quiz(
                 options=question.options,
                 user_answer=user_answer,
                 correct_answer=question.correct_answer,
-                is_correct=is_correct
+                is_correct=is_correct,
+                partial_credit_score=partial_credit
             ))
             
             # Track by concept
@@ -641,6 +648,9 @@ async def submit_quiz(
         total_questions = len(questions)
         percentage = (score / total_questions * 100) if total_questions > 0 else 0
         
+        # Round score for display (but keep float for accurate percentage calculation)
+        display_score = round(score)
+        
         # Get difficulty from quiz session or submission
         difficulty = quiz_session.get("difficulty", submission.difficulty or "medium")
         
@@ -652,7 +662,7 @@ async def submit_quiz(
             "deck_id": submission.deck_id,
             "quiz_id": submission.quiz_id,
             "difficulty": difficulty,
-            "score": score,
+            "score": display_score,
             "total_questions": total_questions,
             "percentage": round(percentage, 2),
             "time_taken": submission.time_taken_seconds,
@@ -660,7 +670,7 @@ async def submit_quiz(
             "question_results": [qr.model_dump() for qr in question_results]
         }
         
-        logger.info(f"Attempting to save quiz result: user={firebase_uid}, course={submission.course_id}, deck={submission.deck_id}, difficulty={difficulty}, score={score}/{total_questions}")
+        logger.info(f"Attempting to save quiz result: user={firebase_uid}, course={submission.course_id}, deck={submission.deck_id}, difficulty={difficulty}, score={display_score}/{total_questions}")
         result = await quiz_results_collection.insert_one(quiz_result_document)
         logger.info(f"✅ Successfully saved quiz result to history! Document ID: {result.inserted_id}")
         
@@ -670,7 +680,7 @@ async def submit_quiz(
             course_id=submission.course_id,
             deck_id=submission.deck_id,
             difficulty=difficulty,
-            score=score,
+            score=display_score,
             total_questions=total_questions,
             percentage=round(percentage, 2),
             time_taken_seconds=submission.time_taken_seconds,
@@ -687,50 +697,99 @@ async def submit_quiz(
         raise HTTPException(status_code=500, detail=f"Error submitting quiz: {str(e)}")
 
 
-def compare_answers(user_answer: Any, correct_answer: Any, question_type: str) -> bool:
-    """Compare user answer with correct answer based on question type."""
+def compare_answers(user_answer: Any, correct_answer: Any, question_type: str) -> tuple[bool, Optional[float]]:
+    """
+    Compare user answer with correct answer based on question type.
+    
+    Note: For MCQ and MCA questions, correct_answer is always a list.
+    - MCQ: list with 1 element (e.g., ["A"])
+    - MCA: list with 2+ elements (e.g., ["A", "C"])
+    
+    Returns:
+        tuple: (is_correct: bool, partial_credit_score: Optional[float])
+        - For MCQ: (True/False, None)
+        - For MCA: (True/False, score between 0.0 and 1.0)
+    """
     if user_answer is None:
-        return False
+        return False, None
     
     if question_type in ["mcq", "scenario_mcq"]:
-        # Direct string comparison
-        return str(user_answer).strip() == str(correct_answer).strip()
+        # correct_answer is a list with 1 element
+        if not isinstance(correct_answer, list) or len(correct_answer) == 0:
+            return False, None
+        
+        # Compare user's single answer with the first (and only) element in correct_answer array
+        is_correct = str(user_answer).strip() == str(correct_answer[0]).strip()
+        return is_correct, None
+    
+    elif question_type == "mca":
+        # correct_answer is a list with 2+ elements
+        if not isinstance(correct_answer, list):
+            return False, 0.0
+        
+        # Ensure user_answer is a list
+        if not isinstance(user_answer, list):
+            user_answer = [user_answer] if user_answer else []
+        
+        # Normalize answers (strip whitespace)
+        correct_set = set(str(ans).strip() for ans in correct_answer)
+        user_set = set(str(ans).strip() for ans in user_answer)
+        
+        # Calculate selections
+        correct_selections = len(user_set & correct_set)  # Intersection
+        incorrect_selections = len(user_set - correct_set)  # User selected but wrong
+        total_correct = len(correct_set)
+        
+        # STRICT SCORING: If user selected ANY wrong option, they get ZERO credit
+        if incorrect_selections > 0:
+            partial_score = 0.0
+            is_correct = False
+        else:
+            # No wrong selections - give partial credit based on how many correct ones they got
+            partial_score = correct_selections / total_correct if total_correct > 0 else 0.0
+            # Question is fully correct only if all correct answers selected
+            is_correct = (correct_selections == total_correct)
+        
+        return is_correct, partial_score
     
     elif question_type == "sequencing":
         # Order matters - compare as lists
         if not isinstance(user_answer, list) or not isinstance(correct_answer, list):
-            return False
-        return user_answer == correct_answer
+            return False, None
+        is_correct = user_answer == correct_answer
+        return is_correct, None
     
     elif question_type == "categorization":
         # Compare dictionaries
         if not isinstance(user_answer, dict) or not isinstance(correct_answer, dict):
-            return False
+            return False, None
         
         # Check if the set of categories is the same
         if set(user_answer.keys()) != set(correct_answer.keys()):
-            return False
+            return False, None
 
         # Normalize and compare items within each category
         for category, items in correct_answer.items():
             user_items = set(user_answer.get(category, []))
             correct_items = set(items)
             if user_items != correct_items:
-                return False
+                return False, None
         
-        return True
+        return True, None
     
     elif question_type == "matching":
         # Compare matching pairs (e.g., ["1-A", "2-B", "3-C"])
         if not isinstance(user_answer, list) or not isinstance(correct_answer, list):
-            return False
+            return False, None
         
         # Normalize and compare as sets (order doesn't matter)
         user_pairs = set(str(pair).strip() for pair in user_answer)
         correct_pairs = set(str(pair).strip() for pair in correct_answer)
-        return user_pairs == correct_pairs
+        is_correct = user_pairs == correct_pairs
+        return is_correct, None
     
     else:
         # Default: direct comparison
-        return user_answer == correct_answer
+        is_correct = user_answer == correct_answer
+        return is_correct, None
 

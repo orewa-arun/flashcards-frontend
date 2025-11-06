@@ -75,6 +75,68 @@
           "The Ansoff Growth Matrix (Using the 2x2 matrix to identify corporate growth strategies: Market Penetration, Product Development, Market Development, and Diversification)",
           "The Boston Consulting Group (BCG) Matrix (Using the 2x2 matrix of Market Growth Rate vs. Relative Market Share to classify products/SBUs as Stars, Cash Cows, Question Marks, and Dogs, and determining appropriate strategies)"
         ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_PS_Experience.pdf",
+        "lecture_name": "Product, Service & Experience",
+        "lecture_number": "3",
+        "topics": [
+          "Product, Service, and Experience (Moving beyond product/service to customer experience)",
+          "Services vs. Products",
+          "Four Characteristics of Services: **Intangibility**, **Variability**, **Inseparability**, and **Perishability**",
+          "The Service Profit Chain and Three Types of Service Marketing (External, Internal, and Interactive Marketing)"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_Product_Policy.pdf",
+        "lecture_name": "Product Policy",
+        "lecture_number": "4",
+        "topics": [
+          "Defining **Product Policy** and key decisions for a firm",
+          "Concepts of **Product Mix/Portfolio**, **Product Line**, and **Consistency** of the mix",
+          "Product Line Decisions: **Product Line Length**, **Depth** (and Stock-Keeping Unit - SKU)",
+          "Product Line Strategies: **Line Extension** (Upward/Downward Stretch, Filling) and **Line Pruning**",
+          "Recap/Application of the **Boston Consulting Group (BCG) Matrix** (Stars, Cash Cows, Question Marks, Dogs)"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_NPD.pdf",
+        "lecture_name": "New-Product Development Process (NPD)",
+        "lecture_number": "5",
+        "topics": [
+          "The Eight Major Stages of the **New-Product Development (NPD) Process**",
+          "Detailed look at: **Idea Generation** (Internal, External, Open Innovation/Crowdsourcing)",
+          "**Idea Screening** (Real, Win, Worth doing - R-W-W Framework)",
+          "**Concept Development and Testing** (Product Idea, Concept, Image)",
+          "**Marketing Strategy Development** and **Business Analysis**",
+          "**Product Development** (Alpha and Beta Testing)",
+          "**Test Marketing** (Challenges and Types: Standard, Controlled, Simulated) and **Commercialization**"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_Pricing.pdf",
+        "lecture_name": "Pricing Strategies and Tools",
+        "lecture_number": "6",
+        "topics": [
+          "Definition of **Price** (Narrow and Broad Sense) and its importance as a marketing tool and source of revenue",
+          "Identifying the **Price Floor** (Product Costs) and **Price Ceiling** (Customer Perceptions of Value)",
+          "Company Pricing Objectives (Survival, Maximum Profit/Market Share, Quality Leadership)",
+          "Major Pricing Strategies: **Customer Value-Based**, **Cost-Based**, and **Competition-Based Pricing**",
+          "External and Internal Factors Affecting Pricing Decisions (Nature of the Market/Demand, Competitors, Economic Conditions)"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5150/lecture_slides/SI_Place.pdf",
+        "lecture_name": "Marketing Channels (Place)",
+        "lecture_number": "7",
+        "topics": [
+          "The **Supply Chain** and **Value Delivery Network** (Upstream vs. Downstream)",
+          "Definition and function of a **Marketing Channel** (Distribution Channel)",
+          "Marketing Channel Functions (Information, Promotion, Contact, Matching, Negotiation, Physical Distribution)",
+          "Channel Organization: **Vertical Marketing Systems** (VMS) and **Horizontal Marketing Systems**",
+          "**Channel Conflict** (Vertical and Horizontal) and **Disintermediation**",
+          "Key Decisions in **Designing a Marketing Channel** (Consumer needs, Objectives, Alternatives, Evaluation)"
+        ]
       }
     ]
   },

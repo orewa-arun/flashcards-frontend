@@ -23,7 +23,7 @@ export const initializeAmplitude = () => {
   try {
     // Initialize Session Replay plugin BEFORE amplitude.init
     const sessionReplay = sessionReplayPlugin({
-      sampleRate: 0, // 100% in development (lower to 0.1-0.3 in production)
+      sampleRate: 1, // 100% in development (lower to 0.1-0.3 in production)
       privacyConfig: {
         maskAllInputs: true, // Mask all input fields
         maskAllText: false, // Allow UI text to be visible

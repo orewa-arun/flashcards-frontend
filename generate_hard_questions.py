@@ -30,7 +30,7 @@ from config import Config
 class HardQuestionGenerator:
     """Generator for hard quiz questions using Gemini AI."""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.0-flash-exp"):
+    def __init__(self, api_key: str, model: str = "gemini-2.5-flash"):
         """
         Initialize the hard question generator.
         

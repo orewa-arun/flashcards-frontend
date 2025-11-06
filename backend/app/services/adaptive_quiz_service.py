@@ -328,11 +328,19 @@ class AdaptiveQuizService:
             logger.warning(f"No questions found for {course_id}/{lecture_id}/level_{level}")
             return []
         
-        # Determine adaptive session size based on total available questions
-        # Rule of thumb: ~33% of available, bounded within [5, 20]
+        # Determine adaptive session size based on level
+        # Level-based allocation: Level 1=5, Level 2=10, Level 3=15, Level 4=15
+        level_based_sizes = {
+            1: 5,
+            2: 10,
+            3: 15,
+            4: 15
+        }
+        default_size = level_based_sizes.get(level, 10)  # Default to 10 if level not found
+        
+        # Cap at 15 questions maximum for any level
         total_available = len(all_questions)
-        dynamic_size = max(5, min(20, int(round(total_available * 0.33))))
-        session_size = dynamic_size if size is None else max(5, min(20, size))
+        session_size = min(15, default_size, total_available) if size is None else min(15, size, total_available)
         
         # Get all available flashcard IDs from the flashcard deck
         all_flashcard_ids = set(flashcard_metadata.keys())

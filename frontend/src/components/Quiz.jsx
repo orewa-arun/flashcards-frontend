@@ -12,11 +12,16 @@ function Quiz({ flashcards, onComplete }) {
   const [isCorrect, setIsCorrect] = useState(false)
 
   useEffect(() => {
+    console.log("🚀 QUIZ DIAGNOSTIC: Loading flashcards...");
+    console.log("🚀 Flashcards count:", flashcards?.length);
+    
     // Collect all recall questions from all flashcards
     const questions = []
     flashcards.forEach(card => {
       if (card.recall_questions && card.recall_questions.length > 0) {
         card.recall_questions.forEach(q => {
+          console.log("📝 Found question - Type:", q.type, "Question:", q.question?.substring(0, 50));
+          
           // Sanitize MCQ options to remove duplicates
           if (q.type === 'mcq' && q.options && Array.isArray(q.options)) {
             q.options = [...new Set(q.options)]
@@ -30,11 +35,16 @@ function Quiz({ flashcards, onComplete }) {
       }
     })
     
+    console.log("📊 Total questions collected:", questions.length);
+    
     // Shuffle all questions
     const shuffled = questions.sort(() => Math.random() - 0.5)
     
     // Select only 10 random questions to keep the quiz focused
     const selectedQuestions = shuffled.slice(0, 10)
+    console.log("✅ Selected questions for quiz:", selectedQuestions.length);
+    console.log("✅ First question:", JSON.stringify(selectedQuestions[0], null, 2));
+    
     setAllQuestions(selectedQuestions)
 
     // Show transition for 2 seconds
@@ -42,15 +52,31 @@ function Quiz({ flashcards, onComplete }) {
   }, [flashcards])
 
   const currentQuestion = allQuestions[currentQuestionIndex]
+  
+  console.log("🎯 CURRENT QUESTION:", currentQuestionIndex, currentQuestion);
 
   // Reset answer when question changes
   useEffect(() => {
-    setUserAnswer(null)
-  }, [currentQuestionIndex])
+    console.log("🔄 Question changed - Index:", currentQuestionIndex, "Type:", currentQuestion?.type);
+    
+    // Initialize userAnswer based on question type
+    if (currentQuestion?.type === 'mca') {
+      console.log("🟣 Initializing MCA question with empty array");
+      setUserAnswer([])  // Empty array for multiple choice
+    } else {
+      console.log("🔵 Initializing MCQ question with null");
+      setUserAnswer(null)  // null for single choice
+    }
+  }, [currentQuestionIndex, currentQuestion?.type])
 
   const handleSubmit = () => {
     // Check if user has provided an answer
+    // For MCA questions, allow empty arrays but not null/undefined
+    if (currentQuestion.type === 'mca') {
+      if (!Array.isArray(userAnswer)) return
+    } else {
     if (!userAnswer && userAnswer !== false && userAnswer !== 0) return
+    }
 
     // Two-stage flow: Submit Answer → Show Feedback → Next Question
     if (!isAnswerSubmitted) {
@@ -71,7 +97,7 @@ function Quiz({ flashcards, onComplete }) {
       // Stage 2: Move to next question
       if (currentQuestionIndex < allQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1)
-        setUserAnswer(null)
+        // userAnswer will be reset by useEffect based on next question type
         setIsAnswerSubmitted(false)
         setIsCorrect(false)
       } else {
@@ -85,6 +111,21 @@ function Quiz({ flashcards, onComplete }) {
     
     // Handle different question types
     switch (currentQuestion.type) {
+      case 'mcq':
+      case 'scenario_mcq':
+        // correct_answer is now always an array; for MCQ it has 1 element
+        const correctMCQ = Array.isArray(correctAnswer) ? correctAnswer[0] : correctAnswer
+        return correctMCQ.toString().toLowerCase().trim() === userAnswer.toString().toLowerCase().trim()
+      
+      case 'mca':
+        // correct_answer is an array with 2+ elements for MCA
+        if (Array.isArray(userAnswer) && Array.isArray(correctAnswer)) {
+          const sortedUser = [...userAnswer].sort()
+          const sortedCorrect = [...correctAnswer].sort()
+          return JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect)
+        }
+        return false
+      
       case 'sequencing':
         return JSON.stringify(userAnswer) === JSON.stringify(correctAnswer)
       
@@ -106,8 +147,6 @@ function Quiz({ flashcards, onComplete }) {
       case 'fill_in_the_blank':
         return correctAnswer.toString().toLowerCase().trim() === userAnswer.toString().toLowerCase().trim()
       
-      case 'mcq':
-      case 'scenario_mcq':
       default:
         return correctAnswer.toString().toLowerCase().trim() === userAnswer.toString().toLowerCase().trim()
     }

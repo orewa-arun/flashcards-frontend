@@ -95,7 +95,7 @@ class QuizQuestion(BaseModel):
     concept_index: int = Field(..., description="Index of the source concept in the flashcard deck")
     concept_context: str = Field(..., description="The context/name of the concept")
     relevance_score: int = Field(..., description="Relevance score of the concept")
-    question_type: str = Field(..., description="Type: mcq, scenario_mcq, sequencing, categorization, matching")
+    question_type: str = Field(..., description="Type: mcq, mca, scenario_mcq, sequencing, categorization, matching")
     question: Any = Field(..., description="The question content")
     options: Optional[List[str]] = Field(None, description="Options for MCQ questions")
     items: Optional[List[Any]] = Field(None, description="Items for sequencing/categorization")
@@ -103,7 +103,7 @@ class QuizQuestion(BaseModel):
     scenario: Optional[str] = Field(None, description="Scenario for scenario_mcq")
     premises: Optional[List[str]] = Field(None, description="Premises for matching questions")
     responses: Optional[List[str]] = Field(None, description="Responses for matching questions")
-    correct_answer: Any = Field(..., description="The correct answer")
+    correct_answer: List[str] = Field(..., description="The correct answer as an array (1 element for mcq, 2+ for mca)")
 
 
 class QuizGenerationResponse(BaseModel):
@@ -148,6 +148,7 @@ class QuestionResult(BaseModel):
     user_answer: Any
     correct_answer: Any
     is_correct: bool
+    partial_credit_score: Optional[float] = Field(None, description="Partial credit score for MCA questions (0.0 to 1.0)")
 
 
 class ConceptWeakness(BaseModel):

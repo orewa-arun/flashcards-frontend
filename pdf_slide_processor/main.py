@@ -7,12 +7,13 @@ This module orchestrates the entire slide processing pipeline:
 - Extracts and structures content for flashcard generation
 
 Usage:
-    python -m pdf_slide_processor.main [course_id]
+    python -m pdf_slide_processor.main [course_id] [pdf_name]
     
     If course_id is not provided, all courses will be processed.
+    If pdf_name is provided (without .pdf extension), only that lecture will be processed.
     
     Example:
-        python -m pdf_slide_processor.main MS5130
+        python -m pdf_slide_processor.main MS5150 SI_lec_1
         python -m pdf_slide_processor.main MS5260
 
 Output:
@@ -31,12 +32,15 @@ from .extractor import InformationExtractor
 from .utils import load_courses, get_course_by_id
 
 
-def process_course(course: dict) -> None:
+def process_course(course: dict, target_pdf_name: str = None) -> None:
     """
-    Process all slides for a given course.
+    Process slides for a given course.
+
+    If target_pdf_name is provided, only that lecture PDF is processed.
     
     Args:
         course: Course dictionary with metadata and slides list
+        target_pdf_name: (Optional) The stem of the PDF file to process (e.g., "SI_lec_1").
     """
     course_id = course['course_id']
     course_name = course['course_name']
@@ -66,6 +70,19 @@ def process_course(course: dict) -> None:
     slides_to_process = course.get('lecture_slides', [])
     if not slides_to_process:
         print(f"⚠️  No slides configured for this course")
+        return
+
+    # If a specific lecture PDF is targeted, filter the list
+    if target_pdf_name:
+        slides_to_process = [
+            s for s in slides_to_process if Path(s['pdf_path']).stem == target_pdf_name
+        ]
+        if not slides_to_process:
+            print(f"⚠️  PDF name '{target_pdf_name}' not found in course '{course_id}'.")
+            # Log available lectures by PDF name
+            print("   Available PDF names are:")
+            for s in course.get('lecture_slides', []):
+                print(f"     - {Path(s['pdf_path']).stem}")
         return
     
     print(f"\n📊 Slides to process: {len(slides_to_process)}")
@@ -107,25 +124,16 @@ def process_course(course: dict) -> None:
                 course_context=course_context
             )
             
-            # Use intelligent rate limiting: 6.5s delay = ~9 req/min (under 10/min limit)
-            analyzed_slides = analyzer.analyze_all_slides(slides, delay_seconds=6.5, batch_size=9)
+            # Use batching to reduce API costs: 5 slides per call, 10s delay between batches
+            analyzed_slides = analyzer.analyze_all_slides(slides, delay_seconds=10, slides_per_batch=5)
             all_analyzed_slides.extend(analyzed_slides)
             
-            # Step 3: Create master document for this lecture
-            master_doc_path = os.path.join(analysis_output_dir, f"{pdf_name}_master_content.txt")
-            InformationExtractor.create_master_document(
-                analyzed_slides, 
-                master_doc_path,
-                course_metadata=course
-            )
-            
-            # Step 4: Save structured JSON for this lecture
+            # Save structured JSON for this lecture
             json_path = os.path.join(analysis_output_dir, f"{pdf_name}_structured_analysis.json")
             InformationExtractor.save_structured_json(analyzed_slides, json_path)
             
             print(f"\n✅ Completed: {lecture_name}")
             print(f"  • Slides analyzed: {len(analyzed_slides)}")
-            print(f"  • Master document: {master_doc_path}")
             print(f"  • Structured JSON: {json_path}")
             
         except Exception as e:
@@ -163,11 +171,14 @@ def main():
     
     print(f"📚 Loaded {len(courses)} course(s) from courses_resources/courses.json")
     
-    # Check for command-line argument (specific course ID)
-    target_course_id = None
-    if len(sys.argv) > 1:
-        target_course_id = sys.argv[1]
+    # Check for command-line arguments
+    target_course_id = sys.argv[1] if len(sys.argv) > 1 else None
+    target_pdf_name = sys.argv[2] if len(sys.argv) > 2 else None
+
+    if target_course_id:
         print(f"🎯 Target course: {target_course_id}")
+    if target_pdf_name:
+        print(f"🎯 Target lecture PDF: {target_pdf_name}")
     
     # Process courses
     if target_course_id:
@@ -180,7 +191,7 @@ def main():
                 print(f"  • {c['course_id']}: {c['course_name']}")
             return
         
-        process_course(course)
+        process_course(course, target_pdf_name)
     else:
         # Process all courses
         print(f"\n🔄 Processing all courses...\n")

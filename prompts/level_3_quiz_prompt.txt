@@ -11,6 +11,7 @@ You are an expert-level academic question generator and university professor for
 3.  The questions must **test the concepts** in the flashcard, not just recall the text of the flashcard itself.
 4.  Adhere strictly to all rubrics, templates, and checklists below.
 5.  Output a single JSON array containing all generated questions (e.g., 4 flashcards -> 20 questions).
+6.  **Question Type Distribution:** For Level 3, generate **50% MCQ (single correct answer)** and **50% MCA (multiple correct answers)** questions.
 
 ---
 
@@ -125,7 +126,8 @@ Run this check on every generated question. **Reject and regenerate if it fails.
 * **Content:** Does it test *analysis*? Does it match the Level 3 rubric?
 * **Trick:** Does it contain one of the mandatory "Trick Elements" from the rubric?
 * **Visual:** Is the visual (if any) clear, correct, and accessible?
-* **Answer:** Is there *exactly one* defensible correct answer?
+* **Answer (MCQ):** Is there *exactly one* defensible correct answer?
+* **Answer (MCA):** Are there *2-3* defensible correct answers? Are the remaining options clearly incorrect?
 * **Distractors:** Are they plausible? Do they include an "obvious but wrong" choice? Do they follow Level 3 patterns?
 * **Explanation:** Does it follow the Level 3 template? Does it *expose the trick*?
 * **Fairness:** Is the trick conceptual, not just tricky wording?
@@ -136,25 +138,56 @@ Run this check on every generated question. **Reject and regenerate if it fails.
 
 Produce a single JSON array of question objects.
 
+**CRITICAL: The `correct_answer` field MUST be an array for BOTH MCQ and MCA questions.**
+
+### For MCQ (Single Correct Answer) Questions:
 ```json
-[
   {
     "type": "mcq",
     "question_text": "...",
     "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
-    "visual_code": "...", // (string, or null if no visual)
-    "alt_text": "...", // (string, or null if no visual)
+  "visual_code": "...",
+  "alt_text": "...",
     "options": {
       "A": "...",
       "B": "...",
       "C": "...",
       "D": "..."
     },
-    "correct_answer": "...", // (Full text of the correct option)
+  "correct_answer": ["A"], // ARRAY with exactly ONE option key (e.g., ["A"], ["B"], ["C"], or ["D"])
     "explanation": "...",
     "difficulty_level": 3,
-    "source_flashcard_id": "...", // (ID from the input flashcard)
-    "tags": ["...", "..."] // (From Concept Extraction)
-  }
-  // ... more questions
-]
+  "source_flashcard_id": "...",
+  "tags": ["...", "..."]
+}
+```
+
+### For MCA (Multiple Correct Answers) Questions:
+```json
+{
+  "type": "mca",
+  "question_text": "Which of the following are... (Select all that apply)",
+  "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
+  "visual_code": "...",
+  "alt_text": "...",
+  "options": {
+    "A": "...",
+    "B": "...",
+    "C": "...",
+    "D": "..."
+  },
+  "correct_answer": ["A", "C"], // ARRAY with 2-3 option keys (e.g., ["A", "B"], ["B", "C", "D"])
+  "explanation": "A and C are correct because... B is incorrect because... D is incorrect because...",
+  "difficulty_level": 3,
+  "source_flashcard_id": "...",
+  "tags": ["...", "..."]
+}
+```
+
+**Important Notes:**
+- The `correct_answer` field is ALWAYS an array, regardless of question type
+- For MCQ questions (type: "mcq"), the array contains exactly ONE option key (e.g., ["A"])
+- For MCA questions (type: "mca"), the array contains 2-3 option keys (e.g., ["A", "C"])
+- The array contains option KEYS (A, B, C, D), NOT the full text of the options
+- Always include "(Select all that apply)" in MCA question text
+- MCA explanations must address why each option is correct or incorrect

@@ -14,6 +14,7 @@ mermaid.initialize({
   startOnLoad: false,
   theme: 'base',
   securityLevel: 'loose',
+  suppressErrorRendering: true, // Suppress default Mermaid error rendering
   fontFamily: '-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif',
   themeVariables: {
     primaryColor: '#3B82F6',
@@ -222,16 +223,29 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
         }
       } catch (err) {
         console.error('Mermaid rendering error:', err)
+        console.error('Failed diagram code:', currentDiagramCode)
+        
         if (mounted) {
           setMermaidError(err.message || 'Failed to render diagram')
           setMermaidLoading(false)
           const mermaidContainer = document.getElementById(uniqueDiagramId)
           if (mermaidContainer) {
+            // Clear any Mermaid-injected error elements
+            mermaidContainer.innerHTML = ''
+            
+            // Remove any stray Mermaid error divs that might have been injected elsewhere
+            document.querySelectorAll('[id^="dmermaid-"], [id^="mermaid-"]').forEach(el => {
+              if (el.textContent.includes('Syntax error') || el.textContent.includes('Parse error')) {
+                el.remove()
+              }
+            })
+            
+            // Render our custom error UI
             mermaidContainer.innerHTML = `
               <div class="mermaid-error">
                 <p>⚠️ Diagram could not be rendered: ${escapeHtml(err.message || 'Unknown error')}</p>
                 <details>
-                  <summary>View diagram code</summary>
+                  <summary>▶ View diagram code</summary>
                   <pre><code>${escapeHtml(currentDiagramCode)}</code></pre>
                 </details>
               </div>

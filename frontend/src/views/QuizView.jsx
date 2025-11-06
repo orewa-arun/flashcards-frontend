@@ -15,7 +15,7 @@ const QuizView = () => {
   const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null); // For MCQ: single value, For MCA: array
   const [showFeedback, setShowFeedback] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
@@ -42,28 +42,80 @@ const QuizView = () => {
   const currentQuestion = questions[currentIndex];
   const isLastQuestion = currentIndex === questions.length - 1;
 
-  const handleAnswerSelect = (option) => {
-    if (!showFeedback) {
-      setSelectedAnswer(option);
+  // Reset selectedAnswer when question changes
+  useEffect(() => {
+    if (currentQuestion?.type === 'mca') {
+      setSelectedAnswer([]); // Array for MCA
+    } else {
+      setSelectedAnswer(null); // Single value for MCQ
+    }
+  }, [currentIndex, currentQuestion?.type]);
+
+  const handleAnswerSelect = (optionKey) => {
+    if (showFeedback) return;
+
+    if (currentQuestion.type === 'mca') {
+      // Multiple correct answers - toggle selection
+      setSelectedAnswer(prev => {
+        const current = Array.isArray(prev) ? prev : [];
+        return current.includes(optionKey)
+          ? current.filter(k => k !== optionKey)
+          : [...current, optionKey];
+      });
+    } else {
+      // Single answer - replace selection
+      setSelectedAnswer(optionKey);
     }
   };
 
   const handleCheckAnswer = async () => {
-    if (!selectedAnswer) return;
+    // Validate answer exists
+    if (!selectedAnswer || (Array.isArray(selectedAnswer) && selectedAnswer.length === 0)) {
+      return;
+    }
 
-    const isCorrect = selectedAnswer === currentQuestion.correct_answer;
+    // Calculate correctness based on question type
+    let isCorrect = false;
+    let earnedPoints = 0;
+
+    // Normalize correct_answer to always be an array
+    const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
+      ? currentQuestion.correct_answer 
+      : [currentQuestion.correct_answer];
+
+    if (currentQuestion.type === 'mca') {
+      // MCA: Strict partial credit scoring
+      const userAnswers = selectedAnswer; // Array like ["A", "B"]
+      
+      const incorrectSelections = userAnswers.filter(ans => !correctAnswers.includes(ans)).length;
+      
+      // If user selected ANY wrong option, they get ZERO credit
+      if (incorrectSelections > 0) {
+        earnedPoints = 0;
+        isCorrect = false;
+      } else {
+        // No wrong selections - give partial credit based on how many correct ones they got
+        const correctSelections = userAnswers.filter(ans => correctAnswers.includes(ans)).length;
+        earnedPoints = correctSelections / correctAnswers.length;
+        isCorrect = earnedPoints === 1; // Full credit only if all correct answers selected
+      }
+    } else {
+      // MCQ: Binary scoring
+      isCorrect = selectedAnswer === correctAnswers[0];
+      earnedPoints = isCorrect ? 1 : 0;
+    }
+
     setShowFeedback(true);
 
     // Update score
-    if (isCorrect) {
-      setScore(score + 1);
-      }
+    setScore(score + earnedPoints);
 
     // Record answer in userAnswers
     const answerRecord = {
       question: currentQuestion,
       userAnswer: selectedAnswer,
-      isCorrect: isCorrect
+      isCorrect: isCorrect,
+      earnedPoints: earnedPoints
     };
     setUserAnswers([...userAnswers, answerRecord]);
 
@@ -84,6 +136,34 @@ const QuizView = () => {
 
   const handleNextQuestion = () => {
     if (isLastQuestion) {
+      // Calculate final answer record
+      let finalIsCorrect = false;
+      let finalEarnedPoints = 0;
+
+      // Normalize correct_answer to always be an array
+      const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
+        ? currentQuestion.correct_answer 
+        : [currentQuestion.correct_answer];
+
+      if (currentQuestion.type === 'mca') {
+        const userAnswers = selectedAnswer;
+        const incorrectSelections = userAnswers.filter(ans => !correctAnswers.includes(ans)).length;
+        
+        // If user selected ANY wrong option, they get ZERO credit
+        if (incorrectSelections > 0) {
+          finalEarnedPoints = 0;
+          finalIsCorrect = false;
+        } else {
+          // No wrong selections - give partial credit based on how many correct ones they got
+          const correctSelections = userAnswers.filter(ans => correctAnswers.includes(ans)).length;
+          finalEarnedPoints = correctSelections / correctAnswers.length;
+          finalIsCorrect = finalEarnedPoints === 1;
+        }
+      } else {
+        finalIsCorrect = selectedAnswer === correctAnswers[0];
+        finalEarnedPoints = finalIsCorrect ? 1 : 0;
+      }
+
       // Navigate to results
       navigate(`/courses/${courseId}/${lectureId}/quiz/${level}/results`, {
         state: {
@@ -91,16 +171,16 @@ const QuizView = () => {
           userAnswers: [...userAnswers, {
             question: currentQuestion,
             userAnswer: selectedAnswer,
-            isCorrect: selectedAnswer === currentQuestion.correct_answer
+            isCorrect: finalIsCorrect,
+            earnedPoints: finalEarnedPoints
           }],
-          score: selectedAnswer === currentQuestion.correct_answer ? score + 1 : score,
+          score: score + finalEarnedPoints,
           totalQuestions: questions.length,
           startTime: startTime // Pass start time for duration calculation
         }
       });
     } else {
       setCurrentIndex(currentIndex + 1);
-      setSelectedAnswer(null);
       setShowFeedback(false);
   }
   };
@@ -122,20 +202,44 @@ const QuizView = () => {
     return <div className="quiz-error">No questions available</div>;
   }
 
-  const getOptionClass = (option) => {
+  const getOptionClass = (optionKey) => {
+    const isMCA = currentQuestion.type === 'mca';
+    
+    // Normalize correct_answer to always be an array
+    const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
+      ? currentQuestion.correct_answer 
+      : [currentQuestion.correct_answer];
+
     if (!showFeedback) {
-      return selectedAnswer === option ? 'selected' : '';
-  }
-
-    if (option === currentQuestion.correct_answer) {
-      return 'correct';
-  }
-
-    if (option === selectedAnswer && option !== currentQuestion.correct_answer) {
-      return 'incorrect';
+      // Before feedback - show selection state
+      if (isMCA) {
+        return Array.isArray(selectedAnswer) && selectedAnswer.includes(optionKey) ? 'selected' : '';
+      } else {
+        return selectedAnswer === optionKey ? 'selected' : '';
+      }
     }
 
-    return 'disabled';
+    // After feedback - show correctness
+    const isCorrectOption = correctAnswers.includes(optionKey);
+    
+    if (isMCA) {
+      const userSelected = Array.isArray(selectedAnswer) && selectedAnswer.includes(optionKey);
+      if (isCorrectOption && userSelected) return 'correct';
+      if (isCorrectOption && !userSelected) return 'missed';
+      if (!isCorrectOption && userSelected) return 'incorrect';
+      return 'disabled';
+    } else {
+      if (isCorrectOption) return 'correct';
+      if (optionKey === selectedAnswer && !isCorrectOption) return 'incorrect';
+      return 'disabled';
+    }
+  };
+
+  const isOptionSelected = (optionKey) => {
+    const isMCA = currentQuestion.type === 'mca';
+    return isMCA
+      ? Array.isArray(selectedAnswer) && selectedAnswer.includes(optionKey)
+      : selectedAnswer === optionKey;
   };
 
   return (
@@ -159,6 +263,17 @@ const QuizView = () => {
       </div>
         </div>
         <div className="question-content">
+          {/* Question Type Indicator */}
+          {currentQuestion.type === 'mca' ? (
+            <div className="question-type-badge mca-badge">
+              ✓✓ Multiple Correct - Select all that apply
+            </div>
+          ) : (
+            <div className="question-type-badge mcq-badge">
+              ○ Single Choice - Select one answer
+            </div>
+          )}
+
           <h2 className="question-text">{currentQuestion.question_text}</h2>
 
           {/* Visual Rendering */}
@@ -171,15 +286,22 @@ const QuizView = () => {
           {/* Options */}
           <div className="options-container">
             {Object.entries(currentQuestion.options).map(([key, value]) => (
-              <button
+              <label
                 key={key}
-                className={`option-button ${getOptionClass(value)}`}
-                onClick={() => handleAnswerSelect(value)}
-                disabled={showFeedback}
+                className={`option-button ${getOptionClass(key)}`}
               >
+                <input
+                  type={currentQuestion.type === 'mca' ? 'checkbox' : 'radio'}
+                  name="quiz-option"
+                  value={key}
+                  checked={isOptionSelected(key)}
+                  onChange={() => handleAnswerSelect(key)}
+                  disabled={showFeedback}
+                  className="option-input"
+                />
                 <span className="option-label">{key}</span>
                 <span className="option-text">{value}</span>
-              </button>
+              </label>
             ))}
           </div>
 
@@ -187,14 +309,53 @@ const QuizView = () => {
         {showFeedback && (
             <div className="explanation-box">
               <h3>
-                {selectedAnswer === currentQuestion.correct_answer ? '✅ Correct!' : '❌ Incorrect'}
+                {(() => {
+                  // Normalize correct_answer to always be an array
+                  const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
+                    ? currentQuestion.correct_answer 
+                    : [currentQuestion.correct_answer];
+
+                  if (currentQuestion.type === 'mca') {
+                    const userAnswers = selectedAnswer;
+                    const incorrectSelections = userAnswers.filter(ans => !correctAnswers.includes(ans)).length;
+                    
+                    // If user selected ANY wrong option, they get ZERO credit
+                    if (incorrectSelections > 0) {
+                      return '❌ Incorrect - Wrong option selected';
+                    }
+                    
+                    // No wrong selections - calculate partial credit
+                    const correctSelections = userAnswers.filter(ans => correctAnswers.includes(ans)).length;
+                    const earnedPoints = correctSelections / correctAnswers.length;
+                    
+                    if (earnedPoints === 1) return '✅ Perfect!';
+                    if (earnedPoints > 0) return `⚠️ Partial Credit (${Math.round(earnedPoints * 100)}%)`;
+                    return '❌ Incorrect';
+                  } else {
+                    return selectedAnswer === correctAnswers[0] ? '✅ Correct!' : '❌ Incorrect';
+                  }
+                })()}
               </h3>
               <p><strong>Explanation:</strong> {currentQuestion.explanation}</p>
-              {selectedAnswer !== currentQuestion.correct_answer && (
-                <p className="correct-answer-note">
-                  <strong>Correct answer:</strong> {currentQuestion.correct_answer}
-                </p>
-              )}
+              {(() => {
+                // Normalize correct_answer to always be an array
+                const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
+                  ? currentQuestion.correct_answer 
+                  : [currentQuestion.correct_answer];
+                
+                const isFullyCorrect = currentQuestion.type === 'mca' 
+                  ? JSON.stringify([...selectedAnswer].sort()) === JSON.stringify([...correctAnswers].sort())
+                  : selectedAnswer === correctAnswers[0];
+                
+                if (!isFullyCorrect) {
+                  return (
+                    <p className="correct-answer-note">
+                      <strong>Correct answer{correctAnswers.length > 1 ? 's' : ''}:</strong>{' '}
+                      {correctAnswers.map(key => `${key}: ${currentQuestion.options[key]}`).join(', ')}
+                    </p>
+                  );
+                }
+              })()}
             </div>
           )}
           </div>

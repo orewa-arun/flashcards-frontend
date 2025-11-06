@@ -13,7 +13,7 @@ from config import Config
 class QuizGenerator:
     """Generates quiz questions at different difficulty levels from flashcard content."""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.0-flash-exp",
+    def __init__(self, api_key: str, model: str = "gemini-2.5-flash",
                  course_name: str = "", textbook_reference: str = ""):
         """
         Initialize the quiz generator.

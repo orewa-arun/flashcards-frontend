@@ -1,0 +1,3118 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-05T20:03:49.904219",
+    "total_questions": 130,
+    "course_name": "Strategies and Innovation",
+    "course_id": "MS5150",
+    "course_code": "SI",
+    "textbook_reference": "No reference textbooks specified",
+    "lecture": "SI_NPD",
+    "difficulty_level": 1,
+    "source_flashcards": 26
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "question_text": "What is the primary objective of New Product Development (NPD)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To perform minor updates to existing products",
+        "B": "To bring entirely new products to market",
+        "C": "To rebrand outdated product lines",
+        "D": "To reduce overall manufacturing costs"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because NPD is defined as the comprehensive process of bringing new products to market, from idea to commercialization. Options A and C describe activities that are distinct from true NPD, while D is a potential outcome but not the primary objective.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_1",
+      "tags": [
+        "NPD",
+        "New Product Development",
+        "Innovation Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following activities is a core component of a comprehensive New Product Development (NPD) process?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Changing the color of an existing product's packaging",
+        "B": "Establishing supply chain partnerships for new components",
+        "C": "Applying a new logo to a well-known product",
+        "D": "Releasing a software patch for a minor bug fix"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because establishing supply chain partnerships is a fundamental activity in bringing a new product, especially one with significant innovation, to market. Options A, C, and D are examples of minor product updates or rebranding, which are explicitly stated as common mistakes to confuse with true NPD.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_1",
+      "tags": [
+        "NPD",
+        "Product Management",
+        "Innovation Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "New Product Development (NPD) encompasses all activities from the initial idea generation to which final stage?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Market research completion",
+        "B": "Prototype development",
+        "C": "Final commercialization",
+        "D": "Business analysis approval"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because NPD is a comprehensive process that spans from the very first idea to the final commercialization, which means bringing the product fully to market. The other options represent intermediate stages or related activities within the broader process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_1",
+      "tags": [
+        "NPD",
+        "New Product Development",
+        "Product Lifecycle"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following scenarios best represents true New Product Development (NPD)?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A car company releasing a new model year with minor cosmetic changes",
+        "B": "A beverage company introducing a new flavor of an existing drink",
+        "C": "A tech company developing a completely new type of wearable device for a new market segment",
+        "D": "A clothing brand launching a new collection using existing materials"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because developing a 'completely new type of wearable device for a new market segment' involves significant innovation and entry into new categories, requiring substantial investment and risk, which is characteristic of true NPD. Options A, B, and D describe incremental product changes or line extensions, not comprehensive NPD.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_1",
+      "tags": [
+        "NPD",
+        "Innovation",
+        "Real-world use case"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in understanding NPD is confusing it with:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Extensive research and development (R&D)",
+        "B": "Significant innovation and new market entry",
+        "C": "Simple product updates or rebranding",
+        "D": "Planning for global distribution"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct as the flashcard explicitly states that 'A common mistake is confusing true NPD with simple product updates, minor line extensions, or rebranding.' Options A, B, and D are all integral parts or characteristics of true NPD.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_1",
+      "tags": [
+        "NPD",
+        "Common Mistakes",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is the *first* stage in the New-Product Development Process?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Idea screening",
+        "B": "Idea generation",
+        "C": "Commercialization",
+        "D": "Product development"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The NPD process begins with 'Idea generation,' which is the initial search for new product concepts. Idea screening follows idea generation, while product development and commercialization occur much later in the process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_2",
+      "tags": [
+        "NPD Process",
+        "Product Development Stages",
+        "Sequence"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the New-Product Development Process, what stage immediately follows 'Idea screening'?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Business analysis",
+        "B": "Test marketing",
+        "C": "Concept development and testing",
+        "D": "Marketing strategy development"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. After ideas are screened, the next step is to develop and test the product concept in more detail. Business analysis and marketing strategy development occur after concept development, and test marketing is much later.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_2",
+      "tags": [
+        "NPD Process",
+        "Product Development Stages",
+        "Flowchart"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The New-Product Development Process is best described as a:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Single-step event for market entry",
+        "B": "Random collection of tasks",
+        "C": "Sequential flow of eight distinct stages",
+        "D": "Process primarily focused on advertising"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The flashcard explicitly states that the NPD process is a 'sequential flow consisting of eight stages.' Options A and B misrepresent the structured nature of the process, and D narrows its scope incorrectly.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_2",
+      "tags": [
+        "NPD Process",
+        "Definition",
+        "Structure"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are recognized stages in the New-Product Development Process? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Idea generation",
+        "B": "Employee onboarding",
+        "C": "Test marketing",
+        "D": "Business analysis"
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A, C, and D are correct. 'Idea generation,' 'Test marketing,' and 'Business analysis' are all distinct stages within the New-Product Development Process. Option B, 'Employee onboarding,' is an HR function and not a stage of product development.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_2",
+      "tags": [
+        "NPD Process",
+        "Product Development Stages",
+        "Multiple Choice"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in the NPD process is skipping or rushing which critical stages, leading to products that lack market viability or financial feasibility?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Idea Generation or Product Development",
+        "B": "Idea Screening or Business Analysis",
+        "C": "Commercialization or Test Marketing",
+        "D": "Marketing Strategy Development or Concept Development"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The flashcard highlights that 'skipping or rushing stages, especially Idea Screening or Business Analysis, leading to products that lack market viability or financial feasibility' is a common mistake. These stages are crucial for evaluating the potential success of an idea before significant investment.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_2",
+      "tags": [
+        "NPD Process",
+        "Common Mistakes",
+        "Risk Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary goal of the 'Idea generation' stage in the NPD process?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To select the most profitable product ideas",
+        "B": "To systematically search for new product concepts",
+        "C": "To develop detailed product prototypes",
+        "D": "To launch the product to a test market"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Idea generation is defined as the 'initial and systematic search for new product ideas.' Options A, C, and D describe activities that occur in later stages of the NPD process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_3",
+      "tags": [
+        "Idea Generation",
+        "NPD Stage",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT typically a source for new product ideas during the 'Idea generation' stage?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Customer feedback",
+        "B": "Competitor analysis",
+        "C": "Internal R&D",
+        "D": "Mass production facilities"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct. Mass production facilities are involved in manufacturing during later stages of NPD, not in the initial search for new product ideas. Customer feedback, competitor analysis, and internal R&D are all explicitly mentioned as key sources for idea generation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_3",
+      "tags": [
+        "Idea Generation",
+        "NPD Stage",
+        "Sources"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake during the 'Idea generation' stage is:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Encouraging a broad collection of ideas",
+        "B": "Stifling creativity by imposing too many constraints too early",
+        "C": "Analyzing social media trends for popular ingredients",
+        "D": "Leveraging customer creativity through online platforms"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The flashcard notes that 'stifling creativity by imposing too many constraints too early' is a common pitfall during idea generation. Options A, C, and D represent effective practices for broad idea generation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_3",
+      "tags": [
+        "Idea Generation",
+        "Common Mistakes",
+        "Creativity"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The 'Idea generation' stage emphasizes gathering concepts from a wide array of sources to:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Begin immediate commercialization",
+        "B": "Maximize the number of potential new product ideas",
+        "C": "Reduce the time for product development significantly",
+        "D": "Focus only on internal R&D capabilities"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The goal of idea generation is to cast a wide net and gather as many diverse concepts as possible. Options A and C are not the direct purpose of this stage, and D contradicts the principle of using a 'wide array of sources.'",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_3",
+      "tags": [
+        "Idea Generation",
+        "Innovation Input",
+        "Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a company leverages 'customer creativity' by inviting fans to submit new product designs, this is an example of which NPD stage?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Test marketing",
+        "B": "Idea generation",
+        "C": "Product development",
+        "D": "Commercialization"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Leveraging customer creativity to submit new designs, as exemplified by LEGO Ideas, is a direct method of 'Idea generation'—the initial search for new product concepts from external sources. The other stages occur later in the process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_3",
+      "tags": [
+        "Idea Generation",
+        "Real-world use case",
+        "NPD Stage"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the main characteristic of the 'Commercialization' stage in the New-Product Development Process?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It is the initial brainstorming phase.",
+        "B": "It involves testing the product concept with target consumers.",
+        "C": "It is the final stage where the new product is fully introduced into the market.",
+        "D": "It focuses on detailed financial analysis of the product idea."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Commercialization is explicitly defined as 'the final stage... where the new product is fully introduced into the market.' Options A, B, and D describe activities that occur in earlier stages of the NPD process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_4",
+      "tags": [
+        "Commercialization",
+        "NPD Stage",
+        "Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following activities is a key component of the 'Commercialization' stage?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Conducting preliminary market research to gauge interest",
+        "B": "Developing the first working prototype of the product",
+        "C": "Establishing robust distribution channels and executing extensive marketing campaigns",
+        "D": "Screening ideas to eliminate unfeasible concepts"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Commercialization involves substantial investment in 'mass production, establishing robust distribution channels, executing extensive marketing campaigns, and building sales infrastructure.' The other options are activities from earlier NPD stages.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_4",
+      "tags": [
+        "Commercialization",
+        "NPD Stage",
+        "Activities"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake during the 'Commercialization' stage is:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Investing heavily in R&D for future products",
+        "B": "Launching a product prematurely without adequate market preparation",
+        "C": "Spending too much time on concept testing",
+        "D": "Gathering diverse ideas from various sources"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The flashcard identifies 'launching a product prematurely without adequate market preparation or sufficient inventory' as a common mistake during commercialization. Options A, C, and D are either good practices or mistakes from other NPD stages.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_4",
+      "tags": [
+        "Commercialization",
+        "Common Mistakes",
+        "Risk Management"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The 'Commercialization' stage typically requires substantial investment in:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Early-stage scientific research",
+        "B": "Mass production and marketing campaigns",
+        "C": "Detailed financial projections for feasibility",
+        "D": "Small-scale pilot testing"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Commercialization is characterized by 'substantial investment in mass production, establishing robust distribution channels, executing extensive marketing campaigns, and building sales infrastructure.' The other options relate to investments made at earlier points in the NPD process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_4",
+      "tags": [
+        "Commercialization",
+        "Investment",
+        "NPD Stage"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the New-Product Development Process, 'Commercialization' is considered the:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Initial stage",
+        "B": "Mid-point evaluation stage",
+        "C": "Final stage",
+        "D": "Second stage"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Commercialization is described as 'the final stage of the new-product development process.' The other options incorrectly place it within the sequence of NPD stages.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_4",
+      "tags": [
+        "Commercialization",
+        "NPD Process",
+        "Sequence"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary objective of the Idea Generation stage in new product/service development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To select the single best idea for immediate development.",
+        "B": "To create a large and diverse pool of potential new ideas.",
+        "C": "To conduct detailed market research on a chosen concept.",
+        "D": "To develop a prototype of the most promising idea."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Idea Generation is focused on identifying and creating a large pool of potential new ideas without premature filtering. Option A is incorrect as selection happens in later stages like idea screening. The goal is quantity and diversity at this initial stage.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_5",
+      "tags": [
+        "Idea Generation",
+        "New Product Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following describes the initial stage of new product/service development focused on identifying and creating a wide range of concepts?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product Launch",
+        "B": "Market Analysis",
+        "C": "Idea Generation",
+        "D": "Concept Testing"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Idea Generation is specifically the initial stage where a company focuses on identifying and creating a large pool of potential new ideas. The other options refer to later stages or specific activities within the development process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_5",
+      "tags": [
+        "Idea Generation",
+        "New Product Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake to avoid during the Idea Generation stage is:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Generating too many diverse ideas.",
+        "B": "Filtering ideas too early or prematurely judging quality.",
+        "C": "Seeking input from both internal and external sources.",
+        "D": "Focusing on identifying a clear market need."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a common mistake in idea generation is to filter or judge ideas too early, which can stifle creativity. The goal is quantity and diversity initially. Options A and C are generally good practices, and D is part of later screening.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_5",
+      "tags": [
+        "Idea Generation",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Sources for new product ideas during Idea Generation can originate from:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Only internal R&D departments.",
+        "B": "Only external market trends and competitors.",
+        "C": "Both internal company sources and external market sources.",
+        "D": "Only customer feedback surveys."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Idea Generation explicitly states that ideas can come from both internal (e.g., R&D, employees) and external (e.g., market trends, customers, competitors) sources. Relying solely on one source is a common mistake.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_5",
+      "tags": [
+        "Idea Generation",
+        "Internal Sources",
+        "External Sources"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a company encourages its engineers to pitch side projects and R&D teams to explore new technologies, this is an example of idea generation from which type of source?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External market analysis",
+        "B": "Competitor benchmarking",
+        "C": "Internal company sources",
+        "D": "Crowd-sourcing platforms"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Engineers pitching side projects and R&D teams exploring new technologies are activities happening within the company, making them internal sources of idea generation. Options A, B, and D are examples of external sources.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_5",
+      "tags": [
+        "Idea Generation",
+        "Internal Sources"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is Open Innovation primarily characterized by in the context of idea generation?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Developing all new ideas exclusively within the company's R&D department.",
+        "B": "Actively seeking and integrating ideas from external sources beyond company boundaries.",
+        "C": "Focusing only on acquiring other companies for their existing products.",
+        "D": "Protecting all intellectual property by avoiding external collaborations."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Open Innovation involves actively seeking and integrating ideas from external sources. Option A describes a closed innovation model. Options C and D are not the primary characteristics of open innovation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_6",
+      "tags": [
+        "Open Innovation",
+        "Idea Generation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which term describes leveraging a large group of people, often via online platforms, for input, ideas, or solutions?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Internal R&D",
+        "B": "Competitive Analysis",
+        "C": "Crowd Sourcing",
+        "D": "Strategic Planning"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Crowd Sourcing specifically leverages a large group of people ('the crowd') for input, ideas, or solutions, often using online platforms. The other options are different methods or stages of business activity.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_6",
+      "tags": [
+        "Crowd Sourcing",
+        "Idea Generation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Both Open Innovation and Crowd Sourcing are considered powerful techniques for generating ideas from which type of source?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Internal",
+        "B": "External",
+        "C": "Proprietary",
+        "D": "Confidential"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Both Open Innovation and Crowd Sourcing explicitly focus on bringing ideas from outside the company's traditional boundaries, making them external idea generation techniques. Internal sources refer to ideas generated from within the organization.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_6",
+      "tags": [
+        "Open Innovation",
+        "Crowd Sourcing",
+        "External Idea Sources"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Starbucks launching a public campaign asking customers to submit and vote on new flavor combinations for beverages is a real-world example of:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Internal R&D.",
+        "B": "Competitive intelligence.",
+        "C": "Crowd sourcing.",
+        "D": "Market segmentation."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Asking a large group of customers (the 'crowd') to submit and vote on ideas is a classic example of crowd sourcing. Internal R&D, competitive intelligence, and market segmentation are different business activities.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_6",
+      "tags": [
+        "Crowd Sourcing",
+        "Real-world Use Case"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a potential pitfall of Open Innovation that companies should be aware of?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Generating too few ideas from external sources.",
+        "B": "Failing to properly vet or integrate external ideas.",
+        "C": "Over-reliance on internal R&D.",
+        "D": "Lack of creativity from internal teams."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A common mistake with open innovation is failing to properly vet or integrate the external ideas received, which can lead to issues with usability or intellectual property. Options A, C, and D are generally not direct pitfalls of open innovation itself, but rather common mistakes in overall idea generation or symptoms of other issues.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_6",
+      "tags": [
+        "Open Innovation",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does intrapreneurship primarily encourage employees within an organization to do?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Strictly follow existing company policies and procedures.",
+        "B": "Act like entrepreneurs, fostering innovation and new ideas from within.",
+        "C": "Outsource all innovation efforts to external consultants.",
+        "D": "Focus solely on improving existing product lines."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Intrapreneurial efforts are about encouraging employees to act like entrepreneurs within the company, fostering innovation and generating new ideas from within. Options A, C, and D represent different, often opposing, approaches.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_7",
+      "tags": [
+        "Intrapreneurship",
+        "Internal Innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a key benefit of fostering intrapreneurial efforts in a company?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Reduced need for internal talent and knowledge.",
+        "B": "Leveraging external expertise more exclusively.",
+        "C": "Generating new product/service ideas and business ventures from within.",
+        "D": "Minimizing risk by avoiding any new internal projects."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Intrapreneurial efforts are designed to generate new product/service ideas and business ventures by leveraging internal talent and knowledge. The other options describe outcomes or strategies that are contrary to the benefits of intrapreneurship.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_7",
+      "tags": [
+        "Intrapreneurship",
+        "Employee Empowerment"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company policy allowing employees to spend a portion of their work week on self-chosen projects, leading to new product development, is an example of:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External market research.",
+        "B": "Intrapreneurial effort.",
+        "C": "Competitive analysis.",
+        "D": "Outsourcing innovation."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. This scenario, famously associated with Google's '20% time,' is a prime example of an intrapreneurial effort, where employees are given autonomy to pursue innovative ideas from within. The other options are different strategies for innovation or information gathering.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_7",
+      "tags": [
+        "Intrapreneurship",
+        "Real-world Use Case"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common pitfall when implementing intrapreneurial programs within an organization?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Providing too much autonomy to employees.",
+        "B": "Offering excessive resources and mentorship.",
+        "C": "Stifling ideas with too much bureaucracy or lack of resources.",
+        "D": "Encouraging too many employees to participate."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A common mistake is creating an intrapreneurial program without sufficient resources, psychological safety, or by stifling ideas with too much bureaucracy. Options A, B, and D are generally not considered pitfalls, as autonomy, resources, and participation are often beneficial.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_7",
+      "tags": [
+        "Intrapreneurship",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Intrapreneurial efforts are considered a type of idea generation originating from which source?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External market trends.",
+        "B": "Competitor analysis.",
+        "C": "Internal company talent.",
+        "D": "Academic research institutions."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Intrapreneurial efforts explicitly leverage internal talent and knowledge to generate ideas from within the company. The other options represent external sources of ideas.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_7",
+      "tags": [
+        "Intrapreneurship",
+        "Internal Idea Sources"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary purpose of the Idea Screening (R,W,W) framework in new product development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To generate a large quantity of new product ideas.",
+        "B": "To identify and filter out unviable ideas early in the process.",
+        "C": "To develop detailed business plans for all ideas.",
+        "D": "To launch a new product to market immediately."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The R,W,W framework is a critical evaluation tool used to filter out unviable ideas early, preventing wasted resources on concepts that won't succeed. Option A describes idea generation, while C and D are later stages.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_8",
+      "tags": [
+        "Idea Screening",
+        "RWW Framework"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the Idea Screening (R,W,W) framework, what does the 'R' criterion primarily assess?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Resource availability within the company.",
+        "B": "Reliability of the product's technology.",
+        "C": "Real market need or demand for the product.",
+        "D": "Revenue projections for the new idea."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The 'R' in R,W,W stands for 'Real,' assessing if there is a genuine market need or demand for the potential product. The other options, while important, do not represent the 'Real' criterion.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_8",
+      "tags": [
+        "RWW Framework",
+        "Real"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When applying the R,W,W framework, assessing whether the company can achieve a sustainable competitive advantage with a new idea relates to which criterion?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Real",
+        "B": "Win",
+        "C": "Worth Doing",
+        "D": "Relevant"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The 'Win' criterion in the R,W,W framework evaluates whether the company can achieve a sustainable competitive advantage in the market with the new product or service. 'Real' refers to market need, and 'Worth Doing' refers to strategic alignment and ROI.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_8",
+      "tags": [
+        "RWW Framework",
+        "Win"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A car manufacturer evaluating if investing billions in a flying car fits its overall growth strategy and will yield a worthwhile return is addressing which part of the R,W,W framework?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Is it Real?",
+        "B": "Can we Win?",
+        "C": "Is it Worth Doing?",
+        "D": "Is it Risky?"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. 'Worth Doing' assesses if the idea aligns with company strategy and offers a sufficient return on investment, considering its fit with overall goals, budget, and commitments. 'Real' relates to market need, and 'Win' to competitive advantage.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_8",
+      "tags": [
+        "RWW Framework",
+        "Worth Doing"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are key criteria evaluated by the Idea Screening (R,W,W) framework? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Real (Is there a genuine market need?)",
+        "B": "Relevant (Is it related to current trends?)",
+        "C": "Win (Can the company achieve a sustainable competitive advantage?)",
+        "D": "Worth Doing (Does it align with company strategy and offer sufficient return?)",
+        "E": "Revenue (Will it generate high sales immediately?)"
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A, C, and D are correct. The R,W,W framework stands for 'Real' (genuine market need), 'Win' (sustainable competitive advantage), and 'Worth Doing' (alignment with strategy and sufficient return). Option B ('Relevant') is a distractor that sounds related but is not one of the R,W,W criteria. Option E ('Revenue') is a component of 'Worth Doing' but not a standalone criterion in the framework.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_8",
+      "tags": [
+        "Idea Screening",
+        "RWW Framework"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the Idea Screening (R,W,W) framework, what does the 'Real' criterion primarily assess?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Whether the company has the resources to develop the product.",
+        "B": "Whether there is a genuine market need and customer desire for the product.",
+        "C": "Whether the product can achieve significant profit margins.",
+        "D": "Whether the product can be developed within the projected timeline."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because 'Real' in the R,W,W framework specifically focuses on validating if a true market need exists and if customers genuinely desire the proposed product or service. Option A relates more to 'Can We Win?', and C and D relate to 'Is It Worth It?'.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_9",
+      "tags": [
+        "Real",
+        "Idea Screening",
+        "Market Need",
+        "RWW Framework"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following questions is most directly addressed by the 'Real' test in the R,W,W framework?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Can we win against our competitors with this product?",
+        "B": "Do we have the technological capability to build this product?",
+        "C": "Will customers truly want or need this solution?",
+        "D": "Is the projected return on investment attractive enough?"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because the 'Real' criterion directly asks if customers truly want or need the solution, focusing on the external market demand. Options A, B, and D relate to other aspects of product viability, such as competitive advantage, internal capabilities, and financial returns, respectively.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_9",
+      "tags": [
+        "Real",
+        "Idea Screening",
+        "Customer Desire",
+        "RWW Framework"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake when applying the 'Real' test is confusing a perceived internal 'cool idea' with what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A robust financial projection.",
+        "B": "A genuine external market need.",
+        "C": "A clear development roadmap.",
+        "D": "A strong competitive advantage."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A frequent error in the 'Real' assessment is mistaking an internal enthusiasm for an idea ('it's cool!') for an actual, validated market need or problem that customers are willing to pay to solve. The 'Real' test demands external validation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_9",
+      "tags": [
+        "Real",
+        "Common Mistakes",
+        "Market Validation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A startup proposes an app that allows users to digitally catalog their collection of rare stamps. Initial market research reveals that only a very small, niche group of stamp collectors would be interested, and most current collectors prefer physical cataloging methods. This product idea likely fails which part of the R,W,W framework?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Can We Win?",
+        "B": "Is It Worth It?",
+        "C": "Real?",
+        "D": "Is it Innovative?"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The 'Real' test assesses if there's a genuine market need and desire. The scenario indicates a lack of widespread customer interest and preference for existing methods, suggesting the market for this specific solution is not 'Real' or significant enough.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_9",
+      "tags": [
+        "Real",
+        "Idea Screening",
+        "Scenario"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The primary goal of assessing 'Real' in the R,W,W framework is to ensure that product development efforts are directed towards solutions that:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Are technologically advanced.",
+        "B": "Address actual customer problems or desires.",
+        "C": "Can be produced at the lowest possible cost.",
+        "D": "Require minimal marketing investment."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The core purpose of the 'Real' test is to ensure that development is focused on products that solve genuine customer problems or fulfill real desires, preventing the creation of 'solutions looking for problems.'",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_9",
+      "tags": [
+        "Real",
+        "Purpose",
+        "Market Need"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is defined as an initial, high-level thought or suggestion for a new offering that a company believes can be offered to the market?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product Concept",
+        "B": "Product Image",
+        "C": "Product Idea",
+        "D": "Product Strategy"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A Product Idea is described as the initial, high-level thought or suggestion for a new offering, representing the fundamental beginning of something that could grow. Options A, B, and D refer to more developed stages or aspects.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_10",
+      "tags": [
+        "Product Idea",
+        "Definition",
+        "Concept Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which characteristic best describes a Product Idea in the context of concept development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It is a detailed plan with specific features and benefits.",
+        "B": "It is a fully developed prototype ready for market testing.",
+        "C": "It is a general notion or a spark of an idea.",
+        "D": "It represents the final market positioning of a product."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A Product Idea is characterized as a general notion or a spark, lacking specific details about its form or function. Options A and B describe a Product Concept or a later stage of development, while D relates to Product Image or strategy.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_10",
+      "tags": [
+        "Product Idea",
+        "Characteristics",
+        "Initial Stage"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake regarding a Product Idea is confusing it with what other, more detailed stage of development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Market Research Report",
+        "B": "Product Launch Plan",
+        "C": "Product Concept",
+        "D": "Brand Identity"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A common mistake is to confuse a Product Idea with a fully fleshed-out Product Concept. An idea is abstract, whereas a concept has detail, specificity, and meaningful articulation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_10",
+      "tags": [
+        "Product Idea",
+        "Common Mistakes",
+        "Product Concept"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A software company's team brainstorms and one member suggests, 'People need a better way to organize their digital photos.' This statement represents which stage in product development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product Concept",
+        "B": "Product Image",
+        "C": "Product Idea",
+        "D": "Product Feature List"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. 'People need a better way to organize their digital photos' is a high-level, general notion of a potential offering, without specific features or how it would work. This aligns with the definition of a Product Idea.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_10",
+      "tags": [
+        "Product Idea",
+        "Scenario",
+        "Initial Stage"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement accurately describes a Product Idea?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It specifies the target market, pricing, and distribution channels.",
+        "B": "It is the fundamental beginning of something that *could* grow.",
+        "C": "It includes detailed blueprints and engineering specifications.",
+        "D": "It represents the customer's perceived value of an existing product."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A Product Idea is the fundamental beginning, a tiny seed of potential, without specific details. Options A and C describe a more developed concept or product plan, and D describes Product Image.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_10",
+      "tags": [
+        "Product Idea",
+        "Definition",
+        "Innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a Product Concept in the context of product development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "An undeveloped, abstract thought about a new product.",
+        "B": "The customer's emotional response to a product's brand.",
+        "C": "A detailed, meaningful statement of a product idea, ready for evaluation.",
+        "D": "The final marketing campaign strategy for a product launch."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A Product Concept is a detailed and meaningful statement that elaborates on a product idea, including its features, benefits, and target audience, making it ready for evaluation. Option A describes a Product Idea, B describes Product Image, and D is a later stage.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_11",
+      "tags": [
+        "Product Concept",
+        "Definition",
+        "Concept Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "How does a Product Concept primarily differ from a Product Idea?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A Product Concept is always patented, while an Idea is not.",
+        "B": "A Product Concept is vague and abstract, while an Idea is detailed.",
+        "C": "A Product Concept includes specific features and benefits, unlike a general Product Idea.",
+        "D": "A Product Concept focuses only on pricing, while an Idea focuses on design."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The key difference is that a Product Concept provides specific details like features, benefits, and target audience, transforming a vague Product Idea into a concrete, actionable plan. Option B incorrectly reverses the definitions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_11",
+      "tags": [
+        "Product Concept",
+        "Product Idea",
+        "Differentiation"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following elements are typically included in a well-defined Product Concept? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Specific features of the product.",
+        "B": "Detailed financial projections for the next five years.",
+        "C": "The target audience it aims to serve.",
+        "D": "How it addresses customer needs and provides benefits."
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A, C, and D are correct. A Product Concept elaborates on specific features, identifies the target audience, and explains how it addresses customer needs and provides benefits. Option B (detailed financial projections) is typically part of a business case or later stages of evaluation, not the core definition of a Product Concept itself.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_11",
+      "tags": [
+        "Product Concept",
+        "Elements",
+        "MCA"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a primary purpose of developing a clear Product Concept?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To keep the product idea secret from competitors.",
+        "B": "To allow for proper evaluation of its viability and appeal.",
+        "C": "To immediately begin mass production.",
+        "D": "To avoid any further market research."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A clear Product Concept makes the product idea specific and detailed enough to be properly evaluated for its viability, appeal, and to gather meaningful feedback from potential customers or stakeholders. Options A, C, and D are incorrect or represent misuses of the concept stage.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_11",
+      "tags": [
+        "Product Concept",
+        "Purpose",
+        "Evaluation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company defines its new offering as 'a voice-activated smart speaker with integrated AI assistant, designed for elderly users to easily manage home automation, schedule reminders for medication, and connect with family members via simple voice commands.' This description is an example of a:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product Idea",
+        "B": "Product Concept",
+        "C": "Product Image",
+        "D": "Product Feature List"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. This detailed description specifies features (voice-activated smart speaker, AI assistant), benefits (manage home automation, schedule reminders, connect with family), and a target audience (elderly users), making it a clear example of a Product Concept.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_11",
+      "tags": [
+        "Product Concept",
+        "Scenario",
+        "Product Definition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does 'Product Image' refer to in the context of product development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The visual design and aesthetics of a product.",
+        "B": "The way customers perceive an actual or potential product.",
+        "C": "The internal marketing team's vision for the product.",
+        "D": "The technical specifications and engineering blueprints."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Product Image refers to the collective beliefs, feelings, and overall impressions that customers hold about an actual or potential product. Option A is a component of design, C is internal, and D is technical documentation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_12",
+      "tags": [
+        "Product Image",
+        "Definition",
+        "Customer Perception"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which factor most significantly influences a product's image?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The company's internal development budget.",
+        "B": "The customer's collective beliefs and feelings about it.",
+        "C": "The raw material costs for production.",
+        "D": "The product's manufacturing location."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Product Image is fundamentally shaped by how customers collectively perceive the product, encompassing their beliefs, feelings, and impressions. The other options are internal factors or unrelated to customer perception.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_12",
+      "tags": [
+        "Product Image",
+        "Influence",
+        "Market Perception"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake concerning Product Image is assuming that a well-defined Product Concept automatically leads to what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A low production cost.",
+        "B": "A positive or desired Product Image.",
+        "C": "A rapid development cycle.",
+        "D": "Exclusive intellectual property rights."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A common mistake is to assume that a strong Product Concept will automatically create a positive or desired Product Image. Customer perception can be influenced by many external factors beyond the concept itself, leading to a gap between intention and reality.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_12",
+      "tags": [
+        "Product Image",
+        "Common Mistakes",
+        "Product Concept"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company develops a new smartphone with cutting-edge camera technology (Product Concept). However, early reviews highlight poor battery life and software glitches, leading many potential buyers to view it as 'unreliable' and 'frustrating.' This customer perception represents the product's:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Product Idea",
+        "B": "Product Concept",
+        "C": "Product Image",
+        "D": "Product Feature Set"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The customers' view of the product as 'unreliable' and 'frustrating,' despite its innovative camera technology, reflects their collective beliefs and feelings about the product, which is its Product Image. This highlights the difference between the intended concept and actual perception.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_12",
+      "tags": [
+        "Product Image",
+        "Scenario",
+        "Customer Perception"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The role of Product Image in product development is crucial because it directly influences:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The manufacturing process efficiency.",
+        "B": "The company's internal employee satisfaction.",
+        "C": "Customer purchase decisions and brand loyalty.",
+        "D": "The cost of raw materials for production."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A product's image, formed by customer perceptions, plays a significant role in influencing whether customers choose to purchase the product and whether they remain loyal to the brand. The other options are not directly influenced by customer perception of the product image.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_12",
+      "tags": [
+        "Product Image",
+        "Role",
+        "Purchase Decisions"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary objective of conducting concept testing in product development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To finalize the product's manufacturing process.",
+        "B": "To gather feedback on a product idea from target customers.",
+        "C": "To launch the product to the mass market.",
+        "D": "To determine the exact profit margins of the final product."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because concept testing's primary goal is to present a product concept to target customers to gather their feedback and assess its appeal and understanding before significant investment. Options A, C, and D represent later stages or different aspects of product development.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_13",
+      "tags": [
+        "Concept Testing",
+        "Product Validation",
+        "Customer Feedback"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following activities is a core part of concept testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Shipping the completed product to retailers.",
+        "B": "Developing the detailed engineering blueprints.",
+        "C": "Presenting a product idea or mock-up to potential users.",
+        "D": "Calculating the total cost of production."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because concept testing involves presenting a product concept, often symbolically (like a mock-up or description) or physically, to target customers to solicit their opinions. The other options are activities that occur much later in the product development cycle or are financial calculations.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_13",
+      "tags": [
+        "Concept Testing",
+        "Product Development",
+        "Innovation Process"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a common mistake to avoid when conducting concept testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Ensuring a diverse group of target customers provides feedback.",
+        "B": "Asking open-ended questions to encourage honest responses.",
+        "C": "Only testing with people already enthusiastic about the company's products.",
+        "D": "Using mock-ups or detailed descriptions to present the concept."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a common mistake is to only test with people already enthusiastic about the company, leading to biased and overly positive feedback that doesn't reflect the broader market. Options A, B, and D are all best practices for effective concept testing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_13",
+      "tags": [
+        "Concept Testing",
+        "Customer Feedback",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Before a company invests heavily in full-scale development, what crucial benefit does concept testing provide?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It guarantees the product's ultimate financial success.",
+        "B": "It helps validate market demand and reduce development risks.",
+        "C": "It automates the entire manufacturing process.",
+        "D": "It replaces the need for any further product design."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because concept testing allows companies to gather early feedback, validating market demand and assessing potential appeal, thereby reducing the risk of investing significant resources into developing a product that customers may not want. It does not guarantee financial success, automate manufacturing, or eliminate further design.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_13",
+      "tags": [
+        "Concept Testing",
+        "Product Validation",
+        "Innovation Process"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the context of product development, what does 'Concept Testing' primarily refer to?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The final quality control check before product launch.",
+        "B": "The process of marketing a finished product to early adopters.",
+        "C": "Presenting a product idea to target customers to gauge their reactions.",
+        "D": "Experimenting with different manufacturing materials."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Concept testing is specifically about presenting a product idea (the concept) to potential customers to understand their reactions, interest, and understanding before committing to full development. It is distinct from quality control, marketing a finished product, or material experimentation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_13",
+      "tags": [
+        "Concept Testing",
+        "Product Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What was a distinctive aspect of Tesla's innovation strategy for the Model 3 launch regarding customer involvement?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Relying solely on government grants for funding.",
+        "B": "Requiring substantial customer deposits for pre-orders.",
+        "C": "Launching the car without any prior announcements.",
+        "D": "Manufacturing all components in-house from the start."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Tesla's Model 3 strategy uniquely involved an early product announcement to validate market demand through substantial customer deposits, which also served to pre-fund development. The other options do not accurately describe this core innovation strategy.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_14",
+      "tags": [
+        "Tesla",
+        "Innovation",
+        "Product Launch",
+        "Funding"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "For Tesla's Model 3, what was the primary financial benefit derived from collecting hundreds of thousands of customer deposits?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To cover the advertising costs for the initial launch.",
+        "B": "To directly fund the car's subsequent research and development.",
+        "C": "To pay off existing company debts.",
+        "D": "To provide immediate profits to shareholders."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The substantial customer deposits provided Tesla with significant interest-free capital to fund the complex and expensive engineering and manufacturing development required to bring the Model 3 to production. It was not primarily for advertising, debt, or immediate profit.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_14",
+      "tags": [
+        "Tesla",
+        "Funding",
+        "Product Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Tesla's Model 3 pre-funding strategy is particularly effective for companies operating in which type of environment?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Industries with very low capital requirements.",
+        "B": "Markets where products have short development cycles.",
+        "C": "Capital-intensive industries or those with disruptive innovations.",
+        "D": "Businesses focused on incremental improvements to existing products."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. This strategy is particularly effective for capital-intensive industries or disruptive innovations where significant upfront investment is required, as it helps de-risk the project and secure funding. It is less suited for low-capital, short-cycle, or incremental innovation environments.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_14",
+      "tags": [
+        "Innovation",
+        "Funding",
+        "Market Demand"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "According to the flashcard, what is a common pitfall when employing a pre-funding innovation strategy like Tesla's Model 3 approach?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Waiting until the product is fully developed before announcing it.",
+        "B": "Clearly outlining an achievable plan for product execution.",
+        "C": "Announcing a concept too early without a clear plan for execution.",
+        "D": "Over-delivering on promised features."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a common mistake is announcing a concept too early without a clear, achievable plan for execution, potentially leading to failed promises and a loss of customer trust. Waiting, having a clear plan, and over-delivering are generally positive or neutral aspects.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_14",
+      "tags": [
+        "Innovation",
+        "Product Launch",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The large number of customer deposits for Tesla's Model 3 primarily served to validate which critical aspect for the company?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The efficiency of their manufacturing plants.",
+        "B": "The massive market demand for their electric sedan.",
+        "C": "The expertise of their marketing team.",
+        "D": "The accuracy of their financial projections."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The monumental show of customer interest through deposits confirmed a massive market for their electric sedan, thereby validating market demand and de-risking the project. It did not primarily validate manufacturing efficiency, marketing team expertise, or financial projections.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_14",
+      "tags": [
+        "Tesla",
+        "Market Demand",
+        "Concept Validation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is typically an initial step in the Marketing Strategy Development process?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Mass production of the product.",
+        "B": "Defining the target group and value proposition.",
+        "C": "Hiring a sales team for immediate launch.",
+        "D": "Calculating the exact lifetime value of a customer."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Marketing Strategy Development begins with setting initial goals, which includes defining the target group, value proposition, and initial sales/profit goals. Mass production, hiring sales teams, and calculating detailed financial metrics are subsequent or more granular activities.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_15",
+      "tags": [
+        "Marketing Strategy",
+        "Planning",
+        "Target Group",
+        "Value Proposition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When developing a marketing strategy, which element would typically be planned during the *first-year* phase?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Establishing the company's long-term global expansion plan.",
+        "B": "Outlining the overall marketing mix strategy for sustained growth.",
+        "C": "Setting the initial product price and distribution channels.",
+        "D": "Redesigning the core product features based on market feedback."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The first-year planning phase of Marketing Strategy Development specifically involves planning initial decisions like price, distribution, and the marketing budget. Long-term expansion and overall marketing mix are part of the long-run strategy, and product redesign is a separate development activity.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_15",
+      "tags": [
+        "Marketing Strategy",
+        "Planning",
+        "Pricing",
+        "Distribution"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common mistake that can hinder effective Marketing Strategy Development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Clearly defining the target customer's needs.",
+        "B": "Focusing too heavily on product features without understanding the target group.",
+        "C": "Developing a comprehensive long-term marketing mix.",
+        "D": "Setting realistic initial sales and profit goals."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a common mistake is focusing too heavily on product features without clearly defining the target group or understanding their needs, which can lead to a product nobody desires. Clearly defining needs, developing a long-term mix, and setting realistic goals are all crucial for success.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_15",
+      "tags": [
+        "Marketing Strategy",
+        "Common Mistakes",
+        "Target Group"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are key components typically established during the *initial phase* of Marketing Strategy Development? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Defining the specific target customer group.",
+        "B": "Detailing the long-run advertising campaign themes.",
+        "C": "Formulating the product's unique value proposition.",
+        "D": "Setting the immediate sales and profit goals.",
+        "E": "Finalizing the manufacturing plant locations."
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A, C, and D are correct because the initial phase of Marketing Strategy Development involves defining the target group, the value proposition, and setting initial sales and profit goals. Detailing long-run advertising campaigns and finalizing manufacturing locations are either later stages or outside the scope of marketing strategy development.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_15",
+      "tags": [
+        "Marketing Strategy",
+        "Planning",
+        "Target Group",
+        "Value Proposition",
+        "Profit Goals"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary purpose of outlining long-run sales and profit goals in Marketing Strategy Development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To dictate the daily operational tasks of the sales team.",
+        "B": "To inform the overall marketing mix strategy and ensure sustained growth.",
+        "C": "To solely focus on immediate quarterly financial returns.",
+        "D": "To avoid making any future adjustments to the strategy."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Outlining long-run sales and profit goals, along with the overall marketing mix strategy, helps ensure sustained growth and provides a comprehensive framework for the business beyond immediate returns. It does not dictate daily tasks, focus solely on immediate returns, or prevent future adjustments.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_15",
+      "tags": [
+        "Marketing Strategy",
+        "Planning",
+        "Profit Goals",
+        "Marketing Mix"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the main purpose of a Marketing Mix Strategy?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To identify potential new markets for product expansion.",
+        "B": "To blend tactical marketing tools to achieve a desired response in the target market.",
+        "C": "To conduct competitor analysis and benchmarking.",
+        "D": "To solely focus on reducing production costs."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The Marketing Mix Strategy is fundamentally about how a firm combines various tactical marketing tools (like Product, Price, Promotion, Place, Branding, etc.) to evoke a specific response from its target market. Identifying new markets, competitor analysis, and cost reduction are related but separate strategic or operational concerns.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_16",
+      "tags": [
+        "Marketing Mix",
+        "Marketing Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is considered a core tactical marketing tool within the Marketing Mix Strategy?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Employee hiring procedures.",
+        "B": "Product design and features.",
+        "C": "Accounting and finance systems.",
+        "D": "Raw material sourcing."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Product design and features are a fundamental component of the 'Product' element within the Marketing Mix, defining what the firm offers to the market. Employee hiring, accounting systems, and raw material sourcing are related to other business functions like HR, finance, and operations.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_16",
+      "tags": [
+        "Marketing Mix",
+        "Product"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in implementing a Marketing Mix Strategy is:",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Ensuring all elements of the mix are consistent.",
+        "B": "Focusing too heavily on one element, like promotion, while neglecting others.",
+        "C": "Regularly reviewing and adapting the mix to market changes.",
+        "D": "Clearly defining the target market before designing the mix."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a common mistake is to focus too heavily on one element, such as 'Promotion,' while neglecting crucial aspects like 'Product' quality or a coherent 'Pricing' strategy, leading to unsustainable success. Ensuring consistency, regular review, and clear target definition are all best practices.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_16",
+      "tags": [
+        "Marketing Mix",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "If a company is making decisions about the quality, design, features, and packaging of its offering, which element of the Marketing Mix is it primarily addressing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Promotion.",
+        "B": "Pricing.",
+        "C": "Product.",
+        "D": "Distribution."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The 'Product' element of the Marketing Mix specifically deals with the tangible and intangible aspects of what the company offers, including its quality, design, features, and packaging. Promotion, Pricing, and Distribution are separate elements with different focuses.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_16",
+      "tags": [
+        "Marketing Mix",
+        "Product"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which element of the Marketing Mix is concerned with activities like advertising, public relations, and sales promotions to communicate value to the target market?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Price.",
+        "B": "Product.",
+        "C": "Place (Distribution).",
+        "D": "Promotion."
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct. 'Promotion' (or 'Advertising' as listed in the flashcard's tools) encompasses all activities designed to communicate the product's value to the target market, including advertising, public relations, and sales promotions. Price, Product, and Place (Distribution) are distinct components of the Marketing Mix.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_16",
+      "tags": [
+        "Marketing Mix",
+        "Promotion",
+        "Advertising"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary purpose of conducting Business Analysis?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To solely focus on positive financial projections.",
+        "B": "To review projected financial metrics against company objectives and inform strategic decisions.",
+        "C": "To replace the need for market research.",
+        "D": "To only track past performance without future projections."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Business Analysis fundamentally involves reviewing projected financial metrics (like sales, profit, costs) to determine if they align with company objectives and to inform strategic decisions. Option A is incorrect as it describes a common mistake to avoid, not the purpose.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_17",
+      "tags": [
+        "Business Analysis",
+        "Strategic Decisions"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following financial metrics are typically reviewed during Business Analysis?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Employee satisfaction scores.",
+        "B": "Projected sales, profit, and costs.",
+        "C": "Competitor's marketing slogans.",
+        "D": "Daily website traffic."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Business Analysis specifically focuses on projected financial metrics such as sales, profit, and costs to evaluate a company's financial health and strategic viability. Option A is incorrect as employee satisfaction is an HR metric, not a primary financial metric for this analysis.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_17",
+      "tags": [
+        "Business Analysis",
+        "Financial Metrics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Business Analysis is performed to evaluate performance and what other key activity?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Develop new product prototypes.",
+        "B": "Inform strategic decisions.",
+        "C": "Handle daily customer service inquiries.",
+        "D": "Conduct employee training sessions."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Business Analysis serves two main purposes: evaluating performance and informing critical strategic decisions for the company's future direction. Option A is incorrect as product development is a separate process, though informed by business analysis.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_17",
+      "tags": [
+        "Business Analysis",
+        "Performance Evaluation",
+        "Strategic Decisions"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a common mistake to avoid when conducting Business Analysis?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Rigorously comparing projections against realistic objectives.",
+        "B": "Conducting sensitivity analysis.",
+        "C": "Focusing solely on positive projections without critical evaluation.",
+        "D": "Reviewing a wide range of financial metrics."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a common mistake in Business Analysis is to only look at positive projections without critically evaluating their feasibility or comparing them rigorously against realistic objectives. Options A, B, and D are all good practices in Business Analysis.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_17",
+      "tags": [
+        "Business Analysis",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does Business Analysis help a company determine regarding its established objectives?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "If the objectives are too easy to achieve.",
+        "B": "If projected financial metrics align with and satisfy the objectives.",
+        "C": "If the company needs to hire more staff immediately.",
+        "D": "If competitors are using similar metrics."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a core function of Business Analysis is to assess whether projected financial metrics are on track to align with and satisfy the company's established strategic objectives. Option C is incorrect as staffing decisions are a downstream consequence, not the direct determination of BA.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_17",
+      "tags": [
+        "Business Analysis",
+        "Company Objectives"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the main focus of Sales Analysis within the broader context of Business Analysis?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Reviewing employee training effectiveness.",
+        "B": "Evaluating projected sales figures and trends.",
+        "C": "Analyzing raw material procurement costs.",
+        "D": "Designing new marketing campaigns."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Sales Analysis is specifically concerned with examining projected sales figures and trends to understand revenue performance and potential. Option C is incorrect as it relates to cost analysis, a different component of business analysis.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_18",
+      "tags": [
+        "Sales Analysis",
+        "Business Analysis"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Sales analysis primarily aims to align projected sales figures with which of the following?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Competitor's market share.",
+        "B": "Employee satisfaction targets.",
+        "C": "Company's revenue targets and growth objectives.",
+        "D": "Daily operational expenses."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because Sales Analysis evaluates whether projected sales figures are on track to meet the company's specific revenue targets and overall growth objectives. Option A is incorrect as while competitor analysis is relevant, the primary alignment is with internal company targets.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_18",
+      "tags": [
+        "Sales Analysis",
+        "Revenue Targets",
+        "Growth Objectives"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of data is crucial for performing effective Sales Analysis?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Employee attendance records.",
+        "B": "Historical sales data and current market trends.",
+        "C": "Office supply inventory lists.",
+        "D": "Manufacturer equipment maintenance logs."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because effective Sales Analysis relies heavily on historical sales data to understand past performance and current market trends to forecast future sales accurately. Option A is incorrect as it's an HR-related data point.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_18",
+      "tags": [
+        "Sales Analysis",
+        "Forecasting"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a common mistake when conducting Sales Analysis?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Segmenting sales data by product line and region.",
+        "B": "Accounting for seasonality and external factors.",
+        "C": "Only looking at total sales figures without segmentation.",
+        "D": "Comparing projected sales against revenue targets."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because a common mistake in Sales Analysis is to only look at aggregated total sales figures, which can hide specific issues or opportunities within different segments. Options A, B, and D describe good practices in Sales Analysis.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_18",
+      "tags": [
+        "Sales Analysis",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Sales Analysis is considered a key _________ of business analysis.",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Distractor.",
+        "B": "Competitor.",
+        "C": "Component.",
+        "D": "Objective."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because Sales Analysis is explicitly stated as a key component of business analysis, focusing on a specific area of financial review. Option D is incorrect; while it helps achieve objectives, it is a method or part of the overall analysis, not an objective itself.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_18",
+      "tags": [
+        "Sales Analysis",
+        "Business Analysis"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary goal of Product Development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To reduce existing product costs.",
+        "B": "To translate a product concept into a tangible, tested offering.",
+        "C": "To conduct market research on competitor products.",
+        "D": "To design marketing campaigns for new products."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because Product Development's core goal is to take an initial concept and transform it into a real, physical product or service that has been rigorously tested. Options A, C, and D describe related but distinct business activities.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_19",
+      "tags": [
+        "product development",
+        "innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a core activity in Product Development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Managing customer complaint hotlines.",
+        "B": "Rigorously testing the product for safety and effectiveness.",
+        "C": "Negotiating supplier contracts for raw materials.",
+        "D": "Calculating quarterly financial statements."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because rigorous testing is a fundamental activity in product development to ensure the tangible product performs safely and effectively as intended. Options A, C, and D are distinct business functions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_19",
+      "tags": [
+        "product development",
+        "testing"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Rigorous testing during product development ensures the product performs in which of the following ways? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It is safe for users.",
+        "B": "It is marketed effectively.",
+        "C": "It is effective in its intended function.",
+        "D": "It has the lowest possible manufacturing cost."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "A and C are correct because rigorous testing in product development is specifically designed to verify that the product is safe for users and effective in performing its intended functions. Option B is incorrect as marketing effectiveness is a function of market strategy, not direct product testing. Option D is incorrect as cost optimization is a separate goal, not a direct outcome of functional and safety testing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_19",
+      "tags": [
+        "product development",
+        "testing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in Product Development involves neglecting which critical phase?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Market research.",
+        "B": "The testing phase or adequate customer feedback.",
+        "C": "Competitor analysis.",
+        "D": "Initial concept generation."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a common mistake in Product Development is rushing the testing phase or failing to adequately gather customer feedback, leading to flaws or lack of customer value. Options A, C, and D are important, but not the specific mistake highlighted regarding the 'development' and 'testing' phases.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_19",
+      "tags": [
+        "product development",
+        "common mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Product development primarily focuses on translating a product concept into what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "A marketing strategy document.",
+        "B": "A tangible, physical product or offering.",
+        "C": "A financial projection report.",
+        "D": "A list of potential customers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the essence of product development is the transformation of an abstract product concept into a concrete, usable, and physical product or offering. Options A, C, and D are outputs of other business functions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_19",
+      "tags": [
+        "product development",
+        "innovation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Who typically conducts alpha testing for a new product?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "External beta users or early adopters.",
+        "B": "The development team or a select group within the company.",
+        "C": "Independent third-party auditors.",
+        "D": "Random members of the general public."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because alpha testing is an internal phase, typically conducted by the product's development team or other designated internal groups within the company. Option A describes beta testing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_20",
+      "tags": [
+        "alpha testing",
+        "internal testing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In what type of environment is alpha testing usually performed?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "An uncontrolled, open market setting.",
+        "B": "A publicly accessible test forum.",
+        "C": "A controlled internal environment.",
+        "D": "A competitor's facility."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because alpha testing is conducted in a controlled environment, often within the company's own facilities, to manage variables and isolate issues efficiently. Option A describes a characteristic of beta testing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_20",
+      "tags": [
+        "alpha testing",
+        "product testing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary objective of alpha testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To gather extensive market feedback for pricing.",
+        "B": "To identify and fix major bugs and issues internally.",
+        "C": "To create marketing materials for product launch.",
+        "D": "To finalize the product's legal disclaimers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because the main goal of alpha testing is to internally uncover and resolve significant bugs and operational issues before the product moves to external testing or wider release. Option A is more characteristic of beta testing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_20",
+      "tags": [
+        "alpha testing",
+        "quality assurance"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Alpha testing is considered which phase of a product's trial before wider release?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The final validation phase.",
+        "B": "The public launch phase.",
+        "C": "The initial trial phase.",
+        "D": "The post-release monitoring phase."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because alpha testing is explicitly defined as the initial trial phase of a product, occurring early in the testing process. Options A, B, and D describe later stages or post-launch activities.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_20",
+      "tags": [
+        "alpha testing",
+        "product testing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a potential negative consequence of skipping or under-resourcing alpha testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Enhanced product reputation due to fast launch.",
+        "B": "Major, easily preventable bugs being discovered much later or after launch.",
+        "C": "Reduced cost of fixes due to fewer testing stages.",
+        "D": "Improved customer satisfaction from early access."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because skipping or under-resourcing alpha testing often leads to major, easily preventable bugs persisting and being discovered at later, more costly stages like beta testing or even after public launch. Options A, C, and D describe positive outcomes, which are contrary to the risks of neglecting alpha testing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_20",
+      "tags": [
+        "alpha testing",
+        "common mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best describes Beta Testing in the product development lifecycle?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Internal testing by the development team to fix major bugs.",
+        "B": "Testing a near-final product version with actual end-users in real-world environments.",
+        "C": "A marketing phase to gauge initial customer interest before development.",
+        "D": "Automated testing conducted by machines to ensure code quality."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because beta testing involves real end-users testing a near-final product in their natural environments to gather feedback on performance, usability, and compatibility. Option A describes alpha testing, which is typically internal.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_21",
+      "tags": [
+        "beta testing",
+        "product testing",
+        "user testing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Who typically conducts Beta Testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The product's core engineering team.",
+        "B": "A specialized quality assurance department within the company.",
+        "C": "A broader group of actual end-users.",
+        "D": "External regulatory bodies for compliance."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct because beta testing is characterized by its reliance on actual end-users to test the product, unlike alpha testing which is internal. Options A and B represent internal testing phases.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_21",
+      "tags": [
+        "beta testing",
+        "user testing",
+        "external testing"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary goal of Beta Testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To secure initial funding from investors.",
+        "B": "To identify issues that emerge under diverse, real-world conditions.",
+        "C": "To finalize the product's marketing strategy.",
+        "D": "To train the internal support staff on new features."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because beta testing's main purpose is to uncover problems and gather feedback that only a wide range of real-world usage scenarios can reveal. Options A, C, and D are not the primary goals of this testing phase.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_21",
+      "tags": [
+        "beta testing",
+        "quality assurance",
+        "feedback"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which testing phase typically precedes Beta Testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Market Research.",
+        "B": "Alpha Testing.",
+        "C": "Pilot Launch.",
+        "D": "Post-Release Patching."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Alpha testing is the initial phase of product testing, typically conducted internally, and it directly precedes beta testing. The other options are either earlier development stages or occur after a product launch.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_21",
+      "tags": [
+        "beta testing",
+        "alpha testing",
+        "product testing phases"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake during beta testing is releasing a product that is too unstable or buggy. What is the likely consequence of this mistake?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It will lead to increased user engagement and detailed feedback.",
+        "B": "It will attract more beta testers due to the challenge.",
+        "C": "It frustrates users and leads to a high dropout rate, yielding little useful feedback.",
+        "D": "It signals to competitors that the product is still in early development."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Releasing a highly unstable beta product typically frustrates users, causing them to abandon the testing program and thus depriving the company of valuable feedback. Options A and B are incorrect as users are unlikely to engage positively with a heavily flawed product.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_21",
+      "tags": [
+        "beta testing",
+        "common mistakes",
+        "user experience"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "The McDonald's and IBM partnership termination for AI-powered drive-thrus primarily illustrates what about innovation testing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "All innovation projects are guaranteed to succeed with sufficient investment.",
+        "B": "Innovation testing can lead to decisions to discontinue projects if desired outcomes are not met.",
+        "C": "Partnerships always result in successful technological advancements.",
+        "D": "AI technology is not suitable for the fast-food industry."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The McDonald's and IBM case highlights that even after significant investment, innovation projects can be terminated if they fail to deliver the expected results or viability. This is a common outcome in the iterative process of innovation testing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_22",
+      "tags": [
+        "Innovation Testing",
+        "Discontinuation",
+        "Business Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a common reason for discontinuing an innovation project, as exemplified by the McDonald's/IBM case?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The project was too successful too quickly.",
+        "B": "The desired outcomes or viability were not met after testing.",
+        "C": "Competitors copied the innovation too rapidly.",
+        "D": "The company ran out of new ideas for the project."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Projects are often discontinued if, despite testing, they do not achieve the expected performance, efficiency, or strategic viability. Options A, C, and D are generally not the primary reasons for discontinuation in such large-scale innovation tests.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_22",
+      "tags": [
+        "Innovation Testing",
+        "Project Management",
+        "Outcomes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "When an innovation project like the McDonald's AI drive-thru is terminated, what is a common mistake companies make?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Viewing the termination as a learning opportunity.",
+        "B": "Reallocating resources to more promising ventures.",
+        "C": "Clinging to the failing innovation due to sunk costs.",
+        "D": "Publicly announcing the decision to maintain transparency."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A common mistake is to continue investing in a failing project because of past expenditures (sunk costs), rather than making a rational decision based on current viability. Options A, B, and D are generally considered good practices.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_22",
+      "tags": [
+        "Innovation Testing",
+        "Common Mistakes",
+        "Sunk Costs"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does the McDonald's example imply about the nature of innovation in business?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Innovation is always a linear process leading to success.",
+        "B": "Innovation inherently involves risk and iterative evaluation.",
+        "C": "Only small companies face challenges in innovation.",
+        "D": "Once an innovation is started, it must always be completed."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The McDonald's case demonstrates that innovation is not guaranteed to succeed and requires continuous testing and evaluation, implying inherent risks and an iterative process. Options A and D present an unrealistic view of innovation, and C is incorrect as large companies also face significant innovation challenges.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_22",
+      "tags": [
+        "Innovation Testing",
+        "Risk Management",
+        "Iterative Process"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are valid reasons for a company to discontinue an innovation project, even after significant investment? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The project fails to meet performance expectations.",
+        "B": "The innovation proves too expensive to scale profitably.",
+        "C": "The project significantly exceeds its initial budget.",
+        "D": "The market demand for the innovation unexpectedly increases."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "A, B, and C are correct. If an innovation doesn't perform as expected, is too costly to implement widely, or becomes financially unsustainable, these are strong reasons for discontinuation. Option D would typically be a reason to continue or accelerate a project, not discontinue it.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_22",
+      "tags": [
+        "Innovation Testing",
+        "Discontinuation",
+        "Project Viability",
+        "Business Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary characteristic of cold pressed juice?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It is made using high heat to sterilize the juice.",
+        "B": "It is extracted by applying pressure to preserve nutrients and flavor.",
+        "C": "It involves adding artificial sweeteners for taste.",
+        "D": "It is always carbonated for a fizzy texture."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Cold pressed juice is defined by its extraction method, which uses pressure to maintain the integrity of nutrients and natural flavors, unlike methods that involve heat. Options A, C, and D describe processes or additives not inherent to cold pressing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_23",
+      "tags": [
+        "Cold Pressed",
+        "Product Definition",
+        "Beverage Market"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "How does Innocent primarily differentiate its cold pressed juices in the market?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "By selling them at the lowest possible price.",
+        "B": "By using artificial colors and preservatives.",
+        "C": "By emphasizing the cold-pressing method and distinct ingredient combinations.",
+        "D": "By focusing solely on generic single-fruit flavors."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Innocent differentiates its products by highlighting the cold-pressing process, which preserves quality, and by offering unique and distinct ingredient blends. Options A, B, and D describe strategies that would typically lead to commoditization or lower quality perception.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_23",
+      "tags": [
+        "Product Differentiation",
+        "Innocent",
+        "Marketing Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key benefit of the cold pressing method for juice production?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It makes the juice significantly cheaper to produce.",
+        "B": "It allows for faster production times compared to other methods.",
+        "C": "It helps preserve the natural nutrients and flavor of the fruits and vegetables.",
+        "D": "It extends the shelf life indefinitely without refrigeration."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The primary advantage of cold pressing is its ability to retain more of the natural vitamins, enzymes, and flavors from the produce compared to heat-based methods. Options A and B are generally false, and D is an exaggeration.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_23",
+      "tags": [
+        "Cold Pressed",
+        "Nutrients",
+        "Flavor Preservation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Why do companies like Innocent focus on product differentiation?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To make their products identical to competitors'.",
+        "B": "To stand out in a competitive market and appeal to specific customer segments.",
+        "C": "To reduce the overall quality of their products.",
+        "D": "To avoid any form of customer feedback."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Product differentiation is a strategy used to make a product unique and appealing to a target market, helping it stand apart from competitors. Options A, C, and D are contrary to the goals of differentiation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_23",
+      "tags": [
+        "Product Differentiation",
+        "Competitive Advantage",
+        "Marketing Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common mistake companies make when attempting product differentiation?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Focusing on substantial, value-adding differences.",
+        "B": "Effectively communicating their differentiators to the market.",
+        "C": "Focusing solely on minor aesthetic changes without substantial value.",
+        "D": "Conducting thorough market research to understand customer needs."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. A common pitfall is to differentiate based on superficial changes rather than offering meaningful, value-adding distinctions that truly resonate with customers. Options A, B, and D are good practices for effective differentiation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_23",
+      "tags": [
+        "Product Differentiation",
+        "Common Mistakes",
+        "Value Proposition"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "How did Innocent validate their business idea at a music festival?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "By conducting a formal written survey with hundreds of questions.",
+        "B": "By asking potential customers to 'vote with their empties' into 'Yes' or 'No' bins.",
+        "C": "By launching a national advertising campaign before making any juice.",
+        "D": "By hiring professional market researchers to interview attendees."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Innocent used a unique and direct method of customer engagement by setting up 'Yes' and 'No' bins for potential customers to 'vote with their empties', which provided immediate and tangible feedback. The other options describe more traditional or premature validation methods.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_24",
+      "tags": [
+        "Customer Engagement",
+        "Market Validation",
+        "Innocent"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What was the primary purpose of Innocent's 'vote with their empties' method?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To collect empty bottles for recycling.",
+        "B": "To validate their smoothie business idea with unbiased customer feedback.",
+        "C": "To conduct a promotional giveaway.",
+        "D": "To test the durability of their bottle design."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The core goal of the 'vote with their empties' exercise was to get clear, real-world feedback from potential customers to validate the demand for their business idea. Options A, C, and D were not the primary purpose.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_24",
+      "tags": [
+        "Market Validation",
+        "Business Launch",
+        "Customer Feedback"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Integrating a unique validation process, like Innocent's 'vote with empties', into a brand story primarily helps to achieve what?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Increase production costs.",
+        "B": "Build authenticity and connection with consumers.",
+        "C": "Confuse potential investors about the business model.",
+        "D": "Limit the brand's future expansion opportunities."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. By sharing their unique origin story and how customers validated their idea, Innocent built an authentic brand narrative that fostered a stronger connection with its consumers. Options A, C, and D are negative outcomes not associated with this practice.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_24",
+      "tags": [
+        "Brand Story",
+        "Authenticity",
+        "Consumer Connection"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Innocent's 'vote with empties' method is an example of what entrepreneurial concept?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Mass production.",
+        "B": "Market validation.",
+        "C": "Supply chain optimization.",
+        "D": "Financial auditing."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. The method directly sought to confirm whether there was a genuine demand for their product, which is the essence of market validation. Options A, C, and D are unrelated business functions.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_24",
+      "tags": [
+        "Market Validation",
+        "Entrepreneurship",
+        "Business Idea"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common mistake when seeking early business validation?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Seeking unbiased feedback from target customers.",
+        "B": "Relying heavily on biased feedback from friends and family.",
+        "C": "Testing the concept in a realistic market setting.",
+        "D": "Integrating the validation process into the brand story."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Feedback from friends and family is often biased and may not accurately reflect true market demand. Seeking unbiased feedback, testing in realistic settings, and integrating the story are all good practices for validation.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_24",
+      "tags": [
+        "Business Validation",
+        "Common Mistakes",
+        "Feedback Bias"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary purpose of test marketing in the new product development process?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To finalize the product's manufacturing process.",
+        "B": "To gauge consumer response in a realistic market setting before a full launch.",
+        "C": "To secure intellectual property rights for the new product.",
+        "D": "To recruit the initial sales team for the product."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because test marketing's main goal is to introduce a new product into a limited, realistic market to understand consumer reaction and refine strategies before a costly full-scale launch. Option A is incorrect as manufacturing finalization usually occurs earlier in product development.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_25",
+      "tags": [
+        "Test Marketing",
+        "Product Development",
+        "Market Research"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following represents a key challenge associated with conducting test marketing?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Identifying the initial product concept.",
+        "B": "Maintaining secrecy from competitors to prevent copying.",
+        "C": "Determining the product's final retail price.",
+        "D": "Formulating the company's overall business strategy."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct because a significant challenge in test marketing is keeping the product and its marketing strategy confidential from competitors. Failing to do so can allow rivals to launch counter-campaigns or copy the product, undermining the test's value. Option A is incorrect as concept identification occurs much earlier in the NPD process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_25",
+      "tags": [
+        "Test Marketing",
+        "Risk Management",
+        "Competitive Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A company introduces a new beverage flavor only in a few specific grocery stores in a limited geographical area to observe sales and gather feedback. This approach is an example of which type of test market?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Focus group testing.",
+        "B": "Controlled test market.",
+        "C": "Brand awareness survey.",
+        "D": "Competitor benchmarking."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A controlled test market involves placing a product in specific retail outlets in a limited market to monitor sales and consumer response, often with direct control over shelf space and promotional activities. Options A, C, and D are market research methods but not types of test marketing.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_25",
+      "tags": [
+        "Test Marketing",
+        "Market Research",
+        "Product Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Why do companies typically conduct test marketing before fully launching a new product nationwide?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "To guarantee the product will be a bestseller.",
+        "B": "To minimize the financial risks associated with a full-scale market introduction.",
+        "C": "To eliminate all potential product defects.",
+        "D": "To avoid any need for future product updates."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Test marketing helps companies reduce the significant financial and reputational risks of a full launch by identifying potential issues with the product or marketing program on a smaller scale. Option A is incorrect as no test can guarantee a bestseller, only provide data-driven insights.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_25",
+      "tags": [
+        "Test Marketing",
+        "Risk Management",
+        "Innovation Strategy"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the context of new product development, what does 'simulated test marketing' typically involve?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Distributing the product to all major national retailers.",
+        "B": "Creating a controlled, artificial environment to observe consumer reactions.",
+        "C": "Selling the product exclusively through online channels.",
+        "D": "Conducting one-on-one interviews with potential customers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. Simulated test marketing uses a controlled, often artificial setting (like a mock store or online simulation) to expose consumers to a new product and gauge their purchase intent, allowing for quick and cost-effective feedback. Option A describes a full launch, not a test market type.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_25",
+      "tags": [
+        "Test Marketing",
+        "Market Research",
+        "Product Development"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a defining characteristic of the commercialization phase in new product development?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "It is typically a low-cost phase focused on idea generation.",
+        "B": "It involves minimal financial investment and quick adjustments.",
+        "C": "It is a high-cost phase requiring substantial initial investments.",
+        "D": "Costs are only incurred after the product has generated profits."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. Commercialization is explicitly defined as a high-cost process due to the substantial investments required for manufacturing, marketing, distribution, and sales infrastructure to introduce a product to the market. Option A and B are incorrect as commercialization is financially intensive.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_26",
+      "tags": [
+        "Commercialization",
+        "Product Launch",
+        "Cost Management"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "Which two critical questions must be addressed during the commercialization phase of a new product? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Where to launch the product (distribution channels and market segments).",
+        "B": "What raw materials to use for product manufacturing.",
+        "C": "When to launch the product (timing strategy).",
+        "D": "Who will lead the product development team."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "A and C are correct. The commercialization phase critically involves deciding 'where' (place/distribution) and 'when' (timing) to launch the product to maximize its success. Option B and D are incorrect as these decisions are typically made in earlier stages of product development or are related to internal team management, not the core commercialization strategy.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_26",
+      "tags": [
+        "Commercialization",
+        "Distribution Strategy",
+        "Timing Strategy",
+        "Product Launch"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A technology company is coordinating global supply chains, preparing massive marketing campaigns, and training retail partners for its new smartphone. Which phase of new product development is the company most likely in?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Concept generation.",
+        "B": "Product development.",
+        "C": "Test marketing.",
+        "D": "Commercialization."
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": "D is correct. These activities—coordinating supply chains, marketing campaigns, and retail training—are all characteristic of the commercialization phase, which involves the full-scale introduction of a new product to the market. Options A, B, and C are earlier stages of the NPD process.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_26",
+      "tags": [
+        "Commercialization",
+        "Product Launch",
+        "Market Entry"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a common mistake companies make during the commercialization phase?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "Spending too much time on initial idea screening.",
+        "B": "Inadequate planning for distribution channels.",
+        "C": "Over-analyzing the market potential.",
+        "D": "Conducting excessive research on product features."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "B is correct. A common mistake during commercialization is inadequate planning for distribution channels ('where'), which can lead to the product not being available where target customers expect to find it. Options A, C, and D refer to potential issues in earlier NPD stages or are not typically critical commercialization errors.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_26",
+      "tags": [
+        "Commercialization",
+        "Distribution Strategy",
+        "Common Mistakes"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "In the context of commercialization, what does the 'where' decision primarily refer to?",
+      "visual_type": "None",
+      "visual_code": null,
+      "alt_text": null,
+      "options": {
+        "A": "The physical location of the product's manufacturing plant.",
+        "B": "The specific team responsible for product development.",
+        "C": "The distribution channels and geographic markets for the product launch.",
+        "D": "The location where customer service representatives will be based."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": "C is correct. The 'where' decision in commercialization focuses on the strategic choice of distribution channels (e.g., online, retail stores) and the specific geographic markets or segments where the product will initially be launched. Option A, B, and D refer to other operational or organizational aspects.",
+      "difficulty_level": 1,
+      "source_flashcard_id": "SI_NPD_26",
+      "tags": [
+        "Commercialization",
+        "Distribution Strategy",
+        "Market Entry"
+      ]
+    }
+  ]
+}

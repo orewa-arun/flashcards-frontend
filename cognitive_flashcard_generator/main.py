@@ -735,7 +735,7 @@ def process_course_batch(course: Dict[str, Any], slide_analysis_prefix: Optional
     
     quiz_generator = AsyncQuizGenerator(
         api_key=Config.GEMINI_API_KEY,
-        model="gemini-2.0-flash-exp",
+        model=Config.GEMINI_MODEL,
         course_name=course_name,
         textbook_reference=textbook_reference
     )
@@ -1061,7 +1061,7 @@ def main():
             if Config.BATCH_PROCESSING_ENABLED:
                 process_course_batch(course, slide_analysis_prefix)
             else:
-        process_course_flashcards(course, slide_analysis_prefix)
+                process_course_flashcards(course, slide_analysis_prefix)
                 process_course_quizzes(course, slide_analysis_prefix)
     else:
         # Process all courses (slide_analysis_prefix is ignored when processing all courses)
@@ -1073,7 +1073,7 @@ def main():
         if mode in ["quizzes", "quizzes-only"]:
             print(f"\n📝 Quiz-only mode: Generating quizzes only for all courses (flashcards must already exist)")
         else:
-        print(f"\n🔄 Processing all courses...\n")
+            print(f"\n🔄 Processing all courses...\n")
         
         for i, course in enumerate(courses, 1):
             print(f"\n{'#'*80}")
@@ -1088,7 +1088,7 @@ def main():
                 if Config.BATCH_PROCESSING_ENABLED:
                     process_course_batch(course)
                 else:
-            process_course_flashcards(course)
+                    process_course_flashcards(course)
                     process_course_quizzes(course)
         
         print(f"\n{'='*80}")

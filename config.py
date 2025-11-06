@@ -17,11 +17,11 @@ except ImportError:
 
 
 class Config:
-    """Main configuration class for the flashcard generator."""
+    """Application configuration."""
     
-    # ==================== API Configuration ====================
-    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
-    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.0-flash-exp")
+    # --- Gemini API ---
+    GEMINI_API_KEY: Optional[str] = os.getenv("GEMINI_API_KEY")
+    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
     
     # ==================== Directory Configuration ====================
     INPUT_DIR: str = os.getenv("INPUT_DIR", "./slides")
@@ -45,6 +45,9 @@ class Config:
     
     # ==================== Anki Configuration ====================
     ANKI_ENABLED: bool = os.getenv("ANKI_ENABLED", "true").lower() == "true"
+    
+    # --- Anki ---
+    ANKI_DECK_NAME: str = os.getenv("ANKI_DECK_NAME", "Generated Flashcards")
     
     # ==================== Output Formats ====================
     GENERATE_JSON: bool = os.getenv("GENERATE_JSON", "true").lower() == "true"

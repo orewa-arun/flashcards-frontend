@@ -14,7 +14,7 @@ from config import Config
 class AsyncQuizGenerator:
     """Async quiz generator with batching support."""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.0-flash-exp",
+    def __init__(self, api_key: str, model: str = "gemini-2.5-flash",
                  course_name: str = "", textbook_reference: str = ""):
         """
         Initialize the async quiz generator.
@@ -146,7 +146,9 @@ class AsyncQuizGenerator:
                         continue
                     
             except Exception as e:
-                print(f"❌ [Task {task_id}] Error on attempt {attempt + 1}: {e}")
+                # Log the full error to see the root cause
+                print(f"❌ [Task {task_id}] API Error on attempt {attempt + 1}: {type(e).__name__} - {e}")
+                
                 if attempt < max_retries - 1:
                     await asyncio.sleep(2)
                     continue
@@ -217,12 +219,28 @@ class AsyncQuizGenerator:
         required_fields = ['type', 'question_text', 'options', 'correct_answer', 
                           'explanation', 'difficulty_level', 'source_flashcard_id']
         
+        # Check all required fields exist
         for field in required_fields:
             if field not in question:
                 return False
         
-        # Validate options is a list with at least 2 items
-        if not isinstance(question['options'], list) or len(question['options']) < 2:
+        # Validate options is a dictionary with at least 2 items
+        if not isinstance(question['options'], dict) or len(question['options']) < 2:
+            return False
+        
+        # Validate correct_answer is a non-empty list
+        if not isinstance(question['correct_answer'], list) or len(question['correct_answer']) < 1:
+            return False
+        
+        # Type-specific validation
+        question_type = question.get('type')
+        if question_type == 'mcq':
+            # MCQ must have exactly 1 correct answer
+            if len(question['correct_answer']) != 1:
+                return False
+        elif question_type == 'mca':
+            # MCA must have at least 1 correct answer (typically 2-3)
+            if len(question['correct_answer']) < 1:
             return False
         
         return True

@@ -3,6 +3,14 @@ import './QuestionRenderer.css'
 
 function QuestionRenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
   
+  // DIAGNOSTIC LOGGING - CHECK YOUR BROWSER CONSOLE
+  console.log("═══════════════════════════════════════════════════════");
+  console.log("🔍 DIAGNOSTIC: QuestionRenderer received data:");
+  console.log("Question Type:", question?.type);
+  console.log("Question Object:", JSON.stringify(question, null, 2));
+  console.log("User Answer:", userAnswer);
+  console.log("═══════════════════════════════════════════════════════");
+  
   if (!question) return null
 
   switch (question.type) {
@@ -10,6 +18,17 @@ function QuestionRenderer({ question, userAnswer, onAnswerChange, showFeedback, 
     case 'scenario_mcq':
       return (
         <MCQRenderer 
+          question={question}
+          userAnswer={userAnswer}
+          onAnswerChange={onAnswerChange}
+          showFeedback={showFeedback}
+          disabled={disabled}
+        />
+      )
+    
+    case 'mca':
+      return (
+        <MCARenderer 
           question={question}
           userAnswer={userAnswer}
           onAnswerChange={onAnswerChange}
@@ -80,6 +99,22 @@ function QuestionRenderer({ question, userAnswer, onAnswerChange, showFeedback, 
 
 // MCQ and Scenario MCQ Renderer
 function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
+  console.log("🔵 MCQRenderer RENDERING - Type:", question.type);
+  console.log("🔵 MCQ Options:", question.options);
+  
+  // correct_answer is now always an array; for MCQ it has 1 element (the option KEY like "A")
+  const correctAnswerKey = Array.isArray(question.answer) ? question.answer[0] : question.answer
+  
+  // Options can be either an array or an object {A: "text", B: "text", ...}
+  const optionsArray = Array.isArray(question.options) 
+    ? question.options 
+    : Object.entries(question.options || {})
+  
+  const isObjectOptions = !Array.isArray(question.options)
+  
+  console.log("🔵 MCQ isObjectOptions:", isObjectOptions);
+  console.log("🔵 MCQ optionsArray:", optionsArray);
+  
   return (
     <div className="question-container mcq-question">
       {question.scenario && (
@@ -91,23 +126,147 @@ function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disab
       
       <div className="question-text">
         <h3>{question.question}</h3>
+        <p className="question-type-indicator mcq-indicator">Single Choice - Select one answer</p>
       </div>
       
       <div className="options-list">
-        {question.options && question.options.map((option, index) => (
-          <div 
+        {optionsArray.map((option, index) => {
+          // If options is an object, option is [key, value] tuple; otherwise it's just the text
+          const optionKey = isObjectOptions ? option[0] : option
+          const optionText = isObjectOptions ? option[1] : option
+          const optionValue = isObjectOptions ? optionKey : optionText
+          const isSelected = userAnswer === optionValue
+          const isCorrect = isObjectOptions ? optionKey === correctAnswerKey : optionText === correctAnswerKey
+          
+          return (
+            <label 
             key={index}
-            className={`option-item ${userAnswer === option ? 'selected' : ''} ${
-              showFeedback && option === question.answer ? 'correct' : ''
-            } ${showFeedback && userAnswer === option && option !== question.answer ? 'incorrect' : ''}`}
-            onClick={() => !disabled && onAnswerChange(option)}
-          >
+              className={`option-item radio-option ${isSelected ? 'selected' : ''} ${
+                showFeedback && isCorrect ? 'correct' : ''
+              } ${showFeedback && isSelected && !isCorrect ? 'incorrect' : ''}`}
+            >
+              <div className="radio-wrapper">
+                <input
+                  type="radio"
+                  name={`question-${question.question_id || index}`}
+                  value={optionValue}
+                  checked={isSelected}
+                  onChange={() => !disabled && onAnswerChange(optionValue)}
+                  disabled={disabled}
+                  className="option-radio"
+                />
+                <span className="radio-custom"></span>
+              </div>
             <div className="option-content">
-              {option}
+                {isObjectOptions && <span className="option-letter">{optionKey}. </span>}
+                {optionText}
             </div>
-          </div>
-        ))}
+            </label>
+          )
+        })}
       </div>
+    </div>
+  )
+}
+
+// MCA (Multiple Correct Answers) Renderer
+function MCARenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
+  console.log("🟣 MCARenderer RENDERING - Type:", question.type);
+  console.log("🟣 MCA Options:", question.options);
+  console.log("🟣 MCA userAnswer:", userAnswer);
+  
+  // Ensure userAnswer is always an array (of option KEYS like ["A", "C"])
+  const selectedAnswers = Array.isArray(userAnswer) ? userAnswer : []
+  
+  // correct_answer is now always an array of option KEYS (e.g., ["A", "C"])
+  const correctAnswers = Array.isArray(question.answer) ? question.answer : []
+  
+  // Options can be either an array or an object {A: "text", B: "text", ...}
+  const optionsArray = Array.isArray(question.options) 
+    ? question.options 
+    : Object.entries(question.options || {})
+  
+  const isObjectOptions = !Array.isArray(question.options)
+  
+  console.log("🟣 MCA isObjectOptions:", isObjectOptions);
+  console.log("🟣 MCA optionsArray:", optionsArray);
+  console.log("🟣 MCA selectedAnswers:", selectedAnswers)
+  
+  const toggleOption = (optionKey) => {
+    if (disabled) return
+    
+    const newAnswers = selectedAnswers.includes(optionKey)
+      ? selectedAnswers.filter(ans => ans !== optionKey)
+      : [...selectedAnswers, optionKey]
+    
+    onAnswerChange(newAnswers)
+  }
+  
+  const isCorrectAnswer = (optionKey) => {
+    return correctAnswers.includes(optionKey)
+  }
+  
+  return (
+    <div className="question-container mca-question">
+      {question.scenario && (
+        <div className="scenario-box">
+          <strong>Scenario:</strong>
+          <p>{question.scenario}</p>
+        </div>
+      )}
+      
+      <div className="question-text">
+        <h3>{question.question}</h3>
+        <p className="question-type-indicator mca-indicator">Multiple Choice - Select all that apply</p>
+      </div>
+      
+      <div className="options-list">
+        {optionsArray.map((option, index) => {
+          // If options is an object, option is [key, value] tuple; otherwise it's just the text
+          const optionKey = isObjectOptions ? option[0] : option
+          const optionText = isObjectOptions ? option[1] : option
+          const isSelected = selectedAnswers.includes(optionKey)
+          const isCorrect = isCorrectAnswer(optionKey)
+          
+          return (
+            <label 
+              key={index}
+              className={`option-item checkbox-option ${isSelected ? 'selected' : ''} ${
+                showFeedback && isCorrect && isSelected ? 'correct' : ''
+              } ${showFeedback && isSelected && !isCorrect ? 'incorrect' : ''} ${
+                showFeedback && !isSelected && isCorrect ? 'missed' : ''
+              }`}
+            >
+              <div className="checkbox-wrapper">
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={(e) => {
+                    e.stopPropagation()
+                    toggleOption(optionKey)
+                  }}
+                  disabled={disabled}
+                  className="option-checkbox"
+                />
+                <span className="checkbox-custom"></span>
+              </div>
+              <div className="option-content">
+                {isObjectOptions && <span className="option-letter">{optionKey}. </span>}
+                {optionText}
+              </div>
+            </label>
+          )
+        })}
+      </div>
+      
+      {showFeedback && (
+        <div className="mca-feedback">
+          <p className="selected-count">
+            You selected {selectedAnswers.length} option(s). 
+            {Array.isArray(question.answer) && ` Correct answer has ${question.answer.length} option(s).`}
+          </p>
+        </div>
+      )}
     </div>
   )
 }
