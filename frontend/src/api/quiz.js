@@ -95,50 +95,8 @@ export async function completeQuizSession(courseId, lectureId, level, score, tot
 }
 
 // ============================================================================
-// LEGACY API (Old Quiz System - Deprecated)
+// LEGACY API - REMOVED
 // ============================================================================
-// These functions are kept for backwards compatibility but should not be used
-// for new code. They do NOT update user_performance, so weak concepts won't work.
-
-/**
- * @deprecated Use startQuizSession() instead
- */
-export async function generateQuiz(courseId, deckId, numQuestions = 20, difficulty = 'medium') {
-  console.warn('⚠️ generateQuiz() is deprecated. Use startQuizSession() instead.');
-  try {
-    const data = await authenticatedPost('/api/v1/quiz/generate', {
-        course_id: courseId,
-        deck_id: deckId,
-        num_questions: numQuestions,
-        difficulty: difficulty,
-    });
-
-    return data;
-  } catch (error) {
-    console.error('Error generating quiz:', error);
-    throw error;
-  }
-}
-
-/**
- * @deprecated Use submitQuizAnswer() + completeQuizSession() instead
- */
-export async function submitQuiz(quizId, courseId, deckId, difficulty, answers, timeTakenSeconds) {
-  console.warn('⚠️ submitQuiz() is deprecated. Use submitQuizAnswer() + completeQuizSession() instead.');
-  try {
-    const data = await authenticatedPost('/api/v1/quiz/submit', {
-        quiz_id: quizId,
-        course_id: courseId,
-        deck_id: deckId,
-        difficulty: difficulty,
-        answers: answers,
-        time_taken_seconds: timeTakenSeconds,
-    });
-
-    return data;
-  } catch (error) {
-    console.error('Error submitting quiz:', error);
-    throw error;
-  }
-}
+// The old quiz system (/api/v1/quiz/*) has been disabled.
+// All quiz functionality now uses the adaptive quiz system above.
 

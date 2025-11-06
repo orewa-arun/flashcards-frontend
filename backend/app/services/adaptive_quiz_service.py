@@ -106,7 +106,7 @@ class AdaptiveQuizService:
             level: Difficulty level (1-4)
             
         Returns:
-            List of question objects with added question_hash field
+            List of question objects with added question_hash field and normalized correct_answer
         """
         quiz_file = self.courses_dir / course_id / "quiz" / f"{lecture_id}_level_{level}_quiz.json"
         
@@ -120,9 +120,12 @@ class AdaptiveQuizService:
             
             questions = quiz_data.get('questions', [])
             
-            # Add question_hash to each question
+            # Add question_hash and normalize correct_answer to option keys
             for question in questions:
                 question['question_hash'] = self.hash_question(question['question_text'])
+                
+                # CRITICAL: Normalize correct_answer to option keys at source
+                question['correct_answer'] = self._normalize_correct_answer(question)
             
             logger.info(f"Loaded {len(questions)} questions from {quiz_file.name}")
             return questions
@@ -130,6 +133,62 @@ class AdaptiveQuizService:
         except Exception as e:
             logger.error(f"Error loading quiz file {quiz_file}: {e}")
             return []
+    
+    @staticmethod
+    def _normalize_correct_answer(question: Dict[str, Any]) -> List[str]:
+        """
+        Normalize correct_answer to always be an array of option KEYS.
+        
+        Handles legacy data where correct_answer might be:
+        - A string option key: "C"
+        - An array of option keys: ["A", "D"]
+        - A string option text: "Targeting new users or segments."
+        - An array of option texts: ["Adding new features...", "Lowering the price..."]
+        
+        Args:
+            question: Question dict with 'correct_answer' and 'options'
+            
+        Returns:
+            List of option keys (e.g., ["C"] or ["A", "D"])
+        """
+        options = question.get('options', {})
+        option_keys = list(options.keys())
+        raw = question.get('correct_answer')
+        
+        if not raw:
+            return []
+        
+        # Ensure raw is a list
+        raw_list = raw if isinstance(raw, list) else [raw]
+        
+        # Normalize text for matching
+        def norm(s):
+            return str(s or '').strip().replace('.', '').replace('\s+', ' ').lower()
+        
+        keys = []
+        for item in raw_list:
+            value = str(item or '').strip()
+            if not value:
+                continue
+            
+            # Case 1: Already an option key
+            if value in option_keys:
+                keys.append(value)
+                continue
+            
+            # Case 2: Match by option text
+            match_key = next(
+                (k for k in option_keys if norm(options[k]) == norm(value)),
+                None
+            )
+            if match_key:
+                keys.append(match_key)
+            else:
+                # Fallback: keep the raw value (will cause issues, but log it)
+                logger.warning(f"Could not normalize correct_answer '{value}' to option key for question: {question.get('question_text', '')[:50]}")
+                keys.append(value)
+        
+        return keys
     
     async def select_coverage_first_questions(
         self,

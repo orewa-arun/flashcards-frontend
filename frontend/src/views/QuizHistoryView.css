@@ -851,6 +851,12 @@
   }
 }
 
+/* Hard guard for this view: neutralize stray animations/transforms except the spinner */
+.quiz-history-view *:not(.spinner):not(.loading-spinner) {
+  animation: none !important;
+  transform: none !important;
+}
+
 /* Animation Keyframes */
 @keyframes spin {
   to {

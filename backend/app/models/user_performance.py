@@ -43,6 +43,8 @@ class QuizAnswerSubmission(BaseModel):
     flashcard_id: str
     is_correct: bool
     level: int
+    question_text: Optional[str] = None  # For snapshot storage
+    options: Optional[Dict[str, str]] = None  # For snapshot storage
 
 
 class QuestionResult(BaseModel):

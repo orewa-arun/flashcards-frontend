@@ -55,6 +55,81 @@
   display: none !important;
 }
 
+/* Defensive isolation across common views: prevent accidental spinner/rotate on titles */
+header h1,
+header .page-title,
+.section-title,
+.view-title,
+.weak-concepts-view h1,
+.weak-concepts-view .page-title,
+.schedule-view h1,
+.schedule-view .page-title,
+.bookmarks-view h1,
+.bookmarks-view .page-title,
+.quiz-view h1,
+.quiz-view .page-title {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Hide stray spinner nodes inside titles */
+h1 .loading-spinner,
+h2 .loading-spinner,
+.page-title .loading-spinner,
+.section-title .loading-spinner,
+header .loading-spinner {
+  display: none !important;
+}
+
+/* If any heading accidentally receives a generic `.spinner` class, neutralize it */
+h1.spinner,
+h2.spinner,
+.page-title.spinner,
+.section-title.spinner {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Critical: restrict any generic spinner classes so they don't rotate containers */
+.spinner:not(.loading-spinner),
+.spinning:not(.loading-spinner),
+.spin:not(.loading-spinner) {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Re-assert the intended animation only on our dedicated spinner element */
+.loading-spinner {
+  animation: spin 0.8s linear infinite !important;
+}
+
+/* Ensure heading containers cannot inherit transforms */
+header,
+.view-header,
+.card-header,
+.empty-state-card,
+.empty-state-title,
+.card-title,
+.title,
+.dashboard-title {
+  transform: none !important;
+}
+
+/* Brute-force safeguard: never rotate/animate header blocks and empty-states */
+.view-header,
+.view-header *,
+.schedule-header,
+.schedule-header *,
+.history-header,
+.history-header *,
+.bookmarks-header,
+.bookmarks-header *,
+.empty-state,
+.empty-state * {
+  animation: none !important;
+  transform: none !important;
+}
+
 /* Quizlet-Inspired Button Styles */
 .btn-primary {
   background-color: var(--accent-primary);

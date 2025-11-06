@@ -118,13 +118,13 @@ const MyScheduleView = () => {
   return (
     <div className="my-schedule-view">
       {/* Elegant Header */}
-      <div className="schedule-header">
-        <div className="header-content">
-          <h1 className="page-title">
-            <FaCalendarAlt className="title-icon" />
+      <div className="schedule-header" style={{ animation: 'none', transform: 'none' }}>
+        <div className="header-content" style={{ animation: 'none', transform: 'none' }}>
+          <h1 className="page-title" style={{ animation: 'none', transform: 'none' }}>
+            <FaCalendarAlt className="title-icon" style={{ animation: 'none', transform: 'none' }} />
             My Academic Planner
           </h1>
-          <p className="page-subtitle">
+          <p className="page-subtitle" style={{ animation: 'none', transform: 'none' }}>
             Your upcoming deadlines and exam readiness, all in one place
           </p>
         </div>
@@ -139,10 +139,10 @@ const MyScheduleView = () => {
       {/* Schedule Content */}
       <div className="schedule-content">
         {!schedule || schedule.enrolled_courses?.length === 0 ? (
-          <div className="empty-state">
-            <FaCalendarAlt className="empty-icon" />
-            <h2>No Courses Enrolled</h2>
-            <p>Click the <strong>"Enroll"</strong> button on any course page to add it to your planner</p>
+          <div className="empty-state" style={{ animation: 'none', transform: 'none' }}>
+            <FaCalendarAlt className="empty-icon" style={{ animation: 'none', transform: 'none' }} />
+            <h2 style={{ animation: 'none', transform: 'none' }}>No Courses Enrolled</h2>
+            <p style={{ animation: 'none', transform: 'none' }}>Click the <strong>"Enroll"</strong> button on any course page to add it to your planner</p>
             <button 
               className="browse-courses-btn"
               onClick={() => navigate('/courses')}

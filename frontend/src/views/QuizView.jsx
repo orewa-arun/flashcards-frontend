@@ -42,6 +42,14 @@ const QuizView = () => {
   const currentQuestion = questions[currentIndex];
   const isLastQuestion = currentIndex === questions.length - 1;
 
+  // Get correct answer keys (backend now guarantees these are option keys)
+  const getCorrectAnswerKeys = (question) => {
+    if (!question) return [];
+    const raw = question.correct_answer;
+    // Backend always returns an array of option keys now
+    return Array.isArray(raw) ? raw : [raw];
+  };
+
   // Reset selectedAnswer when question changes
   useEffect(() => {
     if (currentQuestion?.type === 'mca') {
@@ -78,10 +86,8 @@ const QuizView = () => {
     let isCorrect = false;
     let earnedPoints = 0;
 
-    // Normalize correct_answer to always be an array
-    const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
-      ? currentQuestion.correct_answer 
-      : [currentQuestion.correct_answer];
+    // Normalize to option keys where possible
+    const correctAnswers = getCorrectAnswerKeys(currentQuestion);
 
     if (currentQuestion.type === 'mca') {
       // MCA: Strict partial credit scoring
@@ -100,8 +106,16 @@ const QuizView = () => {
         isCorrect = earnedPoints === 1; // Full credit only if all correct answers selected
       }
     } else {
-      // MCQ: Binary scoring
-      isCorrect = selectedAnswer === correctAnswers[0];
+      // MCQ: Binary scoring (prefer key comparison; fallback to text)
+      const options = currentQuestion.options || {};
+      const first = correctAnswers[0];
+      if (first && options[first] !== undefined) {
+        isCorrect = selectedAnswer === first;
+      } else {
+        const selectedText = String(options[selectedAnswer] ?? '').trim();
+        const norm = (s) => s.replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
+        isCorrect = norm(selectedText) === norm(String(first ?? ''));
+      }
       earnedPoints = isCorrect ? 1 : 0;
     }
 
@@ -119,7 +133,7 @@ const QuizView = () => {
     };
     setUserAnswers([...userAnswers, answerRecord]);
 
-    // Submit to backend
+    // Submit to backend with question snapshot
     try {
       await submitQuizAnswer(
         courseId,
@@ -127,7 +141,9 @@ const QuizView = () => {
         currentQuestion.question_hash,
         currentQuestion.source_flashcard_id,
         isCorrect,
-        parseInt(level)
+        parseInt(level),
+        currentQuestion.question_text,
+        currentQuestion.options
       );
     } catch (error) {
       console.error('Error submitting answer:', error);
@@ -140,10 +156,8 @@ const QuizView = () => {
       let finalIsCorrect = false;
       let finalEarnedPoints = 0;
 
-      // Normalize correct_answer to always be an array
-      const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
-        ? currentQuestion.correct_answer 
-        : [currentQuestion.correct_answer];
+      // Normalize to option keys where possible
+      const correctAnswers = getCorrectAnswerKeys(currentQuestion);
 
       if (currentQuestion.type === 'mca') {
         const userAnswers = selectedAnswer;
@@ -160,7 +174,15 @@ const QuizView = () => {
           finalIsCorrect = finalEarnedPoints === 1;
         }
       } else {
-        finalIsCorrect = selectedAnswer === correctAnswers[0];
+        const options = currentQuestion.options || {};
+        const first = correctAnswers[0];
+        if (first && options[first] !== undefined) {
+          finalIsCorrect = selectedAnswer === first;
+        } else {
+          const selectedText = String(options[selectedAnswer] ?? '').trim();
+          const norm = (s) => s.replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
+          finalIsCorrect = norm(selectedText) === norm(String(first ?? ''));
+        }
         finalEarnedPoints = finalIsCorrect ? 1 : 0;
       }
 
@@ -205,10 +227,8 @@ const QuizView = () => {
   const getOptionClass = (optionKey) => {
     const isMCA = currentQuestion.type === 'mca';
     
-    // Normalize correct_answer to always be an array
-    const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
-      ? currentQuestion.correct_answer 
-      : [currentQuestion.correct_answer];
+    // Normalize to option keys where possible
+    const correctAnswers = getCorrectAnswerKeys(currentQuestion);
 
     if (!showFeedback) {
       // Before feedback - show selection state
@@ -310,10 +330,7 @@ const QuizView = () => {
             <div className="explanation-box">
               <h3>
                 {(() => {
-                  // Normalize correct_answer to always be an array
-                  const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
-                    ? currentQuestion.correct_answer 
-                    : [currentQuestion.correct_answer];
+                  const correctAnswers = getCorrectAnswerKeys(currentQuestion);
 
                   if (currentQuestion.type === 'mca') {
                     const userAnswers = selectedAnswer;
@@ -332,27 +349,41 @@ const QuizView = () => {
                     if (earnedPoints > 0) return `⚠️ Partial Credit (${Math.round(earnedPoints * 100)}%)`;
                     return '❌ Incorrect';
                   } else {
-                    return selectedAnswer === correctAnswers[0] ? '✅ Correct!' : '❌ Incorrect';
+                    const options = currentQuestion.options || {};
+                    const first = correctAnswers[0];
+                    if (first && options[first] !== undefined) {
+                      return selectedAnswer === first ? '✅ Correct!' : '❌ Incorrect';
+                    }
+                    const selectedText = String(options[selectedAnswer] ?? '').trim();
+                    const norm = (s) => s.replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
+                    return norm(selectedText) === norm(String(first ?? '')) ? '✅ Correct!' : '❌ Incorrect';
                   }
                 })()}
               </h3>
               <p><strong>Explanation:</strong> {currentQuestion.explanation}</p>
               {(() => {
-                // Normalize correct_answer to always be an array
-                const correctAnswers = Array.isArray(currentQuestion.correct_answer) 
-                  ? currentQuestion.correct_answer 
-                  : [currentQuestion.correct_answer];
+                const correctAnswers = getCorrectAnswerKeys(currentQuestion);
                 
+                const options = currentQuestion.options || {};
                 const isFullyCorrect = currentQuestion.type === 'mca' 
                   ? JSON.stringify([...selectedAnswer].sort()) === JSON.stringify([...correctAnswers].sort())
-                  : selectedAnswer === correctAnswers[0];
+                  : (correctAnswers[0] && options[correctAnswers[0]] !== undefined
+                      ? selectedAnswer === correctAnswers[0]
+                      : (() => {
+                          const selectedText = String(options[selectedAnswer] ?? '').trim();
+                          const norm = (s) => s.replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
+                          return norm(selectedText) === norm(String(correctAnswers[0] ?? ''));
+                        })());
                 
                 if (!isFullyCorrect) {
                   return (
-                <p className="correct-answer-note">
+                    <p className="correct-answer-note">
                       <strong>Correct answer{correctAnswers.length > 1 ? 's' : ''}:</strong>{' '}
-                      {correctAnswers.map(key => `${key}: ${currentQuestion.options[key]}`).join(', ')}
-                </p>
+                      {correctAnswers.map(key => {
+                        const optText = currentQuestion.options?.[key];
+                        return optText !== undefined ? `${key}: ${optText}` : String(key);
+                      }).join(', ')}
+                    </p>
                   );
                 }
               })()}

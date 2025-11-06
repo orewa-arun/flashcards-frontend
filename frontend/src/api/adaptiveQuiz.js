@@ -28,16 +28,18 @@ export const startQuizSession = async (courseId, lectureId, level) => {
 };
 
 /**
- * Submit an answer to a quiz question
+ * Submit an answer to a quiz question (with question snapshot for weak concepts)
  * @param {string} courseId - Course identifier
  * @param {string} lectureId - Lecture identifier
  * @param {string} questionHash - Unique question identifier
  * @param {string} flashcardId - Source flashcard ID
  * @param {boolean} isCorrect - Whether the answer was correct
  * @param {number} level - Quiz level
+ * @param {string} questionText - Question text for snapshot
+ * @param {Object} options - Options object for snapshot
  * @returns {Promise} Submission confirmation
  */
-export const submitQuizAnswer = async (courseId, lectureId, questionHash, flashcardId, isCorrect, level) => {
+export const submitQuizAnswer = async (courseId, lectureId, questionHash, flashcardId, isCorrect, level, questionText, options) => {
   try {
     const data = await authenticatedPost('/api/v1/adaptive-quiz/session/submit', {
       course_id: courseId,
@@ -45,7 +47,9 @@ export const submitQuizAnswer = async (courseId, lectureId, questionHash, flashc
       question_hash: questionHash,
       flashcard_id: flashcardId,
       is_correct: isCorrect,
-      level: level
+      level: level,
+      question_text: questionText,
+      options: options
     });
     return data;
   } catch (error) {

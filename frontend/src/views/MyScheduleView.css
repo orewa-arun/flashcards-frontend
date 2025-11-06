@@ -26,7 +26,13 @@
 .my-schedule-view {
   min-height: 100vh;
   background: var(--page-bg);
-  padding: 100px 2rem 4rem;
+  padding: 120px 2rem 4rem;
+}
+
+/* Hard guard for this view: allow only the dedicated spinner to animate */
+.my-schedule-view *:not(.loading-spinner) {
+  animation: none !important;
+  transform: none !important;
 }
 
 /* ========================================

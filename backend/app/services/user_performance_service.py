@@ -50,33 +50,48 @@ class UserPerformanceService:
         lecture_id: str,
         question_hash: str,
         flashcard_id: str,
-        is_correct: bool
+        is_correct: bool,
+        question_snapshot: Optional[Dict] = None
     ) -> bool:
         """
         Record a user's answer to a quiz question.
         
         Uses atomic MongoDB operations to update performance metrics.
+        On first attempt for a flashcard, stores a snapshot for display in weak concepts.
+        
+        Args:
+            question_snapshot: Optional dict with 'question_text' and 'options' for display
         """
         try:
             # Determine which counter to increment
             result_field = "correct" if is_correct else "incorrect"
             
-            # Atomic update using $inc for both question and flashcard
+            # Base update operations
+            update_ops = {
+                "$inc": {
+                    f"questions.{question_hash}.{result_field}": 1,
+                    f"flashcards.{flashcard_id}.{result_field}": 1
+                },
+                "$set": {
+                    f"flashcards.{flashcard_id}.last_attempted": datetime.utcnow()
+                }
+            }
+            
+            # On first encounter, store question snapshot for weak concepts display
+            if question_snapshot:
+                update_ops["$setOnInsert"] = {
+                    f"flashcards.{flashcard_id}.question_text": question_snapshot.get('question_text', ''),
+                    f"flashcards.{flashcard_id}.options": question_snapshot.get('options', {})
+                }
+            
+            # Atomic update
             update_result = await self.collection.update_one(
                 {
                     "user_id": user_id,
                     "course_id": course_id,
                     "lecture_id": lecture_id
                 },
-                {
-                    "$inc": {
-                        f"questions.{question_hash}.{result_field}": 1,
-                        f"flashcards.{flashcard_id}.{result_field}": 1
-                    },
-                    "$set": {
-                        f"flashcards.{flashcard_id}.last_attempted": datetime.utcnow()
-                    }
-                },
+                update_ops,
                 upsert=True  # Create document if it doesn't exist
             )
             

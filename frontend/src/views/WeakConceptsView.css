@@ -31,6 +31,21 @@
   animation: fadeIn 0.4s ease-out;
 }
 
+/* Hard guard: prevent any accidental rotation/animation in this view except the dedicated spinner */
+.weak-concepts-view *:not(.loading-spinner) {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Extra-target header block and its descendants */
+.view-header,
+.view-header *,
+.title-section,
+.title-section * {
+  animation: none !important;
+  transform: none !important;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -140,14 +140,23 @@ async def submit_quiz_answer(
         # Initialize service
         performance_service = UserPerformanceService(db)
         
-        # Record the answer
+        # Prepare question snapshot if provided
+        question_snapshot = None
+        if submission.question_text and submission.options:
+            question_snapshot = {
+                'question_text': submission.question_text,
+                'options': submission.options
+            }
+        
+        # Record the answer with snapshot
         success = await performance_service.record_answer(
             user_id=user_id,
             course_id=submission.course_id,
             lecture_id=submission.lecture_id,
             question_hash=submission.question_hash,
             flashcard_id=submission.flashcard_id,
-            is_correct=submission.is_correct
+            is_correct=submission.is_correct,
+            question_snapshot=question_snapshot
         )
         
         if not success:
@@ -339,6 +348,8 @@ async def get_weak_concepts_for_course(
     """
     Get aggregated weak concepts across all lectures in a course.
     
+    NO FILESYSTEM READS. Uses only data from user_performance collection.
+    
     Returns flashcards where the user has:
     - Accuracy < 60% (weak)
     - At least 2 attempts
@@ -356,21 +367,20 @@ async def get_weak_concepts_for_course(
                     "lecture_id": str,
                     "flashcard_id": str,
                     "question": str,
+                    "options": dict,
                     "correct": int,
                     "incorrect": int,
                     "accuracy": float,
-                    "weakness_score": float
+                    "weakness_score": float,
+                    "is_missing_data": bool
                 }
             ]
         }
     """
     try:
-        from pathlib import Path
-        import json
-        
         user_id = current_user['uid']
         
-        # Get all performance records for this user and course
+        # Get all performance records for this user and course (pure DB query)
         performance_collection = db.user_performance
         performances = await performance_collection.find({
             "user_id": user_id,
@@ -384,41 +394,13 @@ async def get_weak_concepts_for_course(
                 "message": "No quiz attempts found. Take a quiz first to assess your weak areas."
             }
         
-        # Load flashcard data for the course
-        base_path = Path("/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/courses")
-        course_path = base_path / course_id / "cognitive_flashcards"
-        
         weak_concepts = []
         
         for perf in performances:
             lecture_id = perf.get("lecture_id")
             flashcards_data = perf.get("flashcards", {})
             
-            # Load flashcard details from file
-            lecture_folder = course_path / lecture_id
-            flashcard_file = lecture_folder / f"{lecture_id}_cognitive_flashcards_only.json"
-            
-            flashcard_lookup = {}
-            file_load_success = False
-            
-            if flashcard_file.exists():
-                try:
-                    with open(flashcard_file, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                        flashcards = data.get("flashcards", []) if isinstance(data, dict) else data
-                        for fc in flashcards:
-                            if "flashcard_id" in fc:
-                                flashcard_lookup[fc["flashcard_id"]] = fc
-                    file_load_success = True
-                    logger.info(f"✅ Loaded {len(flashcard_lookup)} flashcards from {flashcard_file.name}")
-                except json.JSONDecodeError as e:
-                    logger.error(f"❌ JSON decode error in {flashcard_file}: {str(e)}")
-                except Exception as e:
-                    logger.error(f"❌ Error loading flashcard file {flashcard_file}: {str(e)}")
-            else:
-                logger.warning(f"⚠️ Flashcard file not found: {flashcard_file}")
-            
-            # Analyze each flashcard
+            # Analyze each flashcard (no filesystem reads)
             for flashcard_id, stats in flashcards_data.items():
                 correct = stats.get("correct", 0)
                 incorrect = stats.get("incorrect", 0)
@@ -429,43 +411,37 @@ async def get_weak_concepts_for_course(
                     accuracy = (correct / total) * 100
                     
                     if accuracy < 60:
-                        # Get full flashcard data
-                        flashcard = flashcard_lookup.get(flashcard_id, {})
-                        
-                        # Log if flashcard data is missing
-                        if not flashcard:
-                            logger.warning(
-                                f"⚠️ MISSING FLASHCARD DATA: "
-                                f"flashcard_id='{flashcard_id}', "
-                                f"lecture='{lecture_id}', "
-                                f"course='{course_id}', "
-                                f"user='{user_id}', "
-                                f"file_exists={flashcard_file.exists()}, "
-                                f"file_loaded={file_load_success}, "
-                                f"total_in_lookup={len(flashcard_lookup)}"
-                            )
-                        
                         weakness_score = (incorrect + 1) / (correct + 1)
                         
-                        # Get question with better fallback
-                        question = flashcard.get("question", "Unknown concept")
-                        if question == "Unknown concept":
-                            question = f"[Missing Data] Flashcard {flashcard_id}"
+                        # Use snapshot data stored in performance record
+                        question_text = stats.get("question_text", "")
+                        options = stats.get("options", {})
+                        
+                        # Determine if data is missing
+                        is_missing_data = not question_text or not options
+                        
+                        if is_missing_data:
+                            logger.warning(
+                                f"⚠️ MISSING SNAPSHOT: flashcard_id='{flashcard_id}', "
+                                f"lecture='{lecture_id}', course='{course_id}', user='{user_id}'"
+                            )
+                            question_text = f"[Missing Data] Flashcard {flashcard_id}"
                         
                         weak_concepts.append({
                             "lecture_id": lecture_id,
                             "flashcard_id": flashcard_id,
-                            "question": question,
-                            "answers": flashcard.get("answers", {}),
-                            "example": flashcard.get("example", ""),
-                            "mermaid_diagrams": flashcard.get("mermaid_diagrams", {}),
-                            "math_visualizations": flashcard.get("math_visualizations", {}),
+                            "question": question_text,
+                            "options": options,
+                            "answers": {},  # Not stored in snapshot; frontend handles missing data
+                            "example": "",
+                            "mermaid_diagrams": {},
+                            "math_visualizations": {},
                             "correct": correct,
                             "incorrect": incorrect,
                             "total_attempts": total,
                             "accuracy": round(accuracy, 1),
                             "weakness_score": round(weakness_score, 2),
-                            "is_missing_data": not bool(flashcard)  # Flag for frontend
+                            "is_missing_data": is_missing_data
                         })
         
         # Sort by weakness score (worst first)

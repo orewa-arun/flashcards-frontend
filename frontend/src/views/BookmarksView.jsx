@@ -163,23 +163,23 @@ function BookmarksView() {
 
   return (
     <div className="bookmarks-view">
-      <div className="bookmarks-header">
-        <div className="header-content">
-          <h1 className="page-title">
-            <FaStar className="title-icon" />
+      <div className="bookmarks-header" style={{ animation: 'none', transform: 'none' }}>
+        <div className="header-content" style={{ animation: 'none', transform: 'none' }}>
+          <h1 className="page-title" style={{ animation: 'none', transform: 'none' }}>
+            <FaStar className="title-icon" style={{ animation: 'none', transform: 'none' }} />
             The Study Sheet
           </h1>
-          <p className="page-subtitle">
+          <p className="page-subtitle" style={{ animation: 'none', transform: 'none' }}>
             {bookmarks.length} flashcard{bookmarks.length !== 1 ? 's' : ''} bookmarked
           </p>
         </div>
       </div>
 
       {bookmarks.length === 0 ? (
-        <div className="empty-state">
-          <FaStar className="empty-icon" />
-          <h2>No bookmarks yet</h2>
-          <p>Start bookmarking flashcards you want to review later by clicking the star icon.</p>
+        <div className="empty-state" style={{ animation: 'none', transform: 'none' }}>
+          <FaStar className="empty-icon" style={{ animation: 'none', transform: 'none' }} />
+          <h2 style={{ animation: 'none', transform: 'none' }}>No bookmarks yet</h2>
+          <p style={{ animation: 'none', transform: 'none' }}>Start bookmarking flashcards you want to review later by clicking the star icon.</p>
         </div>
       ) : (
         <div className="bookmarks-content">

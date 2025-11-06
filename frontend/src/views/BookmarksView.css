@@ -16,6 +16,12 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* Hard guard for this view: neutralize stray animations/transforms except the spinner */
+.bookmarks-view *:not(.spinner):not(.loading-spinner) {
+  animation: none !important;
+  transform: none !important;
+}
+
 /* Loading and Error States */
 .loading-container,
 .error-container {

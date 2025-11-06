@@ -149,13 +149,13 @@ const WeakConceptsView = () => {
   return (
     <div className="weak-concepts-view">
       {/* Header */}
-      <div className="view-header">
-        <div className="header-content">
-          <div className="title-section">
-            <FaExclamationTriangle className="header-icon" />
-            <div>
-              <h1>Concepts You Need to Review</h1>
-              <p className="subtitle">
+      <div className="view-header" style={{ animation: 'none', transform: 'none' }}>
+        <div className="header-content" style={{ animation: 'none', transform: 'none' }}>
+          <div className="title-section" style={{ animation: 'none', transform: 'none' }}>
+            <FaExclamationTriangle className="header-icon" style={{ animation: 'none', transform: 'none' }} />
+            <div style={{ animation: 'none', transform: 'none' }}>
+              <h1 style={{ animation: 'none', transform: 'none' }}>Concepts You Need to Review</h1>
+              <p className="subtitle" style={{ animation: 'none', transform: 'none' }}>
                 Focus on these concepts to improve your exam readiness
               </p>
             </div>
@@ -171,11 +171,11 @@ const WeakConceptsView = () => {
       </div>
 
       {totalWeak === 0 ? (
-        <div className="no-weak-concepts-message">
-          <div className="message-content">
-            <h2>🎉 Excellent Work!</h2>
-            <p>You don't have any weak concepts across your enrolled courses.</p>
-            <p className="hint">Keep practicing to maintain your strong performance!</p>
+        <div className="no-weak-concepts-message" style={{ animation: 'none', transform: 'none' }}>
+          <div className="message-content" style={{ animation: 'none', transform: 'none' }}>
+            <h2 style={{ animation: 'none', transform: 'none' }}>🎉 Excellent Work!</h2>
+            <p style={{ animation: 'none', transform: 'none' }}>You don't have any weak concepts across your enrolled courses.</p>
+            <p className="hint" style={{ animation: 'none', transform: 'none' }}>Keep practicing to maintain your strong performance!</p>
           </div>
         </div>
       ) : (
