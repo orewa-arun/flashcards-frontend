@@ -10,7 +10,8 @@ import { authenticatedGet } from '../utils/authenticatedApi';
  */
 export const getWeakConcepts = async (courseId) => {
   try {
-    const data = await authenticatedGet(`/api/v1/quiz/weak-concepts/${courseId}`);
+    // Corrected path to adaptive-quiz router prefix
+    const data = await authenticatedGet(`/api/v1/adaptive-quiz/weak-concepts/${courseId}`);
     return data;
   } catch (error) {
     console.error('Failed to fetch weak concepts:', error);
