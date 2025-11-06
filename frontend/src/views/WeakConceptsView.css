@@ -407,6 +407,82 @@
 }
 
 /* ========================================
+   MISSING FLASHCARD NOTICE
+   ======================================== */
+
+.missing-flashcard-notice {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 2px solid var(--amber-accent);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(180, 83, 9, 0.15);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.missing-flashcard-notice .notice-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.missing-flashcard-notice h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--amber-accent);
+  margin: 0 0 1rem 0;
+}
+
+.missing-flashcard-notice .notice-message {
+  font-size: 1.125rem;
+  color: var(--text-gray);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.missing-flashcard-notice .notice-details {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.missing-flashcard-notice .notice-details p {
+  margin: 0.5rem 0;
+  font-size: 0.9375rem;
+  color: var(--text-charcoal);
+  line-height: 1.6;
+}
+
+.missing-flashcard-notice .notice-details strong {
+  color: var(--amber-accent);
+  font-weight: 600;
+}
+
+.missing-flashcard-notice .notice-hint {
+  font-size: 1rem;
+  color: var(--text-gray);
+  font-style: italic;
+  margin: 1.5rem 0 0 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+/* ========================================
    NO WEAK CONCEPTS MESSAGE
    ======================================== */
 

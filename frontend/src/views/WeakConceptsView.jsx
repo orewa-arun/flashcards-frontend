@@ -229,20 +229,39 @@ const WeakConceptsView = () => {
                   <span className="lecture-badge">{currentConcept.lecture_id}</span>
                 </div>
 
-                <Flashcard 
-                  card={{
-                    flashcard_id: currentConcept.flashcard_id,
-                    question: currentConcept.question,
-                    answers: currentConcept.answers,
-                    example: currentConcept.example,
-                    mermaid_diagrams: currentConcept.mermaid_diagrams,
-                    math_visualizations: currentConcept.math_visualizations,
-                  }}
-                  courseId={currentConcept.courseId}
-                  deckId={currentConcept.lecture_id}
-                  index={currentIndex}
-                  sessionId={null} // No session tracking for weak concepts review
-                />
+                {/* Check if flashcard data is missing */}
+                {currentConcept.is_missing_data || currentConcept.question?.includes('[Missing Data]') || currentConcept.question === 'Unknown concept' ? (
+                  <div className="missing-flashcard-notice">
+                    <div className="notice-icon">⚠️</div>
+                    <h3>Flashcard Data Unavailable</h3>
+                    <p className="notice-message">
+                      This flashcard may have been updated or removed since you last studied it.
+                    </p>
+                    <div className="notice-details">
+                      <p><strong>Flashcard ID:</strong> {currentConcept.flashcard_id}</p>
+                      <p><strong>Lecture:</strong> {currentConcept.lecture_id}</p>
+                      <p><strong>Your Performance:</strong> {currentConcept.correct} correct, {currentConcept.incorrect} incorrect ({currentConcept.accuracy}% accuracy)</p>
+                    </div>
+                    <p className="notice-hint">
+                      💡 This concept is still tracked in your performance history. Consider reviewing the updated lecture materials.
+                    </p>
+                  </div>
+                ) : (
+                  <Flashcard 
+                    card={{
+                      flashcard_id: currentConcept.flashcard_id,
+                      question: currentConcept.question,
+                      answers: currentConcept.answers,
+                      example: currentConcept.example,
+                      mermaid_diagrams: currentConcept.mermaid_diagrams,
+                      math_visualizations: currentConcept.math_visualizations,
+                    }}
+                    courseId={currentConcept.courseId}
+                    deckId={currentConcept.lecture_id}
+                    index={currentIndex}
+                    sessionId={null} // No session tracking for weak concepts review
+                  />
+                )}
 
                 {/* Performance Stats Below Card */}
                 <div className="performance-stats">

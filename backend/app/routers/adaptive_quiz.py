@@ -388,13 +388,24 @@ async def get_weak_concepts_for_course(
             flashcard_file = lecture_folder / f"{lecture_id}_cognitive_flashcards_only.json"
             
             flashcard_lookup = {}
+            file_load_success = False
+            
             if flashcard_file.exists():
-                with open(flashcard_file, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    flashcards = data.get("flashcards", []) if isinstance(data, dict) else data
-                    for fc in flashcards:
-                        if "flashcard_id" in fc:
-                            flashcard_lookup[fc["flashcard_id"]] = fc
+                try:
+                    with open(flashcard_file, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        flashcards = data.get("flashcards", []) if isinstance(data, dict) else data
+                        for fc in flashcards:
+                            if "flashcard_id" in fc:
+                                flashcard_lookup[fc["flashcard_id"]] = fc
+                        file_load_success = True
+                        logger.info(f"✅ Loaded {len(flashcard_lookup)} flashcards from {flashcard_file.name}")
+                except json.JSONDecodeError as e:
+                    logger.error(f"❌ JSON decode error in {flashcard_file}: {str(e)}")
+                except Exception as e:
+                    logger.error(f"❌ Error loading flashcard file {flashcard_file}: {str(e)}")
+            else:
+                logger.warning(f"⚠️ Flashcard file not found: {flashcard_file}")
             
             # Analyze each flashcard
             for flashcard_id, stats in flashcards_data.items():
@@ -410,12 +421,30 @@ async def get_weak_concepts_for_course(
                         # Get full flashcard data
                         flashcard = flashcard_lookup.get(flashcard_id, {})
                         
+                        # Log if flashcard data is missing
+                        if not flashcard:
+                            logger.warning(
+                                f"⚠️ MISSING FLASHCARD DATA: "
+                                f"flashcard_id='{flashcard_id}', "
+                                f"lecture='{lecture_id}', "
+                                f"course='{course_id}', "
+                                f"user='{user_id}', "
+                                f"file_exists={flashcard_file.exists()}, "
+                                f"file_loaded={file_load_success}, "
+                                f"total_in_lookup={len(flashcard_lookup)}"
+                            )
+                        
                         weakness_score = (incorrect + 1) / (correct + 1)
+                        
+                        # Get question with better fallback
+                        question = flashcard.get("question", "Unknown concept")
+                        if question == "Unknown concept":
+                            question = f"[Missing Data] Flashcard {flashcard_id}"
                         
                         weak_concepts.append({
                             "lecture_id": lecture_id,
                             "flashcard_id": flashcard_id,
-                            "question": flashcard.get("question", "Unknown concept"),
+                            "question": question,
                             "answers": flashcard.get("answers", {}),
                             "example": flashcard.get("example", ""),
                             "mermaid_diagrams": flashcard.get("mermaid_diagrams", {}),
@@ -424,7 +453,8 @@ async def get_weak_concepts_for_course(
                             "incorrect": incorrect,
                             "total_attempts": total,
                             "accuracy": round(accuracy, 1),
-                            "weakness_score": round(weakness_score, 2)
+                            "weakness_score": round(weakness_score, 2),
+                            "is_missing_data": not bool(flashcard)  # Flag for frontend
                         })
         
         # Sort by weakness score (worst first)
