@@ -83,7 +83,7 @@ def process_course(course: dict, target_pdf_name: str = None) -> None:
             print("   Available PDF names are:")
             for s in course.get('lecture_slides', []):
                 print(f"     - {Path(s['pdf_path']).stem}")
-        return
+            return
     
     print(f"\n📊 Slides to process: {len(slides_to_process)}")
     
