@@ -5,6 +5,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { completeQuizSession } from '../api/adaptiveQuiz';
+import { getExamReadiness } from '../api/examReadiness';
+import PostQuizReadinessModal from '../components/PostQuizReadinessModal';
 import './QuizResultsView.css';
 
 const QuizResultsView = () => {
@@ -14,6 +16,8 @@ const QuizResultsView = () => {
   
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [examReadinessData, setExamReadinessData] = useState(null);
+  const [showReadinessModal, setShowReadinessModal] = useState(false);
   const hasSubmitted = useRef(false); // Prevent double submission
 
   const { userAnswers = [], score = 0, totalQuestions = 0, startTime } = location.state || {};
@@ -22,7 +26,9 @@ const QuizResultsView = () => {
     // Save quiz session to history when results page loads
     const saveQuizToHistory = async () => {
       // Prevent double submission with ref
-      if (hasSubmitted.current || userAnswers.length === 0 || saved || saving) return;
+      if (hasSubmitted.current || userAnswers.length === 0 || saved || saving) {
+        return;
+      }
       
       hasSubmitted.current = true; // Mark as submitted immediately
       
@@ -42,19 +48,36 @@ const QuizResultsView = () => {
           source_flashcard_id: answer.question.source_flashcard_id || null
         }));
         
-        // Save to backend
-        await completeQuizSession(
+        // Save to backend (round score to integer as backend expects int)
+        const response = await completeQuizSession(
           courseId,
           lectureId,
           parseInt(level),
-          score,
+          Math.round(score), // Backend expects integer score
           totalQuestions,
           timeTakenSeconds,
           questionResults
         );
         
         setSaved(true);
-        console.log('✅ Quiz session saved to history');
+        
+        // Check if exam readiness was updated in the response
+        if (response && response.updated_exam_readiness && response.updated_exam_readiness.length > 0) {
+          setExamReadinessData(response.updated_exam_readiness);
+          setShowReadinessModal(true);
+        } else {
+          
+          // Fallback: Try to fetch existing exam readiness for this course
+          // This handles cases where the backend calculation succeeded but wasn't returned
+          try {
+            // We need to check the user's timetable to see if this lecture is part of any exams
+            // For now, we'll skip showing the modal if not in the response
+            // TODO: Could enhance this by fetching timetable and checking exam associations
+            console.log('⚠️ No exam readiness modal shown (lecture may not be part of enrolled exams)');
+          } catch (error) {
+            console.log('⚠️ Could not fetch exam readiness:', error);
+          }
+        }
       } catch (error) {
         console.error('Error saving quiz to history:', error);
         hasSubmitted.current = false; // Reset on error so user can retry
@@ -107,6 +130,15 @@ const QuizResultsView = () => {
 
   return (
     <div className="quiz-results-view">
+      {/* Post-Quiz Readiness Modal */}
+      {showReadinessModal && examReadinessData && (
+        <PostQuizReadinessModal
+          examReadinessData={examReadinessData}
+          courseId={courseId}
+          onClose={() => setShowReadinessModal(false)}
+        />
+      )}
+
       {/* Hero Section */}
       <div className="results-hero">
         <div className="score-circle">

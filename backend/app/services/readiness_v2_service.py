@@ -33,7 +33,7 @@ class ReadinessV2Service:
     to compute the final exam readiness score.
     """
     
-    def __init__(self, database: AsyncIOMotorDatabase):
+    def __init__(self, database):
         self.db = database
         self.flashcard_perf_collection = database.user_flashcard_performance
         self.exam_readiness_collection = database.user_exam_readiness
@@ -161,6 +161,43 @@ class ReadinessV2Service:
                 return exam.get("lectures", [])
         
         return []
+    
+    async def get_exams_containing_lecture(
+        self,
+        course_id: str,
+        lecture_id: str
+    ) -> List[Dict[str, str]]:
+        """
+        Find all exams that include a specific lecture.
+        
+        Args:
+            course_id: Course identifier
+            lecture_id: Lecture identifier
+            
+        Returns:
+            List of dicts with exam_id and exam_name for matching exams
+        """
+        timetable = await self.timetable_collection.find_one({"course_id": course_id})
+        
+        if not timetable:
+            logger.warning(f"No timetable found for course {course_id}")
+            return []
+        
+        matching_exams = []
+        for exam in timetable.get("exams", []):
+            lectures = exam.get("lectures")
+            
+            # Skip if lectures is None or not a list
+            if not lectures or not isinstance(lectures, list):
+                continue
+            
+            if lecture_id in lectures:
+                matching_exams.append({
+                    "exam_id": exam.get("exam_id"),
+                    "exam_name": exam.get("subject", exam.get("exam_id"))  # Use 'subject' field, not 'exam_name'
+                })
+        
+        return matching_exams
     
     async def _fetch_exam_flashcard_ids(
         self,

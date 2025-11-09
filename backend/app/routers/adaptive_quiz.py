@@ -297,10 +297,79 @@ async def complete_quiz_session(
         
         logger.info(f"📊 Updated flashcard performance for lectures: {affected_lectures}")
         
+        # Check if this lecture is part of any exams the user is enrolled in
+        # Wrap in try-catch to prevent breaking quiz completion if exam readiness fails
+        updated_exam_readiness = []
+        
+        try:
+            from app.services.readiness_v2_service import ReadinessV2Service
+            from app.models.user_profile import UserProfile
+            
+            readiness_service = ReadinessV2Service(db)
+            
+            # Get user's enrolled courses to check if they're enrolled in this course
+            user_profile_collection = db.user_profiles
+            user_profile_doc = await user_profile_collection.find_one({"user_id": user_id})
+            
+            logger.info(f"🔍 Checking exam readiness update: user={user_id}, course={completion.course_id}, lecture={completion.lecture_id}")
+            logger.info(f"👤 User profile found: {user_profile_doc is not None}")
+            
+            if user_profile_doc:
+                enrolled_courses = user_profile_doc.get("enrolled_courses", [])
+                logger.info(f"📚 Enrolled courses: {enrolled_courses}")
+                logger.info(f"✅ User enrolled in {completion.course_id}: {completion.course_id in enrolled_courses}")
+                
+                # Check if user is enrolled in this course
+                if completion.course_id in enrolled_courses:
+                    # Find exams that contain this lecture
+                    matching_exams = await readiness_service.get_exams_containing_lecture(
+                        completion.course_id,
+                        completion.lecture_id
+                    )
+                    
+                    logger.info(f"🎯 Found {len(matching_exams)} matching exams for lecture {completion.lecture_id}")
+                    
+                    if matching_exams:
+                        logger.info(f"📈 Lecture {completion.lecture_id} is part of {len(matching_exams)} exam(s): {[e['exam_name'] for e in matching_exams]}")
+                        
+                        # Recalculate exam readiness for each matching exam
+                        for exam_info in matching_exams:
+                            exam_id = exam_info["exam_id"]
+                            exam_name = exam_info["exam_name"]
+                            
+                            try:
+                                readiness = await readiness_service.calculate_and_persist_exam_readiness(
+                                    user_id=user_id,
+                                    course_id=completion.course_id,
+                                    exam_id=exam_id
+                                )
+                                
+                                updated_exam_readiness.append({
+                                    "exam_id": exam_id,
+                                    "exam_name": exam_name,
+                                    "overall_readiness_score": readiness.overall_readiness_score,
+                                    "coverage_factor": readiness.coverage_factor,
+                                    "accuracy_factor": readiness.accuracy_factor,
+                                    "momentum_factor": readiness.momentum_factor,
+                                    "total_flashcards_in_exam": readiness.total_flashcards_in_exam,
+                                    "flashcards_attempted": readiness.flashcards_attempted,
+                                    "weak_flashcards": [wf.model_dump() for wf in readiness.weak_flashcards]
+                                })
+                                
+                                logger.info(f"✅ Updated exam readiness for {exam_name}: {readiness.overall_readiness_score:.1f}%")
+                            except Exception as e:
+                                logger.error(f"❌ Error calculating exam readiness for {exam_id}: {e}", exc_info=True)
+            
+            logger.info(f"📤 Returning {len(updated_exam_readiness)} exam readiness updates")
+        except Exception as e:
+            logger.error(f"🚨 CRITICAL: Exam readiness update failed, but quiz will still be saved: {e}", exc_info=True)
+            # Continue anyway - don't break quiz completion
+        
         return {
             "success": True,
             "result_id": str(result.inserted_id),
-            "message": "Quiz session saved to history"
+            "message": "Quiz session saved to history",
+            "updated_exam_readiness": updated_exam_readiness
         }
     
     except Exception as e:

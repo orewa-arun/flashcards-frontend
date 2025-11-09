@@ -2,7 +2,7 @@
  * QuizView - Main adaptive quiz interface
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { startQuizSession, submitQuizAnswer } from '../api/adaptiveQuiz';
 import VisualRenderer from '../components/VisualRenderer';
@@ -20,6 +20,9 @@ const QuizView = () => {
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
   const [startTime, setStartTime] = useState(null);
+  
+  // Use ref to track the latest answers (to avoid stale state in navigation)
+  const userAnswersRef = useRef([]);
 
   useEffect(() => {
     loadQuizSession();
@@ -122,7 +125,8 @@ const QuizView = () => {
     setShowFeedback(true);
 
     // Update score
-    setScore(score + earnedPoints);
+    const newScore = score + earnedPoints;
+    setScore(newScore);
 
     // Record answer in userAnswers
     const answerRecord = {
@@ -131,7 +135,9 @@ const QuizView = () => {
       isCorrect: isCorrect,
       earnedPoints: earnedPoints
     };
-    setUserAnswers([...userAnswers, answerRecord]);
+    const updatedAnswers = [...userAnswers, answerRecord];
+    setUserAnswers(updatedAnswers);
+    userAnswersRef.current = updatedAnswers; // Keep ref in sync
 
     // Submit to backend with question snapshot
     try {
@@ -152,59 +158,22 @@ const QuizView = () => {
 
   const handleNextQuestion = () => {
     if (isLastQuestion) {
-      // Calculate final answer record
-      let finalIsCorrect = false;
-      let finalEarnedPoints = 0;
-
-      // Normalize to option keys where possible
-      const correctAnswers = getCorrectAnswerKeys(currentQuestion);
-
-      if (currentQuestion.type === 'mca') {
-        const userAnswers = selectedAnswer;
-        const incorrectSelections = userAnswers.filter(ans => !correctAnswers.includes(ans)).length;
-        
-        // If user selected ANY wrong option, they get ZERO credit
-        if (incorrectSelections > 0) {
-          finalEarnedPoints = 0;
-          finalIsCorrect = false;
-        } else {
-          // No wrong selections - give partial credit based on how many correct ones they got
-          const correctSelections = userAnswers.filter(ans => correctAnswers.includes(ans)).length;
-          finalEarnedPoints = correctSelections / correctAnswers.length;
-          finalIsCorrect = finalEarnedPoints === 1;
-        }
-      } else {
-        const options = currentQuestion.options || {};
-        const first = correctAnswers[0];
-        if (first && options[first] !== undefined) {
-          finalIsCorrect = selectedAnswer === first;
-        } else {
-          const selectedText = String(options[selectedAnswer] ?? '').trim();
-          const norm = (s) => s.replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
-          finalIsCorrect = norm(selectedText) === norm(String(first ?? ''));
-        }
-        finalEarnedPoints = finalIsCorrect ? 1 : 0;
-      }
-
-      // Navigate to results
+      // Navigate to results using ref to get the latest answers
+      // (state updates are async, so userAnswers might be stale)
       navigate(`/courses/${courseId}/${lectureId}/quiz/${level}/results`, {
         state: {
           questions: questions,
-          userAnswers: [...userAnswers, {
-            question: currentQuestion,
-            userAnswer: selectedAnswer,
-            isCorrect: finalIsCorrect,
-            earnedPoints: finalEarnedPoints
-          }],
-          score: score + finalEarnedPoints,
+          userAnswers: userAnswersRef.current, // Use ref for latest value
+          score: score,
           totalQuestions: questions.length,
-          startTime: startTime // Pass start time for duration calculation
+          startTime: startTime
         }
       });
     } else {
-      setCurrentIndex(currentIndex + 1);
+      // Move to next question - useEffect will handle resetting selectedAnswer
       setShowFeedback(false);
-  }
+      setCurrentIndex(currentIndex + 1);
+    }
   };
   
   if (loading) {
@@ -236,7 +205,7 @@ const QuizView = () => {
         return Array.isArray(selectedAnswer) && selectedAnswer.includes(optionKey) ? 'selected' : '';
       } else {
         return selectedAnswer === optionKey ? 'selected' : '';
-  }
+      }
     }
 
     // After feedback - show correctness
@@ -265,8 +234,8 @@ const QuizView = () => {
   return (
     <div className="quiz-view-wrapper">
     <div className="quiz-view">
-      {/* Question Card */}
-      <div className="question-card">
+      {/* Question Card - key forces remount on question change */}
+      <div className="question-card" key={currentQuestion?.question_hash || currentIndex}>
         {/* Progress Bar (embedded in card header) */}
         <div className="progress-container in-card">
           <div className="progress-info">
@@ -307,12 +276,12 @@ const QuizView = () => {
           <div className="options-container">
             {Object.entries(currentQuestion.options).map(([key, value]) => (
               <label
-                key={key}
+                key={`${currentQuestion.question_hash || currentIndex}-${key}`}
                 className={`option-button ${getOptionClass(key)}`}
               >
                 <input
                   type={currentQuestion.type === 'mca' ? 'checkbox' : 'radio'}
-                  name="quiz-option"
+                  name={`quiz-option-${currentQuestion.question_hash || currentIndex}`}
                   value={key}
                   checked={isOptionSelected(key)}
                   onChange={() => handleAnswerSelect(key)}

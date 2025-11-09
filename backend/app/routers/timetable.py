@@ -294,10 +294,10 @@ async def get_exam_readiness(
             if age > timedelta(minutes=5):
                 logger.info(f"Cached readiness is stale ({age.total_seconds():.0f}s old). Recalculating...")
                 readiness = await readiness_service.calculate_and_persist_exam_readiness(
-                    user_id=user_id,
-                    course_id=course_id,
+            user_id=user_id,
+            course_id=course_id,
                     exam_id=exam_id
-                )
+        )
         
         logger.info(f"📊 Returning readiness for user {user_id}, exam {exam_id}: {readiness.overall_readiness_score:.1f}%")
         

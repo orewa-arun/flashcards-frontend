@@ -58,7 +58,7 @@ const ReadinessBreakdownModal = ({ readiness, examName, courseId, onClose, onRef
   }, [overall_readiness_score, coverage_factor, accuracy_factor, momentum_factor]);
 
   const getColorForScore = (score) => {
-    if (score >= 75) return '#10b981'; // Green
+    if (score >= 75) return '#2d7a3e'; // Brand Green
     if (score >= 50) return '#f59e0b'; // Orange
     return '#ef4444'; // Red
   };
@@ -120,9 +120,9 @@ const ReadinessBreakdownModal = ({ readiness, examName, courseId, onClose, onRef
     if (action_type === 'maintenance') return 'Continue Practicing';
     return 'Start Quiz';
   };
-  
+
   const pillarDetails = {
-    coverage: `You've attempted ${flashcards_attempted} of ${total_flashcards_in_exam} flashcards.`,
+    coverage: `You've been tested on ${flashcards_attempted} of ${total_flashcards_in_exam} key concepts.`,
     accuracy: `Based on your performance on questions of varying difficulty.`,
     momentum: `Reflects your recent performance trend.`
   };
@@ -185,28 +185,21 @@ const ReadinessBreakdownModal = ({ readiness, examName, courseId, onClose, onRef
               <path
                 d="M 20 100 A 80 80 0 0 1 180 100"
                 fill="none"
-                stroke="rgba(255, 255, 255, 0.1)"
+                stroke="#e5e7eb"
                 strokeWidth="20"
                 strokeLinecap="round"
-                />
+              />
               {/* Animated progress arc */}
               <path
                 d="M 20 100 A 80 80 0 0 1 180 100"
                 fill="none"
-                stroke="url(#gaugeGradient)"
+                stroke={getColorForScore(animatedScore)}
                 strokeWidth="20"
                 strokeLinecap="round"
                 strokeDasharray={`${(animatedScore / 100) * 251.2} 251.2`}
                 className="gauge-progress"
-                />
-              {/* Gradient definition */}
-              <defs>
-                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#007CF0" />
-                  <stop offset="100%" stopColor="#00DFD8" />
-                </linearGradient>
-              </defs>
-              </svg>
+              />
+            </svg>
             <div className="gauge-content">
               <div className="gauge-score">{animatedScore}%</div>
               <div className="gauge-label">Overall Readiness</div>
@@ -220,6 +213,14 @@ const ReadinessBreakdownModal = ({ readiness, examName, courseId, onClose, onRef
           {renderPillar('coverage', coverage_factor)}
           {renderPillar('accuracy', accuracy_factor)}
           {renderPillar('momentum', momentum_factor)}
+        </div>
+
+        {/* How to Improve Section */}
+        <div className="modal-improve-section">
+          <h3 className="section-title">How to Improve Your Score</h3>
+          <p className="improve-text">
+            To improve your score, focus on your weakest pillar. <strong>Coverage</strong> is improved by attempting quizzes on new concepts. <strong>Accuracy</strong> is improved by trying to answer questions correctly, reviewing your mistakes, and practicing weak concepts. <strong>Momentum</strong> is improved by studying consistently.
+          </p>
         </div>
 
         {/* Recommendation */}
@@ -252,16 +253,16 @@ const ReadinessBreakdownModal = ({ readiness, examName, courseId, onClose, onRef
         {/* Metadata Footer */}
         <div className="modal-metadata">
           <div className="metadata-item">
-            <span className="metadata-label">Total Flashcards:</span>
+            <span className="metadata-label">Total Concepts:</span>
             <span className="metadata-value">{total_flashcards_in_exam}</span>
           </div>
           <div className="metadata-item">
-            <span className="metadata-label">Attempted:</span>
+            <span className="metadata-label">Concepts Tested:</span>
             <span className="metadata-value">{flashcards_attempted}</span>
           </div>
           {weak_flashcards && weak_flashcards.length > 0 && (
             <div className="metadata-item weak">
-              <span className="metadata-label">Weak Areas:</span>
+              <span className="metadata-label">Weak Concepts:</span>
               <span className="metadata-value">{weak_flashcards.length}</span>
             </div>
           )}

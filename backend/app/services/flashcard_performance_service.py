@@ -200,7 +200,11 @@ class FlashcardPerformanceService:
         
         for attempt in recent_attempts:
             # Calculate time decay factor
-            age_days = (now - attempt.timestamp).total_seconds() / 86400
+            attempt_ts = attempt.timestamp
+            # Normalize attempt timestamp to be timezone-aware (UTC) if it's naive
+            if isinstance(attempt_ts, datetime) and attempt_ts.tzinfo is None:
+                attempt_ts = attempt_ts.replace(tzinfo=timezone.utc)
+            age_days = (now - attempt_ts).total_seconds() / 86400
             decay_factor = math.exp(-math.log(2) * age_days / config.MOMENTUM_HALF_LIFE_DAYS)
             
             # Get points for this level
