@@ -4,102 +4,53 @@
 
 import React, { useState, useEffect } from 'react';
 import { FaExclamationTriangle, FaFilter, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { getUserProfile } from '../api/profile';
-import { getWeakConcepts } from '../api/weakConcepts';
+import { getWeakFlashcards } from '../api/performance';
+import { getUserProfile } from '../api/profile'; // To get enrolled courses for filter
 import Flashcard from '../components/Flashcard';
 import './WeakConceptsView.css';
 
 const WeakConceptsView = () => {
   const [loading, setLoading] = useState(true);
-  const [weakConceptsByCourse, setWeakConceptsByCourse] = useState({});
+  const [allWeakFlashcards, setAllWeakFlashcards] = useState([]);
+  const [filteredFlashcards, setFilteredFlashcards] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState('all');
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [filteredConcepts, setFilteredConcepts] = useState([]);
 
   useEffect(() => {
-    loadAllWeakConcepts();
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        const [profile, weakFlashcards] = await Promise.all([
+          getUserProfile(),
+          getWeakFlashcards()
+        ]);
+
+        setEnrolledCourses(profile?.enrolled_courses || []);
+        setAllWeakFlashcards(weakFlashcards || []);
+      } catch (error) {
+        console.error('Error loading weak concepts data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
   }, []);
 
   useEffect(() => {
-    // Update filtered concepts when course selection changes
-    const concepts = getFilteredConceptsList();
-    setFilteredConcepts(concepts);
-    setCurrentIndex(0); // Reset to first card when filter changes
-  }, [selectedCourse, weakConceptsByCourse]);
-
-  const loadAllWeakConcepts = async () => {
-    try {
-      setLoading(true);
-      
-      // Get user's enrolled courses
-      const profile = await getUserProfile();
-      const courses = profile?.enrolled_courses || [];
-      setEnrolledCourses(courses);
-      
-      // Fetch weak concepts for each course
-      const conceptsPromises = courses.map(async (courseId) => {
-        try {
-          const data = await getWeakConcepts(courseId);
-          return { courseId, data };
-        } catch (error) {
-          console.error(`Error loading weak concepts for ${courseId}:`, error);
-          return { courseId, data: null };
-        }
-      });
-      
-      const results = await Promise.all(conceptsPromises);
-      
-      // Organize by course
-      const conceptsByCourse = {};
-      results.forEach(({ courseId, data }) => {
-        if (data && data.has_attempts && data.weak_concepts.length > 0) {
-          conceptsByCourse[courseId] = data;
-        }
-      });
-      
-      setWeakConceptsByCourse(conceptsByCourse);
-    } catch (error) {
-      console.error('Error loading weak concepts:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getFilteredConceptsList = () => {
+    // Update filtered flashcards when course selection or the main list changes
+    let concepts = [];
     if (selectedCourse === 'all') {
-      // Combine all concepts from all courses
-      const allConcepts = [];
-      Object.entries(weakConceptsByCourse).forEach(([courseId, courseData]) => {
-        courseData.weak_concepts.forEach(concept => {
-          allConcepts.push({
-            ...concept,
-            courseId // Add courseId to each concept
-          });
-        });
-      });
-      return allConcepts;
+      concepts = allWeakFlashcards;
+    } else {
+      concepts = allWeakFlashcards.filter(fc => fc.course_id === selectedCourse);
     }
-    
-    if (weakConceptsByCourse[selectedCourse]) {
-      return weakConceptsByCourse[selectedCourse].weak_concepts.map(concept => ({
-        ...concept,
-        courseId: selectedCourse
-      }));
-    }
-    
-    return [];
-  };
-
-  const getTotalWeakConcepts = () => {
-    return Object.values(weakConceptsByCourse).reduce(
-      (total, courseData) => total + (courseData.weak_concepts?.length || 0),
-      0
-    );
-  };
+    setFilteredFlashcards(concepts);
+    setCurrentIndex(0); // Reset to first card when filter changes
+  }, [selectedCourse, allWeakFlashcards]);
 
   const handleNext = () => {
-    if (currentIndex < filteredConcepts.length - 1) {
+    if (currentIndex < filteredFlashcards.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -129,7 +80,7 @@ const WeakConceptsView = () => {
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, filteredConcepts.length]);
+  }, [currentIndex, filteredFlashcards.length]);
 
   if (loading) {
     return (
@@ -142,22 +93,32 @@ const WeakConceptsView = () => {
     );
   }
 
-  const totalWeak = getTotalWeakConcepts();
-  const currentConcept = filteredConcepts[currentIndex];
-  const progress = filteredConcepts.length > 0 ? ((currentIndex + 1) / filteredConcepts.length) * 100 : 0;
+  const totalWeak = allWeakFlashcards.length;
+  const currentFlashcard = filteredFlashcards[currentIndex];
+  const progress = filteredFlashcards.length > 0 ? ((currentIndex + 1) / filteredFlashcards.length) * 100 : 0;
+  
+  const getAccuracy = (flashcard) => {
+      const { easy, medium, hard, boss } = flashcard.performance_by_level || {};
+      const totalCorrect = (easy?.correct || 0) + (medium?.correct || 0) + (hard?.correct || 0) + (boss?.correct || 0);
+      const totalAttempts = (easy?.attempts || 0) + (medium?.attempts || 0) + (hard?.attempts || 0) + (boss?.attempts || 0);
+      return totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+  };
 
+  const getTotalAttempts = (flashcard) => {
+      const { easy, medium, hard, boss } = flashcard.performance_by_level || {};
+      return (easy?.attempts || 0) + (medium?.attempts || 0) + (hard?.attempts || 0) + (boss?.attempts || 0);
+  };
+  
   return (
     <div className="weak-concepts-view">
       {/* Header */}
-      <div className="view-header" style={{ animation: 'none', transform: 'none' }}>
-        <div className="header-content" style={{ animation: 'none', transform: 'none' }}>
-          <div className="title-section" style={{ animation: 'none', transform: 'none' }}>
-            <FaExclamationTriangle className="header-icon" style={{ animation: 'none', transform: 'none' }} />
-            <div style={{ animation: 'none', transform: 'none' }}>
-              <h1 style={{ animation: 'none', transform: 'none' }}>Concepts You Need to Review</h1>
-              <p className="subtitle" style={{ animation: 'none', transform: 'none' }}>
-                Focus on these concepts to improve your exam readiness
-              </p>
+      <div className="view-header">
+        <div className="header-content">
+          <div className="title-section">
+            <FaExclamationTriangle className="header-icon" />
+            <div>
+              <h1>Concepts You Need to Review</h1>
+              <p className="subtitle">Focus on these concepts to improve your exam readiness</p>
             </div>
           </div>
           
@@ -171,11 +132,11 @@ const WeakConceptsView = () => {
       </div>
 
       {totalWeak === 0 ? (
-        <div className="no-weak-concepts-message" style={{ animation: 'none', transform: 'none' }}>
-          <div className="message-content" style={{ animation: 'none', transform: 'none' }}>
-            <h2 style={{ animation: 'none', transform: 'none' }}>🎉 Excellent Work!</h2>
-            <p style={{ animation: 'none', transform: 'none' }}>You don't have any weak concepts across your enrolled courses.</p>
-            <p className="hint" style={{ animation: 'none', transform: 'none' }}>Keep practicing to maintain your strong performance!</p>
+        <div className="no-weak-concepts-message">
+          <div className="message-content">
+            <h2>🎉 Excellent Work!</h2>
+            <p>You don't have any weak concepts across your enrolled courses.</p>
+            <p className="hint">Keep practicing to maintain your strong performance!</p>
           </div>
         </div>
       ) : (
@@ -193,25 +154,29 @@ const WeakConceptsView = () => {
               >
                 All Courses ({totalWeak})
               </button>
-              {Object.keys(weakConceptsByCourse).map((courseId) => (
-                <button
-                  key={courseId}
-                  className={`filter-btn ${selectedCourse === courseId ? 'active' : ''}`}
-                  onClick={() => setSelectedCourse(courseId)}
-                >
-                  {courseId} ({weakConceptsByCourse[courseId].weak_concepts.length})
-                </button>
-              ))}
+              {enrolledCourses.map((courseId) => {
+                  const count = allWeakFlashcards.filter(fc => fc.course_id === courseId).length;
+                  if (count === 0) return null;
+                  return (
+                    <button
+                      key={courseId}
+                      className={`filter-btn ${selectedCourse === courseId ? 'active' : ''}`}
+                      onClick={() => setSelectedCourse(courseId)}
+                    >
+                      {courseId} ({count})
+                    </button>
+                  )
+              })}
             </div>
           </div>
 
           {/* Deck View */}
-          {filteredConcepts.length > 0 && currentConcept && (
+          {filteredFlashcards.length > 0 && currentFlashcard && (
             <div className="deck-container">
               {/* Progress Bar */}
               <div className="deck-progress">
                 <span className="progress-counter">
-                  {currentIndex + 1} / {filteredConcepts.length}
+                  {currentIndex + 1} / {filteredFlashcards.length}
                 </span>
                 <div className="progress-bar">
                   <div 
@@ -224,42 +189,26 @@ const WeakConceptsView = () => {
               {/* Flashcard */}
               <div className="flashcard-wrapper">
                 <div className="course-lecture-badge">
-                  <span className="course-badge">{currentConcept.courseId}</span>
+                  <span className="course-badge">{currentFlashcard.course_id}</span>
                   <span className="separator">•</span>
-                  <span className="lecture-badge">{currentConcept.lecture_id}</span>
+                  <span className="lecture-badge">{currentFlashcard.lecture_id}</span>
                 </div>
 
-                {/* Check if flashcard data is missing */}
-                {currentConcept.is_missing_data || currentConcept.question?.includes('[Missing Data]') || currentConcept.question === 'Unknown concept' ? (
+                {currentFlashcard.is_missing_data ? (
                   <div className="missing-flashcard-notice">
                     <div className="notice-icon">⚠️</div>
                     <h3>Flashcard Data Unavailable</h3>
                     <p className="notice-message">
                       This flashcard may have been updated or removed since you last studied it.
                     </p>
-                    <div className="notice-details">
-                      <p><strong>Flashcard ID:</strong> {currentConcept.flashcard_id}</p>
-                      <p><strong>Lecture:</strong> {currentConcept.lecture_id}</p>
-                      <p><strong>Your Performance:</strong> {currentConcept.correct} correct, {currentConcept.incorrect} incorrect ({currentConcept.accuracy}% accuracy)</p>
-                    </div>
-                    <p className="notice-hint">
-                      💡 This concept is still tracked in your performance history. Consider reviewing the updated lecture materials.
-                    </p>
                   </div>
                 ) : (
                 <Flashcard 
-                  card={{
-                    flashcard_id: currentConcept.flashcard_id,
-                    question: currentConcept.question,
-                    answers: currentConcept.answers,
-                    example: currentConcept.example,
-                    mermaid_diagrams: currentConcept.mermaid_diagrams,
-                    math_visualizations: currentConcept.math_visualizations,
-                  }}
-                  courseId={currentConcept.courseId}
-                  deckId={currentConcept.lecture_id}
+                  card={currentFlashcard}
+                  courseId={currentFlashcard.course_id}
+                  deckId={currentFlashcard.lecture_id}
                   index={currentIndex}
-                  sessionId={null} // No session tracking for weak concepts review
+                  sessionId={null}
                 />
                 )}
 
@@ -267,21 +216,13 @@ const WeakConceptsView = () => {
                 <div className="performance-stats">
                   <div className="stat-box accuracy">
                     <span className="stat-label">Accuracy</span>
-                    <span className={`stat-value ${currentConcept.accuracy < 40 ? 'critical' : 'weak'}`}>
-                      {currentConcept.accuracy}%
+                    <span className={`stat-value ${getAccuracy(currentFlashcard) < 40 ? 'critical' : 'weak'}`}>
+                      {getAccuracy(currentFlashcard)}%
                     </span>
                   </div>
                   <div className="stat-box attempts">
                     <span className="stat-label">Total Attempts</span>
-                    <span className="stat-value">{currentConcept.total_attempts}</span>
-                  </div>
-                  <div className="stat-box breakdown">
-                    <span className="stat-label">Breakdown</span>
-                    <span className="stat-value">
-                      <span className="correct-count">{currentConcept.correct} ✓</span>
-                      {' / '}
-                      <span className="incorrect-count">{currentConcept.incorrect} ✗</span>
-                    </span>
+                    <span className="stat-value">{getTotalAttempts(currentFlashcard)}</span>
                   </div>
                 </div>
               </div>
@@ -307,7 +248,7 @@ const WeakConceptsView = () => {
                 <button 
                   className="nav-btn next"
                   onClick={handleNext}
-                  disabled={currentIndex === filteredConcepts.length - 1}
+                  disabled={currentIndex === filteredFlashcards.length - 1}
                   title="Next (→)"
                 >
                   <span>Next</span>

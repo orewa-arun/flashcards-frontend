@@ -72,7 +72,8 @@ const ReadinessRing = ({ courseId, examId, examName, size = 'md' }) => {
     );
   }
 
-  const { overall_score } = readiness;
+  const { overall_readiness_score } = readiness;
+  const overall_score = overall_readiness_score; // Use this variable for consistency
   const color = getColorForScore(overall_score);
   const urgencyClass = getUrgencyClass(overall_score);
   const label = getUrgencyLabel(overall_score);

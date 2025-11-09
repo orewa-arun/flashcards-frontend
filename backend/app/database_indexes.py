@@ -110,6 +110,46 @@ async def create_indexes(db: AsyncIOMotorDatabase):
             else:
                 logger.error(f"Error creating bookmark indexes: {e}")
         
+        # User flashcard performance collection indexes (V2)
+        flashcard_perf_collection = db.user_flashcard_performance
+        flashcard_perf_indexes = [
+            IndexModel([("user_id", ASCENDING), ("flashcard_id", ASCENDING)], 
+                      unique=True, name="user_flashcard_unique"),
+            IndexModel([("user_id", ASCENDING)], name="user_id_flashcard_perf_index"),
+            IndexModel([("course_id", ASCENDING)], name="course_id_flashcard_perf_index"),
+            IndexModel([("lecture_id", ASCENDING)], name="lecture_id_flashcard_perf_index"),
+            IndexModel([("is_weak", ASCENDING)], name="is_weak_index"),
+            IndexModel([("last_updated", ASCENDING)], name="flashcard_perf_updated_index")
+        ]
+        
+        try:
+            await flashcard_perf_collection.create_indexes(flashcard_perf_indexes)
+            logger.info("✅ Created indexes for user_flashcard_performance collection")
+        except OperationFailure as e:
+            if "already exists" in str(e):
+                logger.info("User flashcard performance collection indexes already exist")
+            else:
+                logger.error(f"Error creating flashcard performance indexes: {e}")
+        
+        # User exam readiness collection indexes (V2)
+        exam_readiness_collection = db.user_exam_readiness
+        exam_readiness_indexes = [
+            IndexModel([("user_id", ASCENDING), ("exam_id", ASCENDING)], 
+                      unique=True, name="user_exam_unique"),
+            IndexModel([("user_id", ASCENDING)], name="user_id_exam_readiness_index"),
+            IndexModel([("course_id", ASCENDING)], name="course_id_exam_readiness_index"),
+            IndexModel([("last_calculated", ASCENDING)], name="last_calculated_index")
+        ]
+        
+        try:
+            await exam_readiness_collection.create_indexes(exam_readiness_indexes)
+            logger.info("✅ Created indexes for user_exam_readiness collection")
+        except OperationFailure as e:
+            if "already exists" in str(e):
+                logger.info("User exam readiness collection indexes already exist")
+            else:
+                logger.error(f"Error creating exam readiness indexes: {e}")
+        
         logger.info("🎉 Database indexing completed successfully!")
         
     except Exception as e:

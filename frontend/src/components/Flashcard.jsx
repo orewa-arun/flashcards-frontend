@@ -88,7 +88,7 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
     setFeedbackRating(null)
     setGraphvizLoading(false)
     setGraphvizError(null)
-  }, [])
+  }, [index, card])
 
   useEffect(() => {
     const loadCardState = async () => {

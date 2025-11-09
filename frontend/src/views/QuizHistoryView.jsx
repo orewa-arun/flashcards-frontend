@@ -323,7 +323,7 @@ function QuizHistoryView() {
         <div className="header-content">
           <h1 className="page-title">
             <FaHistory className="title-icon" />
-            Performance Timeline
+            Quiz History
           </h1>
           <div className="stats-dashboard">
             {stats.studyStreak > 0 && (
@@ -355,7 +355,7 @@ function QuizHistoryView() {
         <div className="empty-state">
           <FaHistory className="empty-icon" />
           <h2>No quiz history yet</h2>
-          <p>Complete some quizzes to see your performance timeline here.</p>
+          <p>Complete some quizzes to see your performance here.</p>
         </div>
       ) : (
         <div className="history-content">

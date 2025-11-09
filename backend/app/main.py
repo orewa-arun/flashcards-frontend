@@ -6,7 +6,19 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import connect_to_mongo, close_mongo_connection
-from app.routers import health, bookmarks, feedback, quiz_history, admin_analytics, quiz, auth, adaptive_quiz, timetable, profile
+from app.routers import (
+    health,
+    auth,
+    bookmarks,
+    feedback,
+    quiz_history,
+    admin_analytics,
+    quiz,
+    adaptive_quiz,
+    timetable,
+    profile,
+    performance
+)
 from app.firebase_auth import initialize_firebase
 from app.database_indexes import create_indexes
 
@@ -58,11 +70,11 @@ app.include_router(bookmarks.router)
 app.include_router(feedback.router)
 app.include_router(quiz_history.router)
 app.include_router(admin_analytics.router)
-# LEGACY: Disabled old quiz router - use adaptive_quiz instead
-# app.include_router(quiz.router)
+app.include_router(quiz.router)
 app.include_router(adaptive_quiz.router)
 app.include_router(timetable.router)
 app.include_router(profile.router)
+app.include_router(performance.router, prefix="/api/v1/performance", tags=["performance"])
 
 @app.get("/")
 async def root():

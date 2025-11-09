@@ -8,8 +8,8 @@ from app.database import get_database
 from app.firebase_auth import get_current_user
 from app.services.timetable_service import TimetableService
 from app.services.user_profile_service import UserProfileService
-from app.services.exam_readiness_service import ExamReadinessService
-from app.models.exam_readiness import ExamReadinessScore
+from app.services.readiness_v2_service import ReadinessV2Service
+from app.models.readiness_v2 import UserExamReadiness
 
 logger = logging.getLogger(__name__)
 
@@ -250,12 +250,13 @@ async def get_exam_readiness(
     exam_id: str,
     current_user: dict = Depends(get_current_user),
     db=Depends(get_database)
-) -> ExamReadinessScore:
+) -> UserExamReadiness:
     """
-    Calculate and return the Exam Readiness Score (The Trinity Engine).
+    Get Exam Readiness Score (The Trinity Engine V2).
     
-    This is the core moat of the platform - the strategic intelligence layer
-    that transforms raw quiz data into actionable preparation insights.
+    This endpoint returns the pre-calculated exam readiness score with
+    flashcard-level performance tracking. If the score doesn't exist or
+    is stale, it triggers an on-demand calculation.
     
     Args:
         course_id: Course identifier (e.g., "MS5031")
@@ -264,83 +265,49 @@ async def get_exam_readiness(
         db: MongoDB database connection
         
     Returns:
-        ExamReadinessScore with Trinity breakdown and recommendations
+        UserExamReadiness with Trinity breakdown and weak flashcards
     """
     try:
         user_id = current_user['uid']
         
-        # Step 1: Get the exam details to extract covered lectures
-        timetable_service = TimetableService(db)
-        timetable = await timetable_service.get_timetable(course_id)
+        # Initialize the readiness service
+        readiness_service = ReadinessV2Service(db)
         
-        if not timetable:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Timetable not found for course {course_id}"
+        # Try to get cached readiness score
+        readiness = await readiness_service.get_exam_readiness(user_id, exam_id)
+        
+        # If not found or stale (older than 5 minutes), recalculate
+        if readiness is None:
+            logger.info(f"No cached readiness found for user {user_id}, exam {exam_id}. Calculating...")
+            readiness = await readiness_service.calculate_and_persist_exam_readiness(
+                user_id=user_id,
+                course_id=course_id,
+                exam_id=exam_id
             )
+        else:
+            from datetime import datetime, timezone, timedelta
+            # Ensure readiness.last_calculated is timezone-aware UTC
+            if readiness.last_calculated.tzinfo is None:
+                readiness.last_calculated = readiness.last_calculated.replace(tzinfo=timezone.utc)
+            
+            age = datetime.now(timezone.utc) - readiness.last_calculated
+            if age > timedelta(minutes=5):
+                logger.info(f"Cached readiness is stale ({age.total_seconds():.0f}s old). Recalculating...")
+                readiness = await readiness_service.calculate_and_persist_exam_readiness(
+                    user_id=user_id,
+                    course_id=course_id,
+                    exam_id=exam_id
+                )
         
-        # Find the specific exam
-        exam = None
-        for e in timetable.get('exams', []):
-            if e.get('exam_id') == exam_id:
-                exam = e
-                break
-        
-        if not exam:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Exam {exam_id} not found in course {course_id}"
-            )
-        
-        # Extract lectures covered by this exam
-        exam_lectures = exam.get('lectures', [])
-        
-        if not exam_lectures:
-            # If no lectures specified, return a default low-readiness response
-            logger.warning(f"No lectures specified for exam {exam_id} in course {course_id}")
-            return ExamReadinessScore(
-                overall_score=0.0,
-                breakdown={
-                    "coverage": {
-                        "score": 0.0,
-                        "details": "No lectures have been specified for this exam yet."
-                    },
-                    "mastery": {
-                        "score": 0.0,
-                        "details": "No lectures have been specified for this exam yet."
-                    },
-                    "momentum": {
-                        "score": 0.0,
-                        "details": "No lectures have been specified for this exam yet."
-                    }
-                },
-                recommendation="Ask your instructor or course coordinator to specify which lectures are covered in this exam.",
-                action_type="configuration",
-                urgency_level="high",
-                covered_lectures=[],
-                uncovered_lectures=[],
-                weak_lectures=[]
-            )
-        
-        # Step 2: Calculate readiness using The Engine
-        readiness_service = ExamReadinessService(db)
-        
-        readiness = await readiness_service.calculate_exam_readiness(
-            user_id=user_id,
-            course_id=course_id,
-            exam_id=exam_id,
-            exam_lectures=exam_lectures
-        )
-        
-        logger.info(f"📊 Calculated readiness for user {user_id}, exam {exam_id}: {readiness.overall_score:.1f}%")
+        logger.info(f"📊 Returning readiness for user {user_id}, exam {exam_id}: {readiness.overall_readiness_score:.1f}%")
         
         return readiness
     
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Error calculating exam readiness: {e}", exc_info=True)
+        logger.error(f"Error getting exam readiness: {e}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to calculate exam readiness: {str(e)}"
+            detail=f"Failed to get exam readiness: {str(e)}"
         )

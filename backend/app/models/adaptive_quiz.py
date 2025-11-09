@@ -41,34 +41,32 @@ class PyObjectId(ObjectId):
         return {"type": "string"}
 
 
-class ConceptPerformance(BaseModel):
-    """Performance tracking for a single concept within a deck."""
+class FlashcardPerformance(BaseModel):
+    """Performance tracking for a single flashcard within a deck."""
     
-    concept_context: str = Field(..., description="The context/name of the concept from the flashcard")
-    concept_index: int = Field(..., description="Index of the concept in the flashcard deck (0-based)")
-    relevance_score: int = Field(..., ge=0, le=10, description="Relevance score from flashcard")
-    times_attempted: int = Field(default=0, ge=0, description="Number of times questions from this concept were attempted")
+    flashcard_id: str = Field(..., description="Unique flashcard identifier (e.g., SI_lec_1_15)")
+    times_attempted: int = Field(default=0, ge=0, description="Number of times questions from this flashcard were attempted")
     times_correct: int = Field(default=0, ge=0, description="Number of times answered correctly")
     times_incorrect: int = Field(default=0, ge=0, description="Number of times answered incorrectly")
-    last_attempted: Optional[datetime] = Field(None, description="Last time this concept was quizzed")
+    last_attempted: Optional[datetime] = Field(None, description="Last time this flashcard was quizzed")
     
     @property
     def accuracy(self) -> float:
-        """Calculate accuracy percentage for this concept."""
+        """Calculate accuracy percentage for this flashcard."""
         if self.times_attempted == 0:
             return 0.0
         return (self.times_correct / self.times_attempted) * 100
 
 
 class UserDeckPerformance(BaseModel):
-    """Document model for tracking user's performance across all concepts in a deck."""
+    """Document model for tracking user's performance across all flashcards in a deck."""
     
     id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
     firebase_uid: str = Field(..., description="Firebase UID for user identification")
     course_id: str = Field(..., description="Course identifier, e.g., MS5260")
     deck_id: str = Field(..., description="Deck identifier, e.g., MIS_lec_4")
-    total_concepts: int = Field(..., ge=1, description="Total number of concepts in the deck")
-    concepts_performance: List[ConceptPerformance] = Field(default_factory=list)
+    total_flashcards: int = Field(..., ge=1, description="Total number of flashcards in the deck")
+    flashcards_performance: List[FlashcardPerformance] = Field(default_factory=list)
     total_quiz_attempts: int = Field(default=0, ge=0, description="Total number of quiz attempts for this deck")
     last_quiz_date: Optional[datetime] = Field(None, description="Last time user took a quiz on this deck")
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -92,9 +90,7 @@ class QuizQuestion(BaseModel):
     """A single quiz question with metadata."""
     
     question_id: str = Field(..., description="Unique identifier for this question instance")
-    concept_index: int = Field(..., description="Index of the source concept in the flashcard deck")
-    concept_context: str = Field(..., description="The context/name of the concept")
-    relevance_score: int = Field(..., description="Relevance score of the concept")
+    source_flashcard_id: str = Field(..., description="ID of the source flashcard (e.g., SI_lec_1_15)")
     question_type: str = Field(..., description="Type: mcq, mca, scenario_mcq, sequencing, categorization, matching")
     question: Any = Field(..., description="The question content")
     options: Optional[List[str]] = Field(None, description="Options for MCQ questions")
@@ -140,8 +136,7 @@ class QuestionResult(BaseModel):
     """Result for a single question."""
     
     question_id: str
-    concept_index: int
-    concept_context: str
+    source_flashcard_id: str = Field(..., description="ID of the source flashcard")
     question_type: str
     question: Any = Field(..., description="The question text/content")
     options: Optional[List[str]] = Field(None, description="Options for MCQ questions")
@@ -151,11 +146,10 @@ class QuestionResult(BaseModel):
     partial_credit_score: Optional[float] = Field(None, description="Partial credit score for MCA questions (0.0 to 1.0)")
 
 
-class ConceptWeakness(BaseModel):
-    """Summary of user's weakness in a concept."""
+class FlashcardWeakness(BaseModel):
+    """Summary of user's weakness in a flashcard."""
     
-    concept_context: str
-    concept_index: int
+    flashcard_id: str
     times_attempted: int
     times_correct: int
     times_incorrect: int
@@ -175,7 +169,7 @@ class QuizSubmissionResponse(BaseModel):
     percentage: float
     time_taken_seconds: int
     question_results: List[QuestionResult]
-    weak_concepts: List[ConceptWeakness] = Field(..., description="Concepts the user needs to review")
+    weak_flashcards: List[FlashcardWeakness] = Field(..., description="Flashcards the user needs to review")
     completed_at: datetime
     quiz_attempt_number: int
 

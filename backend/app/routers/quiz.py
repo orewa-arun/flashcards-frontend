@@ -14,7 +14,7 @@ from app.services.user_service import get_user_service, UserService
 from app.models.adaptive_quiz import (
     QuizGenerationRequest, QuizGenerationResponse, QuizQuestion,
     QuizSubmissionRequest, QuizSubmissionResponse, QuestionResult,
-    UserDeckPerformance, ConceptPerformance, ConceptWeakness
+    UserDeckPerformance, FlashcardPerformance, FlashcardWeakness
 )
 from app.models.user import User
 from app.config import settings
@@ -129,24 +129,26 @@ async def get_or_create_deck_performance(
     
     # Create new performance tracking document
     flashcards = flashcards_data.get("flashcards", [])
-    total_concepts = len(flashcards)
+    total_flashcards = len(flashcards)
     
-    concepts_performance = []
-    for idx, card in enumerate(flashcards):
-        concept_perf = ConceptPerformance(
-            concept_context=card.get("context", f"Concept {idx + 1}"),
-            concept_index=idx,
-            relevance_score=card.get("relevance_score", {}).get("score", 5),
+    flashcards_performance = []
+    for card in flashcards:
+        flashcard_id = card.get("flashcard_id")
+        if not flashcard_id:
+            continue
+        
+        flashcard_perf = FlashcardPerformance(
+            flashcard_id=flashcard_id,
             last_attempted=None
         )
-        concepts_performance.append(concept_perf)
+        flashcards_performance.append(flashcard_perf)
     
     new_performance = UserDeckPerformance(
         firebase_uid=firebase_uid,
         course_id=course_id,
         deck_id=deck_id,
-        total_concepts=total_concepts,
-        concepts_performance=concepts_performance,
+        total_flashcards=total_flashcards,
+        flashcards_performance=flashcards_performance,
         last_quiz_date=None
     )
     
@@ -163,34 +165,37 @@ def select_questions_phase1(
     num_questions: int
 ) -> List[Dict[str, Any]]:
     """
-    Phase 1: Initial quiz - select questions from top relevance concepts.
+    Phase 1: Initial quiz - select questions from top relevance flashcards.
     
     Returns list of selected questions with metadata.
     """
     flashcards = flashcards_data.get("flashcards", [])
     
-    # Sort concepts by relevance score (highest first)
-    sorted_concepts = sorted(
-        enumerate(flashcards),
-        key=lambda x: x[1].get("relevance_score", {}).get("score", 0),
+    # Sort flashcards by relevance score (highest first)
+    sorted_flashcards = sorted(
+        flashcards,
+        key=lambda x: x.get("relevance_score", {}).get("score", 0),
         reverse=True
     )
     
-    # Take top N concepts based on quiz size
-    top_concepts = sorted_concepts[:num_questions]
+    # Take top N flashcards based on quiz size
+    top_flashcards = sorted_flashcards[:num_questions]
     
     selected_questions = []
-    for concept_index, concept in top_concepts:
-        recall_questions = concept.get("recall_questions", [])
+    for flashcard in top_flashcards:
+        recall_questions = flashcard.get("recall_questions", [])
         if not recall_questions:
             continue
         
-        # Randomly pick one question from this concept
+        flashcard_id = flashcard.get("flashcard_id")
+        if not flashcard_id:
+            logger.warning(f"Flashcard missing flashcard_id, skipping")
+            continue
+        
+        # Randomly pick one question from this flashcard
         question = random.choice(recall_questions)
         selected_questions.append({
-            "concept_index": concept_index,
-            "concept_context": concept.get("context", f"Concept {concept_index + 1}"),
-            "relevance_score": concept.get("relevance_score", {}).get("score", 5),
+            "source_flashcard_id": flashcard_id,
             "question_data": question
         })
     
@@ -206,41 +211,47 @@ def select_questions_phase3(
     Phase 3: Adaptive quiz based on user performance.
     
     Priority:
-    1. Concepts answered incorrectly (remediation)
-    2. Concepts never attempted (exploration)
-    3. Concepts answered correctly, prioritized by relevance and low attempts (reinforcement)
+    1. Flashcards answered incorrectly (remediation)
+    2. Flashcards never attempted (exploration)
+    3. Flashcards answered correctly, prioritized by relevance and low attempts (reinforcement)
     """
     flashcards = flashcards_data.get("flashcards", [])
-    concepts_perf_dict = {cp.concept_index: cp for cp in performance.concepts_performance}
+    flashcards_perf_dict = {fp.flashcard_id: fp for fp in performance.flashcards_performance}
     
-    # Group concepts by priority
-    remediation_concepts = []  # Concepts with incorrect answers
-    exploration_concepts = []  # Concepts never attempted
-    reinforcement_concepts = []  # Concepts answered correctly
+    # Group flashcards by priority
+    remediation_flashcards = []  # Flashcards with incorrect answers
+    exploration_flashcards = []  # Flashcards never attempted
+    reinforcement_flashcards = []  # Flashcards answered correctly
     
-    for idx, concept in enumerate(flashcards):
-        perf = concepts_perf_dict.get(idx)
+    for flashcard in flashcards:
+        flashcard_id = flashcard.get("flashcard_id")
+        if not flashcard_id:
+            continue
+        
+        perf = flashcards_perf_dict.get(flashcard_id)
         if not perf:
+            # Never attempted - add to exploration
+            exploration_flashcards.append((flashcard, None))
             continue
         
         if perf.times_incorrect > 0:
-            remediation_concepts.append((idx, concept, perf))
+            remediation_flashcards.append((flashcard, perf))
         elif perf.times_attempted == 0:
-            exploration_concepts.append((idx, concept, perf))
+            exploration_flashcards.append((flashcard, perf))
         else:
-            reinforcement_concepts.append((idx, concept, perf))
+            reinforcement_flashcards.append((flashcard, perf))
     
-    # Sort exploration concepts by relevance score
-    exploration_concepts.sort(
-        key=lambda x: x[1].get("relevance_score", {}).get("score", 0),
+    # Sort exploration flashcards by relevance score
+    exploration_flashcards.sort(
+        key=lambda x: x[0].get("relevance_score", {}).get("score", 0),
         reverse=True
     )
     
-    # Sort reinforcement concepts by relevance (desc) and attempts (asc)
-    reinforcement_concepts.sort(
+    # Sort reinforcement flashcards by relevance (desc) and attempts (asc)
+    reinforcement_flashcards.sort(
         key=lambda x: (
-            -x[1].get("relevance_score", {}).get("score", 0),
-            x[2].times_attempted
+            -x[0].get("relevance_score", {}).get("score", 0),
+            x[1].times_attempted if x[1] else 0
         )
     )
     
@@ -248,27 +259,29 @@ def select_questions_phase3(
     priority_queue = []
     
     # Priority 1: Remediation
-    priority_queue.extend(remediation_concepts)
+    priority_queue.extend(remediation_flashcards)
     
     # Priority 2: Exploration
-    priority_queue.extend(exploration_concepts)
+    priority_queue.extend(exploration_flashcards)
     
     # Priority 3: Reinforcement
-    priority_queue.extend(reinforcement_concepts)
+    priority_queue.extend(reinforcement_flashcards)
     
     # Select questions up to num_questions
     selected_questions = []
-    for concept_index, concept, perf in priority_queue[:num_questions]:
-        recall_questions = concept.get("recall_questions", [])
+    for flashcard, perf in priority_queue[:num_questions]:
+        recall_questions = flashcard.get("recall_questions", [])
         if not recall_questions:
             continue
         
-        # Randomly pick one question from this concept
+        flashcard_id = flashcard.get("flashcard_id")
+        if not flashcard_id:
+            continue
+        
+        # Randomly pick one question from this flashcard
         question = random.choice(recall_questions)
         selected_questions.append({
-            "concept_index": concept_index,
-            "concept_context": concept.get("context", f"Concept {concept_index + 1}"),
-            "relevance_score": concept.get("relevance_score", {}).get("score", 5),
+            "source_flashcard_id": flashcard_id,
             "question_data": question
         })
     
@@ -284,16 +297,14 @@ def build_quiz_questions(selected_questions: List[Dict[str, Any]]) -> List[QuizQ
         
         # FIX: Add validation to skip questions with missing answers
         if q_data.get("answer") is None:
-            logger.warning(f"Skipping malformed medium question (missing 'answer' key): concept_index={sq.get('concept_index')}, question={q_data.get('question', 'N/A')}")
+            logger.warning(f"Skipping malformed medium question (missing 'answer' key): flashcard_id={sq.get('source_flashcard_id')}, question={q_data.get('question', 'N/A')}")
             continue
 
         question_id = str(uuid4())
         
         quiz_question = QuizQuestion(
             question_id=question_id,
-            concept_index=sq["concept_index"],
-            concept_context=sq["concept_context"],
-            relevance_score=sq["relevance_score"],
+            source_flashcard_id=sq["source_flashcard_id"],
             question_type=q_data.get("type", "mcq"),
             question=q_data.get("question", ""),
             options=q_data.get("options"),
@@ -346,7 +357,7 @@ def select_hard_questions(hard_questions_data: Dict[str, Any], num_questions: in
 def build_quiz_questions_hard(selected_questions: List[Dict[str, Any]]) -> List[QuizQuestion]:
     """
     Convert hard questions into QuizQuestion models.
-    Hard questions don't have concept_index, so we use slide_number instead.
+    Hard questions use source_flashcard_id from the question data.
     """
     quiz_questions = []
     
@@ -355,18 +366,20 @@ def build_quiz_questions_hard(selected_questions: List[Dict[str, Any]]) -> List[
 
         # FIX: Add validation to skip questions with missing answers
         if q_data.get("correct_answer") is None:
-            logger.warning(f"Skipping malformed hard question (missing 'correct_answer' key): slide_number={sq.get('slide_number')}, question={q_data.get('question', 'N/A')}")
+            logger.warning(f"Skipping malformed hard question (missing 'correct_answer' key): question={q_data.get('question', 'N/A')}")
+            continue
+
+        # Get source_flashcard_id from question data
+        source_flashcard_id = q_data.get("source_flashcard_id")
+        if not source_flashcard_id:
+            logger.warning(f"Hard question missing source_flashcard_id, skipping: question={q_data.get('question', 'N/A')}")
             continue
 
         question_id = str(uuid4())
-        slide_number = sq.get("slide_number", 0)
         
-        # For hard questions, use slide_number as concept_index
         quiz_question = QuizQuestion(
             question_id=question_id,
-            concept_index=slide_number,  # Using slide number as proxy
-            concept_context=f"Slide {slide_number}",
-            relevance_score=10,  # Hard questions are always high relevance
+            source_flashcard_id=source_flashcard_id,
             question_type=q_data.get("type", "mcq"),
             question=q_data.get("question", ""),
             options=q_data.get("options"),
@@ -524,9 +537,9 @@ async def submit_quiz(
     db = Depends(get_database)
 ):
     """
-    Submit quiz answers and update user's concept-level performance.
+    Submit quiz answers and update user's flashcard-level performance.
     
-    Returns detailed results including weak concepts for review.
+    Returns detailed results including weak flashcards for review.
     """
     try:
         firebase_uid = current_user["uid"]
@@ -551,7 +564,6 @@ async def submit_quiz(
         # Grade the quiz
         question_results = []
         score = 0.0  # Changed to float to support partial credit
-        concept_results = {}  # Track results by concept_index
         
         for question in questions:
             user_answer = answers_dict.get(question.question_id)
@@ -567,8 +579,7 @@ async def submit_quiz(
             
             question_results.append(QuestionResult(
                 question_id=question.question_id,
-                concept_index=question.concept_index,
-                concept_context=question.concept_context,
+                source_flashcard_id=question.source_flashcard_id,
                 question_type=question.question_type,
                 question=question.question,
                 options=question.options,
@@ -578,71 +589,7 @@ async def submit_quiz(
                 partial_credit_score=partial_credit
             ))
             
-            # Track by concept
-            if question.concept_index not in concept_results:
-                concept_results[question.concept_index] = {"correct": 0, "incorrect": 0}
-            
-            if is_correct:
-                concept_results[question.concept_index]["correct"] += 1
-            else:
-                concept_results[question.concept_index]["incorrect"] += 1
-        
-        # Update user deck performance
-        performance_collection = db[USER_DECK_PERFORMANCE_COLLECTION]
-        performance_doc = await performance_collection.find_one({
-            "firebase_uid": firebase_uid,
-            "course_id": submission.course_id,
-            "deck_id": submission.deck_id
-        })
-        
-        if not performance_doc:
-            raise HTTPException(status_code=404, detail="Performance record not found")
-        
-        performance = UserDeckPerformance(**performance_doc)
-        
-        # Update concept performance
         now = datetime.now(timezone.utc)
-        for concept_perf in performance.concepts_performance:
-            if concept_perf.concept_index in concept_results:
-                results = concept_results[concept_perf.concept_index]
-                concept_perf.times_attempted += results["correct"] + results["incorrect"]
-                concept_perf.times_correct += results["correct"]
-                concept_perf.times_incorrect += results["incorrect"]
-                concept_perf.last_attempted = now
-        
-        performance.total_quiz_attempts += 1
-        performance.last_quiz_date = now
-        performance.updated_at = now
-        
-        # Save updated performance
-        await performance_collection.update_one(
-            {"firebase_uid": firebase_uid, "course_id": submission.course_id, "deck_id": submission.deck_id},
-            {"$set": performance.model_dump(exclude={"id"})}
-        )
-        
-        # Mark quiz session as completed
-        await quiz_sessions_collection.update_one(
-            {"quiz_id": submission.quiz_id},
-            {"$set": {"completed": True, "completed_at": now}}
-        )
-        
-        # Identify weak concepts (accuracy < 70% or multiple incorrect attempts)
-        weak_concepts = []
-        for concept_perf in performance.concepts_performance:
-            if concept_perf.times_attempted > 0:
-                accuracy = concept_perf.accuracy
-                if accuracy < 70 or concept_perf.times_incorrect >= 2:
-                    weak_concepts.append(ConceptWeakness(
-                        concept_context=concept_perf.concept_context,
-                        concept_index=concept_perf.concept_index,
-                        times_attempted=concept_perf.times_attempted,
-                        times_correct=concept_perf.times_correct,
-                        times_incorrect=concept_perf.times_incorrect,
-                        accuracy=accuracy
-                    ))
-        
-        # Sort weak concepts by accuracy (worst first)
-        weak_concepts.sort(key=lambda x: x.accuracy)
         
         # Calculate percentage
         total_questions = len(questions)
@@ -654,12 +601,63 @@ async def submit_quiz(
         # Get difficulty from quiz session or submission
         difficulty = quiz_session.get("difficulty", submission.difficulty or "medium")
         
+        # Extract lecture_id from deck_id (e.g., "MIS_lec_1" -> "MIS_lec_1")
+        lecture_id = submission.deck_id
+        
+        # Update flashcard performance using new service
+        from app.services.flashcard_performance_service import FlashcardPerformanceService
+        flashcard_perf_service = FlashcardPerformanceService(db)
+        
+        affected_lectures = await flashcard_perf_service.update_performance_from_quiz(
+            user_id=firebase_uid,
+            course_id=submission.course_id,
+            lecture_id=lecture_id,
+            question_results=question_results,
+            difficulty=difficulty
+        )
+        
+        # Get weak flashcards for this user
+        weak_flashcard_perfs = await flashcard_perf_service.get_weak_flashcards_for_user(
+            user_id=firebase_uid,
+            course_id=submission.course_id
+        )
+        
+        # Convert to FlashcardWeakness models
+        weak_flashcards = []
+        for perf in weak_flashcard_perfs:
+            weak_flashcards.append(FlashcardWeakness(
+                flashcard_id=perf.flashcard_id,
+                times_attempted=sum(
+                    level_perf.attempts 
+                    for level_perf in perf.performance_by_level.values()
+                ),
+                times_correct=sum(
+                    level_perf.correct 
+                    for level_perf in perf.performance_by_level.values()
+                ),
+                times_incorrect=sum(
+                    level_perf.attempts - level_perf.correct 
+                    for level_perf in perf.performance_by_level.values()
+                ),
+                accuracy=perf.accuracy_score  # Using accuracy_score as proxy
+            ))
+        
+        # Sort weak flashcards by accuracy (worst first)
+        weak_flashcards.sort(key=lambda x: x.accuracy)
+        
+        # Mark quiz session as completed
+        await quiz_sessions_collection.update_one(
+            {"quiz_id": submission.quiz_id},
+            {"$set": {"completed": True, "completed_at": now}}
+        )
+        
         # Save quiz result to quiz_results collection for history tracking
         quiz_results_collection = db[settings.QUIZ_RESULTS_COLLECTION]
         quiz_result_document = {
             "firebase_uid": firebase_uid,
             "course_id": submission.course_id,
             "deck_id": submission.deck_id,
+            "lecture_id": lecture_id,  # Add lecture_id for exam readiness
             "quiz_id": submission.quiz_id,
             "difficulty": difficulty,
             "score": display_score,
@@ -674,6 +672,14 @@ async def submit_quiz(
         result = await quiz_results_collection.insert_one(quiz_result_document)
         logger.info(f"✅ Successfully saved quiz result to history! Document ID: {result.inserted_id}")
         
+        # Dispatch background task to recalculate exam readiness
+        from fastapi import BackgroundTasks
+        from app.services.readiness_v2_service import ReadinessV2Service
+        
+        # Note: We'll add background task support in the next step
+        # For now, we'll log that this should trigger exam readiness recalculation
+        logger.info(f"📊 Quiz submitted. Should trigger exam readiness recalculation for lectures: {affected_lectures}")
+        
         return QuizSubmissionResponse(
             quiz_id=submission.quiz_id,
             firebase_uid=firebase_uid,
@@ -685,9 +691,9 @@ async def submit_quiz(
             percentage=round(percentage, 2),
             time_taken_seconds=submission.time_taken_seconds,
             question_results=question_results,
-            weak_concepts=weak_concepts,
+            weak_flashcards=weak_flashcards,
             completed_at=now,
-            quiz_attempt_number=performance.total_quiz_attempts
+            quiz_attempt_number=1  # Simplified for now
         )
         
     except HTTPException:

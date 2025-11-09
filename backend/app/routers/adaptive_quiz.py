@@ -265,6 +265,38 @@ async def complete_quiz_session(
                    f"level={completion.level}, score={completion.score}/{completion.total_questions}, "
                    f"result_id={result.inserted_id}, lecture_id={completion.lecture_id}")
         
+        # Update flashcard performance using new service
+        from app.services.flashcard_performance_service import FlashcardPerformanceService
+        from app.models.adaptive_quiz import QuestionResult
+        
+        flashcard_perf_service = FlashcardPerformanceService(db)
+        
+        # Convert completion.question_results to QuestionResult models
+        question_results_for_service = [
+            QuestionResult(
+                question_id=str(idx),  # Generate a simple ID
+                source_flashcard_id=qr.source_flashcard_id,
+                question_type="mca" if isinstance(qr.correct_answer, list) and len(qr.correct_answer) > 1 else "mcq",
+                question=qr.question_text,
+                options=None,
+                user_answer=qr.user_answer,
+                correct_answer=qr.correct_answer,
+                is_correct=qr.is_correct,
+                partial_credit_score=None
+            )
+            for idx, qr in enumerate(completion.question_results)
+        ]
+        
+        affected_lectures = await flashcard_perf_service.update_performance_from_quiz(
+            user_id=user_id,
+            course_id=completion.course_id,
+            lecture_id=completion.lecture_id,
+            question_results=question_results_for_service,
+            difficulty=f"level_{completion.level}"
+        )
+        
+        logger.info(f"📊 Updated flashcard performance for lectures: {affected_lectures}")
+        
         return {
             "success": True,
             "result_id": str(result.inserted_id),
