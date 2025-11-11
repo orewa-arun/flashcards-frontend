@@ -84,7 +84,11 @@ function LectureDetailView() {
         {/* Action Panels */}
         <div className="action-panels">
           {/* Premium: Mix Mode (Recommended) */}
-          <MixModeCard onClick={handleMixClick} />
+          <MixModeCard 
+            onClick={handleMixClick}
+            courseId={courseId}
+            deckId={lectureId}
+          />
           
           {/* Primary Panel: Study Flashcards */}
           <div className="action-panel primary-panel" onClick={handleStudyClick}>

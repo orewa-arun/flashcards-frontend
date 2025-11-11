@@ -11,9 +11,12 @@ from app.models.mix_session import (
     MixSessionStartResponse,
     MixActivityResponse,
     MixAnswerSubmission,
-    MixAnswerResponse
+    MixAnswerResponse,
+    DeckReadinessRequest
 )
+from app.models.readiness_v2 import UserExamReadiness
 from app.services.mix_session_service import MixSessionService
+from app.services.readiness_v2_service import ReadinessV2Service
 
 logger = logging.getLogger(__name__)
 
@@ -197,10 +200,12 @@ async def submit_answer(
         # Find the question by hash
         correct_answer = None
         question_text = None
+        explanation = None
         for q in questions:
             if service._hash_question(q["question_text"]) == answer.question_hash:
                 correct_answer = q["correct_answer"]
                 question_text = q["question_text"]
+                explanation = q.get("explanation", "")
                 break
         
         if correct_answer is None:
@@ -217,6 +222,9 @@ async def submit_answer(
             correct_answer=correct_answer,
             is_follow_up=answer.is_follow_up
         )
+        
+        # Add explanation to the result
+        result.explanation = explanation
         
         logger.info(
             f"User {user_id} answered question in session {session_id}: "
@@ -295,5 +303,66 @@ async def get_session_status(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to get session status"
+        )
+
+
+@router.post("/deck-readiness", response_model=UserExamReadiness)
+async def get_deck_exam_readiness(
+    request: DeckReadinessRequest,
+    current_user: dict = Depends(get_current_user),
+    db=Depends(get_database)
+):
+    """
+    Get exam readiness score for one or more decks.
+    
+    This endpoint calculates the user's exam readiness based on their
+    performance across the specified decks. The score aggregates:
+    - Coverage: How many flashcards have been attempted
+    - Accuracy: How well questions have been answered (weighted by difficulty)
+    - Momentum: Recent performance trend
+    
+    The calculation is cached for 30 seconds to optimize real-time updates
+    during Mix Mode sessions.
+    
+    Args:
+        request: Contains course_id, deck_ids, and optional force_refresh flag
+        current_user: Firebase user from JWT token
+        db: Database connection
+        
+    Returns:
+        UserExamReadiness with overall score and Trinity breakdown
+        
+    Raises:
+        HTTPException: If decks are not found or calculation fails
+    """
+    try:
+        user_id = current_user['uid']
+        readiness_service = ReadinessV2Service(db)
+        
+        # Get or calculate deck readiness
+        readiness = await readiness_service.get_or_calculate_deck_readiness(
+            user_id=user_id,
+            course_id=request.course_id,
+            deck_ids=request.deck_ids,
+            force_refresh=request.force_refresh
+        )
+        
+        logger.info(
+            f"Deck readiness for user {user_id}, decks {request.deck_ids}: "
+            f"{readiness.overall_readiness_score:.1f}%"
+        )
+        
+        return readiness
+    except ValueError as e:
+        logger.error(f"Error calculating deck readiness: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+    except Exception as e:
+        logger.error(f"Unexpected error calculating deck readiness: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to calculate deck readiness"
         )
 

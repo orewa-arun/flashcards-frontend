@@ -8,7 +8,7 @@ the overall exam readiness score with three pillars: Coverage, Accuracy, and Mom
 import json
 import logging
 import random
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from motor.motor_asyncio import AsyncIOMotorDatabase
@@ -32,6 +32,10 @@ class ReadinessV2Service:
     This service aggregates data from user_flashcard_performance documents
     to compute the final exam readiness score.
     """
+    
+    # Class-level cache for deck readiness (shared across instances)
+    _readiness_cache: Dict[str, Tuple[UserExamReadiness, datetime]] = {}
+    _cache_ttl = timedelta(seconds=30)
     
     def __init__(self, database):
         self.db = database
@@ -414,6 +418,164 @@ class ReadinessV2Service:
         if readiness_doc:
             return UserExamReadiness(**readiness_doc)
         return None
+    
+    async def calculate_deck_readiness(
+        self,
+        user_id: str,
+        course_id: str,
+        deck_ids: List[str]
+    ) -> UserExamReadiness:
+        """
+        Calculate readiness score for one or more decks (for Mix Mode).
+        
+        This method reuses the exam readiness calculation logic but operates
+        on deck_ids instead of exam_id. The result is returned as UserExamReadiness
+        with exam_id set to a deck-specific identifier.
+        
+        Args:
+            user_id: Firebase UID
+            course_id: Course identifier
+            deck_ids: List of deck/lecture IDs
+            
+        Returns:
+            UserExamReadiness document with deck-based scores
+        """
+        try:
+            # Generate a unique exam_id for this deck combination
+            sorted_deck_ids = sorted(deck_ids)
+            deck_exam_id = f"deck_{'_'.join(sorted_deck_ids)}"
+            
+            # Load all flashcard IDs for the decks (reuse exam method, it accepts lecture list)
+            flashcard_ids = await self._fetch_exam_flashcard_ids(course_id, deck_ids)
+            
+            if not flashcard_ids:
+                logger.warning(f"No flashcards found for decks {deck_ids}")
+                return self._create_empty_readiness(user_id, course_id, deck_exam_id)
+            
+            # Fetch all user flashcard performance documents
+            flashcard_performances = await self._fetch_user_flashcard_performances(
+                user_id, flashcard_ids
+            )
+            
+            # Aggregate scores
+            raw_scores = self._aggregate_scores(flashcard_performances)
+            
+            # Calculate max possible scores
+            max_possible_scores = self._calculate_max_possible_scores(len(flashcard_ids))
+            
+            # Normalize to factors (0-1)
+            coverage_factor = self._normalize_score(
+                raw_scores.coverage_total,
+                max_possible_scores.coverage
+            )
+            accuracy_factor = self._normalize_score(
+                raw_scores.accuracy_total,
+                max_possible_scores.accuracy
+            )
+            momentum_factor = self._normalize_score(
+                raw_scores.momentum_total,
+                max_possible_scores.momentum
+            )
+            
+            # Calculate final weighted score
+            overall_score = (
+                coverage_factor * config.FINAL_SCORE_WEIGHTS["coverage"] +
+                accuracy_factor * config.FINAL_SCORE_WEIGHTS["accuracy"] +
+                momentum_factor * config.FINAL_SCORE_WEIGHTS["momentum"]
+            ) * 100  # Convert to 0-100 scale
+            
+            # Identify weak flashcards
+            weak_flashcards = self._identify_weak_flashcards(flashcard_performances)
+            
+            # Create readiness document
+            readiness = UserExamReadiness(
+                user_id=user_id,
+                exam_id=deck_exam_id,
+                course_id=course_id,
+                overall_readiness_score=round(overall_score, 2),
+                coverage_factor=round(coverage_factor, 4),
+                accuracy_factor=round(accuracy_factor, 4),
+                momentum_factor=round(momentum_factor, 4),
+                raw_scores=raw_scores,
+                max_possible_scores=max_possible_scores,
+                weak_flashcards=weak_flashcards,
+                total_flashcards_in_exam=len(flashcard_ids),
+                flashcards_attempted=len(flashcard_performances),
+                last_calculated=datetime.now(timezone.utc)
+            )
+            
+            logger.info(f"✅ Calculated deck readiness for user {user_id}, decks {deck_ids}: "
+                       f"{readiness.overall_readiness_score:.1f}% "
+                       f"(C:{coverage_factor:.2f}, A:{accuracy_factor:.2f}, M:{momentum_factor:.2f})")
+            
+            return readiness
+            
+        except Exception as e:
+            logger.error(f"Error calculating deck readiness: {e}", exc_info=True)
+            raise
+    
+    async def get_or_calculate_deck_readiness(
+        self,
+        user_id: str,
+        course_id: str,
+        deck_ids: List[str],
+        force_refresh: bool = False
+    ) -> UserExamReadiness:
+        """
+        Get deck readiness from cache or calculate if needed.
+        
+        This method implements a 30-second in-memory cache to optimize
+        real-time updates during Mix Mode sessions.
+        
+        Args:
+            user_id: Firebase UID
+            course_id: Course identifier
+            deck_ids: List of deck/lecture IDs
+            force_refresh: If True, bypass cache and recalculate
+            
+        Returns:
+            UserExamReadiness document with deck-based scores
+        """
+        # Generate cache key
+        sorted_deck_ids = sorted(deck_ids)
+        cache_key = f"deck_readiness:{user_id}:{'_'.join(sorted_deck_ids)}"
+        
+        # Check cache if not forcing refresh
+        if not force_refresh and cache_key in self._readiness_cache:
+            cached_readiness, cached_time = self._readiness_cache[cache_key]
+            age = datetime.now(timezone.utc) - cached_time
+            
+            if age < self._cache_ttl:
+                logger.debug(f"Cache hit for {cache_key} (age: {age.total_seconds():.1f}s)")
+                return cached_readiness
+            else:
+                logger.debug(f"Cache expired for {cache_key} (age: {age.total_seconds():.1f}s)")
+        
+        # Calculate fresh readiness
+        readiness = await self.calculate_deck_readiness(user_id, course_id, deck_ids)
+        
+        # Update cache
+        self._readiness_cache[cache_key] = (readiness, datetime.now(timezone.utc))
+        
+        return readiness
+    
+    @classmethod
+    def invalidate_deck_cache(cls, user_id: str, deck_ids: List[str]):
+        """
+        Invalidate cached deck readiness for a user.
+        
+        This should be called after quiz completion to ensure fresh scores.
+        
+        Args:
+            user_id: Firebase UID
+            deck_ids: List of deck/lecture IDs to invalidate
+        """
+        sorted_deck_ids = sorted(deck_ids)
+        cache_key = f"deck_readiness:{user_id}:{'_'.join(sorted_deck_ids)}"
+        
+        if cache_key in cls._readiness_cache:
+            del cls._readiness_cache[cache_key]
+            logger.debug(f"Invalidated cache for {cache_key}")
 
 
 def get_readiness_v2_service(db=None) -> ReadinessV2Service:

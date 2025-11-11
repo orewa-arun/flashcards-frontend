@@ -2,15 +2,6 @@ import { useState } from 'react'
 import './QuestionRenderer.css'
 
 function QuestionRenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
-  
-  // DIAGNOSTIC LOGGING - CHECK YOUR BROWSER CONSOLE
-  console.log("═══════════════════════════════════════════════════════");
-  console.log("🔍 DIAGNOSTIC: QuestionRenderer received data:");
-  console.log("Question Type:", question?.type);
-  console.log("Question Object:", JSON.stringify(question, null, 2));
-  console.log("User Answer:", userAnswer);
-  console.log("═══════════════════════════════════════════════════════");
-  
   if (!question) return null
 
   switch (question.type) {
@@ -99,9 +90,6 @@ function QuestionRenderer({ question, userAnswer, onAnswerChange, showFeedback, 
 
 // MCQ and Scenario MCQ Renderer
 function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
-  console.log("🔵 MCQRenderer RENDERING - Type:", question.type);
-  console.log("🔵 MCQ Options:", question.options);
-  
   // correct_answer is now always an array; for MCQ it has 1 element (the option KEY like "A")
   const correctAnswerKey = Array.isArray(question.answer) ? question.answer[0] : question.answer
   
@@ -111,9 +99,6 @@ function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disab
     : Object.entries(question.options || {})
   
   const isObjectOptions = !Array.isArray(question.options)
-  
-  console.log("🔵 MCQ isObjectOptions:", isObjectOptions);
-  console.log("🔵 MCQ optionsArray:", optionsArray);
   
   return (
     <div className="question-container mcq-question">
@@ -141,7 +126,7 @@ function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disab
           return (
             <label 
             key={index}
-              className={`option-item radio-option ${isSelected ? 'selected' : ''} ${
+              className={`option-item radio-option ${isSelected && !showFeedback ? 'selected' : ''} ${
                 showFeedback && isCorrect ? 'correct' : ''
               } ${showFeedback && isSelected && !isCorrect ? 'incorrect' : ''}`}
             >
@@ -171,9 +156,6 @@ function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disab
 
 // MCA (Multiple Correct Answers) Renderer
 function MCARenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
-  console.log("🟣 MCARenderer RENDERING - Type:", question.type);
-  console.log("🟣 MCA Options:", question.options);
-  console.log("🟣 MCA userAnswer:", userAnswer);
   
   // Ensure userAnswer is always an array (of option KEYS like ["A", "C"])
   const selectedAnswers = Array.isArray(userAnswer) ? userAnswer : []

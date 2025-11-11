@@ -153,48 +153,42 @@
    ======================================== */
 
 .flip-hint {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
   margin-top: 2rem;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, rgba(45, 122, 62, 0.08) 0%, rgba(45, 122, 62, 0.12) 100%);
-  border: 2px dashed rgba(45, 122, 62, 0.3);
-  border-radius: 12px;
-  animation: pulse-hint 2s ease-in-out infinite;
+  padding: 0.75rem 1.25rem;
+  background: rgba(45, 122, 62, 0.05);
+  border: 1px solid rgba(45, 122, 62, 0.15);
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
-@keyframes pulse-hint {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.02);
-    opacity: 0.9;
-  }
+.flip-hint:hover {
+  background: rgba(45, 122, 62, 0.08);
+  border-color: rgba(45, 122, 62, 0.25);
+  transform: translateY(-1px);
 }
 
 .flip-hint-icon {
-  font-size: 1.5rem;
-  animation: bounce-finger 1.5s ease-in-out infinite;
+  color: #2d7a3e;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
 }
 
-@keyframes bounce-finger {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+.flip-hint:hover .flip-hint-icon {
+  opacity: 1;
+  transform: translateX(2px);
 }
 
 .flip-hint-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--brand-green);
-  letter-spacing: 0.02em;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #2d7a3e;
+  letter-spacing: 0.01em;
 }
 
 /* Hide flip hint when card is flipped */
@@ -205,30 +199,25 @@
 /* Responsive flip hint */
 @media (max-width: 768px) {
   .flip-hint {
-    padding: 0.875rem 1.25rem;
+    padding: 0.625rem 1rem;
     margin-top: 1.5rem;
-  }
-  
-  .flip-hint-icon {
-    font-size: 1.25rem;
+    gap: 0.5rem;
   }
   
   .flip-hint-text {
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
   }
 }
 
 @media (max-width: 480px) {
   .flip-hint {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
+    padding: 0.625rem 0.875rem;
     margin-top: 1.25rem;
+    gap: 0.5rem;
   }
   
   .flip-hint-text {
-    font-size: 0.875rem;
-    text-align: center;
+    font-size: 0.75rem;
   }
 }
 

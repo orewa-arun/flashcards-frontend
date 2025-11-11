@@ -13,7 +13,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaSpinner, FaCheckCircle } from 'react-icons/fa';
 import { trackEvent } from '../utils/amplitude';
 import { useMixSession } from '../hooks/useMixSession';
-import SessionProgress from '../components/MixMode/SessionProgress';
+import ExamReadinessBar from '../components/MixMode/ExamReadinessBar';
 import QuestionCard from '../components/MixMode/QuestionCard';
 import FlashcardView from '../components/MixMode/FlashcardView';
 import './MixSessionView.css';
@@ -31,6 +31,8 @@ const MixSessionView = () => {
     progress,
     answerFeedback,
     showFeedback,
+    examReadiness,
+    readinessLoading,
     startSession,
     fetchNextActivity,
     submitAnswer,
@@ -202,11 +204,11 @@ const MixSessionView = () => {
           </button>
         </div>
         
-        {/* Progress Bar */}
-        <SessionProgress
-          seenInRound={progress.seenInRound}
-          totalFlashcards={progress.totalFlashcards}
-          currentRound={progress.currentRound}
+        {/* Exam Readiness Bar */}
+        <ExamReadinessBar 
+          readinessData={examReadiness}
+          isLoading={readinessLoading}
+          showBreakdown={false}
         />
         
         {/* Content Area */}
@@ -244,6 +246,22 @@ const MixSessionView = () => {
                     {answerFeedback.pointsEarned > 0 ? '+' : ''}{answerFeedback.pointsEarned} points
                   </span>
                 </div>
+                
+                {/* Explanation - Always show */}
+                {answerFeedback.explanation && (
+                  <div className="feedback-explanation">
+                    <h4 className="explanation-title">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="explanation-icon">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                        <path d="M12 16v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                        <circle cx="12" cy="8" r="1" fill="currentColor"/>
+                      </svg>
+                      Explanation
+                    </h4>
+                    <p className="explanation-text">{answerFeedback.explanation}</p>
+                  </div>
+                )}
+                
                 {!answerFeedback.isCorrect && (
                   <div className="feedback-content">
                     <p className="feedback-label">Correct Answer:</p>
@@ -254,6 +272,7 @@ const MixSessionView = () => {
                     </p>
                   </div>
                 )}
+                
                 <button className="next-activity-button" onClick={handleNextActivity}>
                   Continue →
                 </button>

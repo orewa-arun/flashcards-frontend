@@ -13,7 +13,8 @@ import {
   startMixSession, 
   getNextActivity, 
   submitMixAnswer,
-  getMixSessionStatus 
+  getMixSessionStatus,
+  getDeckExamReadiness
 } from '../api/mixMode';
 
 export const useMixSession = () => {
@@ -37,8 +38,39 @@ export const useMixSession = () => {
   const [answerFeedback, setAnswerFeedback] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   
+  // Exam readiness state
+  const [examReadiness, setExamReadiness] = useState(null);
+  const [readinessLoading, setReadinessLoading] = useState(false);
+  
+  // Store courseId and deckIds for readiness fetching
+  const sessionMetadataRef = useRef({ courseId: null, deckIds: [] });
+  
   // Tracking for previously incorrect questions
   const previouslyIncorrectRef = useRef(new Set());
+  
+  /**
+   * Fetch exam readiness score
+   */
+  const fetchExamReadiness = useCallback(async (forceRefresh = false) => {
+    const { courseId, deckIds } = sessionMetadataRef.current;
+    
+    if (!courseId || !deckIds || deckIds.length === 0) {
+      console.warn('Cannot fetch readiness: missing courseId or deckIds');
+      return;
+    }
+    
+    setReadinessLoading(true);
+    try {
+      const data = await getDeckExamReadiness(courseId, deckIds, forceRefresh);
+      setExamReadiness(data);
+      console.log('✅ Exam readiness updated:', data.overall_readiness_score);
+    } catch (error) {
+      console.error('Failed to fetch exam readiness:', error);
+      // Don't throw - readiness is supplementary, not critical
+    } finally {
+      setReadinessLoading(false);
+    }
+  }, []);
   
   /**
    * Start a new Mix Mode session
@@ -47,6 +79,9 @@ export const useMixSession = () => {
     try {
       setStatus('loading');
       setError(null);
+      
+      // Store metadata for readiness fetching
+      sessionMetadataRef.current = { courseId, deckIds };
       
       const data = await startMixSession(courseId, deckIds);
       
@@ -58,6 +93,9 @@ export const useMixSession = () => {
       });
       setStatus('active');
       
+      // Fetch initial exam readiness
+      await fetchExamReadiness(false);
+      
       // Return the session_id so it can be used immediately
       return { session_id: data.session_id, total_flashcards: data.total_flashcards };
     } catch (err) {
@@ -66,7 +104,7 @@ export const useMixSession = () => {
       setStatus('error');
       throw err;
     }
-  }, []);
+  }, [fetchExamReadiness]);
   
   /**
    * Fetch the next activity in the session
@@ -165,13 +203,16 @@ export const useMixSession = () => {
       });
       setShowFeedback(true);
       
+      // Refresh exam readiness after answer submission (force refresh to get latest)
+      await fetchExamReadiness(true);
+      
       return result;
     } catch (err) {
       console.error('Error submitting answer:', err);
       setError(err.message || 'Failed to submit answer');
       throw err;
     }
-  }, [sessionId, currentActivity, activityType]);
+  }, [sessionId, currentActivity, activityType, fetchExamReadiness]);
   
   /**
    * Get session status (for resuming)
@@ -227,12 +268,15 @@ export const useMixSession = () => {
     progress,
     answerFeedback,
     showFeedback,
+    examReadiness,
+    readinessLoading,
     
     // Actions
     startSession,
     fetchNextActivity,
     submitAnswer,
     fetchSessionStatus,
+    fetchExamReadiness,
     resetSession,
     hideFeedback,
     

@@ -78,10 +78,33 @@ export const getMixSessionStatus = async (sessionId) => {
   }
 };
 
+/**
+ * Get exam readiness score for one or more decks
+ * @param {string} courseId - Course identifier (e.g., "MS5150")
+ * @param {Array<string>} deckIds - Array of deck/lecture identifiers (e.g., ["SI_lec_1"])
+ * @param {boolean} forceRefresh - Force recalculation, bypassing cache (default: false)
+ * @returns {Promise} Exam readiness data with overall score and Trinity breakdown
+ */
+export const getDeckExamReadiness = async (courseId, deckIds, forceRefresh = false) => {
+  try {
+    const data = await authenticatedPost('/mix/deck-readiness', {
+      course_id: courseId,
+      deck_ids: deckIds,
+      force_refresh: forceRefresh
+    });
+    console.log('✅ Deck exam readiness fetched:', data);
+    return data;
+  } catch (error) {
+    console.error('❌ Error fetching deck exam readiness:', error);
+    throw error;
+  }
+};
+
 export default {
   startMixSession,
   getNextActivity,
   submitMixAnswer,
   getMixSessionStatus,
+  getDeckExamReadiness,
 };
 

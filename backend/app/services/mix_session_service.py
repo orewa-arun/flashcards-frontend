@@ -142,13 +142,11 @@ class MixSessionService:
                 # Round complete, generate next round
                 await self._generate_next_round(session)
             else:
-                # Session complete
-                session.status = "completed"
-                await self.sessions_collection.update_one(
-                    {"session_id": session_id},
-                    {"$set": {"status": "completed", "last_updated": datetime.now(timezone.utc)}}
-                )
-                return None
+                # Queue exhausted before covering all flashcards in the round.
+                # Instead of ending the session, generate the next round to keep Mix endless.
+                # This can happen if some flashcards had no available questions at the chosen level
+                # and were skipped; the next round will re-attempt based on updated next levels.
+                await self._generate_next_round(session)
         
         # Pop the next activity
         if not session.activity_queue:
@@ -210,20 +208,33 @@ class MixSessionService:
                     {"session_id": session_id},
                     {"$push": {"asked_question_hashes": question_hash}}
                 )
-            
-            return MixActivityResponse(
-                activity_type="question",
-                flashcard_id=next_activity.flashcard_id,
-                question=question,
-                level=next_activity.level,
-                is_follow_up=next_activity.is_follow_up,
-                round_number=session.current_round,
-                progress={
-                    "seen_in_round": len(session.seen_in_current_round),
-                    "total_flashcards": len(session.flashcard_master_order),
-                    "current_round": session.current_round
-                }
-            )
+                
+                return MixActivityResponse(
+                    activity_type="question",
+                    flashcard_id=next_activity.flashcard_id,
+                    question=question,
+                    level=next_activity.level,
+                    is_follow_up=next_activity.is_follow_up,
+                    round_number=session.current_round,
+                    progress={
+                        "seen_in_round": len(session.seen_in_current_round),
+                        "total_flashcards": len(session.flashcard_master_order),
+                        "current_round": session.current_round
+                    }
+                )
+            else:
+                # No question found - skip this activity and try next
+                logger.warning(f"No question found for flashcard {next_activity.flashcard_id} at level {next_activity.level}, skipping to next activity")
+                
+                # Remove this activity and try again
+                session.activity_queue.pop(0)
+                await self.sessions_collection.update_one(
+                    {"session_id": session_id},
+                    {"$pop": {"activity_queue": -1}}
+                )
+                
+                # Recursively call to get next activity
+                return await self.get_next_activity(session_id, user_id)
     
     async def submit_answer(
         self,
@@ -561,9 +572,11 @@ class MixSessionService:
                 data = json.load(f)
             questions = data.get("questions", [])
             
-            # Add content hash to each question
+            # Add content hash and normalize correct_answer to option keys
             for q in questions:
                 q["question_hash"] = self._hash_question(q["question_text"])
+                # CRITICAL: Normalize correct_answer from text to option keys
+                q["correct_answer"] = self._normalize_correct_answer(q)
             
             return questions
         except Exception as e:
@@ -573,6 +586,73 @@ class MixSessionService:
     def _hash_question(self, question_text: str) -> str:
         """Generate a deterministic hash for a question."""
         return hashlib.sha256(question_text.encode('utf-8')).hexdigest()[:16]
+    
+    def _normalize_correct_answer(self, question: Dict[str, Any]) -> List[str]:
+        """
+        Normalize correct_answer to always be an array of option KEYS.
+        
+        Handles legacy data where correct_answer might be:
+        - A string option key: "C"
+        - An array of option keys: ["A", "D"]
+        - A string option text: "Targeting new users or segments."
+        - An array of option texts: ["Adding new features...", "Lowering the price..."]
+        
+        Args:
+            question: Question dict with 'correct_answer' and 'options'
+            
+        Returns:
+            List of option keys (e.g., ["C"] or ["A", "D"])
+        """
+        options = question.get('options', {})
+        option_keys = list(options.keys())
+        raw = question.get('correct_answer')
+        
+        if not raw:
+            return []
+        
+        # Ensure raw is a list
+        raw_list = raw if isinstance(raw, list) else [raw]
+        
+        # Normalize text for matching
+        import re
+        def norm(s):
+            text = str(s or '').strip().lower()
+            # Remove common punctuation and markdown formatting
+            text = text.replace('.', '').replace(',', '').replace('*', '').replace('_', '')
+            text = text.replace('(', '').replace(')', '').replace('[', '').replace(']', '')
+            text = text.replace('"', '').replace("'", '').replace(':', '').replace(';', '')
+            # Collapse multiple whitespace into single space
+            text = re.sub(r'\s+', ' ', text).strip()
+            return text
+        
+        keys = []
+        for item in raw_list:
+            value = str(item or '').strip()
+            if not value:
+                continue
+            
+            # Case 1: Already an option key
+            if value in option_keys:
+                keys.append(value)
+                continue
+            
+            # Case 2: Match by option text
+            match_key = next(
+                (k for k in option_keys if norm(options[k]) == norm(value)),
+                None
+            )
+            if match_key:
+                keys.append(match_key)
+                logger.info(f"✅ Normalized answer text to key '{match_key}' for question: {question.get('question_text', '')[:60]}")
+            else:
+                # Fallback: keep the raw value (will cause issues, but log it)
+                logger.warning(f"❌ Could not normalize correct_answer '{value[:100]}' to option key for question: {question.get('question_text', '')[:60]}")
+                logger.warning(f"   Available options: {list(options.keys())}")
+                logger.warning(f"   Option texts (normalized): {[norm(options[k]) for k in option_keys]}")
+                logger.warning(f"   Target text (normalized): {norm(value)}")
+                keys.append(value)
+        
+        return keys
     
     def _grade_answer(self, user_answer: Any, correct_answer: Any) -> Tuple[bool, Optional[float]]:
         """

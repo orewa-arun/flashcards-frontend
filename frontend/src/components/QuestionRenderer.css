@@ -194,6 +194,7 @@
   box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
 }
 
+/* Interactive states - before feedback */
 .option-item:hover {
   border-color: var(--accent-primary);
   background-color: var(--bg-elevated);
@@ -206,23 +207,32 @@
   background-color: rgba(59, 130, 246, 0.1);
 }
 
-/* Duolingo-Style Feedback */
-.option-item.correct {
-  border-color: var(--success);
-  background-color: var(--success-light);
+.option-item.selected:hover {
+  border-color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.15);
+}
+
+/* Feedback States - Terminal states that override everything including hover */
+.option-item.correct,
+.option-item.correct:hover {
+  border-color: #10B981;
+  background-color: #D1FAE5;
   font-weight: 600;
+  cursor: default;
   animation: correctPulse 0.5s ease;
+}
+
+.option-item.incorrect,
+.option-item.incorrect:hover {
+  border-color: #EF4444;
+  background-color: #FEE2E2;
+  cursor: default;
+  animation: incorrectShake 0.5s ease;
 }
 
 @keyframes correctPulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.02); }
-}
-
-.option-item.incorrect {
-  border-color: var(--error);
-  background-color: var(--error-light);
-  animation: incorrectShake 0.5s ease;
 }
 
 @keyframes incorrectShake {

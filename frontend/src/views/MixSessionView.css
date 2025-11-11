@@ -312,6 +312,39 @@
   border-radius: 8px;
 }
 
+.feedback-explanation {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #f8fdf9 0%, #f3f9f4 100%);
+  border-radius: 12px;
+  border: 1px solid #d1e7d7;
+}
+
+.explanation-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2d7a3e;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.explanation-icon {
+  color: #2d7a3e;
+  flex-shrink: 0;
+}
+
+.explanation-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #1a1a1a;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
 .feedback-content {
   margin-bottom: 1.5rem;
 }

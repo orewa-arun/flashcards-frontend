@@ -162,8 +162,16 @@ class AdaptiveQuizService:
         raw_list = raw if isinstance(raw, list) else [raw]
         
         # Normalize text for matching
+        import re
         def norm(s):
-            return str(s or '').strip().replace('.', '').replace('\s+', ' ').lower()
+            text = str(s or '').strip().lower()
+            # Remove common punctuation and markdown formatting
+            text = text.replace('.', '').replace(',', '').replace('*', '').replace('_', '')
+            text = text.replace('(', '').replace(')', '').replace('[', '').replace(']', '')
+            text = text.replace('"', '').replace("'", '').replace(':', '').replace(';', '')
+            # Collapse multiple whitespace into single space
+            text = re.sub(r'\s+', ' ', text).strip()
+            return text
         
         keys = []
         for item in raw_list:
@@ -183,9 +191,13 @@ class AdaptiveQuizService:
             )
             if match_key:
                 keys.append(match_key)
+                logger.info(f"✅ Normalized answer text to key '{match_key}' for question: {question.get('question_text', '')[:60]}")
             else:
                 # Fallback: keep the raw value (will cause issues, but log it)
-                logger.warning(f"Could not normalize correct_answer '{value}' to option key for question: {question.get('question_text', '')[:50]}")
+                logger.warning(f"❌ Could not normalize correct_answer '{value[:100]}' to option key for question: {question.get('question_text', '')[:60]}")
+                logger.warning(f"   Available options: {list(options.keys())}")
+                logger.warning(f"   Option texts (normalized): {[norm(options[k]) for k in option_keys]}")
+                logger.warning(f"   Target text (normalized): {norm(value)}")
                 keys.append(value)
         
         return keys

@@ -132,3 +132,10 @@ class MixAnswerResponse(BaseModel):
     explanation: Optional[str] = Field(None, description="Explanation of the answer")
     points_earned: float = Field(..., description="Points earned for this answer")
 
+
+class DeckReadinessRequest(BaseModel):
+    """Request model for getting exam readiness score for deck(s)."""
+    course_id: str = Field(..., description="Course identifier")
+    deck_ids: List[str] = Field(..., description="List of deck/lecture IDs")
+    force_refresh: bool = Field(default=False, description="Force recalculation, bypassing cache")
+

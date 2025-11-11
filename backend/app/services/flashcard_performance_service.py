@@ -165,6 +165,11 @@ class FlashcardPerformanceService:
                         f"next_level={performance.question_next_level}, "
                         f"is_weak={performance.is_weak}")
         
+        # Invalidate deck readiness cache for affected lectures
+        from app.services.readiness_v2_service import ReadinessV2Service
+        for lecture in affected_lectures:
+            ReadinessV2Service.invalidate_deck_cache(user_id, [lecture])
+        
         return list(affected_lectures)
     
     def _map_difficulty_to_level(self, difficulty: str) -> str:
