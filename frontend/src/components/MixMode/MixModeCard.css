@@ -1,28 +1,41 @@
 /* ========================================
-   MIX MODE CARD - PREMIUM DESIGN
-   Larger, highlighted, and more prominent
+   MIX MODE CARD - WORLD-CLASS PREMIUM DESIGN
+   Elegant, sleek, brand-aligned
    ======================================== */
 
 .mix-mode-card {
   position: relative;
-  background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
-  border-radius: 24px;
-  padding: 3rem;
-  border: 3px solid #F39C12;
+  background: linear-gradient(135deg, #ffffff 0%, #fafffe 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  padding-top: 4rem;
+  border: 2px solid var(--brand-green);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  overflow: visible;
   grid-column: span 2; /* Takes up 2 columns in grid */
-  min-height: 400px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 32px rgba(243, 156, 18, 0.15);
+  box-shadow: 0 8px 32px rgba(45, 122, 62, 0.12), 0 0 0 1px rgba(45, 122, 62, 0.08);
+  margin-top: 2.5rem;
+}
+
+.mix-mode-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
+  border-radius: 20px 20px 0 0;
 }
 
 .mix-mode-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 16px 48px rgba(243, 156, 18, 0.25);
-  border-color: #E67E22;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(45, 122, 62, 0.2), 0 0 0 2px var(--brand-green);
+  border-color: var(--brand-green-dark);
 }
 
 /* ========================================
@@ -31,72 +44,74 @@
 
 .recommended-tag {
   position: absolute;
-  top: 0;
-  right: 32px;
+  top: 1.25rem;
+  right: 1.5rem;
   z-index: 10;
 }
 
 .recommended-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #F39C12 0%, #E67E22 100%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
   color: white;
-  padding: 0.625rem 1.5rem;
-  border-radius: 0 0 12px 12px;
-  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
-  animation: pulse-glow 2s ease-in-out infinite;
+  box-shadow: 0 2px 8px rgba(45, 122, 62, 0.25);
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
-  }
-  50% {
-    box-shadow: 0 4px 20px rgba(243, 156, 18, 0.5);
-  }
+.mix-mode-card:hover .recommended-badge {
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.35);
 }
 
 /* ========================================
-   READINESS BADGE
+   READINESS BADGE - BEAUTIFUL CIRCLE
    ======================================== */
 
 .readiness-badge {
   position: absolute;
-  top: 20px;
-  left: 32px;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  background: white;
-  padding: 0.75rem 1.25rem;
-  border-radius: 12px;
-  border: 2px solid;
+  width: 112px;
+  height: 112px;
+  pointer-events: none;
+}
+
+.readiness-ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-.readiness-badge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.readiness-label {
-  font-size: 0.625rem;
-  font-weight: 600;
-  color: #666666;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.readiness-inner {
+  width: calc(100% - 18px); /* ring thickness ≈ 9px */
+  height: calc(100% - 18px);
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.04);
 }
 
 .readiness-score {
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   font-weight: 800;
   line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.8);
 }
 
 /* ========================================
@@ -112,52 +127,53 @@
 }
 
 .mix-mode-icon {
-  width: 96px;
-  height: 96px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 24px rgba(45, 122, 62, 0.25);
-  transition: all 0.3s ease;
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 16px rgba(45, 122, 62, 0.2);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mix-mode-card:hover .mix-mode-icon {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 12px 32px rgba(45, 122, 62, 0.35);
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 8px 24px rgba(45, 122, 62, 0.3);
 }
 
 .mix-mode-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .mix-mode-tagline {
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: #F39C12;
-  margin: 0 0 1.25rem 0;
+  color: var(--brand-green);
+  margin: 0 0 1rem 0;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .mix-mode-description {
-  font-size: 1.0625rem;
+  font-size: 0.9375rem;
   line-height: 1.7;
-  color: #666666;
-  margin: 0 0 2rem 0;
-  max-width: 600px;
+  color: var(--text-secondary);
+  margin: 0 0 1.75rem 0;
+  max-width: 650px;
 }
 
 /* ========================================
@@ -166,8 +182,8 @@
 
 .mix-mode-features {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -175,28 +191,30 @@
 .mix-feature {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  background: rgba(45, 122, 62, 0.05);
-  padding: 0.75rem 1.25rem;
-  border-radius: 12px;
-  border: 2px solid rgba(45, 122, 62, 0.1);
+  gap: 0.5rem;
+  background: rgba(45, 122, 62, 0.06);
+  padding: 0.625rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(45, 122, 62, 0.12);
   transition: all 0.3s ease;
 }
 
 .mix-mode-card:hover .mix-feature {
-  background: rgba(45, 122, 62, 0.1);
-  border-color: rgba(45, 122, 62, 0.3);
-  transform: translateY(-2px);
+  background: rgba(45, 122, 62, 0.12);
+  border-color: rgba(45, 122, 62, 0.25);
+  transform: translateY(-1px);
 }
 
 .feature-icon {
-  font-size: 1.5rem;
+  color: var(--brand-green);
+  flex-shrink: 0;
 }
 
 .feature-text {
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: #2d7a3e;
+  color: var(--brand-green-dark);
+  letter-spacing: -0.01em;
 }
 
 /* ========================================
@@ -205,28 +223,29 @@
 
 .mix-mode-button {
   width: 100%;
-  max-width: 400px;
-  padding: 1.125rem 2rem;
-  border-radius: 16px;
-  font-size: 1.125rem;
-  font-weight: 700;
+  max-width: 450px;
+  padding: 1rem 1.75rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
-  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
   color: white;
-  box-shadow: 0 6px 20px rgba(45, 122, 62, 0.3);
+  box-shadow: 0 4px 16px rgba(45, 122, 62, 0.25);
   margin-top: auto;
+  letter-spacing: -0.01em;
 }
 
 .mix-mode-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(45, 122, 62, 0.4);
-  background: linear-gradient(135deg, #245c30 0%, #1a4623 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(45, 122, 62, 0.35);
 }
 
 .mix-mode-button:active {
-  transform: translateY(-1px);
+  transform: translateY(0);
+  box-shadow: 0 4px 16px rgba(45, 122, 62, 0.25);
 }
 
 /* ========================================
@@ -239,11 +258,11 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(45, 122, 62, 0.08) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
 .mix-mode-card:hover .mix-mode-glow {
@@ -259,6 +278,8 @@
     grid-column: span 1; /* Takes full width on mobile */
     min-height: 350px;
     padding: 2.5rem;
+    padding-top: 4rem;
+    margin-top: 2.5rem;
   }
   
   .mix-mode-icon {
@@ -279,7 +300,9 @@
 @media (max-width: 768px) {
   .mix-mode-card {
     padding: 2rem;
+    padding-top: 3.5rem;
     min-height: 320px;
+    margin-top: 2.5rem;
   }
   
   .mix-mode-icon {
@@ -304,6 +327,23 @@
 @media (max-width: 480px) {
   .mix-mode-card {
     padding: 1.75rem;
+    padding-top: 3.5rem;
+    margin-top: 2.5rem;
+  }
+  
+  .readiness-badge {
+    top: -1.9rem;
+    width: 92px;
+    height: 92px;
+  }
+  
+  .readiness-inner {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+  }
+  
+  .readiness-score {
+    font-size: 1.25rem;
   }
   
   .mix-mode-icon {

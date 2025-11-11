@@ -47,16 +47,34 @@ const MixModeCard = ({ onClick, courseId, deckId }) => {
     <div className="mix-mode-card" onClick={onClick}>
       {/* Recommended Tag */}
       <div className="recommended-tag">
-        <span className="recommended-badge">✨ Recommended</span>
+        <span className="recommended-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Recommended
+        </span>
       </div>
       
       {/* Readiness Score Badge */}
       {readinessScore !== null && !isLoadingReadiness && (
-        <div className="readiness-badge" style={{ borderColor: getReadinessColor(readinessScore) }}>
-          <span className="readiness-label">Readiness</span>
-          <span className="readiness-score" style={{ color: getReadinessColor(readinessScore) }}>
-            {Math.round(readinessScore)}%
-          </span>
+        <div 
+          className="readiness-badge"
+        >
+          <div 
+            className="readiness-ring"
+            style={{ 
+              background: `conic-gradient(${getReadinessColor(readinessScore)} ${Math.round(readinessScore)}%, rgba(0,0,0,0.08) 0)` 
+            }}
+          >
+            <div className="readiness-inner">
+              <span 
+                className="readiness-score" 
+                style={{ color: getReadinessColor(readinessScore) }}
+              >
+                {Math.round(readinessScore)}%
+              </span>
+            </div>
+          </div>
         </div>
       )}
       
@@ -66,7 +84,7 @@ const MixModeCard = ({ onClick, courseId, deckId }) => {
           <FaShapes />
         </div>
         
-        <h2 className="mix-mode-title">Mix Mode</h2>
+        <h2 className="mix-mode-title">Adaptive Mix Mode</h2>
         
         <p className="mix-mode-tagline">Adaptive Learning Experience</p>
         
@@ -78,21 +96,30 @@ const MixModeCard = ({ onClick, courseId, deckId }) => {
         
         <div className="mix-mode-features">
           <div className="mix-feature">
-            <span className="feature-icon">🎯</span>
+            <svg className="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
             <span className="feature-text">Smart Prioritization</span>
           </div>
           <div className="mix-feature">
-            <span className="feature-icon">📈</span>
+            <svg className="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+              <polyline points="16 7 22 7 22 13"/>
+            </svg>
             <span className="feature-text">Adaptive Difficulty</span>
           </div>
           <div className="mix-feature">
-            <span className="feature-icon">💡</span>
+            <svg className="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
             <span className="feature-text">Instant Remediation</span>
           </div>
         </div>
         
         <button className="mix-mode-button">
-          Start Mix Mode →
+          Start Adaptive Mix Mode →
         </button>
       </div>
       
