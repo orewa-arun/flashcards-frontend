@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { FaLightbulb, FaStar, FaRegStar, FaThumbsUp, FaThumbsDown, FaCalculator, FaSearchPlus, FaSearchMinus, FaExpandAlt } from 'react-icons/fa'
 import { addBookmark, removeBookmark, isBookmarked } from '../api/bookmarks'
-import { submitFeedback, getFlashcardFeedback } from '../api/feedback'
+import { submitFeedback, getFlashcardFeedback, clearFeedback } from '../api/feedback'
 import mermaid from 'mermaid'
 import * as d3 from 'd3'
 import 'd3-graphviz'
@@ -92,18 +92,29 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
 
   useEffect(() => {
     const loadCardState = async () => {
-      if (!courseId || !deckId || index === undefined) return
+      if (index === undefined) return
+      // Resolve IDs from props or card fallback
+      let resolvedCourseId = courseId || card?.course_id || card?.courseId || null
+      let resolvedDeckId = deckId || card?.lecture_id || card?.deck_id || card?.deckId || null
+      if (!resolvedDeckId && card?.flashcard_id) {
+        const parts = String(card.flashcard_id).split('_')
+        if (parts.length > 1) {
+          parts.pop()
+          resolvedDeckId = parts.join('_')
+        }
+      }
+      if (!resolvedCourseId || !resolvedDeckId) return
       try {
-        const bookmarked = await isBookmarked(courseId, deckId, index)
+        const bookmarked = await isBookmarked(resolvedCourseId, resolvedDeckId, index)
         setIsCardBookmarked(bookmarked)
-        const rating = await getFlashcardFeedback(courseId, deckId, index)
+        const rating = await getFlashcardFeedback(resolvedCourseId, resolvedDeckId, index)
         setFeedbackRating(rating)
       } catch (error) {
         console.error('Error loading card state:', error)
       }
     }
     loadCardState()
-  }, [courseId, deckId, index])
+  }, [courseId, deckId, index, card])
 
   const handleBookmarkToggle = async (e) => {
     e.stopPropagation()
@@ -126,14 +137,53 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
 
   const handleLike = async (e) => {
     e.stopPropagation()
-    if (feedbackLoading || !sessionId) return
+    if (feedbackLoading) return
     setFeedbackLoading(true)
     try {
+      // Resolve IDs from props or card fallback
+      let resolvedCourseId = courseId || card?.course_id || card?.courseId || ''
+      let resolvedDeckId = deckId || card?.lecture_id || card?.deck_id || card?.deckId || ''
+      
+      // Try to extract deck_id from flashcard_id if still missing
+      if (!resolvedDeckId && card?.flashcard_id) {
+        const parts = String(card.flashcard_id).split('_')
+        if (parts.length > 1) {
+          parts.pop()
+          resolvedDeckId = parts.join('_')
+        }
+      }
+      
+      // Try to extract course_id from lecture_id pattern (e.g., SI_Pricing_2 -> MS5150)
+      // This is a fallback - ideally the backend should provide course_id
+      if (!resolvedCourseId && resolvedDeckId) {
+        // Check if deck_id starts with known prefixes
+        if (resolvedDeckId.startsWith('SI_') || resolvedDeckId.startsWith('Strategic')) {
+          resolvedCourseId = 'MS5150' // Strategic Innovation
+        } else if (resolvedDeckId.startsWith('DAA_') || resolvedDeckId.startsWith('Design')) {
+          resolvedCourseId = 'MS5031' // Design and Analysis of Algorithms
+        } else if (resolvedDeckId.startsWith('MIS_') || resolvedDeckId.startsWith('Management')) {
+          resolvedCourseId = 'MS5260' // Management Information Systems
+        }
+      }
+      
+      if (!resolvedCourseId || !resolvedDeckId) {
+        console.warn('Missing course/deck id for feedback', { 
+          resolvedCourseId, 
+          resolvedDeckId, 
+          cardKeys: Object.keys(card || {}),
+          card 
+        })
+        setFeedbackLoading(false)
+        return
+      }
       const newRating = feedbackRating === 1 ? null : 1
       if (newRating === null) {
+        // Toggle off - clear feedback from backend
+        await clearFeedback({ courseId: resolvedCourseId, deckId: resolvedDeckId, index })
         setFeedbackRating(null)
       } else {
-        await submitFeedback({ sessionId, courseId, deckId, index, rating: newRating })
+        // Set or change to like
+        await submitFeedback({ sessionId: sessionId || 'standalone', courseId: resolvedCourseId, deckId: resolvedDeckId, index, rating: newRating })
         setFeedbackRating(newRating)
       }
     } catch (error) {
@@ -145,14 +195,53 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
 
   const handleDislike = async (e) => {
     e.stopPropagation()
-    if (feedbackLoading || !sessionId) return
+    if (feedbackLoading) return
     setFeedbackLoading(true)
     try {
+      // Resolve IDs from props or card fallback
+      let resolvedCourseId = courseId || card?.course_id || card?.courseId || ''
+      let resolvedDeckId = deckId || card?.lecture_id || card?.deck_id || card?.deckId || ''
+      
+      // Try to extract deck_id from flashcard_id if still missing
+      if (!resolvedDeckId && card?.flashcard_id) {
+        const parts = String(card.flashcard_id).split('_')
+        if (parts.length > 1) {
+          parts.pop()
+          resolvedDeckId = parts.join('_')
+        }
+      }
+      
+      // Try to extract course_id from lecture_id pattern (e.g., SI_Pricing_2 -> MS5150)
+      // This is a fallback - ideally the backend should provide course_id
+      if (!resolvedCourseId && resolvedDeckId) {
+        // Check if deck_id starts with known prefixes
+        if (resolvedDeckId.startsWith('SI_') || resolvedDeckId.startsWith('Strategic')) {
+          resolvedCourseId = 'MS5150' // Strategic Innovation
+        } else if (resolvedDeckId.startsWith('DAA_') || resolvedDeckId.startsWith('Design')) {
+          resolvedCourseId = 'MS5031' // Design and Analysis of Algorithms
+        } else if (resolvedDeckId.startsWith('MIS_') || resolvedDeckId.startsWith('Management')) {
+          resolvedCourseId = 'MS5260' // Management Information Systems
+        }
+      }
+      
+      if (!resolvedCourseId || !resolvedDeckId) {
+        console.warn('Missing course/deck id for feedback', { 
+          resolvedCourseId, 
+          resolvedDeckId, 
+          cardKeys: Object.keys(card || {}),
+          card 
+        })
+        setFeedbackLoading(false)
+        return
+      }
       const newRating = feedbackRating === -1 ? null : -1
       if (newRating === null) {
+        // Toggle off - clear feedback from backend
+        await clearFeedback({ courseId: resolvedCourseId, deckId: resolvedDeckId, index })
         setFeedbackRating(null)
       } else {
-        await submitFeedback({ sessionId, courseId, deckId, index, rating: newRating })
+        // Set or change to dislike
+        await submitFeedback({ sessionId: sessionId || 'standalone', courseId: resolvedCourseId, deckId: resolvedDeckId, index, rating: newRating })
         setFeedbackRating(newRating)
       }
     } catch (error) {
@@ -439,7 +528,7 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
               <svg className="flip-hint-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span className="flip-hint-text">Tap or press Space to reveal answer</span>
+              <span className="flip-hint-text">Tap or Press Space Bar to reveal answer</span>
             </div>
           </div>
         </div>
@@ -563,9 +652,11 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
                   return false;
                 }}
                 disabled={feedbackLoading}
-                title="Like this flashcard"
+                aria-pressed={feedbackRating === 1}
+                aria-label={feedbackRating === 1 ? 'Unlike this flashcard' : 'Like this flashcard'}
+                title={feedbackRating === 1 ? 'Unlike this flashcard' : 'Like this flashcard'}
               >
-                {feedbackLoading && feedbackRating !== -1 ? <div className="btn-spinner"></div> : <FaThumbsUp />}
+                {feedbackLoading ? <div className="btn-spinner"></div> : <FaThumbsUp />}
               </button>
               <button
                 className={`feedback-btn dislike-btn ${feedbackRating === -1 ? 'active' : ''}`}
@@ -577,9 +668,11 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
                   return false;
                 }}
                 disabled={feedbackLoading}
-                title="Dislike this flashcard"
+                aria-pressed={feedbackRating === -1}
+                aria-label={feedbackRating === -1 ? 'Remove dislike from this flashcard' : 'Dislike this flashcard'}
+                title={feedbackRating === -1 ? 'Remove dislike from this flashcard' : 'Dislike this flashcard'}
               >
-                {feedbackLoading && feedbackRating !== 1 ? <div className="btn-spinner"></div> : <FaThumbsDown />}
+                {feedbackLoading ? <div className="btn-spinner"></div> : <FaThumbsDown />}
               </button>
             </div>
           </div>

@@ -1,48 +1,46 @@
 """Feedback API endpoints for flashcard like/dislike tracking."""
 
-from typing import List
-from fastapi import APIRouter, HTTPException, Header, Depends
+from typing import List, Dict, Any
+from fastapi import APIRouter, HTTPException, Depends
 from app.database import get_database
 from app.models.feedback import FlashcardFeedback, FeedbackRequest, FeedbackResponse, UserFeedbackSummary
 from app.config import settings
+from app.firebase_auth import get_current_user
 import logging
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/feedback", tags=["feedback"])
 
-async def get_user_id_from_header(x_user_id: str = Header(..., alias="X-User-ID")) -> str:
-    """Extract user ID from header."""
-    if not x_user_id:
-        raise HTTPException(status_code=400, detail="X-User-ID header is required")
-    return x_user_id
-
-async def ensure_user_exists(user_id: str, db) -> dict:
-    """Ensure user exists in database, create if not. For anonymous users."""
+async def ensure_user_exists(firebase_uid: str, db) -> dict:
+    """Ensure user exists in database, create if not. For Firebase authenticated users."""
+    from datetime import datetime, timezone
     users_collection = db[settings.USERS_COLLECTION]
     
-    # Check if user exists (legacy anonymous user with user_id field)
-    user_doc = await users_collection.find_one({"user_id": user_id})
+    # Check if user exists (Firebase user with firebase_uid field)
+    user_doc = await users_collection.find_one({"firebase_uid": firebase_uid})
     
     if not user_doc:
-        # Create new anonymous user document
-        from datetime import datetime, timezone
+        # Create new Firebase user document
         new_user_doc = {
-            "user_id": user_id,
+            "firebase_uid": firebase_uid,
             "created_at": datetime.now(timezone.utc),
             "last_active": datetime.now(timezone.utc),
             "total_decks_studied": 0,
-            "total_quiz_attempts": 0
+            "total_quiz_attempts": 0,
+            "email": None,
+            "name": None,
+            "picture": None,
+            "email_verified": False
         }
         result = await users_collection.insert_one(new_user_doc)
         
         # Fetch the created user
         user_doc = await users_collection.find_one({"_id": result.inserted_id})
-        logger.info(f"Created new anonymous user: {user_id}")
+        logger.info(f"Created new Firebase user: {firebase_uid}")
     else:
         # Update last_active
-        from datetime import datetime, timezone
         await users_collection.update_one(
-            {"user_id": user_id},
+            {"firebase_uid": firebase_uid},
             {"$set": {"last_active": datetime.now(timezone.utc)}}
         )
     
@@ -51,14 +49,17 @@ async def ensure_user_exists(user_id: str, db) -> dict:
 @router.post("", response_model=FeedbackResponse)
 async def submit_feedback(
     feedback_data: FeedbackRequest,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Submit or update feedback for a flashcard."""
     try:
+        user_id = current_user['uid']
+        logger.info(f"Received feedback submission: {feedback_data.model_dump()}")
+        
         # Validate rating
         if feedback_data.rating not in [1, -1]:
-            raise HTTPException(status_code=400, detail="Rating must be 1 (like) or -1 (dislike)")
+            raise HTTPException(status_code=400, detail="Rating must be 1 (like) or -1 for dislike)")
         
         # Ensure user exists
         await ensure_user_exists(user_id, db)
@@ -140,11 +141,12 @@ async def submit_feedback(
 
 @router.get("/user", response_model=List[UserFeedbackSummary])
 async def get_user_feedback(
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Get all feedback for a user."""
     try:
+        user_id = current_user['uid']
         feedback_collection = db[settings.FLASHCARD_FEEDBACK_COLLECTION]
         
         # Get all feedback for the user
@@ -172,11 +174,12 @@ async def get_user_feedback(
 @router.delete("")
 async def clear_feedback(
     feedback_data: FeedbackRequest,
-    user_id: str = Depends(get_user_id_from_header),
+    current_user: Dict[str, Any] = Depends(get_current_user),
     db = Depends(get_database)
 ):
     """Clear/remove feedback for a specific flashcard."""
     try:
+        user_id = current_user['uid']
         feedback_collection = db[settings.FLASHCARD_FEEDBACK_COLLECTION]
         
         # Find and delete the feedback

@@ -231,7 +231,13 @@
 .pillar-bar-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+}
+
+/* Force layout in case of cascade collisions */
+.exam-readiness-bar .readiness-breakdown .pillar .pillar-bar-container {
+  display: flex !important;
+  align-items: center !important;
 }
 
 .pillar-bar {
@@ -261,12 +267,44 @@
 }
 
 .pillar-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
   font-size: 0.875rem;
-  font-weight: 600;
-  color: #666666;
-  min-width: 48px;
-  text-align: right;
+  font-weight: 700;
+  color: #111827;
+  min-width: 60px;
+  text-align: center;
   white-space: nowrap;
+  padding: 3px 12px;
+  background: #ffffff;
+  border: 1px solid #cfe7d8;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+/* High-specificity style to ensure badge rendering */
+.exam-readiness-bar .readiness-breakdown .pillar .pillar-bar-container .pillar-value {
+  display: inline-block !important;
+  background: #ffffff !important;
+  border: 2px solid #2d7a3e !important;
+  border-radius: 20px !important;
+  padding: 6px 16px !important;
+  font-weight: 800 !important;
+  color: #1a1a1a !important;
+  font-size: 1rem !important;
+  min-width: 70px !important;
+  box-shadow: 0 2px 6px rgba(45, 122, 62, 0.2) !important;
+  margin-left: 12px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 100 !important;
+  line-height: 1.4 !important;
 }
 
 /* Loading Skeleton */
@@ -363,7 +401,8 @@
 
   .pillar-value {
     font-size: 0.8125rem;
-    min-width: 44px;
+    min-width: 54px;
+    padding: 3px 10px;
   }
 }
 

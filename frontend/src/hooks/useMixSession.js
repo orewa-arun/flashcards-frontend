@@ -8,14 +8,18 @@
  * - Handling remediation flow
  */
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { 
-  startMixSession, 
+  startMixSession,
+  getMixSession,
   getNextActivity, 
   submitMixAnswer,
   getMixSessionStatus,
   getDeckExamReadiness
 } from '../api/mixMode';
+
+// LocalStorage key for persisting session ID
+const MIX_SESSION_STORAGE_KEY = 'mix_mode_session_id';
 
 export const useMixSession = () => {
   // Session state
@@ -92,6 +96,10 @@ export const useMixSession = () => {
         currentRound: 1,
       });
       setStatus('active');
+      
+      // Persist session ID to localStorage for refresh recovery
+      localStorage.setItem(MIX_SESSION_STORAGE_KEY, data.session_id);
+      console.log('💾 Session ID saved to localStorage:', data.session_id);
       
       // Fetch initial exam readiness
       await fetchExamReadiness(false);
@@ -232,6 +240,63 @@ export const useMixSession = () => {
   }, [sessionId]);
   
   /**
+   * Resume an existing session from localStorage
+   */
+  const resumeSession = useCallback(async () => {
+    const savedSessionId = localStorage.getItem(MIX_SESSION_STORAGE_KEY);
+    
+    if (!savedSessionId) {
+      console.log('No saved session found in localStorage');
+      return null;
+    }
+    
+    try {
+      setStatus('loading');
+      setError(null);
+      
+      console.log('🔄 Attempting to resume session:', savedSessionId);
+      
+      // Fetch session from backend
+      const sessionData = await getMixSession(savedSessionId);
+      
+      if (!sessionData || sessionData.status === 'completed') {
+        console.log('Session completed or invalid, clearing localStorage');
+        localStorage.removeItem(MIX_SESSION_STORAGE_KEY);
+        setStatus('idle');
+        return null;
+      }
+      
+      // Restore session state
+      setSessionId(sessionData.session_id);
+      setProgress({
+        seenInRound: sessionData.seen_in_current_round,
+        totalFlashcards: sessionData.total_flashcards,
+        currentRound: sessionData.current_round,
+      });
+      setStatus('active');
+      
+      // Store metadata for readiness fetching
+      sessionMetadataRef.current = {
+        courseId: sessionData.course_id,
+        deckIds: sessionData.deck_ids,
+      };
+      
+      // Fetch exam readiness
+      await fetchExamReadiness(false);
+      
+      console.log('✅ Session resumed successfully');
+      return sessionData;
+    } catch (err) {
+      console.error('Failed to resume session:', err);
+      // Clear invalid session from localStorage
+      localStorage.removeItem(MIX_SESSION_STORAGE_KEY);
+      setStatus('idle');
+      setError(null); // Don't show error for failed resume
+      return null;
+    }
+  }, [fetchExamReadiness]);
+  
+  /**
    * Reset the session state
    */
   const resetSession = useCallback(() => {
@@ -248,6 +313,10 @@ export const useMixSession = () => {
     setAnswerFeedback(null);
     setShowFeedback(false);
     previouslyIncorrectRef.current.clear();
+    
+    // Clear localStorage
+    localStorage.removeItem(MIX_SESSION_STORAGE_KEY);
+    console.log('🗑️ Session cleared from localStorage');
   }, []);
   
   /**
@@ -273,6 +342,7 @@ export const useMixSession = () => {
     
     // Actions
     startSession,
+    resumeSession,
     fetchNextActivity,
     submitAnswer,
     fetchSessionStatus,

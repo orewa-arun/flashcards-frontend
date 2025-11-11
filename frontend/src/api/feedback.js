@@ -2,21 +2,7 @@
  * API functions for flashcard feedback management
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
-const API_ENDPOINT = `${API_BASE_URL}/api/v1/feedback`;
-
-/**
- * Get user ID from localStorage or generate a new one
- */
-import { getUserId } from "../utils/userTracking";
-// function getUserId() {
-//   let userId = localStorage.getItem('userId');
-//   if (!userId) {
-//     userId = crypto.randomUUID();
-//     localStorage.setItem('userId', userId);
-//   }
-//   return userId;
-// }
+import { authenticatedPost, authenticatedGet, authenticatedDelete } from '../utils/authenticatedApi';
 
 /**
  * Submit feedback for a flashcard (like or dislike)
@@ -35,26 +21,18 @@ export async function submitFeedback({ sessionId, courseId, deckId, index, ratin
       throw new Error('Rating must be 1 (like) or -1 (dislike)');
     }
 
-    const response = await fetch(API_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-User-ID': getUserId(),
-      },
-      body: JSON.stringify({
-        session_id: sessionId,
-        course_id: courseId,
-        deck_id: deckId,
-        flashcard_index: index,
-        rating: rating,
-      }),
-    });
+    const payload = {
+      session_id: sessionId || 'standalone', // Fallback to 'standalone' if no sessionId
+      course_id: courseId,
+      deck_id: deckId,
+      flashcard_index: index,
+      rating: rating,
+    };
+    
+    console.log('📤 Submitting feedback:', payload);
 
-    if (!response.ok) {
-      throw new Error(`Failed to submit feedback: ${response.status}`);
-    }
+    const data = await authenticatedPost('/api/v1/feedback', payload);
 
-    const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error submitting feedback:', error);
@@ -94,18 +72,7 @@ export async function dislikeFlashcard({ sessionId, courseId, deckId, index }) {
  */
 export async function getUserFeedback() {
   try {
-    const response = await fetch(`${API_ENDPOINT}/user`, {
-      method: 'GET',
-      headers: {
-        'X-User-ID': getUserId(),
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to get user feedback: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await authenticatedGet('/api/v1/feedback/user');
     return data;
   } catch (error) {
     console.error('Error getting user feedback:', error);
@@ -123,29 +90,13 @@ export async function getUserFeedback() {
  */
 export async function clearFeedback({ courseId, deckId, index }) {
   try {
-    const response = await fetch(API_ENDPOINT, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-User-ID': getUserId(),
-      },
-      body: JSON.stringify({
-        course_id: courseId,
-        deck_id: deckId,
-        flashcard_index: index,
-        session_id: '', // Not needed for deletion
-        rating: 0, // Not needed for deletion
-      }),
+    const data = await authenticatedDelete('/api/v1/feedback', {
+      course_id: courseId,
+      deck_id: deckId,
+      flashcard_index: index,
+      session_id: '', // Not needed for deletion
+      rating: 0, // Not needed for deletion
     });
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error('Feedback not found');
-      }
-      throw new Error(`Failed to clear feedback: ${response.status}`);
-    }
-
-    const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error clearing feedback:', error);

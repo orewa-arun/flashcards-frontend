@@ -39,6 +39,11 @@ MAX_COVERAGE_POINTS_PER_FLASHCARD: float = 2.0
 # ===================================================================
 # Points awarded (or subtracted) for getting a question
 # correct or incorrect.
+# 
+# NOTE: The "incorrect" values are used ONLY for momentum calculation,
+# making it engagement-based (same points for any attempt at a given level).
+# The accuracy pillar still differentiates between correct/incorrect
+# using the accuracy_score field calculated separately.
 ACCURACY_POINTS: Dict[str, Dict[str, int]] = {
     "easy":   {"correct": 1, "incorrect": 0},
     "medium": {"correct": 2, "incorrect": 0},
@@ -89,8 +94,8 @@ MIN_ATTEMPTS_FOR_WEAK_DETECTION: int = 1
 # based on the user's Comfortability Score (CS).
 # CS = Average points in last 3 attempts + max(2 - wrong answers in last 3, 0)
 CS_THRESHOLD_EASY_TO_MEDIUM: float = 1.5
-CS_THRESHOLD_MEDIUM_TO_HARD: float = 3.0
-CS_THRESHOLD_HARD_TO_BOSS: float = 4.0
+CS_THRESHOLD_MEDIUM_TO_HARD: float = 2.5
+CS_THRESHOLD_HARD_TO_BOSS: float = 3.5
 
 # ===================================================================
 # DYNAMIC FEEDBACK & RECOMMENDATION MESSAGES

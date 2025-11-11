@@ -5,7 +5,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaExclamationTriangle, FaFilter, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { getWeakFlashcards } from '../api/performance';
-import { getUserProfile } from '../api/profile'; // To get enrolled courses for filter
 import Flashcard from '../components/Flashcard';
 import './WeakConceptsView.css';
 
@@ -21,13 +20,15 @@ const WeakConceptsView = () => {
     const loadData = async () => {
       try {
         setLoading(true);
-        const [profile, weakFlashcards] = await Promise.all([
-          getUserProfile(),
-          getWeakFlashcards()
-        ]);
+        const weakFlashcards = await getWeakFlashcards();
 
-        setEnrolledCourses(profile?.enrolled_courses || []);
+        // Extract unique course IDs from the weak flashcards
+        const uniqueCourses = [...new Set(weakFlashcards.map(fc => fc.course_id))].filter(Boolean);
+        
+        setEnrolledCourses(uniqueCourses);
         setAllWeakFlashcards(weakFlashcards || []);
+        
+        console.log('✅ Loaded weak flashcards from courses:', uniqueCourses);
       } catch (error) {
         console.error('Error loading weak concepts data:', error);
       } finally {

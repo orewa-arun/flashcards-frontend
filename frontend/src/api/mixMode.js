@@ -25,6 +25,22 @@ export const startMixSession = async (courseId, deckIds) => {
 };
 
 /**
+ * Get an existing Mix Mode session by ID
+ * @param {string} sessionId - The session identifier
+ * @returns {Promise} Session data with status, progress, and metadata
+ */
+export const getMixSession = async (sessionId) => {
+  try {
+    const data = await authenticatedGet(`/mix/session/${sessionId}`);
+    console.log('✅ Mix session retrieved:', data);
+    return data;
+  } catch (error) {
+    console.error('❌ Error retrieving mix session:', error);
+    throw error;
+  }
+};
+
+/**
  * Get the next activity in the Mix Mode session
  * @param {string} sessionId - The session identifier
  * @returns {Promise} Activity data (question or flashcard) with progress info, or null if complete
@@ -102,6 +118,7 @@ export const getDeckExamReadiness = async (courseId, deckIds, forceRefresh = fal
 
 export default {
   startMixSession,
+  getMixSession,
   getNextActivity,
   submitMixAnswer,
   getMixSessionStatus,

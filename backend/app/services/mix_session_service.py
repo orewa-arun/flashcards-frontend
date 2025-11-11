@@ -113,6 +113,29 @@ class MixSessionService:
         logger.info(f"Created mix session {session_id} with {len(flashcard_master_order)} flashcards")
         return session_id, len(flashcard_master_order)
     
+    async def get_session(self, session_id: str, user_id: str) -> Optional[MixSession]:
+        """
+        Retrieve an existing session by ID.
+        
+        Args:
+            session_id: Session identifier
+            user_id: Firebase UID (for verification)
+            
+        Returns:
+            MixSession or None if not found
+        """
+        session_doc = await self.sessions_collection.find_one({"session_id": session_id})
+        if not session_doc:
+            return None
+        
+        session = MixSession(**session_doc)
+        
+        # Verify user owns this session
+        if session.user_id != user_id:
+            raise PermissionError("Session does not belong to this user")
+        
+        return session
+    
     async def get_next_activity(self, session_id: str, user_id: str) -> Optional[MixActivityResponse]:
         """
         Get the next activity from the session queue.
@@ -321,9 +344,13 @@ class MixSessionService:
             upsert=True
         )
         
-        # Inject remediation if incorrect and not a follow-up
-        if not is_correct and not is_follow_up:
+        # Inject remediation if user earned 0 points (completely wrong) and not a follow-up
+        # Per spec: "even if partially correct, the user moves on" - so only trigger remediation for 0 points
+        if points_earned <= 0 and not is_follow_up:
+            logger.info(f"🔴 Wrong answer (0 points) - injecting remediation for {flashcard_id}")
             await self._inject_remediation(session_id, flashcard_id, user_id)
+        else:
+            logger.info(f"✅ Answer earned {points_earned} points - no remediation needed")
         
         return MixAnswerResponse(
             is_correct=is_correct,
@@ -341,6 +368,8 @@ class MixSessionService:
             flashcard_id: The flashcard that needs remediation
             user_id: Firebase UID
         """
+        logger.info(f"🔄 Starting remediation injection for flashcard {flashcard_id}")
+        
         # Get the updated question_next_level from flashcard performance
         flashcard_perf = await self.flashcard_perf_collection.find_one({
             "user_id": user_id,
@@ -351,6 +380,9 @@ class MixSessionService:
         if flashcard_perf:
             perf = UserFlashcardPerformance(**flashcard_perf)
             next_level = perf.question_next_level
+            logger.info(f"📊 Flashcard performance found - CS: {perf.comfortability_score:.2f}, next_level: {next_level}")
+        else:
+            logger.warning(f"⚠️ No flashcard performance found for {flashcard_id}, using default level: {next_level}")
         
         # Create remediation activities
         flashcard_review = MixActivity(
@@ -367,8 +399,10 @@ class MixSessionService:
             is_follow_up=True
         )
         
+        logger.info(f"📝 Created remediation activities: flashcard_review + follow_up_question at level {next_level}")
+        
         # Prepend to activity queue
-        await self.sessions_collection.update_one(
+        result = await self.sessions_collection.update_one(
             {"session_id": session_id},
             {
                 "$push": {
@@ -384,7 +418,10 @@ class MixSessionService:
             }
         )
         
-        logger.info(f"Injected remediation for flashcard {flashcard_id} at level {next_level}")
+        if result.modified_count > 0:
+            logger.info(f"✅ Successfully injected remediation for flashcard {flashcard_id} at level {next_level}")
+        else:
+            logger.error(f"❌ Failed to inject remediation - session {session_id} not found or not modified")
     
     async def _generate_next_round(self, session: MixSession):
         """

@@ -70,10 +70,14 @@ async def get_weak_flashcards_with_content(
             content = lecture_flashcards.get(flashcard_id)
             
             if content:
-                # Merge flashcard content first, then add performance data
-                # This ensures flashcard fields (like 'question') are not overwritten
+                # Merge flashcard content first, then add performance and identity fields
+                # Include course_id and lecture_id explicitly for downstream consumers (e.g., feedback)
                 enriched_doc = {
                     **content,  # Flashcard content (question, answers, diagrams, etc.)
+                    # Identity fields
+                    "course_id": course_id,
+                    "lecture_id": lecture_id,
+                    "flashcard_id": flashcard_id,
                     # Add performance-specific fields
                     "performance_by_level": perf_doc_dict.get("performance_by_level"),
                     "recent_attempts": perf_doc_dict.get("recent_attempts"),
@@ -88,6 +92,8 @@ async def get_weak_flashcards_with_content(
                 # If content not found, still include performance data with a flag
                 enriched_doc = {
                     **perf_doc_dict,
+                    "course_id": course_id,
+                    "lecture_id": lecture_id,
                     "is_missing_data": True,
                     "question": "[Missing Data] Flashcard content not found.",
                     "answers": [],

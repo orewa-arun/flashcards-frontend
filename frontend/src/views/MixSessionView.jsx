@@ -34,6 +34,7 @@ const MixSessionView = () => {
     examReadiness,
     readinessLoading,
     startSession,
+    resumeSession,
     fetchNextActivity,
     submitAnswer,
     resetSession,
@@ -56,15 +57,30 @@ const MixSessionView = () => {
     initializedRef.current = true;
     
     try {
-      trackEvent('Mix Mode Started', { courseId, lectureId });
-      const sessionData = await startSession(courseId, [lectureId]);
-      // Pass the session_id explicitly to fetchNextActivity
-      await fetchNextActivity(sessionData.session_id);
+      // First, try to resume an existing session
+      const resumedSession = await resumeSession();
+      
+      if (resumedSession) {
+        console.log('✅ Resumed existing session');
+        trackEvent('Mix Mode Resumed', { 
+          courseId: resumedSession.course_id, 
+          sessionId: resumedSession.session_id 
+        });
+        // Fetch the next activity for the resumed session
+        await fetchNextActivity(resumedSession.session_id);
+      } else {
+        // No existing session, start a new one
+        console.log('🆕 Starting new session');
+        trackEvent('Mix Mode Started', { courseId, lectureId });
+        const sessionData = await startSession(courseId, [lectureId]);
+        // Pass the session_id explicitly to fetchNextActivity
+        await fetchNextActivity(sessionData.session_id);
+      }
     } catch (err) {
       console.error('Failed to initialize session:', err);
       initializedRef.current = false; // Reset on error to allow retry
     }
-  }, [courseId, lectureId, startSession, fetchNextActivity]);
+  }, [courseId, lectureId, startSession, resumeSession, fetchNextActivity]);
   
   // Initialize session on mount
   useEffect(() => {

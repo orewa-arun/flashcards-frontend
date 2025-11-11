@@ -79,6 +79,73 @@ async def start_mix_session(
         )
 
 
+@router.get("/session/{session_id}")
+async def get_session(
+    session_id: str,
+    current_user: dict = Depends(get_current_user),
+    db=Depends(get_database)
+):
+    """
+    Retrieve an existing mix session by ID.
+    
+    Used for resuming sessions after page refresh or app restart.
+    Returns the full session state including progress and current queue.
+    
+    Args:
+        session_id: The session identifier
+        current_user: Firebase user from JWT token
+        db: Database connection
+        
+    Returns:
+        Session details including status, progress, and metadata
+        
+    Raises:
+        HTTPException: If session not found or permission denied
+    """
+    try:
+        user_id = current_user['uid']
+        service = MixSessionService(db)
+        session = await service.get_session(
+            session_id=session_id,
+            user_id=user_id
+        )
+        
+        if not session:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Session not found"
+            )
+        
+        logger.info(f"User {user_id} retrieved session {session_id}")
+        
+        return {
+            "session_id": session.session_id,
+            "course_id": session.course_id,
+            "deck_ids": session.deck_ids,
+            "status": session.status,
+            "current_round": session.current_round,
+            "total_flashcards": len(session.flashcard_master_order),
+            "seen_in_current_round": len(session.seen_in_current_round),
+            "activities_remaining": len(session.activity_queue),
+            "created_at": session.created_at,
+            "last_updated": session.last_updated
+        }
+    except PermissionError as e:
+        logger.error(f"Permission error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=str(e)
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Unexpected error retrieving session: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to retrieve session"
+        )
+
+
 @router.get("/session/{session_id}/next", response_model=Optional[MixActivityResponse])
 async def get_next_activity(
     session_id: str,
