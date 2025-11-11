@@ -83,6 +83,16 @@ WEAK_FLASHCARD_RECOVERY_THRESHOLD: int = 2
 MIN_ATTEMPTS_FOR_WEAK_DETECTION: int = 1
 
 # ===================================================================
+# COMFORTABILITY SCORE & NEXT LEVEL DETERMINATION
+# ===================================================================
+# Thresholds for determining the next recommended question level
+# based on the user's Comfortability Score (CS).
+# CS = Average points in last 3 attempts + max(2 - wrong answers in last 3, 0)
+CS_THRESHOLD_EASY_TO_MEDIUM: float = 1.5
+CS_THRESHOLD_MEDIUM_TO_HARD: float = 3.0
+CS_THRESHOLD_HARD_TO_BOSS: float = 4.0
+
+# ===================================================================
 # DYNAMIC FEEDBACK & RECOMMENDATION MESSAGES
 # ===================================================================
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaChevronRight, FaLayerGroup, FaClipboardCheck } from 'react-icons/fa';
 import { trackEvent } from '../utils/amplitude';
+import MixModeCard from '../components/MixMode/MixModeCard';
 import './LectureDetailView.css';
 
 function LectureDetailView() {
@@ -37,6 +38,11 @@ function LectureDetailView() {
   const handleQuizClick = () => {
     trackEvent('Selected Quiz Mode', { courseId, lectureId });
     navigate(`/courses/${courseId}/${lectureId}/quiz`);
+  };
+
+  const handleMixClick = () => {
+    trackEvent('Selected Mix Mode', { courseId, lectureId });
+    navigate(`/courses/${courseId}/${lectureId}/mix`);
   };
 
   // Format lecture ID for display (e.g., "DAA_lec_1" -> "DAA Lecture 1")
@@ -77,6 +83,9 @@ function LectureDetailView() {
 
         {/* Action Panels */}
         <div className="action-panels">
+          {/* Premium: Mix Mode (Recommended) */}
+          <MixModeCard onClick={handleMixClick} />
+          
           {/* Primary Panel: Study Flashcards */}
           <div className="action-panel primary-panel" onClick={handleStudyClick}>
             <div className="panel-icon primary-icon">

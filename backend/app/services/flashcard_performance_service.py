@@ -31,7 +31,7 @@ class FlashcardPerformanceService:
     for each flashcard.
     """
     
-    def __init__(self, database: AsyncIOMotorDatabase):
+    def __init__(self, database):
         self.db = database
         self.collection = database.user_flashcard_performance
     
@@ -73,6 +73,7 @@ class FlashcardPerformanceService:
         for question_result in question_results:
             flashcard_id = question_result.source_flashcard_id
             is_correct = question_result.is_correct
+            partial_credit = question_result.partial_credit_score
             
             # Fetch or create performance document
             perf_doc = await self.collection.find_one({
@@ -94,17 +95,24 @@ class FlashcardPerformanceService:
             
             # Update performance_by_level
             if level not in performance.performance_by_level:
-                performance.performance_by_level[level] = PerformanceByLevel()
+                performance.performance_by_level[level] = PerformanceByLevel(points=0.0)
             
             performance.performance_by_level[level].attempts += 1
             if is_correct:
                 performance.performance_by_level[level].correct += 1
             
+            # Calculate points earned for this attempt (supports partial credit)
+            points_earned = self._calculate_points_for_attempt(level, is_correct, partial_credit if partial_credit is not None else 0.0)
+            
+            # Add points to performance_by_level
+            performance.performance_by_level[level].points += points_earned
+            
             # Add to recent_attempts (capped)
             new_attempt = RecentAttempt(
                 timestamp=datetime.now(timezone.utc),
                 level=level,
-                is_correct=is_correct
+                is_correct=is_correct,
+                points_earned=points_earned
             )
             performance.recent_attempts.append(new_attempt)
             
@@ -119,8 +127,18 @@ class FlashcardPerformanceService:
             performance.accuracy_score = self._calculate_accuracy_score(
                 performance.performance_by_level
             )
+            # total_points_earned is the same as accuracy_score (cumulative points)
+            performance.total_points_earned = performance.accuracy_score
             performance.momentum_score = self._calculate_momentum_score(
                 performance.recent_attempts
+            )
+            
+            # Calculate Comfortability Score and determine next level
+            performance.comfortability_score = self._calculate_comfortability_score(
+                performance.recent_attempts
+            )
+            performance.question_next_level = self._determine_question_next_level(
+                performance.comfortability_score
             )
             
             # Update weak state
@@ -141,8 +159,10 @@ class FlashcardPerformanceService:
             
             logger.debug(f"Updated performance for flashcard {flashcard_id}: "
                         f"coverage={performance.coverage_score:.2f}, "
-                        f"accuracy={performance.accuracy_score}, "
+                        f"accuracy={performance.accuracy_score:.2f}, "
                         f"momentum={performance.momentum_score:.2f}, "
+                        f"cs={performance.comfortability_score:.2f}, "
+                        f"next_level={performance.question_next_level}, "
                         f"is_weak={performance.is_weak}")
         
         return list(affected_lectures)
@@ -150,6 +170,32 @@ class FlashcardPerformanceService:
     def _map_difficulty_to_level(self, difficulty: str) -> str:
         """Map various difficulty representations to standardized levels."""
         return config.DIFFICULTY_LEVEL_MAP.get(difficulty.lower(), "medium")
+    
+    def _calculate_points_for_attempt(self, level: str, is_correct: bool, partial_credit: float = 0.0) -> float:
+        """
+        Calculate points earned for a single attempt based on level and correctness.
+        Supports partial credit for partially correct answers.
+        
+        Args:
+            level: Difficulty level (easy, medium, hard, boss)
+            is_correct: Whether the answer was fully correct
+            partial_credit: Optional partial credit score (0.0 to 1.0) for MCA questions
+            
+        Returns:
+            Points earned (can be negative for incorrect answers on hard/boss levels, supports decimals)
+        """
+        level_points = config.ACCURACY_POINTS.get(level, {})
+        
+        # If partial credit is provided (non-zero) and it's not a fully correct answer
+        if partial_credit > 0.0 and not is_correct:
+            max_points = level_points.get("correct", 0)
+            return max_points * partial_credit
+        
+        # Otherwise, use standard binary scoring
+        if is_correct:
+            return float(level_points.get("correct", 0))
+        else:
+            return float(level_points.get("incorrect", 0))
     
     def _calculate_coverage_score(self, performance_by_level: Dict[str, PerformanceByLevel]) -> float:
         """
@@ -166,21 +212,18 @@ class FlashcardPerformanceService:
         # Cap at maximum
         return min(total_coverage, config.MAX_COVERAGE_POINTS_PER_FLASHCARD)
     
-    def _calculate_accuracy_score(self, performance_by_level: Dict[str, PerformanceByLevel]) -> int:
+    def _calculate_accuracy_score(self, performance_by_level: Dict[str, PerformanceByLevel]) -> float:
         """
         Calculate accuracy score for a flashcard.
         
-        Formula: Sum of (correct * positive_points + incorrect * negative_points) for each level.
+        Formula: Sum of points earned across all levels (supports partial credit).
         Can be negative.
         """
-        total_accuracy = 0
+        total_accuracy = 0.0
         
         for level, perf in performance_by_level.items():
-            if level in config.ACCURACY_POINTS:
-                correct_points = perf.correct * config.ACCURACY_POINTS[level]["correct"]
-                incorrect = perf.attempts - perf.correct
-                incorrect_points = incorrect * config.ACCURACY_POINTS[level]["incorrect"]
-                total_accuracy += correct_points + incorrect_points
+            # Use the stored points which already accounts for partial credit
+            total_accuracy += perf.points
         
         return total_accuracy
     
@@ -207,14 +250,20 @@ class FlashcardPerformanceService:
             age_days = (now - attempt_ts).total_seconds() / 86400
             decay_factor = math.exp(-math.log(2) * age_days / config.MOMENTUM_HALF_LIFE_DAYS)
             
-            # Get points for this level
+            # Use stored points_earned if available, otherwise calculate from level
+            if hasattr(attempt, 'points_earned') and attempt.points_earned is not None:
+                earned_points = attempt.points_earned
+            else:
+                # Fallback: calculate from level and is_correct (for backward compatibility)
+                level_points = config.ACCURACY_POINTS.get(attempt.level, {})
+                if attempt.is_correct:
+                    earned_points = level_points.get("correct", 1)
+                else:
+                    earned_points = level_points.get("incorrect", 0)
+            
+            # Get max points for this level (for normalization)
             level_points = config.ACCURACY_POINTS.get(attempt.level, {})
             max_points = level_points.get("correct", 1)
-            
-            if attempt.is_correct:
-                earned_points = max_points
-            else:
-                earned_points = level_points.get("incorrect", 0)
             
             weighted_correct += earned_points * decay_factor
             weighted_total += max_points * decay_factor
@@ -226,9 +275,67 @@ class FlashcardPerformanceService:
         momentum = weighted_correct / weighted_total
         return max(0.0, min(1.0, momentum))  # Clamp to [0, 1]
     
+    def _calculate_comfortability_score(self, recent_attempts: List[RecentAttempt]) -> float:
+        """
+        Calculate Comfortability Score (CS) based on recent performance.
+        
+        Formula: Average points_earned in the most recent 3 attempts + max(2 - wrong answers in last 3, 0)
+        
+        Args:
+            recent_attempts: List of recent attempts (already capped)
+            
+        Returns:
+            Comfortability score (float)
+        """
+        if not recent_attempts:
+            return 0.0
+        
+        # Get the last 3 attempts (or fewer if less than 3 exist)
+        last_three = recent_attempts[-3:]
+        
+        # Calculate average points earned
+        total_points = sum(attempt.points_earned for attempt in last_three)
+        avg_points = total_points / len(last_three)
+        
+        # Count wrong answers in last 3 attempts
+        wrong_answers = sum(1 for attempt in last_three if not attempt.is_correct)
+        
+        # Calculate bonus: max(2 - wrong_answers, 0)
+        bonus = max(2 - wrong_answers, 0)
+        
+        # Final CS
+        cs = avg_points + bonus
+        
+        return cs
+    
+    def _determine_question_next_level(self, comfortability_score: float) -> str:
+        """
+        Determine the recommended next question difficulty level based on CS.
+        
+        Thresholds (from config):
+        - CS < 1.5 → 'easy'
+        - 1.5 <= CS < 3.0 → 'medium'
+        - 3.0 <= CS < 4.0 → 'hard'
+        - CS >= 4.0 → 'boss'
+        
+        Args:
+            comfortability_score: The calculated CS value
+            
+        Returns:
+            Recommended level string ('easy', 'medium', 'hard', or 'boss')
+        """
+        if comfortability_score < config.CS_THRESHOLD_EASY_TO_MEDIUM:
+            return 'easy'
+        elif comfortability_score < config.CS_THRESHOLD_MEDIUM_TO_HARD:
+            return 'medium'
+        elif comfortability_score < config.CS_THRESHOLD_HARD_TO_BOSS:
+            return 'hard'
+        else:
+            return 'boss'
+    
     def _determine_weak_state(
         self,
-        accuracy_score: int,
+        accuracy_score: float,
         current_is_weak: bool,
         is_correct: bool
     ) -> bool:

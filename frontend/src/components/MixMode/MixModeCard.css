@@ -1,0 +1,310 @@
+/* ========================================
+   MIX MODE CARD - PREMIUM DESIGN
+   Larger, highlighted, and more prominent
+   ======================================== */
+
+.mix-mode-card {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 3px solid #F39C12;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  grid-column: span 2; /* Takes up 2 columns in grid */
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(243, 156, 18, 0.15);
+}
+
+.mix-mode-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(243, 156, 18, 0.25);
+  border-color: #E67E22;
+}
+
+/* ========================================
+   RECOMMENDED TAG
+   ======================================== */
+
+.recommended-tag {
+  position: absolute;
+  top: 0;
+  right: 32px;
+  z-index: 10;
+}
+
+.recommended-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #F39C12 0%, #E67E22 100%);
+  color: white;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0 0 12px 12px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(243, 156, 18, 0.5);
+  }
+}
+
+/* ========================================
+   CARD CONTENT
+   ======================================== */
+
+.mix-mode-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.mix-mode-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(45, 122, 62, 0.25);
+  transition: all 0.3s ease;
+}
+
+.mix-mode-card:hover .mix-mode-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 32px rgba(45, 122, 62, 0.35);
+}
+
+.mix-mode-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mix-mode-tagline {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #F39C12;
+  margin: 0 0 1.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mix-mode-description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0 0 2rem 0;
+  max-width: 600px;
+}
+
+/* ========================================
+   FEATURES GRID
+   ======================================== */
+
+.mix-mode-features {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mix-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: rgba(45, 122, 62, 0.05);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  border: 2px solid rgba(45, 122, 62, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mix-mode-card:hover .mix-feature {
+  background: rgba(45, 122, 62, 0.1);
+  border-color: rgba(45, 122, 62, 0.3);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+}
+
+.feature-text {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #2d7a3e;
+}
+
+/* ========================================
+   BUTTON
+   ======================================== */
+
+.mix-mode-button {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.125rem 2rem;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(45, 122, 62, 0.3);
+  margin-top: auto;
+}
+
+.mix-mode-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(45, 122, 62, 0.4);
+  background: linear-gradient(135deg, #245c30 0%, #1a4623 100%);
+}
+
+.mix-mode-button:active {
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   GLOW EFFECT
+   ======================================== */
+
+.mix-mode-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mix-mode-card:hover .mix-mode-glow {
+  opacity: 1;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 900px) {
+  .mix-mode-card {
+    grid-column: span 1; /* Takes full width on mobile */
+    min-height: 350px;
+    padding: 2.5rem;
+  }
+  
+  .mix-mode-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+  
+  .mix-mode-title {
+    font-size: 2rem;
+  }
+  
+  .mix-mode-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mix-mode-card {
+    padding: 2rem;
+    min-height: 320px;
+  }
+  
+  .mix-mode-icon {
+    width: 72px;
+    height: 72px;
+    font-size: 2.25rem;
+  }
+  
+  .mix-mode-title {
+    font-size: 1.875rem;
+  }
+  
+  .mix-mode-features {
+    gap: 1rem;
+  }
+  
+  .mix-feature {
+    padding: 0.625rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mix-mode-card {
+    padding: 1.75rem;
+  }
+  
+  .mix-mode-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .mix-mode-title {
+    font-size: 1.75rem;
+  }
+  
+  .mix-mode-tagline {
+    font-size: 1rem;
+  }
+  
+  .mix-mode-description {
+    font-size: 0.9375rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .mix-mode-features {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+  
+  .mix-feature {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .mix-mode-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .recommended-badge {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+}
+

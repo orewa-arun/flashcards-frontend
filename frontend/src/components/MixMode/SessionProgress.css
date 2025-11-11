@@ -1,0 +1,99 @@
+/* ========================================
+   SESSION PROGRESS HEADER
+   ======================================== */
+
+.session-progress-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.progress-info {
+  flex: 1;
+}
+
+.progress-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.round-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d7a3e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.progress-fraction {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #666666;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2d7a3e 0%, #1e5a2c 100%);
+  border-radius: 4px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-percentage {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2d7a3e;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .session-progress-header {
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+  }
+  
+  .progress-percentage {
+    font-size: 1.25rem;
+    min-width: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .session-progress-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .progress-percentage {
+    font-size: 1.5rem;
+    align-self: flex-end;
+  }
+  
+  .round-label {
+    font-size: 0.875rem;
+  }
+  
+  .progress-fraction {
+    font-size: 0.875rem;
+  }
+}
+

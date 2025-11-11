@@ -13,6 +13,7 @@ class PerformanceByLevel(BaseModel):
     """Performance metrics for a specific difficulty level."""
     attempts: int = 0
     correct: int = 0
+    points: float = Field(default=0.0, description="Total points earned at this level (supports partial credit)")
 
 
 class RecentAttempt(BaseModel):
@@ -20,6 +21,7 @@ class RecentAttempt(BaseModel):
     timestamp: datetime
     level: str  # easy, medium, hard, boss
     is_correct: bool
+    points_earned: float = Field(default=0.0, description="Points earned for this attempt (can be negative, supports partial credit). Defaults to 0.0 for backward compatibility.")
 
 
 class UserFlashcardPerformance(BaseModel):
@@ -37,10 +39,10 @@ class UserFlashcardPerformance(BaseModel):
     # Raw performance data
     performance_by_level: Dict[str, PerformanceByLevel] = Field(
         default_factory=lambda: {
-            "easy": PerformanceByLevel(),
-            "medium": PerformanceByLevel(),
-            "hard": PerformanceByLevel(),
-            "boss": PerformanceByLevel()
+            "easy": PerformanceByLevel(points=0.0),
+            "medium": PerformanceByLevel(points=0.0),
+            "hard": PerformanceByLevel(points=0.0),
+            "boss": PerformanceByLevel(points=0.0)
         },
         description="Performance broken down by difficulty level"
     )
@@ -51,12 +53,15 @@ class UserFlashcardPerformance(BaseModel):
     )
     
     # Pre-calculated scores for this flashcard
-    coverage_score: float = Field(0.0, description="Coverage points earned (capped at 2)")
-    accuracy_score: int = Field(0, description="Cumulative accuracy points (can be negative)")
-    momentum_score: float = Field(0.0, description="Time-weighted accuracy score (0-1)")
+    coverage_score: float = Field(default=0.0, description="Coverage points earned (capped at 2)")
+    accuracy_score: float = Field(default=0.0, description="Cumulative accuracy points (can be negative, supports partial credit)")
+    momentum_score: float = Field(default=0.0, description="Time-weighted accuracy score (0-1)")
+    total_points_earned: float = Field(default=0.0, description="Total points earned across all attempts (same as accuracy_score, stored for clarity)")
+    comfortability_score: float = Field(default=0.0, description="Comfortability score based on recent performance")
+    question_next_level: str = Field(default="easy", description="Recommended next question difficulty level (easy, medium, hard, boss)")
     
     # State tracking
-    is_weak: bool = Field(False, description="Whether this flashcard is currently marked as weak")
+    is_weak: bool = Field(default=False, description="Whether this flashcard is currently marked as weak")
     
     last_updated: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     
@@ -74,9 +79,26 @@ class UserFlashcardPerformance(BaseModel):
                     "boss": {"attempts": 1, "correct": 0}
                 },
                 "coverage_score": 2.0,
-                "accuracy_score": 9,
+                "accuracy_score": 9.5,
                 "momentum_score": 0.85,
-                "is_weak": True
+                "total_points_earned": 9.5,
+                "comfortability_score": 3.2,
+                "question_next_level": "hard",
+                "is_weak": True,
+                "recent_attempts": [
+                    {
+                        "timestamp": "2024-01-15T10:30:00Z",
+                        "level": "hard",
+                        "is_correct": True,
+                        "points_earned": 3.0
+                    },
+                    {
+                        "timestamp": "2024-01-15T10:35:00Z",
+                        "level": "hard",
+                        "is_correct": False,
+                        "points_earned": -1.0
+                    }
+                ]
             }
         }
 
@@ -84,20 +106,20 @@ class UserFlashcardPerformance(BaseModel):
 class WeakFlashcard(BaseModel):
     """Summary of a weak flashcard for UI display."""
     flashcard_id: str
-    accuracy_score: int
+    accuracy_score: float
 
 
 class RawScores(BaseModel):
     """Raw aggregated scores before normalization."""
     coverage_total: float = Field(..., description="Sum of all coverage_score values")
-    accuracy_total: int = Field(..., description="Sum of all accuracy_score values")
+    accuracy_total: float = Field(..., description="Sum of all accuracy_score values")
     momentum_total: float = Field(..., description="Sum of all momentum_score values")
 
 
 class MaxPossibleScores(BaseModel):
     """Maximum possible scores for normalization."""
     coverage: float = Field(..., description="Max possible coverage points")
-    accuracy: int = Field(..., description="Max possible accuracy points")
+    accuracy: int = Field(..., description="Max possible accuracy points (always whole number)")
     momentum: float = Field(..., description="Max possible momentum score")
 
 
@@ -141,7 +163,7 @@ class UserExamReadiness(BaseModel):
                 "momentum_factor": 0.65,
                 "raw_scores": {
                     "coverage_total": 45.0,
-                    "accuracy_total": 207,
+                    "accuracy_total": 207.5,
                     "momentum_total": 13.0
                 },
                 "max_possible_scores": {

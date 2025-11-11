@@ -17,7 +17,8 @@ from app.routers import (
     adaptive_quiz,
     timetable,
     profile,
-    performance
+    performance,
+    mix_mode
 )
 from app.firebase_auth import initialize_firebase
 from app.database_indexes import create_indexes
@@ -75,6 +76,7 @@ app.include_router(adaptive_quiz.router)
 app.include_router(timetable.router)
 app.include_router(profile.router)
 app.include_router(performance.router, prefix="/api/v1/performance", tags=["performance"])
+app.include_router(mix_mode.router)
 
 @app.get("/")
 async def root():

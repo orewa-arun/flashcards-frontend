@@ -149,6 +149,90 @@
 }
 
 /* ========================================
+   FLIP HINT (FRONT OF CARD)
+   ======================================== */
+
+.flip-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(45, 122, 62, 0.08) 0%, rgba(45, 122, 62, 0.12) 100%);
+  border: 2px dashed rgba(45, 122, 62, 0.3);
+  border-radius: 12px;
+  animation: pulse-hint 2s ease-in-out infinite;
+}
+
+@keyframes pulse-hint {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+.flip-hint-icon {
+  font-size: 1.5rem;
+  animation: bounce-finger 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce-finger {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.flip-hint-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--brand-green);
+  letter-spacing: 0.02em;
+}
+
+/* Hide flip hint when card is flipped */
+.flashcard.flipped .flip-hint {
+  display: none;
+}
+
+/* Responsive flip hint */
+@media (max-width: 768px) {
+  .flip-hint {
+    padding: 0.875rem 1.25rem;
+    margin-top: 1.5rem;
+  }
+  
+  .flip-hint-icon {
+    font-size: 1.25rem;
+  }
+  
+  .flip-hint-text {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-hint {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-top: 1.25rem;
+  }
+  
+  .flip-hint-text {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}
+
+/* ========================================
    ANSWER SECTION (BACK OF CARD)
    ======================================== */
 

@@ -1,0 +1,464 @@
+/* ========================================
+   MIX SESSION VIEW - MAIN CONTAINER
+   ======================================== */
+
+.mix-session-view {
+  min-height: 100vh;
+  background: #f9f7f3;
+  padding: 100px 2rem 4rem;
+}
+
+.mix-session-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   SESSION HEADER
+   ======================================== */
+
+.mix-session-header {
+  margin-bottom: 2rem;
+}
+
+.exit-button-small {
+  padding: 0.625rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: 2px solid #e5e7eb;
+  background: white;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exit-button-small:hover {
+  border-color: #2d7a3e;
+  color: #2d7a3e;
+  transform: translateX(-4px);
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+
+.mix-loading-container {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.spinner-icon {
+  font-size: 3rem;
+  color: #2d7a3e;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 1.125rem;
+  color: #666666;
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+
+/* ========================================
+   ERROR STATE
+   ======================================== */
+
+.mix-error-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.mix-error-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #E74C3C;
+  margin-bottom: 1rem;
+}
+
+.mix-error-container p {
+  font-size: 1.125rem;
+  color: #666666;
+  margin-bottom: 2rem;
+}
+
+.retry-button,
+.exit-button {
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.retry-button {
+  background: #2d7a3e;
+  color: white;
+  border: none;
+}
+
+.retry-button:hover {
+  background: #245c30;
+  transform: translateY(-2px);
+}
+
+.exit-button {
+  background: white;
+  color: #666666;
+  border: 2px solid #e5e7eb;
+}
+
+.exit-button:hover {
+  border-color: #2d7a3e;
+  color: #2d7a3e;
+}
+
+/* ========================================
+   COMPLETION STATE
+   ======================================== */
+
+.mix-complete-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.complete-icon {
+  font-size: 4rem;
+  color: #27AE60;
+  margin-bottom: 1.5rem;
+  animation: scale-in 0.5s ease-out;
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.complete-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.complete-message {
+  font-size: 1.25rem;
+  color: #666666;
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.complete-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2d7a3e;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.complete-button {
+  padding: 1.125rem 2.5rem;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border: none;
+  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(45, 122, 62, 0.3);
+}
+
+.complete-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(45, 122, 62, 0.4);
+}
+
+/* ========================================
+   QUESTION ACTIVITY
+   ======================================== */
+
+.question-activity-container {
+  margin-bottom: 2rem;
+}
+
+/* ========================================
+   ANSWER FEEDBACK
+   ======================================== */
+
+.answer-feedback {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  animation: slide-up 0.3s ease-out;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.answer-feedback.correct {
+  border-left: 6px solid #27AE60;
+}
+
+.answer-feedback.incorrect {
+  border-left: 6px solid #E74C3C;
+}
+
+.feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.answer-feedback.correct .feedback-icon {
+  background: rgba(39, 174, 96, 0.1);
+  color: #27AE60;
+}
+
+.answer-feedback.incorrect .feedback-icon {
+  background: rgba(231, 76, 60, 0.1);
+  color: #E74C3C;
+}
+
+.feedback-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex: 1;
+}
+
+.answer-feedback.correct .feedback-title {
+  color: #27AE60;
+}
+
+.answer-feedback.incorrect .feedback-title {
+  color: #E74C3C;
+}
+
+.feedback-points {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #666666;
+  padding: 0.5rem 1rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.feedback-content {
+  margin-bottom: 1.5rem;
+}
+
+.feedback-label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-answer {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+}
+
+.next-activity-button {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: none;
+  background: #2d7a3e;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-activity-button:hover {
+  background: #245c30;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 122, 62, 0.3);
+}
+
+/* ========================================
+   SUBMIT BUTTON
+   ======================================== */
+
+.submit-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.submit-answer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.125rem 3rem;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border: none;
+  background: linear-gradient(135deg, #2d7a3e 0%, #1e5a2c 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(45, 122, 62, 0.3);
+}
+
+.submit-answer-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(45, 122, 62, 0.4);
+}
+
+.submit-answer-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner-icon-small {
+  font-size: 1rem;
+  animation: spin 1s linear infinite;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .mix-session-view {
+    padding: 80px 1.5rem 3rem;
+  }
+  
+  .complete-title {
+    font-size: 2rem;
+  }
+  
+  .complete-message {
+    font-size: 1.125rem;
+  }
+  
+  .complete-stats {
+    gap: 2rem;
+  }
+  
+  .stat-value {
+    font-size: 2.5rem;
+  }
+  
+  .answer-feedback {
+    padding: 1.5rem;
+  }
+  
+  .feedback-header {
+    flex-wrap: wrap;
+  }
+  
+  .feedback-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mix-session-view {
+    padding: 70px 1rem 2.5rem;
+  }
+  
+  .complete-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .complete-button,
+  .submit-answer-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .feedback-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .feedback-points {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+}
+

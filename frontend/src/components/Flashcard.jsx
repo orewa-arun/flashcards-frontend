@@ -435,6 +435,10 @@ function Flashcard({ card, courseId, deckId, index, sessionId }) {
           </button>
           <div className="card-content">
             <div className="question-text">{card.question}</div>
+            <div className="flip-hint">
+              <span className="flip-hint-icon">👆</span>
+              <span className="flip-hint-text">Click card or press Tab to reveal answer</span>
+            </div>
           </div>
         </div>
         <div className="flashcard-back">

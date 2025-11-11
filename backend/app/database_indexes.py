@@ -150,6 +150,44 @@ async def create_indexes(db: AsyncIOMotorDatabase):
             else:
                 logger.error(f"Error creating exam readiness indexes: {e}")
         
+        # Mix sessions collection indexes
+        mix_sessions_collection = db.mix_sessions
+        mix_sessions_indexes = [
+            IndexModel([("session_id", ASCENDING)], unique=True, name="session_id_unique"),
+            IndexModel([("user_id", ASCENDING), ("status", ASCENDING)], name="user_status_index"),
+            IndexModel([("user_id", ASCENDING)], name="user_id_mix_sessions_index"),
+            IndexModel([("created_at", ASCENDING)], name="mix_sessions_created_at_index"),
+            IndexModel([("last_updated", ASCENDING)], name="mix_sessions_updated_index")
+        ]
+        
+        try:
+            await mix_sessions_collection.create_indexes(mix_sessions_indexes)
+            logger.info("✅ Created indexes for mix_sessions collection")
+        except OperationFailure as e:
+            if "already exists" in str(e):
+                logger.info("Mix sessions collection indexes already exist")
+            else:
+                logger.error(f"Error creating mix sessions indexes: {e}")
+        
+        # User question performance collection indexes
+        question_perf_collection = db.user_question_performance
+        question_perf_indexes = [
+            IndexModel([("user_id", ASCENDING), ("question_content_hash", ASCENDING)], 
+                      unique=True, name="user_question_unique"),
+            IndexModel([("user_id", ASCENDING)], name="user_id_question_perf_index"),
+            IndexModel([("flashcard_id", ASCENDING)], name="flashcard_id_question_perf_index"),
+            IndexModel([("last_attempted", ASCENDING)], name="question_perf_last_attempted_index")
+        ]
+        
+        try:
+            await question_perf_collection.create_indexes(question_perf_indexes)
+            logger.info("✅ Created indexes for user_question_performance collection")
+        except OperationFailure as e:
+            if "already exists" in str(e):
+                logger.info("User question performance collection indexes already exist")
+            else:
+                logger.error(f"Error creating question performance indexes: {e}")
+        
         logger.info("🎉 Database indexing completed successfully!")
         
     except Exception as e:
