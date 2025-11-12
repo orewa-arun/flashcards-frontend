@@ -139,3 +139,18 @@ class DeckReadinessRequest(BaseModel):
     deck_ids: List[str] = Field(..., description="List of deck/lecture IDs")
     force_refresh: bool = Field(default=False, description="Force recalculation, bypassing cache")
 
+
+class MixRevealRequest(BaseModel):
+    """Request model for revealing an answer without recording performance."""
+    flashcard_id: str = Field(..., description="The flashcard ID this question belongs to")
+    question_hash: str = Field(..., description="Hash of the question text")
+    level: str = Field(..., description="Question difficulty level")
+    is_follow_up: bool = Field(default=False, description="Whether this was a follow-up question")
+
+
+class MixRevealResponse(BaseModel):
+    """Response model for revealing an answer."""
+    correct_answer: str | List[str] = Field(..., description="The correct answer")
+    explanation: Optional[str] = Field(None, description="Explanation of the answer")
+    remediation_injected: bool = Field(..., description="Whether remediation (flashcard + follow-up) was injected")
+

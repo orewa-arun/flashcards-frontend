@@ -70,7 +70,7 @@ MOMENTUM_RECENT_ATTEMPTS_LIMIT: int = 20
 ESTIMATED_QUESTIONS_PER_FLASHCARD: Dict[str, int] = {
     "easy": 2,
     "medium": 2,
-    "hard": 1,
+    "hard": 2,
     "boss": 1,
 }
 
@@ -95,12 +95,12 @@ MIN_ATTEMPTS_FOR_WEAK_DETECTION: int = 1
 # CS = Average points in last 3 attempts + max(2 - wrong answers in last 3, 0)
 CS_THRESHOLD_EASY_TO_MEDIUM: float = 1.5
 CS_THRESHOLD_MEDIUM_TO_HARD: float = 2.5
-CS_THRESHOLD_HARD_TO_BOSS: float = 3.5
+CS_THRESHOLD_HARD_TO_BOSS: float = 4.5
 
 # ===================================================================
 # DYNAMIC FEEDBACK & RECOMMENDATION MESSAGES
 # ===================================================================
-
+ 
 # --- POST-QUIZ FEEDBACK ---
 # Triggered immediately after a quiz is submitted.
 # Based on the score percentage and difficulty of that single quiz.

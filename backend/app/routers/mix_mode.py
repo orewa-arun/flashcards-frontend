@@ -12,6 +12,8 @@ from app.models.mix_session import (
     MixActivityResponse,
     MixAnswerSubmission,
     MixAnswerResponse,
+    MixRevealRequest,
+    MixRevealResponse,
     DeckReadinessRequest
 )
 from app.models.readiness_v2 import UserExamReadiness
@@ -311,6 +313,74 @@ async def submit_answer(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to submit answer"
+        )
+
+
+@router.post("/session/{session_id}/reveal", response_model=MixRevealResponse)
+async def reveal_answer(
+    session_id: str,
+    reveal: MixRevealRequest,
+    current_user: dict = Depends(get_current_user),
+    db=Depends(get_database)
+):
+    """
+    Reveal the answer to a question without recording performance.
+    
+    This endpoint:
+    - Returns the correct answer and explanation
+    - Removes the question from asked_question_hashes (allowing it to reappear)
+    - Injects remediation (flashcard review + follow-up question) if not a follow-up
+    - Does NOT record any performance tracking (no points, no accuracy impact)
+    
+    Args:
+        session_id: The session identifier
+        reveal: Reveal request with question details
+        current_user: Firebase user from JWT token
+        db: Database connection
+        
+    Returns:
+        MixRevealResponse with correct answer, explanation, and remediation status
+        
+    Raises:
+        HTTPException: If session not found or question not found
+    """
+    try:
+        user_id = current_user['uid']
+        service = MixSessionService(db)
+        
+        result = await service.reveal_answer(
+            session_id=session_id,
+            user_id=user_id,
+            flashcard_id=reveal.flashcard_id,
+            question_hash=reveal.question_hash,
+            level=reveal.level,
+            is_follow_up=reveal.is_follow_up
+        )
+        
+        logger.info(
+            f"User {user_id} revealed answer in session {session_id}: "
+            f"flashcard {reveal.flashcard_id}, "
+            f"remediation_injected={result.remediation_injected}"
+        )
+        
+        return result
+    except ValueError as e:
+        logger.error(f"Error revealing answer: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+    except PermissionError as e:
+        logger.error(f"Permission error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=str(e)
+        )
+    except Exception as e:
+        logger.error(f"Unexpected error revealing answer: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to reveal answer"
         )
 
 

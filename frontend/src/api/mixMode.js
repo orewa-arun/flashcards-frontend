@@ -79,6 +79,27 @@ export const submitMixAnswer = async (sessionId, answerData) => {
 };
 
 /**
+ * Reveal the answer to a question without recording performance
+ * @param {string} sessionId - The session identifier
+ * @param {Object} revealData - Reveal request data
+ * @param {string} revealData.flashcard_id - The flashcard ID
+ * @param {string} revealData.question_hash - Hash of the question
+ * @param {string} revealData.level - Question difficulty level
+ * @param {boolean} revealData.is_follow_up - Whether this was a follow-up question
+ * @returns {Promise} Reveal response with correct_answer, explanation, and remediation_injected
+ */
+export const revealMixAnswer = async (sessionId, revealData) => {
+  try {
+    const data = await authenticatedPost(`/mix/session/${sessionId}/reveal`, revealData);
+    console.log('✅ Answer revealed:', data);
+    return data;
+  } catch (error) {
+    console.error('❌ Error revealing answer:', error);
+    throw error;
+  }
+};
+
+/**
  * Get the current status of a Mix Mode session
  * @param {string} sessionId - The session identifier
  * @returns {Promise} Session status and progress information
@@ -121,6 +142,7 @@ export default {
   getMixSession,
   getNextActivity,
   submitMixAnswer,
+  revealMixAnswer,
   getMixSessionStatus,
   getDeckExamReadiness,
 };

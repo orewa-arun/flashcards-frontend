@@ -17,7 +17,8 @@ from app.models.mix_session import (
     MixActivity,
     UserQuestionPerformance,
     MixActivityResponse,
-    MixAnswerResponse
+    MixAnswerResponse,
+    MixRevealResponse
 )
 from app.models.readiness_v2 import UserFlashcardPerformance
 from app.models.adaptive_quiz import QuestionResult
@@ -75,10 +76,12 @@ class MixSessionService:
         if not all_flashcards:
             raise ValueError(f"No flashcards found for decks: {deck_ids}")
         
-        # Sort by relevance_score (highest first)
+        # Sort by relevance_score (highest first), then by flashcard_id (ascending) for consistent ordering
         all_flashcards.sort(
-            key=lambda fc: fc.get("relevance_score", {}).get("score", 0),
-            reverse=True
+            key=lambda fc: (
+                -fc.get("relevance_score", {}).get("score", 0),  # Negative for descending order
+                fc.get("flashcard_id", "")  # Secondary sort by ID (ascending)
+            )
         )
         
         # Create master order
@@ -725,6 +728,115 @@ class MixSessionService:
         
         is_correct = str(user_answer).strip().lower() == str(correct_answer).strip().lower()
         return is_correct, None
+    
+    async def reveal_answer(
+        self,
+        session_id: str,
+        user_id: str,
+        flashcard_id: str,
+        question_hash: str,
+        level: str,
+        is_follow_up: bool
+    ) -> MixRevealResponse:
+        """
+        Reveal answer without recording performance.
+        Still triggers remediation if not a follow-up question.
+        
+        Args:
+            session_id: Session identifier
+            user_id: Firebase UID
+            flashcard_id: The flashcard ID
+            question_hash: Hash of the question
+            level: Question difficulty level
+            is_follow_up: Whether this was a follow-up question
+            
+        Returns:
+            MixRevealResponse with correct answer and remediation status
+        """
+        # Retrieve session
+        session_doc = await self.sessions_collection.find_one({"session_id": session_id})
+        if not session_doc:
+            raise ValueError(f"Session {session_id} not found")
+        
+        session = MixSession(**session_doc)
+        
+        # Verify user owns this session
+        if session.user_id != user_id:
+            raise PermissionError("Session does not belong to this user")
+        
+        # Load question to get correct answer and explanation
+        question = await self._load_question_by_hash(
+            session.course_id,
+            flashcard_id,
+            level,
+            question_hash
+        )
+        
+        if not question:
+            raise ValueError(f"Question not found for hash {question_hash}")
+        
+        correct_answer = question.get("correct_answer")
+        explanation = question.get("explanation")
+        
+        # Remove question_hash from asked_question_hashes (allows reappearance)
+        await self.sessions_collection.update_one(
+            {"session_id": session_id},
+            {"$pull": {"asked_question_hashes": question_hash}}
+        )
+        logger.info(f"🔍 Removed question_hash {question_hash} from asked_question_hashes")
+        
+        # Inject remediation if not a follow-up question
+        remediation_injected = False
+        if not is_follow_up:
+            logger.info(f"🔄 Injecting remediation for revealed answer on flashcard {flashcard_id}")
+            await self._inject_remediation(session_id, flashcard_id, user_id)
+            remediation_injected = True
+        else:
+            logger.info(f"⏭️ Skipping remediation - this was a follow-up question")
+        
+        return MixRevealResponse(
+            correct_answer=correct_answer,
+            explanation=explanation,
+            remediation_injected=remediation_injected
+        )
+    
+    async def _load_question_by_hash(
+        self,
+        course_id: str,
+        flashcard_id: str,
+        level: str,
+        question_hash: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Load a specific question by its hash.
+        
+        Args:
+            course_id: Course identifier
+            flashcard_id: Flashcard identifier
+            level: Question difficulty level
+            question_hash: Hash of the question text
+            
+        Returns:
+            Question dict or None if not found
+        """
+        # Load all questions for this level
+        questions = await self._load_questions_for_level(course_id, flashcard_id, level)
+        
+        if not questions:
+            return None
+        
+        # Filter questions by flashcard_id
+        flashcard_questions = [
+            q for q in questions
+            if q.get("source_flashcard_id") == flashcard_id
+        ]
+        
+        # Find question by hash
+        for q in flashcard_questions:
+            if self._hash_question(q["question_text"]) == question_hash:
+                return q
+        
+        return None
     
     def _calculate_points(self, level: str, is_correct: bool, partial_credit: Optional[float]) -> float:
         """Calculate points earned for an answer."""

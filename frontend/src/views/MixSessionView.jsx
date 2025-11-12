@@ -31,14 +31,18 @@ const MixSessionView = () => {
     progress,
     answerFeedback,
     showFeedback,
+    revealedAnswer,
+    isRevealed,
     examReadiness,
     readinessLoading,
     startSession,
     resumeSession,
     fetchNextActivity,
     submitAnswer,
+    revealAnswer,
     resetSession,
     hideFeedback,
+    hideRevealed,
     isLoading,
     isActive,
     isCompleted,
@@ -49,6 +53,7 @@ const MixSessionView = () => {
   
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isRevealing, setIsRevealing] = useState(false);
   const initializedRef = useRef(false);
   
   // Memoized initialization function
@@ -111,8 +116,29 @@ const MixSessionView = () => {
     }
   };
   
+  const handleRevealAnswer = async () => {
+    if (isRevealing || isRevealed) return;
+    
+    try {
+      setIsRevealing(true);
+      trackEvent('Mix Answer Revealed', { 
+        courseId, 
+        lectureId, 
+        level: currentActivity?.level,
+        isFollowUp: currentActivity?.is_follow_up || false
+      });
+      
+      await revealAnswer();
+      setIsRevealing(false);
+    } catch (err) {
+      console.error('Failed to reveal answer:', err);
+      setIsRevealing(false);
+    }
+  };
+  
   const handleNextActivity = async () => {
     hideFeedback();
+    hideRevealed();
     setSelectedAnswer(null);
     
     try {
@@ -237,6 +263,29 @@ const MixSessionView = () => {
         
         {isQuestion && currentActivity?.question && (
           <div className="question-activity-container">
+            {/* Reveal Answer Button - Above Question */}
+            {!showFeedback && !isRevealed && (
+              <div className="reveal-button-container">
+                <button
+                  className="reveal-answer-link"
+                  onClick={handleRevealAnswer}
+                  disabled={isRevealing || isSubmitting}
+                >
+                  {isRevealing ? (
+                    <>
+                      <FaSpinner className="spinner-icon-small" />
+                      Revealing...
+                    </>
+                  ) : (
+                    <>
+                      <span className="reveal-icon">👁️</span>
+                      Reveal Answer
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+            
             <QuestionCard
               question={currentActivity.question}
               level={currentActivity.level}
@@ -245,7 +294,7 @@ const MixSessionView = () => {
               userAnswer={selectedAnswer}
               onAnswerChange={handleAnswerChange}
               showFeedback={showFeedback}
-              disabled={showFeedback || isSubmitting}
+              disabled={showFeedback || isSubmitting || isRevealed}
             />
             
             {/* Answer Feedback */}
@@ -295,8 +344,54 @@ const MixSessionView = () => {
               </div>
             )}
             
+            {/* Revealed Answer Display */}
+            {isRevealed && revealedAnswer && (
+              <div className="answer-revealed-container">
+                <div className="revealed-header">
+                  <span className="revealed-icon">👁️</span>
+                  <span className="revealed-title">Answer Revealed</span>
+                </div>
+                
+                <div className="revealed-content">
+                  <p className="revealed-label">Correct Answer:</p>
+                  <p className="revealed-answer">
+                    {Array.isArray(revealedAnswer.correctAnswer) 
+                      ? revealedAnswer.correctAnswer.join(', ') 
+                      : revealedAnswer.correctAnswer}
+                  </p>
+                </div>
+                
+                {/* Explanation */}
+                {revealedAnswer.explanation && (
+                  <div className="revealed-explanation">
+                    <h4 className="explanation-title">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="explanation-icon">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                        <path d="M12 16v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                        <circle cx="12" cy="8" r="1" fill="currentColor"/>
+                      </svg>
+                      Explanation
+                    </h4>
+                    <p className="explanation-text">{revealedAnswer.explanation}</p>
+                  </div>
+                )}
+                
+                {/* Remediation message */}
+                {revealedAnswer.remediationInjected && (
+                  <div className="remediation-message">
+                    <span className="remediation-icon">📚</span>
+                    <span className="remediation-text">Reviewing flashcard next...</span>
+                  </div>
+                )}
+                
+                <button className="next-activity-button" onClick={handleNextActivity}>
+                  Continue →
+                </button>
+              </div>
+            )}
+            
             {/* Submit Button */}
-            {!showFeedback && (
+            {!showFeedback && !isRevealed && (
               <div className="submit-container">
                 <button
                   className="submit-answer-button"

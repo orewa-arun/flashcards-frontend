@@ -14,6 +14,7 @@ import {
   getMixSession,
   getNextActivity, 
   submitMixAnswer,
+  revealMixAnswer,
   getMixSessionStatus,
   getDeckExamReadiness
 } from '../api/mixMode';
@@ -41,6 +42,10 @@ export const useMixSession = () => {
   // Answer feedback
   const [answerFeedback, setAnswerFeedback] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  
+  // Reveal answer state
+  const [revealedAnswer, setRevealedAnswer] = useState(null);
+  const [isRevealed, setIsRevealed] = useState(false);
   
   // Exam readiness state
   const [examReadiness, setExamReadiness] = useState(null);
@@ -129,6 +134,8 @@ export const useMixSession = () => {
       setError(null);
       setShowFeedback(false);
       setAnswerFeedback(null);
+      setIsRevealed(false);
+      setRevealedAnswer(null);
       
       const data = await getNextActivity(activeSessionId);
       
@@ -223,6 +230,41 @@ export const useMixSession = () => {
   }, [sessionId, currentActivity, activityType, fetchExamReadiness]);
   
   /**
+   * Reveal answer without recording performance
+   */
+  const revealAnswer = useCallback(async () => {
+    if (!sessionId || !currentActivity || activityType !== 'question') {
+      throw new Error('No active question to reveal');
+    }
+    
+    try {
+      const question = currentActivity.question;
+      
+      const revealData = {
+        flashcard_id: currentActivity.flashcard_id,
+        question_hash: question.question_hash,
+        level: currentActivity.level,
+        is_follow_up: currentActivity.is_follow_up || false,
+      };
+      
+      const result = await revealMixAnswer(sessionId, revealData);
+      
+      setRevealedAnswer({
+        correctAnswer: result.correct_answer,
+        explanation: result.explanation,
+        remediationInjected: result.remediation_injected,
+      });
+      setIsRevealed(true);
+      
+      return result;
+    } catch (err) {
+      console.error('Error revealing answer:', err);
+      setError(err.message || 'Failed to reveal answer');
+      throw err;
+    }
+  }, [sessionId, currentActivity, activityType]);
+  
+  /**
    * Get session status (for resuming)
    */
   const fetchSessionStatus = useCallback(async () => {
@@ -312,6 +354,8 @@ export const useMixSession = () => {
     });
     setAnswerFeedback(null);
     setShowFeedback(false);
+    setIsRevealed(false);
+    setRevealedAnswer(null);
     previouslyIncorrectRef.current.clear();
     
     // Clear localStorage
@@ -325,6 +369,16 @@ export const useMixSession = () => {
   const hideFeedback = useCallback(() => {
     setShowFeedback(false);
     setAnswerFeedback(null);
+    setIsRevealed(false);
+    setRevealedAnswer(null);
+  }, []);
+  
+  /**
+   * Hide revealed answer and prepare for next activity
+   */
+  const hideRevealed = useCallback(() => {
+    setIsRevealed(false);
+    setRevealedAnswer(null);
   }, []);
   
   return {
@@ -337,6 +391,8 @@ export const useMixSession = () => {
     progress,
     answerFeedback,
     showFeedback,
+    revealedAnswer,
+    isRevealed,
     examReadiness,
     readinessLoading,
     
@@ -345,10 +401,12 @@ export const useMixSession = () => {
     resumeSession,
     fetchNextActivity,
     submitAnswer,
+    revealAnswer,
     fetchSessionStatus,
     fetchExamReadiness,
     resetSession,
     hideFeedback,
+    hideRevealed,
     
     // Computed values
     isLoading: status === 'loading',
