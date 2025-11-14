@@ -443,6 +443,59 @@ async def get_session_status(
         )
 
 
+@router.get("/flashcard/{course_id}/{flashcard_id}")
+async def get_flashcard_reference(
+    course_id: str,
+    flashcard_id: str,
+    current_user: dict = Depends(get_current_user),
+    db=Depends(get_database)
+):
+    """
+    Get flashcard content for reference during Mix Mode questions.
+    
+    This endpoint allows users to view the associated flashcard while
+    answering a question, providing on-demand context without breaking
+    the adaptive quiz flow.
+    
+    Args:
+        course_id: Course identifier
+        flashcard_id: Flashcard identifier
+        current_user: Firebase user from JWT token
+        db: Database connection
+        
+    Returns:
+        Full flashcard content including front, back, diagrams, etc.
+        
+    Raises:
+        HTTPException: If flashcard not found
+    """
+    try:
+        service = MixSessionService(db)
+        
+        flashcard = await service.get_flashcard_for_reference(
+            course_id=course_id,
+            flashcard_id=flashcard_id
+        )
+        
+        if not flashcard:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Flashcard {flashcard_id} not found"
+            )
+        
+        logger.info(f"User {current_user['uid']} referenced flashcard {flashcard_id}")
+        
+        return flashcard
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error fetching flashcard reference: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to fetch flashcard"
+        )
+
+
 @router.post("/deck-readiness", response_model=UserExamReadiness)
 async def get_deck_exam_readiness(
     request: DeckReadinessRequest,

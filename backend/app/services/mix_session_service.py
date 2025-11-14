@@ -362,6 +362,24 @@ class MixSessionService:
             points_earned=points_earned
         )
     
+    async def get_flashcard_for_reference(
+        self,
+        course_id: str,
+        flashcard_id: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Get flashcard content for reference/display purposes.
+        Public method that can be called from API endpoints.
+        
+        Args:
+            course_id: Course identifier
+            flashcard_id: Flashcard identifier
+            
+        Returns:
+            Full flashcard content or None if not found
+        """
+        return await self._load_flashcard_content(course_id, flashcard_id)
+    
     async def _inject_remediation(self, session_id: str, flashcard_id: str, user_id: str):
         """
         Inject remediation activities (flashcard review + follow-up question) to the front of the queue.

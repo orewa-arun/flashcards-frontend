@@ -494,7 +494,7 @@
   background: white;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  z-index: 10001;
   overflow: hidden;
   animation: modalScaleIn 0.3s ease;
 }
@@ -506,7 +506,7 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 999;
+  z-index: 10000;
   backdrop-filter: blur(4px);
 }
 

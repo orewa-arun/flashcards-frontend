@@ -10,12 +10,13 @@
 
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FaSpinner, FaCheckCircle } from 'react-icons/fa';
+import { FaSpinner, FaCheckCircle, FaTimes } from 'react-icons/fa';
 import { trackEvent } from '../utils/amplitude';
 import { useMixSession } from '../hooks/useMixSession';
 import ExamReadinessBar from '../components/MixMode/ExamReadinessBar';
 import QuestionCard from '../components/MixMode/QuestionCard';
 import FlashcardView from '../components/MixMode/FlashcardView';
+import Flashcard from '../components/Flashcard';
 import './MixSessionView.css';
 
 const MixSessionView = () => {
@@ -35,6 +36,9 @@ const MixSessionView = () => {
     isRevealed,
     examReadiness,
     readinessLoading,
+    isReferralModalOpen,
+    referralFlashcardContent,
+    isFetchingReferralFlashcard,
     startSession,
     resumeSession,
     fetchNextActivity,
@@ -43,6 +47,8 @@ const MixSessionView = () => {
     resetSession,
     hideFeedback,
     hideRevealed,
+    referFlashcard,
+    closeReferralModal,
     isLoading,
     isActive,
     isCompleted,
@@ -263,9 +269,27 @@ const MixSessionView = () => {
         
         {isQuestion && currentActivity?.question && (
           <div className="question-activity-container">
-            {/* Reveal Answer Button - Above Question */}
+            {/* Action Buttons - Above Question */}
             {!showFeedback && !isRevealed && (
-              <div className="reveal-button-container">
+              <div className="question-action-buttons">
+                <button
+                  className="refer-flashcard-button"
+                  onClick={referFlashcard}
+                  disabled={isFetchingReferralFlashcard || isSubmitting}
+                >
+                  {isFetchingReferralFlashcard ? (
+                    <>
+                      <FaSpinner className="spinner-icon-small" />
+                      Loading...
+                    </>
+                  ) : (
+                    <>
+                      <span className="refer-icon">📚</span>
+                      Refer Flashcard
+                    </>
+                  )}
+                </button>
+                
                 <button
                   className="reveal-answer-link"
                   onClick={handleRevealAnswer}
@@ -410,6 +434,37 @@ const MixSessionView = () => {
                 </button>
               </div>
             )}
+          </div>
+        )}
+        
+        {/* Flashcard Reference Modal */}
+        {isReferralModalOpen && referralFlashcardContent && (
+          <div className="flashcard-modal-overlay" onClick={closeReferralModal}>
+            <div className="flashcard-modal-content" onClick={(e) => e.stopPropagation()}>
+              <div className="flashcard-modal-header">
+                <h3 className="flashcard-modal-title">Reference: Flashcard</h3>
+                <button 
+                  className="flashcard-modal-close"
+                  onClick={closeReferralModal}
+                  aria-label="Close modal"
+                >
+                  <FaTimes />
+                </button>
+              </div>
+              
+              <div className="flashcard-modal-body">
+                <div className="flashcard-reference-note">
+                  💡 <strong>Tip:</strong> Click the card to flip between question and answer
+                </div>
+                <Flashcard
+                  card={referralFlashcardContent}
+                  courseId={courseId}
+                  deckId={lectureId}
+                  index={0}
+                  sessionId={null}
+                />
+              </div>
+            </div>
           </div>
         )}
       </div>

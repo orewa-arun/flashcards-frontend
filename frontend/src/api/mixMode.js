@@ -137,6 +137,23 @@ export const getDeckExamReadiness = async (courseId, deckIds, forceRefresh = fal
   }
 };
 
+/**
+ * Get flashcard content for reference during a question
+ * @param {string} courseId - Course identifier (e.g., "MS5150")
+ * @param {string} flashcardId - Flashcard identifier (e.g., "SI_lec_1_15")
+ * @returns {Promise} Full flashcard content with front, back, diagrams, etc.
+ */
+export const getFlashcardReference = async (courseId, flashcardId) => {
+  try {
+    const data = await authenticatedGet(`/mix/flashcard/${courseId}/${flashcardId}`);
+    console.log('✅ Flashcard reference fetched:', data);
+    return data;
+  } catch (error) {
+    console.error('❌ Error fetching flashcard reference:', error);
+    throw error;
+  }
+};
+
 export default {
   startMixSession,
   getMixSession,
@@ -145,5 +162,6 @@ export default {
   revealMixAnswer,
   getMixSessionStatus,
   getDeckExamReadiness,
+  getFlashcardReference,
 };
 

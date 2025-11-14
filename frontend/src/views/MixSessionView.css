@@ -428,17 +428,59 @@
 }
 
 /* ========================================
-   REVEAL ANSWER BUTTON (Above Question)
-   Aligned with brand green logo
+   ACTION BUTTONS (Above Question)
    ======================================== */
 
-.reveal-button-container {
+.question-action-buttons {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1.25rem;
   padding: 0 0.5rem;
 }
 
+/* Refer Flashcard Button */
+.refer-flashcard-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #7c3aed;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+.refer-flashcard-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+  border-color: #6d28d9;
+}
+
+.refer-flashcard-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+}
+
+.refer-flashcard-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.refer-icon {
+  font-size: 1.125rem;
+}
+
+/* Reveal Answer Button */
 .reveal-answer-link {
   display: inline-flex;
   align-items: center;
@@ -659,6 +701,154 @@
     width: 100%;
     text-align: center;
     margin-top: 0.5rem;
+  }
+}
+
+/* ========================================
+   FLASHCARD REFERENCE MODAL
+   ======================================== */
+
+.flashcard-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 2rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.flashcard-modal-content {
+  background: white;
+  border-radius: 20px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.flashcard-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid #e5e7eb;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  border-radius: 20px 20px 0 0;
+}
+
+.flashcard-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.flashcard-modal-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.flashcard-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.flashcard-modal-body {
+  padding: 2rem;
+}
+
+.flashcard-reference-note {
+  background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+  border-left: 4px solid #f97316;
+  padding: 0.875rem 1.25rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  color: #7c2d12;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flashcard-reference-note strong {
+  color: #9a3412;
+}
+
+/* Mobile responsive for modal */
+@media (max-width: 768px) {
+  .flashcard-modal-overlay {
+    padding: 1rem;
+  }
+  
+  .flashcard-modal-content {
+    max-height: 85vh;
+  }
+  
+  .flashcard-modal-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .flashcard-modal-title {
+    font-size: 1.25rem;
+  }
+  
+  .flashcard-modal-body {
+    padding: 1.5rem;
+  }
+  
+  .flashcard-reference-note {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .question-action-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .refer-flashcard-button,
+  .reveal-answer-link {
+    width: 100%;
+    justify-content: center;
   }
 }
 

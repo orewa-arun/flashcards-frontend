@@ -16,7 +16,8 @@ import {
   submitMixAnswer,
   revealMixAnswer,
   getMixSessionStatus,
-  getDeckExamReadiness
+  getDeckExamReadiness,
+  getFlashcardReference
 } from '../api/mixMode';
 
 // LocalStorage key for persisting session ID
@@ -50,6 +51,11 @@ export const useMixSession = () => {
   // Exam readiness state
   const [examReadiness, setExamReadiness] = useState(null);
   const [readinessLoading, setReadinessLoading] = useState(false);
+  
+  // Flashcard reference modal state
+  const [isReferralModalOpen, setIsReferralModalOpen] = useState(false);
+  const [referralFlashcardContent, setReferralFlashcardContent] = useState(null);
+  const [isFetchingReferralFlashcard, setIsFetchingReferralFlashcard] = useState(false);
   
   // Store courseId and deckIds for readiness fetching
   const sessionMetadataRef = useRef({ courseId: null, deckIds: [] });
@@ -381,6 +387,47 @@ export const useMixSession = () => {
     setRevealedAnswer(null);
   }, []);
   
+  /**
+   * Refer to flashcard - fetch and display flashcard in modal
+   */
+  const referFlashcard = useCallback(async () => {
+    if (!currentActivity || activityType !== 'question') {
+      console.warn('Cannot refer flashcard: no active question');
+      return;
+    }
+    
+    const { courseId } = sessionMetadataRef.current;
+    const flashcardId = currentActivity.flashcard_id;
+    
+    if (!courseId || !flashcardId) {
+      console.error('Missing courseId or flashcardId for referral');
+      return;
+    }
+    
+    try {
+      setIsFetchingReferralFlashcard(true);
+      const flashcardData = await getFlashcardReference(courseId, flashcardId);
+      
+      setReferralFlashcardContent(flashcardData);
+      setIsReferralModalOpen(true);
+      
+      console.log('✅ Flashcard reference loaded:', flashcardId);
+    } catch (error) {
+      console.error('Failed to fetch flashcard reference:', error);
+      // Don't throw - just log the error
+    } finally {
+      setIsFetchingReferralFlashcard(false);
+    }
+  }, [currentActivity, activityType]);
+  
+  /**
+   * Close the flashcard referral modal
+   */
+  const closeReferralModal = useCallback(() => {
+    setIsReferralModalOpen(false);
+    setReferralFlashcardContent(null);
+  }, []);
+  
   return {
     // State
     sessionId,
@@ -395,6 +442,9 @@ export const useMixSession = () => {
     isRevealed,
     examReadiness,
     readinessLoading,
+    isReferralModalOpen,
+    referralFlashcardContent,
+    isFetchingReferralFlashcard,
     
     // Actions
     startSession,
@@ -407,6 +457,8 @@ export const useMixSession = () => {
     resetSession,
     hideFeedback,
     hideRevealed,
+    referFlashcard,
+    closeReferralModal,
     
     // Computed values
     isLoading: status === 'loading',

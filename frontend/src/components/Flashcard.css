@@ -417,7 +417,7 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
+  z-index: 10000;
   animation: fadeIn 0.2s ease;
 }
 
@@ -441,7 +441,7 @@
   background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  z-index: 1001;
+  z-index: 10001;
   overflow: hidden;
   animation: slideIn 0.3s ease-out;
 }
