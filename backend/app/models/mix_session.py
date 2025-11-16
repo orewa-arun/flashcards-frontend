@@ -1,8 +1,11 @@
 """Models for Mix Mode adaptive study sessions."""
 
 from datetime import datetime, timezone
-from typing import List, Optional
+from typing import List, Optional, Union
+
 from pydantic import BaseModel, Field
+
+from app.models.adaptive_quiz import EnhancedExplanation
 
 
 class MixActivity(BaseModel):
@@ -129,7 +132,10 @@ class MixAnswerResponse(BaseModel):
     """Response model for answer submission."""
     is_correct: bool = Field(..., description="Whether the answer was correct")
     correct_answer: str | List[str] = Field(..., description="The correct answer")
-    explanation: Optional[str] = Field(None, description="Explanation of the answer")
+    explanation: Optional[Union[str, EnhancedExplanation]] = Field(
+        None,
+        description="Explanation of the answer (string or enhanced explanation object)",
+    )
     points_earned: float = Field(..., description="Points earned for this answer")
 
 
@@ -151,6 +157,9 @@ class MixRevealRequest(BaseModel):
 class MixRevealResponse(BaseModel):
     """Response model for revealing an answer."""
     correct_answer: str | List[str] = Field(..., description="The correct answer")
-    explanation: Optional[str] = Field(None, description="Explanation of the answer")
+    explanation: Optional[Union[str, EnhancedExplanation]] = Field(
+        None,
+        description="Explanation of the answer (string or enhanced explanation object)",
+    )
     remediation_injected: bool = Field(..., description="Whether remediation (flashcard + follow-up) was injected")
 
