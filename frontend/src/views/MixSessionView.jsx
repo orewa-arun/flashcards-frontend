@@ -337,6 +337,18 @@ const MixSessionView = () => {
               showFeedback={showFeedback}
               disabled={showFeedback || isSubmitting || isRevealed}
             />
+
+            {/* Continue Button - between options and explanations */}
+            {(showFeedback || isRevealed) && (
+              <div className="submit-container">
+                <button
+                  className="next-activity-button"
+                  onClick={handleNextActivity}
+                >
+                  Continue →
+                </button>
+              </div>
+            )}
             
             {/* Answer Feedback */}
             {showFeedback && answerFeedback && (
@@ -371,7 +383,6 @@ const MixSessionView = () => {
                     )}
                   </div>
                 )}
-                
                 {!answerFeedback.isCorrect && (
                   <div className="feedback-content">
                     <p className="feedback-label">Correct Answer:</p>
@@ -382,10 +393,6 @@ const MixSessionView = () => {
                     </p>
                   </div>
                 )}
-                
-                <button className="next-activity-button" onClick={handleNextActivity}>
-                  Continue →
-                </button>
               </div>
             )}
             
@@ -432,10 +439,6 @@ const MixSessionView = () => {
                     <span className="remediation-text">Reviewing flashcard next...</span>
                   </div>
                 )}
-                
-                <button className="next-activity-button" onClick={handleNextActivity}>
-                  Continue →
-                </button>
               </div>
             )}
             
