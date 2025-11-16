@@ -110,7 +110,7 @@ class AsyncCognitiveFlashcardGenerator:
                 prompt = prompt.replace("{{CONTENT_PLACEHOLDER}}", content)
                 
                 # Configure generation
-                base_tokens = 16384
+                base_tokens = 50000
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))
                 
                 generation_config = {

@@ -719,3 +719,17 @@
   }
 }
 
+/* Question Visual Container */
+.question-visual-container {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.question-visual-container + .scenario-box,
+.question-visual-container + .question-text {
+  margin-top: 1rem;
+}
+

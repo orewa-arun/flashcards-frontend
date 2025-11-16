@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { startQuizSession, submitQuizAnswer } from '../api/adaptiveQuiz';
 import VisualRenderer from '../components/VisualRenderer';
+import { EnhancedExplanation } from '../components/quiz/ExplanationStep';
 import './QuizView.css';
 
 const QuizView = () => {
@@ -294,9 +295,48 @@ const QuizView = () => {
             ))}
           </div>
 
+          {/* Action Button - Positioned after options */}
+          <div className="action-container">
+            {!showFeedback ? (
+              <button
+                className="action-button primary"
+                onClick={handleCheckAnswer}
+                disabled={!selectedAnswer}
+              >
+                Check Answer
+              </button>
+            ) : (
+              <button
+                className="action-button primary"
+                onClick={handleNextQuestion}
+              >
+                {isLastQuestion ? 'Finish Quiz' : 'Next Question →'}
+              </button>
+            )}
+          </div>
+
           {/* Explanation (shown after feedback) */}
         {showFeedback && (
-            <div className="explanation-box">
+            <div className={`explanation-box ${(() => {
+              const correctAnswers = getCorrectAnswerKeys(currentQuestion);
+              if (currentQuestion.type === 'mca') {
+                const userAnswers = selectedAnswer;
+                const incorrectSelections = userAnswers.filter(ans => !correctAnswers.includes(ans)).length;
+                if (incorrectSelections > 0) return 'incorrect';
+                const correctSelections = userAnswers.filter(ans => correctAnswers.includes(ans)).length;
+                const earnedPoints = correctSelections / correctAnswers.length;
+                return earnedPoints === 1 ? 'correct' : (earnedPoints > 0 ? 'partial' : 'incorrect');
+              } else {
+                const options = currentQuestion.options || {};
+                const first = correctAnswers[0];
+                if (first && options[first] !== undefined) {
+                  return selectedAnswer === first ? 'correct' : 'incorrect';
+                }
+                const selectedText = String(options[selectedAnswer] ?? '').trim();
+                const norm = (s) => s.replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
+                return norm(selectedText) === norm(String(first ?? '')) ? 'correct' : 'incorrect';
+              }
+            })()}`}>
               <h3>
                 {(() => {
                   const correctAnswers = getCorrectAnswerKeys(currentQuestion);
@@ -307,29 +347,34 @@ const QuizView = () => {
                     
                     // If user selected ANY wrong option, they get ZERO credit
                     if (incorrectSelections > 0) {
-                      return '❌ Incorrect - Wrong option selected';
+                      return 'Incorrect - Wrong option selected';
                     }
                     
                     // No wrong selections - calculate partial credit
                     const correctSelections = userAnswers.filter(ans => correctAnswers.includes(ans)).length;
                     const earnedPoints = correctSelections / correctAnswers.length;
                     
-                    if (earnedPoints === 1) return '✅ Perfect!';
-                    if (earnedPoints > 0) return `⚠️ Partial Credit (${Math.round(earnedPoints * 100)}%)`;
-                    return '❌ Incorrect';
+                    if (earnedPoints === 1) return 'Perfect!';
+                    if (earnedPoints > 0) return `Partial Credit (${Math.round(earnedPoints * 100)}%)`;
+                    return 'Incorrect';
                   } else {
                     const options = currentQuestion.options || {};
                     const first = correctAnswers[0];
                     if (first && options[first] !== undefined) {
-                      return selectedAnswer === first ? '✅ Correct!' : '❌ Incorrect';
+                      return selectedAnswer === first ? 'Correct!' : 'Incorrect';
                     }
                     const selectedText = String(options[selectedAnswer] ?? '').trim();
                     const norm = (s) => s.replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase();
-                    return norm(selectedText) === norm(String(first ?? '')) ? '✅ Correct!' : '❌ Incorrect';
+                    return norm(selectedText) === norm(String(first ?? '')) ? 'Correct!' : 'Incorrect';
                   }
                 })()}
               </h3>
-              <p><strong>Explanation:</strong> {currentQuestion.explanation}</p>
+              {/* Handle both string and enhanced explanations */}
+              {typeof currentQuestion.explanation === 'string' ? (
+                <p><strong>Explanation:</strong> {currentQuestion.explanation}</p>
+              ) : (
+                <EnhancedExplanation explanation={currentQuestion.explanation} />
+              )}
               {(() => {
                 const correctAnswers = getCorrectAnswerKeys(currentQuestion);
                 
@@ -359,26 +404,6 @@ const QuizView = () => {
             </div>
           )}
           </div>
-
-        {/* Action Button */}
-        <div className="action-container">
-          {!showFeedback ? (
-            <button
-              className="action-button primary"
-              onClick={handleCheckAnswer}
-              disabled={!selectedAnswer}
-            >
-              Check Answer
-            </button>
-          ) : (
-            <button
-              className="action-button primary"
-              onClick={handleNextQuestion}
-            >
-              {isLastQuestion ? 'Finish Quiz' : 'Next Question →'}
-            </button>
-          )}
-        </div>
         </div>
       </div>
     </div>

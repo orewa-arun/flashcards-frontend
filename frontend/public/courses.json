@@ -41,6 +41,54 @@
           "The Data Normalization Process (Eliminating redundancy)",
           "Normalization Forms (First, Second, and Third Normal Form examples)"
         ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5260/lecture_slides/MIS_lec_5.pdf",
+        "lecture_name": "Digital Business, Models, and Decision Making",
+        "lecture_number": "5",
+        "topics": [
+          "Digital Business & Model",
+          "Decision Making (Chogwatpol case, Amazon marketing, Tata green innovation)",
+          "Traditional vs. Digital Business (Tech as core competency, Data-driven decision)",
+          "Analysis of Digital Platforms (Zomato, Zerodha, Meesho, Amazon, Netflix, Uber)",
+          "Core Information System, Strategy, and Competitive Edge of Digital Platforms",
+          "Digital Business Types (Transaction, Market, E-tailer, Broker, Creator, Content/Community/Service Provider)",
+          "Revenue Models (Advertising, Free/Freemium, Subscription, Affiliate, Sales, Transaction)",
+          "Final Thoughts (Behavioural Targeting, Wisdom of Crowds)",
+          "Introduction to Power BI"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5260/lecture_slides/MIS_lec_6-8.pdf",
+        "lecture_name": "Value Chain, Business Model Canvas, and Business Intelligence",
+        "lecture_number": "6-8",
+        "topics": [
+          "Value Chain Analysis and the Role of IS",
+          "Porter's Value Chain (Inbound/Outbound Logistics, Operations, Sales/Marketing, Service, Firm Infrastructure, R&D, Procurement)",
+          "Information Systems supporting the Value Chain (CRM, SCM, CAD, CAM, DSS, ESS)",
+          "The Business Model Canvas (Key Partners, Activities, Resources, Value Propositions, Customer Segments, Relationships, Channels, Revenue Streams, Cost Structure)",
+          "Business Intelligence (BI) for Decision Support",
+          "BI Infrastructure (Data Warehouses, Data Marts, Analytic Platforms)",
+          "Business Analytics Toolset (Models, Data Mining, OLAP, Big Data analytics)",
+          "Expert Systems",
+          "BCG (Growth Share) Matrix",
+          "Power BI Dashboard"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MS5260/lecture_slides/MIS_lec_9.pdf",
+        "lecture_name": "Disruptive Technologies and Cloud Computing",
+        "lecture_number": "9",
+        "topics": [
+          "Disruptive Technologies (Steam engine, Electricity, Telephone/TV, Internet)",
+          "Rogers' Innovation Adoption Model (Innovators, Early Adopters, Early/Late Majority, Laggards)",
+          "Cloud Computing: Motivation, Issues, and Definition",
+          "Cloud Computing Market Trends and Growth",
+          "Metacomputing (Definition, Harnessing idle cycles, Performance)",
+          "Metacomputing Characteristics/Issues (Heterogenous, Task scheduling, Fault tolerance, Load balancing, Communication overheads)",
+          "Examples of Metacomputing Systems (LYDIA, SPAWN, Condor, Popcorn, Milan, Java Market)",
+          "Client/Server Paradigms"
+        ]
       }
     ]
   },
@@ -179,6 +227,7 @@
         ]
       },
       {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_2.pdf",
         "lecture_name": "DAA Lecture 2",
         "lecture_number": "2",
         "topics": [
@@ -189,9 +238,11 @@
           "Inference in Regression",
           "Prediction intervals",
           "Confidence intervals in Regression"
-        ]
+        ],
+        "hasPDF": false
       },
       {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_3.pdf",
         "lecture_name": "DAA Lecture 3",
         "lecture_number": "3",
         "topics": [
@@ -200,7 +251,8 @@
           "Unequal variances",
           "Outliers",
           "Auto-correlation"
-        ]
+        ],
+        "hasPDF": false
       },
       {
         "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_4.pdf",
@@ -215,6 +267,7 @@
         ]
       },
       {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_5.pdf",
         "lecture_name": "DAA Lecture 5",
         "lecture_number": "5",
         "topics": [
@@ -224,9 +277,11 @@
           "Impact of Collinearity",
           "Strategies for dealing with Collinearity",
           "Variance Inflation Factor (VIF)"
-        ]
+        ],  
+        "hasPDF": false
       },
       {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_6.pdf",
         "lecture_name": "DAA Lecture 6",
         "lecture_number": "6",
         "topics": [
@@ -235,14 +290,17 @@
           "Analysis of Covariance (ANCOVA)",
           "Interactions and inference",
           "Use of categorical variables in regression models"
-        ]
+        ],  
+        "hasPDF": false
       },
       {
+        "pdf_path": "courses_resources/MS5031/lecture_slides/DAA_lec_7.pdf",
         "lecture_name": "DAA Lecture 7",
         "lecture_number": "7",
         "topics": [
           "Logistic Regression"
-        ]
+        ],  
+        "hasPDF": false
       }
     ]
   }

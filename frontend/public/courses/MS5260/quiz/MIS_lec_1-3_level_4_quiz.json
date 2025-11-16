@@ -23,7 +23,9 @@
         "C": "Redesigning EcoHelpers' organizational structure and business processes to align with the capabilities of the CRM system and the new national scope of their operations.",
         "D": "Focusing primarily on data migration from the existing spreadsheets to the CRM system, ensuring all historical data is accurately transferred to maintain continuity."
       },
-      "correct_answer": "Redesigning EcoHelpers' organizational structure and business processes to align with the capabilities of the CRM system and the new national scope of their operations.",
+      "correct_answer": [
+        "Redesigning EcoHelpers' organizational structure and business processes to align with the capabilities of the CRM system and the new national scope of their operations."
+      ],
       "explanation": "This question synthesizes the definitions of MIS and the critical relationship between IS and organizations (both from Lectures 1-3). The scenario highlights the common mistake of treating IS implementation as purely a technical matter. While training (Option B) and data migration (Option D) are important, they address symptoms, not the root cause. Option A focuses on technology for its own sake, not business alignment. The core issue is that scaling nationally requires a fundamental rethinking of EcoHelpers' operations. The CRM system is *designed* to support those redesigned processes, not the other way around. Implementing a powerful CRM without aligning organizational structure and processes to leverage its capabilities would lead to underutilization and failure to achieve the intended competitive advantage. The success of the CRM hinges on redesigning the organization.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -47,7 +49,9 @@
         "C": "Conduct thorough workflow analysis and involve doctors in customizing the EHR system to align with their specific clinical needs and preferences.",
         "D": "Implement a phased rollout of the EHR system, starting with the departments that are most receptive to change and gradually expanding to other areas."
       },
-      "correct_answer": "Conduct thorough workflow analysis and involve doctors in customizing the EHR system to align with their specific clinical needs and preferences.",
+      "correct_answer": [
+        "Conduct thorough workflow analysis and involve doctors in customizing the EHR system to align with their specific clinical needs and preferences."
+      ],
       "explanation": "This question blends the understanding of MIS with the concept of competitive advantage. Simply implementing an IS (EHR) does not guarantee a competitive advantage; it requires strategic alignment and user adoption. Option A is a coercive approach that will likely increase resistance. Option B focuses on technical features rather than user needs. Option D is a reasonable tactic, but insufficient on its own. The key is to involve the doctors (users) in the design and customization process (Option C). This addresses the human element of MIS, ensuring that the EHR system supports their workflows and improves their efficiency, leading to better patient care and, ultimately, a competitive advantage. Failing to do so would be a common mistake.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -70,7 +74,10 @@
         "C": "Investing in extensive marketing campaigns to promote their online presence and attract new customers, without improving the overall customer journey.",
         "D": "Expanding their product line to include a wider range of brands and styles, without considering the impact on inventory management and supply chain efficiency."
       },
-      "correct_answer": "Focusing solely on cost reduction through inventory optimization, neglecting the need for product innovation and enhanced customer experiences.",
+      "correct_answer": [
+        "Focusing solely on cost reduction through inventory optimization",
+        "neglecting the need for product innovation and enhanced customer experiences."
+      ],
       "explanation": "This question requires synthesizing the concepts of 'Digital Business' and 'Competitive Advantage'. The scenario describes a company that is using technology (inventory system) to improve efficiency, but failing to adapt to the changing digital landscape. Options B, C, and D represent common tactics that companies use to try to improve their competitive position, but they do not address the fundamental issue of the need for a complete rethinking of the business model. The correct answer (A) highlights that FashionForward is neglecting the need for product innovation and enhanced customer experiences, which are essential components of a successful digital business. Digital business is about more than just implementing technology; it's about creating new value, experiences, and capabilities.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -93,7 +100,9 @@
         "C": "Redesigning AutoCorp's business processes and organizational structure to align with the capabilities of the ERP system and support its strategic goals.",
         "D": "Focusing primarily on the technical implementation of the ERP system, ensuring that it is properly configured and integrated with AutoCorp's IT infrastructure."
       },
-      "correct_answer": "Redesigning AutoCorp's business processes and organizational structure to align with the capabilities of the ERP system and support its strategic goals.",
+      "correct_answer": [
+        "Redesigning AutoCorp's business processes and organizational structure to align with the capabilities of the ERP system and support its strategic goals."
+      ],
       "explanation": "This question focuses on the reciprocal relationship between IS and organizations to create a competitive advantage. While training (Option B) and technical implementation (Option D) are necessary, they are insufficient on their own. Option A suggests minimizing disruption by fitting the ERP to legacy systems, which prevents AutoCorp from leveraging the ERP's full potential for improved efficiency and innovation. The key is to redesign business processes and organizational structure (Option C) to align with the ERP's capabilities. This allows AutoCorp to streamline operations, improve decision-making, and ultimately achieve a sustainable competitive advantage. Failing to do so would be a common mistake.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_2",
@@ -117,7 +126,12 @@
         "C": "Investing in extensive online advertising campaigns to promote the website and attract new customers, without improving the overall customer experience.",
         "D": "Expanding the website's product line to include a wider range of books and genres, without considering the impact on inventory management and fulfillment processes."
       },
-      "correct_answer": "Leveraging the website to create a community platform for book lovers, offering exclusive content, author interviews, and online book clubs to enhance customer engagement.",
+      "correct_answer": [
+        "Leveraging the website to create a community platform for book lovers",
+        "offering exclusive content",
+        "author interviews",
+        "and online book clubs to enhance customer engagement."
+      ],
       "explanation": "This question combines 'Digital Business' with the IS/organization relationship, requiring a strategic understanding of how technology can transform a traditional business. Options A, C, and D focus on tactics that may improve the website's performance, but they do not address the fundamental challenge of creating a unique value proposition in the digital marketplace. The correct answer (B) highlights the importance of leveraging the website to create a community platform for book lovers, offering exclusive content, author interviews, and online book clubs to enhance customer engagement. This approach aligns the IS with the organization's goals and creates a unique and engaging customer experience that can help PageTurners differentiate itself from its competitors and achieve a successful digital transformation. Simply having a website isn't enough; it must offer something unique.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_2",
@@ -142,7 +156,11 @@
         "C": "Investing in extensive advertising campaigns to promote the CRM system and attract new customers, without improving the overall customer journey.",
         "D": "Expanding the range of services offered through the CRM system, such as hotel bookings and car rentals, without considering the impact on customer satisfaction and loyalty."
       },
-      "correct_answer": "Utilizing the CRM system to create a seamless and personalized travel experience for customers, from booking flights to managing baggage and resolving travel disruptions, all through a mobile app.",
+      "correct_answer": [
+        "Utilizing the CRM system to create a seamless and personalized travel experience for customers",
+        "from booking flights to managing baggage and resolving travel disruptions",
+        "all through a mobile app."
+      ],
       "explanation": "This question synthesizes 'Competitive Advantage' and 'Digital Business'. The scenario presents a common mistake: assuming that simply implementing a CRM system guarantees a competitive advantage. Options A, C, and D describe tactics that may provide some short-term benefits, but they do not address the fundamental challenge of creating a truly differentiated and valuable customer experience. The correct answer (B) highlights the importance of using the CRM system to create a seamless and personalized travel experience for customers, from booking flights to managing baggage and resolving travel disruptions, all through a mobile app. This approach leverages technology to transform the customer journey and create a competitive advantage that is difficult for competitors to replicate. This is the essence of digital business: leveraging technology to create new value and experiences.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_3",
@@ -167,7 +185,11 @@
         "C": "Investing in extensive online advertising campaigns to promote their e-books and attract new readers, without improving the overall reading experience.",
         "D": "Expanding their e-book catalog to include a wider range of genres and authors, without considering the impact on content quality and reader satisfaction."
       },
-      "correct_answer": "Leveraging digital technologies to create interactive e-books with multimedia content, author interviews, and online book clubs to enhance reader engagement.",
+      "correct_answer": [
+        "Leveraging digital technologies to create interactive e-books with multimedia content",
+        "author interviews",
+        "and online book clubs to enhance reader engagement."
+      ],
       "explanation": "This question focuses on the intersection of digital business and competitive advantage. The scenario highlights the common mistake of thinking that digital business is just about having a website or converting existing content to digital format. Options A, C, and D describe tactics that may provide some short-term benefits, but they do not address the fundamental challenge of creating a truly differentiated and valuable reading experience. The correct answer (B) highlights the importance of leveraging digital technologies to create interactive e-books with multimedia content, author interviews, and online book clubs to enhance reader engagement. This approach leverages technology to transform the reading experience and create a competitive advantage that is difficult for competitors to replicate. This is the essence of digital business: leveraging technology to create new value and experiences.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_3",
@@ -190,7 +212,12 @@
         "C": "Investing in extensive online advertising campaigns to promote the website and attract new customers, without improving the overall customer journey.",
         "D": "Expanding the website's product catalog to include a wider range of items, without considering the impact on inventory management and fulfillment processes."
       },
-      "correct_answer": "Leveraging digital technologies to create a personalized online shopping experience for customers, offering online ordering, delivery services, and tailored product recommendations.",
+      "correct_answer": [
+        "Leveraging digital technologies to create a personalized online shopping experience for customers",
+        "offering online ordering",
+        "delivery services",
+        "and tailored product recommendations."
+      ],
       "explanation": "This question synthesizes 'Digital Business' with the IS/organization relationship. The scenario highlights the common mistake of believing that simply having a website constitutes digital business. Options A, C, and D focus on tactics that may improve the website's performance, but they do not address the fundamental challenge of creating a unique value proposition in the digital marketplace. The correct answer (B) highlights the importance of leveraging digital technologies to create a personalized online shopping experience for customers, offering online ordering, delivery services, and tailored product recommendations. This approach aligns the IS with the organization's goals and creates a convenient and engaging customer experience that can help FreshFoods differentiate itself from its competitors and achieve a successful digital transformation. FreshFoods needs to *transform* its business, not just have a website.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_4",
@@ -215,7 +242,12 @@
         "C": "Investing in extensive marketing campaigns to promote their app and attract new customers, without improving the overall customer journey.",
         "D": "Expanding the range of services offered through the app, such as food delivery and package transportation, without considering the impact on customer satisfaction and safety."
       },
-      "correct_answer": "Leveraging digital technologies to create a unique and personalized transportation experience for customers, such as offering premium ride options, loyalty programs, and integrated payment solutions.",
+      "correct_answer": [
+        "Leveraging digital technologies to create a unique and personalized transportation experience for customers",
+        "such as offering premium ride options",
+        "loyalty programs",
+        "and integrated payment solutions."
+      ],
       "explanation": "This question combines the definition of 'Digital Business' with 'Competitive Advantage'. The scenario portrays a company that is trying to compete in the digital age by simply copying the features of its competitors. Options A, C, and D describe tactics that may provide some short-term benefits, but they do not address the fundamental challenge of creating a truly differentiated and valuable customer experience. The correct answer (B) highlights the importance of leveraging digital technologies to create a unique and personalized transportation experience for customers, such as offering premium ride options, loyalty programs, and integrated payment solutions. This approach leverages technology to transform the customer journey and create a competitive advantage that is difficult for competitors to replicate. This is the essence of digital business: leveraging technology to create new value and experiences beyond simple feature parity.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_4",
@@ -238,7 +270,9 @@
         "C": "The inability to compete with larger logistics companies that have economies of scale and greater access to capital.",
         "D": "The failure to adopt the latest social media marketing strategies to attract and retain customers."
       },
-      "correct_answer": "The absence of an integrated Information System (IS) that aligns with and supports the SME's information needs and strategic goals.",
+      "correct_answer": [
+        "The absence of an integrated Information System (IS) that aligns with and supports the SME's information needs and strategic goals."
+      ],
       "explanation": "This question synthesizes the characteristics of SMEs (Lecture 1-3) with the core purpose of Information Systems (IS) (Lecture 1-3). SwiftWheels, as an SME, is facing operational challenges due to its inability to effectively manage information and coordinate its activities. While options A, C, and D might be contributing factors, the root cause is the lack of an IS that integrates various aspects of the business, such as order management, route planning, and customer tracking. An effective IS would enable SwiftWheels to make data-driven decisions, streamline operations, and improve customer satisfaction. The other options are symptoms of this root cause, or irrelevant to the immediate problem.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_5",
@@ -261,7 +295,10 @@
         "C": "Outsourcing all IT functions to a managed service provider to reduce the burden on internal resources.",
         "D": "Focusing solely on social media marketing to attract more customers without addressing the underlying operational inefficiencies."
       },
-      "correct_answer": "Implementing a cloud-based inventory management system and a customer relationship management (CRM) tool, integrated with a WhatsApp Business account for customer communication.",
+      "correct_answer": [
+        "Implementing a cloud-based inventory management system and a customer relationship management (CRM) tool",
+        "integrated with a WhatsApp Business account for customer communication."
+      ],
       "explanation": "This question requires a synthesis of SME characteristics (Lecture 1-3) and the application of Information Technology (IT) (Lecture 1-3). SMEs typically have limited resources, so a cost-effective and scalable approach is crucial. Option B provides a balanced solution by leveraging cloud-based services and readily available communication platforms. Option A is too expensive and complex for a small business. Option C outsources all IT functions which might not be ideal for a small business requiring tailored solutions. Option D only addresses the marketing aspect without resolving the operational challenges. The correct answer identifies a practical and affordable IT solution that directly addresses the tailoring business's key pain points.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_5",
@@ -285,7 +322,10 @@
         "C": "Use the AI-generated content as a starting point for further research and critical analysis, verifying the AI's claims and developing their own original arguments.",
         "D": "Avoid using generative AI tools altogether, as they are inherently unreliable and unethical in academic research."
       },
-      "correct_answer": "Use the AI-generated content as a starting point for further research and critical analysis, verifying the AI's claims and developing their own original arguments.",
+      "correct_answer": [
+        "Use the AI-generated content as a starting point for further research and critical analysis",
+        "verifying the AI's claims and developing their own original arguments."
+      ],
       "explanation": "This question synthesizes the appropriate uses of Generative AI (Lecture 1-3) with the need for critical thinking and academic integrity (Lecture 1-3). Option C represents the most ethical and effective approach. Generative AI can be a valuable tool for research, but it should not replace human judgment and analysis. The student must critically evaluate the AI's output, verify the information, and develop their own original arguments. Option A is plagiarism and unethical. Option B is over-reliance on AI without critical evaluation. Option D is unnecessarily restrictive, as AI can be a helpful tool when used appropriately. The key is to use AI as an assistant, not a replacement, for critical thinking and original work.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -308,7 +348,11 @@
         "C": "Discontinue using generative AI tools altogether, as they are inherently biased and unreliable.",
         "D": "Focus solely on optimizing the AI's algorithms to improve its accuracy, without addressing the underlying ethical concerns."
       },
-      "correct_answer": "Implement a rigorous review process to identify and correct biases, stereotypes, and inaccuracies in the AI-generated content before deploying the ad campaigns.",
+      "correct_answer": [
+        "Implement a rigorous review process to identify and correct biases",
+        "stereotypes",
+        "and inaccuracies in the AI-generated content before deploying the ad campaigns."
+      ],
       "explanation": "This question requires a synthesis of the ethical implications of Generative AI (Lecture 1-3) and responsible data management principles. Option B is the most effective approach. While AI can automate content creation, it is essential to have human oversight to ensure that the content is ethical, accurate, and unbiased. Option A is irresponsible and unethical. Option C is too restrictive, as AI can be a valuable tool when used responsibly. Option D focuses on technical improvements without addressing the ethical concerns. The key is to combine AI's capabilities with human judgment and ethical considerations.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -332,7 +376,10 @@
         "C": "Avoid using generative AI tools altogether, as they are inherently impersonal and can damage customer relationships.",
         "D": "Focus solely on improving the AI's accuracy and response time, without considering the impact on customer satisfaction."
       },
-      "correct_answer": "Use the AI to handle routine inquiries and provide quick answers, while routing complex or sensitive issues to human customer support agents.",
+      "correct_answer": [
+        "Use the AI to handle routine inquiries and provide quick answers",
+        "while routing complex or sensitive issues to human customer support agents."
+      ],
       "explanation": "This question requires a synthesis of Generative AI use (Lecture 1-3) and the importance of personalized customer relationships in SMEs (Lecture 1-3). Option B strikes a balance between efficiency and customer satisfaction. SMEs often rely on personalized customer service to differentiate themselves from larger competitors. The AI can handle routine inquiries, freeing up human agents to focus on more complex issues. Option A is too impersonal and risky. Option C is unnecessarily restrictive. Option D focuses on technical aspects without considering customer impact. The correct answer leverages AI for efficiency while preserving the human touch for critical interactions.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -355,7 +402,9 @@
         "C": "The inability to attract and retain qualified IT personnel.",
         "D": "The lack of employee training on how to use the IT systems effectively."
       },
-      "correct_answer": "The failure to develop and implement effective Information Systems (IS) that leverage the IT infrastructure to support business processes and decision-making.",
+      "correct_answer": [
+        "The failure to develop and implement effective Information Systems (IS) that leverage the IT infrastructure to support business processes and decision-making."
+      ],
       "explanation": "This question synthesizes the concepts of IT and IS (Lecture 1-3). The company has invested in IT (hardware, software, networks), but it has not effectively used that IT to create IS that support its business processes. Option B correctly identifies the root cause. Options A, C, and D might be contributing factors, but the core problem is the lack of effective IS. The key insight is that IT is a tool, and IS is how that tool is used to achieve business goals.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_7",
@@ -378,7 +427,9 @@
         "C": "The hospital staff are not adequately trained on how to use the EHR system.",
         "D": "The hospital should switch to a different EHR vendor."
       },
-      "correct_answer": "The IT infrastructure is not properly maintained and optimized to support the EHR system's performance requirements.",
+      "correct_answer": [
+        "The IT infrastructure is not properly maintained and optimized to support the EHR system's performance requirements."
+      ],
       "explanation": "This question requires a synthesis of IT, IS, and system reliability. The EHR is an IS running on an IT infrastructure. The problems described (slow response, crashes, data loss) are indicative of underlying IT issues. Option B is the most likely cause, suggesting a need for infrastructure maintenance and optimization. The other options focus on usability or vendor selection, which are less likely to be the root cause of these technical issues.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_7",
@@ -402,7 +453,12 @@
         "C": "Outsourcing all technology functions to a managed service provider to reduce the burden on internal resources.",
         "D": "Focusing solely on improving the store's physical appearance and customer service without adopting any digital technologies."
       },
-      "correct_answer": "Creating a WhatsApp Business account to communicate with customers, promote products, and process orders, while leveraging existing social media channels for marketing.",
+      "correct_answer": [
+        "Creating a WhatsApp Business account to communicate with customers",
+        "promote products",
+        "and process orders",
+        "while leveraging existing social media channels for marketing."
+      ],
       "explanation": "This question requires a synthesis of current technology trends in India (Lecture 1-3) with the challenges faced by SMEs (Lecture 1-3). Option B provides a balanced and cost-effective solution. WhatsApp Business is a popular platform in India that allows businesses to connect with customers, process payments, and provide support. Leveraging existing social media channels can further enhance marketing efforts. Option A is too expensive and complex for a small retail store. Option C might be a viable option, but it doesn't directly address the need for a digital presence. Option D ignores the importance of adopting digital technologies in the current business landscape.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -426,7 +482,9 @@
         "C": "Focusing solely on improving the quality and variety of their products without offering delivery services.",
         "D": "Outsourcing all marketing and delivery functions to a third-party agency."
       },
-      "correct_answer": "Partnering with a quick commerce platform like Blinkit or Zepto to offer their products for delivery within minutes.",
+      "correct_answer": [
+        "Partnering with a quick commerce platform like Blinkit or Zepto to offer their products for delivery within minutes."
+      ],
       "explanation": "This question requires a synthesis of quick commerce trends in India (Lecture 1-3) and the challenges faced by SMEs (Lecture 1-3). Option A provides the most practical and cost-effective solution. Partnering with an existing quick commerce platform allows the bakery to leverage their established infrastructure and customer base without incurring significant upfront costs. Option B is too expensive and resource-intensive for a small bakery. Option C ignores the growing demand for convenient delivery options. Option D might be a viable option, but it doesn't directly address the need for fast delivery.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -449,7 +507,11 @@
         "C": "The inability to attract and retain qualified customer support personnel.",
         "D": "The lack of employee training on how to handle customer inquiries effectively."
       },
-      "correct_answer": "The absence of an integrated Information System (IS) that automates customer support processes, manages inquiries efficiently, and provides timely responses.",
+      "correct_answer": [
+        "The absence of an integrated Information System (IS) that automates customer support processes",
+        "manages inquiries efficiently",
+        "and provides timely responses."
+      ],
       "explanation": "This question synthesizes technology trends in India (Lecture 1-3) with the core purpose of Information Systems (IS) (Lecture 1-3). Urban Company's customer support challenges stem from the lack of an IS that can efficiently manage the increased volume of inquiries. Option B correctly identifies the root cause. An effective IS would automate processes, provide self-service options, and enable customer support agents to handle inquiries more efficiently. The other options might be contributing factors, but the core problem is the lack of an effective IS.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -472,7 +534,11 @@
         "C": "The company's initial success in R&D has created a siloed culture where the technology team operates independently from the operations team, a managerial level issue.",
         "D": "The lack of standardized training is leading to inconsistent installation and performance, which is primarily a problem at the operational level that requires immediate attention."
       },
-      "correct_answer": "A misalignment between the executive level's strategic focus on innovation and the operational level's capabilities, compounded by process inefficiencies, is creating a bottleneck.",
+      "correct_answer": [
+        "A misalignment between the executive level's strategic focus on innovation and the operational level's capabilities",
+        "compounded by process inefficiencies",
+        "is creating a bottleneck."
+      ],
       "explanation": "This is a synthesis question integrating the 'People, Process, and Technology' framework with 'Organizational Decision-Making Levels'. The scenario describes a company excelling in technology (R&D) but struggling with execution. The CEO focuses on technology investment, which is a symptom, not the root cause. The audit reveals process and people issues at the operational level. Option A is incorrect as it only focuses on technology. Option D correctly addresses one issue, but is incomplete. Option C is also tempting, but is secondary. The best answer identifies the misalignment between executive strategy (innovation) and operational capabilities (poor processes, untrained people). The lack of alignment means the technology (solar panels) cannot be deployed effectively, and is the root cause, which requires executive level attention.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -501,7 +567,10 @@
         "C": "Prioritizing the improvement of client data collection processes, followed by training accountants on how to accurately input and manage data in the new AI software. This ensures a clean and reliable 'raw material' (data) for value creation.",
         "D": "Focusing on both the AI-powered software and the training program simultaneously, allocating equal resources to each initiative. This comprehensive approach will address both the technology and people aspects of the business."
       },
-      "correct_answer": "Prioritizing the improvement of client data collection processes, followed by training accountants on how to accurately input and manage data in the new AI software. This ensures a clean and reliable 'raw material' (data) for value creation.",
+      "correct_answer": [
+        "Prioritizing the improvement of client data collection processes",
+        "followed by training accountants on how to accurately input and manage data in the new AI software. This ensures a clean and reliable 'raw material' (data) for value creation."
+      ],
       "explanation": "This is a synthesis question combining 'People, Process, and Technology' with 'Data as the New Oil.' The scenario presents a firm with inefficient processes. Options A and B focus on technology and people, respectively, but ignore the critical process of data collection. These are only partially correct. Option D spreads resources too thin, without addressing the root cause. The best answer (C) correctly identifies the need to fix the data collection process *first*. This ensures high-quality 'raw material' (data) for the AI software and well-trained accountants. By improving the data at its source, it maximizes the value that can be extracted and provides competitive advantage.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -531,7 +600,10 @@
         "C": "The new ERP system is forcing a standardization of processes across functional areas, reducing the flexibility and autonomy that department heads previously enjoyed, and negatively impacting innovation.",
         "D": "The cost of maintaining the new ERP system is exceeding the initial budget, diverting resources from other critical areas of the business, creating financial strain."
       },
-      "correct_answer": "The implementation process failed to adequately address the 'people' aspect by not involving department heads in the design and configuration of the ERP system, leading to resistance and lack of buy-in.",
+      "correct_answer": [
+        "The implementation process failed to adequately address the 'people' aspect by not involving department heads in the design and configuration of the ERP system",
+        "leading to resistance and lack of buy-in."
+      ],
       "explanation": "This is a synthesis question combining 'People, Process, and Technology' with 'Organizational Functional Areas and Information Systems'. MegaMart implemented an ERP system (technology) but is facing resistance. Options A and D are potential issues, but not the *most* significant given the scenario. Option C highlights a trade-off (standardization vs. flexibility) but doesn't address the core problem. The best answer (B) identifies the failure to address the 'people' aspect. By not involving department heads, MegaMart created resistance and a lack of buy-in. This is crucial because the success of an ERP system depends on user adoption and collaboration across functional areas. The people aspect is the root cause preventing the system from achieving its goals.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -563,7 +635,10 @@
         "C": "Establish a data governance program to ensure the accuracy and completeness of delivery addresses in the system, and implement standardized training for warehouse staff on proper labeling procedures (process and data quality focus).",
         "D": "Empower the managerial level to actively monitor driver performance and warehouse efficiency, providing real-time feedback and coaching to improve adherence to optimized routes and labeling protocols."
       },
-      "correct_answer": "Establish a data governance program to ensure the accuracy and completeness of delivery addresses in the system, and implement standardized training for warehouse staff on proper labeling procedures (process and data quality focus).",
+      "correct_answer": [
+        "Establish a data governance program to ensure the accuracy and completeness of delivery addresses in the system",
+        "and implement standardized training for warehouse staff on proper labeling procedures (process and data quality focus)."
+      ],
       "explanation": "This is a synthesis question combining 'Data as the New Oil' with 'Organizational Decision-Making Levels.' SwiftShip has technology (GPS tracking) but poor performance. Options A and B focus on technology and people, respectively, but ignore the underlying data quality issues. Option D improves monitoring, but doesn't fix the root cause. The best answer (C) addresses the 'Data as the New Oil' concept by focusing on data quality. Inaccurate addresses are like 'dirty oil' – even the best technology can't refine it effectively. By ensuring accurate data and standardized labeling (process), SwiftShip can leverage its technology to its full potential. This is a strategic level problem requiring a data governance program.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_10",
@@ -591,7 +666,11 @@
         "C": "Pilot the standardized quality control system in a single plant, gather data on its effectiveness, and then use this data to persuade other plant managers to adopt the system (data-driven approach).",
         "D": "Provide financial incentives to plant managers who successfully implement the standardized quality control system, rewarding them for their cooperation and compliance (incentive-based approach)."
       },
-      "correct_answer": "Establish a cross-functional team, including representatives from each plant, to collaboratively design a standardized quality control system that incorporates best practices from each location and addresses local needs (collaborative approach).",
+      "correct_answer": [
+        "Establish a cross-functional team",
+        "including representatives from each plant",
+        "to collaboratively design a standardized quality control system that incorporates best practices from each location and addresses local needs (collaborative approach)."
+      ],
       "explanation": "This is a synthesis question combining 'Organizational Functional Areas' and 'Organizational Decision-Making Levels.' GlobalTech wants standardization (executive level), but faces resistance from plant managers. Option A is a top-down approach that ignores local needs and will likely increase resistance. Option C is a good idea, but doesn't address the immediate need for collaboration. Option D uses incentives, but doesn't guarantee buy-in or a good system. The best answer (B) involves plant managers (managerial level) in the design process, creating a system that is both standardized and tailored to local needs. This addresses the functional area differences by incorporating best practices and promotes buy-in, leading to a more successful implementation.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_11",
@@ -621,7 +700,11 @@
         "C": "The hospital's underlying processes for patient flow are inefficient and poorly defined, and the EHR system is simply automating these flawed processes, rather than improving them.",
         "D": "The hospital's functional areas (admitting, radiology, surgery, pharmacy) are operating in silos, and the EHR system is not effectively integrating these departments to facilitate seamless communication and coordination."
       },
-      "correct_answer": "The hospital's underlying processes for patient flow are inefficient and poorly defined, and the EHR system is simply automating these flawed processes, rather than improving them.",
+      "correct_answer": [
+        "The hospital's underlying processes for patient flow are inefficient and poorly defined",
+        "and the EHR system is simply automating these flawed processes",
+        "rather than improving them."
+      ],
       "explanation": "This is a synthesis question combining 'Organizational Functional Areas' and 'People, Process, and Technology'. CityMed implemented EHR (technology), but problems persist. Options A, B, and D correctly identify *symptoms* (system limitations, lack of training, silos), but not the root cause. The best answer (C) identifies the underlying process inefficiencies. The EHR system automates the existing processes, making the existing *bad* processes faster, but not better. The root cause is the flawed processes, which must be addressed *before* or *in conjunction with* technology implementation.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_12",
@@ -653,7 +736,10 @@
         "C": "The *lack of physician adoption* is preventing the hospital from fully realizing the potential benefits of increased 'Digital Density', which *also* weakens their competitive position by impacting patient satisfaction amidst rivalry (integrates Digital Density & Porter's Rivalry force).",
         "D": "The hospital's EHR implementation is primarily focused on cost reduction, neglecting the personalization of patient care and anticipation of future needs, leading to increased patient churn (focus on Digital Density's Personalization and Anticipation aspects only)."
       },
-      "correct_answer": "The *lack of physician adoption* is preventing the hospital from fully realizing the potential benefits of increased 'Digital Density', which *also* weakens their competitive position by impacting patient satisfaction amidst rivalry (integrates Digital Density & Porter's Rivalry force).",
+      "correct_answer": [
+        "The *lack of physician adoption* is preventing the hospital from fully realizing the potential benefits of increased 'Digital Density'",
+        "which *also* weakens their competitive position by impacting patient satisfaction amidst rivalry (integrates Digital Density & Porter's Rivalry force)."
+      ],
       "explanation": "This is a synthesis question combining 'Digital Density' (Lecture 1-3) and 'Porter's Five Forces' (Lecture 1-3). The scenario presents a hospital that has *increased* its digital density with an EHR, but is *not* seeing expected benefits. Options A and B focus on isolated technical or vendor-related issues, neglecting the human element. Option D highlights personalization and anticipation, but doesn't link it to competitive forces. The *root cause* is the *lack of physician adoption*, which undermines the efficiency gains from 'Digital Density' *and* weakens the hospital's competitive position by impacting patient satisfaction (Rivalry force). The correct answer is the *only* one that acknowledges the interaction between internal capabilities and the external competitive environment, showing how a failure in internal adoption can worsen external competitive positioning.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_13",
@@ -678,7 +764,11 @@
         "C": "Buenos Aires, as its larger talent pool provides access to a wider range of skills and expertise, enabling the firm to pursue a broad market strategy and serve a diverse client base (focuses on market focus only).",
         "D": "Lisbon, as its combination of reliable infrastructure and political stability *mitigates long-term risks*, allowing the firm to build a sustainable 'Digital Nomad' hub that *supports both* operational efficiency *and* a differentiation strategy focused on high-quality service (integrates Digital Nomad requirements with long-term strategic sustainability)."
       },
-      "correct_answer": "Lisbon, as its combination of reliable infrastructure and political stability *mitigates long-term risks*, allowing the firm to build a sustainable 'Digital Nomad' hub that *supports both* operational efficiency *and* a differentiation strategy focused on high-quality service (integrates Digital Nomad requirements with long-term strategic sustainability).",
+      "correct_answer": [
+        "Lisbon",
+        "as its combination of reliable infrastructure and political stability *mitigates long-term risks*",
+        "allowing the firm to build a sustainable 'Digital Nomad' hub that *supports both* operational efficiency *and* a differentiation strategy focused on high-quality service (integrates Digital Nomad requirements with long-term strategic sustainability)."
+      ],
       "explanation": "This question synthesizes the 'Digital Nomad' concept (Lecture 1-3) with 'Competitive Strategies' (Lecture 1-3). The scenario presents a trade-off between Lisbon (stability, good infrastructure) and Buenos Aires (lower cost, larger talent pool). Options A and C only focus on cost leadership and market focus, respectively, ignoring the long-term risks. Option B focuses on differentiation but neglects long-term stability. The correct answer, D, recognizes that Lisbon's reliable infrastructure *and* political stability are essential for a sustainable 'Digital Nomad' hub, which allows the firm to pursue *both* operational efficiency *and* a differentiation strategy based on high-quality service. The key insight is that a sustainable competitive advantage requires a balance between short-term cost considerations and long-term stability and reliability.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_14",
@@ -703,7 +793,12 @@
         "C": "Focus on creating a unique and personalized customer experience by offering curated book selections, author events, and a cozy reading environment, *thereby mitigating* the 'rivalry' force *and enabling* a narrow market/differentiation strategy (integrates Porter's Rivalry with differentiation strategy).",
         "D": "Negotiate lower prices with book publishers to reduce costs and increase profit margins (focuses on the 'suppliers' force only, neglecting the 'rivalry' force and differentiation opportunities)."
       },
-      "correct_answer": "Focus on creating a unique and personalized customer experience by offering curated book selections, author events, and a cozy reading environment, *thereby mitigating* the 'rivalry' force *and enabling* a narrow market/differentiation strategy (integrates Porter's Rivalry with differentiation strategy).",
+      "correct_answer": [
+        "Focus on creating a unique and personalized customer experience by offering curated book selections",
+        "author events",
+        "and a cozy reading environment",
+        "*thereby mitigating* the 'rivalry' force *and enabling* a narrow market/differentiation strategy (integrates Porter's Rivalry with differentiation strategy)."
+      ],
       "explanation": "This question combines 'Porter's Five Forces' (Lecture 1-3) with 'Competitive Strategies' (Lecture 1-3). The bookstore faces intense rivalry from online retailers. Option A focuses on a low-cost strategy, which is difficult for a small bookstore to sustain. Option B attempts a broad market strategy, which requires significant resources. Option D only addresses the supplier force. The *most effective* approach is C, which focuses on *mitigating* the 'rivalry' force by *creating a unique and personalized customer experience*. This allows the bookstore to implement a *narrow market/differentiation* strategy, catering to customers who value personalized service and curated selections. The correct answer *synthesizes* an understanding of the competitive landscape with a feasible competitive strategy, given the bookstore's limitations.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_15",
@@ -728,7 +823,12 @@
         "C": "Leverage 'Digital Density' to offer highly personalized cake designs through interactive online tools, showcasing unique creations on social media, and fostering a community of cake enthusiasts, *thereby reinforcing* a narrow market/differentiation strategy (integrates Digital Density with differentiation and narrow market focus).",
         "D": "Collect extensive customer data through the online ordering system to identify popular cake flavors and streamline production, reducing waste and improving efficiency (focuses on efficiency and data analytics, neglecting differentiation)."
       },
-      "correct_answer": "Leverage 'Digital Density' to offer highly personalized cake designs through interactive online tools, showcasing unique creations on social media, and fostering a community of cake enthusiasts, *thereby reinforcing* a narrow market/differentiation strategy (integrates Digital Density with differentiation and narrow market focus).",
+      "correct_answer": [
+        "Leverage 'Digital Density' to offer highly personalized cake designs through interactive online tools",
+        "showcasing unique creations on social media",
+        "and fostering a community of cake enthusiasts",
+        "*thereby reinforcing* a narrow market/differentiation strategy (integrates Digital Density with differentiation and narrow market focus)."
+      ],
       "explanation": "This question combines 'Digital Density' (Lecture 1-3) with 'Competitive Strategies' (Lecture 1-3). The bakery needs to differentiate itself from cheaper alternatives. Options A and B focus on cost reduction and efficiency, which are difficult to achieve against larger competitors. Option D focuses on data analytics, but doesn't directly address differentiation. The *most effective* approach is C, which leverages 'Digital Density' to *enhance personalization and create a community*, reinforcing a *narrow market/differentiation* strategy. The bakery should use interactive online tools to offer *highly personalized* cake designs, *showcase unique creations* on social media, and *foster a community of cake enthusiasts*. The correct answer *synthesizes* digital technologies with a differentiation strategy, allowing the bakery to compete on value rather than price.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_13",
@@ -752,7 +852,12 @@
         "C": "Chiang Mai, as its established digital nomad community facilitates knowledge sharing and collaboration, enhancing the team's skills and productivity (focuses solely on community benefits, neglecting internet reliability and security).",
         "D": "Medellin, as its *more reliable internet and growing tech scene mitigate operational risks*, while the NGO can implement security protocols to *address potential threats*, allowing them to *effectively compete for funding and volunteers* against other NGOs leveraging digital platforms (integrates Digital Nomad requirements with risk management and competitive pressures)."
       },
-      "correct_answer": "Medellin, as its *more reliable internet and growing tech scene mitigate operational risks*, while the NGO can implement security protocols to *address potential threats*, allowing them to *effectively compete for funding and volunteers* against other NGOs leveraging digital platforms (integrates Digital Nomad requirements with risk management and competitive pressures).",
+      "correct_answer": [
+        "Medellin",
+        "as its *more reliable internet and growing tech scene mitigate operational risks*",
+        "while the NGO can implement security protocols to *address potential threats*",
+        "allowing them to *effectively compete for funding and volunteers* against other NGOs leveraging digital platforms (integrates Digital Nomad requirements with risk management and competitive pressures)."
+      ],
       "explanation": "This question synthesizes the 'Digital Nomad' concept (Lecture 1-3) with 'Porter's Five Forces' (Lecture 1-3) in the context of a non-profit organization. The scenario presents a trade-off between Chiang Mai (lower cost, established community, unreliable internet) and Medellin (reliable internet, security risks). Options A and C prioritize cost and community, neglecting operational reliability and security. Option B focuses solely on connectivity. The *most strategically sound* choice is D, as *Medellin's reliable internet* is crucial for uninterrupted operations and *mitigates the risk* of disruption. While security is a concern, the NGO can implement security protocols to *address potential threats*. This allows them to *effectively compete* for funding and volunteers against other NGOs leveraging digital platforms, addressing the competitive rivalry within the sector. The key insight is that operational reliability and security are essential for an NGO's success, and these factors outweigh the cost advantages of Chiang Mai in this scenario.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_14",
@@ -777,7 +882,10 @@
         "C": "Sweet Delights' distinctive competency (high-quality baked goods) is not effectively translated into a differentiation advantage because of weaknesses in other parts of their value chain, such as order fulfillment and customer service.",
         "D": "The bakery's recipes are outdated and no longer appeal to modern tastes, requiring them to invest in recipe development and innovation to attract new customers."
       },
-      "correct_answer": "Sweet Delights' distinctive competency (high-quality baked goods) is not effectively translated into a differentiation advantage because of weaknesses in other parts of their value chain, such as order fulfillment and customer service.",
+      "correct_answer": [
+        "Sweet Delights' distinctive competency (high-quality baked goods) is not effectively translated into a differentiation advantage because of weaknesses in other parts of their value chain",
+        "such as order fulfillment and customer service."
+      ],
       "explanation": "This question synthesizes sustained competitive advantage (Lecture 1-3) with the value chain concept (Lecture 3). While Sweet Delights possesses valuable resources and capabilities, they aren't converting them into a *sustained* advantage. Option A focuses on a symptom (low engagement) rather than the root cause. Option B suggests a resource constraint, but the scenario implies the problem is *how* resources are used. Option D might be true, but the scenario doesn't indicate a quality issue. The core issue is that their distinctive competency (quality) isn't effectively delivered to the customer due to weaknesses in other value chain activities. The correct answer is that their core competency isn't being effectively translated into a differentiation advantage due to issues in the value chain.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_17",
@@ -801,7 +909,9 @@
         "C": "GlobalTech's chatbot is likely infringing on InnovateCo's intellectual property rights, leading to negative customer perceptions.",
         "D": "GlobalTech's organization and business processes are not aligned to fully leverage the AI chatbot; the chatbot is functionally effective but doesn't contribute to a distinctive competency or differentiation advantage because of other organizational inefficiencies."
       },
-      "correct_answer": "GlobalTech's organization and business processes are not aligned to fully leverage the AI chatbot; the chatbot is functionally effective but doesn't contribute to a distinctive competency or differentiation advantage because of other organizational inefficiencies.",
+      "correct_answer": [
+        "GlobalTech's organization and business processes are not aligned to fully leverage the AI chatbot; the chatbot is functionally effective but doesn't contribute to a distinctive competency or differentiation advantage because of other organizational inefficiencies."
+      ],
       "explanation": "This question combines sustained competitive advantage (Lecture 1-3) with the resource-based view (Lecture 1-3). While GlobalTech possesses valuable resources and capabilities (AI technology, engineers), they haven't achieved a *sustained* competitive advantage. Option A addresses a symptom (low awareness), not the root cause. Option B is a potential capability issue, but the scenario states the chatbot reduces response times. Option C is a legal red herring. The core problem is that the chatbot's functionality isn't translating into a *distinctive* advantage because of other organizational factors. The correct answer highlights that the *alignment* of resources, capabilities, and organizational processes is crucial for creating a distinctive competency and sustained advantage. The lack of alignment prevents the chatbot from creating a differentiation advantage.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_17",
@@ -825,7 +935,9 @@
         "C": "BookHaven has not adapted its business model to leverage technology and data; they are simply replicating their brick-and-mortar operations online without fundamentally changing how they create and deliver value.",
         "D": "BookHaven is located in an area with poor internet connectivity, limiting the number of potential customers who can access their e-commerce website."
       },
-      "correct_answer": "BookHaven has not adapted its business model to leverage technology and data; they are simply replicating their brick-and-mortar operations online without fundamentally changing how they create and deliver value.",
+      "correct_answer": [
+        "BookHaven has not adapted its business model to leverage technology and data; they are simply replicating their brick-and-mortar operations online without fundamentally changing how they create and deliver value."
+      ],
       "explanation": "This question combines digital business transformation (Lecture 1-3) with the value chain (Lecture 3). While BookHaven has adopted technology and is collecting data, it hasn't *transformed* its business model. Option A addresses a symptom (poor website design), not the core issue. Option B addresses marketing, which might help but won't solve the fundamental problem. Option D is an external constraint that is less relevant. The key is that BookHaven is failing to *integrate* technology and data into its core operations and create a *new* digital business model. The correct answer accurately identifies the *lack* of business model adaptation as the primary reason for failure. They are not leveraging the value chain to its potential, by streamlining inventory management or optimizing pricing. This also represents a *second-order effect* of implementing the new technology, without adapting the business model.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -849,7 +961,10 @@
         "C": "MediCorp has failed to create a compelling digital business model that effectively addresses the competitive forces in the pharmaceutical industry, specifically the bargaining power of buyers (patients and doctors) and the threat of substitute drugs.",
         "D": "MediCorp's platform is too complex and difficult for patients and doctors to use, requiring extensive training and technical support."
       },
-      "correct_answer": "MediCorp has failed to create a compelling digital business model that effectively addresses the competitive forces in the pharmaceutical industry, specifically the bargaining power of buyers (patients and doctors) and the threat of substitute drugs.",
+      "correct_answer": [
+        "MediCorp has failed to create a compelling digital business model that effectively addresses the competitive forces in the pharmaceutical industry",
+        "specifically the bargaining power of buyers (patients and doctors) and the threat of substitute drugs."
+      ],
       "explanation": "This question synthesizes digital business (Lecture 1-3) with Porter's Five Forces (Lecture 3). While MediCorp has invested in technology and is collecting data, they are failing to thrive in the competitive landscape. Option A addresses compliance, which is important but not the core issue. Option B is a feature comparison, which may be relevant but misses the bigger picture. Option D addresses usability, which is a potential issue, but less fundamental. The key is that MediCorp's digital business model must effectively address the competitive forces in the industry. The correct answer highlights the failure to create a *compelling* business model that accounts for the bargaining power of patients and doctors, and the threat of substitute drugs. The platform needs to provide a value proposition that is strong enough to overcome these forces. Failing to do so means that their technology is not generating a competitive advantage.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -873,7 +988,10 @@
         "C": "DiscountMart has failed to understand and leverage the network effects that drive Amazon's success; the value of Amazon's platform increases exponentially with each new seller and customer, creating a self-reinforcing cycle that DiscountMart cannot easily replicate.",
         "D": "DiscountMart's platform is not mobile-friendly, limiting the number of customers who can access it on their smartphones."
       },
-      "correct_answer": "DiscountMart has failed to understand and leverage the network effects that drive Amazon's success; the value of Amazon's platform increases exponentially with each new seller and customer, creating a self-reinforcing cycle that DiscountMart cannot easily replicate.",
+      "correct_answer": [
+        "DiscountMart has failed to understand and leverage the network effects that drive Amazon's success; the value of Amazon's platform increases exponentially with each new seller and customer",
+        "creating a self-reinforcing cycle that DiscountMart cannot easily replicate."
+      ],
       "explanation": "This question combines digital business (Lecture 1-3) with network effects (covered later in the course). While DiscountMart has adopted technology and is collecting data, they are failing to compete with Amazon. Option A addresses algorithm sophistication, which is relevant but misses the core issue. Option B is about pricing and shipping, which is important but not the fundamental reason. Option D is about mobile-friendliness, which is less relevant. The key is that Amazon's success is driven by strong network effects. The correct answer accurately identifies the *lack* of understanding and leveraging network effects as the primary reason for failure. The value of Amazon's platform increases exponentially with each new seller and customer, creating a self-reinforcing cycle that DiscountMart cannot easily replicate. Even copying features, as DiscountMart attempts, does not overcome the initial lack of a substantial network of buyers and sellers.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -897,7 +1015,10 @@
         "C": "Data Insights is focusing too much on technical features and not enough on the strategic resources (e.g., data access) that underpin successful platforms; their reverse engineering efforts should focus on *data acquisition strategies*.",
         "D": "Data Insights is not offering competitive pricing compared to established data analytics platforms."
       },
-      "correct_answer": "Data Insights is focusing too much on technical features and not enough on the strategic resources (e.g., data access) that underpin successful platforms; their reverse engineering efforts should focus on *data acquisition strategies*.",
+      "correct_answer": [
+        "Data Insights is focusing too much on technical features and not enough on the strategic resources (e.g.",
+        "data access) that underpin successful platforms; their reverse engineering efforts should focus on *data acquisition strategies*."
+      ],
       "explanation": "This question combines reverse engineering (Lecture 1-3) with the resource-based view (Lecture 1-3). While Data Insights is focusing on technology, they are neglecting a critical resource: data. Option A is about marketing, which is important but not the fundamental issue. Option B is about compatibility, which is less relevant. Option D is about pricing, which is not the primary concern. The key is that successful platforms are built on access to valuable resources, such as data. The correct answer highlights that Data Insights' reverse engineering efforts should focus on *data acquisition strategies* rather than just technical features. They need to understand how other platforms secure access to data and build partnerships with data providers. The sophisticated algorithms are useless without data.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_19",
@@ -921,7 +1042,10 @@
         "C": "SwiftShip's drivers are not properly trained on how to use the new technologies.",
         "D": "SwiftShip has overlooked the importance of organizational culture in supporting the effective use of its information system; drivers may resist the new technologies due to a lack of trust or a preference for familiar routes, hindering the system's overall performance."
       },
-      "correct_answer": "SwiftShip has overlooked the importance of organizational culture in supporting the effective use of its information system; drivers may resist the new technologies due to a lack of trust or a preference for familiar routes, hindering the system's overall performance.",
+      "correct_answer": [
+        "SwiftShip has overlooked the importance of organizational culture in supporting the effective use of its information system; drivers may resist the new technologies due to a lack of trust or a preference for familiar routes",
+        "hindering the system's overall performance."
+      ],
       "explanation": "This question combines reverse engineering (Lecture 1-3) with organizational culture (covered later). While SwiftShip has implemented similar technologies to FedEx, they are failing to achieve the same results. Option A is about GPS accuracy, which is relevant but not the core issue. Option B is about algorithm sophistication, which is also relevant but misses the bigger picture. Option C is about training, which is important but not the fundamental reason. The key is that the success of an information system depends on organizational culture. The correct answer highlights that SwiftShip has overlooked the importance of *organizational culture* in supporting the effective use of its information system. The drivers' resistance to the new technologies is hindering the system's overall performance. The technology alone is not enough; it needs to be integrated into a supportive organizational environment.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_19",
@@ -945,7 +1069,9 @@
         "C": "CommunityReads is not leveraging its Information System to support customer relationship management; they need to integrate data analytics and personalized recommendations to improve member engagement and library usage.",
         "D": "CommunityReads is located in an area with limited internet access, hindering the adoption of its new library management system."
       },
-      "correct_answer": "CommunityReads is not leveraging its Information System to support customer relationship management; they need to integrate data analytics and personalized recommendations to improve member engagement and library usage.",
+      "correct_answer": [
+        "CommunityReads is not leveraging its Information System to support customer relationship management; they need to integrate data analytics and personalized recommendations to improve member engagement and library usage."
+      ],
       "explanation": "This question combines Information Systems (Lecture 1-3) with CRM (covered later). While CommunityReads has implemented a new Information System, they are not fully leveraging its potential. Option A is about usability, which is relevant but not the core issue. Option B is about marketing, which is important but not the fundamental reason. Option D is about internet access, which is less relevant. The key is that the Information System should be used to support CRM. The correct answer highlights that CommunityReads needs to *integrate data analytics and personalized recommendations* to improve member engagement and library usage. The Information System should be used to understand member preferences and provide tailored recommendations, just like Amazon does. The implemented information system isn't fully aligned to improve customer relationship management.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_20",
@@ -969,7 +1095,9 @@
         "C": "AccurateBooks is not leveraging its Information System to support decision-making; they need to integrate decision support systems and data analytics to make informed strategic decisions.",
         "D": "AccurateBooks' accounting software package is too expensive for a small firm, negatively impacting its profitability."
       },
-      "correct_answer": "AccurateBooks is not leveraging its Information System to support decision-making; they need to integrate decision support systems and data analytics to make informed strategic decisions.",
+      "correct_answer": [
+        "AccurateBooks is not leveraging its Information System to support decision-making; they need to integrate decision support systems and data analytics to make informed strategic decisions."
+      ],
       "explanation": "This question combines Information Systems (Lecture 1-3) with decision support systems (DSS, covered later). While AccurateBooks has implemented a new Information System, they are not fully leveraging its potential for decision-making. Option A is about compatibility, which is less relevant. Option B is about training, which is important but not the core issue. Option D is about cost, which is not the primary concern. The key is that the Information System should be used to support decision-making. The correct answer highlights that AccurateBooks needs to *integrate decision support systems and data analytics* to make informed strategic decisions. The partners' reliance on gut feelings is preventing them from fully utilizing the system's capabilities. The main problem is that the firm is not using its information system to improve decision making.",
       "difficulty_level": 4,
       "source_flashcard_id": "MIS_lec_1-3_20",

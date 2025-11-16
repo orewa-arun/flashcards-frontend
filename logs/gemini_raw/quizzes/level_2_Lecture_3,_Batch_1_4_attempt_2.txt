@@ -1,0 +1,388 @@
+=== RAW LLM RESPONSE ===
+Level: 2
+Chunk: Lecture 3, Batch 1/4
+Attempt: 2/3
+Flashcards: 2
+Max tokens: 40000
+
+=== RESPONSE TEXT ===
+```json
+[
+  {
+    "type": "mcq",
+    "question_text": "A marketing analytics team develops a regression model to predict the conversion rate of online ads. They achieve an R-squared value of 0.85, indicating a strong fit. Based solely on this, the team decides to scale up the ad campaign significantly. After a few weeks, the actual conversion rates are much lower than predicted, leading to a substantial budget loss. What critical step did the team most likely overlook that led to this flawed business decision?",
+    "options": {
+      "A": "They failed to optimize the ad content for different demographics after the campaign launched.",
+      "B": "They neglected to perform regression diagnostics, leading to unreliable model predictions.",
+      "C": "They did not collect enough data for the initial model training, making the R-squared misleading.",
+      "D": "They should have continuously monitored the campaign performance in real-time instead of relying on a model."
+    },
+    "correct_answer": ["B"],
+    "explanation": {
+      "text": "The marketing team made a common mistake by relying solely on R-squared without conducting regression diagnostics. A high R-squared indicates explained variance but does not guarantee that the model's underlying assumptions are met, nor that its predictions are reliable, especially when extrapolating or applying to new contexts. Overlooking diagnostics can lead to flawed inferences and poor business decisions.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Identify the Problem",
+          "content": "The core issue is that the model's predictions were unreliable despite a high R-squared, leading to a significant business loss. This points to a fundamental flaw in the model's validity, not just its initial fit."
+        },
+        {
+          "step": 2,
+          "title": "Relate to Regression Diagnostics",
+          "content": "Regression diagnostics specifically address the reliability and robustness of a model by evaluating its underlying assumptions and identifying influential observations. Skipping this step means the model's 'systems' were not checked for integrity."
+        },
+        {
+          "step": 3,
+          "title": "Evaluate Options",
+          "content": "Option B directly addresses this gap. Option A is about campaign optimization, not model validation. Option C implies insufficient data, which might be true but isn't the direct cause of *unreliable predictions from an existing model* that diagnostics would catch. Option D is reactive monitoring, whereas diagnostics are proactive model validation."
+        }
+      ],
+      "interpretation": "A high R-squared is not a substitute for thorough regression diagnostics. Without diagnostics, even a seemingly well-fitting model can produce unreliable predictions, leading to costly errors in business strategy.",
+      "business_context": "In critical business decisions, model validation through diagnostics is paramount. A model's ability to reliably predict outcomes directly impacts resource allocation, risk management, and strategic planning. Ignoring diagnostics can turn seemingly data-driven decisions into expensive gambles."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_1",
+    "tags": ["Regression", "Diagnostics", "Model Validation", "Business Decision Making"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A financial analyst is developing a regression model to predict quarterly earnings for a portfolio of companies. Before finalizing the model and using it to advise clients, the analyst spends significant time performing regression diagnostics, including examining residual plots and checking for influential points. What is the primary objective of the analyst in undertaking this comprehensive diagnostic process?",
+    "options": {
+      "A": "To increase the R-squared value of the model to show a better fit to the data.",
+      "B": "To identify new independent variables that could improve the model's predictive power.",
+      "C": "To ensure the model's inferences and predictions are reliable and robust for informed decision-making.",
+      "D": "To simplify the model by removing less significant predictor variables for easier interpretation."
+    },
+    "correct_answer": ["C"],
+    "explanation": {
+      "text": "The primary objective of regression diagnostics is to ensure that the model's underlying assumptions are met and that its outputs (inferences, predictions) are reliable and robust. This allows for confident and informed decision-making, such as advising clients on financial investments.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Understand the Role of Diagnostics",
+          "content": "Regression diagnostics is a systematic evaluation of a model's assumptions (e.g., linearity, homoscedasticity, normality of errors) and data characteristics (e.g., outliers, influential points). It's a quality control step."
+        },
+        {
+          "step": 2,
+          "title": "Identify the Core Purpose",
+          "content": "The 'concise' answer from the flashcard states diagnostics 'ensures the model's inferences and predictions are reliable and robust, preventing flawed business decisions.' This aligns directly with the analyst's need to provide sound advice."
+        },
+        {
+          "step": 3,
+          "title": "Evaluate Options Against Purpose",
+          "content": "Option A (increasing R-squared) is a potential outcome of model refinement post-diagnostics, not the primary objective of diagnostics itself. Option B (identifying new variables) is part of model building, not diagnostics. Option D (simplifying the model) is a separate goal, distinct from ensuring reliability. Option C directly reflects the core purpose of diagnostics."
+        }
+      ],
+      "interpretation": "Regression diagnostics serves as a critical validation step, confirming that a model is trustworthy for its intended application, especially when high-stakes decisions are involved.",
+      "business_context": "In finance, where decisions have significant monetary implications, relying on an unreliable model can lead to massive losses. Diagnostics provide the necessary assurance that the model is sound, safeguarding client investments and the firm's reputation."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_1",
+    "tags": ["Regression", "Diagnostics", "Model Validation", "Financial Analysis"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A manufacturing company uses a regression model to predict the expected lifespan of a new product based on various material properties. The data science team, under pressure to deliver results quickly, decides to skip the regression diagnostics phase and deploys the model directly into production. Which of the following are potential negative consequences of this decision? (Select all that apply)",
+    "options": {
+      "A": "The model will automatically generate a higher number of influential observations in the dataset.",
+      "B": "The p-values and confidence intervals derived from the model might be inaccurate and misleading.",
+      "C": "The product lifespan predictions could be systematically biased or unreliable, leading to poor inventory management.",
+      "D": "The model will become excessively complex, making it harder to interpret for non-technical stakeholders."
+    },
+    "correct_answer": ["B", "C"],
+    "explanation": {
+      "text": "Skipping regression diagnostics leaves assumption violations undetected, which can invalidate statistical inferences. Specifically, p-values and confidence intervals (Option B) become unreliable, and the model's predictions (Option C) may be systematically flawed, directly impacting business operations like inventory management. Option A is incorrect because diagnostics identify existing influential observations, they don't cause them. Option D is incorrect as model complexity is a separate concern from the reliability issues diagnostics address.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Recall Purpose of Diagnostics",
+          "content": "Regression diagnostics evaluate assumptions like linearity, homoscedasticity, and normality of errors. Violations of these assumptions lead to problems with the statistical properties of the model."
+        },
+        {
+          "step": 2,
+          "title": "Consequences of Assumption Violations",
+          "content": "If assumptions are violated: (a) Standard errors (and thus confidence intervals) can be incorrect, leading to inaccurate conclusions about coefficient significance. (b) The model's coefficients might be biased, and predictions can be unreliable or systematically wrong (e.g., under-predicting high values, over-predicting low values)."
+        },
+        {
+          "step": 3,
+          "title": "Evaluate Options",
+          "content": "Option B directly relates to the inaccuracy of p-values and confidence intervals due to violated assumptions. Option C highlights the unreliability of predictions, leading to poor business decisions (like inventory management). Option A is wrong; influential observations *exist* in the data, diagnostics *identify* them. Option D describes model complexity, which is not a direct consequence of skipping diagnostics but a design choice."
+        }
+      ],
+      "interpretation": "Ignoring regression diagnostics can lead to a false sense of security in a model, as its statistical outputs and predictive capabilities may be fundamentally compromised.",
+      "business_context": "For a manufacturing company, inaccurate lifespan predictions could lead to overstocking (products expire before sale) or understocking (missing sales due to premature stock depletion), both resulting in significant financial losses. Reliable models are crucial for efficient supply chain and inventory management."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_1",
+    "tags": ["Regression", "Diagnostics", "Model Assumptions", "Business Risk"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A data scientist has developed a regression model to predict housing prices, achieving an impressive R-squared value of 0.92. Despite this high R-squared, their mentor insists on performing extensive regression diagnostics. Why is the mentor's insistence on diagnostics crucial, even with such a strong R-squared?",
+    "options": {
+      "A": "A high R-squared value always indicates that the model is overfit to the training data.",
+      "B": "R-squared only measures the proportion of variance explained, not the validity of the model's underlying assumptions or reliability of its inferences.",
+      "C": "Regression diagnostics are primarily used to simplify models and reduce the number of predictor variables.",
+      "D": "A high R-squared automatically implies perfect linearity and homoscedasticity in the data."
+    },
+    "correct_answer": ["B"],
+    "explanation": {
+      "text": "A high R-squared indicates that the model explains a large proportion of the variance in the dependent variable, suggesting good predictive power. However, it does not provide any information about whether the model's underlying assumptions (e.g., linearity, homoscedasticity, normality of errors) are met. Violations of these assumptions can lead to unreliable standard errors, p-values, and biased predictions, even with a high R-squared.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Understand R-squared",
+          "content": "R-squared (coefficient of determination) quantifies the proportion of the variance in the dependent variable that is predictable from the independent variables. A high value means the model explains much of the outcome's variability."
+        },
+        {
+          "step": 2,
+          "title": "Understand Regression Diagnostics",
+          "content": "Regression diagnostics, in contrast, specifically check if the statistical assumptions required for valid inference (like linearity, homoscedasticity, independence of errors, normality of errors) are met. These assumptions are crucial for the reliability of standard errors, p-values, and confidence intervals."
+        },
+        {
+          "step": 3,
+          "title": "Connect R-squared and Diagnostics",
+          "content": "A model can explain a lot of variance (high R-squared) but still violate assumptions. If assumptions are violated, the reported p-values might be incorrect, and confidence intervals might be too narrow or wide, making inferences unreliable. The predictive power might also be compromised in new data or for specific segments."
+        },
+        {
+          "step": 4,
+          "title": "Evaluate Options",
+          "content": "Option B accurately captures this. Option A is incorrect; a high R-squared doesn't *always* mean overfitting, and diagnostics help detect issues related to it but don't define it. Option C is not the primary purpose of diagnostics. Option D is incorrect; high R-squared gives no guarantee about linearity or homoscedasticity."
+        }
+      ],
+      "interpretation": "R-squared is a measure of explanatory power, while regression diagnostics are measures of model validity and reliability. Both are important, but one cannot substitute for the other.",
+      "business_context": "In real estate, accurately predicting housing prices is vital. A model with a high R-squared might seem appealing, but if its underlying assumptions are violated, real estate agents or investors could make flawed decisions on pricing or investment, leading to financial losses."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_1",
+    "tags": ["Regression", "R-squared", "Diagnostics", "Assumptions", "Model Reliability"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A supply chain analyst develops a model to predict delivery times. After an initial fit, they perform diagnostics, identify heteroscedasticity, apply a log transformation to the dependent variable, and then re-run the diagnostics. Finding the issues resolved, they proceed with the model. This entire sequence of steps best exemplifies which aspect of regression diagnostics?",
+    "options": {
+      "A": "The primary goal of simply validating model assumptions.",
+      "B": "The process of ensuring data quality before model building.",
+      "C": "Regression diagnostics as an iterative process for model refinement and improvement.",
+      "D": "The critical need to always use data transformations in regression models."
+    },
+    "correct_answer": ["C"],
+    "explanation": {
+      "text": "The scenario describes a cycle: build model, diagnose, identify issues, fix issues (refine model), then re-diagnose. This iterative nature is a key characteristic of regression diagnostics, where findings from diagnostics inform model adjustments, which are then re-evaluated until a satisfactory and reliable model is achieved.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Analyze the Scenario's Flow",
+          "content": "The analyst doesn't just check once and stop. They identify a problem (heteroscedasticity), take action to fix it (log transformation), and then re-evaluate the model by running diagnostics again. This is a continuous loop until the model is satisfactory."
+        },
+        {
+          "step": 2,
+          "title": "Relate to Flashcard Concepts",
+          "content": "The flashcard's 'common mistakes' section mentions 'treating diagnostics as a one-time check rather than an iterative process to refine and improve the model.' The scenario perfectly illustrates the 'iterative process' aspect."
+        },
+        {
+          "step": 3,
+          "title": "Evaluate Options",
+          "content": "Option C directly describes this iterative refinement. Option A is too narrow; it's not just validation, but also action based on validation. Option B is about data preparation, which happens *before* model building. Option D is an overgeneralization; transformations are used *when needed*, not always."
+        }
+      ],
+      "interpretation": "Effective regression diagnostics is not a one-and-done task but an ongoing cycle of evaluation, adjustment, and re-evaluation to optimize model performance and reliability.",
+      "business_context": "In supply chain management, accurate delivery time predictions are crucial for planning and customer satisfaction. The iterative diagnostic process ensures that the model used for these predictions is robust, leading to more reliable estimates and improved operational efficiency."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_1",
+    "tags": ["Regression", "Diagnostics", "Model Refinement", "Iterative Process"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "An economist is modeling the relationship between national GDP growth (Y) and interest rates (X). For one particular year, the observed GDP growth (Y_i) was 3.2%, and the model predicted a GDP growth (Ŷ_i) of 2.8%. What is the residual for this observation?",
+    "options": {
+      "A": "0.4%",
+      "B": "-0.4%",
+      "C": "6.0%",
+      "D": "2.8%"
+    },
+    "correct_answer": ["A"],
+    "explanation": {
+      "text": "A residual is defined as the difference between the observed value (Y_i) and the predicted value (Ŷ_i). In this case, the calculation is 3.2% - 2.8% = 0.4%.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Recall Residual Definition",
+          "content": "The flashcard defines residuals (e_i) as the differences between observed (Y_i) and predicted (Ŷ_i) values, specifically: e_i = Y_i - Ŷ_i."
+        },
+        {
+          "step": 2,
+          "title": "Identify Given Values",
+          "content": "Observed GDP growth (Y_i) = 3.2%. Predicted GDP growth (Ŷ_i) = 2.8%."
+        },
+        {
+          "step": 3,
+          "title": "Calculate the Residual",
+          "content": "Substitute the values into the formula: Residual = 3.2% - 2.8% = 0.4%.",
+          "latex": "e_i = Y_i - \\hat{Y}_i = 3.2\\% - 2.8\\% = 0.4\\%"
+        }
+      ],
+      "interpretation": "A positive residual means the model under-predicted the actual value, while a negative residual means it over-predicted.",
+      "business_context": "In economics, understanding the residuals helps economists identify periods where the model performed exceptionally well or poorly, potentially indicating unique economic events not captured by the predictor variables."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_2",
+    "tags": ["Residuals", "Regression", "Calculation", "Economics"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A data scientist is analyzing a regression model built to predict customer churn. After plotting the residuals against the fitted values, they observe a clear 'funnel-shaped' pattern, where the spread of residuals increases as the predicted churn probability increases. What assumption violation does this pattern primarily indicate?",
+    "options": {
+      "A": "Non-linearity in the relationship between variables.",
+      "B": "Multicollinearity among predictor variables.",
+      "C": "Heteroscedasticity of the error terms.",
+      "D": "Autocorrelation in the residuals."
+    },
+    "correct_answer": ["C"],
+    "explanation": {
+      "text": "A funnel-shaped pattern in a residual plot, where the spread (variance) of residuals changes systematically across the range of fitted values, is the classic indicator of heteroscedasticity. This means the assumption of constant variance of errors is violated.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Identify the Observed Pattern",
+          "content": "The scenario describes a 'funnel-shaped' pattern where the 'spread of residuals increases as the predicted churn probability increases.' This means the variability of the errors is not constant."
+        },
+        {
+          "step": 2,
+          "title": "Relate Pattern to Assumption Violations",
+          "content": "From the flashcard, residual plots reveal patterns indicative of assumption violations. A changing spread of residuals is characteristic of heteroscedasticity, which violates the assumption of homoscedasticity (constant variance of errors)."
+        },
+        {
+          "step": 3,
+          "title": "Evaluate Options",
+          "content": "Option C (Heteroscedasticity) directly matches the description. Option A (Non-linearity) would typically manifest as a curve (e.g., U-shape). Option B (Multicollinearity) is diagnosed using VIF, not residual plots. Option D (Autocorrelation) relates to dependence between sequential errors, common in time series, and not typically indicated by a funnel shape in a residual-vs-fitted plot."
+        }
+      ],
+      "interpretation": "Heteroscedasticity implies that the precision of the model's predictions varies across different ranges of the predicted values, making standard errors and confidence intervals unreliable.",
+      "business_context": "For customer churn prediction, heteroscedasticity means the model's reliability in predicting churn might be high for low-churn-risk customers but very low for high-churn-risk customers. This could lead to misallocated retention efforts, as resources might be wasted on customers unlikely to churn or insufficient for those highly likely to churn."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_2",
+    "tags": ["Residual Plots", "Heteroscedasticity", "Model Assumptions", "Customer Churn"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A business analyst is reviewing the residual plots generated from a linear regression model predicting sales figures. Which of the following patterns observed in the residual plots would indicate a violation of one or more core regression assumptions? (Select all that apply)",
+    "options": {
+      "A": "A U-shaped curve in the plot of residuals versus fitted values.",
+      "B": "A random scatter of residuals around zero with no discernible pattern.",
+      "C": "A widening or narrowing 'fan' shape in the plot of residuals versus a predictor variable.",
+      "D": "Residuals that consistently fall on a horizontal line at zero."
+    },
+    "correct_answer": ["A", "C"],
+    "explanation": {
+      "text": "A U-shaped curve (Option A) in a residual vs. fitted plot indicates non-linearity, suggesting the linear model is inadequate. A widening or narrowing 'fan' shape (Option C) indicates heteroscedasticity, violating the assumption of constant variance. A random scatter (Option B) is the ideal pattern, suggesting assumptions are met. Residuals consistently falling on a horizontal line at zero (Option D) is an idealized scenario of perfect fit and no error, which is rarely observed in real data and not a 'pattern' indicating violation, but rather an unrealistic ideal.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Recall Ideal Residual Plot Pattern",
+          "content": "An ideal residual plot shows a random scatter of points around zero, with no discernible pattern or systematic trend. This suggests that the model's assumptions (linearity, homoscedasticity) are met."
+        },
+        {
+          "step": 2,
+          "title": "Analyze Pattern A (U-shaped curve)",
+          "content": "A U-shaped curve implies that the linear model systematically under-predicts or over-predicts at certain ranges of the predictor/fitted values. This indicates non-linearity in the relationship, meaning a linear model is not the best fit."
+        },
+        {
+          "step": 3,
+          "title": "Analyze Pattern B (Random scatter)",
+          "content": "A random scatter is the desired outcome, indicating that the assumptions of linearity and homoscedasticity are likely met. Thus, this does not indicate a violation."
+        },
+        {
+          "step": 4,
+          "title": "Analyze Pattern C (Fan shape)",
+          "content": "A widening or narrowing 'fan' shape signifies that the variance of the residuals is not constant across the range of fitted/predictor values. This is the definition of heteroscedasticity."
+        },
+        {
+          "step": 5,
+          "title": "Analyze Pattern D (Horizontal line at zero)",
+          "content": "While ideal, this is practically impossible in real-world data and would imply a perfect model with no errors, which is unrealistic. It does not represent a pattern of violation but an unattainable ideal."
+        }
+      ],
+      "interpretation": "Recognizing specific patterns in residual plots is crucial for identifying underlying issues with a regression model's assumptions, guiding model refinement efforts.",
+      "business_context": "For sales forecasting, recognizing non-linearity or heteroscedasticity means the current model might be making systematically wrong predictions for certain product lines or market conditions. This could lead to overproduction, stockouts, or missed revenue opportunities."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_2",
+    "tags": ["Residual Plots", "Non-linearity", "Heteroscedasticity", "Model Assumptions"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "An environmental scientist uses a linear regression model to predict air pollution levels based on industrial activity. Upon examining the residual plot (residuals vs. fitted values), they notice a distinct 'bowl-shaped' or 'U-shaped' pattern. What is the most appropriate conclusion the scientist should draw from this observation?",
+    "options": {
+      "A": "The model's errors are homoscedastic.",
+      "B": "There is a significant number of outliers influencing the model.",
+      "C": "The linear model is not adequately capturing the non-linear relationship between variables.",
+      "D": "The residuals are normally distributed."
+    },
+    "correct_answer": ["C"],
+    "explanation": {
+      "text": "A 'U-shaped' or 'bowl-shaped' pattern in a residual plot is a strong indicator that the linear model is failing to capture a non-linear relationship between the dependent and independent variables. It suggests that a more complex, non-linear term (e.g., quadratic) might be needed in the model.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Identify the Pattern",
+          "content": "The observed pattern is 'bowl-shaped' or 'U-shaped' in the residuals vs. fitted values plot. This implies a systematic over-prediction in the middle range and under-prediction at the extremes (or vice-versa)."
+        },
+        {
+          "step": 2,
+          "title": "Relate Pattern to Assumption Violations",
+          "content": "Such a systematic curve indicates that a linear relationship is not sufficient to describe the data. The assumption of linearity is violated, and the model is mispecified."
+        },
+        {
+          "step": 3,
+          "title": "Evaluate Options",
+          "content": "Option C directly addresses this non-linearity. Option A (homoscedasticity) refers to constant variance, which is not indicated by a U-shape. Option B (outliers) might be present but a U-shape specifically points to a systemic non-linear issue, not just isolated points. Option D (normality of residuals) is typically assessed with a Normal Q-Q plot, not a residual vs. fitted plot."
+        }
+      ],
+      "interpretation": "A U-shaped residual plot signals that the linear model is too simplistic for the underlying relationship and needs to be adjusted, possibly by adding polynomial terms or using a non-linear model.",
+      "business_context": "For environmental scientists, accurately predicting pollution levels is critical for public health and policy-making. If a model shows non-linearity, it means policies based on a linear assumption might be ineffective or even counterproductive, highlighting the need for a more accurate representation of the environmental processes."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_2",
+    "tags": ["Residual Plots", "Non-linearity", "Model Misspecification", "Environmental Science"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A medical researcher has built a regression model to predict patient recovery time. To assess the normality assumption of the model's errors, they generate a Normal Q-Q plot of the residuals. Which of the following specific insights can this plot provide? (Select all that apply)",
+    "options": {
+      "A": "Whether the residuals are approximately normally distributed.",
+      "B": "The presence of heteroscedasticity in the error terms.",
+      "C": "The presence of heavy tails or skewness in the distribution of residuals.",
+      "D": "Whether there is a non-linear relationship between the predictors and the response."
+    },
+    "correct_answer": ["A", "C"],
+    "explanation": {
+      "text": "A Normal Q-Q plot compares the quantiles of the residuals to the quantiles of a theoretical normal distribution. If the residuals are normally distributed, they should fall approximately along a straight line. Deviations from this line can reveal specific characteristics of non-normality, such as heavy tails or skewness (Option C). The primary purpose is to assess normality (Option A). Heteroscedasticity (Option B) and non-linearity (Option D) are typically assessed using residual plots against fitted values or predictors.",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Understand Normal Q-Q Plot Purpose",
+          "content": "The 'concise' answer from the flashcard mentions 'Normal Q-Q plot (non-normality of errors)'. This plot is specifically designed to visually check the normality assumption of the residuals."
+        },
+        {
+          "step": 2,
+          "title": "Interpret Q-Q Plot Characteristics",
+          "content": "If residuals are normal, points on a Q-Q plot will follow a straight line. Deviations from this line indicate non-normality. For example, S-shapes suggest skewness, and points curving away from the line at the ends suggest heavy tails (leptokurtic distribution) or light tails (platykurtic distribution)."
+        },
+        {
+          "step": 3,
+          "title": "Evaluate Options",
+          "content": "Option A directly states the primary purpose. Option C details specific types of non-normality (heavy tails, skewness) that the Q-Q plot can reveal. Option B (heteroscedasticity) is typically identified from residual vs. fitted plots. Option D (non-linearity) is also identified from residual vs. fitted plots (e.g., U-shaped pattern)."
+        }
+      ],
+      "interpretation": "The Normal Q-Q plot is a powerful visual tool for diagnosing the normality of residuals, which is crucial for the validity of p-values and confidence intervals, especially in smaller sample sizes.",
+      "business_context": "In medical research, accurate p-values and confidence intervals are vital for making reliable inferences about treatment effectiveness or risk factors. If residuals are not normal, these statistical measures can be invalid, potentially leading to incorrect conclusions about patient recovery times and influencing medical guidelines or drug approvals."
+    },
+    "difficulty_level": 2,
+    "source_flashcard_id": "DAA_lec_3_2",
+    "tags": ["Residuals", "Normal Q-Q Plot", "Normality", "Model Assumptions", "Medical Research"]
+  }
+]
+```

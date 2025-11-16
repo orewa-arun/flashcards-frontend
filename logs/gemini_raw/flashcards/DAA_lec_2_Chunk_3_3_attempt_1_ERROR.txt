@@ -1,0 +1,17 @@
+=== EXCEPTION DURING GENERATION ===
+Source: DAA_lec_2
+Chunk: Chunk 3/3
+Attempt: 1/3
+Error: argument of type 'int' is not iterable
+
+=== TRACEBACK ===
+Traceback (most recent call last):
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/cognitive_flashcard_generator/generator.py", line 115, in _generate_with_retry
+    flashcards = self._parse_flashcard_response(result_text)
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/cognitive_flashcard_generator/generator.py", line 218, in _parse_flashcard_response
+    if self._validate_flashcard(card, i):
+       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/cognitive_flashcard_generator/generator.py", line 369, in _validate_flashcard
+    if field not in card:
+       ^^^^^^^^^^^^^^^^^
+TypeError: argument of type 'int' is not iterable

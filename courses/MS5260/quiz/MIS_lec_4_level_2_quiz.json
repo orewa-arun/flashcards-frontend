@@ -23,7 +23,11 @@
         "C": "Spreadsheets cannot perform mathematical calculations.",
         "D": "Spreadsheets are not compatible with modern operating systems."
       },
-      "correct_answer": "Spreadsheets lack the scalability to handle a growing amount of data and the advanced features for managing relationships between sales, customers, and inventory.",
+      "correct_answer": [
+        "Spreadsheets lack the scalability to handle a growing amount of data and the advanced features for managing relationships between sales",
+        "customers",
+        "and inventory."
+      ],
       "explanation": "The bakery needs to manage increasing amounts of data (sales, customer info, inventory) and the relationships between them. Spreadsheets are suitable for small datasets but lack the scalability and relationship management capabilities of a database. Option A is a minor inconvenience, and options C and D are factually incorrect about spreadsheets. The core issue is the limitations on managing complex, growing data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_1",
@@ -45,7 +49,14 @@
         "C": "Databases are accessible even without an internet connection.",
         "D": "Databases are easier to create than individual files."
       },
-      "correct_answer": "Databases provide a structured way to organize data, define relationships between different entities (books, borrowers, loans), and enforce constraints to ensure data integrity, features which flat files lack.",
+      "correct_answer": [
+        "Databases provide a structured way to organize data",
+        "define relationships between different entities (books",
+        "borrowers",
+        "loans)",
+        "and enforce constraints to ensure data integrity",
+        "features which flat files lack."
+      ],
       "explanation": "The library needs to manage relationships between books, borrowers, and loans, and ensure data accuracy. Databases provide the structure, relationship definitions, and constraints necessary for this, which individual files lack. Option A is not always true. Option C is irrelevant to the comparison. Option D is subjective and depends on the user's skill level.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_1",
@@ -67,7 +78,13 @@
         "C": "Store all the information in a single text file, separated by commas.",
         "D": "Use a cloud storage service to store scanned copies of donation checks and event registration forms."
       },
-      "correct_answer": "Create a database with tables for donors, donations, and events, with defined relationships between them (e.g., a donor can make multiple donations).",
+      "correct_answer": [
+        "Create a database with tables for donors",
+        "donations",
+        "and events",
+        "with defined relationships between them (e.g.",
+        "a donor can make multiple donations)."
+      ],
       "explanation": "The non-profit needs to analyze relationships between donors, donations, and events. A database with defined tables and relationships is the best way to achieve this. Option A is insufficient for complex analysis. Option C lacks structure. Option D is only for storage, not analysis.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_1",
@@ -89,7 +106,10 @@
         "C": "The use of a database instead of a spreadsheet.",
         "D": "The color scheme of the database interface."
       },
-      "correct_answer": "The lack of relationships defined between the product and order tables, requiring inefficient joins.",
+      "correct_answer": [
+        "The lack of relationships defined between the product and order tables",
+        "requiring inefficient joins."
+      ],
       "explanation": "Slow performance when combining data from different tables indicates a problem with how the tables are related. Without proper relationships, the database must perform inefficient joins. Option A is irrelevant. Option C is incorrect; a database is appropriate here. Option D is irrelevant.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_1",
@@ -111,7 +131,10 @@
         "C": "Security features like encryption and access controls, which databases provide to protect sensitive data.",
         "D": "Automated backups."
       },
-      "correct_answer": "Security features like encryption and access controls, which databases provide to protect sensitive data.",
+      "correct_answer": [
+        "Security features like encryption and access controls",
+        "which databases provide to protect sensitive data."
+      ],
       "explanation": "The scenario describes a security breach due to lack of protection. Databases offer encryption and access controls to prevent unauthorized access. Option A is about storage space. Option B is about data organization. Option D is about data recovery, not security.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_1",
@@ -133,7 +156,9 @@
         "C": "Semi-structured data.",
         "D": "Metadata."
       },
-      "correct_answer": "Unstructured data.",
+      "correct_answer": [
+        "Unstructured data."
+      ],
       "explanation": "Doctors' notes, stored as scanned documents, do not have a predefined format and require specialized tools to process. This makes them unstructured data. Structured data is organized in a predefined format. Semi-structured data has some organizational properties but isn't as rigid as structured data. Metadata is data about data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_2",
@@ -155,7 +180,9 @@
         "C": "Convert all the CRM data into text files to make it easier to search.",
         "D": "Store all the data in a single spreadsheet."
       },
-      "correct_answer": "Use the CRM data to send targeted email campaigns and analyze social media data using sentiment analysis to understand customer opinions and preferences.",
+      "correct_answer": [
+        "Use the CRM data to send targeted email campaigns and analyze social media data using sentiment analysis to understand customer opinions and preferences."
+      ],
       "explanation": "The firm can use structured CRM data for targeted campaigns and unstructured social media data for sentiment analysis. This leverages both data types. Option A ignores valuable data. Option C is inefficient. Option D lacks the structure needed for analysis.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_2",
@@ -177,7 +204,9 @@
         "C": "Identifying common themes and sentiments expressed in customer reviews using natural language processing.",
         "D": "Listing all books written by a specific author."
       },
-      "correct_answer": "Identifying common themes and sentiments expressed in customer reviews using natural language processing.",
+      "correct_answer": [
+        "Identifying common themes and sentiments expressed in customer reviews using natural language processing."
+      ],
       "explanation": "Analyzing customer reviews for themes and sentiments requires processing unstructured text data. The other options involve querying structured data in the relational database. Therefore, option C is the correct answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_2",
@@ -199,7 +228,10 @@
         "C": "Convert the video footage into a spreadsheet.",
         "D": "Store the video footage separately without linking it to the structured data."
       },
-      "correct_answer": "Use the structured data to identify days with high defect rates, and then analyze the corresponding video footage to identify potential causes of the defects.",
+      "correct_answer": [
+        "Use the structured data to identify days with high defect rates",
+        "and then analyze the corresponding video footage to identify potential causes of the defects."
+      ],
       "explanation": "The manufacturer can combine structured data (defect rates) with unstructured data (video footage) to find correlations and identify causes. Option A ignores valuable data. Option C is impractical. Option D misses the opportunity for analysis.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_2",
@@ -221,7 +253,10 @@
         "C": "Convert all the user comments into a structured table with columns for each word used.",
         "D": "Ignore the user comments because they are too subjective."
       },
-      "correct_answer": "Analyze the user comments using sentiment analysis to determine the overall sentiment towards each article, and correlate this with the article topic and author from the structured data.",
+      "correct_answer": [
+        "Analyze the user comments using sentiment analysis to determine the overall sentiment towards each article",
+        "and correlate this with the article topic and author from the structured data."
+      ],
       "explanation": "Sentiment analysis of user comments (unstructured) can be combined with structured data (topic, author) to understand engagement and feedback. Option A is insufficient. Option C is inefficient and loses context. Option D ignores valuable data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_2",
@@ -243,7 +278,9 @@
         "C": "Data Planning: Develop a business process model to understand how the database will support the firm's operations.",
         "D": "Conceptual Design: Create an Entity-Relationship (E-R) diagram to represent the entities and relationships in the database."
       },
-      "correct_answer": "Data Planning: Develop a business process model to understand how the database will support the firm's operations.",
+      "correct_answer": [
+        "Data Planning: Develop a business process model to understand how the database will support the firm's operations."
+      ],
       "explanation": "Data planning involves understanding the business processes that the database will support, which is the necessary first step. The other options are subsequent steps in the database planning process. Ignoring data planning leads to a system that doesn't fit business needs.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_3",
@@ -265,7 +302,10 @@
         "C": "Requirements Specification: Define the user information needs and system functionalities.",
         "D": "Conceptual Design: Create a high-level model (e.g., E-R diagram) representing the entities and relationships."
       },
-      "correct_answer": "Logical Design: Translate the conceptual model into a DBMS data model (e.g., relational schema).",
+      "correct_answer": [
+        "Logical Design: Translate the conceptual model into a DBMS data model (e.g.",
+        "relational schema)."
+      ],
       "explanation": "The university has already done the Conceptual Design implicitly by identifying entities and attributes. The next step is Logical Design, to translate the conceptual model into a specific data model. Physical design comes later. Requirements specification should have happened earlier.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_3",
@@ -287,7 +327,11 @@
         "C": "Physical Design: Deciding on the storage structures, indexing, and hardware.",
         "D": "Conceptual Design: Creating a high-level ER diagram."
       },
-      "correct_answer": "Physical Design: Deciding on the storage structures, indexing, and hardware.",
+      "correct_answer": [
+        "Physical Design: Deciding on the storage structures",
+        "indexing",
+        "and hardware."
+      ],
       "explanation": "The company has completed requirements specification, conceptual design (ER diagram), and logical design (choosing RDBMS). The next step is Physical Design, to determine storage structures and access methods. The question implies these prior steps are complete.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_3",
@@ -309,7 +353,10 @@
         "C": "The database will be more secure.",
         "D": "The database will use more storage space."
       },
-      "correct_answer": "The database may not meet the actual needs of the users and the business, leading to inefficiencies and rework.",
+      "correct_answer": [
+        "The database may not meet the actual needs of the users and the business",
+        "leading to inefficiencies and rework."
+      ],
       "explanation": "Requirements specification ensures the database meets user and business needs. Skipping it leads to a system that doesn't fit the requirements, causing inefficiencies. Option A is unlikely. Options C and D are unrelated.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_3",
@@ -331,7 +378,10 @@
         "C": "Skipping these phases will make the database less secure.",
         "D": "Skipping these phases will make it impossible to use a relational database management system (RDBMS)."
       },
-      "correct_answer": "Skipping these phases will likely result in a database that does not align with the business processes and user needs, leading to a poorly designed and inefficient system.",
+      "correct_answer": [
+        "Skipping these phases will likely result in a database that does not align with the business processes and user needs",
+        "leading to a poorly designed and inefficient system."
+      ],
       "explanation": "Data planning and requirements specification ensure the database aligns with business needs. Skipping them leads to a poorly designed system. Option A is possible, but not the primary reason. Options C and D are unlikely.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_3",
@@ -353,7 +403,12 @@
         "C": "To optimize the database for faster query performance.",
         "D": "To define the user interface of the social media platform."
       },
-      "correct_answer": "To visually represent the entities, their attributes, and the relationships between them, providing a blueprint for the database structure.",
+      "correct_answer": [
+        "To visually represent the entities",
+        "their attributes",
+        "and the relationships between them",
+        "providing a blueprint for the database structure."
+      ],
       "explanation": "The E-R model's primary purpose is to visually represent the database structure, acting as a blueprint. Option A is incorrect. Option C is physical design. Option D is unrelated to the database design.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_4",
@@ -377,7 +432,9 @@
         "C": "The fact that a 'Book' is written by an 'Author'.",
         "D": "The 'PublicationYear' of a book."
       },
-      "correct_answer": "The fact that a 'Book' is written by an 'Author'.",
+      "correct_answer": [
+        "The fact that a 'Book' is written by an 'Author'."
+      ],
       "explanation": "A relationship describes how entities are connected. 'Book is written by Author' represents a connection between the Book and Author entities. The other options are attributes of individual entities.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_4",
@@ -401,7 +458,9 @@
         "C": "By creating a 'Studies In' relationship between the 'Student' and 'Department' entities.",
         "D": "By creating a separate entity called 'StudentDepartment' with attributes for student name and department name."
       },
-      "correct_answer": "By creating a 'Studies In' relationship between the 'Student' and 'Department' entities.",
+      "correct_answer": [
+        "By creating a 'Studies In' relationship between the 'Student' and 'Department' entities."
+      ],
       "explanation": "A relationship represents the connection between entities. Creating a 'Studies In' relationship directly links students and departments. Option B is an attribute, not a relationship. Option D creates a redundant entity.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_4",
@@ -425,7 +484,10 @@
         "C": "'Customer Address' should be an attribute only if the business has fewer than 100 customers.",
         "D": "'Customer Address' should be an entity only if the address includes geographical coordinates."
       },
-      "correct_answer": "'Customer Address' should be an attribute of the 'Customer' entity, unless there is a need to store multiple addresses per customer or track address history.",
+      "correct_answer": [
+        "'Customer Address' should be an attribute of the 'Customer' entity",
+        "unless there is a need to store multiple addresses per customer or track address history."
+      ],
       "explanation": "Addresses are typically attributes unless there's a need for multiple addresses or history. Making it an entity unnecessarily complicates the model. Options A, C, and D impose arbitrary rules.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_4",
@@ -449,7 +511,10 @@
         "C": "List all orders in the 'Customer' entity and all products in the 'Order' entity.",
         "D": "Create a single entity called 'CustomerOrderProduct' that combines all the information."
       },
-      "correct_answer": "Create a 'Places' relationship between 'Customer' and 'Order', and a 'Contains' relationship between 'Order' and 'Product'.",
+      "correct_answer": [
+        "Create a 'Places' relationship between 'Customer' and 'Order'",
+        "and a 'Contains' relationship between 'Order' and 'Product'."
+      ],
       "explanation": "Separate relationships accurately represent the connections: Customer Places Order, and Order Contains Product. Option A is too general. Option C is inefficient. Option D violates normalization principles.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_4",
@@ -473,7 +538,9 @@
         "C": "A specific book in the library's collection.",
         "D": "The date a book was checked out."
       },
-      "correct_answer": "A specific book in the library's collection.",
+      "correct_answer": [
+        "A specific book in the library's collection."
+      ],
       "explanation": "In this scenario, a 'Book' represents a real-world object about which the library wants to store information. Entities represent things about which you store information. Options A, B, and D are attributes *of* entities, not entities themselves. Therefore, 'A specific book in the library's collection' is the best choice for an entity.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_5",
@@ -494,7 +561,9 @@
         "C": "A course offered by the university.",
         "D": "The department offering the course."
       },
-      "correct_answer": "The student's major.",
+      "correct_answer": [
+        "The student's major."
+      ],
       "explanation": "The student's major is a characteristic or property that describes a student. Attributes describe entities. A specific student and a course are entities themselves. The department offering the course could also be considered an entity. Thus, 'The student's major' is the attribute.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_5",
@@ -515,7 +584,9 @@
         "C": "Model 'Customer Address' as a multi-valued attribute of the 'Customer' entity.",
         "D": "Create a separate 'Address' entity only if multiple customers can share the same address."
       },
-      "correct_answer": "Model 'Customer Address' as a single attribute of the 'Customer' entity.",
+      "correct_answer": [
+        "Model 'Customer Address' as a single attribute of the 'Customer' entity."
+      ],
       "explanation": "The flashcard highlights that a common mistake is making attributes entities. Unless there is a need to store detailed information *about* the address itself (e.g., delivery routes, address verification), it's generally better to keep it as an attribute of the Customer. Modeling it as a single attribute of the 'Customer' entity is the most straightforward approach. Option A overcomplicates the model without clear justification. Option C is less common and might not be supported by all database systems. Option D is partially correct, but not the primary consideration.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_5",
@@ -537,7 +608,9 @@
         "C": "'Color' and 'Size' should both be attributes of the 'Product' entity.",
         "D": "'Size' should be an entity, and 'Color' should be an attribute."
       },
-      "correct_answer": "'Color' and 'Size' should both be attributes of the 'Product' entity.",
+      "correct_answer": [
+        "'Color' and 'Size' should both be attributes of the 'Product' entity."
+      ],
       "explanation": "'Color' and 'Size' describe the 'Product'. Attributes describe entities. Therefore, 'Color' and 'Size' should be attributes of the 'Product' entity. The retailer is storing information *about* the product by describing it with these characteristics. Options A, B, and D incorrectly treat 'Color' and/or 'Size' as entities when they are properties of a product.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_5",
@@ -558,7 +631,9 @@
         "C": "A specific appointment the patient has scheduled.",
         "D": "The hospital department the patient is assigned to."
       },
-      "correct_answer": "The patient's medical history.",
+      "correct_answer": [
+        "The patient's medical history."
+      ],
       "explanation": "A patient's medical history is a characteristic or property that describes the patient. Attributes describe entities. The name of the patient's primary doctor relates the patient to another entity (Doctor). A specific appointment is also a relationship between the Patient and other entities (Doctor, Room, Time). The hospital department is more related to the organization of the hospital, not a specific patient. Therefore, 'The patient's medical history' is the correct answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_5",
@@ -580,7 +655,9 @@
         "C": "A specific car in their fleet.",
         "D": "The rental price of a car."
       },
-      "correct_answer": "A specific car in their fleet.",
+      "correct_answer": [
+        "A specific car in their fleet."
+      ],
       "explanation": "An entity represents a real-world object about which we want to store information. 'A specific car' is something the company wants to track. The color, mileage, and rental price are characteristics of the car (attributes). Options A, B, and D are properties *of* the entity 'Car'. Therefore, 'A specific car in their fleet' is the best choice.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_6",
@@ -601,7 +678,9 @@
         "C": "A specific instructor.",
         "D": "The number of credits a course is worth."
       },
-      "correct_answer": "A specific instructor.",
+      "correct_answer": [
+        "A specific instructor."
+      ],
       "explanation": "An entity represents a real-world object or concept that is distinguishable from other objects. The university needs to store information about instructors. A student's GPA and course credits are attributes. The name of a course could be an attribute of the 'Course' entity. Therefore, 'A specific instructor' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_6",
@@ -622,7 +701,11 @@
         "C": "When the company only needs to track whether an employee has a skill or not.",
         "D": "When all employees have the same set of skills."
       },
-      "correct_answer": "When the company needs to store detailed information about each skill (e.g., proficiency level, certification date).",
+      "correct_answer": [
+        "When the company needs to store detailed information about each skill (e.g.",
+        "proficiency level",
+        "certification date)."
+      ],
       "explanation": "The flashcard's 'common mistakes' section warns against making attributes entities unnecessarily. However, if you need to store information *about* the skill itself (proficiency, certification), then creating a separate 'Skill' entity is justified. Options A, C, and D do not justify creating a separate entity, as the skill can simply be represented as an attribute or a list of attributes for the employee.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_6",
@@ -643,7 +726,9 @@
         "C": "As an entity represented by a rectangle.",
         "D": "As an attribute of the platform itself."
       },
-      "correct_answer": "As an entity represented by a rectangle.",
+      "correct_answer": [
+        "As an entity represented by a rectangle."
+      ],
       "explanation": "An entity represents a real-world object or concept that is distinguishable from other objects. Entities are typically represented as rectangles in an E-R diagram. Options A and D incorrectly treat the user as an attribute. Option B is irrelevant. Therefore, 'As an entity represented by a rectangle' is the correct answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_6",
@@ -664,7 +749,9 @@
         "C": "To represent the real-world objects about which the bookstore wants to store information.",
         "D": "To define the constraints on the data that can be entered into the database."
       },
-      "correct_answer": "To represent the real-world objects about which the bookstore wants to store information.",
+      "correct_answer": [
+        "To represent the real-world objects about which the bookstore wants to store information."
+      ],
       "explanation": "The core purpose of an entity is to represent a real-world object that needs to be tracked. Entities represent things about which you store information. Options A, B, and D refer to other aspects of database design. Thus, 'To represent the real-world objects about which the bookstore wants to store information' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_6",
@@ -685,7 +772,9 @@
         "C": "The date the book was acquired by the library.",
         "D": "The borrower who currently has the book checked out."
       },
-      "correct_answer": "The date the book was acquired by the library.",
+      "correct_answer": [
+        "The date the book was acquired by the library."
+      ],
       "explanation": "The acquisition date is a characteristic that describes the book itself. Attributes describe entities. The author is likely another entity (or a relationship to an Author entity). The number of copies and current borrower represent relationships or state changes *related* to the book, not inherent properties of the book itself. Therefore, 'The date the book was acquired by the library' is the correct answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_7",
@@ -706,7 +795,9 @@
         "C": "The course description.",
         "D": "The department offering the course."
       },
-      "correct_answer": "The course description.",
+      "correct_answer": [
+        "The course description."
+      ],
       "explanation": "The course description is a characteristic or property that describes the course. Attributes describe entities. The professor and students represent relationships to other entities. The department offering the course might be another entity or a relationship. Therefore, 'The course description' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_7",
@@ -727,7 +818,9 @@
         "C": "When loyalty points can be transferred between customers.",
         "D": "When loyalty points have different values based on the customer's tier."
       },
-      "correct_answer": "When the company only needs to know the total number of points a customer has.",
+      "correct_answer": [
+        "When the company only needs to know the total number of points a customer has."
+      ],
       "explanation": "If only the total number of points is needed, it is best represented as an attribute of the customer entity. Attributes are properties of entities. If detailed history or complex relationships are needed, then it might be beneficial to create a separate entity. Options A, C, and D suggest a need for a separate entity to manage the complexity of the points system.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_7",
@@ -748,7 +841,9 @@
         "C": "The number of times the product has been ordered.",
         "D": "The supplier of the product."
       },
-      "correct_answer": "The product's price.",
+      "correct_answer": [
+        "The product's price."
+      ],
       "explanation": "The price is a characteristic or property of the product itself. Attributes describe entities. Customer reviews and the number of times ordered are related to *usage* of the product, not inherent properties. The supplier represents a relationship to another entity. Therefore, 'The product's price' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_7",
@@ -769,7 +864,9 @@
         "C": "To define the primary key for the 'Post' entity.",
         "D": "To determine the data types for each field in the database."
       },
-      "correct_answer": "To describe the characteristics and properties of each post.",
+      "correct_answer": [
+        "To describe the characteristics and properties of each post."
+      ],
       "explanation": "Attributes describe the characteristics and properties of an entity. Options A, C, and D refer to other aspects of database design. Thus, 'To describe the characteristics and properties of each post' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_7",
@@ -790,7 +887,9 @@
         "C": "A unique order ID assigned to each order.",
         "D": "The total amount of the order."
       },
-      "correct_answer": "A unique order ID assigned to each order.",
+      "correct_answer": [
+        "A unique order ID assigned to each order."
+      ],
       "explanation": "A primary key must uniquely identify each record in the table. A unique order ID is designed for this purpose. Customer names and order dates are not necessarily unique. The total amount is also unlikely to be unique. Therefore, 'A unique order ID assigned to each order' is the best choice.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_8",
@@ -811,7 +910,9 @@
         "C": "The student's email address.",
         "D": "The student's unique ID number."
       },
-      "correct_answer": "The student's unique ID number.",
+      "correct_answer": [
+        "The student's unique ID number."
+      ],
       "explanation": "A primary key must uniquely identify each record. A unique ID number is designed for this purpose. First names and dates of birth are not necessarily unique. Email addresses *could* be unique, but a dedicated ID number is more reliable and easier to manage. Therefore, 'The student's unique ID number' is the best choice.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_8",
@@ -832,7 +933,9 @@
         "C": "Product names are difficult to index in the database.",
         "D": "Product names can change over time."
       },
-      "correct_answer": "Multiple products can have the same name.",
+      "correct_answer": [
+        "Multiple products can have the same name."
+      ],
       "explanation": "The 'common mistakes' section states that a primary key must be unique. If multiple products can have the same name, 'Product Name' cannot serve as a primary key. Options A, C, and D are less fundamental reasons. Thus, 'Multiple products can have the same name' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_8",
@@ -853,7 +956,9 @@
         "C": "It makes it easier to calculate the average order value for all customers.",
         "D": "It allows the store to track the number of orders placed by each customer."
       },
-      "correct_answer": "It ensures that each customer can be uniquely identified and retrieved.",
+      "correct_answer": [
+        "It ensures that each customer can be uniquely identified and retrieved."
+      ],
       "explanation": "The primary purpose of a primary key is to uniquely identify each record. Using 'CustomerID' as the primary key ensures that each customer can be uniquely identified and retrieved. Options A, C, and D are not the primary benefits. Therefore, 'It ensures that each customer can be uniquely identified and retrieved' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_8",
@@ -874,7 +979,9 @@
         "C": "To improve the visual appearance of the database tables.",
         "D": "To make it easier to generate reports from the database."
       },
-      "correct_answer": "To ensure data integrity and efficient data retrieval.",
+      "correct_answer": [
+        "To ensure data integrity and efficient data retrieval."
+      ],
       "explanation": "A well-chosen primary key ensures that each record is unique, maintaining data integrity. It also enables efficient data retrieval because the database can quickly locate specific records using the primary key. Options A, C, and D are not the primary reasons. Therefore, 'To ensure data integrity and efficient data retrieval' is the best answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_8",
@@ -895,7 +1002,10 @@
         "C": "A ternary relationship, involving 'Animal', 'Caretaker', and 'Shelter' entities.",
         "D": "A recursive relationship, where animals are related to other animals."
       },
-      "correct_answer": "A binary relationship, connecting 'Animal' and 'Caretaker' entities.",
+      "correct_answer": [
+        "A binary relationship",
+        "connecting 'Animal' and 'Caretaker' entities."
+      ],
       "explanation": "In this scenario, we have two distinct entities: 'Animal' and 'Caretaker'. The relationship between them, where each animal is assigned a caretaker, represents a connection between these two entities. Therefore, it's a binary relationship. Options A, C, and D describe relationships involving a single entity or more than two entities, which doesn't fit the scenario.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_9",
@@ -917,7 +1027,9 @@
         "C": "Use a single table that combines all project and employee information.",
         "D": "Implement a ternary relationship involving 'Project', 'Employee', and 'Client'."
       },
-      "correct_answer": "Use a binary relationship called 'Manages' to connect the 'Project' and 'Employee' entities.",
+      "correct_answer": [
+        "Use a binary relationship called 'Manages' to connect the 'Project' and 'Employee' entities."
+      ],
       "explanation": "To represent the relationship where an employee manages a project, a binary relationship is the most appropriate. It connects the two distinct entities, 'Project' and 'Employee', through a relationship like 'Manages'. Option A would not capture the relationship. Option C is not normalized. Option D introduces an unnecessary third entity.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_9",
@@ -939,7 +1051,9 @@
         "C": "The database shows which doctor is assigned to treat each patient.",
         "D": "The database only shows a list of doctors."
       },
-      "correct_answer": "The database shows which doctor is assigned to treat each patient.",
+      "correct_answer": [
+        "The database shows which doctor is assigned to treat each patient."
+      ],
       "explanation": "A binary relationship involves a direct association between two entities. Showing which doctor is assigned to treat a patient directly links the 'Patient' and 'Doctor' entities. Option B introduces a third entity ('Medications'), making it a ternary relationship. Options A and D lack a relationship between the two entities.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_9",
@@ -961,7 +1075,9 @@
         "C": "Using a binary relationship to connect 'Project' and 'Department', showing which department is responsible for each project.",
         "D": "Using a binary relationship to connect 'Employee' and 'Salary', showing the salary of each employee."
       },
-      "correct_answer": "Using a binary relationship to connect 'Employee' and 'Project' to show which employee is working on which project.",
+      "correct_answer": [
+        "Using a binary relationship to connect 'Employee' and 'Project' to show which employee is working on which project."
+      ],
       "explanation": "A binary relationship connects two distinct entities. In this case, connecting 'Employee' and 'Project' directly shows the assignment of employees to projects. The other options, while valid relationships, don't directly address the core requirement of tracking employee-project assignments. Option A could be unary relationship, Option C is valid, but not the most relevant, and option D does not involve projects.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_9",
@@ -983,7 +1099,10 @@
         "C": "A ternary relationship involving 'Customer', 'RentalAgreement', and 'Car'.",
         "D": "Separate tables for customers and rental agreements with no explicit relationship."
       },
-      "correct_answer": "A binary relationship between 'Customer' and 'RentalAgreement', showing which customer signed which agreement.",
+      "correct_answer": [
+        "A binary relationship between 'Customer' and 'RentalAgreement'",
+        "showing which customer signed which agreement."
+      ],
       "explanation": "To link customers to their rental agreements, a binary relationship is the most direct and appropriate method. It clearly shows the association between the two entities. Option C introduces an unnecessary third entity at this level. Options A and D don't properly capture the core relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_9",
@@ -1005,7 +1124,9 @@
         "C": "Many-to-One (M:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-Many (1:M)",
+      "correct_answer": [
+        "One-to-Many (1:M)"
+      ],
       "explanation": "A borrower can check out multiple books, but each book is checked out to only one borrower at a given time. This fits the definition of a one-to-many relationship. The 'Borrower' side is 'one' (each borrower), and the 'Book' side is 'many' (multiple books per borrower).",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_10",
@@ -1027,7 +1148,9 @@
         "C": "Many-to-One (M:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-Many (1:M)",
+      "correct_answer": [
+        "One-to-Many (1:M)"
+      ],
       "explanation": "One professor can teach many courses, but each course is taught by only one professor. This is a one-to-many relationship where 'Professor' is the 'one' side and 'Course' is the 'many' side. Therefore, the cardinality is 1:M.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_10",
@@ -1049,7 +1172,9 @@
         "C": "Many-to-One (M:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-Many (1:M)",
+      "correct_answer": [
+        "One-to-Many (1:M)"
+      ],
       "explanation": "A single customer can place multiple orders, and each order is associated with only one customer. This fits the definition of a one-to-many relationship. The customer is the 'one', and the orders are the 'many'.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_10",
@@ -1071,7 +1196,9 @@
         "C": "Many-to-One (M:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-Many (1:M)",
+      "correct_answer": [
+        "One-to-Many (1:M)"
+      ],
       "explanation": "One user can create multiple posts, but each post is associated with only one user. This is a one-to-many relationship. The user side is 'one' and the post side is 'many'.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_10",
@@ -1093,7 +1220,9 @@
         "C": "Many-to-One (M:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-One (1:1)",
+      "correct_answer": [
+        "One-to-One (1:1)"
+      ],
       "explanation": "Each car has one VIN, and each VIN belongs to one car. This represents a one-to-one relationship. There's a unique pairing between the two entities. No car shares a VIN, and no VIN is assigned to multiple cars.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_10",
@@ -1115,7 +1244,9 @@
         "C": "One-to-One (1:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-One (1:1)",
+      "correct_answer": [
+        "One-to-One (1:1)"
+      ],
       "explanation": "In this scenario, each employee has one unique employee ID, and each employee ID corresponds to only one employee. This fulfills the criteria for a one-to-one relationship. There's a direct and unique pairing between the two.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_11",
@@ -1137,7 +1268,9 @@
         "C": "One-to-One (1:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-One (1:1)",
+      "correct_answer": [
+        "One-to-One (1:1)"
+      ],
       "explanation": "The scenario describes a unique pairing between a software license and a computer. Each license is used on only one computer, and each computer uses only one license. This is a clear example of a one-to-one relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_11",
@@ -1159,7 +1292,9 @@
         "C": "One-to-One (1:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-One (1:1)",
+      "correct_answer": [
+        "One-to-One (1:1)"
+      ],
       "explanation": "Each citizen has one passport, and each passport is associated with one citizen. This scenario represents a one-to-one relationship. The pairing is unique and exclusive.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_11",
@@ -1181,7 +1316,9 @@
         "C": "One-to-One (1:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-One (1:1)",
+      "correct_answer": [
+        "One-to-One (1:1)"
+      ],
       "explanation": "This scenario describes a one-to-one relationship because each consultant has exactly one laptop, and each laptop is assigned to only one consultant. There's a direct, unique association between the two.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_11",
@@ -1203,7 +1340,9 @@
         "C": "One-to-One (1:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-One (1:1)",
+      "correct_answer": [
+        "One-to-One (1:1)"
+      ],
       "explanation": "Given that each country has only one capital city and each capital city belongs to only one country, this represents a one-to-one relationship. The relationship shows a unique pairing between each country and its capital.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_11",
@@ -1225,7 +1364,11 @@
         "C": "A one-to-one relationship, where each employee has one parking space, and each parking space belongs to one employee.",
         "D": "No relationship, as parking spaces are not relevant to employee information."
       },
-      "correct_answer": "A one-to-one relationship, where each employee has one parking space, and each parking space belongs to one employee.",
+      "correct_answer": [
+        "A one-to-one relationship",
+        "where each employee has one parking space",
+        "and each parking space belongs to one employee."
+      ],
       "explanation": "Because each employee gets one parking space, and each parking space is assigned to only one employee, this is a one-to-one relationship. There is a unique pairing between the two entities. Option A and B are incorrect because they imply an employee can have multiple spaces or multiple employees can share the same space, respectively. Option D is incorrect as the parking space assignment *is* relevant information.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_12",
@@ -1248,7 +1391,10 @@
         "C": "A one-to-one relationship, because each employee has one laptop and each laptop is assigned to one employee.",
         "D": "No relationship at all, as the laptop assignment is not important."
       },
-      "correct_answer": "A one-to-one relationship, because each employee has one laptop and each laptop is assigned to one employee.",
+      "correct_answer": [
+        "A one-to-one relationship",
+        "because each employee has one laptop and each laptop is assigned to one employee."
+      ],
       "explanation": "This scenario describes a one-to-one relationship. Each employee is assigned exactly one laptop, and each laptop is assigned to only one employee, creating a unique pairing. The other options do not accurately reflect the scenario's constraints.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_12",
@@ -1271,7 +1417,11 @@
         "C": "A one-to-one relationship, because each department has one chairperson, and each chairperson leads one department.",
         "D": "A many-to-many relationship, because departments and chairpersons are independent."
       },
-      "correct_answer": "A one-to-one relationship, because each department has one chairperson, and each chairperson leads one department.",
+      "correct_answer": [
+        "A one-to-one relationship",
+        "because each department has one chairperson",
+        "and each chairperson leads one department."
+      ],
       "explanation": "This is a one-to-one relationship because each department has one chairperson, and each chairperson leads only one department. The relationship shows a unique pairing between the department and the chairperson. A department cannot have multiple chairpersons, and a professor cannot be chairperson for multiple departments.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_12",
@@ -1294,7 +1444,9 @@
         "C": "One-to-One (1:1)",
         "D": "Many-to-Many (M:M)"
       },
-      "correct_answer": "One-to-One (1:1)",
+      "correct_answer": [
+        "One-to-One (1:1)"
+      ],
       "explanation": "Given that each country has only one official language, and each language is the official language of only one country, this is a one-to-one relationship. Each country is uniquely associated with one language, and each language is uniquely associated with one country.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_12",
@@ -1317,7 +1469,11 @@
         "C": "A one-to-one relationship, as each car has one license plate, and each license plate belongs to one car.",
         "D": "No relationship, as the license plate is just an attribute of the car."
       },
-      "correct_answer": "A one-to-one relationship, as each car has one license plate, and each license plate belongs to one car.",
+      "correct_answer": [
+        "A one-to-one relationship",
+        "as each car has one license plate",
+        "and each license plate belongs to one car."
+      ],
       "explanation": "In this scenario, each car has one specific license plate, and each license plate corresponds to only one car. This is a one-to-one relationship, reflecting a direct and unique association between the car and its license plate. The other options misrepresent the nature of the association.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_12",
@@ -1340,7 +1496,10 @@
         "C": "Many, because an author can write many books.",
         "D": "Zero, because a book cannot exist without an author."
       },
-      "correct_answer": "Mandatory (one), because a book must have an author.",
+      "correct_answer": [
+        "Mandatory (one)",
+        "because a book must have an author."
+      ],
       "explanation": "The scenario states that a book *must* have one author. Modality represents the *minimum* number of instances required. Therefore, the modality of 'Book' in relation to 'Author' is mandatory (one). Option A describes the modality of 'Author' to 'Book', not the reverse. Options C describes cardinality, not modality. Option D misinterprets the meaning of zero modality.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_17",
@@ -1364,7 +1523,10 @@
         "C": "The modality is many, as a course can have many students.",
         "D": "The modality is determined by the maximum number of students allowed in the course."
       },
-      "correct_answer": "The modality is mandatory (one), as a course must have at least one student.",
+      "correct_answer": [
+        "The modality is mandatory (one)",
+        "as a course must have at least one student."
+      ],
       "explanation": "The scenario explicitly states that a course *must* have at least one student enrolled. Modality defines the *minimum* requirement. Therefore, the modality from the perspective of the 'Course' entity is mandatory (one). Option A contradicts the scenario. Option C describes cardinality. Option D confuses modality with a capacity constraint.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_17",
@@ -1388,7 +1550,10 @@
         "C": "It would limit each customer to only one order.",
         "D": "It would have no impact, as modality is not important."
       },
-      "correct_answer": "It would allow orders to be created without any customer information, leading to orphaned records and potential data integrity issues.",
+      "correct_answer": [
+        "It would allow orders to be created without any customer information",
+        "leading to orphaned records and potential data integrity issues."
+      ],
       "explanation": "If the modality between 'Order' and 'Customer' is incorrectly defined as optional (zero) instead of mandatory (one), the system would allow orders to be created without being linked to a customer. This leads to orphaned records and compromises data integrity. Option A is the opposite of the problem. Option C describes a cardinality constraint. Option D is incorrect because modality is crucial for data integrity.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_17",
@@ -1412,7 +1577,11 @@
         "C": "The system might limit the number of followers a user can have.",
         "D": "The system will function perfectly fine as cardinality is the only important factor."
       },
-      "correct_answer": "The system might allow users to be created without any followers or followees, which is acceptable, but the designer might incorrectly enforce a mandatory relationship.",
+      "correct_answer": [
+        "The system might allow users to be created without any followers or followees",
+        "which is acceptable",
+        "but the designer might incorrectly enforce a mandatory relationship."
+      ],
       "explanation": "Ignoring modality can lead to incorrectly enforcing mandatory relationships. In this case, the system should allow users to exist without any followers or followees (optional relationship). Forgetting modality might lead the designer to incorrectly enforce that a user *must* follow someone, which isn't true. Option A is incorrect since the problem is the possibility of *enforcing* a relationship when it should be optional. Option C describes cardinality. Option D is incorrect because modality is an important factor.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_17",
@@ -1436,7 +1605,10 @@
         "C": "The cardinality changes from one-to-many to many-to-many.",
         "D": "The modality is irrelevant in this scenario."
       },
-      "correct_answer": "The modality changes to optional (zero), as some appointments ('Walk-ins') might not have a patient initially.",
+      "correct_answer": [
+        "The modality changes to optional (zero)",
+        "as some appointments ('Walk-ins') might not have a patient initially."
+      ],
       "explanation": "The new requirement of 'Walk-in' appointments that are not initially tied to a patient means that the *minimum* number of patients associated with an appointment can be zero. This changes the modality to optional (zero). Option A is incorrect because the initial state matters. Option C changes cardinality, not modality. Option D is incorrect, as modality is important.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_17",
@@ -1460,7 +1632,10 @@
         "C": "A vehicle may or may not have rental agreements, and a rental agreement must have one vehicle.",
         "D": "A vehicle must have at least one rental agreement, and a rental agreement may have many vehicles."
       },
-      "correct_answer": "A vehicle may or may not have rental agreements, and a rental agreement must have one vehicle.",
+      "correct_answer": [
+        "A vehicle may or may not have rental agreements",
+        "and a rental agreement must have one vehicle."
+      ],
       "explanation": "The crow's foot on the 'Rental Agreement' side indicates 'many' cardinality. The line ( | ) on the 'Vehicle' side signifies mandatory participation (modality of one) - a rental agreement must have one vehicle. The circle (o) signifies optional participation (modality of zero) - a vehicle may or may not have rental agreements. Option A reverses the modality. Option B reverses both cardinality and modality. Option D misinterprets the circle's meaning.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_18",
@@ -1484,7 +1659,10 @@
         "C": "A professor must teach at least one course, and a course must be taught by one professor.",
         "D": "A professor may teach many courses, and a course must be taught by at least one professor."
       },
-      "correct_answer": "A professor may teach many courses, and a course must be taught by at least one professor.",
+      "correct_answer": [
+        "A professor may teach many courses",
+        "and a course must be taught by at least one professor."
+      ],
       "explanation": "The line ( | ) on the 'Professor' side is incorrect given the options. It should either be a circle & line, or just a line. Assuming that it meant a circle and a line, a professor *may* teach courses (optional modality). The crow's foot (>) indicates 'many' cardinality from professor to course. The line (|) on the 'Course' side indicates that a course *must* have at least one professor (mandatory modality). Therefore, option D is the closest to correct. Note that a more accurate representation would be a circle and a crows foot on the professor side.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_18",
@@ -1508,7 +1686,9 @@
         "C": "The database will allow a student to have multiple majors.",
         "D": "The database will require each major to have multiple students."
       },
-      "correct_answer": "The database will require each major to have multiple students.",
+      "correct_answer": [
+        "The database will require each major to have multiple students."
+      ],
       "explanation": "The crow's foot on the 'Major' side indicates that a major must be associated with *many* students (cardinality of many). Since the intention was that a student *must* have one major, the crow's foot incorrectly enforces the opposite constraint - that a major *must* have many students. Options A and C are incorrect because the crow's foot is on the wrong side. Option B describes a one-to-one relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_18",
@@ -1532,7 +1712,9 @@
         "C": "A crow's foot on the 'Project' side and a line ( | ) on the 'Task' side.",
         "D": "A circle (o) on the 'Task' side and a line ( | ) on the 'Project' side."
       },
-      "correct_answer": "A line ( | ) on both the 'Project' and 'Task' sides of the relationship.",
+      "correct_answer": [
+        "A line ( | ) on both the 'Project' and 'Task' sides of the relationship."
+      ],
       "explanation": "Since a project *must* have at least one task (mandatory modality) and a task *must* belong to one project (mandatory modality), both sides of the relationship should be represented with a line ( | ). The line indicates a minimum cardinality of one. Option B and C would require one side to have many. Option D implies an optional relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_18",
@@ -1556,7 +1738,10 @@
         "C": "It will allow a subject to exist without being assigned to any teacher, violating the business rule.",
         "D": "It will have no impact on the database functionality."
       },
-      "correct_answer": "It will allow a subject to exist without being assigned to any teacher, violating the business rule.",
+      "correct_answer": [
+        "It will allow a subject to exist without being assigned to any teacher",
+        "violating the business rule."
+      ],
       "explanation": "The circle (o) on the 'Subject' side indicates an optional relationship (modality of zero). This means the database will allow a subject to exist without being assigned to any teacher, violating the rule that a subject *must* be taught by one teacher. Option A relates to cardinality, not modality. Option B would require a crow's foot. Option D is incorrect because modality is important.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_18",
@@ -1580,7 +1765,9 @@
         "C": "Create a junction table called 'StudentClubs' with foreign keys to 'Students' and 'Clubs' and include a 'DateJoined' attribute in the 'StudentClubs' table.",
         "D": "Store the 'DateJoined' information in a separate, unstructured document."
       },
-      "correct_answer": "Create a junction table called 'StudentClubs' with foreign keys to 'Students' and 'Clubs' and include a 'DateJoined' attribute in the 'StudentClubs' table.",
+      "correct_answer": [
+        "Create a junction table called 'StudentClubs' with foreign keys to 'Students' and 'Clubs' and include a 'DateJoined' attribute in the 'StudentClubs' table."
+      ],
       "explanation": "The scenario describes a many-to-many relationship between students and clubs.  The 'DateJoined' attribute describes the *relationship* between a specific student and a specific club.  A junction table ('StudentClubs') is required to link students and clubs, and the 'DateJoined' attribute should be stored in this junction table as intersection data.  Option A and B incorrectly try to store relationship-specific data in the entity tables. Option D is not appropriate for relational data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_21",
@@ -1602,7 +1789,10 @@
         "C": "Create an 'Orders' table with foreign keys to 'Customers' and 'Products', and include a 'Quantity' column in the 'Orders' table.",
         "D": "Create an 'Orders' table with a foreign key to 'Customers', and store the list of 'ProductID' and 'Quantity' as a JSON object in the 'Orders' table."
       },
-      "correct_answer": "Create an 'Orders' table with foreign keys to 'Customers' and 'Products', and include a 'Quantity' column in the 'Orders' table.",
+      "correct_answer": [
+        "Create an 'Orders' table with foreign keys to 'Customers' and 'Products'",
+        "and include a 'Quantity' column in the 'Orders' table."
+      ],
       "explanation": "The scenario requires tracking the quantity of each product purchased in each order. This represents a many-to-many relationship between customers and products (customers place orders containing multiple products). The quantity is intersection data for the relationship.  Creating an 'Orders' table (junction table) with foreign keys to both 'Customers' and 'Products', and including a 'Quantity' column in the 'Orders' table correctly models this. Options A and B don't properly handle the many-to-many relationship. Option D mixes relational and non-relational approaches.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_21",
@@ -1624,7 +1814,10 @@
         "C": "In a junction table called 'ConsultantProjects' with foreign keys to 'Consultants' and 'Projects', along with a 'Role' attribute.",
         "D": "In a separate document, linked to the project ID."
       },
-      "correct_answer": "In a junction table called 'ConsultantProjects' with foreign keys to 'Consultants' and 'Projects', along with a 'Role' attribute.",
+      "correct_answer": [
+        "In a junction table called 'ConsultantProjects' with foreign keys to 'Consultants' and 'Projects'",
+        "along with a 'Role' attribute."
+      ],
       "explanation": "The scenario outlines a many-to-many relationship between consultants and projects. The 'Role' attribute describes the relationship between a consultant and a specific project, making it intersection data. A junction table ('ConsultantProjects') is needed to link consultants and projects, and the 'Role' attribute should be stored there. Options A and B incorrectly attempt to store relationship-specific data within the entity tables. Option D doesn't leverage the relational model appropriately.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_21",
@@ -1646,7 +1839,10 @@
         "C": "In a junction table called 'UserLikes' with foreign keys to 'Users' and 'Posts', along with a 'Timestamp' attribute.",
         "D": "In the 'Posts' table, as a calculated field that triggers when a new like is added."
       },
-      "correct_answer": "In a junction table called 'UserLikes' with foreign keys to 'Users' and 'Posts', along with a 'Timestamp' attribute.",
+      "correct_answer": [
+        "In a junction table called 'UserLikes' with foreign keys to 'Users' and 'Posts'",
+        "along with a 'Timestamp' attribute."
+      ],
       "explanation": "The scenario presents a many-to-many relationship between users and posts. The 'Timestamp' describes the specific instance of a user liking a post, making it intersection data.  A junction table ('UserLikes') is required to link users and posts, and the 'Timestamp' should be stored in this table. Options A and B try to store relationship-specific data within the entity tables. Option D is not a reliable way to store the timestamp of each like.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_21",
@@ -1668,7 +1864,10 @@
         "C": "Create a junction table called 'Loans' with foreign keys to 'Patrons' and 'Books', and include a 'DueDate' attribute in the 'Loans' table.",
         "D": "Store the 'DueDate' in both the 'Patrons' and 'Books' tables for easy access."
       },
-      "correct_answer": "Create a junction table called 'Loans' with foreign keys to 'Patrons' and 'Books', and include a 'DueDate' attribute in the 'Loans' table.",
+      "correct_answer": [
+        "Create a junction table called 'Loans' with foreign keys to 'Patrons' and 'Books'",
+        "and include a 'DueDate' attribute in the 'Loans' table."
+      ],
       "explanation": "This is a many-to-many relationship between patrons and books. 'DueDate' describes the relationship between a specific patron and a specific book. A junction table ('Loans') is required to link patrons and books, and the 'DueDate' attribute belongs there as intersection data. Options A and B incorrectly try to store relationship-specific data in the entity tables. Option D creates data redundancy, which is undesirable.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_21",
@@ -1690,7 +1889,11 @@
         "C": "A 'Courses' table with a list of enrolled students in each course record.",
         "D": "A 'Students' table, a 'Courses' table, and an 'Enrollments' table linking them."
       },
-      "correct_answer": "A 'Students' table, a 'Courses' table, and an 'Enrollments' table linking them.",
+      "correct_answer": [
+        "A 'Students' table",
+        "a 'Courses' table",
+        "and an 'Enrollments' table linking them."
+      ],
       "explanation": "The scenario describes a many-to-many relationship between students and courses. To properly represent this, you need a junction table (in this case, 'Enrollments') to link the 'Students' and 'Courses' tables. Options A, B, and C are incorrect because they do not properly handle the many-to-many relationship, leading to data redundancy or limitations.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_22",
@@ -1713,7 +1916,12 @@
         "C": "Create three tables: 'Employees', 'Projects', and 'EmployeeProjects', where 'EmployeeProjects' links 'Employees' and 'Projects'.",
         "D": "Combine 'Employees' and 'Projects' into a single table with all relevant information."
       },
-      "correct_answer": "Create three tables: 'Employees', 'Projects', and 'EmployeeProjects', where 'EmployeeProjects' links 'Employees' and 'Projects'.",
+      "correct_answer": [
+        "Create three tables: 'Employees'",
+        "'Projects'",
+        "and 'EmployeeProjects'",
+        "where 'EmployeeProjects' links 'Employees' and 'Projects'."
+      ],
       "explanation": "This scenario represents a many-to-many relationship between employees and projects. The correct way to model this is using a junction table ('EmployeeProjects') that links the 'Employees' and 'Projects' tables. Options A and B do not properly handle the many-to-many relationship and would lead to data redundancy. Option D is not appropriate for distinct entities with a many-to-many relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_22",
@@ -1736,7 +1944,12 @@
         "C": "Create three tables: 'Products', 'Categories', and 'ProductCategories', where 'ProductCategories' links 'Products' and 'Categories'.",
         "D": "Store the category information as a comma-separated list within the 'Products' table."
       },
-      "correct_answer": "Create three tables: 'Products', 'Categories', and 'ProductCategories', where 'ProductCategories' links 'Products' and 'Categories'.",
+      "correct_answer": [
+        "Create three tables: 'Products'",
+        "'Categories'",
+        "and 'ProductCategories'",
+        "where 'ProductCategories' links 'Products' and 'Categories'."
+      ],
       "explanation": "The scenario describes a many-to-many relationship between products and categories.  A junction table ('ProductCategories') is necessary to link the 'Products' and 'Categories' tables. Options A and B only allow for a one-to-many relationship. Option D is not a normalized approach and would make querying and managing data difficult.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_22",
@@ -1759,7 +1972,12 @@
         "C": "Two tables: 'Users' and 'Hobbies', directly linked without an intermediary table.",
         "D": "Three tables: 'Users', 'Hobbies', and 'UserHobbies', where 'UserHobbies' connects users to their hobbies."
       },
-      "correct_answer": "Three tables: 'Users', 'Hobbies', and 'UserHobbies', where 'UserHobbies' connects users to their hobbies.",
+      "correct_answer": [
+        "Three tables: 'Users'",
+        "'Hobbies'",
+        "and 'UserHobbies'",
+        "where 'UserHobbies' connects users to their hobbies."
+      ],
       "explanation": "This is a classic many-to-many relationship between users and hobbies. This requires a junction table ('UserHobbies') to correctly link the 'Users' and 'Hobbies' tables. Options A and B do not properly handle the many-to-many relationship and would lead to data redundancy. Option C does not address the many-to-many nature of the relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_22",
@@ -1782,7 +2000,12 @@
         "C": "Two tables: 'Books' and 'Authors', with no linking table.",
         "D": "Three tables: 'Books', 'Authors', and 'BookAuthors', where 'BookAuthors' links books to their authors."
       },
-      "correct_answer": "Three tables: 'Books', 'Authors', and 'BookAuthors', where 'BookAuthors' links books to their authors.",
+      "correct_answer": [
+        "Three tables: 'Books'",
+        "'Authors'",
+        "and 'BookAuthors'",
+        "where 'BookAuthors' links books to their authors."
+      ],
       "explanation": "The scenario describes a many-to-many relationship between books and authors.  A junction table ('BookAuthors') is required to link the 'Books' and 'Authors' tables. Options A and B only allow for a one-to-many relationship. Option C does not correctly represent the many-to-many relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_22",
@@ -1805,7 +2028,9 @@
         "C": "Defining a primary key to uniquely identify each employee.",
         "D": "Adding an index to every column for faster searching."
       },
-      "correct_answer": "Defining a primary key to uniquely identify each employee.",
+      "correct_answer": [
+        "Defining a primary key to uniquely identify each employee."
+      ],
       "explanation": "When converting an entity to a relational table, defining a primary key is crucial for uniquely identifying each record. This ensures data integrity and enables efficient retrieval. While choosing appropriate data types (Option B) is important, it's secondary to having a primary key. Options A and D are not essential for basic entity conversion.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_23",
@@ -1828,7 +2053,13 @@
         "C": "Create a 'Students' table with columns 'StudentID', 'Name', 'Major', and 'GPA', and set 'StudentID' as the primary key.",
         "D": "Create separate tables for 'Name', 'Major', and 'GPA', linked to the 'Students' table."
       },
-      "correct_answer": "Create a 'Students' table with columns 'StudentID', 'Name', 'Major', and 'GPA', and set 'StudentID' as the primary key.",
+      "correct_answer": [
+        "Create a 'Students' table with columns 'StudentID'",
+        "'Name'",
+        "'Major'",
+        "and 'GPA'",
+        "and set 'StudentID' as the primary key."
+      ],
       "explanation": "When converting an entity to a relational table, the entity becomes the table, the attributes become columns, and the unique identifier becomes the primary key. 'StudentID' is the unique identifier, making it the appropriate primary key. Option A is missing the primary key. Option B incorrectly sets 'Name' as the primary key, which may not be unique. Option D over-normalizes the data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_23",
@@ -1851,7 +2082,9 @@
         "C": "It becomes a column in the 'Books' table and is used for indexing.",
         "D": "It is discarded as it is not needed in the relational table."
       },
-      "correct_answer": "It becomes a column in the 'Books' table and is designated as the primary key.",
+      "correct_answer": [
+        "It becomes a column in the 'Books' table and is designated as the primary key."
+      ],
       "explanation": "When converting an entity to a relational table, the unique identifier of the entity becomes the primary key of the table. 'ISBN' is a unique identifier for books, making it the appropriate primary key for the 'Books' table. Option A is incorrect because 'ISBN' identifies the book, not the author. Option C is partially correct, but 'ISBN' should be the *primary* key. Option D is incorrect because the unique identifier is essential.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_23",
@@ -1874,7 +2107,9 @@
         "C": "To store the patient's date of birth.",
         "D": "To store the patient's address."
       },
-      "correct_answer": "To uniquely identify each patient in the database.",
+      "correct_answer": [
+        "To uniquely identify each patient in the database."
+      ],
       "explanation": "The primary purpose of 'PatientID' is to uniquely identify each patient in the database. It serves as the primary key when the 'Patient' entity is converted into a relational table. Options A, C, and D describe the purpose of other attributes, not the primary key.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_23",
@@ -1897,7 +2132,9 @@
         "C": "Defining 'ProductID' as the primary key of the 'Products' table.",
         "D": "Storing all product information in a single text field."
       },
-      "correct_answer": "Defining 'ProductID' as the primary key of the 'Products' table.",
+      "correct_answer": [
+        "Defining 'ProductID' as the primary key of the 'Products' table."
+      ],
       "explanation": "When converting an entity to a relational table, defining a primary key is crucial. 'ProductID' is the unique identifier, making it the appropriate primary key for the 'Products' table. Options A, B, and D are incorrect and can lead to data integrity issues or loss of information. The primary key is essential for uniquely identifying each record.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_23",
@@ -1920,7 +2157,9 @@
         "C": "Add 'EmployeeID' as a foreign key in the 'ParkingSpot' table.",
         "D": "Create a separate 'EmployeeParkingSpot' table to link 'Employee' and 'ParkingSpot'."
       },
-      "correct_answer": "Add 'ParkingSpotID' as a foreign key in the 'Employee' table.",
+      "correct_answer": [
+        "Add 'ParkingSpotID' as a foreign key in the 'Employee' table."
+      ],
       "explanation": "Since the entities are frequently accessed separately, merging the tables (Option A) is not ideal. Creating a separate linking table (Option D) adds unnecessary complexity for a 1:1 relationship. Adding 'ParkingSpotID' as a foreign key in the 'Employee' table (Option B) or 'EmployeeID' as a foreign key in the 'ParkingSpot' table (Option C) are both valid. However, the choice depends on which entity is the 'dominant' one, and often 'Employee' is considered more central. In this case, adding 'ParkingSpotID' to the 'Employee' table is slightly preferable because it's more common to look up an employee's parking spot than vice-versa, even though either approach is acceptable.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_24",
@@ -1943,7 +2182,9 @@
         "C": "Create separate 'Students' and 'Lockers' tables and add 'StudentID' as a foreign key in the 'Lockers' table.",
         "D": "Merge the 'Students' and 'Lockers' information into a single 'Students' table."
       },
-      "correct_answer": "Merge the 'Students' and 'Lockers' information into a single 'Students' table.",
+      "correct_answer": [
+        "Merge the 'Students' and 'Lockers' information into a single 'Students' table."
+      ],
       "explanation": "Because the student and locker information is always accessed together, merging the tables into a single 'Students' table is the most efficient approach. This avoids the need for joins and simplifies queries. Options B and C are valid but less efficient due to the separate table. Option A is unnecessarily complex for a 1:1 relationship where data is always accessed together.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_24",
@@ -1966,7 +2207,9 @@
         "C": "Create separate 'Citizen' and 'IDCard' tables and add 'CitizenID' as a foreign key in the 'IDCard' table.",
         "D": "Merge the 'Citizen' and 'IDCard' information into a single 'Citizen' table."
       },
-      "correct_answer": "Merge the 'Citizen' and 'IDCard' information into a single 'Citizen' table.",
+      "correct_answer": [
+        "Merge the 'Citizen' and 'IDCard' information into a single 'Citizen' table."
+      ],
       "explanation": "Since the ID card information is rarely accessed independently, merging the 'Citizen' and 'IDCard' information into a single table is the most straightforward and efficient approach. This avoids joins and simplifies queries. Options B and C are valid but add unnecessary complexity for this access pattern. Option A is overly complex for a simple 1:1 relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_24",
@@ -1989,7 +2232,9 @@
         "C": "Add 'EmployeeID' as a foreign key in the 'Department' table.",
         "D": "Create a separate 'DepartmentManager' table to link 'Department' and 'Manager'."
       },
-      "correct_answer": "Add 'EmployeeID' as a foreign key in the 'Department' table.",
+      "correct_answer": [
+        "Add 'EmployeeID' as a foreign key in the 'Department' table."
+      ],
       "explanation": "Since you frequently need to retrieve information about a department's manager, adding 'EmployeeID' as a foreign key in the 'Department' table allows you to easily access the manager's information from the department record. Option A is not ideal because the data is not always accessed together. Option B would require looking up department information from the manager record, which is less efficient for the stated retrieval pattern. Option D adds unnecessary complexity for a 1:1 relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_24",
@@ -2012,7 +2257,9 @@
         "C": "Add 'PlateNumber' as a foreign key in the 'Car' table.",
         "D": "Merge the 'Car' and 'LicensePlate' information into a single 'Car' table."
       },
-      "correct_answer": "Merge the 'Car' and 'LicensePlate' information into a single 'Car' table.",
+      "correct_answer": [
+        "Merge the 'Car' and 'LicensePlate' information into a single 'Car' table."
+      ],
       "explanation": "Since car and license plate information are rarely accessed separately, merging the 'Car' and 'LicensePlate' entities into a single 'Car' table is the most efficient approach. This avoids the need for joins. Options B and C are valid, but less efficient due to the separate table. Option A is overly complex for this scenario.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_24",
@@ -2035,7 +2282,9 @@
         "C": "Combine the 'Customer' and 'AccountManager' entities into a single 'CustomerAccount' table.",
         "D": "Create separate 'Customer' and 'AccountManager' tables without establishing any foreign key relationship between them."
       },
-      "correct_answer": "Combine the 'Customer' and 'AccountManager' entities into a single 'CustomerAccount' table.",
+      "correct_answer": [
+        "Combine the 'Customer' and 'AccountManager' entities into a single 'CustomerAccount' table."
+      ],
       "explanation": "Since there's a strict one-to-one relationship between customers and account managers, combining them into a single table is the most efficient approach. It avoids the need for joins and simplifies queries. Options A and B, while valid for 1:1, introduce unnecessary complexity. Option D fails to link the data, violating relational integrity.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_25",
@@ -2057,7 +2306,9 @@
         "C": "Two tables: 'Student' with student details and 'Locker' with locker details, with 'StudentID' as a foreign key in the 'Locker' table.",
         "D": "Three tables: 'Student', 'Locker', and 'StudentLocker' with 'StudentID' and 'LockerID' as foreign keys in 'StudentLocker'."
       },
-      "correct_answer": "A single table 'StudentLocker' containing all student and locker information.",
+      "correct_answer": [
+        "A single table 'StudentLocker' containing all student and locker information."
+      ],
       "explanation": "With a 1:1 relationship and the need to query both student-to-locker and locker-to-student, combining the tables is most efficient. This avoids joins. Options B and D are unnecessarily complex. Option B also fails to establish the relationship. Option C is valid, but less efficient than combining the tables.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_25",
@@ -2079,7 +2330,9 @@
         "C": "Combine 'Employee' and 'Vehicle' information into a single 'EmployeeVehicle' table.",
         "D": "Create separate 'Employee' and 'Vehicle' tables without any foreign key relationship."
       },
-      "correct_answer": "Combine 'Employee' and 'Vehicle' information into a single 'EmployeeVehicle' table.",
+      "correct_answer": [
+        "Combine 'Employee' and 'Vehicle' information into a single 'EmployeeVehicle' table."
+      ],
       "explanation": "Combining the tables is the most efficient way to represent a strict 1:1 relationship and allows for quick retrieval of associated information without requiring joins. Options A and B are valid but less efficient. Option D fails to establish the relationship between employees and vehicles.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_25",
@@ -2101,7 +2354,9 @@
         "C": "Create a single 'CourseInstructor' table combining all attributes of both 'Course' and 'Instructor'.",
         "D": "Create separate 'Course' and 'Instructor' tables with no foreign key relationships."
       },
-      "correct_answer": "Create a single 'CourseInstructor' table combining all attributes of both 'Course' and 'Instructor'.",
+      "correct_answer": [
+        "Create a single 'CourseInstructor' table combining all attributes of both 'Course' and 'Instructor'."
+      ],
       "explanation": "Given the 1:1 relationship, merging the 'Course' and 'Instructor' tables into a single 'CourseInstructor' table simplifies the database structure and improves query performance by avoiding joins. Options A and B create unnecessary complexity. Option D fails to relate the data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_25",
@@ -2123,7 +2378,9 @@
         "C": "Create a combined 'PatientBed' table that includes all attributes of both patients and beds.",
         "D": "Create separate 'Patient' and 'Bed' tables with no foreign key relationship between them."
       },
-      "correct_answer": "Create a combined 'PatientBed' table that includes all attributes of both patients and beds.",
+      "correct_answer": [
+        "Create a combined 'PatientBed' table that includes all attributes of both patients and beds."
+      ],
       "explanation": "In a 1:1 relationship, combining the information into a single table simplifies the database and avoids the need for joins when querying patient and bed information together. Options A and B, while technically valid, introduce unnecessary tables. Option D fails to establish a relationship between patients and beds.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_25",
@@ -2145,7 +2402,9 @@
         "C": "Add the BookID (primary key of 'Books' table) as a foreign key in the 'Authors' table.",
         "D": "Create a separate table with all possible Author-Book combinations."
       },
-      "correct_answer": "Add the AuthorID (primary key of 'Authors' table) as a foreign key in the 'Books' table.",
+      "correct_answer": [
+        "Add the AuthorID (primary key of 'Authors' table) as a foreign key in the 'Books' table."
+      ],
       "explanation": "In a one-to-many relationship, the primary key of the 'one' side (AuthorID) becomes a foreign key in the 'many' side (Books). This allows each book to be associated with its author. Option A is not scalable. Option C is incorrect because one author writes many books, not the other way around. Option D is inefficient and redundant.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_26",
@@ -2168,7 +2427,10 @@
         "C": "In both the 'Teachers' and 'Classes' tables, referencing each other.",
         "D": "In a separate table linking teachers and classes, with no foreign keys in the 'Teachers' or 'Classes' tables."
       },
-      "correct_answer": "In the 'Classes' table, referencing the 'Teachers' table.",
+      "correct_answer": [
+        "In the 'Classes' table",
+        "referencing the 'Teachers' table."
+      ],
       "explanation": "In a one-to-many relationship, the foreign key goes on the 'many' side. Since one teacher can teach many classes, the 'Classes' table should have the foreign key referencing the 'Teachers' table. Option A is incorrect. Option C creates redundancy and potential inconsistencies. Option D is needed for many-to-many relationships, not one-to-many.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_26",
@@ -2191,7 +2453,10 @@
         "C": "In a separate table linking customers and orders, with no foreign keys in the 'Customers' or 'Orders' tables.",
         "D": "Nowhere; the relationship can be determined without a foreign key."
       },
-      "correct_answer": "In the 'Orders' table, referencing the 'Customers' table.",
+      "correct_answer": [
+        "In the 'Orders' table",
+        "referencing the 'Customers' table."
+      ],
       "explanation": "Since one customer can have many orders (1:M), the CustomerID should be a foreign key in the Orders table. This allows for easy retrieval of all orders associated with a specific customer. Option A is incorrect. Option C is for many-to-many relationships. Option D would make retrieving orders for a particular customer very inefficient.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_26",
@@ -2214,7 +2479,9 @@
         "C": "Both 'Departments' and 'Employees' tables should contain foreign keys referencing each other.",
         "D": "A separate table should link departments and employees, with no foreign keys in the 'Departments' or 'Employees' tables."
       },
-      "correct_answer": "The 'Employees' table should contain a foreign key referencing the 'Departments' table.",
+      "correct_answer": [
+        "The 'Employees' table should contain a foreign key referencing the 'Departments' table."
+      ],
       "explanation": "In a 1:M relationship, the foreign key is placed on the 'many' side, referencing the 'one' side. Since one department can have many employees, the 'Employees' table should have a foreign key pointing to the 'Departments' table. Option A is incorrect. Option C is unnecessarily complex and could lead to data inconsistencies. Option D is for many-to-many relationships.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_26",
@@ -2237,7 +2504,9 @@
         "C": "Both 'Cars' and 'Rentals' tables should have foreign keys referencing each other.",
         "D": "Only the 'Cars' table should contain all the information about each rental."
       },
-      "correct_answer": "The 'Rentals' table should have a foreign key referencing the 'Cars' table.",
+      "correct_answer": [
+        "The 'Rentals' table should have a foreign key referencing the 'Cars' table."
+      ],
       "explanation": "With a 1:M relationship, the foreign key goes on the 'many' side. Because one car can be rented many times, 'Rentals' should have a foreign key referencing the 'Cars' table. Option A is incorrect because one rental can only pertain to one car. Option C is redundant. Option D is impractical as it would require storing multiple rental details within the 'Cars' table.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_26",
@@ -2260,7 +2529,10 @@
         "C": "In a separate 'ProfessorCourse' table, with no foreign keys in 'Professor' or 'Course'.",
         "D": "In both 'Professor' and 'Course' tables, referencing each other."
       },
-      "correct_answer": "In the 'Course' table, referencing the 'Professor' table.",
+      "correct_answer": [
+        "In the 'Course' table",
+        "referencing the 'Professor' table."
+      ],
       "explanation": "Since one professor can teach many courses (1:M), the foreign key (ProfessorID) should be placed in the 'Course' table. This allows each course to be linked to a specific professor. Option A is incorrect as it implies each professor has only one course. Option C is used for many-to-many relationships. Option D would cause redundancy and is incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_27",
@@ -2282,7 +2554,10 @@
         "C": "In a separate 'SalespersonCustomer' table, with no foreign keys in 'Salesperson' or 'Customer'.",
         "D": "There is no need for a foreign key in this relationship."
       },
-      "correct_answer": "In the 'Customer' table, referencing the 'Salesperson' table.",
+      "correct_answer": [
+        "In the 'Customer' table",
+        "referencing the 'Salesperson' table."
+      ],
       "explanation": "Since one salesperson can have many customers (1:M), the foreign key (SalespersonID) should be placed in the 'Customer' table. This allows each customer to be linked to a specific salesperson. Option A is incorrect, implying a salesperson has only one customer. Option C represents a many-to-many relationship. Option D is incorrect as a foreign key is needed to enforce the relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_27",
@@ -2304,7 +2579,10 @@
         "C": "In a separate 'AuthorPost' table, with no foreign keys in 'Author' or 'Post'.",
         "D": "The foreign key is optional and can be placed in either table."
       },
-      "correct_answer": "In the 'Post' table, referencing the 'Author' table.",
+      "correct_answer": [
+        "In the 'Post' table",
+        "referencing the 'Author' table."
+      ],
       "explanation": "Because one author can write many posts (1:M), the foreign key (AuthorID) should be placed in the 'Post' table. This connects each post to its author. Option A is incorrect as it suggests an author has only one post. Option C represents a many-to-many relationship. Option D is incorrect, a foreign key is required to enforce the relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_27",
@@ -2326,7 +2604,9 @@
         "C": "A separate 'StudentAdvisor' table should contain foreign keys referencing both 'Student' and 'Advisor' tables.",
         "D": "Both the 'Student' and 'Advisor' tables should contain foreign keys referencing each other."
       },
-      "correct_answer": "The 'Student' table should contain a foreign key referencing the 'Advisor' table.",
+      "correct_answer": [
+        "The 'Student' table should contain a foreign key referencing the 'Advisor' table."
+      ],
       "explanation": "Because one advisor can have many students (1:M), the foreign key (AdvisorID) should be placed in the 'Student' table. This links each student to their advisor. Option A is incorrect, implying each advisor has only one student. Option C represents a many-to-many relationship. Option D is redundant and incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_27",
@@ -2348,7 +2628,10 @@
         "C": "In a separate 'ArtistSong' table, with no foreign keys in 'Artist' or 'Song'.",
         "D": "No foreign key is needed to represent this relationship."
       },
-      "correct_answer": "In the 'Song' table, referencing the 'Artist' table.",
+      "correct_answer": [
+        "In the 'Song' table",
+        "referencing the 'Artist' table."
+      ],
       "explanation": "Since one artist can create many songs (1:M), the foreign key (ArtistID) should be placed in the 'Song' table. This associates each song with its respective artist. Option A is incorrect as it suggests an artist has only one song. Option C represents a many-to-many relationship. Option D is incorrect, a foreign key is needed to enforce the relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_27",
@@ -2370,7 +2653,9 @@
         "C": "Create a separate 'Enrollment' table with foreign keys referencing both the 'Student' and 'Course' tables.",
         "D": "Add the StudentID to the Course table and the CourseID to the Student table."
       },
-      "correct_answer": "Create a separate 'Enrollment' table with foreign keys referencing both the 'Student' and 'Course' tables.",
+      "correct_answer": [
+        "Create a separate 'Enrollment' table with foreign keys referencing both the 'Student' and 'Course' tables."
+      ],
       "explanation": "A many-to-many relationship requires an associative entity (junction table). The 'Enrollment' table acts as this entity, linking students to courses through foreign keys. Options A and B cannot handle multiple students per course or multiple courses per student. Option D would result in incorrect data representation.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_28",
@@ -2392,7 +2677,9 @@
         "C": "Create a 'Loan' table with foreign keys referencing both the 'Books' and 'Patrons' tables.",
         "D": "Include a 'BorrowedBy' field in the 'Books' table to store the Patrons' information."
       },
-      "correct_answer": "Create a 'Loan' table with foreign keys referencing both the 'Books' and 'Patrons' tables.",
+      "correct_answer": [
+        "Create a 'Loan' table with foreign keys referencing both the 'Books' and 'Patrons' tables."
+      ],
       "explanation": "The many-to-many relationship between books and patrons is correctly represented by a separate 'Loan' table acting as an associative entity. Options A and B are not scalable. Option D would result in data redundancy and difficulty in querying.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_28",
@@ -2414,7 +2701,9 @@
         "C": "Create an 'Order_Product' table with foreign keys referencing both the 'Orders' and 'Products' tables.",
         "D": "Include product details directly within the order table."
       },
-      "correct_answer": "Create an 'Order_Product' table with foreign keys referencing both the 'Orders' and 'Products' tables.",
+      "correct_answer": [
+        "Create an 'Order_Product' table with foreign keys referencing both the 'Orders' and 'Products' tables."
+      ],
       "explanation": "A many-to-many relationship is resolved using an associative entity. The 'Order_Product' table acts as the associative entity, linking orders to products using foreign keys. Options A and B are not scalable. Option D leads to data redundancy.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_28",
@@ -2436,7 +2725,9 @@
         "C": "Create a 'Student_Club' table with foreign keys referencing both the 'Student' and 'Club' tables.",
         "D": "Store club information within the student table."
       },
-      "correct_answer": "Create a 'Student_Club' table with foreign keys referencing both the 'Student' and 'Club' tables.",
+      "correct_answer": [
+        "Create a 'Student_Club' table with foreign keys referencing both the 'Student' and 'Club' tables."
+      ],
       "explanation": "The many-to-many relationship between students and clubs is represented by an associative entity. The 'Student_Club' table acts as this entity, linking students to clubs using foreign keys. Options A and B are not scalable. Option D results in data redundancy.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_28",
@@ -2458,7 +2749,9 @@
         "C": "Create a 'Developer_Project' table with foreign keys referencing both the 'Developer' and 'Project' tables.",
         "D": "Store project information within the developer table."
       },
-      "correct_answer": "Create a 'Developer_Project' table with foreign keys referencing both the 'Developer' and 'Project' tables.",
+      "correct_answer": [
+        "Create a 'Developer_Project' table with foreign keys referencing both the 'Developer' and 'Project' tables."
+      ],
       "explanation": "The many-to-many relationship between developers and projects is correctly represented by an associative entity. The 'Developer_Project' table acts as this entity, linking developers to projects using foreign keys. Options A and B are not scalable. Option D results in data redundancy.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_28",
@@ -2480,7 +2773,11 @@
         "C": "A 'Students' table, a 'Clubs' table, and a 'Student_Club' table. The 'Student_Club' table contains foreign keys referencing 'Students' and 'Clubs' tables.",
         "D": "A single 'Student_Club' table containing all student and club information."
       },
-      "correct_answer": "A 'Students' table, a 'Clubs' table, and a 'Student_Club' table. The 'Student_Club' table contains foreign keys referencing 'Students' and 'Clubs' tables.",
+      "correct_answer": [
+        "A 'Students' table",
+        "a 'Clubs' table",
+        "and a 'Student_Club' table. The 'Student_Club' table contains foreign keys referencing 'Students' and 'Clubs' tables."
+      ],
       "explanation": "The scenario describes a many-to-many relationship between students and clubs. The three-table rule dictates creating a table for each entity ('Students' and 'Clubs') and a third table ('Student_Club') to represent the relationship. The 'Student_Club' table contains foreign keys to both 'Students' and 'Clubs'. Option A and B incorrectly add a foreign key to one of the original entity tables, and option D fails to separate the entities.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_29",
@@ -2502,7 +2799,11 @@
         "C": "Create 'Products', 'Categories', and 'Product_Category' tables. The 'Product_Category' table contains foreign keys referencing the 'Products' and 'Categories' tables.",
         "D": "Create a single 'Product_Category' table containing all product and category information in the same table."
       },
-      "correct_answer": "Create 'Products', 'Categories', and 'Product_Category' tables. The 'Product_Category' table contains foreign keys referencing the 'Products' and 'Categories' tables.",
+      "correct_answer": [
+        "Create 'Products'",
+        "'Categories'",
+        "and 'Product_Category' tables. The 'Product_Category' table contains foreign keys referencing the 'Products' and 'Categories' tables."
+      ],
       "explanation": "The scenario describes a many-to-many relationship between products and categories. The three-table rule states that you need a table for each entity ('Products' and 'Categories') and a third table ('Product_Category') to represent the relationship. The 'Product_Category' table holds foreign keys to both. Option A violates 1NF, option B incorrectly uses a foreign key in only one table, and option D doesn't separate the entities.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_29",
@@ -2524,7 +2825,9 @@
         "C": "The relationship between users and the posts they 'like'.",
         "D": "The relationship between posts and the number of likes they receive."
       },
-      "correct_answer": "The relationship between users and the posts they 'like'.",
+      "correct_answer": [
+        "The relationship between users and the posts they 'like'."
+      ],
       "explanation": "The 'like' relationship between users and posts is a many-to-many relationship (users can like many posts, and posts can be liked by many users). The three-table rule is specifically used for resolving many-to-many relationships. The other options describe one-to-many relationships, which are handled with foreign keys in one of the tables.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_29",
@@ -2546,7 +2849,10 @@
         "C": "Because adding foreign keys to both tables would create a circular dependency, making data retrieval complex.",
         "D": "Because the relationship is many-to-many, requiring an associative table to properly represent the links between projects and employees."
       },
-      "correct_answer": "Because the relationship is many-to-many, requiring an associative table to properly represent the links between projects and employees.",
+      "correct_answer": [
+        "Because the relationship is many-to-many",
+        "requiring an associative table to properly represent the links between projects and employees."
+      ],
       "explanation": "A direct foreign key relationship between 'Projects' and 'Employees' tables cannot represent a many-to-many relationship. An associative table (intersection table) is needed to link projects and employees correctly. Options A, B, and C provide incorrect reasons, as foreign keys can be used for one-to-many relationships, do not inherently violate 1NF, and circular dependencies are not the primary concern here.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_29",
@@ -2568,7 +2874,9 @@
         "C": "The relationship between playlists and the users who create them.",
         "D": "The relationship between playlists and the songs they contain."
       },
-      "correct_answer": "The relationship between playlists and the songs they contain.",
+      "correct_answer": [
+        "The relationship between playlists and the songs they contain."
+      ],
       "explanation": "The relationship between playlists and songs is a many-to-many relationship (playlists can contain multiple songs, and songs can appear on multiple playlists). An intersection table is needed to represent this. The other options represent one-to-many relationships, which are handled with foreign keys.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_29",
@@ -2590,7 +2898,9 @@
         "C": "To link authors to books and potentially store additional information about their specific contribution to each book.",
         "D": "To reduce the overall number of tables in the database."
       },
-      "correct_answer": "To link authors to books and potentially store additional information about their specific contribution to each book.",
+      "correct_answer": [
+        "To link authors to books and potentially store additional information about their specific contribution to each book."
+      ],
       "explanation": "The primary purpose of an intersection table is to link records from the two related entities (authors and books in this case) and to store attributes specific to that relationship (e.g., the author's contribution percentage). Option A is incorrect because the details remain in the original tables. Option B is incorrect, primary keys are still needed. Option D is incorrect because it increases the number of tables, not reduces.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_30",
@@ -2614,7 +2924,9 @@
         "C": "CourseID (the course's unique identifier).",
         "D": "A composite key consisting of StudentID and CourseID."
       },
-      "correct_answer": "A composite key consisting of StudentID and CourseID.",
+      "correct_answer": [
+        "A composite key consisting of StudentID and CourseID."
+      ],
       "explanation": "In an intersection table, the primary key is a composite key formed by the primary keys of the two related entities (in this case, StudentID and CourseID). This ensures that each combination of student and course is uniquely identified. Options A, B, and C would not properly represent the many-to-many relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_30",
@@ -2638,7 +2950,9 @@
         "C": "ProficiencyLevel (the employee's level of expertise in that skill).",
         "D": "YearsOfExperience (the employee's total years of work experience)."
       },
-      "correct_answer": "ProficiencyLevel (the employee's level of expertise in that skill).",
+      "correct_answer": [
+        "ProficiencyLevel (the employee's level of expertise in that skill)."
+      ],
       "explanation": "The intersection table can store attributes specific to the relationship between the entities. 'ProficiencyLevel' describes the employee's expertise in a specific skill, which is directly related to the Employee-Skill relationship. The other options describe attributes of the 'Employee' or 'Skill' entities themselves, not the relationship.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_30",
@@ -2662,7 +2976,9 @@
         "C": "The database would not be able to store any grades for the courses.",
         "D": "The database would function correctly without any issues."
       },
-      "correct_answer": "Each student could only enroll in one course.",
+      "correct_answer": [
+        "Each student could only enroll in one course."
+      ],
       "explanation": "If 'StudentID' is the only primary key, each student can only have one record in the 'Enrollment' table, limiting them to enrolling in only one course. To allow a student to enroll in multiple courses, you need a composite primary key of ('StudentID', 'CourseID'). The other options are incorrect because the issue isn't about course enrollment limits or grade storage, but about the *student's* enrollment limit.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_30",
@@ -2686,7 +3002,9 @@
         "C": "Having a group contain multiple users.",
         "D": "Storing only the 'UserID' and 'GroupID' in the 'UserGroup' table without any additional attributes about the relationship."
       },
-      "correct_answer": "Storing only the 'UserID' and 'GroupID' in the 'UserGroup' table without any additional attributes about the relationship.",
+      "correct_answer": [
+        "Storing only the 'UserID' and 'GroupID' in the 'UserGroup' table without any additional attributes about the relationship."
+      ],
       "explanation": "While linking the entities is the core purpose, intersection tables are also meant to hold data *about the relationship itself*. If only the keys are stored and nothing else, it misses the opportunity to capture relationship-specific details. The other options are valid uses of a many-to-many relationship and intersection table.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_30",
@@ -2710,7 +3028,10 @@
         "C": "The customer's address will be permanently locked and cannot be updated.",
         "D": "The database will become smaller, improving performance."
       },
-      "correct_answer": "They will need to update the address in multiple tables, leading to potential inconsistencies.",
+      "correct_answer": [
+        "They will need to update the address in multiple tables",
+        "leading to potential inconsistencies."
+      ],
       "explanation": "Without normalization, the customer's address might be stored in multiple places (e.g., customer table, order table, shipping table). Updating the address requires finding and modifying all instances, increasing the risk of errors and inconsistencies. Options B, C, and D are incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_31",
@@ -2734,7 +3055,9 @@
         "C": "It would reduce data redundancy by storing patient information in a separate 'Patients' table.",
         "D": "It would make it more difficult to query appointment information."
       },
-      "correct_answer": "It would reduce data redundancy by storing patient information in a separate 'Patients' table.",
+      "correct_answer": [
+        "It would reduce data redundancy by storing patient information in a separate 'Patients' table."
+      ],
       "explanation": "Normalization aims to reduce redundancy. By separating patient information into a 'Patients' table, the patient's name and address are stored only once, preventing duplication across multiple appointments. Options A, B, and D are incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_31",
@@ -2758,7 +3081,12 @@
         "C": "By increasing the size of the 'ProductSales' table to store more information.",
         "D": "By removing primary keys from the 'ProductSales' table to simplify queries."
       },
-      "correct_answer": "By splitting the 'ProductSales' table into separate tables for products, suppliers, and sales, reducing the amount of data in each table.",
+      "correct_answer": [
+        "By splitting the 'ProductSales' table into separate tables for products",
+        "suppliers",
+        "and sales",
+        "reducing the amount of data in each table."
+      ],
       "explanation": "Normalization involves breaking down a large table into smaller, related tables. This reduces the amount of data in each table, leading to faster query performance. Options A, C, and D are either incomplete solutions or would negatively impact performance.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_31",
@@ -2782,7 +3110,9 @@
         "C": "Because the 'Books' table should only contain information about the physical characteristics of the books.",
         "D": "Because the 'BorrowerName' is a key attribute and should be stored in the 'Books' table."
       },
-      "correct_answer": "Because the 'BorrowerName' is a nonkey attribute that is dependent on another table's primary key (BorrowerID).",
+      "correct_answer": [
+        "Because the 'BorrowerName' is a nonkey attribute that is dependent on another table's primary key (BorrowerID)."
+      ],
       "explanation": "Storing 'BorrowerName' in the 'Books' table creates redundancy, as the borrower information is already stored in the 'Borrowers' table. 'BorrowerName' depends on 'BorrowerID', which is in a separate table. Options A, C, and D do not accurately describe the violation of normalization principles.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_31",
@@ -2806,7 +3136,9 @@
         "C": "Faster initial data entry due to fewer tables.",
         "D": "Elimination of the need for primary keys."
       },
-      "correct_answer": "Reduced storage space due to less redundant data.",
+      "correct_answer": [
+        "Reduced storage space due to less redundant data."
+      ],
       "explanation": "Normalization minimizes redundancy, which directly translates to less storage space required. The other options are either negative consequences or incorrect. Normalization usually increases query complexity initially and certainly doesn't remove the need for primary keys.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_31",
@@ -2830,7 +3162,9 @@
         "C": "Because the 'Students' table should not contain any information about courses.",
         "D": "Because the 'Courses' column is not a numeric data type."
       },
-      "correct_answer": "Because the 'Courses' column contains multiple values in a single cell (multivalued attribute).",
+      "correct_answer": [
+        "Because the 'Courses' column contains multiple values in a single cell (multivalued attribute)."
+      ],
       "explanation": "1NF requires that each attribute (column) in a table holds only a single, atomic value. Storing multiple course names in a single cell violates this rule. The other options are incorrect reasons for violating 1NF.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_32",
@@ -2854,7 +3188,10 @@
         "C": "Replace the comma-separated string with a JSON array to store multiple features.",
         "D": "Limit the number of features that can be stored in the 'Features' column to three."
       },
-      "correct_answer": "Create a new 'ProductFeatures' table with columns 'ProductID' and 'Feature', where each row represents a single feature for a specific product.",
+      "correct_answer": [
+        "Create a new 'ProductFeatures' table with columns 'ProductID' and 'Feature'",
+        "where each row represents a single feature for a specific product."
+      ],
       "explanation": "To achieve 1NF, you need to eliminate the multivalued attribute. Creating a separate 'ProductFeatures' table allows you to store each feature in a separate row, linked to the product's ID. Options A and C do not follow relational database principles, and option D only partially addresses the problem.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_32",
@@ -2878,7 +3215,9 @@
         "C": "Create a new table called 'CustomerPhoneNumbers' with columns 'CustomerID' and 'PhoneNumber'.",
         "D": "Limit the number of phone numbers that can be stored in the 'PhoneNumbers' column to two."
       },
-      "correct_answer": "Create a new table called 'CustomerPhoneNumbers' with columns 'CustomerID' and 'PhoneNumber'.",
+      "correct_answer": [
+        "Create a new table called 'CustomerPhoneNumbers' with columns 'CustomerID' and 'PhoneNumber'."
+      ],
       "explanation": "The initial step to achieve 1NF is to eliminate repeating groups by creating a new table. The 'CustomerPhoneNumbers' table will hold the 'CustomerID' and a single 'PhoneNumber' per row. Options A and D do not address the multivalued attribute, and option B is not a relational database solution.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_32",
@@ -2902,7 +3241,9 @@
         "C": "The database becomes more efficient due to reduced table count.",
         "D": "The primary key cannot be defined for the 'Employees' table."
       },
-      "correct_answer": "It becomes difficult to search for employees with specific skills.",
+      "correct_answer": [
+        "It becomes difficult to search for employees with specific skills."
+      ],
       "explanation": "Storing multiple values in a single cell makes it difficult to query and search for specific skills. The database cannot easily identify all employees with 'Programming' skills, for example. The other options are incorrect consequences of not adhering to 1NF.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_32",
@@ -2926,7 +3267,9 @@
         "C": "Because the primary key cannot be defined for the 'Contacts' table.",
         "D": "Because the 'Addresses' column should only contain numeric data."
       },
-      "correct_answer": "Because it becomes difficult to ensure the accuracy and consistency of individual addresses.",
+      "correct_answer": [
+        "Because it becomes difficult to ensure the accuracy and consistency of individual addresses."
+      ],
       "explanation": "Storing multiple addresses in a single field makes it difficult to update or correct individual addresses without affecting the others. This leads to potential data inconsistencies and integrity issues. Options A, C, and D are not the primary reasons for violating 1NF in this scenario.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_32",
@@ -2950,7 +3293,10 @@
         "C": "Add a `PublicationYear` column to the `BOOK_COPY` table to ensure all attributes depend on the entire primary key.",
         "D": "Remove the composite key and create a single `CopyID` primary key for the `BOOK_COPY` table."
       },
-      "correct_answer": "Remove `BookTitle` and `AuthorName` from the `BOOK_COPY` table and create a separate `BOOK` table with `BookID` as the primary key, including `BookTitle` and `AuthorName`.",
+      "correct_answer": [
+        "Remove `BookTitle` and `AuthorName` from the `BOOK_COPY` table and create a separate `BOOK` table with `BookID` as the primary key",
+        "including `BookTitle` and `AuthorName`."
+      ],
       "explanation": "In this scenario, `BookTitle` and `AuthorName` depend only on `BookID`, which is part of the composite key (`BookID`, `CopyNumber`). This violates 2NF, which requires non-key attributes to depend on the entire primary key. Creating a separate `BOOK` table removes this partial dependency. Option B is incorrect because `CopyNumber` is already part of the key. Option C doesn't address the partial dependency issue. Option D eliminates the composite key, which is not the goal of 2NF.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_33",
@@ -2973,7 +3319,10 @@
         "C": "Add a `DoctorID` column to the `TREATMENT` table to link treatments to doctors.",
         "D": "Combine `PatientName` and `ProcedureDescription` into a single `TreatmentSummary` column."
       },
-      "correct_answer": "Create separate `PATIENT` and `PROCEDURE` tables, moving `PatientName` to `PATIENT` (keyed by `PatientID`) and `ProcedureDescription` to `PROCEDURE` (keyed by `ProcedureID`).",
+      "correct_answer": [
+        "Create separate `PATIENT` and `PROCEDURE` tables",
+        "moving `PatientName` to `PATIENT` (keyed by `PatientID`) and `ProcedureDescription` to `PROCEDURE` (keyed by `ProcedureID`)."
+      ],
       "explanation": "Here, `PatientName` depends only on `PatientID`, and `ProcedureDescription` depends only on `ProcedureID`. These are partial dependencies on the composite key (`PatientID`, `ProcedureID`). 2NF requires removing these dependencies by creating separate `PATIENT` and `PROCEDURE` tables. Option A is incorrect as `TreatmentDate` depends on the composite key. Option C is unrelated to 2NF. Option D combines data, which is the opposite of normalization.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_33",
@@ -2996,7 +3345,9 @@
         "C": "Add a `ReviewDate` column to the `PRODUCT_REVIEWS` table.",
         "D": "Combine `ProductID` and `CustomerID` into a single `ReviewID`."
       },
-      "correct_answer": "Create separate `PRODUCT` and `CUSTOMER` tables. Move `ProductPrice` to `PRODUCT` (keyed by `ProductID`) and `CustomerCity` to `CUSTOMER` (keyed by `CustomerID`).",
+      "correct_answer": [
+        "Create separate `PRODUCT` and `CUSTOMER` tables. Move `ProductPrice` to `PRODUCT` (keyed by `ProductID`) and `CustomerCity` to `CUSTOMER` (keyed by `CustomerID`)."
+      ],
       "explanation": "In this scenario, `ProductPrice` depends only on `ProductID`, and `CustomerCity` depends only on `CustomerID`. These are partial dependencies. 2NF requires creating separate `PRODUCT` and `CUSTOMER` tables to eliminate these dependencies. Option A doesn't address the core issue of partial dependencies. Option C is irrelevant to 2NF. Option D removes the composite key, which is not the primary goal of 2NF.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_33",
@@ -3019,7 +3370,9 @@
         "C": "Remove `CourseCredits` because credits can change.",
         "D": "Create a single primary key `EnrollmentID` instead of the composite key."
       },
-      "correct_answer": "Create a separate `STUDENT` table with `StudentID` as the primary key and include `StudentMajor`.",
+      "correct_answer": [
+        "Create a separate `STUDENT` table with `StudentID` as the primary key and include `StudentMajor`."
+      ],
       "explanation": "Here, `StudentMajor` depends only on `StudentID`, a part of the composite primary key (`StudentID`, `CourseID`). To achieve 2NF, you must create a separate `STUDENT` table to hold `StudentMajor`, eliminating the partial dependency. Adding `ProfessorID` (Option B) is irrelevant to 2NF. Removing `CourseCredits` (Option C) is incorrect if credits depend on the course. Creating a single key (Option D) avoids the composite key, but is not the direct application of achieving 2NF.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_33",
@@ -3042,7 +3395,10 @@
         "C": "Add a `CustomerID` to the `SALES` table.",
         "D": "Combine `ProductName` and `ProductCategory` into a single `ProductDescription` attribute."
       },
-      "correct_answer": "Create a separate `PRODUCT` table with `ProductID` as the primary key, including `ProductName` and `ProductCategory`.",
+      "correct_answer": [
+        "Create a separate `PRODUCT` table with `ProductID` as the primary key",
+        "including `ProductName` and `ProductCategory`."
+      ],
       "explanation": "In this scenario, `ProductName` and `ProductCategory` depend only on `ProductID`, part of the composite key (`OrderID`, `ProductID`). 2NF requires removing this partial dependency by creating a separate `PRODUCT` table. Option A is wrong because `OrderDate` depends on `OrderID`. Option C doesn't address the partial dependency issue. Option D is counter to normalization principles, which aims for atomic attributes.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_33",
@@ -3065,7 +3421,9 @@
         "C": "Combine `DepartmentID` and `DepartmentLocation` into a single `DepartmentInfo` column.",
         "D": "Remove `DepartmentID` from the `EMPLOYEE` table to avoid redundancy."
       },
-      "correct_answer": "Create a separate `DEPARTMENT` table with `DepartmentID` as the primary key and include `DepartmentLocation`.",
+      "correct_answer": [
+        "Create a separate `DEPARTMENT` table with `DepartmentID` as the primary key and include `DepartmentLocation`."
+      ],
       "explanation": "In this scenario, `DepartmentLocation` depends on `DepartmentID`, which in turn depends on `EmployeeID`. This is a transitive dependency. 3NF requires creating a separate `DEPARTMENT` table to eliminate this dependency. Adding `ProjectID` (Option A) is unrelated to 3NF. Combining attributes (Option C) is the opposite of normalization. Removing `DepartmentID` (Option D) would break the relationship between employees and departments.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_34",
@@ -3087,7 +3445,9 @@
         "C": "Remove the `PublisherID` from the `BOOK` table.",
         "D": "Combine `PublisherID` and `PublisherAddress` into a single `PublisherInfo` column."
       },
-      "correct_answer": "Create a separate `PUBLISHER` table with `PublisherID` as the primary key and include `PublisherAddress`.",
+      "correct_answer": [
+        "Create a separate `PUBLISHER` table with `PublisherID` as the primary key and include `PublisherAddress`."
+      ],
       "explanation": "Here, `PublisherAddress` depends on `PublisherID`, which depends on `BookID`. This transitive dependency violates 3NF. Creating a separate `PUBLISHER` table eliminates this dependency by ensuring `PublisherAddress` is directly dependent on its primary key (`PublisherID`). Adding `AuthorID` (Option A) is irrelevant. Removing `PublisherID` (Option C) would break the relationship with publishers. Combining attributes (Option D) is the opposite of normalization.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_34",
@@ -3109,7 +3469,9 @@
         "C": "Remove `ClassroomID` from the `STUDENT` table.",
         "D": "Combine `ClassroomID` and `TeacherName` into a single `ClassroomInfo` column."
       },
-      "correct_answer": "Create a separate `CLASSROOM` table with `ClassroomID` as the primary key and include `TeacherName`.",
+      "correct_answer": [
+        "Create a separate `CLASSROOM` table with `ClassroomID` as the primary key and include `TeacherName`."
+      ],
       "explanation": "In this scenario, `TeacherName` depends on `ClassroomID`, which in turn depends on `StudentID`. This is a transitive dependency. To achieve 3NF, create a separate `CLASSROOM` table to hold `TeacherName`, resolving the transitive dependency. Adding `GradeLevel` (Option A) is irrelevant. Removing `ClassroomID` (Option C) would break the relationship with classrooms. Combining attributes (Option D) is against normalization principles.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_34",
@@ -3131,7 +3493,9 @@
         "C": "Remove `SalesRegionID` from the `CUSTOMER` table.",
         "D": "Combine `SalesRegionID` and `RegionManager` into a single `RegionDetails` column."
       },
-      "correct_answer": "Create a separate `SALES_REGION` table with `SalesRegionID` as the primary key and include `RegionManager`.",
+      "correct_answer": [
+        "Create a separate `SALES_REGION` table with `SalesRegionID` as the primary key and include `RegionManager`."
+      ],
       "explanation": "In this scenario, `RegionManager` depends on `SalesRegionID`, which depends on `CustomerID`. This is a transitive dependency. 3NF requires creating a separate `SALES_REGION` table to eliminate this dependency. Adding `DateJoined` (Option A) is irrelevant. Removing `SalesRegionID` (Option C) would break the relationship with sales regions. Combining attributes (Option D) is against normalization principles.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_34",
@@ -3153,7 +3517,9 @@
         "C": "Remove `ShipperID` from the `ORDER` table.",
         "D": "Combine `ShipperID` and `ShipperName` into a single `ShippingDetails` column."
       },
-      "correct_answer": "Create a separate `SHIPPER` table with `ShipperID` as the primary key and include `ShipperName`.",
+      "correct_answer": [
+        "Create a separate `SHIPPER` table with `ShipperID` as the primary key and include `ShipperName`."
+      ],
       "explanation": "In this scenario, `ShipperName` depends on `ShipperID`, which depends on `OrderID`. This indicates a transitive dependency. To achieve 3NF, create a separate `SHIPPER` table with `ShipperID` as the primary key and include `ShipperName`. This eliminates the transitive dependency. Adding `CustomerID` (Option A) is irrelevant. Removing `ShipperID` (Option C) would break the relationship with shippers. Combining attributes (Option D) is against normalization principles.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_4_34",

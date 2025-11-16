@@ -17,6 +17,7 @@ import ExamReadinessBar from '../components/MixMode/ExamReadinessBar';
 import QuestionCard from '../components/MixMode/QuestionCard';
 import FlashcardView from '../components/MixMode/FlashcardView';
 import Flashcard from '../components/Flashcard';
+import { EnhancedExplanation } from '../components/quiz/ExplanationStep';
 import './MixSessionView.css';
 
 const MixSessionView = () => {
@@ -72,13 +73,29 @@ const MixSessionView = () => {
       const resumedSession = await resumeSession();
       
       if (resumedSession) {
-        console.log('✅ Resumed existing session');
-        trackEvent('Mix Mode Resumed', { 
-          courseId: resumedSession.course_id, 
-          sessionId: resumedSession.session_id 
-        });
-        // Fetch the next activity for the resumed session
-        await fetchNextActivity(resumedSession.session_id);
+        // Check if the resumed session matches the current URL
+        const expectedDeckId = `deck_${lectureId}`;
+        const sessionDeckIds = resumedSession.deck_ids || [];
+        
+        if (!sessionDeckIds.includes(expectedDeckId)) {
+          console.log(`⚠️ Resumed session deck_ids (${sessionDeckIds}) don't match current URL (${expectedDeckId}), starting new session`);
+          // Clear the mismatched session
+          localStorage.removeItem('mix_mode_session_id');
+          resetSession();
+          // Start a new session for the current deck
+          console.log('🆕 Starting new session for current deck');
+          trackEvent('Mix Mode Started', { courseId, lectureId });
+          const sessionData = await startSession(courseId, [lectureId]);
+          await fetchNextActivity(sessionData.session_id);
+        } else {
+          console.log('✅ Resumed existing session');
+          trackEvent('Mix Mode Resumed', { 
+            courseId: resumedSession.course_id, 
+            sessionId: resumedSession.session_id 
+          });
+          // Fetch the next activity for the resumed session
+          await fetchNextActivity(resumedSession.session_id);
+        }
       } else {
         // No existing session, start a new one
         console.log('🆕 Starting new session');
@@ -91,7 +108,7 @@ const MixSessionView = () => {
       console.error('Failed to initialize session:', err);
       initializedRef.current = false; // Reset on error to allow retry
     }
-  }, [courseId, lectureId, startSession, resumeSession, fetchNextActivity]);
+  }, [courseId, lectureId, startSession, resumeSession, fetchNextActivity, resetSession]);
   
   // Initialize session on mount
   useEffect(() => {
@@ -347,7 +364,11 @@ const MixSessionView = () => {
                       </svg>
                       Explanation
                     </h4>
-                    <p className="explanation-text">{answerFeedback.explanation}</p>
+                    {typeof answerFeedback.explanation === 'string' ? (
+                      <p className="explanation-text">{answerFeedback.explanation}</p>
+                    ) : (
+                      <EnhancedExplanation explanation={answerFeedback.explanation} />
+                    )}
                   </div>
                 )}
                 
@@ -396,7 +417,11 @@ const MixSessionView = () => {
                       </svg>
                       Explanation
                     </h4>
-                    <p className="explanation-text">{revealedAnswer.explanation}</p>
+                    {typeof revealedAnswer.explanation === 'string' ? (
+                      <p className="explanation-text">{revealedAnswer.explanation}</p>
+                    ) : (
+                      <EnhancedExplanation explanation={revealedAnswer.explanation} />
+                    )}
                   </div>
                 )}
                 

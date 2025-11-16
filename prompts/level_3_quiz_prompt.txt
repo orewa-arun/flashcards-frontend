@@ -69,21 +69,108 @@ For each of the 5 questions per flashcard:
 
 ---
 
-## 6. Visual Generation Toolkit
+## 6. Visual Generation Toolkit (Enhanced with Diagram Decision Framework)
 
-### Visual Type Decision Tree
-* IF question tests [graph/network relationships] → **Graphviz**
-* IF question tests [statistical distribution/trend] → **Plotly**
-* IF question tests [formula/calculation] → **LaTeX**
-* IF question tests [conceptual structure] → **Graphviz** OR **text**
-* IF question needs [interactive data exploration] → **Plotly**
+### Diagram Decision Framework (The "Feynman Test")
 
-### Visual Quality Requirements
-* **Graphviz:** ≤ 15 nodes, ≤ 4 levels, clear labels (≤ 20 chars), colorblind-safe (max 4 colors), specify `rankdir`.
-* **Plotly:** Always include axis labels (with units) and a descriptive title. Legend only if >1 series. 5-50 data points.
-* **LaTeX:** Use `\text{}` for words. Define variables. Use standard notation (e.g., `\Sigma`, `\frac`).
-* **Accessibility:** Alt text must describe the *insight* (e.g., "Scatter plot showing strong positive correlation..."), not just the content ("Graph showing data"). Color must not be the *only* differentiator.
-* **Level 3 Complexity:** May use 1-2 visuals that must be compared, or one complex visual.
+For each question, ask yourself these three critical questions:
+1. **Would a visual make this concept click for a struggling student?**
+2. **What would Richard Feynman or 3Blue1Brown use to explain this?**
+3. **Is the diagram essential, helpful, or just decorative?**
+
+**Generate diagrams ONLY when they are essential or highly helpful. Skip decorative diagrams.**
+
+### Visual Type Decision Tree (Enhanced for Data Analytics)
+
+**🚨 CRITICAL RULE: STATISTICAL DATA = MATPLOTLIB, NOT MERMAID 🚨**
+
+**NEVER use Mermaid for:**
+- ❌ Residuals (use matplotlib scatter plot)
+- ❌ Distributions (use matplotlib probability curves)
+- ❌ Scatter plots (use matplotlib)
+- ❌ Regression lines (use matplotlib)
+- ❌ Confidence intervals on plots (use matplotlib with shaded regions)
+- ❌ Hypothesis test visualizations (use matplotlib with distributions)
+- ❌ Any actual data visualization (use matplotlib)
+
+**Mermaid is ONLY for:**
+- ✅ Process flows (e.g., "Hypothesis testing decision process")
+- ✅ Concept hierarchies (e.g., "Types of statistical tests")
+- ✅ Decision trees (e.g., "Which test to use when?")
+
+**Statistical Inference (ALWAYS Matplotlib):**
+- **Matplotlib Plot Spec:** Normal distribution curves with shaded regions
+- **Use when:** Testing understanding of confidence intervals, p-values, critical regions with **actual visualizations**
+- **Example:** Distribution with shaded 95% CI, marked critical values showing real probability regions
+- **Why:** Students need to SEE the shaded regions, not read text boxes about them
+
+**Regression Analysis (ALWAYS Matplotlib):**
+- **Matplotlib Plot Spec:** Scatter plot with regression line, residual plots
+- **Use when:** Testing understanding of fit, outliers, residuals, assumptions with **real data patterns**
+- **Example:** Scatter with fitted line showing R², residual plot showing heteroscedasticity pattern
+- **Why:** Students need to SEE residual patterns (fanning, curves), not flowcharts describing them
+
+**Probability & Distributions (ALWAYS Matplotlib):**
+- **Matplotlib Plot Spec:** Probability distributions, histograms
+- **Use when:** Testing distribution properties, probability calculations with **actual curves**
+- **Example:** Overlapping normal distributions for comparing populations
+- **Why:** Students need to SEE the distribution shapes and overlaps
+
+**Conceptual Relationships (Mermaid ONLY for non-data concepts):**
+- **Mermaid:** Concept maps, hierarchies, flowcharts for **processes only**
+- **Use when:** Testing understanding of relationships, processes, decision trees (NOT data)
+- **Example:** Flowchart for "Hypothesis testing decision process" or "Steps in model validation"
+
+**Process Flows:**
+- **Graphviz:** Process diagrams, decision trees
+- **Use when:** Testing procedural knowledge, algorithm steps
+- **Example:** Regression diagnostics workflow
+
+**Formulas & Calculations:**
+- **LaTeX:** Mathematical notation
+- **Use when:** Testing formula application, mathematical reasoning
+- **Example:** Confidence interval formula with variable definitions
+
+### Visual Quality Requirements (Textbook-Quality Standards)
+
+**Matplotlib Plots:**
+- Clear axis labels with units (e.g., "Sample Mean (μ)", "Probability Density")
+- Descriptive title explaining what's shown
+- Annotations for key points (means, critical values, intervals)
+- Professional style (seaborn or similar)
+- Appropriate scale and aspect ratio
+- Legend when multiple series
+- Grid for readability (subtle, alpha=0.3)
+
+**Mermaid Diagrams:**
+- ≤ 15 nodes for clarity
+- ≤ 4 levels deep
+- Clear, concise labels (≤ 20 chars)
+- Logical flow (top-to-bottom or left-to-right)
+- Colorblind-safe colors (max 4 colors)
+
+**Graphviz:**
+- ≤ 15 nodes, ≤ 4 levels
+- Clear labels (≤ 20 chars)
+- Specify `rankdir` (TB, LR, etc.)
+- Use `margin=0.3` and appropriate `fontsize`
+- Colorblind-safe palette
+
+**LaTeX:**
+- Use `\text{}` for words
+- Define all variables clearly
+- Use standard notation (e.g., `\Sigma`, `\frac`, `\hat{}`)
+- Include units where applicable
+
+**Accessibility:**
+- Alt text must describe the *insight*, not just the content
+- Example: "Normal distribution showing 95% confidence interval between 1.696 and 3.304"
+- Color must not be the only differentiator (use patterns, labels, annotations)
+
+**Level 3 Complexity:**
+- May use 1-2 visuals that must be compared
+- Or one complex visual requiring multi-step interpretation
+- Diagrams should test analysis, not just recognition
 
 ---
 
@@ -134,7 +221,64 @@ Run this check on every generated question. **Reject and regenerate if it fails.
 
 ---
 
-## 11. Output Format
+## 11. Enhanced Explanations - WORLD-CLASS STANDARD
+
+**CRITICAL: ALL questions MUST have enhanced explanations with step-by-step breakdowns and diagrams.**
+
+### Teaching Philosophy: Think Like Feynman & 3Blue1Brown
+
+Before writing each explanation, ask yourself:
+
+**"How would Richard Feynman expose this misconception?"**
+- Start with what the student likely thought (the wrong intuition)
+- Show exactly where that thinking breaks down
+- Build the correct intuition from first principles
+- Use analogies to make the "trick" obvious in retrospect
+- Make them think: "Oh! I see why I was fooled."
+
+**"How would 3Blue1Brown reveal the hidden pattern?"**
+- What visualization would expose the misconception instantly?
+- Can I show the "before and after" of wrong vs. right thinking?
+- What would make the correct answer visually obvious?
+- Use diagrams to show what's really happening under the hood
+
+**Your goal:** Transform confusion into clarity. The student should think: "I can't believe I almost fell for that trap, but now I see why!"
+
+### When to Include Diagrams:
+- **ALWAYS** for statistical concepts (distributions, confidence intervals, regression)
+- **ALWAYS** for multi-step calculations or formulas
+- **WHEN HELPFUL** for conceptual relationships (use Feynman Test from Section 6)
+
+### Explanation Structure:
+```json
+"explanation": {
+  "text": "Brief 2-3 sentence summary identifying the trick/misconception",
+  "step_by_step": [
+    {
+      "step": 1,
+      "title": "Step title (e.g., 'Identify the assumption violation')",
+      "content": "Detailed explanation of this step",
+      "latex": "\\text{LaTeX formula if applicable}",
+      "diagram": {
+        "type": "matplotlib",
+        "plot_type": "normal_distribution",
+        "params": {
+          "mean": 2.5,
+          "std": 0.4,
+          "title": "Distribution showing the concept"
+        }
+      },
+      "diagram_type": "matplotlib"
+    }
+  ],
+  "interpretation": "What this result means in plain language",
+  "business_context": "Real-world business application or implication"
+}
+```
+
+---
+
+## 12. Output Format
 
 Produce a single JSON array of question objects.
 
@@ -145,39 +289,89 @@ Produce a single JSON array of question objects.
   {
     "type": "mcq",
     "question_text": "...",
-    "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
-  "visual_code": "...",
-  "alt_text": "...",
+    "question_visual": {
+      "type": "matplotlib",
+      "plot_type": "residual_plot",
+      "params": {
+        "fitted_values": [10, 20, 30, 40, 50],
+        "residuals": [0.5, 1.2, 2.8, 5.1, 8.3],
+        "title": "Residual Plot for Model A"
+      }
+    },
+    "question_visual_type": "matplotlib",
     "options": {
       "A": "...",
       "B": "...",
       "C": "...",
       "D": "..."
     },
-  "correct_answer": ["A"], // ARRAY with exactly ONE option key (e.g., ["A"], ["B"], ["C"], or ["D"])
-    "explanation": "...",
+    "correct_answer": ["A"],
+    "explanation": {
+      "text": "Brief summary identifying the trick",
+      "step_by_step": [
+        {
+          "step": 1,
+          "title": "Step title",
+          "content": "Explanation",
+          "latex": "\\text{Formula if needed}",
+          "diagram": {"type": "matplotlib", "plot_type": "...", "params": {...}},
+          "diagram_type": "matplotlib"
+        }
+      ],
+      "interpretation": "What this means",
+      "business_context": "Real-world application"
+    },
     "difficulty_level": 3,
   "source_flashcard_id": "...",
   "tags": ["...", "..."]
 }
 ```
 
+**When to Include question_visual (Level 3 Focus):**
+- **ALWAYS** when the visual contains a subtle pattern or trap (e.g., "This plot looks normal, but...")
+- **ALWAYS** when testing analysis of visual data with hidden complexities
+- **WHEN HELPFUL** to set up a tricky scenario that requires careful interpretation
+- **Use `null` or omit** if the trick is conceptual and doesn't require visual analysis
+
+**Visual Type Rules for Questions (Generic for All Courses):**
+- Data patterns (subtle issues) → `matplotlib` (diagnostic plots, comparison charts)
+- Complex formulas → `latex` (equations with multiple terms, derivations)
+- Decision logic → `mermaid` or `graphviz` (decision trees with edge cases, complex workflows)
+- Multi-part scenarios → Include in `question_text` or use structured format
+
 ### For MCA (Multiple Correct Answers) Questions:
 ```json
 {
   "type": "mca",
   "question_text": "Which of the following are... (Select all that apply)",
-  "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
-  "visual_code": "...",
-  "alt_text": "...",
+  "question_visual": null,
+  "question_visual_type": "None",
   "options": {
     "A": "...",
     "B": "...",
     "C": "...",
     "D": "..."
   },
-  "correct_answer": ["A", "C"], // ARRAY with 2-3 option keys (e.g., ["A", "B"], ["B", "C", "D"])
-  "explanation": "A and C are correct because... B is incorrect because... D is incorrect because...",
+  "correct_answer": ["A", "C"],
+  "explanation": {
+    "text": "A and C are correct because... B is incorrect because... D is incorrect because...",
+    "step_by_step": [
+      {
+        "step": 1,
+        "title": "Analyze correct options",
+        "content": "Why A and C are correct...",
+        "diagram": {"type": "mermaid", "code": "graph TD..."},
+        "diagram_type": "mermaid"
+      },
+      {
+        "step": 2,
+        "title": "Identify why distractors fail",
+        "content": "Why B and D are incorrect..."
+      }
+    ],
+    "interpretation": "What this means",
+    "business_context": "Real-world implications"
+  },
   "difficulty_level": 3,
   "source_flashcard_id": "...",
   "tags": ["...", "..."]
@@ -191,3 +385,10 @@ Produce a single JSON array of question objects.
 - The array contains option KEYS (A, B, C, D), NOT the full text of the options
 - Always include "(Select all that apply)" in MCA question text
 - MCA explanations must address why each option is correct or incorrect
+
+**CRITICAL JSON COMPLIANCE INSTRUCTIONS:**
+- Output ONLY perfectly valid and complete JSON. No additional text, commentary, or markdown outside the JSON block.
+- Ensure all strings are properly quoted and escaped. All arrays and objects must be correctly terminated.
+- Each question object must be complete with ALL required fields before moving to the next question.
+- If approaching token limits, complete the current question properly and close the JSON array rather than leaving it incomplete.
+- Test your JSON mentally: Does every opening brace/bracket have a closing one? Are all strings properly quoted?

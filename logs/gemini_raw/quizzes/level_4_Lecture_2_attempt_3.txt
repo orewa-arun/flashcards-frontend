@@ -1,0 +1,32 @@
+=== RAW LLM RESPONSE ===
+Level: 4
+Chunk: Lecture 2
+Attempt: 3/3
+Flashcards: 3
+Max tokens: 10485
+
+=== RESPONSE TEXT ===
+```json
+[
+  {
+    "type": "mca",
+    "question_text": "A marketing firm wants to predict quarterly sales (Y) based on advertising spend (X) using a simple linear regression model. They have 20 quarters of data. Before running the model, their junior analyst visually inspects a scatter plot and notices a clear curvilinear trend, especially at higher advertising spends, where sales growth seems to slow down. The analyst also identifies three data points that appear to be significant outliers, corresponding to periods of major economic recession.\n\nWhich of the following actions should the senior analyst consider to address these observations, synthesizing principles of simple regression application with data preparation best practices? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": "",
+    "alt_text": "",
+    "options": {
+      "A": "Proceed with the simple linear regression directly, as the model will inherently account for non-linearity through its error terms, and outliers are natural variations.",
+      "B": "Investigate transforming either the advertising spend (X) or sales (Y) variable (e.g., log transformation) to linearize the relationship, which could make a simple linear regression more appropriate.",
+      "C": "Analyze the identified outliers more deeply, potentially excluding them if they represent extraordinary, non-recurring events that do not reflect the typical relationship, but documenting the rationale.",
+      "D": "Consider if a simple linear regression is the most appropriate model given the curvilinear trend, and explore alternative models like a polynomial regression or a multiple regression incorporating other relevant variables.",
+      "E": "Interpret the initial curvilinear pattern as evidence that a simple linear regression is not suitable and immediately discard the model without further analysis or modification of the data."
+    },
+    "correct_answer": ["B", "C", "D"],
+    "explanation": "This question synthesizes the core objective of simple regression (modeling a linear relationship) with data preprocessing and model assumption considerations. Option A is incorrect because simple linear regression assumes linearity; ignoring a clear curvilinear trend will lead to a poor fit and biased predictions. Error terms are for random noise, not systematic non-linearity. Option E is premature; while the simple model might not be ideal, transformations or exploring other variables (as in B and D) can often make the data amenable to regression or identify a better-suited model. Options B and D address the non-linearity: B by transforming variables to achieve linearity, and D by acknowledging that a different model might be needed. Option C addresses outliers, which can heavily influence regression coefficients and reduce model reliability, especially in small datasets. Investigating and potentially removing justified outliers, with clear documentation, is a best practice to ensure the model reflects the typical relationship.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "simple_regression_model",
+    "tags": ["Simple Regression", "Data Preprocessing", "Model Assumptions", "Outliers", "Transformation", "Model Selection"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A financial services firm wants to

@@ -23,7 +23,10 @@
         "C": "Both the cakes and the cake decorating classes, as they satisfy different customer needs and wants.",
         "D": "Only the ingredients used in the cakes and classes."
       },
-      "correct_answer": "Both the cakes and the cake decorating classes, as they satisfy different customer needs and wants.",
+      "correct_answer": [
+        "Both the cakes and the cake decorating classes",
+        "as they satisfy different customer needs and wants."
+      ],
       "explanation": "In this scenario, Sweet Surrender offers both tangible cakes and cake decorating classes. The cakes satisfy the need for a delicious treat, while the classes satisfy the want for a new skill and experience. Therefore, both are considered products offered to the market. Option A is incorrect as it ignores the service. Option B is incomplete because it only considers the class and not the original offering.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_1",
@@ -47,7 +50,10 @@
         "C": "The workout program and the free trial period, as the trial is the method of acquisition.",
         "D": "The company's marketing materials advertising the program."
       },
-      "correct_answer": "The workout program and the free trial period, as the trial is the method of acquisition.",
+      "correct_answer": [
+        "The workout program and the free trial period",
+        "as the trial is the method of acquisition."
+      ],
       "explanation": "The fitness app offering includes both the workout program and the free trial. The program satisfies the need for exercise guidance, while the trial period provides a way for customers to experience the product before committing. Thus, the trial period is integral to the product offering. Option A is incomplete because it doesn't consider how the product is offered initially. Option B is a common oversimplification.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_1",
@@ -71,7 +77,10 @@
         "C": "The experience of the hayride, providing entertainment and seasonal enjoyment.",
         "D": "The tickets sold for the hayride."
       },
-      "correct_answer": "The experience of the hayride, providing entertainment and seasonal enjoyment.",
+      "correct_answer": [
+        "The experience of the hayride",
+        "providing entertainment and seasonal enjoyment."
+      ],
       "explanation": "In this scenario, the farm is selling the *experience* of the hayride, which fulfills the customers' desire for entertainment and seasonal activities. While the hay and tractor are involved, they are simply components of the overall product. Option A is incorrect because the hay is just a component. Option B focuses on the tool, not the product.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_1",
@@ -95,7 +104,10 @@
         "C": "No, because it's a reactive measure to fix problems, not a proactive offering.",
         "D": "Yes, because it increases brand awareness."
       },
-      "correct_answer": "Yes, because it is offered to a market (security researchers) to fulfill the need for secure software.",
+      "correct_answer": [
+        "Yes",
+        "because it is offered to a market (security researchers) to fulfill the need for secure software."
+      ],
       "explanation": "The bug bounty program is a product because it is being offered to a specific market (security researchers) in exchange for their services in identifying vulnerabilities, which in turn helps fulfill the company's need for secure software. Therefore it provides value. Option A incorrectly focuses on cost. Option C is a common mistake - assuming a product has to be proactively marketed.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_1",
@@ -119,7 +131,10 @@
         "C": "No, because only paid services are considered products.",
         "D": "Yes, because it is a form of marketing."
       },
-      "correct_answer": "Yes, because it is offered to the market to satisfy the need for expert advice and potentially lead to paid services.",
+      "correct_answer": [
+        "Yes",
+        "because it is offered to the market to satisfy the need for expert advice and potentially lead to paid services."
+      ],
       "explanation": "The free initial consultation is a product because it is offered to the market (potential clients) to address the need for expert advice. Even though it is free, it serves as an entry point to potentially acquire paid services later, providing value. Option A is incorrect as cost doesn't define a product. Option C reflects a common misunderstanding.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_1",
@@ -143,7 +158,13 @@
         "C": "The coffee beans, the subscription service, home delivery, and brewing guides, creating a complete package for coffee enthusiasts.",
         "D": "Only the packaging of the coffee beans."
       },
-      "correct_answer": "The coffee beans, the subscription service, home delivery, and brewing guides, creating a complete package for coffee enthusiasts.",
+      "correct_answer": [
+        "The coffee beans",
+        "the subscription service",
+        "home delivery",
+        "and brewing guides",
+        "creating a complete package for coffee enthusiasts."
+      ],
       "explanation": "The company's market offering includes the tangible coffee beans and the intangible subscription service, delivery, and guides. These elements combine to provide a complete experience that satisfies the customer's desire for quality coffee. Option A is incomplete. Option B only considers the subscription part of the offering.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_2",
@@ -167,7 +188,12 @@
         "C": "The tickets, the guided tours, and the souvenirs, combined to provide an educational and memorable experience.",
         "D": "Only the museum building itself."
       },
-      "correct_answer": "The tickets, the guided tours, and the souvenirs, combined to provide an educational and memorable experience.",
+      "correct_answer": [
+        "The tickets",
+        "the guided tours",
+        "and the souvenirs",
+        "combined to provide an educational and memorable experience."
+      ],
       "explanation": "The museum's market offering consists of the tangible souvenirs and the intangible experience created by the tickets and guided tours. These components combine to fulfill the visitor's need for education and entertainment. Therefore option C provides the most comprehensive answer. Option A is an incomplete solution.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_2",
@@ -191,7 +217,12 @@
         "C": "The cars, the financing, and the maintenance services, designed to provide a complete solution for transportation needs.",
         "D": "Only the dealership building itself."
       },
-      "correct_answer": "The cars, the financing, and the maintenance services, designed to provide a complete solution for transportation needs.",
+      "correct_answer": [
+        "The cars",
+        "the financing",
+        "and the maintenance services",
+        "designed to provide a complete solution for transportation needs."
+      ],
       "explanation": "The car dealership's market offering encompasses the tangible cars and the intangible financing and maintenance services. This combination creates a complete solution that satisfies the customer's transportation needs. Option A is too narrow. Focusing only on the cars is an incomplete solution.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_2",
@@ -215,7 +246,12 @@
         "C": "All three services: tax preparation, financial planning, and auditing, which provide a comprehensive suite of financial solutions.",
         "D": "Only the accounting software used by the firm."
       },
-      "correct_answer": "All three services: tax preparation, financial planning, and auditing, which provide a comprehensive suite of financial solutions.",
+      "correct_answer": [
+        "All three services: tax preparation",
+        "financial planning",
+        "and auditing",
+        "which provide a comprehensive suite of financial solutions."
+      ],
       "explanation": "The accounting firm's market offering includes tax preparation, financial planning, and auditing services. These combine to offer a comprehensive solution to satisfy a client's financial needs. Options A and B are incomplete solutions because they don't consider the complete value proposition. Option D focuses on internal resources rather than the offered services.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_2",
@@ -239,7 +275,14 @@
         "C": "The movies, TV shows, original content, personalized recommendations, and offline downloads, providing a comprehensive entertainment solution.",
         "D": "Only the streaming technology."
       },
-      "correct_answer": "The movies, TV shows, original content, personalized recommendations, and offline downloads, providing a comprehensive entertainment solution.",
+      "correct_answer": [
+        "The movies",
+        "TV shows",
+        "original content",
+        "personalized recommendations",
+        "and offline downloads",
+        "providing a comprehensive entertainment solution."
+      ],
       "explanation": "The streaming service's market offering includes the movies, TV shows, original content, personalized recommendations, and offline downloads. These features combine to deliver a comprehensive entertainment solution, addressing customer needs and wants. Option A and B are incomplete. Option D focuses on the internal technology rather than the customer-facing product.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_2",
@@ -263,7 +306,9 @@
         "C": "The company's mission to reduce carbon emissions.",
         "D": "The battery technology powering the scooter."
       },
-      "correct_answer": "The ease of renting and riding the scooter through a mobile app.",
+      "correct_answer": [
+        "The ease of renting and riding the scooter through a mobile app."
+      ],
       "explanation": "The 'experience' refers to the feeling and perception the customer has while interacting with the product. Renting and riding the scooter easily via the app creates a convenient and enjoyable user experience. The scooter (A) is a good, the mission (C) is an idea, and the battery (D) is a feature. Option A is a tangible good, not an experience.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_3",
@@ -287,7 +332,9 @@
         "C": "The user interface of the software.",
         "D": "The marketing materials used to promote the software."
       },
-      "correct_answer": "The online access to the software and data storage provided by the company.",
+      "correct_answer": [
+        "The online access to the software and data storage provided by the company."
+      ],
       "explanation": "A 'service' is an intangible activity that provides value. Providing online access and data storage is a service offered by the company, distinct from the software itself. The software code is a good (A), the interface is a feature (C), and marketing is promotion (D).",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_3",
@@ -311,7 +358,9 @@
         "C": "The user's feeling of motivation after using the watch.",
         "D": "The warranty provided with the watch."
       },
-      "correct_answer": "The physical smartwatch device itself.",
+      "correct_answer": [
+        "The physical smartwatch device itself."
+      ],
       "explanation": "A 'good' is a tangible item. The physical smartwatch is the tangible good in this offering. The data (A) is information, the feeling (C) is an experience, and the warranty (D) is a service.  The question asks about the tangible item.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_3",
@@ -335,7 +384,10 @@
         "C": "The act of attending the mindfulness workshops.",
         "D": "The printed materials distributed during the workshops."
       },
-      "correct_answer": "The concept of mindfulness itself, and its benefits for mental well-being.",
+      "correct_answer": [
+        "The concept of mindfulness itself",
+        "and its benefits for mental well-being."
+      ],
       "explanation": "An 'idea' is a concept or philosophy being promoted. Mindfulness is the central idea being offered. The location (A) is a physical space, attending (C) is an activity/service, and materials (D) are goods. The core offering is the 'idea' of mindfulness itself.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_3",
@@ -359,7 +411,9 @@
         "C": "The feeling of immersion in nature and the memories created during the tour.",
         "D": "The lodging provided during the tour."
       },
-      "correct_answer": "The feeling of immersion in nature and the memories created during the tour.",
+      "correct_answer": [
+        "The feeling of immersion in nature and the memories created during the tour."
+      ],
       "explanation": "An 'experience' focuses on the emotional and sensory impact on the customer. The feeling of immersion and created memories best represent the experiential aspect. Transportation (A) and Lodging (D) are services. Educational materials (B) are goods.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_3",
@@ -383,7 +437,10 @@
         "C": "A customer loyalty program.",
         "D": "A simple sponsorship agreement."
       },
-      "correct_answer": "A brand collaboration, leveraging the strengths of both brands to create a mutually beneficial offering.",
+      "correct_answer": [
+        "A brand collaboration",
+        "leveraging the strengths of both brands to create a mutually beneficial offering."
+      ],
       "explanation": "This scenario represents a brand collaboration because the coffee shop and bakery are combining their products to create a new offering that leverages the strengths of both brands. It is more than a simple endorsement (A) or sponsorship (D). Customer loyalty program (C) is not descriptive enough. The key is the integration of the brands.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_4",
@@ -406,7 +463,10 @@
         "C": "A public relations stunt.",
         "D": "An advertising campaign."
       },
-      "correct_answer": "A brand collaboration, where the clothing brand and artist's brand are integrated to appeal to a wider audience.",
+      "correct_answer": [
+        "A brand collaboration",
+        "where the clothing brand and artist's brand are integrated to appeal to a wider audience."
+      ],
       "explanation": "This scenario is a brand collaboration because the clothing brand and the artist are integrating their brands to create a new offering. The artist's designs are a direct element of Style Co.'s products, expanding their brand identity. Options A, C, and D are less accurate because they don't encompass the integration of the brands.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_4",
@@ -429,7 +489,10 @@
         "C": "Yes, because the marathon event promotes Quench Up.",
         "D": "Yes, because both entities benefit from the partnership."
       },
-      "correct_answer": "No, because it is a simple sponsorship; there is no significant integration of each brand's identity and resources.",
+      "correct_answer": [
+        "No",
+        "because it is a simple sponsorship; there is no significant integration of each brand's identity and resources."
+      ],
       "explanation": "This scenario describes a sponsorship, not a brand collaboration. A true collaboration requires a significant integration of each brand's identity. The sponsorship just gives Quench Up exposure but no integration. Option A only focuses on one benefit. The key is the integration of the brands.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_4",
@@ -452,7 +515,10 @@
         "C": "A sales promotion.",
         "D": "A charitable donation."
       },
-      "correct_answer": "A brand collaboration, leveraging the prestige and craftsmanship of both brands to create a unique and desirable product.",
+      "correct_answer": [
+        "A brand collaboration",
+        "leveraging the prestige and craftsmanship of both brands to create a unique and desirable product."
+      ],
       "explanation": "This is a brand collaboration because it involves a significant integration of both brand's resources to create a unique product. The custom watch is integrated into the car itself. Options A, C, and D don't describe the integration of brands.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_4",
@@ -475,7 +541,10 @@
         "C": "Yes, because the influencer is increasing brand awareness.",
         "D": "Yes, because the influencer is being paid to promote the brand."
       },
-      "correct_answer": "No, because it is a simple endorsement; there is no significant integration of each brand's identity and resources.",
+      "correct_answer": [
+        "No",
+        "because it is a simple endorsement; there is no significant integration of each brand's identity and resources."
+      ],
       "explanation": "This is a simple endorsement, not a brand collaboration. The influencer is just promoting the energy drink, there is no integration. A true collaboration requires a significant integration. Options A, C, and D are not accurate because the focus is on promotion, not integration.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_4",
@@ -498,7 +567,10 @@
         "C": "An industrial product, as it will be used as a raw material in the production of another product.",
         "D": "Both a consumer and industrial product, depending on the quantity purchased."
       },
-      "correct_answer": "An industrial product, as it will be used as a raw material in the production of another product.",
+      "correct_answer": [
+        "An industrial product",
+        "as it will be used as a raw material in the production of another product."
+      ],
       "explanation": "In this scenario, the corn sold to the food processing company is used as an input for manufacturing canned corn. This aligns with the definition of an industrial product. The purpose of the purchase is for production, not personal consumption. Option A is incorrect because the *final* consumer purchase doesn't determine the classification at the *initial* sale. The key is the food processing company's *use* of the corn.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_5",
@@ -521,7 +593,9 @@
         "C": "An industrial product because it is used as a raw material in the construction of homes.",
         "D": "A supply because it aids in the construction process but is not part of the final product."
       },
-      "correct_answer": "An industrial product because it is used as a raw material in the construction of homes.",
+      "correct_answer": [
+        "An industrial product because it is used as a raw material in the construction of homes."
+      ],
       "explanation": "The lumber serves as a raw material in the production of new homes. Therefore, it's classified as an industrial product. The fact that the homes are eventually sold to consumers doesn't change the classification of the lumber at the point of purchase by the construction company. Option A is incorrect because it confuses the end consumer with the industrial buyer's purpose.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_5",
@@ -544,7 +618,10 @@
         "C": "A service, as it is an intangible offering providing value through access and support.",
         "D": "An agricultural product, due to the repetitive tasks involved in maintaining the software."
       },
-      "correct_answer": "A service, as it is an intangible offering providing value through access and support.",
+      "correct_answer": [
+        "A service",
+        "as it is an intangible offering providing value through access and support."
+      ],
       "explanation": "The software company is offering a service because it provides access to software and technical support, which are intangible benefits. The key here is the intangible nature of the offering and the ongoing interaction and support provided. Option B is tempting, but it misses the ongoing, intangible nature of the offering.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_5",
@@ -567,7 +644,9 @@
         "C": "A service because the lumberyard is providing a convenience to the manufacturer.",
         "D": "A raw good because the manufacturer will process it to create furniture."
       },
-      "correct_answer": "A raw good because the manufacturer will process it to create furniture.",
+      "correct_answer": [
+        "A raw good because the manufacturer will process it to create furniture."
+      ],
       "explanation": "The wood is a raw good because it is an unprocessed material that the furniture manufacturer will use as an input to create furniture. The manufacturer will process the wood further to create a finished product. Options A and B are incorrect because the wood needs further processing before it can be sold to consumers as finished furniture.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_5",
@@ -590,7 +669,9 @@
         "C": "Raw goods because the bakery will process them to create cakes.",
         "D": "Services because the bakery is purchasing convenience from their suppliers."
       },
-      "correct_answer": "Raw goods because the bakery will process them to create cakes.",
+      "correct_answer": [
+        "Raw goods because the bakery will process them to create cakes."
+      ],
       "explanation": "The flour, sugar, and eggs are raw goods because the bakery will process them further to create cakes. They are the starting point in the bakery's production process. Options A and B are incorrect because the ingredients are not the final product sold to consumers.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_5",
@@ -613,7 +694,10 @@
         "C": "A service, offering intangible benefits and personalized interaction.",
         "D": "A component part, essential for the software's proper functioning."
       },
-      "correct_answer": "A service, offering intangible benefits and personalized interaction.",
+      "correct_answer": [
+        "A service",
+        "offering intangible benefits and personalized interaction."
+      ],
       "explanation": "The premium support package is a service because it offers intangible benefits like support, priority handling, and personalized account management. There is an interaction between the provider and the customer. Option A is incorrect because raw goods are tangible, physical inputs. Option B incorrectly classifies it as a capital item, which would be physical assets.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_6",
@@ -636,7 +720,10 @@
         "C": "Experiences or services, offering intangible benefits and expertise.",
         "D": "Capital items, because these services improve long-term financial performance."
       },
-      "correct_answer": "Experiences or services, offering intangible benefits and expertise.",
+      "correct_answer": [
+        "Experiences or services",
+        "offering intangible benefits and expertise."
+      ],
       "explanation": "The accounting firm is selling services because they are offering expertise and assistance in areas like tax preparation and financial consulting, which are intangible benefits. These services are not physical goods. Option D is tempting but incorrect because capital items are usually tangible assets. Option B is wrong as services are not 'consumed' in the same way a finished product is.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_6",
@@ -659,7 +746,10 @@
         "C": "An experience or service, delivering intangible benefits through education and skill development.",
         "D": "An industrial product, used by individuals to enhance their professional capabilities."
       },
-      "correct_answer": "An experience or service, delivering intangible benefits through education and skill development.",
+      "correct_answer": [
+        "An experience or service",
+        "delivering intangible benefits through education and skill development."
+      ],
       "explanation": "The online learning platform provides an experience or service because it delivers intangible benefits through education and skill development. Users gain knowledge and certifications, which are not physical goods. Option B is tempting but doesn't fully capture the interactive and ongoing nature of the learning experience. Option D is wrong because, although it enhances professional capabilities, it is purchased for personal development.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_6",
@@ -682,7 +772,10 @@
         "C": "Experiences or services, offering intangible benefits and personalized arrangements.",
         "D": "Capital items, because the travel packages provide long-term memories and enjoyment."
       },
-      "correct_answer": "Experiences or services, offering intangible benefits and personalized arrangements.",
+      "correct_answer": [
+        "Experiences or services",
+        "offering intangible benefits and personalized arrangements."
+      ],
       "explanation": "The travel agency is primarily selling experiences or services because they are providing intangible benefits through personalized vacation packages. The value lies in the customized arrangements and the overall travel experience. Option B is tempting but doesn't fully capture the personalized and intangible aspects of the offering. Option D misclassifies the experience as a capital item.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_6",
@@ -705,7 +798,10 @@
         "C": "Experiences or services, delivering intangible benefits through knowledge and interaction.",
         "D": "Capital items, because the tours enhance long-term cultural understanding."
       },
-      "correct_answer": "Experiences or services, delivering intangible benefits through knowledge and interaction.",
+      "correct_answer": [
+        "Experiences or services",
+        "delivering intangible benefits through knowledge and interaction."
+      ],
       "explanation": "The guided tours are classified as experiences or services because they offer intangible benefits through knowledge and interaction with the historians. The value lies in the expertise and the unique perspective provided. Option B is tempting but doesn't fully capture the educational and interactive aspects of the offering. Option D misclassifies the experience as a capital item.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_6",
@@ -728,7 +824,10 @@
         "C": "The company's truck is an industrial product, and the individual's truck is a consumer product.",
         "D": "The company's truck is a consumer product, and the individual's truck is an industrial product."
       },
-      "correct_answer": "The company's truck is an industrial product, and the individual's truck is a consumer product.",
+      "correct_answer": [
+        "The company's truck is an industrial product",
+        "and the individual's truck is a consumer product."
+      ],
       "explanation": "The company's truck is used in the production of a service (delivery), making it an industrial product. The individual's truck is for personal use, classifying it as a consumer product. The key is the *purpose* of the purchase. Option A is incorrect because it ignores the purpose of use. Option B is incorrect because it assumes all trucks are industrial.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_7",
@@ -751,7 +850,10 @@
         "C": "The hospital's MRI is an industrial product, and the doctor's MRI is a consumer product.",
         "D": "The hospital's MRI is a consumer product, and the doctor's MRI is an industrial product."
       },
-      "correct_answer": "The hospital's MRI is an industrial product, and the doctor's MRI is a consumer product.",
+      "correct_answer": [
+        "The hospital's MRI is an industrial product",
+        "and the doctor's MRI is a consumer product."
+      ],
       "explanation": "The hospital's MRI machine is used to provide medical services, classifying it as an industrial product. The doctor's MRI machine (for the clinic) is also used to provide medical services, also making it an industrial product. I apologize for the mistake. Let me generate a better question.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_7",
@@ -774,7 +876,10 @@
         "C": "The bakery's mixer is an industrial product, and the individual's mixer is a consumer product.",
         "D": "The bakery's mixer is a consumer product, and the individual's mixer is an industrial product."
       },
-      "correct_answer": "The bakery's mixer is an industrial product, and the individual's mixer is a consumer product.",
+      "correct_answer": [
+        "The bakery's mixer is an industrial product",
+        "and the individual's mixer is a consumer product."
+      ],
       "explanation": "The bakery's mixer is used in the production of baked goods for sale, classifying it as an industrial product. The individual's mixer is for personal use, classifying it as a consumer product. The *purpose* of the purchase determines the classification. Options A and B are incorrect as they ignore the purpose of use.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_7",
@@ -797,7 +902,10 @@
         "C": "The construction company's cement is an industrial product, and the homeowner's cement is a consumer product.",
         "D": "The construction company's cement is a consumer product, and the homeowner's cement is an industrial product."
       },
-      "correct_answer": "The construction company's cement is an industrial product, and the homeowner's cement is a consumer product.",
+      "correct_answer": [
+        "The construction company's cement is an industrial product",
+        "and the homeowner's cement is a consumer product."
+      ],
       "explanation": "The construction company uses the cement in the production of a bridge, thus it's an industrial product. The homeowner uses the cement for personal home repair, classifying it as a consumer product. The purpose drives the classification. Options A and B are wrong because they disregard the *purpose* of the purchase.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_7",
@@ -820,7 +928,10 @@
         "C": "The university's laptops are industrial products, and the student's laptop is a consumer product.",
         "D": "The university's laptops are consumer products, and the student's laptop is an industrial product."
       },
-      "correct_answer": "The university's laptops are industrial products, and the student's laptop is a consumer product.",
+      "correct_answer": [
+        "The university's laptops are industrial products",
+        "and the student's laptop is a consumer product."
+      ],
       "explanation": "The university's laptops are used in the production of education (a service), making them industrial products. The student's laptop is for personal use, classifying it as a consumer product. The *purpose* defines the classification. Options A and B are incorrect because they ignore the purpose for which the laptops are acquired.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_7",
@@ -843,7 +954,12 @@
         "C": "Materials: Car Engines, Component Parts: Steel, Capital Items: Factory Building, Supplies: Car Wash Services",
         "D": "Materials: Car Paint, Component Parts: Cleaning Services, Capital Items: Steel, Supplies: Assembly Line Workers"
       },
-      "correct_answer": "Materials: Steel, Component Parts: Tires, Capital Items: Assembly Line Robots, Supplies: Cleaning Services",
+      "correct_answer": [
+        "Materials: Steel",
+        "Component Parts: Tires",
+        "Capital Items: Assembly Line Robots",
+        "Supplies: Cleaning Services"
+      ],
       "explanation": "Steel is a material used in the car's construction. Tires are components that become part of the finished car. Assembly line robots are capital items used in the production process. Cleaning services are supplies used to maintain the factory. Option A incorrectly classifies car seats as capital items. Option C misclassifies car engines and steel. Option D incorrectly assigns cleaning services and steel.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_8",
@@ -867,7 +983,12 @@
         "C": "Materials: Office Space, Component Parts: Internet Service, Capital Items: Customer Support, Supplies: Code Libraries",
         "D": "Materials: Computers, Component Parts: Internet Service, Capital Items: Customer Support, Supplies: Code Libraries"
       },
-      "correct_answer": "Materials: Code Libraries, Capital Items: Computers, Supplies: Internet Service, Services: Customer Support",
+      "correct_answer": [
+        "Materials: Code Libraries",
+        "Capital Items: Computers",
+        "Supplies: Internet Service",
+        "Services: Customer Support"
+      ],
       "explanation": "Code libraries are used as material to build the software, computers are capital items used to develop the software, internet service is a supply needed for operation, and customer support is a service offered to customers. Option B incorrectly assigns customer support and computers. Option C and D also incorrectly classify several items.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_8",
@@ -891,7 +1012,12 @@
         "C": "Materials: Lawn Mowers, Component Parts: Gasoline, Capital Items: Consulting Services, Supplies: Grass Seed",
         "D": "Materials: Consulting Services, Component Parts: Grass Seed, Capital Items: Gasoline, Supplies: Lawn Mowers"
       },
-      "correct_answer": "Materials: Grass Seed, Component Parts: Sprinkler Heads, Capital Items: Lawn Mowers, Supplies: Gasoline",
+      "correct_answer": [
+        "Materials: Grass Seed",
+        "Component Parts: Sprinkler Heads",
+        "Capital Items: Lawn Mowers",
+        "Supplies: Gasoline"
+      ],
       "explanation": "Grass seed is a material used to grow lawns. Sprinkler heads are component parts added to the landscaping. Lawn mowers are capital items used for the landscaping service. Gasoline is a supply used to power the equipment. Option A incorrectly classifies lawn mowers and gasoline. Options C and D are entirely incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_8",
@@ -915,7 +1041,12 @@
         "C": "Materials: Dishes, Component Parts: Ovens, Capital Items: Cleaning Supplies, Supplies: Food Ingredients",
         "D": "Materials: Restaurant Building, Component Parts: Cleaning Supplies, Capital Items: Food Ingredients, Supplies: Ovens"
       },
-      "correct_answer": "Materials: Food Ingredients, Component Parts: Dishes, Capital Items: Ovens, Supplies: Cleaning Supplies",
+      "correct_answer": [
+        "Materials: Food Ingredients",
+        "Component Parts: Dishes",
+        "Capital Items: Ovens",
+        "Supplies: Cleaning Supplies"
+      ],
       "explanation": "Food ingredients are materials used in the preparation of meals. Dishes are component parts used to serve the food. Ovens are capital items used for cooking. Cleaning supplies are used to maintain the restaurant. Option A incorrectly classifies ovens and cleaning supplies. Options C and D are entirely incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_8",
@@ -939,7 +1070,12 @@
         "C": "Materials: MRI Machines, Component Parts: Consulting Services, Capital Items: Cleaning Supplies, Supplies: Bandages",
         "D": "Materials: Electricity, Component Parts: Beds, Capital Items: Consulting Services, Supplies: Surgical Instruments"
       },
-      "correct_answer": "Materials: Bandages, Component Parts: Surgical Instruments, Capital Items: MRI Machines, Supplies: Cleaning Services",
+      "correct_answer": [
+        "Materials: Bandages",
+        "Component Parts: Surgical Instruments",
+        "Capital Items: MRI Machines",
+        "Supplies: Cleaning Services"
+      ],
       "explanation": "Bandages are materials used in patient care. Surgical instruments are component parts used in procedures. MRI machines are capital items used for diagnosis. Cleaning services are supplies used to maintain hygiene. Option A incorrectly classifies surgical instruments and electricity. Options C and D are entirely incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_8",
@@ -963,7 +1099,9 @@
         "C": "Frozen pizza dough sold to local restaurants.",
         "D": "A monthly subscription box featuring baking tools and ingredients."
       },
-      "correct_answer": "A line of gourmet pastries and cakes sold in their bakery.",
+      "correct_answer": [
+        "A line of gourmet pastries and cakes sold in their bakery."
+      ],
       "explanation": "The bakery's artisan breads are likely positioned as either shopping or specialty products. Gourmet pastries and cakes align with this positioning, requiring selective or exclusive distribution and targeted promotion. Pre-packaged bread is a convenience product, pizza dough is more of an industrial product, and a subscription box is an unsought product, all requiring different marketing strategies. Therefore, option B is the best fit. Options A, C and D do not leverage the existing brand or require similar marketing.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_9",
@@ -986,7 +1124,9 @@
         "C": "Sponsoring e-sports tournaments and partnering with gaming influencers.",
         "D": "Offering deep discounts through mass-market retailers."
       },
-      "correct_answer": "Sponsoring e-sports tournaments and partnering with gaming influencers.",
+      "correct_answer": [
+        "Sponsoring e-sports tournaments and partnering with gaming influencers."
+      ],
       "explanation": "Custom-built gaming PCs are specialty products. Specialty products benefit from targeted promotion and exclusive distribution. Sponsoring e-sports tournaments and partnering with gaming influencers directly targets the gaming community. TV commercials and banner ads are mass promotion, and deep discounts through mass-market retailers are strategies for convenience products. Therefore, option C is the most effective. Options A, B and D do not fit the product type.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_9",
@@ -1008,7 +1148,10 @@
         "C": "Direct outreach to homeowners through phone calls and mailers, highlighting potential risks and offering free consultations.",
         "D": "Focusing on social media marketing with entertaining content."
       },
-      "correct_answer": "Direct outreach to homeowners through phone calls and mailers, highlighting potential risks and offering free consultations.",
+      "correct_answer": [
+        "Direct outreach to homeowners through phone calls and mailers",
+        "highlighting potential risks and offering free consultations."
+      ],
       "explanation": "Insurance for unexpected home repairs is an unsought product. Unsougth products require aggressive advertising and personal selling. Direct outreach, highlighting risks, and offering consultations address the fact that consumers don't actively seek out this type of product. Low-cost advertising is more suitable for convenience products, luxury partnerships for specialty products, and broad social media for shopping products. Therefore, option C is the most appropriate. Options A, B, and D are better suited for different product types.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_9",
@@ -1030,7 +1173,11 @@
         "C": "Offering the water only through online subscriptions.",
         "D": "Partnering with luxury hotels and resorts."
       },
-      "correct_answer": "Placing the water in vending machines, gas stations, and supermarkets.",
+      "correct_answer": [
+        "Placing the water in vending machines",
+        "gas stations",
+        "and supermarkets."
+      ],
       "explanation": "Convenience products require widespread distribution. Placing the water in vending machines, gas stations, and supermarkets makes it readily available to consumers. High-end grocery stores and luxury hotels represent selective or exclusive distribution, while online subscriptions limit accessibility. Therefore, option B is the most suitable. Options A, C, and D limit the reach of the product.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_9",
@@ -1052,7 +1199,10 @@
         "C": "Using competitive pricing, highlighting features and benefits that justify the price.",
         "D": "Offering extremely low introductory prices for a limited time."
       },
-      "correct_answer": "Using competitive pricing, highlighting features and benefits that justify the price.",
+      "correct_answer": [
+        "Using competitive pricing",
+        "highlighting features and benefits that justify the price."
+      ],
       "explanation": "Shopping products require consumers to compare features and prices. Competitive pricing, while highlighting the unique features and benefits, is the best approach. The lowest prices are for convenience products. Higher prices are for specialty products. Introductory prices are promotional, but not a pricing strategy. Therefore, option C is the most appropriate. Options A, B, and D are not the best strategy for shopping products.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_9",
@@ -1074,7 +1224,9 @@
         "C": "Selective distribution in stores known for organic and health-conscious products.",
         "D": "Selling directly to consumers through a subscription-based service only."
       },
-      "correct_answer": "Selective distribution in stores known for organic and health-conscious products.",
+      "correct_answer": [
+        "Selective distribution in stores known for organic and health-conscious products."
+      ],
       "explanation": "Shopping products require selective distribution. Consumers compare brands and features. Stores known for organic and health-conscious products are where the target market would shop. Widespread distribution is for convenience products. Exclusive boutiques are for specialty products. Subscription services may limit reach. Therefore, option C is the most suitable. Options A, B, and D don't align with shopping product strategies.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_10",
@@ -1096,7 +1248,9 @@
         "C": "Hosting exclusive coffee tasting events and partnering with local food bloggers.",
         "D": "Placing flyers on every car windshield in the neighborhood."
       },
-      "correct_answer": "Hosting exclusive coffee tasting events and partnering with local food bloggers.",
+      "correct_answer": [
+        "Hosting exclusive coffee tasting events and partnering with local food bloggers."
+      ],
       "explanation": "Specialty products require targeted promotion. Coffee tasting events and partnerships with food bloggers directly target coffee enthusiasts. Radio ads, discounts, and flyers are more for convenience or shopping products. Therefore, option C is the most effective. Options A, B, and D don't align with specialty product promotions.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_10",
@@ -1118,7 +1272,9 @@
         "C": "Offering free consultations with grief counselors and estate planning seminars.",
         "D": "Selling exclusively through online marketplaces like Amazon."
       },
-      "correct_answer": "Offering free consultations with grief counselors and estate planning seminars.",
+      "correct_answer": [
+        "Offering free consultations with grief counselors and estate planning seminars."
+      ],
       "explanation": "Unsougth products require aggressive advertising and personal selling. Free consultations and seminars address the fact that consumers don't actively seek out this type of product. Humorous social media and fashion magazine ads are unsuitable for this product. Selling online limits personal interaction. Therefore, option C is the most effective. Options A, B, and D aren't aligned with unsought product strategies.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_10",
@@ -1140,7 +1296,9 @@
         "C": "Low prices and widespread distribution in all possible retail outlets.",
         "D": "Premium prices and direct distribution through a company website."
       },
-      "correct_answer": "Low prices and widespread distribution in all possible retail outlets.",
+      "correct_answer": [
+        "Low prices and widespread distribution in all possible retail outlets."
+      ],
       "explanation": "Convenience products require low prices and widespread distribution. Generic pain relievers need to be easily accessible and affordable. High prices and exclusive distribution are for specialty products. Moderate prices and selective distribution are for shopping products. Premium prices and direct distribution are not typical of convenience goods. Therefore, option C is the most appropriate. Options A, B, and D do not align with a convenience product strategy.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_10",
@@ -1162,7 +1320,11 @@
         "C": "The 24/7 customer support and free software updates.",
         "D": "The feeling of being connected and healthy."
       },
-      "correct_answer": "The watch's sleek design, OLED display, and water resistance.",
+      "correct_answer": [
+        "The watch's sleek design",
+        "OLED display",
+        "and water resistance."
+      ],
       "explanation": "The 'Actual Product' level includes the features, design, brand, and packaging. Sleek design, OLED display, and water resistance are tangible features. The ability to make calls represents core value. Customer support is part of the augmented product. Feeling connected is the core benefit. Therefore, option B is the 'Actual Product'. Options A represents the core value, C represents augmented product, and D represents the core benefit.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_11",
@@ -1183,7 +1345,11 @@
         "C": "The feeling of increased productivity and reduced project delays.",
         "D": "The software's ability to integrate with other business applications."
       },
-      "correct_answer": "The company's online tutorials, training webinars, and customer support.",
+      "correct_answer": [
+        "The company's online tutorials",
+        "training webinars",
+        "and customer support."
+      ],
       "explanation": "The 'Augmented Product' level includes additional services and benefits. Online tutorials, training, and customer support enhance the user experience. User interface and features are part of the actual product. Increased productivity is the core benefit. Integration is a product feature. Therefore, option B is the 'Augmented Product'. Options A and D represent actual product, and C represents core benefit.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_11",
@@ -1204,7 +1370,11 @@
         "C": "The feeling of freedom and independence while riding.",
         "D": "The availability of scooter-sharing programs in urban areas."
       },
-      "correct_answer": "The scooter's battery life, motor power, and folding mechanism.",
+      "correct_answer": [
+        "The scooter's battery life",
+        "motor power",
+        "and folding mechanism."
+      ],
       "explanation": "The 'Actual Product' level includes the features, design, brand, and packaging. Battery life, motor power, and folding mechanism are tangible features. Warranty and repair services are part of the augmented product. Freedom is the core benefit. Scooter-sharing is a service, not an actual product feature. Therefore, option A is the 'Actual Product'. Option B represents augmented product, C represents core benefit, and D is a service.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_11",
@@ -1225,7 +1395,11 @@
         "C": "The feeling of relaxation and security during the stay.",
         "D": "The hotel's modern architecture and stylish interior design."
       },
-      "correct_answer": "The hotel's loyalty program, complimentary breakfast, and airport shuttle service.",
+      "correct_answer": [
+        "The hotel's loyalty program",
+        "complimentary breakfast",
+        "and airport shuttle service."
+      ],
       "explanation": "The 'Augmented Product' includes additional services and benefits. Loyalty programs, breakfast, and shuttle service enhance the customer experience. Beds and rooms are part of the actual product. Relaxation is the core benefit. Architecture is part of the actual product. Therefore, option B is the 'Augmented Product'. Options A and D represent actual product, and C represents core benefit.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_11",
@@ -1246,7 +1420,11 @@
         "C": "The immersive listening experience and emotional connection to the music.",
         "D": "The ability to block out distractions and focus on the task at hand."
       },
-      "correct_answer": "The noise-canceling technology, comfortable earcups, and durable materials.",
+      "correct_answer": [
+        "The noise-canceling technology",
+        "comfortable earcups",
+        "and durable materials."
+      ],
       "explanation": "The 'Actual Product' includes the features, design, brand, and packaging. Noise-canceling, earcups, and materials are tangible features. Warranty and support are part of the augmented product. Immersive experience is the core benefit. Blocking distractions is also a core benefit. Therefore, option A is the 'Actual Product'. Option B represents augmented product, and C and D represent core benefits.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_11",
@@ -1267,7 +1445,9 @@
         "C": "Durability",
         "D": "Style"
       },
-      "correct_answer": "Conformance Quality",
+      "correct_answer": [
+        "Conformance Quality"
+      ],
       "explanation": "Conformance quality refers to the consistency and reliability of a product's performance. The inconsistent battery range and frequent software glitches indicate a lack of consistency. Performance quality is high (acceleration), but conformance is low. Durability and style are not the primary issues in this scenario. Therefore, option B is the most lacking. Option A is present, but overshadowed by B's deficiency.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_12",
@@ -1288,7 +1468,9 @@
         "C": "Conformance Quality",
         "D": "Style"
       },
-      "correct_answer": "Conformance Quality",
+      "correct_answer": [
+        "Conformance Quality"
+      ],
       "explanation": "Conformance quality ensures a product consistently meets its design specifications and customer expectations. Scratches and loose screws indicate inconsistencies in manufacturing and quality control. Durability is addressed by the quality materials. Performance is not mentioned as an issue. Style is subjective. Therefore, option C is the area for improvement. Option A might be addressed by the materials, but C is the more immediate concern.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_12",
@@ -1309,7 +1491,9 @@
         "C": "Conformance Quality",
         "D": "Durability"
       },
-      "correct_answer": "Durability",
+      "correct_answer": [
+        "Durability"
+      ],
       "explanation": "Durability refers to the lifespan of a product. The shoes wearing out quickly indicates a lack of durability. Style is addressed by the eye-catching appearance. Performance might be acceptable initially. Conformance is not the primary issue. Therefore, option D is the most compromised. Option A is positive, but overshadowed by D's deficiency.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_12",
@@ -1330,7 +1514,9 @@
         "C": "Repairability",
         "D": "Support Services"
       },
-      "correct_answer": "Support Services",
+      "correct_answer": [
+        "Support Services"
+      ],
       "explanation": "Support services are the additional services provided to customers, such as user manuals and customer support. The difficulty in understanding manuals and accessing support indicates a deficiency in support services. Performance and style are positive. Repairability isn't mentioned. Therefore, option D needs the most improvement. Options A and B are positive, but D is lacking.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_12",
@@ -1351,7 +1537,11 @@
         "C": "Offer deep discounts on their cakes to attract price-sensitive customers and increase sales volume.",
         "D": "Rely on word-of-mouth marketing and avoid investing in formal branding efforts to save costs."
       },
-      "correct_answer": "Develop a unique logo, consistent color scheme for boxes, and a memorable tagline that reflects their cake's taste and quality.",
+      "correct_answer": [
+        "Develop a unique logo",
+        "consistent color scheme for boxes",
+        "and a memorable tagline that reflects their cake's taste and quality."
+      ],
       "explanation": "In this scenario, Sweet Surrender needs to establish a strong brand identity. Developing a unique logo, consistent color scheme, and tagline creates a recognizable brand that signals quality and differentiates them from competitors. This allows customers to easily identify and remember the bakery. Option A focuses solely on product quality, neglecting the importance of brand recognition. Option C is a short-term tactic that doesn't build lasting brand equity. Option D misses the opportunity to create a distinct brand presence.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_13",
@@ -1373,7 +1563,10 @@
         "C": "The strategy is adequate because influencer marketing is the most cost-effective way to build brand awareness.",
         "D": "The strategy is excellent because it avoids traditional advertising costs and focuses on modern marketing techniques."
       },
-      "correct_answer": "The strategy is flawed because it neglects building a consistent brand identity across multiple touchpoints, potentially confusing customers.",
+      "correct_answer": [
+        "The strategy is flawed because it neglects building a consistent brand identity across multiple touchpoints",
+        "potentially confusing customers."
+      ],
       "explanation": "In this scenario, ActiveLife focuses solely on social media. While social media is important, branding requires consistent messaging and a cohesive identity across *all* touchpoints. Neglecting other channels can lead to a fragmented brand perception. Option A oversimplifies the importance of a multi-channel approach to branding. Option C is an incomplete solution because cost-effectiveness doesn't guarantee brand consistency. Option D misses the need for a holistic brand strategy.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_13",
@@ -1395,7 +1588,10 @@
         "C": "Customers will not notice any difference as long as the coffee quality remains consistent.",
         "D": "Customers will automatically perceive the coffee as being of higher quality due to the new branding."
       },
-      "correct_answer": "Customers may be confused by the new branding if the core product and service remain the same, potentially leading to customer churn.",
+      "correct_answer": [
+        "Customers may be confused by the new branding if the core product and service remain the same",
+        "potentially leading to customer churn."
+      ],
       "explanation": "In this scenario, The Daily Grind changes its branding but keeps its core product and service the same. This inconsistency between the brand image and actual experience can confuse customers and erode brand trust, as they may not understand what the new brand represents. Option A is overly optimistic and doesn't account for potential negative reactions. Option C is unrealistic as branding plays a significant role in customer perception. Option D assumes branding automatically equates to improved product quality, which is not always the case.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_13",
@@ -1417,7 +1613,9 @@
         "C": "They will increase brand awareness and overall sales by diversifying their product offerings.",
         "D": "They will benefit from economies of scale and reduce production costs."
       },
-      "correct_answer": "They risk diluting their brand image and confusing customers who associate the brand with luxury vehicles.",
+      "correct_answer": [
+        "They risk diluting their brand image and confusing customers who associate the brand with luxury vehicles."
+      ],
       "explanation": "In this scenario, the luxury car company extends its brand to electric scooters. This can create brand dilution because the new product doesn't align with the existing brand perception of luxury and high performance. Option A assumes a seamless transition to a new market segment, ignoring the potential for brand confusion. Option C overestimates the benefits of diversification without considering the impact on brand image. Option D focuses on cost reduction, overlooking the strategic implications for branding.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_13",
@@ -1439,7 +1637,9 @@
         "C": "It reduces marketing costs by relying on existing customer relationships.",
         "D": "It streamlines operations by focusing on a smaller, more engaged customer base."
       },
-      "correct_answer": "It enhances brand loyalty by creating a unique and rewarding customer experience.",
+      "correct_answer": [
+        "It enhances brand loyalty by creating a unique and rewarding customer experience."
+      ],
       "explanation": "In this scenario, Style Hub uses a loyalty program. This program strengthens brand loyalty by providing exclusive benefits and experiences, fostering a stronger connection with the brand. This goes beyond simply increasing sales. Option A focuses only on short-term gains, neglecting the long-term benefits of brand building. Option C is partially correct but doesn't fully capture the impact on brand perception. Option D is an incomplete solution because streamlining operations isn't the primary goal of branding.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_13",
@@ -1461,7 +1661,9 @@
         "C": "Reduced packaging costs compared to using glass or biodegradable materials.",
         "D": "Enhanced brand image due to the 'recyclable' label."
       },
-      "correct_answer": "Potential for 'greenwashing' accusations if consumers perceive the packaging as not truly sustainable.",
+      "correct_answer": [
+        "Potential for 'greenwashing' accusations if consumers perceive the packaging as not truly sustainable."
+      ],
       "explanation": "In this scenario, GreenBoost uses standard plastic bottles and only a small \"recyclable\" label. This creates a risk of 'greenwashing' if consumers perceive the packaging as not genuinely sustainable, especially given their emphasis on health without addressing environmental concerns. Option A focuses on convenience but ignores the potential backlash. Option C prioritizes cost savings over environmental responsibility, which contradicts the organic nature of the product. Option D assumes the 'recyclable' label automatically enhances the brand image, neglecting consumer skepticism.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_14",
@@ -1483,7 +1685,10 @@
         "C": "The strategy is adequate because the glass jars can be reused by consumers.",
         "D": "The strategy is excellent because it differentiates the products from competitors with simpler packaging."
       },
-      "correct_answer": "The strategy is flawed because it prioritizes aesthetics over environmental responsibility, potentially alienating eco-conscious consumers.",
+      "correct_answer": [
+        "The strategy is flawed because it prioritizes aesthetics over environmental responsibility",
+        "potentially alienating eco-conscious consumers."
+      ],
       "explanation": "In this scenario, GlowUp uses luxurious but unsustainable packaging. Sustainable packaging balances product protection with environmental impact. Prioritizing aesthetics over sustainability can alienate eco-conscious consumers. Option A focuses solely on brand image, neglecting environmental concerns. Option C is an incomplete solution because reuse doesn't negate the environmental impact of production and disposal. Option D misses the increasing consumer demand for sustainable practices.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_14",
@@ -1505,7 +1710,9 @@
         "C": "Increased product shelf life due to the properties of the biodegradable bags.",
         "D": "Simplified supply chain management by using locally sourced materials."
       },
-      "correct_answer": "Enhanced brand image by communicating their commitment to sustainability and engaging customers with their story.",
+      "correct_answer": [
+        "Enhanced brand image by communicating their commitment to sustainability and engaging customers with their story."
+      ],
       "explanation": "In this scenario, Bean Scene uses sustainable packaging and a QR code to showcase their sourcing practices. This strategy primarily enhances their brand image by demonstrating their commitment to sustainability and engaging customers with their brand story. Option A focuses on cost reduction, which is a secondary benefit. Option C is incorrect as biodegradable bags don't necessarily increase shelf life. Option D is a potential benefit, but the primary impact is on brand image and customer engagement.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_14",
@@ -1527,7 +1734,9 @@
         "C": "The marketing budget required to promote the new packaging.",
         "D": "The availability of refill stations in retail stores."
       },
-      "correct_answer": "Ensuring the concentrated formulas are easy to dilute and effective at cleaning when mixed with water by the customer.",
+      "correct_answer": [
+        "Ensuring the concentrated formulas are easy to dilute and effective at cleaning when mixed with water by the customer."
+      ],
       "explanation": "In this scenario, the cleaning product company is offering concentrated formulas. The most important factor is ensuring the diluted product is effective and easy to prepare. If the diluted product is ineffective, the sustainability efforts will be undermined by customer dissatisfaction. Option A focuses on initial costs, neglecting product performance. Option C is important, but secondary to product efficacy. Option D, while helpful, is not essential if customers can easily dilute at home.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_14",
@@ -1549,7 +1758,9 @@
         "C": "The increased shelf life of the granola bars due to the plastic wrappers.",
         "D": "The convenience of individual wrappers for on-the-go consumption."
       },
-      "correct_answer": "The potential for misleading consumers about the overall environmental impact of the packaging.",
+      "correct_answer": [
+        "The potential for misleading consumers about the overall environmental impact of the packaging."
+      ],
       "explanation": "In this scenario, Nature's Bounty labels the box as \"recyclable\" but doesn't mention the plastic wrappers inside. This creates a risk of misleading consumers about the overall recyclability and environmental impact of the packaging. Option A focuses on cost, neglecting the ethical dimension. Option C is a potential benefit, but not the primary ethical concern. Option D highlights convenience, overlooking the environmental implications.",
       "difficulty_level": 2,
       "source_flashcard_id": "SI_lec_1_14",

@@ -116,7 +116,7 @@ class AsyncQuizGenerator:
                 prompt = prompt + f"\n\n## Input Flashcards:\n\n```json\n{flashcards_json}\n```\n\nGenerate the quiz questions now."
                 
                 # Configure generation
-                base_tokens = 16384
+                base_tokens = 50000
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))
                 
                 generation_config = {
@@ -230,6 +230,18 @@ class AsyncQuizGenerator:
         
         # Validate correct_answer is a non-empty list
         if not isinstance(question['correct_answer'], list) or len(question['correct_answer']) < 1:
+            return False
+        
+        # Validate explanation (can be string or enhanced dict)
+        if not question['explanation']:
+            return False
+        
+        # If it's a dict (enhanced explanation), validate structure
+        if isinstance(question['explanation'], dict):
+            if 'text' not in question['explanation']:
+                return False
+        # If it's a string, just check it's not empty
+        elif not isinstance(question['explanation'], str):
             return False
         
         # Type-specific validation

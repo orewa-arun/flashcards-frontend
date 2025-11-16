@@ -1,0 +1,218 @@
+=== RAW LLM RESPONSE ===
+Level: 4
+Chunk: Lecture 2
+Attempt: 1/3
+Flashcards: 7
+Max tokens: 16384
+
+=== RESPONSE TEXT ===
+```json
+[
+  {
+    "type": "mca",
+    "question_text": "A global e-commerce firm, 'GlobalMart,' wants to understand the relationship between their daily marketing email blasts (X, number of emails sent) and their daily unique website visitors (Y). After collecting data for 60 days, they run a simple linear regression and find a statistically significant positive relationship with an R-squared of 0.75. The marketing director is excited, proposing to double the number of email blasts to significantly boost website traffic. However, a senior data analyst raises concerns. Synthesizing the concepts of the Simple Regression Model and the distinction between correlation and causation, which of the following considerations are critical for GlobalMart *before* making this strategic decision? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The R-squared value, while high, only indicates the proportion of variance in website visitors explained by email blasts, not necessarily a direct causal link.",
+      "B": "There might be confounding variables, such as seasonal sales events or external news cycles, that simultaneously influence both email open rates and website visitors, creating a spurious correlation.",
+      "C": "The proposed doubling of email blasts might represent extrapolation beyond the range of the observed data, where the linear relationship may no longer hold true.",
+      "D": "It's important to consider if reverse causation is plausible; perhaps an increase in natural website traffic leads GlobalMart to send more marketing emails.",
+      "E": "A simple regression model inherently assumes a non-linear relationship, which might be violated if traffic increases exponentially with emails."
+    },
+    "correct_answer": ["A", "B", "C", "D"],
+    "explanation": "This question synthesizes the understanding of the Simple Regression Model (Lecture on Simple Regression) with the common pitfalls of correlation vs. causation and extrapolation (Lectures on Regression Pitfalls). Option A correctly identifies that a high R-squared only shows association, not causation. Options B and D are critical aspects of distinguishing correlation from causation, highlighting confounding variables and reverse causation, respectively. Option C brings in the concept of extrapolation, a major pitfall in regression, as significantly increasing email blasts might push X outside the observed data range. Option E is incorrect because the simple regression model *assumes* a linear relationship, not a non-linear one.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "97b6a1e5-8a2e-4b4e-8b1b-7a3e8c9d0e1b",
+    "tags": ["Simple Regression", "Correlation vs Causation", "Extrapolation", "Business Decision Making", "Confounding Variables"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A small coffee shop, 'BrewDaily,' collects data on daily average temperature (X, in Celsius) and daily coffee sales (Y, in cups) for 45 days. They build a simple regression model, finding a negative linear relationship, where for every degree increase in temperature, sales decrease by 15 cups. The observed temperature range was 10°C to 30°C. Now, a new manager wants to predict sales for a promotional event during a predicted heatwave at 40°C, and provide a 95% prediction interval for this specific day. Which of the following is the *primary* statistical concern regarding the reliability of this sales prediction and its interval?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The model has too few data points (45 days) to produce a reliable prediction interval.",
+      "B": "The negative relationship between temperature and coffee sales is counter-intuitive and likely indicates a data error.",
+      "C": "Predicting sales for 40°C represents significant extrapolation beyond the observed temperature range, rendering the prediction interval unreliable.",
+      "D": "A simple regression model is generally not suitable for predicting sales, which are often influenced by many factors."
+    },
+    "correct_answer": ["C"],
+    "explanation": "This question integrates the Simple Regression Model (Lecture on Simple Regression) with the concept of Extrapolation and its impact on Prediction Intervals (Lectures on Regression Pitfalls and Prediction Intervals). The primary concern is extrapolation (Option C). Predicting for 40°C, which is far outside the observed range of 10°C to 30°C, makes both the point prediction and the prediction interval highly unreliable. The linear relationship observed within the data range may not hold for extreme temperatures. Option A is a secondary concern but not the *primary* flaw. Option B is an assumption about business intuition, not a statistical flaw. Option D is a generalization and doesn't address the specific statistical issue of applying *this* model.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "97b6a1e5-8a2e-4b4e-8b1b-7a3e8c9d0e1b",
+    "tags": ["Simple Regression", "Extrapolation", "Prediction Interval", "Reliability", "Business Forecasting"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A financial analyst at 'InvestCorp' uses a simple linear regression model to predict a company's stock price (Y) based on its quarterly earnings per share (EPS, X). The model yields a strong positive linear relationship with a high R-squared of 0.82 and a statistically significant slope coefficient (p < 0.001). However, upon reviewing the model's residual plot, a colleague observes a distinct 'U-shaped' pattern, where residuals are positive for low and high EPS values, and negative for middle EPS values. Additionally, a Q-Q plot of the residuals deviates significantly from a straight line. Synthesizing the core objective of the Simple Regression Model and its underlying assumptions, which of the following concerns are valid regarding the reliability of this model for making predictions and inferences, despite the high R-squared? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The U-shaped residual pattern indicates a violation of the linearity assumption, suggesting that a simple linear model is inappropriate for capturing the true relationship between EPS and stock price.",
+      "B": "The high R-squared value is misleading because the model's fundamental assumptions are violated, meaning the explained variance might not be correctly attributed to the linear component.",
+      "C": "The deviation from normality in the Q-Q plot means that confidence intervals for coefficients and prediction intervals for individual stock prices will be unreliable or inaccurate.",
+      "D": "The statistically significant slope coefficient is invalidated by the residual patterns, suggesting that the true effect of EPS on stock price is likely zero.",
+      "E": "The observed residual patterns suggest the presence of heteroscedasticity, which would lead to incorrect standard errors for the coefficients and unreliable hypothesis tests."
+    },
+    "correct_answer": ["A", "B", "C", "E"],
+    "explanation": "This question integrates the Simple Regression Model (Lecture on Simple Regression) with its core assumptions and the interpretation of residual plots (Lecture on Prediction Interval Assumptions, and implicitly, residual analysis). Option A is correct because a U-shaped residual plot is a classic indicator of non-linearity, meaning the linear model is misspecified. Option B is correct; a high R-squared is not a standalone indicator of model validity if underlying assumptions are violated, as the model's fit might be coincidental or capturing a non-linear trend poorly. Option C is correct as normality of errors is crucial for the validity of confidence and prediction intervals. Option E is correct; while a U-shaped pattern primarily points to non-linearity, it can also be associated with heteroscedasticity, or heteroscedasticity could be present alongside non-linearity, leading to incorrect standard errors. Option D is incorrect; the significance of the slope isn't necessarily invalidated to zero, but rather its *interpretation* under the linear model is flawed; the true relationship might be non-linear, not non-existent.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "97b6a1e5-8a2e-4b4e-8b1b-7a3e8c9d0e1b",
+    "tags": ["Simple Regression", "Model Assumptions", "Residual Analysis", "Linearity", "Normality", "Heteroscedasticity", "R-squared"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A pharmaceutical company conducts a clinical trial for a new drug to reduce blood pressure. They use a simple regression model to analyze the relationship between drug dosage (X, in mg) and the reduction in systolic blood pressure (Y, in mmHg) for 100 patients. The estimated regression equation is Ŷ = 5 + 0.2X. The 95% confidence interval for the slope coefficient (β₁) is calculated as [0.15, 0.25], and for the intercept (β₀) as [4.0, 6.0]. Synthesizing the purpose of the Simple Regression Model and the interpretation of confidence intervals for regression coefficients, which of the following are valid actionable insights or interpretations for the company? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "For every 1 mg increase in dosage, the company can be 95% confident that the *true average* reduction in systolic blood pressure is between 0.15 mmHg and 0.25 mmHg.",
+      "B": "The drug is statistically effective in reducing blood pressure because the 95% confidence interval for the slope [0.15, 0.25] does not include zero.",
+      "C": "If a patient takes no dosage (X=0), the model predicts a blood pressure reduction between 4.0 mmHg and 6.0 mmHg, providing a baseline effect.",
+      "D": "To achieve a blood pressure reduction of exactly 5 mmHg, patients should be prescribed a dosage of 0 mg, based on the intercept's point estimate.",
+      "E": "The confidence interval for the slope also serves as a reliable prediction interval for the blood pressure reduction of a *single new patient* at a specific dosage."
+    },
+    "correct_answer": ["A", "B", "C"],
+    "explanation": "This question integrates the Simple Regression Model (Lecture on Simple Regression) with the interpretation of Confidence Intervals for Regression Coefficients (Lecture on CI for Regression Coefficients). Option A correctly interprets the CI for the slope, quantifying the plausible range for the true effect of dosage. Option B is correct because a CI for the slope that does not include zero indicates statistical significance, supporting the drug's effectiveness. Option C provides a valid interpretation of the intercept's CI, representing the baseline reduction when X is zero (if X=0 is within the observed range). Option D is incorrect; while the intercept is 5, it only represents the *predicted* reduction, and a dosage of 0 mg is not necessarily what leads to *exactly* 5 mmHg reduction, nor is it actionable without considering the full model or confidence intervals. Option E is incorrect; the confidence interval for the slope is for the *population parameter* (the true average change), not a prediction interval for a *single new patient's* outcome, which would be wider and account for individual variability.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "97b6a1e5-8a2e-4b4e-8b1b-7a3e8c9d0e1b",
+    "tags": ["Simple Regression", "Confidence Interval", "Regression Coefficient", "Hypothesis Testing", "Business Decision Making"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A human resources department at 'InnovateTech' wants to understand the relationship between an employee's years of experience (X, an interval variable) and their annual performance rating (Y, an ordinal scale from 1 to 5). They propose using a simple linear regression model to predict performance ratings and analyze the impact of experience. The Head of HR, a statistician, immediately points out a fundamental issue. What is the *most critical* problem with applying a simple linear regression model directly to predict annual performance ratings on an ordinal scale (1-5)?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Simple linear regression assumes that the dependent variable (Y) is continuous and measured on an interval or ratio scale, which is violated by an ordinal scale.",
+      "B": "Years of experience (X) is an independent variable, and simple linear regression is only suitable for dependent independent variables.",
+      "C": "The relationship between experience and performance is inherently non-linear, making simple linear regression unsuitable regardless of the scale.",
+      "D": "A simple linear regression model cannot account for other factors influencing performance, making it an incomplete model for HR."
+    },
+    "correct_answer": ["A"],
+    "explanation": "This question integrates the core assumptions of the Simple Regression Model (Lecture on Simple Regression) with the concept of data types (a prerequisite concept). The most critical problem (Option A) is that simple linear regression assumes the dependent variable (Y) is continuous and measured on an interval or ratio scale. An ordinal scale (1-5) violates this assumption because the 'distance' between categories (e.g., between 1 and 2) is not necessarily equal or meaningful in a quantitative sense, making linear interpretation problematic. Option B is incorrect; years of experience is a valid independent variable. Option C makes an assumption about the relationship which may or may not be true, but it's not the *fundamental* statistical issue with the scale. Option D is a valid concern for any simple regression model but not the *most critical* and fundamental statistical issue related to the data type itself.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "97b6a1e5-8a2e-4b4e-8b1b-7a3e8c9d0e1b",
+    "tags": ["Simple Regression", "Data Types", "Model Assumptions", "Ordinal Data", "HR Analytics"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A renewable energy startup, 'GreenPower,' developed a simple regression model to predict the energy output (Y, in MWh) of a new solar panel design based on the daily peak sunlight hours (X), using data collected over a summer season (peak sunlight hours ranged from 6 to 10 hours). They now want to use this model to predict the energy output for a new location where peak sunlight hours are only 2 hours per day, and provide a 99% prediction interval for the output of a *single* panel. Synthesizing the concept of extrapolation and the assumptions for a valid prediction interval, which of the following are critical issues with GreenPower's plan? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Predicting for 2 peak sunlight hours constitutes significant extrapolation, as this value falls far outside the observed data range (6 to 10 hours).",
+      "B": "The linear relationship observed during summer's high sunlight hours may not accurately represent the relationship at significantly lower sunlight levels, potentially invalidating the model's form.",
+      "C": "The 99% prediction interval will likely be misleadingly narrow, giving a false sense of precision, because extrapolation typically leads to less uncertainty.",
+      "D": "The assumption of 'no extrapolation' is critical for the reliability of prediction intervals, meaning the calculated interval for 2 hours will be unreliable.",
+      "E": "The model's coefficients (slope and intercept) derived from summer data are unlikely to be valid for a new location with different environmental conditions."
+    },
+    "correct_answer": ["A", "B", "D", "E"],
+    "explanation": "This question integrates the concept of Extrapolation (Flashcard on Extrapolation) with Prediction Intervals and their underlying assumptions (Flashcard on Prediction Interval, Flashcard on PI Assumptions). Option A is correct as 2 hours is far outside the 6-10 hour observed range. Option B is correct because the linear relationship observed in one range might not hold in another (e.g., non-linear effects at very low light). Option D is correct; 'no extrapolation' is a key assumption for valid prediction intervals, so the calculated interval will be unreliable. Option E is also a valid concern, as the model's parameters might not generalize to a new location with different environmental factors. Option C is incorrect; extrapolation almost always leads to *wider* and potentially absurdly wide (or incorrectly narrow if the model breaks down completely) prediction intervals due to increased uncertainty, not misleadingly narrow ones that give a false sense of precision in the way described.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "8f8e9d8c-7b6a-5c4d-3e2f-1a0b9c8d7e6f",
+    "tags": ["Extrapolation", "Prediction Interval", "Model Assumptions", "Reliability", "Forecasting"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A tech startup, 'NetPulse,' has developed a simple regression model to predict user engagement (Y, in hours/week) based on the number of new features released in the past month (X), using data where X ranged from 1 to 5 features. The model shows a strong positive linear relationship. The product development team is planning a massive update with 15 new features, aiming to significantly boost engagement, and wants to use the existing model to forecast the expected engagement. What is the *most significant* risk of relying on the current model's prediction for 15 new features?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The model's R-squared might be too low to justify such an aggressive product strategy.",
+      "B": "The prediction for 15 features involves significant extrapolation, where the linear relationship might break down due to diminishing returns or user saturation.",
+      "C": "User engagement is likely influenced by many factors, not just new features, making a simple regression model insufficient.",
+      "D": "The model does not account for the cost of developing 15 new features, which is a critical business consideration."
+    },
+    "correct_answer": ["B"],
+    "explanation": "This question integrates the concept of Extrapolation (Flashcard on Extrapolation) with the Simple Regression Model (Flashcard on Simple Regression Model) and business decision-making. The most significant risk (Option B) is extrapolation. Predicting engagement for 15 features, when the model was trained on data up to only 5 features, means applying the model far outside its observed range. This is highly risky because the linear relationship might not hold; for instance, too many new features could overwhelm users or lead to diminishing returns, invalidating the model's linear assumption. Option A is less critical if the R-squared is already 'strong.' Option C and D are valid general concerns for any simple model or business decision but are not the *most significant* statistical risk directly related to the given scenario's specifics.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "8f8e9d8c-7b6a-5c4d-3e2f-1a0b9c8d7e6f",
+    "tags": ["Extrapolation", "Simple Regression", "Business Risk", "Forecasting", "Model Limitations"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A retail company, 'StyleMart,' uses a simple linear regression model to predict monthly sales (Y) based on monthly advertising spend (X), using data where ad spend ranged from $10,000 to $50,000. The model shows a strong positive correlation. A marketing manager proposes a new campaign with a $100,000 ad spend, expecting a proportionally higher increase in sales based on the model. A data scientist warns against this. Synthesizing the concept of extrapolation and the distinction between correlation and causation, which of the following are potential flaws in the marketing manager's reasoning? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The $100,000 ad spend is a significant extrapolation, and the linear relationship between ad spend and sales may not hold true at such high levels (e.g., diminishing returns or market saturation).",
+      "B": "Even if correlated, increased ad spend might not *cause* proportionally higher sales; other market factors or competitor actions could influence sales outcomes, especially at higher spending tiers.",
+      "C": "The model's high R-squared value confirms a causal link, making the extrapolation a valid assumption in this context.",
+      "D": "Reverse causation is a possibility, where higher anticipated sales might lead the company to allocate more ad spend, rather than ad spend directly driving sales proportionally.",
+      "E": "The effect of advertising might become non-linear at higher spending levels, where additional dollars yield less incremental sales, violating the model's underlying assumption."
+    },
+    "correct_answer": ["A", "B", "D", "E"],
+    "explanation": "This question integrates Extrapolation (Flashcard on Extrapolation) with the pitfall of Correlation vs. Causation (Flashcard on Correlation vs. Causation) and the Simple Regression Model (Flashcard on Simple Regression Model). Option A is correct, directly addressing the core issue of extrapolation and the potential for the linear relationship to break down. Option B highlights the correlation-causation pitfall, as observed correlation doesn't guarantee causation, especially at new levels of X. Option D suggests reverse causation, a plausible alternative explanation for observed correlation. Option E reinforces the idea that the linear assumption is violated under extrapolation when the true relationship becomes non-linear (e.g., diminishing returns). Option C is incorrect; a high R-squared only indicates the strength of the linear association, not causality, and certainly does not validate extrapolation.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "8f8e9d8c-7b6a-5c4d-3e2f-1a0b9c8d7e6f",
+    "tags": ["Extrapolation", "Correlation vs Causation", "Simple Regression", "Business Strategy", "Model Limitations"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A logistics company, 'SwiftDeliver,' uses a simple regression model to predict package delivery time (Y, in minutes) based on distance from the warehouse (X, in km). The model was built using data for deliveries within a 50 km radius. SwiftDeliver is now expanding its operations to a new region where deliveries can be up to 150 km. Before launching, they want to assess the reliability of their existing model for these longer distances. Which of the following strategic actions should SwiftDeliver consider to mitigate the risks associated with applying their current model to the new, extended range? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Collect new data on delivery times for distances between 50 km and 150 km to retrain or update the regression model.",
+      "B": "Consult with domain experts (e.g., experienced drivers, logistics planners) to understand potential non-linear effects or new variables that become significant at longer distances.",
+      "C": "Develop a new, separate regression model specifically for deliveries beyond 50 km, potentially incorporating new relevant variables (e.g., road conditions, traffic density).",
+      "D": "Increase the confidence level of prediction intervals to 99% for deliveries beyond 50 km to ensure higher certainty, without changing the model.",
+      "E": "Assume the linear relationship holds true, as the model was effective within the 50 km radius, and proceed with predictions, adjusting only for increased variability."
+    },
+    "correct_answer": ["A", "B", "C"],
+    "explanation": "This question integrates the concept of Extrapolation (Flashcard on Extrapolation) with the Simple Regression Model (Flashcard on Simple Regression Model) and data collection/model development strategies. Option A is correct as collecting new data within the extrapolated range is the most direct way to validate or update the model. Option B is correct as domain expertise can provide crucial insights into how relationships might change outside the observed range. Option C is correct, suggesting that a new model, potentially more complex or with additional variables, might be needed for the entirely new operational range. Option D is incorrect; simply increasing the confidence level does not address the underlying invalidity caused by extrapolation; it only widens an already unreliable interval. Option E is incorrect and represents the common mistake of ignoring the risks of extrapolation, which can lead to severely flawed business decisions.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "8f8e9d8c-7b6a-5c4d-3e2f-1a0b9c8d7e6f",
+    "tags": ["Extrapolation", "Model Validation", "Data Collection", "Business Strategy", "Model Development"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A consulting firm, 'DataInsights,' develops a simple regression model to predict client project completion time (Y, in days) based on the number of developers assigned (X), using data from projects with 2 to 8 developers. The model shows a strong negative linear relationship. They calculate a 95% confidence interval for the *slope coefficient* (β₁) as [-5.2, -3.8], indicating that each additional developer reduces project time by 3.8 to 5.2 days on average. A client proposes a new, large project requiring 20 developers and suggests using the model's *slope confidence interval* to estimate the time savings for this project, arguing that the narrow interval for the slope proves the model's precision. What is the *fundamental flaw* in the client's reasoning for this new project?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "A narrow confidence interval for the slope indicates a strong effect, which means the model is generally reliable for *any* number of developers.",
+      "B": "The confidence interval for the slope describes the average relationship *within the observed data range*; applying it to 20 developers constitutes extrapolation, where the relationship may change.",
+      "C": "The model's R-squared value is not provided, which is essential to determine the precision of the slope coefficient's confidence interval.",
+      "D": "The confidence interval for the slope is only valid for predicting the average completion time, not the time savings for a specific project."
+    },
+    "correct_answer": ["B"],
+    "explanation": "This question synthesizes the concept of Extrapolation (Flashcard on Extrapolation) with the Confidence Interval for a Regression Coefficient (Flashcard on CI for Regression Coefficient) and the scope of inference. The fundamental flaw (Option B) is that while the confidence interval for the slope precisely quantifies the average relationship *within the observed range* (2 to 8 developers), applying this interpretation to a project with 20 developers is a severe case of extrapolation. The relationship might cease to be linear, or even reverse (e.g., too many developers might create coordination overhead, increasing project time), invalidating the model's coefficients and their interpretation outside the data range. Option A is incorrect because a narrow CI for the slope does not grant universal reliability beyond the observed data. Option C is a general point but not the *fundamental* flaw in the client's specific reasoning about using the slope's CI for extrapolation. Option D is incorrect because the slope's CI *does* describe the average change in Y for a unit change in X, which relates to time savings; the issue is applying it outside the valid range.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "8f8e9d8c-7b6a-5c4d-3e2f-1a0b9c8d7e6f",
+    "tags": ["Extrapolation", "Confidence Interval", "Regression Coefficient", "Model Limitations", "Scope of Inference"]
+  },
+  {
+    "type": "mca",
+    "question_text": "A city's urban planning department observes a strong positive correlation (r=0.85) between the number of privately owned vehicles (X) and average daily air pollution levels (Y) in different city zones, based on a simple regression analysis. Based on this, they propose a drastic policy to significantly restrict vehicle ownership to reduce pollution. Synthesizing the critical pitfall of confusing correlation with causation and the implications of the Simple Regression Model, which of the following are crucial considerations the urban planning department must address before implementing such a policy? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "There might be confounding variables, such as industrial activity or population density, that simultaneously drive both vehicle ownership and air pollution, making vehicle ownership a symptom rather than the sole cause.",
+      "B": "The simple regression model, despite a high correlation, does not inherently prove that reducing vehicle ownership *causes* a proportional reduction in pollution; it only shows an association.",
+      "C": "Implementing such a drastic policy without establishing causation could lead to unintended negative societal consequences, like reduced economic activity or limited mobility, without achieving the desired pollution reduction.",
+      "D": "The policy should only be considered if the correlation coefficient (r) is exactly 1, indicating perfect causation.",
+      "E": "It's plausible that higher pollution levels encourage people to use private vehicles more to avoid public transport or outdoor activities, suggesting reverse causation."
+    },
+    "correct_answer": ["A", "B", "C", "E"],
+    "explanation": "This question directly applies the concept of Correlation vs. Causation (Flashcard on Correlation vs. Causation) to a policy decision based on a Simple Regression Model (Flashcard on Simple Regression Model). Option A is correct, identifying confounding variables as a primary reason why correlation doesn't imply causation. Option B reinforces the fundamental statistical principle that regression shows association, not causation, without experimental design. Option C highlights the practical and ethical consequences of flawed causal inference in policy-making. Option E correctly identifies reverse causation as another plausible explanation for the observed correlation. Option D is incorrect; a correlation coefficient of 1 implies perfect linear association, but still does not, by itself, prove causation, and requiring it is an impractical and statistically unfounded threshold for policy consideration.",
+    "difficulty_level": 4,
+    "source_flashcard_id": "2d1c0b3a-4e5f-6g7h-8i9j-0k1l2m3n4o5p",
+    "tags": ["Correlation vs Causation", "Simple Regression", "Confounding Variables", "Policy Making", "Ethical Implications"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "An online education platform observed a strong

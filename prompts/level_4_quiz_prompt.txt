@@ -70,21 +70,92 @@ For each of the 5 questions per flashcard:
 
 ---
 
-## 6. Visual Generation Toolkit
+## 6. Visual Generation Toolkit (Enhanced with Diagram Decision Framework)
 
-### Visual Type Decision Tree
-* IF question tests [graph/network relationships] → **Graphviz**
-* IF question tests [statistical distribution/trend] → **Plotly**
-* IF question tests [formula/calculation] → **LaTeX**
-* IF question tests [conceptual structure] → **Graphviz** OR **text**
-* IF question needs [interactive data exploration] → **Plotly**
+### Diagram Decision Framework (The "Feynman Test")
 
-### Visual Quality Requirements
-* **Graphviz:** ≤ 15 nodes, ≤ 4 levels, clear labels (≤ 20 chars), colorblind-safe (max 4 colors), specify `rankdir`. Use subgraphs/clusters.
-* **Plotly:** Always include axis labels (with units) and a descriptive title. Legend only if >1 series. 5-50 data points.
-* **LaTeX:** Use `\text{}` for words. Define variables. Use standard notation (e.g., `\Sigma`, `\frac`). Break long equations.
-* **Accessibility:** Alt text must describe the *insight* (e.g., "Scatter plot showing strong positive correlation..."), not just the content ("Graph showing data"). Color must not be the *only* differentiator.
-* **Level 4 Complexity:** May require 2-3 visuals or a complex, multi-component visual.
+For each question, ask yourself these three critical questions:
+1. **Would a visual make this concept click for a struggling student?**
+2. **What would Richard Feynman or 3Blue1Brown use to explain this?**
+3. **Is the diagram essential, helpful, or just decorative?**
+
+**Generate diagrams ONLY when they are essential or highly helpful. Skip decorative diagrams.**
+
+### Visual Type Decision Tree (Enhanced for Data Analytics)
+
+**🚨 CRITICAL RULE: STATISTICAL DATA = MATPLOTLIB, NOT MERMAID 🚨**
+
+**NEVER use Mermaid/Graphviz for:**
+- ❌ Residuals (use matplotlib scatter plot)
+- ❌ Distributions (use matplotlib probability curves)
+- ❌ Scatter plots (use matplotlib)
+- ❌ Regression lines (use matplotlib)
+- ❌ Confidence intervals on plots (use matplotlib with shaded regions)
+- ❌ Hypothesis test visualizations (use matplotlib with distributions)
+- ❌ Model diagnostics (use matplotlib diagnostic plots)
+- ❌ Any actual data visualization (use matplotlib)
+
+**Graphviz is ONLY for:**
+- ✅ Complex process flows (e.g., "Model selection workflow")
+- ✅ Multi-level decision trees (e.g., "Strategic diagnostic decisions")
+- ✅ Complex concept hierarchies
+
+**Complex Statistical Analysis (ALWAYS Matplotlib):**
+- **Matplotlib:** Multiple plots for comparison, diagnostic plots
+- **Use when:** Testing advanced statistical reasoning, model diagnostics with **real data patterns**
+- **Example:** Side-by-side residual plots showing before/after transformation with actual scatter patterns
+- **Why:** Students need to SEE the actual diagnostic patterns, not flowcharts describing them
+
+**Advanced Regression (ALWAYS Matplotlib):**
+- **Matplotlib:** 3D plots, interaction effects, model comparison plots
+- **Use when:** Testing understanding of complex relationships with **actual data visualizations**
+- **Example:** Partial regression plots, added variable plots showing real data points and relationships
+- **Why:** Students need to SEE interaction effects and partial relationships in real data
+
+**Multi-Step Processes (Graphviz ONLY for workflows):**
+- **Graphviz with subgraphs:** Complex workflows, decision trees for **strategic processes**
+- **Use when:** Testing strategic decision-making in procedures (NOT data visualization)
+- **Example:** Model selection workflow with multiple decision points (e.g., "If assumption violated → try transformation → recheck")
+- **Why:** Process flows are appropriate for Graphviz; data patterns are NOT
+
+**Complex Calculations:**
+- **LaTeX with step-by-step:** Multi-step derivations
+- **Use when:** Testing deep mathematical understanding
+- **Example:** Hypothesis test calculation showing all steps
+
+### Visual Quality Requirements (Textbook-Quality Standards)
+
+**Matplotlib Plots:**
+- Clear axis labels with units
+- Descriptive titles explaining the comparison or insight
+- Multiple annotations for key features
+- Professional styling
+- Subplots for comparisons
+- Consistent scales for fair comparison
+
+**Graphviz:**
+- ≤ 15 nodes, ≤ 4 levels
+- Use subgraphs/clusters for grouping
+- Clear labels (≤ 20 chars)
+- Specify `rankdir`
+- Colorblind-safe palette
+
+**LaTeX:**
+- Use `\text{}` for words
+- Define all variables
+- Break long equations across lines
+- Show intermediate steps
+- Standard notation
+
+**Accessibility:**
+- Alt text describing the insight, not just content
+- Color not the only differentiator
+- Clear labels and annotations
+
+**Level 4 Complexity:**
+- May require 2-3 visuals that must be synthesized
+- Or one complex, multi-component visual
+- Should test synthesis and evaluation, not just recognition
 
 ---
 
@@ -136,7 +207,63 @@ Run this check on every generated question. **Reject and regenerate if it fails.
 
 ---
 
-## 11. Output Format
+## 11. Enhanced Explanations - WORLD-CLASS STANDARD
+
+**CRITICAL: ALL Level 4 questions MUST have comprehensive enhanced explanations with detailed step-by-step breakdowns.**
+
+### Teaching Philosophy: Think Like Feynman & 3Blue1Brown
+
+Before writing each explanation, ask yourself:
+
+**"How would Richard Feynman synthesize these concepts?"**
+- Show how the pieces fit together, not just list them
+- Reveal the underlying connections that aren't obvious
+- Build from simple truths to complex insights
+- Use thought experiments: "What if we changed X?"
+- Make the synthesis feel inevitable: "Of course these interact!"
+
+**"How would 3Blue1Brown animate this synthesis?"**
+- What visualization would show the interaction of multiple concepts?
+- Can I show first-order effects, then add second-order effects visually?
+- What would make the cascade of implications obvious?
+- Use multiple diagrams to show the progression of understanding
+
+**Your goal:** Create a "eureka" moment where disparate concepts suddenly form a coherent whole. The student should think: "Wow, that's how it all connects!"
+
+### When to Include Step-by-Step:
+- **ALWAYS** for Level 4 questions (synthesis requires detailed reasoning)
+- **ALWAYS** show the multi-step synthesis process
+- **ALWAYS** include diagrams for complex statistical concepts
+
+### Explanation Structure:
+```json
+"explanation": {
+  "text": "Brief summary of the synthesis required",
+  "step_by_step": [
+    {
+      "step": 1,
+      "title": "Analyze first-order effects",
+      "content": "Detailed analysis...",
+      "latex": "\\text{Complex formula}",
+      "diagram": {"type": "matplotlib", "plot_type": "...", "params": {...}},
+      "diagram_type": "matplotlib"
+    },
+    {
+      "step": 2,
+      "title": "Identify second-order effects",
+      "content": "Cascading implications...",
+      "diagram": {"type": "graphviz", "code": "digraph {...}"},
+      "diagram_type": "graphviz"
+    }
+  ],
+  "interpretation": "What this synthesis reveals",
+  "business_context": "Strategic business implications"
+}
+```
+
+---
+
+## 12. Output Format
 
 Produce a single JSON array of question objects.
 
@@ -147,39 +274,67 @@ Produce a single JSON array of question objects.
   {
     "type": "mcq",
     "question_text": "...",
-    "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
-  "visual_code": "...",
-  "alt_text": "...",
+    "question_visual": {
+      "type": "matplotlib",
+      "plot_type": "comparison_plot",
+      "params": {
+        "plot1": {"type": "residual", "data": [...]},
+        "plot2": {"type": "qq", "data": [...]},
+        "title": "Diagnostic Plots for Model Comparison"
+      }
+    },
+    "question_visual_type": "matplotlib",
     "options": {
       "A": "...",
       "B": "...",
       "C": "...",
       "D": "..."
     },
-  "correct_answer": ["A"], // ARRAY with exactly ONE option key (e.g., ["A"], ["B"], ["C"], or ["D"])
-    "explanation": "...",
+    "correct_answer": ["A"],
+    "explanation": {
+      "text": "Brief summary",
+      "step_by_step": [...],
+      "interpretation": "...",
+      "business_context": "..."
+    },
     "difficulty_level": 4,
-  "source_flashcard_id": "...",
-  "tags": ["...", "..."]
+    "source_flashcard_id": "...",
+    "tags": ["...", "..."]
 }
 ```
+
+**When to Include question_visual (Level 4 Focus):**
+- **ALWAYS** when showing complex scenarios requiring synthesis of multiple visual elements
+- **ALWAYS** when testing strategic decision-making based on visual evidence
+- **WHEN HELPFUL** to show interactions between multiple concepts visually
+- **Use `null` or omit** if the synthesis is purely conceptual
+
+**Visual Type Rules for Questions (Generic for All Courses):**
+- Complex data analysis → `matplotlib` (side-by-side plots, multi-panel diagnostics, comparison charts)
+- Advanced mathematics → `latex` (multi-step derivations, complex equations with multiple components)
+- System interactions → `graphviz` with subgraphs (complex workflows, cascading decisions, system architectures)
+- Multi-faceted scenarios → Combine visual with detailed `question_text` or use structured format
 
 ### For MCA (Multiple Correct Answers) Questions:
 ```json
 {
   "type": "mca",
   "question_text": "Which of the following are... (Select all that apply)",
-  "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
-  "visual_code": "...",
-  "alt_text": "...",
+  "question_visual": null,
+  "question_visual_type": "None",
   "options": {
     "A": "...",
     "B": "...",
     "C": "...",
     "D": "..."
   },
-  "correct_answer": ["A", "C"], // ARRAY with 2-3 option keys (e.g., ["A", "B"], ["B", "C", "D"])
-  "explanation": "A and C are correct because... B is incorrect because... D is incorrect because...",
+  "correct_answer": ["A", "C"],
+  "explanation": {
+    "text": "A and C are correct because... B is incorrect because...",
+    "step_by_step": [...],
+    "interpretation": "...",
+    "business_context": "..."
+  },
   "difficulty_level": 4,
   "source_flashcard_id": "...",
   "tags": ["...", "..."]
@@ -193,3 +348,10 @@ Produce a single JSON array of question objects.
 - The array contains option KEYS (A, B, C, D), NOT the full text of the options
 - Always include "(Select all that apply)" in MCA question text
 - MCA explanations must address why each option is correct or incorrect
+
+**CRITICAL JSON COMPLIANCE INSTRUCTIONS:**
+- Output ONLY perfectly valid and complete JSON. No additional text, commentary, or markdown outside the JSON block.
+- Ensure all strings are properly quoted and escaped. All arrays and objects must be correctly terminated.
+- Each question object must be complete with ALL required fields before moving to the next question.
+- If approaching token limits, complete the current question properly and close the JSON array rather than leaving it incomplete.
+- Test your JSON mentally: Does every opening brace/bracket have a closing one? Are all strings properly quoted?

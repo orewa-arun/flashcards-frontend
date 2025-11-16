@@ -4,6 +4,7 @@ Cognitive Flashcard Generator - Core AI generation logic.
 
 import os
 import json
+from pathlib import Path
 from typing import Dict, List, Any
 import google.generativeai as genai
 
@@ -71,6 +72,10 @@ class CognitiveFlashcardGenerator:
         """
         original_content = content
         
+        # Create logs directory for raw responses
+        logs_dir = Path("logs") / "gemini_raw" / "flashcards"
+        logs_dir.mkdir(parents=True, exist_ok=True)
+        
         for attempt in range(max_retries):
             try:
                 # Reduce content size on each retry to avoid token limits
@@ -89,7 +94,7 @@ class CognitiveFlashcardGenerator:
                 print(f"🤖 Analyzing content and generating flashcards with diagrams...")
                 
                 # Configure generation with progressive token limit reduction
-                base_tokens = 16384
+                base_tokens = 50000
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))  # Reduce tokens on retry
                 
                 generation_config = {
@@ -131,13 +136,45 @@ class CognitiveFlashcardGenerator:
                     
                     return flashcards
                 else:
+                    # Log raw response when no flashcards generated
+                    source_safe = source_name.replace('/', '_').replace(' ', '_') if source_name else "unknown"
+                    chunk_safe = chunk_info.replace('/', '_').replace(' ', '_') if chunk_info else f"attempt_{attempt + 1}"
+                    log_file = logs_dir / f"{source_safe}_{chunk_safe}_attempt_{attempt + 1}.txt"
+                    
+                    with open(log_file, 'w', encoding='utf-8') as f:
+                        f.write(f"=== RAW LLM RESPONSE ===\n")
+                        f.write(f"Source: {source_name}\n")
+                        f.write(f"Chunk: {chunk_info}\n")
+                        f.write(f"Attempt: {attempt + 1}/{max_retries}\n")
+                        f.write(f"Content size: {len(content)} characters\n")
+                        f.write(f"Max tokens: {max_tokens}\n")
+                        f.write(f"\n=== RESPONSE TEXT ===\n")
+                        f.write(result_text)
+                    
                     print(f"⚠️  No flashcards generated on attempt {attempt + 1}")
+                    print(f"   📝 Raw response saved to: {log_file}")
                     if attempt < max_retries - 1:
                         print(f"   🔄 Will retry with smaller content size...")
                         continue
                     
             except Exception as e:
+                # Log exception details
+                source_safe = source_name.replace('/', '_').replace(' ', '_') if source_name else "unknown"
+                chunk_safe = chunk_info.replace('/', '_').replace(' ', '_') if chunk_info else f"attempt_{attempt + 1}"
+                log_file = logs_dir / f"{source_safe}_{chunk_safe}_attempt_{attempt + 1}_ERROR.txt"
+                
+                with open(log_file, 'w', encoding='utf-8') as f:
+                    f.write(f"=== EXCEPTION DURING GENERATION ===\n")
+                    f.write(f"Source: {source_name}\n")
+                    f.write(f"Chunk: {chunk_info}\n")
+                    f.write(f"Attempt: {attempt + 1}/{max_retries}\n")
+                    f.write(f"Error: {str(e)}\n")
+                    f.write(f"\n=== TRACEBACK ===\n")
+                    import traceback
+                    f.write(traceback.format_exc())
+                
                 print(f"❌ Error on attempt {attempt + 1}: {e}")
+                print(f"   📝 Error details saved to: {log_file}")
                 if attempt < max_retries - 1:
                     print(f"   🔄 Retrying with reduced content size...")
                     continue

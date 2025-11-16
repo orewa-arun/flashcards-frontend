@@ -171,7 +171,7 @@ courses/{course_id}/
 
 In `cognitive_flashcard_generator/quiz_generator.py`:
 ```python
-model: str = "gemini-2.0-flash-exp"  # Default model
+model: str = "gemini-2.5-flash"  # Default model
 temperature: 0.8                      # Creative question generation
 max_output_tokens: 16384             # Base token limit
 ```
@@ -229,7 +229,7 @@ course = get_course_by_id("MS5130", courses)
 # Initialize generator
 quiz_gen = QuizGenerator(
     api_key=Config.GEMINI_API_KEY,
-    model="gemini-2.0-flash-exp",
+    model="gemini-2.5-flash",
     course_name=course['course_name'],
     textbook_reference="; ".join(course['reference_textbooks'])
 )

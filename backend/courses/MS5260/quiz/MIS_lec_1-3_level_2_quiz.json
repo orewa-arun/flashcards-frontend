@@ -23,7 +23,9 @@
         "C": "It's a human resources initiative to improve employee morale.",
         "D": "It's a marketing campaign to attract new customers."
       },
-      "correct_answer": "It's an MIS project that aligns technology with the business goal of increasing customer loyalty and sales.",
+      "correct_answer": [
+        "It's an MIS project that aligns technology with the business goal of increasing customer loyalty and sales."
+      ],
       "explanation": "The scenario describes a project that uses technology to achieve a business goal (customer loyalty). This aligns with the definition of MIS, which is the study of information systems within organizations, focusing on how technology enables business strategy and operations. Option B correctly identifies this alignment. Option A incorrectly reduces it to just IT. Option C focuses on HR, and option D is too narrow, only focusing on new customers.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -45,7 +47,9 @@
         "C": "Aligning technology with the business goal of improving client communication and service.",
         "D": "Training employees on how to use email more effectively."
       },
-      "correct_answer": "Aligning technology with the business goal of improving client communication and service.",
+      "correct_answer": [
+        "Aligning technology with the business goal of improving client communication and service."
+      ],
       "explanation": "The scenario describes using technology (a secure online portal) to improve client communication, a key business goal. This is the core of MIS. Option C correctly identifies this alignment. Option A focuses on hardware, option B on a specific app, and option D on a basic communication tool, missing the strategic alignment that MIS provides.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -67,7 +71,9 @@
         "C": "The EHR system is primarily a compliance initiative to meet regulatory requirements.",
         "D": "MIS is about training doctors and nurses on how to use computers."
       },
-      "correct_answer": "MIS involves using the EHR system to align technology with the business goals of improving patient care and operational efficiency.",
+      "correct_answer": [
+        "MIS involves using the EHR system to align technology with the business goals of improving patient care and operational efficiency."
+      ],
       "explanation": "The scenario highlights the use of an EHR system to achieve business goals (improving patient care and efficiency). This is the essence of MIS. Option B correctly identifies this alignment. Option A focuses only on digitization, option C on compliance, and option D only on user training, missing the strategic application of technology.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -89,7 +95,9 @@
         "C": "It shows how IS can be used to support business strategy and improve operations through data analysis.",
         "D": "It's primarily a project for the IT department to maintain the computer systems."
       },
-      "correct_answer": "It shows how IS can be used to support business strategy and improve operations through data analysis.",
+      "correct_answer": [
+        "It shows how IS can be used to support business strategy and improve operations through data analysis."
+      ],
       "explanation": "The scenario describes using the POS system's data to inform inventory and marketing decisions. This illustrates how technology supports business strategy. Option C correctly captures this. Option A focuses on a narrow aspect, Option B is too general, and Option D downplays the strategic importance.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -111,7 +119,10 @@
         "C": "It's a way to reduce the workload of the project managers.",
         "D": "It's primarily a cost-saving measure to reduce administrative overhead."
       },
-      "correct_answer": "It's an example of how technology enables the firm to improve project management and client relations, aligning with its business goals.",
+      "correct_answer": [
+        "It's an example of how technology enables the firm to improve project management and client relations",
+        "aligning with its business goals."
+      ],
       "explanation": "The scenario showcases the use of technology to improve project management and client relations, supporting the firm's business objectives. Option B correctly captures this strategic alignment. Option A minimizes the strategic aspect, Option C focuses on workload reduction, and Option D emphasizes cost savings, all missing the core MIS concept.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_1",
@@ -133,7 +144,10 @@
         "C": "The IS and the organization have a reciprocal relationship, where the IS supports organizational goals and is designed to meet the organization's specific needs.",
         "D": "The IS solely dictates how the organization should operate."
       },
-      "correct_answer": "The IS and the organization have a reciprocal relationship, where the IS supports organizational goals and is designed to meet the organization's specific needs.",
+      "correct_answer": [
+        "The IS and the organization have a reciprocal relationship",
+        "where the IS supports organizational goals and is designed to meet the organization's specific needs."
+      ],
       "explanation": "The scenario demonstrates how the ERP system is implemented to support the organization's supply chain efficiency goals. This is a reciprocal relationship. Option C correctly portrays this. Options A and D suggest a one-way influence, and option B implies independence, all of which are incorrect.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_2",
@@ -155,7 +169,11 @@
         "C": "The organization's fundraising strategy is entirely determined by the system's capabilities.",
         "D": "The system is used only to generate reports for compliance purposes."
       },
-      "correct_answer": "The organization and the system have a reciprocal relationship, where the system is designed to support the organization's goals, and the organization adapts its processes to leverage the system's capabilities.",
+      "correct_answer": [
+        "The organization and the system have a reciprocal relationship",
+        "where the system is designed to support the organization's goals",
+        "and the organization adapts its processes to leverage the system's capabilities."
+      ],
       "explanation": "The scenario illustrates a donor management system supporting the organization's fundraising goals. This highlights a reciprocal relationship. Option B accurately captures this. Options A and C describe a one-way influence, and option D focuses on compliance, missing the strategic alignment.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_2",
@@ -177,7 +195,10 @@
         "C": "The agency and the CRM system have a reciprocal relationship, where the system is designed to support the agency's goals and the agency adapts its processes to effectively utilize the system.",
         "D": "The CRM system operates independently of the agency's strategic objectives."
       },
-      "correct_answer": "The agency and the CRM system have a reciprocal relationship, where the system is designed to support the agency's goals and the agency adapts its processes to effectively utilize the system.",
+      "correct_answer": [
+        "The agency and the CRM system have a reciprocal relationship",
+        "where the system is designed to support the agency's goals and the agency adapts its processes to effectively utilize the system."
+      ],
       "explanation": "The scenario shows the CRM system supporting the agency's client interaction and campaign management goals. This is a reciprocal relationship. Option C accurately reflects this. Options A, B, and D misrepresent the dynamic interaction between the organization and its information systems.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_2",
@@ -199,7 +220,11 @@
         "C": "The TMS operates in isolation, with no connection to the company's overall business strategy.",
         "D": "The TMS is merely a data storage tool with no active role in improving delivery efficiency."
       },
-      "correct_answer": "The company and the TMS have a reciprocal relationship, where the TMS is designed to support the company's goals of efficient delivery, and the company adapts its processes to leverage the TMS's capabilities.",
+      "correct_answer": [
+        "The company and the TMS have a reciprocal relationship",
+        "where the TMS is designed to support the company's goals of efficient delivery",
+        "and the company adapts its processes to leverage the TMS's capabilities."
+      ],
       "explanation": "The scenario shows the TMS supporting the company's delivery efficiency goals, indicating a reciprocal relationship. Option B accurately describes this. Options A, C, and D present inaccurate portrayals of the dynamic between the organization and its information systems.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_2",
@@ -221,7 +246,11 @@
         "C": "The system operates entirely independently of the university's strategic direction.",
         "D": "The system dictates all university policies related to student registration and academic record management."
       },
-      "correct_answer": "The university and the system have a reciprocal relationship, where the system is designed to support the university's goals, and the university adapts its processes to leverage the system's capabilities.",
+      "correct_answer": [
+        "The university and the system have a reciprocal relationship",
+        "where the system is designed to support the university's goals",
+        "and the university adapts its processes to leverage the system's capabilities."
+      ],
       "explanation": "The scenario highlights the student information system supporting university goals, indicating a reciprocal relationship. Option B is the correct answer. Options A, C and D present inaccurate portrayals of the dynamic between the organization and its information systems.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_2",
@@ -243,7 +272,9 @@
         "C": "The system only improves efficiency, but does not contribute to competitive advantage.",
         "D": "The system creates a barrier to entry for new competitors by lowering prices."
       },
-      "correct_answer": "The system creates a competitive advantage by enhancing customer relationships and increasing sales.",
+      "correct_answer": [
+        "The system creates a competitive advantage by enhancing customer relationships and increasing sales."
+      ],
       "explanation": "The scenario describes how the recommendation system increases sales and enhances customer relationships. This provides the retailer with a competitive advantage. Option B is correct. Option A is incorrect because a sustained increase in sales represents a lasting advantage. Option C is incomplete because the system both improves efficiency *and* creates a competitive advantage. Option D is incorrect because the system doesn't necessarily lower prices; it drives sales through personalized recommendations.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_3",
@@ -265,7 +296,10 @@
         "C": "The app only provides a short-term advantage that competitors can easily replicate.",
         "D": "The app creates a competitive advantage by reducing employee workload."
       },
-      "correct_answer": "The app enhances customer relationships and improves service quality, leading to a favorable position over competitors.",
+      "correct_answer": [
+        "The app enhances customer relationships and improves service quality",
+        "leading to a favorable position over competitors."
+      ],
       "explanation": "The scenario demonstrates improved customer satisfaction and reduced wait times, indicating enhanced customer relationships and superior service. This leads to a competitive advantage. Option B is the correct answer. Options A and D are incomplete because they only focus on specific benefits. Option C is incorrect because improved customer relationships can lead to a long-term competitive advantage.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_3",
@@ -287,7 +321,9 @@
         "C": "The system provides a short-term advantage that competitors can easily copy.",
         "D": "The system primarily reduces costs and does not impact revenue."
       },
-      "correct_answer": "The system creates a competitive advantage by improving efficiency and enhancing customer satisfaction through consistent product availability.",
+      "correct_answer": [
+        "The system creates a competitive advantage by improving efficiency and enhancing customer satisfaction through consistent product availability."
+      ],
       "explanation": "The scenario shows the inventory system enhancing customer satisfaction through consistent product availability and improving efficiency by reducing spoilage. This provides a competitive advantage. Option B correctly represents this. Options A and D are incomplete because they don't consider all the benefits. Option C is incorrect because consistent product availability and reduced waste are difficult to replicate quickly.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_3",
@@ -309,7 +345,9 @@
         "C": "The system only provides a temporary advantage that is quickly neutralized by competitors.",
         "D": "The system reduces costs but doesn't enhance revenue or customer satisfaction."
       },
-      "correct_answer": "The system creates a competitive advantage by enabling innovation and improving responsiveness to customer preferences.",
+      "correct_answer": [
+        "The system creates a competitive advantage by enabling innovation and improving responsiveness to customer preferences."
+      ],
       "explanation": "The scenario highlights how the data analytics system enables innovation and improves responsiveness to customer preferences, helping the retailer stay ahead of competitors. This represents a competitive advantage. Option B correctly captures this. Options A and D are incomplete, and Option C is incorrect because the ability to anticipate trends can provide a sustained advantage.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_3",
@@ -331,7 +369,11 @@
         "C": "The platform only provides a temporary advantage that competitors can easily replicate.",
         "D": "The platform primarily streamlines internal processes without offering any direct benefits to customers."
       },
-      "correct_answer": "The platform creates a competitive advantage by enhancing customer relationships, improving service convenience, and reducing operational costs.",
+      "correct_answer": [
+        "The platform creates a competitive advantage by enhancing customer relationships",
+        "improving service convenience",
+        "and reducing operational costs."
+      ],
       "explanation": "The scenario shows the online banking platform increasing customer convenience, enhancing customer relationships, and reducing operational costs. This represents a competitive advantage. Option B correctly captures this. Options A and D are incomplete, and Option C is incorrect because improved customer relationships and enhanced service are difficult to replicate quickly.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_3",
@@ -353,7 +395,10 @@
         "C": "It's a marketing initiative to reach a wider audience.",
         "D": "It's a cost-cutting measure to reduce reliance on physical stores."
       },
-      "correct_answer": "It's an example of digital business because it uses technology to create new value and experiences for customers, blurring the line between physical and digital.",
+      "correct_answer": [
+        "It's an example of digital business because it uses technology to create new value and experiences for customers",
+        "blurring the line between physical and digital."
+      ],
       "explanation": "The scenario describes the bookstore using technology (online store, recommendations, events) to create new value and experiences, blurring the physical and digital. This is characteristic of digital business. Option B is correct. Option A is too narrow. Option C is incomplete. Option D might be a *side* effect, but not the core concept.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_4",
@@ -375,7 +420,11 @@
         "C": "It's a logistical improvement to increase delivery efficiency.",
         "D": "It's a marketing strategy to increase brand awareness."
       },
-      "correct_answer": "It exemplifies digital business by using technology to create new value, experiences, and capabilities by connecting the farm directly with customers.",
+      "correct_answer": [
+        "It exemplifies digital business by using technology to create new value",
+        "experiences",
+        "and capabilities by connecting the farm directly with customers."
+      ],
       "explanation": "The scenario describes the farm using a mobile app to connect directly with customers, offer same-day delivery, and provide recipes. This creates new value and experiences, defining digital business. Option B is correct. Options A and D are incomplete. Option C focuses too narrowly on logistics.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_4",
@@ -397,7 +446,9 @@
         "C": "It's a way to reduce the number of phone operators.",
         "D": "It's just a new marketing campaign to attract younger customers."
       },
-      "correct_answer": "It exemplifies digital business by creating new value and capabilities that fundamentally change the customer experience.",
+      "correct_answer": [
+        "It exemplifies digital business by creating new value and capabilities that fundamentally change the customer experience."
+      ],
       "explanation": "The scenario highlights how the app improves convenience and efficiency for both drivers and passengers, fundamentally changing the customer experience. This is digital business. Option B is correct. Option A is too narrow. Options C and D focus on limited aspects of the transformation.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_4",
@@ -419,7 +470,10 @@
         "C": "It reduces the need for showroom space.",
         "D": "It’s simply a new marketing technique."
       },
-      "correct_answer": "It exemplifies digital business by using technology to create new value and experiences for customers, blurring the lines between the physical and digital worlds.",
+      "correct_answer": [
+        "It exemplifies digital business by using technology to create new value and experiences for customers",
+        "blurring the lines between the physical and digital worlds."
+      ],
       "explanation": "The scenario describes how the AR app creates new value and experiences for customers by allowing them to visualize furniture in their homes, blurring the physical and digital worlds. This is digital business. Option B is correct. Options A and D are incomplete. Option C might be a *side* effect, but not the core concept.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_4",
@@ -441,7 +495,10 @@
         "C": "It's a cost-saving measure to reduce administrative overhead.",
         "D": "It primarily benefits the healthcare provider by streamlining internal processes."
       },
-      "correct_answer": "It exemplifies digital business by using technology to create new value and experiences for patients, blurring the lines between traditional and remote healthcare.",
+      "correct_answer": [
+        "It exemplifies digital business by using technology to create new value and experiences for patients",
+        "blurring the lines between traditional and remote healthcare."
+      ],
       "explanation": "The scenario shows how the telehealth platform creates new value and experiences for patients by increasing access to care and improving convenience, blurring the lines between traditional and remote healthcare. This is digital business. Option B is correct. Options A and D are incomplete. Option C might be a *side* effect, but not the core concept.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_4",
@@ -463,7 +520,9 @@
         "C": "The number of years they have been in operation, as older companies are often prioritized.",
         "D": "Whether their services are provided locally or internationally, as international businesses may not qualify."
       },
-      "correct_answer": "The specific revenue and employee thresholds defined by the grant program for SMEs in the software development industry.",
+      "correct_answer": [
+        "The specific revenue and employee thresholds defined by the grant program for SMEs in the software development industry."
+      ],
       "explanation": "The scenario describes a company assessing eligibility for an SME grant. The core concept is the definition of an SME which is based on thresholds. They need to check if they meet the specific size criteria (employee count, revenue) for that particular grant program. Options B, C, and D are less directly related to the core definition of an SME.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_5",
@@ -485,7 +544,9 @@
         "C": "It guarantees them preferential treatment from all online ordering system vendors, regardless of their features or cost.",
         "D": "It forces them to use only free and open-source online ordering systems, as SMEs cannot afford paid options."
       },
-      "correct_answer": "It helps them identify online ordering systems designed with the specific needs and budget constraints of smaller businesses in mind.",
+      "correct_answer": [
+        "It helps them identify online ordering systems designed with the specific needs and budget constraints of smaller businesses in mind."
+      ],
       "explanation": "The scenario involves a small restaurant (likely an SME) choosing an online ordering system. Understanding their classification as an SME allows them to focus on solutions tailored to their specific size and resources. Options A, C, and D are incorrect assumptions about SME benefits or limitations.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_5",
@@ -507,7 +568,11 @@
         "C": "Ignoring the importance of mobile optimization, as most customers prefer to shop on desktop computers.",
         "D": "Assuming they can compete directly with large e-commerce giants on price and product selection."
       },
-      "correct_answer": "Focusing on platforms that offer simple setup, affordable pricing, and integration with local delivery services.",
+      "correct_answer": [
+        "Focusing on platforms that offer simple setup",
+        "affordable pricing",
+        "and integration with local delivery services."
+      ],
       "explanation": "The scenario describes a small grocery store expanding online, reflecting the context of SMEs. The best approach for an SME is focusing on solutions that are easy to implement, cost-effective, and cater to local needs. Options A, C, and D represent strategies that are not well-suited for SMEs.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_5",
@@ -529,7 +594,11 @@
         "C": "A guaranteed increase in sales and profits, as digital literacy automatically translates to business success.",
         "D": "The ability to immediately compete with large multinational corporations on a global scale."
       },
-      "correct_answer": "Improved efficiency in managing inventory, tracking orders, and communicating with suppliers through digital tools.",
+      "correct_answer": [
+        "Improved efficiency in managing inventory",
+        "tracking orders",
+        "and communicating with suppliers through digital tools."
+      ],
       "explanation": "The scenario involves digital literacy training for SME employees. The most realistic benefit is improved operational efficiency through better use of digital tools. Options A, C, and D are unrealistic expectations.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_5",
@@ -551,7 +620,9 @@
         "C": "They should only focus on physical security measures, as cybersecurity is too complex and expensive for SMEs.",
         "D": "They are required to implement the exact same cybersecurity measures as the largest financial institutions, regardless of cost."
       },
-      "correct_answer": "They need to prioritize affordable and user-friendly solutions that address their specific vulnerabilities and compliance requirements.",
+      "correct_answer": [
+        "They need to prioritize affordable and user-friendly solutions that address their specific vulnerabilities and compliance requirements."
+      ],
       "explanation": "The scenario involves an SME making cybersecurity investments. They need to balance security needs with budget and ease of use. Options A, C, and D are incorrect assumptions about SME cybersecurity.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_5",
@@ -573,7 +644,10 @@
         "C": "Submitting the AI-generated summary as their own original work, claiming the AI is a 'co-author'.",
         "D": "Avoiding the use of AI altogether to ensure complete originality, even if it takes significantly longer."
       },
-      "correct_answer": "Using the AI-generated summary as a starting point, then verifying the information and citing the original research papers.",
+      "correct_answer": [
+        "Using the AI-generated summary as a starting point",
+        "then verifying the information and citing the original research papers."
+      ],
       "explanation": "The scenario deals with the ethical use of Gen-AI in academic writing. It's appropriate to use AI for assistance but crucial to verify the information and properly cite sources. Options A and C constitute plagiarism. Option D avoids AI unnecessarily.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -596,7 +670,9 @@
         "C": "Using the AI to impersonate competitors on social media and spread false information about their products.",
         "D": "Relying solely on the AI to design the entire campaign without any human input or oversight."
       },
-      "correct_answer": "Asking the AI to create different variations of ad copy based on different target audience segments.",
+      "correct_answer": [
+        "Asking the AI to create different variations of ad copy based on different target audience segments."
+      ],
       "explanation": "The scenario describes a marketing team using Gen-AI for brainstorming. It is appropriate to use AI to generate ideas and variations, but unethical to fabricate testimonials or spread misinformation. Option D over-relies on the AI.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -618,7 +694,9 @@
         "C": "Ignore the AI's findings if they contradict the analyst's preconceived notions.",
         "D": "Publicly announce the negative trend based only on the AI's output."
       },
-      "correct_answer": "Verify the AI's findings by examining the original data and consulting with other stakeholders.",
+      "correct_answer": [
+        "Verify the AI's findings by examining the original data and consulting with other stakeholders."
+      ],
       "explanation": "This scenario involves using Gen-AI for data analysis. The correct approach is to verify the AI's findings before making decisions. Options A and D are premature, while Option C ignores potentially valuable insights.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -640,7 +718,9 @@
         "C": "Using the AI to identify relevant research papers on the topic.",
         "D": "Asking the AI to create an outline for their essay on the theory."
       },
-      "correct_answer": "Using the AI to generate a complete essay on the theory to submit as their own work.",
+      "correct_answer": [
+        "Using the AI to generate a complete essay on the theory to submit as their own work."
+      ],
       "explanation": "The scenario describes a student using Gen-AI for learning. Submitting AI-generated content as one's own work is plagiarism. The other options are appropriate uses for understanding and structuring learning.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -663,7 +743,9 @@
         "C": "Techniques for creating convincing fake news stories using AI.",
         "D": "Methods for automating tasks to completely eliminate the need for human oversight."
       },
-      "correct_answer": "The importance of verifying AI-generated information and avoiding plagiarism.",
+      "correct_answer": [
+        "The importance of verifying AI-generated information and avoiding plagiarism."
+      ],
       "explanation": "This scenario involves creating a training program on responsible AI use. The key is emphasizing verification and avoiding plagiarism. Options A and C are unethical, and Option D promotes over-reliance on AI.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_6",
@@ -686,7 +768,9 @@
         "C": "The process of nurses using the EHR to schedule patient appointments.",
         "D": "The hospital's policy on data privacy and security for patient records."
       },
-      "correct_answer": "The hospital's network of servers and computers that store the EHR data.",
+      "correct_answer": [
+        "The hospital's network of servers and computers that store the EHR data."
+      ],
       "explanation": "The scenario asks for an example of IT within an EHR system. IT refers to the hardware, software, and networks. The servers and computers are the physical technology infrastructure. The software, processes, and policies are part of the IS.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_7",
@@ -707,7 +791,11 @@
         "C": "The network cables connecting the POS terminals to the central server.",
         "D": "The electricity powering the POS system."
       },
-      "correct_answer": "The software that processes transactions, manages inventory, and generates sales reports.",
+      "correct_answer": [
+        "The software that processes transactions",
+        "manages inventory",
+        "and generates sales reports."
+      ],
       "explanation": "The scenario asks for the IS component of a POS system. The IS is the system that uses IT to process information and support decision-making. The software that manages transactions and inventory is the core of the IS. The other options are IT components.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_7",
@@ -728,7 +816,9 @@
         "C": "Students submitting assignments and instructors grading them through the LMS.",
         "D": "The database that stores student grades and course materials."
       },
-      "correct_answer": "Students submitting assignments and instructors grading them through the LMS.",
+      "correct_answer": [
+        "Students submitting assignments and instructors grading them through the LMS."
+      ],
       "explanation": "The scenario asks for the *use* of an IS (LMS). The use of the IS is the activity of managing information to support a goal. The activity of students submitting work and instructors grading represents the *use* of the system. The other options describe the IT infrastructure.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_7",
@@ -749,7 +839,10 @@
         "C": "IT focuses on the software controlling the robots, while IS focuses on the hardware components.",
         "D": "There is no difference; IT and IS are interchangeable in this context."
       },
-      "correct_answer": "IT focuses on the robots themselves, while IS focuses on how the robots are used to improve production efficiency and decision-making.",
+      "correct_answer": [
+        "IT focuses on the robots themselves",
+        "while IS focuses on how the robots are used to improve production efficiency and decision-making."
+      ],
       "explanation": "The scenario contrasts IT and IS in the context of robotic arms. IT is the technology itself, while IS is how that technology is used to manage information and improve processes. The core difference is the focus on *how* the technology supports the organization's goals.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_7",
@@ -772,7 +865,9 @@
         "C": "The IS begins when the owner connects the laptop to the internet.",
         "D": "There is no transition; owning a laptop automatically means it's part of an IS."
       },
-      "correct_answer": "The IS begins when the owner installs accounting software and starts tracking income and expenses on the laptop.",
+      "correct_answer": [
+        "The IS begins when the owner installs accounting software and starts tracking income and expenses on the laptop."
+      ],
       "explanation": "The scenario describes the transition from IT to IS. The IS begins when the technology (laptop) is used to process information for a specific purpose (managing finances). The installation of accounting software and tracking finances represents the start of the IS.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_7",
@@ -795,7 +890,9 @@
         "C": "Ignoring online sales altogether and focusing solely on selling through physical stores.",
         "D": "Investing heavily in traditional advertising methods like newspaper ads and billboards."
       },
-      "correct_answer": "Listing their products on a popular e-commerce platform and using WhatsApp Business to communicate with customers and process payments.",
+      "correct_answer": [
+        "Listing their products on a popular e-commerce platform and using WhatsApp Business to communicate with customers and process payments."
+      ],
       "explanation": "The scenario describes a local artisan selling online, reflecting current trends in India. Using e-commerce platforms and WhatsApp Business aligns with the trends of leveraging existing platforms for sales and communication. Option A is too complex and expensive for a small artisan. Options C and D ignore the benefits of online sales.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -817,7 +914,11 @@
         "C": "Hiring more waiters to take orders manually and deliver food faster.",
         "D": "Building a completely custom mobile app for ordering and delivery with no marketing or promotion."
       },
-      "correct_answer": "Using WhatsApp Business to take orders, confirm reservations, and provide real-time updates to customers.",
+      "correct_answer": [
+        "Using WhatsApp Business to take orders",
+        "confirm reservations",
+        "and provide real-time updates to customers."
+      ],
       "explanation": "The scenario describes a restaurant improving efficiency. Using WhatsApp Business aligns with the trend of businesses leveraging the platform for customer communication and order management. Option A is unrealistic, Option C is a traditional solution, and Option D lacks a strategy for reaching customers.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -839,7 +940,9 @@
         "C": "Ignoring user feedback and focusing solely on adding new features.",
         "D": "Making the app available only on a single, less popular app store."
       },
-      "correct_answer": "Optimizing the app's listing in app stores to improve its search ranking and attract more downloads.",
+      "correct_answer": [
+        "Optimizing the app's listing in app stores to improve its search ranking and attract more downloads."
+      ],
       "explanation": "The scenario describes an app with low downloads. Optimizing the app store listing aligns with the trend of focusing on app store optimization to improve visibility. Option A is expensive, Option C ignores users, and Option D limits reach.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -860,7 +963,9 @@
         "C": "A consulting firm that provides services only to large multinational corporations.",
         "D": "A government agency that processes applications with a turnaround time of several weeks."
       },
-      "correct_answer": "A service that delivers groceries to customers' homes within 10 minutes of placing the order.",
+      "correct_answer": [
+        "A service that delivers groceries to customers' homes within 10 minutes of placing the order."
+      ],
       "explanation": "The scenario asks for an example of the 'instant' services trend. Quick commerce services like instant grocery delivery are a direct example of this trend. The other options do not reflect the concept of instant service.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -882,7 +987,9 @@
         "C": "It will force all other home service businesses to shut down due to Urban Company's superior service.",
         "D": "It will only benefit Urban Company and have no impact on the overall industry."
       },
-      "correct_answer": "It may pressure other businesses to adopt similar technology and offer faster service delivery to remain competitive.",
+      "correct_answer": [
+        "It may pressure other businesses to adopt similar technology and offer faster service delivery to remain competitive."
+      ],
       "explanation": "The scenario explores the impact of Urban Company's 'Insta Help' service. The most likely impact is increased competition and pressure on other businesses to improve their speed and technology. Options A, C, and D are unrealistic or incorrect assumptions.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_8",
@@ -904,7 +1011,11 @@
         "C": "The bakery will gain a competitive advantage in inventory management, but customer satisfaction will decrease due to the slow ordering process.",
         "D": "The bakery's competitive advantage will only increase if they hire new employees already trained on the new POS system."
       },
-      "correct_answer": "The bakery will likely see no significant improvement in competitive advantage and may even experience a decrease due to the lack of integration between people, process, and technology.",
+      "correct_answer": [
+        "The bakery will likely see no significant improvement in competitive advantage and may even experience a decrease due to the lack of integration between people",
+        "process",
+        "and technology."
+      ],
       "explanation": "The scenario highlights a failure to integrate people, process, and technology effectively. The new POS system (technology) is undermined by lack of training (people) and outdated processes. This incomplete integration prevents the bakery from realizing the potential benefits of the new system, leading to no improvement or even a decrease in competitive advantage. Option A is incorrect because it assumes technology alone guarantees success. Option C is an incomplete solution because it only considers inventory management. Option D addresses a symptom (lack of training) but not the process misalignment.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -929,7 +1040,11 @@
         "C": "Implement the CRM system and expect immediate results without making any changes to existing business processes or providing employee training.",
         "D": "Only use the CRM system to store customer data without analyzing it to improve customer service or personalize marketing efforts."
       },
-      "correct_answer": "Invest in comprehensive training for employees on how to use the CRM system, adapt business processes to leverage the CRM data, and continuously evaluate and improve the system's effectiveness.",
+      "correct_answer": [
+        "Invest in comprehensive training for employees on how to use the CRM system",
+        "adapt business processes to leverage the CRM data",
+        "and continuously evaluate and improve the system's effectiveness."
+      ],
       "explanation": "To ensure successful CRM implementation and gain a competitive advantage, the business must consider all three elements: people, process, and technology. Training employees (people) enables them to use the CRM effectively. Adapting business processes ensures the CRM data is leveraged to improve customer service. Continuously evaluating the system ensures ongoing improvement. Option A neglects the importance of people. Option C expects results without changes to people or processes. Option D ignores the potential of data analysis.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -954,7 +1069,11 @@
         "C": "A company uses data analytics to identify customer preferences, trains its marketing team to personalize campaigns based on these insights, and implements a CRM system to track customer interactions and measure campaign effectiveness.",
         "D": "A company relies solely on its experienced employees' intuition to make decisions, ignoring the potential benefits of data analysis and technology."
       },
-      "correct_answer": "A company uses data analytics to identify customer preferences, trains its marketing team to personalize campaigns based on these insights, and implements a CRM system to track customer interactions and measure campaign effectiveness.",
+      "correct_answer": [
+        "A company uses data analytics to identify customer preferences",
+        "trains its marketing team to personalize campaigns based on these insights",
+        "and implements a CRM system to track customer interactions and measure campaign effectiveness."
+      ],
       "explanation": "This option demonstrates the effective integration of people (trained marketing team), process (personalized campaigns), and technology (data analytics and CRM system). The company leverages data insights to improve marketing efforts, leading to a competitive advantage. Option A focuses only on technology. Option B lacks process alignment. Option D ignores the potential of technology and data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -979,7 +1098,10 @@
         "C": "The company will need to hire new, highly skilled technicians, leading to a positive impact on the local economy.",
         "D": "The company will be able to re-assign the existing workforce to other areas, improving overall employee satisfaction."
       },
-      "correct_answer": "The company will experience frequent breakdowns and downtime due to a lack of skilled personnel, negating the potential benefits of the automation.",
+      "correct_answer": [
+        "The company will experience frequent breakdowns and downtime due to a lack of skilled personnel",
+        "negating the potential benefits of the automation."
+      ],
       "explanation": "The scenario highlights the importance of the 'people' component. Investing in technology (robotic automation) without training the workforce leads to a skills gap. This results in frequent breakdowns and downtime, hindering the potential benefits. Option A overemphasizes technology. Option C, while potentially true, doesn't address the core problem. Option D is unlikely given the need for skilled maintenance.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -1004,7 +1126,9 @@
         "C": "Replace the existing EHR system with a newer, more advanced system, assuming that the technology is the primary issue.",
         "D": "Ignore the resistance from the doctors and administrative staff and focus solely on optimizing the system's technical performance."
       },
-      "correct_answer": "Provide additional training and support to the doctors and administrative staff and adapt the system's interface and workflows to better meet their needs.",
+      "correct_answer": [
+        "Provide additional training and support to the doctors and administrative staff and adapt the system's interface and workflows to better meet their needs."
+      ],
       "explanation": "This scenario emphasizes the importance of people and process. Resistance from doctors and staff suggests a lack of training and usability issues. Providing training and adapting workflows addresses these issues directly. Option A ignores the 'people' aspect. Option C focuses solely on technology without addressing the underlying problems. Option D disregards the needs of the users.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_9",
@@ -1029,7 +1153,9 @@
         "C": "The firm will be able to sell the raw data to other companies for a significant profit.",
         "D": "The firm will be able to accurately predict future consumer behavior with minimal effort."
       },
-      "correct_answer": "The firm will struggle to translate the data into actionable insights and may miss opportunities to optimize its campaigns and improve ROI.",
+      "correct_answer": [
+        "The firm will struggle to translate the data into actionable insights and may miss opportunities to optimize its campaigns and improve ROI."
+      ],
       "explanation": "The analogy 'Data is the new oil' implies that data needs to be refined (analyzed) to be valuable. Without a clear strategy for analysis, the marketing firm will struggle to extract insights and improve its campaigns. Option A assumes volume alone is sufficient. Option C is a potential but not the *most likely* consequence. Option D is an oversimplification.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_10",
@@ -1053,7 +1179,11 @@
         "C": "Focus solely on collecting more data without investing in data analysis tools or expertise.",
         "D": "Ignore the data and continue to rely on traditional marketing methods."
       },
-      "correct_answer": "Analyze the data to identify customer preferences, optimize pricing strategies, and personalize marketing campaigns.",
+      "correct_answer": [
+        "Analyze the data to identify customer preferences",
+        "optimize pricing strategies",
+        "and personalize marketing campaigns."
+      ],
       "explanation": "Applying the 'Data is the new oil' principle involves extracting value from data. Analyzing the data to understand customer preferences, optimize pricing, and personalize marketing aligns with this principle. Option A is like storing oil without refining it. Option C focuses on collection without analysis. Option D ignores the potential of data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_10",
@@ -1077,7 +1207,9 @@
         "C": "A company uses data analytics to identify emerging market trends and develops new products and services to meet those needs.",
         "D": "A company shares all of its customer data with its competitors to foster collaboration."
       },
-      "correct_answer": "A company uses data analytics to identify emerging market trends and develops new products and services to meet those needs.",
+      "correct_answer": [
+        "A company uses data analytics to identify emerging market trends and develops new products and services to meet those needs."
+      ],
       "explanation": "This option exemplifies leveraging data to gain a competitive advantage. By analyzing data, the company can identify opportunities and create new products. Option A underutilizes the data. Option B ignores data altogether. Option D is counterintuitive to gaining a competitive advantage.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_10",
@@ -1101,7 +1233,9 @@
         "C": "Sell the data to a larger company in exchange for a one-time payment.",
         "D": "Ignore the data and assume customer preferences will remain constant over time."
       },
-      "correct_answer": "Partner with a third-party analytics provider to analyze the data and provide actionable insights.",
+      "correct_answer": [
+        "Partner with a third-party analytics provider to analyze the data and provide actionable insights."
+      ],
       "explanation": "Partnering with a third-party analytics provider allows the retailer to access data analysis expertise without the cost of hiring a full-time data scientist. This enables them to extract value from their data and improve their business. Option A wastes the data. Option C might be an option but isn't the *best* way to leverage it for their own business. Option D ignores the potential of data.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_10",
@@ -1125,7 +1259,11 @@
         "C": "Store the data indefinitely without any specific analysis plan.",
         "D": "Ignore the temperature data, as it is not relevant to operational efficiency."
       },
-      "correct_answer": "Analyze the data to identify optimal routes, predict maintenance needs, and improve fuel efficiency.",
+      "correct_answer": [
+        "Analyze the data to identify optimal routes",
+        "predict maintenance needs",
+        "and improve fuel efficiency."
+      ],
       "explanation": "Analyzing the data to optimize routes, predict maintenance, and improve fuel efficiency demonstrates the application of 'Data is the new oil'. This approach extracts valuable insights to improve operations. Option A underutilizes the data. Option C wastes the data. Option D overlooks the potential importance of temperature data for certain deliveries.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_10",
@@ -1149,7 +1287,11 @@
         "C": "The managerial level would simply wait for the development team to complete the product and then hand it off to the sales team.",
         "D": "The managerial level would change the product specifications to whatever they feel is best, regardless of the strategic goals."
       },
-      "correct_answer": "The managerial level would develop a detailed marketing plan, allocate resources, and track key performance indicators to ensure the product launch is successful and the market share goal is met.",
+      "correct_answer": [
+        "The managerial level would develop a detailed marketing plan",
+        "allocate resources",
+        "and track key performance indicators to ensure the product launch is successful and the market share goal is met."
+      ],
       "explanation": "The managerial/tactical level is responsible for implementing strategies and monitoring performance. Developing a marketing plan, allocating resources, and tracking KPIs directly contributes to achieving the executive level's market share goal. Option A describes a hands-off approach. Option C lacks proactive involvement. Option D contradicts the strategic direction.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_11",
@@ -1172,7 +1314,11 @@
         "C": "The operational level would decide the program's rules and benefits without consulting the executive level.",
         "D": "The operational level would refuse to participate in the program because it adds extra work."
       },
-      "correct_answer": "The operational level would train employees on how to explain the program to customers, enroll new members, and redeem rewards accurately and efficiently.",
+      "correct_answer": [
+        "The operational level would train employees on how to explain the program to customers",
+        "enroll new members",
+        "and redeem rewards accurately and efficiently."
+      ],
       "explanation": "The operational level is responsible for day-to-day tasks. Training employees to explain the program, enroll members, and redeem rewards ensures the program is implemented effectively at the customer level. Option A ignores the program. Option C oversteps their authority. Option D is resistant and uncooperative.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_11",
@@ -1195,7 +1341,9 @@
         "C": "Ordering office supplies for the headquarters.",
         "D": "Resolving a customer complaint about a defective product."
       },
-      "correct_answer": "Deciding to enter a new international market and invest in building a manufacturing facility.",
+      "correct_answer": [
+        "Deciding to enter a new international market and invest in building a manufacturing facility."
+      ],
       "explanation": "Entering a new international market and investing in a manufacturing facility is a long-term, strategic decision that aligns with the executive level's responsibilities. Option A is an operational decision. Option C is a routine task. Option D is a customer service issue.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_11",
@@ -1218,7 +1366,11 @@
         "C": "Focus solely on reducing costs without considering the impact on patient care.",
         "D": "Delegate the responsibility to the operational level without providing guidance or resources."
       },
-      "correct_answer": "Implement new patient care protocols, monitor patient feedback, and provide training to staff on improving patient interactions.",
+      "correct_answer": [
+        "Implement new patient care protocols",
+        "monitor patient feedback",
+        "and provide training to staff on improving patient interactions."
+      ],
       "explanation": "Implementing new protocols, monitoring feedback, and providing training are tactical actions that directly contribute to improving patient satisfaction. This aligns with the managerial level's responsibility to implement strategies and monitor performance. Option A is uncooperative. Option C conflicts with the goal. Option D abdicates responsibility.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_11",
@@ -1241,7 +1393,11 @@
         "C": "The operational level would be completely excluded from the implementation process.",
         "D": "The operational level would be responsible for managing the project budget."
       },
-      "correct_answer": "The operational level would provide input on their specific needs and workflows, participate in data migration, and receive training on how to use the new system.",
+      "correct_answer": [
+        "The operational level would provide input on their specific needs and workflows",
+        "participate in data migration",
+        "and receive training on how to use the new system."
+      ],
       "explanation": "The operational level's involvement includes providing input, participating in data migration, and receiving training. This ensures the system meets their needs and they can use it effectively. Option A is a strategic decision. Option C is unrealistic. Option D is a managerial responsibility.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_11",
@@ -1264,7 +1420,9 @@
         "C": "Marketing",
         "D": "Finance"
       },
-      "correct_answer": "Marketing",
+      "correct_answer": [
+        "Marketing"
+      ],
       "explanation": "A CRM system is specifically designed to support marketing activities, such as tracking customer interactions and managing campaigns. Therefore, it primarily supports the marketing functional area. The other options are incorrect as they are supported by other information systems.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_12",
@@ -1290,7 +1448,9 @@
         "C": "Operations",
         "D": "Marketing"
       },
-      "correct_answer": "Operations",
+      "correct_answer": [
+        "Operations"
+      ],
       "explanation": "Tracking inventory, managing production, and controlling materials flow are core activities of the operations functional area. Therefore, the system primarily supports operations. The other options are incorrect as they are supported by other information systems.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_12",
@@ -1316,7 +1476,11 @@
         "C": "A system used to manage customer relationships and track marketing campaign effectiveness.",
         "D": "A system used to optimize production schedules and manage supply chains."
       },
-      "correct_answer": "A system used to record financial transactions, generate financial statements, and manage accounts payable and receivable.",
+      "correct_answer": [
+        "A system used to record financial transactions",
+        "generate financial statements",
+        "and manage accounts payable and receivable."
+      ],
       "explanation": "An AIS is specifically designed to manage financial data and generate financial reports. Therefore, the correct option is the one that describes these activities. The other options describe functions of other information systems.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_12",
@@ -1342,7 +1506,11 @@
         "C": "Streamlined employee onboarding, payroll processing, and benefits administration.",
         "D": "Optimized production schedules and reduced inventory costs."
       },
-      "correct_answer": "Streamlined employee onboarding, payroll processing, and benefits administration.",
+      "correct_answer": [
+        "Streamlined employee onboarding",
+        "payroll processing",
+        "and benefits administration."
+      ],
       "explanation": "An HRIS is designed to manage employee-related data and processes. Therefore, the most likely benefit is streamlined employee onboarding, payroll processing, and benefits administration. The other options are benefits of other types of information systems.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_12",
@@ -1368,7 +1536,11 @@
         "C": "Data inconsistencies, inaccurate inventory levels, and poor decision-making due to a lack of integrated information.",
         "D": "Enhanced customer satisfaction and loyalty."
       },
-      "correct_answer": "Data inconsistencies, inaccurate inventory levels, and poor decision-making due to a lack of integrated information.",
+      "correct_answer": [
+        "Data inconsistencies",
+        "inaccurate inventory levels",
+        "and poor decision-making due to a lack of integrated information."
+      ],
       "explanation": "Siloed information systems lead to data inconsistencies and a lack of integrated information, hindering accurate inventory management and informed decision-making. Options A, B, and D are potential benefits of *integrated* systems, not siloed ones.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_12",
@@ -1394,7 +1566,10 @@
         "C": "Continue using spreadsheets and email, but implement strict data entry protocols and regular data backups.",
         "D": "Focus solely on improving the organization's website to attract more donors and volunteers."
       },
-      "correct_answer": "Develop a custom-built mobile app for volunteers to report their hours and project outcomes, integrated with a cloud-based database.",
+      "correct_answer": [
+        "Develop a custom-built mobile app for volunteers to report their hours and project outcomes",
+        "integrated with a cloud-based database."
+      ],
       "explanation": "EcoHelpers needs a system that enhances coordination and data tracking. A mobile app integrated with a cloud database allows volunteers to easily report their contributions and project outcomes. This approach directly addresses the issues of efficiency and data silos. Option A is too complex for a small non-profit. Option C doesn't solve the underlying problems. Option D focuses on attracting resources but not on managing operations.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_13",
@@ -1416,7 +1591,11 @@
         "C": "Investing in new point-of-sale (POS) systems to speed up checkout times in physical stores.",
         "D": "Creating a company blog to share fashion tips and promote new products."
       },
-      "correct_answer": "Implementing a data analytics platform to analyze customer purchase history, social media activity, and browsing behavior to personalize product recommendations and predict demand.",
+      "correct_answer": [
+        "Implementing a data analytics platform to analyze customer purchase history",
+        "social media activity",
+        "and browsing behavior to personalize product recommendations and predict demand."
+      ],
       "explanation": "FashionForward needs to leverage data to improve personalization and anticipation. Implementing a data analytics platform allows them to analyze customer data to personalize recommendations and predict demand, directly increasing digital density and competitive advantage. Option A focuses on internal processes. Option C improves in-store efficiency but doesn't address personalization. Option D is a marketing effort but lacks the data-driven approach of the correct answer.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_13",
@@ -1438,7 +1617,12 @@
         "C": "It would mainly improve the company's internal communication and collaboration among employees.",
         "D": "It would focus solely on automating the company's financial transactions with suppliers and distributors."
       },
-      "correct_answer": "It would enable real-time visibility into inventory levels, production schedules, and shipping status across the entire supply chain, leading to better coordination and reduced delays.",
+      "correct_answer": [
+        "It would enable real-time visibility into inventory levels",
+        "production schedules",
+        "and shipping status across the entire supply chain",
+        "leading to better coordination and reduced delays."
+      ],
       "explanation": "Increased digital density in supply chain management allows for real-time visibility and better coordination. This is achieved through integrating systems across the supply chain. Option A focuses on cost reduction. Option C addresses internal communication but not the supply chain. Option D focuses narrowly on financial transactions.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_13",
@@ -1461,7 +1645,9 @@
         "C": "The agency invests in faster computers and internet connections to improve the speed of their design and development processes.",
         "D": "The agency begins offering social media management services to help clients increase their online presence."
       },
-      "correct_answer": "The agency starts using AI-powered tools to analyze customer data and create highly targeted advertising campaigns based on individual preferences and behaviors.",
+      "correct_answer": [
+        "The agency starts using AI-powered tools to analyze customer data and create highly targeted advertising campaigns based on individual preferences and behaviors."
+      ],
       "explanation": "Personalization is achieved through analyzing data to understand individual preferences. Using AI-powered tools to create targeted campaigns directly exemplifies this. Option A focuses on internal efficiency. Option C improves speed but not personalization. Option D expands service offerings but doesn't guarantee personalization.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_13",
@@ -1482,7 +1668,9 @@
         "C": "Offering a wider variety of menu options to cater to diverse tastes.",
         "D": "Developing a mobile app with a user-friendly interface for placing orders."
       },
-      "correct_answer": "Using data analytics to predict peak ordering times and optimize staffing levels.",
+      "correct_answer": [
+        "Using data analytics to predict peak ordering times and optimize staffing levels."
+      ],
       "explanation": "Anticipation involves predicting future needs. Using data analytics to predict peak ordering times directly addresses this. Option A rewards loyalty but doesn't predict. Option C expands options but isn't anticipatory. Option D improves the ordering process but not anticipation.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_13",
@@ -1503,7 +1691,11 @@
         "C": "Location A, because the beautiful mountains will provide her with a better work-life balance.",
         "D": "Location B, because the coastal city will offer more social opportunities."
       },
-      "correct_answer": "Location B, because reliable internet is crucial for her work as a writer, outweighing the slightly higher cost of living.",
+      "correct_answer": [
+        "Location B",
+        "because reliable internet is crucial for her work as a writer",
+        "outweighing the slightly higher cost of living."
+      ],
       "explanation": "Digital nomads require reliable connectivity for work. Location B offers this, making it more suitable even with a higher cost of living. Option A prioritizes cost savings over connectivity. Option C prioritizes work-life balance but ignores the need for reliable internet. Option D focuses on social opportunities, which are secondary to work requirements.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_14",
@@ -1524,7 +1716,12 @@
         "C": "Choose whichever location offers the lowest cost of living, as this is the most important factor for a digital nomad.",
         "D": "Choose whichever location is closest to his family and friends, as maintaining social connections is crucial for his well-being."
       },
-      "correct_answer": "Prioritize the bustling city with its digital nomad community, co-working spaces, and high-speed internet, as these are essential for his work as a software developer.",
+      "correct_answer": [
+        "Prioritize the bustling city with its digital nomad community",
+        "co-working spaces",
+        "and high-speed internet",
+        "as these are essential for his work as a software developer."
+      ],
       "explanation": "Reliable internet and a conducive workspace are critical for a digital nomad's work. The bustling city offers these, making it a better choice. Option A prioritizes scenery over work requirements. Option C focuses on cost of living, which is important but secondary to connectivity. Option D focuses on social connections, which are less crucial than work requirements.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_14",
@@ -1545,7 +1742,12 @@
         "C": "High cost of living, reliable high-speed internet, limited co-working spaces, and a vibrant cultural scene.",
         "D": "Low cost of living, unreliable internet, numerous co-working spaces, and a cold climate."
       },
-      "correct_answer": "Low cost of living, reliable high-speed internet, numerous co-working spaces, and a vibrant cultural scene.",
+      "correct_answer": [
+        "Low cost of living",
+        "reliable high-speed internet",
+        "numerous co-working spaces",
+        "and a vibrant cultural scene."
+      ],
       "explanation": "Digital nomads are attracted to locations with a low cost of living, reliable internet, and a vibrant culture. This combination provides a good balance of work and lifestyle. Options A, C, and D all include factors that would deter digital nomads.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_14",
@@ -1566,7 +1768,10 @@
         "C": "Focus solely on creating engaging content to attract a larger audience.",
         "D": "Learn a new language to improve their communication skills in foreign countries."
       },
-      "correct_answer": "Develop a detailed budget and savings plan, and research locations with reliable internet access and alternative connectivity options.",
+      "correct_answer": [
+        "Develop a detailed budget and savings plan",
+        "and research locations with reliable internet access and alternative connectivity options."
+      ],
       "explanation": "Managing finances and ensuring reliable connectivity are crucial for digital nomads. Developing a budget and researching locations addresses these key challenges. Option A focuses on improving photography skills, which are secondary. Option C focuses on content creation but ignores practical considerations. Option D improves communication but doesn't address the core challenges.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_14",
@@ -1587,7 +1792,11 @@
         "C": "Allow employees to choose their own work hours and locations without any oversight or restrictions.",
         "D": "Focus solely on providing financial incentives to encourage employees to work harder."
       },
-      "correct_answer": "Implement strict data security policies, provide secure VPN access, and use project management tools to track progress and ensure accountability.",
+      "correct_answer": [
+        "Implement strict data security policies",
+        "provide secure VPN access",
+        "and use project management tools to track progress and ensure accountability."
+      ],
       "explanation": "Data security and productivity tracking are key concerns when allowing remote work. Implementing security policies, VPN access, and project management tools addresses these concerns. Option A eliminates remote work altogether. Option C provides no oversight. Option D focuses on financial incentives but ignores security and accountability.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_14",
@@ -1608,7 +1817,10 @@
         "C": "There are few barriers to entry, and numerous individuals and small companies can easily create and launch their own online language learning platforms.",
         "D": "Government regulations restrict the operation of online language learning platforms in certain countries."
       },
-      "correct_answer": "There are few barriers to entry, and numerous individuals and small companies can easily create and launch their own online language learning platforms.",
+      "correct_answer": [
+        "There are few barriers to entry",
+        "and numerous individuals and small companies can easily create and launch their own online language learning platforms."
+      ],
       "explanation": "A high threat of new entrants occurs when it's easy for new competitors to enter the market. This is reflected in low barriers to entry. Option A describes high barriers. Option B describes strong existing competition. Option D describes regulatory hurdles.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_15",
@@ -1629,7 +1841,10 @@
         "C": "The specific type of flour is a unique and essential ingredient for the bakery's signature product, and there are few alternative suppliers.",
         "D": "The bakery can easily produce the flour itself, reducing its dependence on external suppliers."
       },
-      "correct_answer": "The specific type of flour is a unique and essential ingredient for the bakery's signature product, and there are few alternative suppliers.",
+      "correct_answer": [
+        "The specific type of flour is a unique and essential ingredient for the bakery's signature product",
+        "and there are few alternative suppliers."
+      ],
       "explanation": "High supplier power arises when there are few alternatives and the ingredient is essential. This gives the supplier leverage. Option A describes low supplier power. Option B describes high buyer power. Option D reduces dependence on suppliers.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_15",
@@ -1650,7 +1865,11 @@
         "C": "Customers can easily switch to alternative beverages, such as tea or juice, if the price of coffee beans increases.",
         "D": "The company's coffee beans are a small portion of the customer's overall grocery budget."
       },
-      "correct_answer": "Customers can easily switch to alternative beverages, such as tea or juice, if the price of coffee beans increases.",
+      "correct_answer": [
+        "Customers can easily switch to alternative beverages",
+        "such as tea or juice",
+        "if the price of coffee beans increases."
+      ],
       "explanation": "High customer power arises when customers have many substitutes. This makes them price-sensitive. Option A describes strong product differentiation. Option B describes information asymmetry. Option D describes low impact on customer budget.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_15",
@@ -1671,7 +1890,9 @@
         "C": "A rise in the price of popcorn and other concessions at the movie theater.",
         "D": "A decrease in the number of new blockbuster movies being released."
       },
-      "correct_answer": "The increasing popularity of streaming services and on-demand movies at home.",
+      "correct_answer": [
+        "The increasing popularity of streaming services and on-demand movies at home."
+      ],
       "explanation": "Streaming services are direct substitutes for the movie theater experience. Option A represents competitive rivalry. Option C impacts customer costs. Option D affects the quality of the movie theater's offering.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_15",
@@ -1692,7 +1913,9 @@
         "C": "There are a few dominant smartphone companies that engage in aggressive price wars and frequent product updates.",
         "D": "Smartphone companies collaborate on research and development to reduce costs and improve product quality."
       },
-      "correct_answer": "There are a few dominant smartphone companies that engage in aggressive price wars and frequent product updates.",
+      "correct_answer": [
+        "There are a few dominant smartphone companies that engage in aggressive price wars and frequent product updates."
+      ],
       "explanation": "High rivalry occurs when there are many competitors engaging in aggressive tactics like price wars. Option A describes a dominant firm. Option B describes product differentiation. Option D describes collaboration, which reduces rivalry.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_15",
@@ -1713,7 +1936,9 @@
         "C": "Narrow market/low-cost",
         "D": "Narrow market/differentiation"
       },
-      "correct_answer": "Narrow market/differentiation",
+      "correct_answer": [
+        "Narrow market/differentiation"
+      ],
       "explanation": "The bakery is focusing on a specific niche (gluten-free) and offering differentiated products (gluten-free baked goods). This is narrow market/differentiation. Option A targets a broad market and low prices. Option B targets a broad market with unique products. Option C targets a narrow market with low prices.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_16",
@@ -1735,7 +1960,9 @@
         "C": "Broad market/low-cost",
         "D": "Narrow market/differentiation"
       },
-      "correct_answer": "Broad market/low-cost",
+      "correct_answer": [
+        "Broad market/low-cost"
+      ],
       "explanation": "Walmart targets a wide customer base with low prices. This aligns with a broad market/low-cost strategy. Option A targets a broad market with unique products. Option B targets a narrow market with low prices. Option D targets a narrow market with unique products.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_16",
@@ -1757,7 +1984,9 @@
         "C": "Broad market/differentiation",
         "D": "Narrow market/differentiation"
       },
-      "correct_answer": "Narrow market/differentiation",
+      "correct_answer": [
+        "Narrow market/differentiation"
+      ],
       "explanation": "The car manufacturer is targeting a specific niche (affluent customers) with differentiated products (high-performance, cutting-edge technology). This is narrow market/differentiation. Option A targets a narrow market with low prices. Option B targets a broad market with low prices. Option C targets a broad market with unique products.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_16",
@@ -1779,7 +2008,9 @@
         "C": "Narrow market/low-cost",
         "D": "Broad market/low-cost"
       },
-      "correct_answer": "Narrow market/low-cost",
+      "correct_answer": [
+        "Narrow market/low-cost"
+      ],
       "explanation": "The airline is targeting a specific niche (price-sensitive travelers) with low prices. This is narrow market/low-cost. Option A targets a broad market with unique products. Option B targets a narrow market with unique products. Option D targets a broad market with low prices.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_16",
@@ -1801,7 +2032,9 @@
         "C": "Become 'stuck in the middle' by losing its competitive advantage.",
         "D": "Maintain its broad market/low-cost strategy without any changes."
       },
-      "correct_answer": "Shift to a broad market/differentiation strategy.",
+      "correct_answer": [
+        "Shift to a broad market/differentiation strategy."
+      ],
       "explanation": "By investing in innovation and customer service, the company is moving towards differentiation while still targeting a broad market. Option A describes a shift to a niche market with low prices. Option C describes a loss of focus. Option D describes maintaining the original strategy.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_16",
@@ -1823,7 +2056,9 @@
         "C": "Hire more bakers to increase production volume and meet potential demand.",
         "D": "Reduce marketing expenses to maximize profits from the increased efficiency."
       },
-      "correct_answer": "B: Develop new and unique recipes that utilize the oven's capabilities to create differentiated products.",
+      "correct_answer": [
+        "B: Develop new and unique recipes that utilize the oven's capabilities to create differentiated products."
+      ],
       "explanation": "The scenario describes a bakery investing in resources.  Simply having efficient ovens (resources) isn't enough. The bakery needs to leverage the ovens (capabilities) to create unique products (distinctive competencies). This leads to a differentiation advantage, creating sustained competitive advantage. Option B directly addresses developing unique competencies. Option A addresses cost, but not in relation to a distinctive competency.  Option C focuses on volume, not differentiation. Option D is counterproductive, as marketing is needed.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_17",
@@ -1846,7 +2081,9 @@
         "C": "The initial positive reviews from automotive journalists and industry experts.",
         "D": "The size of the marketing budget allocated to promoting the new vehicle."
       },
-      "correct_answer": "B: The ability of the company to efficiently manufacture and market the vehicle at a competitive price.",
+      "correct_answer": [
+        "B: The ability of the company to efficiently manufacture and market the vehicle at a competitive price."
+      ],
       "explanation": "The scenario describes a company with resources (R&D, technology). To gain a sustained competitive advantage, the company must effectively leverage these resources through capabilities (efficient manufacturing, marketing) to achieve either a cost or differentiation advantage. Option B encompasses both efficient manufacturing and competitive pricing. Option A (patents) provides some protection, but doesn't guarantee advantage. Option C (reviews) is temporary, and Option D (marketing budget) is necessary but not sufficient.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_17",
@@ -1869,7 +2106,9 @@
         "C": "The company consistently receives significantly higher customer satisfaction ratings compared to its competitors and builds a reputation for exceptional service.",
         "D": "The company is able to reduce its marketing budget because of positive word-of-mouth from customers."
       },
-      "correct_answer": "C: The company consistently receives significantly higher customer satisfaction ratings compared to its competitors and builds a reputation for exceptional service.",
+      "correct_answer": [
+        "C: The company consistently receives significantly higher customer satisfaction ratings compared to its competitors and builds a reputation for exceptional service."
+      ],
       "explanation": "The scenario describes a company investing in employee training (resources). This translates to a capability (improved customer service).  A distinctive competency arises when this capability is significantly better than competitors, leading to a differentiation advantage. Option C directly demonstrates this superior performance. Option A is a short-term effect, and Option B focuses on employee retention, and Option D is a possible outcome but doesn't demonstrate the *distinctive* competency.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_17",
@@ -1892,7 +2131,9 @@
         "C": "The programmers create a unique and innovative software platform that solves a critical problem for businesses better than any competing solution.",
         "D": "The programmers are paid higher salaries than programmers at other companies."
       },
-      "correct_answer": "C: The programmers create a unique and innovative software platform that solves a critical problem for businesses better than any competing solution.",
+      "correct_answer": [
+        "C: The programmers create a unique and innovative software platform that solves a critical problem for businesses better than any competing solution."
+      ],
       "explanation": "The scenario provides the resource (skilled programmers).  The key is how they leverage this. A distinctive competency is achieved by creating a solution superior to competitors (differentiation). Option C directly demonstrates this superior performance and innovation. Option A is good but not *distinctive*. Option B is a me-too product. Option D is irrelevant; it's about leveraging the resource, not just having it.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_17",
@@ -1915,7 +2156,10 @@
         "C": "Hiring experienced chefs from well-known restaurants.",
         "D": "Spending a large amount of money on advertising and marketing to attract customers."
       },
-      "correct_answer": "B: Creating a highly efficient food preparation process that allows for faster service and reduced food waste, resulting in consistently higher profit margins and customer satisfaction.",
+      "correct_answer": [
+        "B: Creating a highly efficient food preparation process that allows for faster service and reduced food waste",
+        "resulting in consistently higher profit margins and customer satisfaction."
+      ],
       "explanation": "Having state-of-the-art equipment (resources) is not enough.  The restaurant needs to develop a capability that leverages this equipment. Option B describes an efficient process that leads to both cost savings (higher profit margins) and differentiation (faster service, customer satisfaction), driving competitive advantage.  Option A focuses on price, not necessarily a sustainable advantage. Option C is simply hiring resources (chefs). Option D is marketing, which is useful but not a capability stemming from the equipment.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_17",
@@ -1938,7 +2182,10 @@
         "C": "Reduce the price of all books sold online to be competitive with other online retailers.",
         "D": "Maintain the same business processes and organizational structure as the physical bookstore."
       },
-      "correct_answer": "B: Implement a customer relationship management (CRM) system to track customer preferences and personalize recommendations based on data analysis, coupled with a digital business model such as online subscriptions or personalized content.",
+      "correct_answer": [
+        "B: Implement a customer relationship management (CRM) system to track customer preferences and personalize recommendations based on data analysis",
+        "coupled with a digital business model such as online subscriptions or personalized content."
+      ],
       "explanation": "The scenario describes a bookstore implementing technology (e-commerce website). A digital business requires technology, data-driven decisions, and a digital business model. Option B integrates data (CRM, personalization) and a digital business model (subscriptions, personalized content). Option A focuses on cost, not a holistic approach. Option C is about pricing, not digital transformation. Option D is incorrect as a digital business often requires new processes.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -1961,7 +2208,11 @@
         "C": "Adding more features to the app based on competitor analysis.",
         "D": "Releasing the app in multiple languages to reach a global audience."
       },
-      "correct_answer": "B: Implementing data analytics to track user behavior and personalize the app experience, combined with a sustainable digital business model, such as in-app purchases or subscriptions.",
+      "correct_answer": [
+        "B: Implementing data analytics to track user behavior and personalize the app experience",
+        "combined with a sustainable digital business model",
+        "such as in-app purchases or subscriptions."
+      ],
       "explanation": "The scenario describes a company with technology (mobile app). Transforming into a digital business requires technology, data, and a digital business model. Option B includes both data analytics (user behavior, personalization) and a digital business model (in-app purchases, subscriptions). Option A focuses solely on marketing. Option C focuses on features, not data. Option D expands reach but doesn't address data or business model.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -1984,7 +2235,12 @@
         "C": "Require drivers to check in with the dispatch center more frequently.",
         "D": "Purchase faster computers to process the GPS data more quickly."
       },
-      "correct_answer": "B: Use the GPS data to analyze delivery routes, identify bottlenecks, and optimize delivery schedules based on data insights, integrating this into their core operational decisions.",
+      "correct_answer": [
+        "B: Use the GPS data to analyze delivery routes",
+        "identify bottlenecks",
+        "and optimize delivery schedules based on data insights",
+        "integrating this into their core operational decisions."
+      ],
       "explanation": "The scenario describes technology (GPS tracking). To be data-driven, the company needs to use the data for decision-making. Option B directly involves analyzing the data to optimize routes and schedules. Option A is a visualization improvement. Option C is an outdated practice. Option D improves processing speed but doesn't address *using* the data for decisions.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -2007,7 +2263,11 @@
         "C": "Reducing the number of employees needed to perform basic accounting tasks.",
         "D": "Increasing the fees charged to clients for accounting services."
       },
-      "correct_answer": "B: Offering new data-driven consulting services based on the insights generated by the software, such as predictive financial analysis and personalized investment recommendations, shifting from basic accounting to value-added advisory services.",
+      "correct_answer": [
+        "B: Offering new data-driven consulting services based on the insights generated by the software",
+        "such as predictive financial analysis and personalized investment recommendations",
+        "shifting from basic accounting to value-added advisory services."
+      ],
       "explanation": "The scenario involves technology (accounting software). The firm needs to leverage the software to create a new digital business model and make data-driven decisions. Option B describes offering new, data-driven services. Option A is cosmetic. Option C is about efficiency, not a new model. Option D is about pricing, not transformation.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -2030,7 +2290,12 @@
         "C": "The ability to use the CRM data to personalize customer interactions, optimize marketing campaigns, and develop new data-driven products and services, aligning with a revised digital business strategy.",
         "D": "The cost savings achieved by switching to a cloud-based CRM system."
       },
-      "correct_answer": "C: The ability to use the CRM data to personalize customer interactions, optimize marketing campaigns, and develop new data-driven products and services, aligning with a revised digital business strategy.",
+      "correct_answer": [
+        "C: The ability to use the CRM data to personalize customer interactions",
+        "optimize marketing campaigns",
+        "and develop new data-driven products and services",
+        "aligning with a revised digital business strategy."
+      ],
       "explanation": "The scenario introduces technology (CRM system). For digital transformation, it needs to be combined with data-driven decisions and a digital business model. Option C directly addresses data usage (personalization, optimization) and a revised business strategy. Option A is training, a supporting factor. Option B is about integration, not usage. Option D is cost savings, not transformation.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_18",
@@ -2053,7 +2318,10 @@
         "C": "The number of servers used to host the recommendation engine.",
         "D": "The design of the user interface for displaying product recommendations."
       },
-      "correct_answer": "B: The algorithms and data sources used to generate personalized product recommendations, and how these influence customer purchasing behavior and sales.",
+      "correct_answer": [
+        "B: The algorithms and data sources used to generate personalized product recommendations",
+        "and how these influence customer purchasing behavior and sales."
+      ],
       "explanation": "Reverse engineering focuses on understanding how the information system powers the business model and creates a competitive advantage. Option B directly addresses the core functionality (algorithms, data sources) and its impact. Option A is a technical detail. Option C is infrastructure. Option D focuses on the UI, not the underlying system.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_19",
@@ -2076,7 +2344,12 @@
         "C": "The number of software developers employed by DoorDash.",
         "D": "The marketing campaigns used to attract new customers and drivers."
       },
-      "correct_answer": "B: The algorithms used to optimize delivery routes, assign drivers to orders, and predict delivery times, and how this impacts delivery speed and cost efficiency.",
+      "correct_answer": [
+        "B: The algorithms used to optimize delivery routes",
+        "assign drivers to orders",
+        "and predict delivery times",
+        "and how this impacts delivery speed and cost efficiency."
+      ],
       "explanation": "Reverse engineering aims to understand the platform's core functionalities and how they drive competitive advantage. Option B focuses on the algorithms driving delivery efficiency. Option A is about UI design. Option C is about resources, not functionality. Option D focuses on marketing.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_19",
@@ -2099,7 +2372,11 @@
         "C": "The number of offices TikTok has in different countries.",
         "D": "The celebrity endorsements TikTok secures for its platform."
       },
-      "correct_answer": "B: The algorithms used to personalize the 'For You' page, including how user engagement data is used to determine which videos are shown to each user, and how this drives user retention and content creation.",
+      "correct_answer": [
+        "B: The algorithms used to personalize the 'For You' page",
+        "including how user engagement data is used to determine which videos are shown to each user",
+        "and how this drives user retention and content creation."
+      ],
       "explanation": "Reverse engineering focuses on understanding how the platform's information system powers its business model. The 'For You' page algorithm is central to TikTok's success. Option B addresses the core algorithm and its impact. Options A, C, and D are peripheral aspects.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_19",
@@ -2122,7 +2399,12 @@
         "C": "The number of employees working in Airbnb's customer service department.",
         "D": "The design of Airbnb's website and mobile app."
       },
-      "correct_answer": "B: The system for matching guests with suitable properties, handling payments, and managing reviews, including the underlying data structures and algorithms that ensure trust and safety.",
+      "correct_answer": [
+        "B: The system for matching guests with suitable properties",
+        "handling payments",
+        "and managing reviews",
+        "including the underlying data structures and algorithms that ensure trust and safety."
+      ],
       "explanation": "The core of reverse engineering is to understand how the information system works. Option B directly addresses the core system functionalities and the underlying data and algorithms. The other options are not directly related to the functioning of the platform's competitive advantage.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_19",
@@ -2145,7 +2427,10 @@
         "C": "The amount of money Spotify pays to music artists in royalties.",
         "D": "The user interface design of Spotify's mobile app."
       },
-      "correct_answer": "B: The algorithms used to analyze user listening habits and generate personalized playlists, and how they leverage data from various sources to make accurate music recommendations.",
+      "correct_answer": [
+        "B: The algorithms used to analyze user listening habits and generate personalized playlists",
+        "and how they leverage data from various sources to make accurate music recommendations."
+      ],
       "explanation": "Reverse engineering should focus on understanding how the platform's IS supports the business model. Spotify's personalized playlists are a key feature driven by algorithms and data. Option B directly addresses this. Options A, C, and D are important but not central to the platform's core functionality.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_19",
@@ -2168,7 +2453,10 @@
         "C": "Printing out the spreadsheet and posting it on the wall for employees to see.",
         "D": "Sharing the spreadsheet with other local bakeries to compare sales data."
       },
-      "correct_answer": "B: Linking the spreadsheet to a point-of-sale (POS) system to automatically update inventory levels and sales data, and using the data to forecast demand and optimize production schedules.",
+      "correct_answer": [
+        "B: Linking the spreadsheet to a point-of-sale (POS) system to automatically update inventory levels and sales data",
+        "and using the data to forecast demand and optimize production schedules."
+      ],
       "explanation": "An IS collects, processes, stores, and distributes information to support decision-making. Option B creates a system that automatically updates data and uses it for forecasting. Option A is simply adding more data. Option C is about visibility, not processing. Option D is data sharing, but not internal IS development.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_20",
@@ -2191,7 +2479,12 @@
         "C": "Sending out a monthly email newsletter to loyalty program members.",
         "D": "Hiring more cashiers to process transactions more quickly."
       },
-      "correct_answer": "B: Using the loyalty program data to track customer purchase history, personalize marketing offers, and optimize product placement, leading to increased sales and customer retention.",
+      "correct_answer": [
+        "B: Using the loyalty program data to track customer purchase history",
+        "personalize marketing offers",
+        "and optimize product placement",
+        "leading to increased sales and customer retention."
+      ],
       "explanation": "An IS supports decision-making and business processes. Option B directly uses the loyalty program data to improve marketing, product placement, sales, and retention. Option A is a basic implementation. Option C is limited communication. Option D addresses transaction speed, not IS functionality.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_20",
@@ -2214,7 +2507,12 @@
         "C": "Hiring more maintenance workers to respond to equipment failures more quickly.",
         "D": "Purchasing more sensors to monitor additional equipment."
       },
-      "correct_answer": "B: Analyzing the sensor data to identify potential equipment failures, optimize production processes, and reduce downtime, leading to increased efficiency and cost savings.",
+      "correct_answer": [
+        "B: Analyzing the sensor data to identify potential equipment failures",
+        "optimize production processes",
+        "and reduce downtime",
+        "leading to increased efficiency and cost savings."
+      ],
       "explanation": "An IS collects, processes, and distributes information to support decision making. Option B uses the sensor data to improve operations. Option A is about visualization. Option C is a reactive measure. Option D is about data collection, not analysis or decision making.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_20",
@@ -2237,7 +2535,14 @@
         "C": "Promoting the online ordering system through social media advertising.",
         "D": "Reducing the price of menu items ordered online."
       },
-      "correct_answer": "B: Integrating the online ordering system with inventory management, customer relationship management (CRM), and kitchen display systems to streamline operations, personalize customer experiences, and optimize food preparation, leading to increased efficiency and customer satisfaction.",
+      "correct_answer": [
+        "B: Integrating the online ordering system with inventory management",
+        "customer relationship management (CRM)",
+        "and kitchen display systems to streamline operations",
+        "personalize customer experiences",
+        "and optimize food preparation",
+        "leading to increased efficiency and customer satisfaction."
+      ],
       "explanation": "An IS is a set of interrelated components. Option B describes integrating the online ordering system with other systems to improve operations, personalize experiences, and optimize processes. Option A is about menu expansion. Option C is marketing. Option D is pricing strategy.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_20",
@@ -2260,7 +2565,12 @@
         "C": "The extent to which the ERP system is used to streamline business processes, improve data visibility, and support decision-making across all functional areas of the organization, aligning with the company's strategic objectives.",
         "D": "The frequency with which the ERP system is updated with new software releases."
       },
-      "correct_answer": "C: The extent to which the ERP system is used to streamline business processes, improve data visibility, and support decision-making across all functional areas of the organization, aligning with the company's strategic objectives.",
+      "correct_answer": [
+        "C: The extent to which the ERP system is used to streamline business processes",
+        "improve data visibility",
+        "and support decision-making across all functional areas of the organization",
+        "aligning with the company's strategic objectives."
+      ],
       "explanation": "An IS is meant to improve decision-making and execute business processes. Option C focuses on streamlining processes, improving visibility, and supporting decision-making, which aligns with the company's goals. Options A, B, and D are factors in implementation but don't guarantee the system's effectiveness.",
       "difficulty_level": 2,
       "source_flashcard_id": "MIS_lec_1-3_20",

@@ -1,0 +1,2883 @@
+{
+  "questions": [
+    {
+      "type": "mca",
+      "question_text": "What are the core components that define a true 'Digital Business'? (Select all that apply)",
+      "question_visual": {
+        "type": "graphviz",
+        "dot_code": "/* layout=dot */\ndigraph G {\n    node [shape=box, style=filled, fillcolor=\"#E6F3FF\", margin=0.3, fontsize=11];\n    edge [color=\"#007BFF\", penwidth=2];\n\n    Tech [label=\"Technology\nis Core Competency\"];\n    Data [label=\"Data-driven\nDecision\"];\n    BM [label=\"Business Model\nis Inherently Digital\"];\n    DigitalBiz [label=\"Digital Business\", shape=doubleoctagon, fillcolor=\"#007BFF\", fontcolor=white];\n\n    Tech -> DigitalBiz [label=\"+\"];\n    Data -> DigitalBiz [label=\"+\"];\n    BM -> DigitalBiz [label=\"=\"];\n}"
+      },
+      "question_visual_type": "graphviz",
+      "options": {
+        "A": "Technology is a core competency.",
+        "B": "Decisions are data-driven.",
+        "C": "The business model is inherently digital.",
+        "D": "It primarily uses traditional brick-and-mortar stores with a minimal online presence."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": {
+        "text": "A, B, and C are correct because a true Digital Business integrates technology as a core competency, uses data to drive all major decisions, and operates with a business model that is fundamentally digital. Option D describes a traditional business, not a digital one.",
+        "step_by_step": [],
+        "interpretation": "Understanding these three pillars is crucial for identifying and building genuinely digital firms.",
+        "business_context": "Companies like Amazon or Zomato exemplify this integration, where their entire operation revolves around these digital principles."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_1",
+      "tags": [
+        "Digital Business",
+        "Core Competency",
+        "Data-driven Decision",
+        "Digital Business Model"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement best describes 'technology as a core competency' in a digital business?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "The business occasionally uses software for basic accounting tasks.",
+        "B": "Technology is fundamental to the business's value creation, competitive advantage, and operational processes.",
+        "C": "All IT functions are outsourced to a third-party vendor to reduce costs.",
+        "D": "The business has a strong presence on various social media platforms."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "B is correct because 'technology as a core competency' means that technology is deeply embedded in the business's strategy and operations, directly contributing to its unique value proposition and competitive edge. Options A, C, and D describe limited or external uses of technology, not its core integration.",
+        "step_by_step": [],
+        "interpretation": "A core competency implies that the business cannot function or compete effectively without its integrated technological capabilities.",
+        "business_context": "For a company like Google, its search algorithms and cloud infrastructure (technology) are its core competencies, not just tools."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_1",
+      "tags": [
+        "Digital Business",
+        "Technology",
+        "Core Competency"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A digital business often relies on 'data-driven decisions.' What is the primary reason for this?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "To reduce the need for any human input in decision-making.",
+        "B": "To make choices based on extensive analysis of collected information and metrics.",
+        "C": "To follow industry trends without requiring specific internal evidence.",
+        "D": "To automate all decision-making processes entirely with minimal oversight."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "B is correct because data-driven decisions involve using analytics and insights from collected data to inform and guide strategic and operational choices. This approach reduces uncertainty and improves the likelihood of successful outcomes. Options A and D imply full automation, which is an oversimplification, and C suggests a lack of evidence, contradicting the concept.",
+        "step_by_step": [],
+        "interpretation": "Data-driven means moving beyond intuition to decisions supported by empirical evidence.",
+        "business_context": "Netflix uses viewer data to decide which new shows to produce, ensuring content aligns with audience preferences."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_1",
+      "tags": [
+        "Digital Business",
+        "Data-driven Decision",
+        "Analytics"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "An 'inherently digital business model' means the business:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Has a physical storefront but also offers an online catalog.",
+        "B": "Conducts all its primary operations, value delivery, and customer interactions primarily through digital platforms and processes.",
+        "C": "Only accepts digital payments and does not handle cash.",
+        "D": "Uses digital marketing exclusively, but operates mostly offline."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "B is correct because an inherently digital business model is one where the fundamental way the business operates and delivers value is intrinsically tied to digital technology and platforms. It would be impossible or severely hampered without its digital infrastructure. Option A describes a traditional business with an online extension, while C and D are too narrow or contradictory.",
+        "step_by_step": [],
+        "interpretation": "The digital nature is not just an add-on but defines the very existence and function of the business.",
+        "business_context": "Online marketplaces like eBay or ride-sharing apps like Uber have inherently digital business models; they cannot exist without their digital platforms."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_1",
+      "tags": [
+        "Digital Business",
+        "Business Model",
+        "Digital Platform"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following activities alone does NOT define a business as truly 'digital' according to the core components of a Digital Business?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Leveraging advanced Artificial Intelligence (AI) for product recommendations.",
+        "B": "Using real-time customer feedback data to continuously develop and improve products.",
+        "C": "Having a business model built entirely on an online platform for global reach.",
+        "D": "Simply having a company website and social media profiles for marketing."
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": {
+        "text": "D is correct as it represents a common misconception. While using a website and social media is 'doing business online,' it does not inherently mean technology is a core competency, decisions are data-driven, or the business model is intrinsically digital. Options A, B, and C exemplify the core characteristics of a true digital business.",
+        "step_by_step": [],
+        "interpretation": "A true digital business integrates digital aspects deeply into its structure, rather than just using digital tools superficially.",
+        "business_context": "Many traditional businesses have websites, but that doesn't make them 'digital firms' in the same way Amazon or Google are."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_1",
+      "tags": [
+        "Digital Business",
+        "Common Mistakes",
+        "Technology Adoption"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT typically considered a main category of Digital Business Models, as defined in MIS?",
+      "question_visual": {
+        "type": "graphviz",
+        "dot_code": "/* layout=dot */\ndigraph G {\n    node [shape=box, style=filled, fillcolor=\"#E6F3FF\", margin=0.3, fontsize=11];\n    edge [color=\"#007BFF\", penwidth=1];\n\n    DBM [label=\"Digital Business\nModels\"];\n    Etailer [label=\"E-tailer\n(e.g., Amazon)\"];\n    TransBroker [label=\"Transaction Broker\n(e.g., Zerodha)\"];\n    MarketCreator [label=\"Market Creator\n(e.g., Airbnb)\"];\n    ContentProv [label=\"Content Provider\n(e.g., Netflix)\"];\n    CommunityProv [label=\"Community Provider\n(e.g., Instagram)\"];\n    ServiceProv [label=\"Service Provider\n(e.g., Uber)\"];\n\n    DBM -> Etailer;\n    DBM -> TransBroker;\n    DBM -> MarketCreator;\n    DBM -> ContentProv;\n    DBM -> CommunityProv;\n    DBM -> ServiceProv;\n}"
+      },
+      "question_visual_type": "graphviz",
+      "options": {
+        "A": "E-tailer",
+        "B": "Transaction Broker",
+        "C": "Content Provider",
+        "D": "Physical Distributor"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": {
+        "text": "D is correct. While digital businesses might use physical distribution, 'Physical Distributor' itself is not one of the primary categories of Digital Business Models (E-tailer, Transaction Broker, Market Creator, Content Provider, Community Provider, Service Provider). Options A, B, and C are all recognized digital business models.",
+        "step_by_step": [],
+        "interpretation": "It's important to differentiate between a business function (distribution) and a fundamental business model category.",
+        "business_context": "Even Amazon, an E-tailer, performs physical distribution, but its core model is online retail, not just the act of distributing goods."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_2",
+      "tags": [
+        "Digital Business Models",
+        "Classification"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "An online clothing store like ZARA, which sells products directly to consumers via its website, is an example of which digital business model?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Service Provider",
+        "B": "E-tailer",
+        "C": "Transaction Broker",
+        "D": "Content Provider"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "B is correct. An E-tailer (electronic retailer) is a digital business model that sells physical goods directly to consumers online, similar to how a traditional retailer operates but exclusively or primarily through digital channels. ZARA's online store fits this description perfectly. Options A, C, and D describe different models.",
+        "step_by_step": [],
+        "interpretation": "E-tailers are essentially online versions of traditional retail stores.",
+        "business_context": "Amazon started primarily as an E-tailer, selling books online before expanding into other categories."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_2",
+      "tags": [
+        "Digital Business Models",
+        "E-tailer",
+        "Retail"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Zerodha, an online platform that facilitates stock market trades and charges a fee for each transaction, primarily operates as what type of digital business model?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Market Creator",
+        "B": "Transaction Broker",
+        "C": "Content Provider",
+        "D": "Community Provider"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "B is correct. A Transaction Broker is a digital business model that facilitates and executes transactions for customers in an existing market, often for a fee. Zerodha fits this by enabling stock trades. Options A, C, and D describe models with different primary functions.",
+        "step_by_step": [],
+        "interpretation": "Transaction brokers focus on efficiency and convenience in processing standard transactions.",
+        "business_context": "Skyscanner, which helps book flights, is another example of a Transaction Broker."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_2",
+      "tags": [
+        "Digital Business Models",
+        "Transaction Broker",
+        "Finance"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A digital platform like Airbnb, which connects individuals offering lodging with those seeking it, primarily functions as a:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Service Provider",
+        "B": "E-tailer",
+        "C": "Market Creator",
+        "D": "Content Provider"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "C is correct. A Market Creator is a digital business model that brings together buyers and sellers who might not otherwise find each other, creating a new market for goods or services. Airbnb exemplifies this by connecting property owners with travelers. While it facilitates services, its primary role is market creation. Options A, B, and D are incorrect.",
+        "step_by_step": [],
+        "interpretation": "Market Creators facilitate interactions and set the rules for a new or transformed market.",
+        "business_context": "eBay is a classic example, creating a marketplace for diverse goods from individual sellers to buyers worldwide."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_2",
+      "tags": [
+        "Digital Business Models",
+        "Market Creator",
+        "Sharing Economy"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the key distinction between a 'Market Creator' and a 'Transaction Broker' in digital business models?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Market Creators primarily sell products, while Transaction Brokers primarily sell services.",
+        "B": "Market Creators build new markets by connecting disparate parties, while Transaction Brokers primarily process standardized transactions in existing markets.",
+        "C": "Market Creators only deal with physical goods, while Transaction Brokers only deal with digital goods.",
+        "D": "There is no significant distinction; the terms are largely interchangeable in practice."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "B is correct. The crucial difference is that Market Creators (like eBay, Airbnb) establish a platform for interaction between various buyers and sellers, often forming a new market. Transaction Brokers (like Zerodha, Skyscanner) primarily streamline and process existing, standardized transactions within an established market. Options A, C, and D are incorrect distinctions.",
+        "step_by_step": [],
+        "interpretation": "One creates the space for interaction, the other optimizes the mechanics of interaction within an existing space.",
+        "business_context": "Understanding this distinction helps clarify how different platforms generate value and revenue in the digital economy."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_2",
+      "tags": [
+        "Digital Business Models",
+        "Market Creator",
+        "Transaction Broker",
+        "Common Mistakes"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is NOT one of the primary revenue models for digital businesses?",
+      "question_visual": {
+        "type": "graphviz",
+        "dot_code": "/* layout=dot */\ndigraph G {\n    node [shape=oval, style=filled, fillcolor=\"#F0F8FF\", margin=0.3, fontsize=11];\n    edge [color=\"#4682B4\", penwidth=1];\n\n    RM [label=\"Revenue Models\"];\n    Adv [label=\"Advertising\"];\n    Sub [label=\"Subscription\"];\n    FreeF [label=\"Free/Freemium\"];\n    Aff [label=\"Affiliate\"];\n    Trans [label=\"Transaction\"];\n    Sales [label=\"Sales\"];\n\n    RM -> Adv;\n    RM -> Sub;\n    RM -> FreeF;\n    RM -> Aff;\n    RM -> Trans;\n    RM -> Sales;\n}"
+      },
+      "question_visual_type": "graphviz",
+      "options": {
+        "A": "Subscription",
+        "B": "Advertising",
+        "C": "Barter",
+        "D": "Sales"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "C is correct. Barter, which involves exchanging goods or services without money, is not typically listed as one of the primary revenue models for digital businesses. The common models include Advertising, Subscription, Free/Freemium, Affiliate, Transaction, and Sales. Options A, B, and D are all recognized digital revenue models.",
+        "step_by_step": [],
+        "interpretation": "Revenue models focus on how monetary income is generated.",
+        "business_context": "Understanding these models helps businesses strategize how to monetize their digital offerings effectively."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_3",
+      "tags": [
+        "Revenue Model",
+        "Classification"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Netflix charges users a monthly fee for unlimited access to its library of movies and TV shows. This is an example of which revenue model?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Advertising model",
+        "B": "Affiliate model",
+        "C": "Subscription model",
+        "D": "Free/Freemium model"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "C is correct. A Subscription model generates revenue by charging customers a recurring fee (e.g., monthly or annually) for access to a service or content. Netflix's business model, providing access to its content library for a monthly fee, is a prime example of a subscription model. Options A, B, and D describe different methods of income generation.",
+        "step_by_step": [],
+        "interpretation": "Subscription models rely on consistent user engagement and perceived value to maintain recurring payments.",
+        "business_context": "Many software-as-a-service (SaaS) companies, like Adobe Creative Cloud, also use subscription models."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_3",
+      "tags": [
+        "Revenue Model",
+        "Subscription",
+        "Netflix"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Spotify offers a free version with ads and limited features, alongside a paid premium version with no ads and full features. This strategy is known as the:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Sales model",
+        "B": "Affiliate model",
+        "C": "Free/Freemium model",
+        "D": "Transaction model"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "C is correct. The Free/Freemium model offers a basic version of a service or product for free to attract a large user base, while also providing a premium version with enhanced features or no ads for a fee. Spotify's offering perfectly illustrates this model. Options A, B, and D are distinct revenue models.",
+        "step_by_step": [],
+        "interpretation": "The goal of freemium is to convert free users into paying subscribers by showcasing the value of the premium features.",
+        "business_context": "LinkedIn also uses a freemium model, offering basic networking for free and advanced features with a premium subscription."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_3",
+      "tags": [
+        "Revenue Model",
+        "Free/Freemium",
+        "Spotify"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Google's main source of income comes from displaying targeted ads on its search results pages and YouTube. This represents which revenue model?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Transaction model",
+        "B": "Subscription model",
+        "C": "Advertising model",
+        "D": "Sales model"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "C is correct. The Advertising model generates revenue by selling space or time for advertisements to businesses. Google monetizes its vast user base and data by displaying targeted ads across its platforms, making this its primary revenue stream. Options A, B, and D are different ways of earning income.",
+        "step_by_step": [],
+        "interpretation": "In the advertising model, the 'product' is often user attention and data, which is then sold to advertisers.",
+        "business_context": "Social media platforms like Facebook (Meta) also heavily rely on the advertising revenue model."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_3",
+      "tags": [
+        "Revenue Model",
+        "Advertising",
+        "Google"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which statement accurately reflects a common practice regarding revenue models in successful digital businesses?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Most digital businesses rely exclusively on a single revenue model.",
+        "B": "Combining multiple revenue models is a common strategy to diversify income and maximize profitability.",
+        "C": "The Free/Freemium model is always the most profitable option for any digital business.",
+        "D": "Advertising is typically the only viable revenue model for online platforms with large user bases."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "B is correct. Many successful digital firms, like Amazon, strategically combine several revenue models (e.g., sales, subscription for Prime, advertising, affiliate programs) to create diverse income streams and enhance resilience. Options A, C, and D are common misconceptions or overgeneralizations about digital revenue strategies.",
+        "step_by_step": [],
+        "interpretation": "Diversification of revenue streams minimizes risk and caters to different customer segments and value propositions.",
+        "business_context": "A company might sell products (sales model), offer premium content (subscription model), and host ads (advertising model) all on the same platform."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_3",
+      "tags": [
+        "Revenue Model",
+        "Diversification",
+        "Common Mistakes"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a key component that helps digital platforms efficiently process vast amounts of information?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Proprietary Data",
+        "B": "Core Information System",
+        "C": "External Marketing Agencies",
+        "D": "Physical Infrastructure"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "A Core Information System is essential for digital platforms to efficiently process and manage the vast amounts of data and information they handle daily. It acts as the 'brain' that organizes and makes sense of the data. Proprietary data (A) is the data itself, not the system that processes it. External marketing agencies (C) and physical infrastructure (D) are supporting elements but not the core processing engine.",
+        "step_by_step": [],
+        "interpretation": "Understanding the role of a Core Information System is fundamental to grasping how digital platforms operate and derive value from data.",
+        "business_context": "Companies like Amazon or Google rely on sophisticated core information systems to manage everything from customer orders to search queries, enabling their digital services."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_4",
+      "tags": [
+        "Core Information System",
+        "Digital Platforms",
+        "Information Processing"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "How does proprietary data primarily contribute to a digital platform's competitive edge?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "By minimizing the need for marketing",
+        "B": "By serving as raw data without further analysis",
+        "C": "By informing strategy and powering unique business models",
+        "D": "By reducing the cost of physical goods"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Proprietary data gives digital platforms a unique advantage by providing insights that inform strategic decisions and enable the creation of unique business models that competitors cannot easily replicate. It's not just about collecting data (B), but how that data is used. While it can indirectly help marketing (A), its primary contribution is strategic. It does not directly reduce the cost of physical goods (D) unless those goods are digital.",
+        "step_by_step": [],
+        "interpretation": "The value of proprietary data lies in its application to strategic decision-making and business innovation.",
+        "business_context": "Netflix uses its proprietary data on viewing habits to recommend content and develop original shows, which are key differentiators from competitors."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_4",
+      "tags": [
+        "Proprietary Data",
+        "Competitive Edge",
+        "Strategy",
+        "Business Models"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a common mistake companies make regarding 'big data' and competitive advantage?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Assuming that simply collecting 'big data' automatically leads to competitive advantage.",
+        "B": "Investing too much in robust core information systems.",
+        "C": "Focusing too heavily on data analysis and interpretation.",
+        "D": "Protecting proprietary data too rigorously."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": {
+        "text": "A common mistake is believing that merely collecting large volumes of 'big data' will automatically result in a competitive advantage. The true value comes from effectively analyzing, interpreting, and integrating that data into decision-making. Investing in robust systems (B), focusing on analysis (C), and protecting data (D) are all generally beneficial actions, not mistakes.",
+        "step_by_step": [],
+        "interpretation": "Raw data, even 'big data,' has little value without proper processing and strategic application.",
+        "business_context": "Many companies collect vast amounts of customer data but fail to derive actionable insights, leading to missed opportunities while others who analyze effectively gain market share."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_4",
+      "tags": [
+        "Big Data",
+        "Common Mistakes",
+        "Competitive Advantage",
+        "Data Utilization"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What characteristic best defines 'proprietary data' for a digital platform?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Data that is publicly available to all competitors.",
+        "B": "Data that is purchased from third-party vendors.",
+        "C": "Data that is uniquely collected and owned by the platform.",
+        "D": "Data that is outdated and no longer relevant."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Proprietary data is information that a digital platform uniquely collects and owns, giving it an exclusive resource that competitors typically do not have direct access to. It is not publicly available (A), nor is it typically purchased from third parties (B) when referring to 'proprietary' in the context of competitive advantage. Outdated data (D) would not provide a competitive edge.",
+        "step_by_step": [],
+        "interpretation": "Proprietary data is a unique asset, distinct from publicly available or acquired data.",
+        "business_context": "Google's search query data or Facebook's social graph are examples of proprietary data that are unique to their platforms and form the basis of their competitive strength."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_4",
+      "tags": [
+        "Proprietary Data",
+        "Definition",
+        "Digital Platforms"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following aspects are critical for transforming proprietary data into a significant competitive advantage? (Select all that apply)",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Effective analysis of the data.",
+        "B": "Interpretation of insights derived from the data.",
+        "C": "Collecting as much raw data as possible, regardless of relevance.",
+        "D": "Integration of data insights into decision-making processes."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": {
+        "text": "To gain a competitive advantage from proprietary data, effective analysis (A) is needed to find patterns, interpretation (B) is crucial to understand what those patterns mean, and integration (D) ensures these insights are used in strategic decisions. Simply collecting raw data (C) without processing it offers little strategic value.",
+        "step_by_step": [
+          {
+            "step": 1,
+            "title": "Analyze Data",
+            "content": "Raw proprietary data must be processed and analyzed to identify trends, patterns, and anomalies. This transforms raw information into actionable intelligence."
+          },
+          {
+            "step": 2,
+            "title": "Interpret Insights",
+            "content": "Once analyzed, the data needs to be interpreted within the business context to understand its implications for strategy, operations, and customer behavior. This gives meaning to the numbers."
+          },
+          {
+            "step": 3,
+            "title": "Integrate into Decision-Making",
+            "content": "The interpreted insights must then be integrated into the organization's decision-making processes and business models. This ensures that data-driven strategies are formulated and executed, leading to a competitive edge."
+          },
+          {
+            "step": 4,
+            "title": "Why Option C is Incorrect",
+            "content": "Collecting vast amounts of raw data (Option C) without effective analysis, interpretation, and integration is a common mistake. Raw data, on its own, does not automatically translate into strategic value or competitive advantage."
+          }
+        ],
+        "interpretation": "The 'Value of Information Processing' is derived from a systematic approach that moves beyond mere collection to active analysis, interpretation, and strategic application.",
+        "business_context": "Zerodha, as mentioned in the flashcard, analyzes trading patterns (A), interprets client risk appetites (B), and integrates these insights into personalized recommendations (D) to achieve higher client retention and competitive advantage."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_4",
+      "tags": [
+        "Proprietary Data",
+        "Competitive Advantage",
+        "Data Analysis",
+        "Value of Information Processing"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "In an organizational context, what is a 'decision' defined as?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "A continuous process of analysis and feedback.",
+        "B": "A choice or judgment based on possibilities.",
+        "C": "A pre-determined course of action.",
+        "D": "A purely intuitive response to a situation."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "A 'decision' is fundamentally a choice or judgment made from available possibilities. While decision-making is a continuous process (A), the 'decision' itself is the specific choice. It is not necessarily pre-determined (C) and ideally should not be purely intuitive (D) in an organizational context.",
+        "step_by_step": [],
+        "interpretation": "A decision is the singular act of choosing, distinct from the broader process of decision-making.",
+        "business_context": "Deciding to launch a new product is a 'decision,' while the market research, financial projections, and competitor analysis leading up to it are part of the 'decision-making' process."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_5",
+      "tags": [
+        "Decision",
+        "Definition",
+        "Organizational Decisions"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does 'Decision Making' primarily emphasize in an organizational context?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "The final outcome of a choice, regardless of the process.",
+        "B": "How individuals and organizations form, analyze, and optimize choices.",
+        "C": "Only the speed at which a choice is made.",
+        "D": "The initial identification of a problem."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Organizational 'decision-making' emphasizes the entire process of how individuals and organizations form, analyze, and optimize choices under various conditions to achieve objectives. It is more than just the final outcome (A), and involves more than just speed (C) or problem identification (D), encompassing a structured approach to selection.",
+        "step_by_step": [],
+        "interpretation": "Decision-making is a comprehensive process, not just a single event or a simple problem-solving step.",
+        "business_context": "When a company plans its annual budget, the 'decision-making' involves analyzing past performance, forecasting future needs, optimizing resource allocation, and forming choices about spending priorities across departments."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_5",
+      "tags": [
+        "Decision Making",
+        "Organizational Decisions",
+        "Decision Analysis"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "According to common mistakes in decision-making, relying purely on intuition without leveraging data or structured analysis can lead to what?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Guaranteed optimal outcomes.",
+        "B": "Faster decision implementation.",
+        "C": "Suboptimal or risky outcomes.",
+        "D": "Reduced need for organizational objectives."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "The flashcard highlights that making decisions based purely on intuition without leveraging data or structured analysis is a common mistake that can lead to suboptimal or risky outcomes. While intuition can play a role, it doesn't guarantee optimal outcomes (A). It might lead to faster decisions (B) but at the cost of accuracy, and it does not reduce the need for objectives (D).",
+        "step_by_step": [],
+        "interpretation": "Data-driven decision-making is generally preferred over purely intuition-based approaches for better outcomes.",
+        "business_context": "A retail manager deciding on inventory levels solely based on a 'gut feeling' without looking at sales data or seasonality trends might end up with too much unsold stock or missed sales, leading to suboptimal outcomes."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_5",
+      "tags": [
+        "Decision Making",
+        "Common Mistakes",
+        "Intuition",
+        "Data-Driven Decision"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in organizational decision-making is viewing decisions as:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Iterative and continuous processes.",
+        "B": "Part of a structured analysis framework.",
+        "C": "Isolated events rather than a continuous process.",
+        "D": "Always leading to optimal outcomes if data is used."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "A common mistake is viewing decisions as isolated events rather than understanding them as part of a continuous and iterative 'decision-making' process. Options A and B describe effective decision-making practices, not mistakes. While data helps, it doesn't always guarantee optimal outcomes (D) without proper analysis and interpretation.",
+        "step_by_step": [],
+        "interpretation": "Effective decision-making is an ongoing cycle of analysis, action, and feedback.",
+        "business_context": "A company that treats each product launch decision as a one-off event, rather than learning from past launches and continuously refining its process, is making this common mistake."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_5",
+      "tags": [
+        "Decision Making",
+        "Common Mistakes",
+        "Iterative Process"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which characteristic best describes effective organizational decision-making?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Static and unchanging once a choice is made.",
+        "B": "Purely reactive to immediate problems.",
+        "C": "Iterative, involving constant analysis, feedback, and potential optimization.",
+        "D": "Solely based on the highest authority's opinion."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Effective decision-making is iterative, meaning it involves constant analysis, feedback, and potential optimization, rather than being a static or purely reactive process. While authority (D) and reactions (B) play a part, the emphasis is on continuous improvement and adaptation.",
+        "step_by_step": [],
+        "interpretation": "The dynamic nature of business environments requires decision-making processes to be flexible and adaptive.",
+        "business_context": "Agile software development teams constantly make and refine decisions based on continuous feedback from users and stakeholders, embodying iterative decision-making."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_5",
+      "tags": [
+        "Decision Making",
+        "Iterative Process",
+        "Optimization"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What type of information is primarily used in Behavioural Targeting?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "User's current location data.",
+        "B": "User's online browsing behavior.",
+        "C": "Demographic data from census records.",
+        "D": "Content of the current webpage being viewed."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Behavioural Targeting specifically uses information about a user's *past online browsing behavior*, such as websites visited and searches made, to deliver personalized ads. While location data (A) and demographic data (C) can be used in other forms of targeting, they are not the primary basis for behavioral targeting. The content of the current webpage (D) describes contextual advertising, not behavioral targeting.",
+        "step_by_step": [],
+        "interpretation": "The core of behavioral targeting is understanding and reacting to a user's historical online actions.",
+        "business_context": "If a user frequently searches for 'hiking boots' and visits outdoor gear websites, behavioural targeting ensures they see ads for hiking boots on other, unrelated sites they visit later."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_6",
+      "tags": [
+        "Behavioural Targeting",
+        "User Data",
+        "Online Behavior"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the main goal of Behavioural Targeting in digital business?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "To display generic advertisements to a broad audience.",
+        "B": "To deliver highly relevant and personalized advertisements or content.",
+        "C": "To prevent users from seeing any advertisements.",
+        "D": "To collect data for purely academic research."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "The primary goal of Behavioural Targeting is to use collected user data to deliver advertisements or content that is highly relevant and personalized to the individual user's inferred interests. It is not about generic ads (A) or preventing ads (C). While data may be used for research, the main business goal is personalization for marketing (B).",
+        "step_by_step": [],
+        "interpretation": "Personalization is key to increasing engagement and conversion rates in digital marketing.",
+        "business_context": "Netflix's recommendation engine is a prime example, suggesting movies and shows highly likely to appeal to individual users based on their viewing history, which improves user engagement and retention."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_6",
+      "tags": [
+        "Behavioural Targeting",
+        "Digital Marketing",
+        "Personalization",
+        "Targeted Ads"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "How does Behavioural Targeting primarily differ from Contextual Advertising?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Behavioural targeting uses a user's past browsing history, while contextual advertising uses the current page's content.",
+        "B": "Behavioural targeting focuses on print media, while contextual advertising focuses on digital media.",
+        "C": "Behavioural targeting never uses cookies, while contextual advertising always does.",
+        "D": "Behavioural targeting displays ads randomly, while contextual advertising is always precise."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": {
+        "text": "The key distinction is that Behavioural Targeting relies on a user's *past browsing history and inferred interests* across multiple sites, whereas Contextual Advertising displays ads based on the content of the *current webpage* the user is viewing. Options B, C, and D are incorrect distinctions.",
+        "step_by_step": [
+          {
+            "step": 1,
+            "title": "Behavioural Targeting Focus",
+            "content": "Behavioural targeting analyzes a user's historical online activities, such as websites visited, search queries, and previous purchases, to build a profile of their interests."
+          },
+          {
+            "step": 2,
+            "title": "Contextual Advertising Focus",
+            "content": "Contextual advertising, in contrast, serves ads based solely on the content and keywords present on the specific webpage the user is currently viewing, irrespective of their past online behavior."
+          }
+        ],
+        "interpretation": "Understanding this difference is crucial for distinguishing between these two prevalent digital advertising strategies.",
+        "business_context": "An ad for car insurance on a car review website is contextual. An ad for car insurance shown on a news website to a user who recently searched for 'new car models' is behavioral."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_6",
+      "tags": [
+        "Behavioural Targeting",
+        "Contextual Advertising",
+        "Digital Marketing",
+        "Common Mistakes"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a potential negative consequence of overly aggressive Behavioural Targeting?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Increased user satisfaction and loyalty.",
+        "B": "Improved ad relevance and click-through rates.",
+        "C": "Privacy concerns and user annoyance, leading to 'ad fatigue'.",
+        "D": "Reduced operational costs for advertisers."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Overly aggressive Behavioural Targeting can lead to users feeling their privacy is invaded and becoming annoyed by constant, repetitive ads, often resulting in 'ad fatigue' or distrust. Options A and B are positive outcomes associated with effective (not overly aggressive) targeting. Option D is not a direct consequence of aggressive targeting.",
+        "step_by_step": [],
+        "interpretation": "There is a delicate balance between personalization and respecting user privacy/avoiding annoyance.",
+        "business_context": "Users frequently seeing ads for an item they already purchased, or feeling 'followed' online, can develop negative sentiments towards a brand, even leading to ad-blocker adoption."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_6",
+      "tags": [
+        "Behavioural Targeting",
+        "Privacy Concerns",
+        "Ad Fatigue",
+        "User Annoyance"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which technology is commonly used to track user browsing behavior for behavioural targeting?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Email newsletters.",
+        "B": "Tracking cookies.",
+        "C": "Physical mail advertisements.",
+        "D": "Television commercials."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Tracking cookies are small pieces of data stored on a user's browser, commonly used by websites and advertising networks to record browsing behavior across different sites, which is fundamental to behavioural targeting. Email newsletters (A), physical mail (C), and television commercials (D) are marketing channels, not technologies for tracking online behavior.",
+        "step_by_step": [],
+        "interpretation": "Cookies are a foundational technology for enabling personalized online experiences and advertising.",
+        "business_context": "When you visit a website, cookies often record your activity, allowing that site or its advertising partners to later show you relevant ads based on what you viewed, even on other websites."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_6",
+      "tags": [
+        "Behavioural Targeting",
+        "Tracking Cookies",
+        "User Data",
+        "Technology"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best defines strategic decision making in a business context?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Daily choices made by operational managers to optimize workflow.",
+        "B": "High-level choices that determine the long-term direction and competitive advantage of an organization.",
+        "C": "Short-term adjustments to product pricing based on quarterly sales data.",
+        "D": "Decisions focused on improving the efficiency of a single department's tasks."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Strategic decision making involves high-level choices that define an organization's long-term direction, scope, and competitive advantage. It sets the overarching path for the company. Option A, C, and D describe operational or tactical decisions, which are short-term and focused on efficiency or specific departmental goals.",
+        "step_by_step": [],
+        "interpretation": "Strategic decisions are about the 'big picture' and the future of the entire organization.",
+        "business_context": "Understanding strategic decisions is crucial for aligning information systems investments with the firm's overarching business goals."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_7",
+      "tags": [
+        "Strategic Decision Making",
+        "Business Strategy",
+        "Long-term Implications"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A key characteristic of strategic decisions is that they typically involve:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Low uncertainty and immediate results.",
+        "B": "Significant resource commitment and high uncertainty.",
+        "C": "Minor adjustments to existing processes.",
+        "D": "Decisions with implications only for a single department."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Strategic decisions are characterized by significant resource commitment, high uncertainty, and broad implications across the entire firm, as they shape the long-term future. Options A, C, and D describe attributes of operational or tactical decisions, not strategic ones.",
+        "step_by_step": [],
+        "interpretation": "High stakes and an uncertain future are hallmarks of strategic choices.",
+        "business_context": "When a company decides to invest billions in a new technology, it's a strategic decision because of the immense resources committed and the uncertain outcome."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_7",
+      "tags": [
+        "Strategic Decision Making",
+        "High Uncertainty",
+        "Resource Commitment"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of a strategic decision for a large technology company?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Adjusting the price of an existing smartphone model for a holiday sale.",
+        "B": "Optimizing the server load balance in their data centers for better performance.",
+        "C": "Deciding to enter a completely new product category, like augmented reality headsets, requiring massive R&D.",
+        "D": "Hiring a new customer support team for a specific region."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Deciding to enter a completely new product category (like AR headsets) is a strategic decision because it involves massive R&D investment, new supply chains, and shapes the company's future market position for decades. The other options are tactical or operational decisions focused on short-term optimization or existing processes.",
+        "step_by_step": [],
+        "interpretation": "Strategic decisions impact the fundamental direction and identity of the company.",
+        "business_context": "Such a decision requires extensive analysis of market trends, technological feasibility, and competitive landscape, often supported by sophisticated MIS."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_7",
+      "tags": [
+        "Strategic Decision Making",
+        "Real-world Use Case",
+        "Product Strategy"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in strategic decision making is confusing it with decisions that are primarily focused on:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Setting the long-term vision.",
+        "B": "Optimizing existing processes for short-term goals.",
+        "C": "Allocating significant resources for future growth.",
+        "D": "Navigating high levels of uncertainty."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "A common mistake is confusing strategic decisions with tactical or operational ones, which are primarily about optimizing existing processes or achieving short-term goals. Strategic decisions, conversely, are about setting the long-term vision, allocating significant resources, and dealing with high uncertainty.",
+        "step_by_step": [],
+        "interpretation": "It's important to distinguish between decisions that steer the ship (strategic) and those that just keep it running smoothly (operational/tactical).",
+        "business_context": "Misidentifying decision types can lead to resource misallocation and a lack of long-term vision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_7",
+      "tags": [
+        "Strategic Decision Making",
+        "Common Mistakes",
+        "Tactical vs Strategic"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are key characteristics of strategic decisions? (Select all that apply)",
+      "question_visual": {
+        "type": "mermaid",
+        "code": "graph TD\n    A[Strategic Decision Making] --> B{High Uncertainty & Long-term Implications}\n    B --> C(Resource Commitment)\n    B --> D(Broad Organizational Impact)\n    B --> E(Shapes Future Direction)"
+      },
+      "question_visual_type": "mermaid",
+      "options": {
+        "A": "They involve a high degree of uncertainty.",
+        "B": "They focus on immediate, day-to-day operations.",
+        "C": "They require significant commitment of organizational resources.",
+        "D": "They primarily impact a single, isolated department."
+      },
+      "correct_answer": [
+        "A",
+        "C"
+      ],
+      "explanation": {
+        "text": "Strategic decisions are characterized by high uncertainty and require significant resource commitment, as they aim to shape the long-term direction of the organization. Options B and D describe operational decisions, which are short-term and typically have a narrower scope.",
+        "step_by_step": [],
+        "interpretation": "Strategic decisions are inherently risky due to their long-term nature and the investment required.",
+        "business_context": "Information systems play a crucial role in providing data and analytical tools to help reduce uncertainty in strategic planning."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_7",
+      "tags": [
+        "Strategic Decision Making",
+        "High Uncertainty",
+        "Resource Commitment",
+        "Organizational Impact"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does a market entry strategy primarily define for a company?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "How to optimize existing product distribution channels.",
+        "B": "How to introduce its products or services into a new market.",
+        "C": "How to manage daily customer service operations.",
+        "D": "How to reduce production costs for current product lines."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "A market entry strategy specifically defines how a company plans to introduce its products or services into a new market. Options A, C, and D relate to optimizing existing operations or processes, not entering new markets.",
+        "step_by_step": [],
+        "interpretation": "Market entry strategy is fundamentally about expanding a company's reach into new territories or customer segments.",
+        "business_context": "This strategy is critical for business growth and can involve significant investment in market research and infrastructure."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_8",
+      "tags": [
+        "Market Entry",
+        "Business Strategy",
+        "Product Launch"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a potential benefit for a company being an early entrant into a new market?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Lower investment costs due to established infrastructure.",
+        "B": "Reduced technological uncertainty as others have paved the way.",
+        "C": "Opportunity to secure first-mover advantage and strong brand positioning.",
+        "D": "Guaranteed market acceptance of their product or service."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Being an early entrant (first-mover) offers potential benefits such as securing a first-mover advantage and establishing strong brand positioning before competitors arrive. Options A and B are benefits typically associated with being a late entrant or fast follower. Option D is never guaranteed in any market entry.",
+        "step_by_step": [],
+        "interpretation": "Early entry allows a company to potentially define market standards and capture a significant share of the nascent market.",
+        "business_context": "Companies like Amazon benefited from early entry into e-commerce, establishing dominance before many competitors emerged."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_8",
+      "tags": [
+        "Market Entry",
+        "First-Mover Advantage",
+        "Brand Positioning"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A significant risk for an early entrant into an emerging technology market is:",
+      "question_visual": {
+        "type": "mermaid",
+        "code": "graph TD\n    A[Early Entrant] --> B{Risks}\n    B --> C(High Investment Costs)\n    B --> D(Technological Uncertainty)\n    B --> E(Market Acceptance Challenges)"
+      },
+      "question_visual_type": "mermaid",
+      "options": {
+        "A": "Benefiting from well-defined market demand.",
+        "B": "Facing minimal competition in the initial stages.",
+        "C": "High investment costs and technological uncertainty.",
+        "D": "Learning from the mistakes of previous entrants."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Early entrants face significant risks such as high investment costs, technological uncertainty (as the technology may not be mature), and challenges in gaining market acceptance without proven demand. Options A, B, and D are either benefits or characteristics not typically associated with early entry risks.",
+        "step_by_step": [],
+        "interpretation": "The 'pioneer costs' and unknown elements of a new market make early entry a high-risk, high-reward strategy.",
+        "business_context": "Companies entering emerging markets like 6G face these challenges, requiring substantial R&D and infrastructure investment without guaranteed returns."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_8",
+      "tags": [
+        "Market Entry",
+        "Investment Risk",
+        "Technological Uncertainty",
+        "Pioneer Costs"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "When planning a market entry strategy, which of the following is a key consideration?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Optimizing the company's internal HR policies.",
+        "B": "Defining the target segments and competitive landscape.",
+        "C": "Reducing the cost of office supplies for existing branches.",
+        "D": "Scheduling the next quarterly performance review meetings."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Key considerations for a market entry strategy include defining target segments, understanding the competitive landscape, choosing the mode of entry, and allocating resources. The other options are operational or internal administrative tasks, not directly related to entering a new market.",
+        "step_by_step": [],
+        "interpretation": "Effective market entry requires thorough external analysis of the market and competitors.",
+        "business_context": "Information systems are vital for gathering and analyzing data on target segments and competitive intelligence."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_8",
+      "tags": [
+        "Market Entry",
+        "Target Segments",
+        "Competitive Landscape"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake for early entrants in a new market is:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Successfully protecting intellectual property.",
+        "B": "Underestimating the 'pioneer costs' of developing a new market.",
+        "C": "Accurately forecasting market demand.",
+        "D": "Ensuring technology standards become dominant."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "A common mistake for early entrants is underestimating the 'pioneer costs' associated with developing a new market, educating customers, and building infrastructure without proven demand. Options A, C, and D represent ideal outcomes or successful strategies, not common mistakes.",
+        "step_by_step": [],
+        "interpretation": "Pioneer costs are the expenses incurred by the first company to enter a market, often related to market creation and education.",
+        "business_context": "Failing to account for these costs can lead to significant financial strain and even market failure for early entrants."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_8",
+      "tags": [
+        "Market Entry",
+        "Common Mistakes",
+        "Pioneer Costs",
+        "Early Entrant"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "How do green energy investments and sustainability goals primarily impact a firm's strategic decision making?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "They exclusively affect the company's public relations department.",
+        "B": "They become integral, influencing long-term resource allocation and market positioning.",
+        "C": "They are separate from core business strategy and are only for compliance.",
+        "D": "They lead to immediate, short-term profit maximization at all costs."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Green energy investments and sustainability goals are increasingly integral to strategic decision-making, influencing a firm's long-term resource allocation, market positioning, and innovation agenda. They are not merely for public relations or compliance, nor do they always lead to immediate profit maximization.",
+        "step_by_step": [],
+        "interpretation": "Sustainability initiatives are now woven into the fabric of a company's long-term strategy.",
+        "business_context": "Integrating sustainability into strategy can open new markets, attract investors, and drive innovation, leading to sustainable competitive advantage."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_9",
+      "tags": [
+        "Green Energy",
+        "Sustainability Goals",
+        "Strategic Decision Making",
+        "Resource Allocation"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Investing in green energy and pursuing sustainability goals can enhance a firm's brand reputation by:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Allowing the firm to disregard regulatory requirements.",
+        "B": "Signaling corporate responsibility and attracting conscious customers and investors.",
+        "C": "Guaranteeing immediate cost reductions in operations.",
+        "D": "Focusing solely on short-term financial gains."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Green energy investments and sustainability goals directly impact brand reputation by signaling corporate responsibility, which in turn attracts environmentally conscious customers and investors. These actions do not allow firms to disregard regulations, nor do they guarantee immediate cost reductions or focus solely on short-term gains.",
+        "step_by_step": [],
+        "interpretation": "A strong commitment to sustainability can differentiate a brand and build trust with stakeholders.",
+        "business_context": "Many consumers and investors now prioritize companies with strong ESG (Environmental, Social, and Governance) performance."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_9",
+      "tags": [
+        "Green Energy",
+        "Brand Reputation",
+        "Sustainability",
+        "Corporate Responsibility"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is 'greenwashing' in the context of sustainability goals?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Making genuine, significant investments in environmentally friendly technologies.",
+        "B": "Integrating sustainability deeply into core business strategy for long-term value.",
+        "C": "Making superficial environmental claims without genuine strategic commitment or significant investment.",
+        "D": "Achieving third-party certifications for environmental performance."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Greenwashing refers to firms making superficial environmental claims without genuine strategic commitment or significant investment, often leading to public distrust. Options A, B, and D describe legitimate and positive actions towards sustainability.",
+        "step_by_step": [],
+        "interpretation": "Greenwashing is deceptive marketing used to persuade the public that an organization's products, aims, or policies are environmentally friendly when they are not.",
+        "business_context": "This practice can severely damage brand reputation and lead to regulatory penalties if exposed."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_9",
+      "tags": [
+        "Sustainability",
+        "Greenwashing",
+        "Common Mistakes",
+        "Brand Reputation"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "For investors, a firm's strong sustainability goals and green energy investments can be attractive because they signal:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "A disregard for ethical business practices.",
+        "B": "Potential for higher long-term risks and liabilities.",
+        "C": "Alignment with ESG (Environmental, Social, and Governance) compliance and future-readiness.",
+        "D": "A sole focus on short-term, unsustainable profits."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Strong sustainability goals and green energy investments signal alignment with ESG (Environmental, Social, and Governance) compliance, which is increasingly important for investors, and indicate that a firm is preparing for future challenges and opportunities. The other options describe negative or undesirable signals for investors.",
+        "step_by_step": [],
+        "interpretation": "ESG factors are now a significant component of investment analysis, reflecting a company's non-financial performance.",
+        "business_context": "Firms with strong ESG ratings often attract more capital and can command higher valuations in the market."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_9",
+      "tags": [
+        "Sustainability",
+        "ESG",
+        "Investors",
+        "Strategic Investment"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following describes the impact of effective green energy investment and sustainability goals on a firm?",
+      "question_visual": {
+        "type": "mermaid",
+        "code": "graph TD\n    A[Green Energy Investment] --> B{Strategic Decision Making}\n    B --> C(Resource Allocation)\n    B --> D(Market Positioning)\n    B --> E(Innovation Agenda)\n    A --> F[Sustainability Goals]\n    F --> G(Brand Reputation Management)\n    G --> H(Attracts Customers/Investors)\n    G --> I(Mitigates Risks)"
+      },
+      "question_visual_type": "mermaid",
+      "options": {
+        "A": "They are typically isolated initiatives with no impact on core business strategy.",
+        "B": "They primarily serve as a temporary marketing gimmick without long-term value.",
+        "C": "They are integrated into strategic decision-making, influencing resource allocation and enhancing brand reputation.",
+        "D": "They lead to increased operational costs with no corresponding benefits."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Effective green energy investment and sustainability goals are integrated into strategic decision-making, influencing resource allocation, market positioning, and innovation, while also enhancing brand reputation. They are not isolated, temporary gimmicks, nor do they only lead to increased costs.",
+        "step_by_step": [],
+        "interpretation": "Sustainability is becoming a core strategic pillar for many modern businesses, driving both social and economic value.",
+        "business_context": "Companies that successfully embed sustainability into their strategy often see benefits in terms of customer loyalty, talent attraction, and regulatory compliance."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_9",
+      "tags": [
+        "Green Energy",
+        "Sustainability",
+        "Strategic Decision Making",
+        "Brand Reputation"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following best defines inventory management in a business context?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "The process of tracking employee performance and productivity.",
+        "B": "The system for overseeing and controlling the ordering, storage, and use of a company's goods.",
+        "C": "The strategy for marketing products to target customers.",
+        "D": "The financial accounting process for recording sales and expenses."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Inventory management is fundamentally about efficiently handling a company's stock of goods. This includes activities like deciding what to order, where to store it, and how it's used to meet customer demand, as outlined in option B. Options A, C, and D describe other business functions (HR, marketing, finance) not directly related to inventory.",
+        "step_by_step": [],
+        "interpretation": "Effective inventory management is crucial for operational efficiency and profitability.",
+        "business_context": "Companies use MIS to automate and optimize these processes, reducing costs and improving responsiveness."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_10",
+      "tags": [
+        "Inventory Management",
+        "Operational Decisions"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary role of demand forecasting in effective inventory management?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "To analyze past financial performance.",
+        "B": "To predict future customer needs and product sales.",
+        "C": "To manage employee work schedules.",
+        "D": "To determine the price of products."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Demand forecasting is a critical component of inventory management because it predicts what customers will want in the future, allowing businesses to prepare their stock levels accordingly. Option B directly reflects this purpose. Other options describe unrelated business activities.",
+        "step_by_step": [],
+        "interpretation": "Accurate demand forecasting helps minimize both stockouts and overstocking.",
+        "business_context": "MIS systems leverage historical data and analytical models for more precise demand forecasts."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_10",
+      "tags": [
+        "Demand Forecasting",
+        "Inventory Management"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "How does strategic inventory allocation contribute to effective operational decision-making?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "By minimizing employee training costs.",
+        "B": "By distributing available stock to maximize sales and minimize holding costs.",
+        "C": "By setting marketing budgets for new product launches.",
+        "D": "By negotiating better prices with suppliers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Inventory allocation focuses on where to place existing stock to best meet anticipated demand, thereby maximizing sales opportunities and reducing unnecessary storage expenses. Option B accurately describes this strategic distribution. The other options pertain to different aspects of business operations.",
+        "step_by_step": [],
+        "interpretation": "Proper allocation ensures products are available where and when customers want them.",
+        "business_context": "Companies use MIS to optimize inventory distribution across various locations, such as warehouses or retail stores."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_10",
+      "tags": [
+        "Inventory Allocation",
+        "Operational Decisions"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common consequence of inaccurate demand forecasting that leads to high carrying costs and potential obsolescence is known as:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Understocking",
+        "B": "Overstocking",
+        "C": "Just-in-Time (JIT) inventory",
+        "D": "Stockout"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Overstocking occurs when a company orders or produces more inventory than customers demand, leading to excessive storage costs and the risk of products becoming outdated or unsellable. This is a direct result of inaccurate demand forecasting, as described in option B. Understocking and stockouts (option A and D) refer to having too little inventory, while JIT (option C) is an inventory strategy.",
+        "step_by_step": [],
+        "interpretation": "Overstocking ties up capital and increases operational expenses.",
+        "business_context": "MIS tools help improve forecast accuracy to prevent such costly scenarios."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_10",
+      "tags": [
+        "Demand Forecasting",
+        "Overstocking",
+        "Inventory Costs"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a key objective of effective inventory management?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "To increase product development cycles.",
+        "B": "To maximize product returns from customers.",
+        "C": "To balance the costs of holding inventory with the need to meet customer demand.",
+        "D": "To reduce the number of suppliers."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Effective inventory management aims to strike a delicate balance: having enough stock to satisfy customers without incurring excessive costs from holding too much inventory. Option C accurately captures this dual objective. The other options describe objectives unrelated or contrary to good inventory practices.",
+        "step_by_step": [],
+        "interpretation": "This balance is crucial for both profitability and customer satisfaction.",
+        "business_context": "MIS provides the data and tools to achieve this balance by optimizing inventory levels."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_10",
+      "tags": [
+        "Inventory Management",
+        "Operational Decisions",
+        "Cost-Benefit Analysis"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the primary goal of a customer service budget review?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "To minimize marketing expenditures.",
+        "B": "To identify new product development opportunities.",
+        "C": "To optimize resource allocation for customer satisfaction and churn reduction.",
+        "D": "To solely invest in the cheapest available customer support technology."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "A customer service budget review is conducted to ensure that financial resources are allocated in a way that maximizes positive customer outcomes, specifically improving satisfaction and preventing customers from leaving (churn). Option C directly states this primary goal. Options A and B are unrelated, and option D describes a potentially shortsighted approach that ignores quality.",
+        "step_by_step": [],
+        "interpretation": "The review ensures that spending aligns with strategic customer experience goals.",
+        "business_context": "MIS plays a role in tracking customer interactions and satisfaction metrics to inform these budget decisions."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_11",
+      "tags": [
+        "Customer Service",
+        "Budget Review",
+        "Customer Satisfaction",
+        "Churn Reduction"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is a key benefit of integrating AI-based chatbots into customer service operations?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Providing deep emotional empathy for complex issues.",
+        "B": "Handling routine queries efficiently and scaling 24/7.",
+        "C": "Replacing all human customer support staff completely.",
+        "D": "Eliminating the need for any customer feedback."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "AI-based chatbots excel at automating responses to common, repetitive questions and can operate continuously, significantly improving efficiency and availability for basic customer interactions. Option B highlights these core benefits. Options A, C, and D represent misconceptions or unrealistic expectations of current AI chatbot capabilities.",
+        "step_by_step": [],
+        "interpretation": "Chatbots free up human agents to focus on more complex, high-value customer issues.",
+        "business_context": "MIS helps integrate chatbots with CRM systems to provide seamless customer support."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_11",
+      "tags": [
+        "AI Chatbots",
+        "Customer Service",
+        "Technology Investment"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "For which type of customer interaction are human customer support staff generally considered indispensable compared to AI chatbots?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Checking account balances.",
+        "B": "Resetting passwords.",
+        "C": "Resolving complex financial disputes requiring empathy and nuanced understanding.",
+        "D": "Providing standard product information."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Human customer support staff are crucial for interactions that require empathy, complex problem-solving, and a nuanced understanding of unique situations, such as financial disputes. Options A, B, and D describe routine tasks that AI chatbots can typically handle efficiently. The 'human touch' remains vital for building trust and loyalty in critical scenarios.",
+        "step_by_step": [],
+        "interpretation": "The value of human agents lies in their ability to handle sensitive, non-routine, and emotionally charged interactions.",
+        "business_context": "Businesses use MIS to route complex customer inquiries to human agents, while chatbots handle simpler ones."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_11",
+      "tags": [
+        "Customer Service",
+        "Human Staff",
+        "AI Chatbots",
+        "Customer Experience"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are common performance metrics used to evaluate customer service budget decisions? (Select all that apply)",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Average response times",
+        "B": "Employee turnover rate in other departments",
+        "C": "First-contact resolution rates",
+        "D": "Customer effort score"
+      },
+      "correct_answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": {
+        "text": "Customer service budget decisions are evaluated based on metrics that directly reflect service quality and customer experience. Average response times (A), first-contact resolution rates (C), and customer effort score (D) are all direct indicators of customer satisfaction and operational efficiency in customer service. Option B, employee turnover in other departments, is generally not a direct metric for evaluating customer service budget performance.",
+        "step_by_step": [],
+        "interpretation": "These metrics help determine the ROI of customer service investments by quantifying their impact on service delivery and customer perception.",
+        "business_context": "MIS systems provide the data and analytics to track these metrics in real-time."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_11",
+      "tags": [
+        "Performance Metrics",
+        "Customer Service",
+        "ROI",
+        "Customer Satisfaction"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common negative consequence of neglecting the 'human touch' entirely in customer service, assuming AI can replace all interactions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Increased operational efficiency.",
+        "B": "Reduced customer frustration for complex issues.",
+        "C": "Alienated customers and eroded loyalty.",
+        "D": "Lower overall customer service costs without impact on satisfaction."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "While AI offers efficiency, completely removing human interaction can alienate customers who seek personalized support, empathy, or assistance with complex problems. This can lead to eroded loyalty and increased churn, especially in sensitive industries. Option C accurately describes this negative outcome. Options A and D are potential benefits of AI but are often negated if the human element is entirely neglected, and option B is incorrect as complex issues are where AI often struggles.",
+        "step_by_step": [],
+        "interpretation": "A balanced approach combining AI for routine tasks and humans for complex, sensitive interactions is generally more effective.",
+        "business_context": "MIS strategies should aim for a hybrid model that optimizes both efficiency and customer experience."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_11",
+      "tags": [
+        "Customer Service",
+        "AI Chatbots",
+        "Human Touch",
+        "Customer Loyalty"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What does 'credit eligibility' primarily refer to in financial services?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "The process of tracking bank account balances.",
+        "B": "The determination of whether an applicant meets the criteria to receive a loan or credit card.",
+        "C": "The annual review of interest rates for savings accounts.",
+        "D": "The marketing strategy for attracting new customers."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Credit eligibility is the core decision-making process in financial services regarding who qualifies for credit products like loans or credit cards. It involves evaluating an applicant against a set of criteria. Options A, C, and D describe other financial or business activities.",
+        "step_by_step": [],
+        "interpretation": "This determination is fundamental to responsible lending and financial risk management.",
+        "business_context": "MIS systems automate and support this decision-making process through credit scoring models and data analysis."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_12",
+      "tags": [
+        "Credit Eligibility",
+        "Financial Services"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is the main purpose of a risk assessment in determining credit eligibility?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "To calculate the bank's profit margins.",
+        "B": "To evaluate the likelihood of an applicant repaying the credit.",
+        "C": "To determine the best marketing channel for a loan product.",
+        "D": "To compare the applicant's income to national averages."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Risk assessment in credit eligibility is specifically designed to gauge how likely an applicant is to fulfill their repayment obligations. This helps the lender decide whether to approve the credit and on what terms. Option B accurately states this primary purpose. The other options are either unrelated or secondary considerations.",
+        "step_by_step": [],
+        "interpretation": "A higher likelihood of repayment indicates lower risk for the lender.",
+        "business_context": "MIS uses algorithms and data models to conduct robust risk assessments, often generating a credit score."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_12",
+      "tags": [
+        "Risk Assessment",
+        "Credit Eligibility",
+        "Financial Services"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is typically considered a credit criterion for loan applicants?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Applicant's favorite color.",
+        "B": "Applicant's social media follower count.",
+        "C": "Applicant's credit score (e.g., CIBIL score).",
+        "D": "Applicant's preference for online banking."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Credit criteria are specific, quantifiable factors used to assess an applicant's creditworthiness. A credit score, like a CIBIL score, is a primary example as it summarizes an individual's credit history and repayment behavior. Options A, B, and D are irrelevant to assessing credit risk.",
+        "step_by_step": [],
+        "interpretation": "Credit criteria provide objective measures for evaluating an applicant's financial reliability.",
+        "business_context": "MIS systems automate the collection and analysis of these criteria to streamline the credit approval process."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_12",
+      "tags": [
+        "Credit Criteria",
+        "Credit Score",
+        "Financial Services"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "How can customer loyalty sometimes influence credit eligibility decisions in financial services?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "By ensuring the applicant always receives the highest possible interest rate.",
+        "B": "By allowing banks to offer special terms (e.g., lower interest rates) to long-term, low-risk customers.",
+        "C": "By making the customer ineligible for any credit products.",
+        "D": "By requiring the customer to apply for credit at a different bank."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "While credit criteria and risk assessment are primary, customer loyalty can strategically influence credit decisions. Banks may offer more favorable terms, such as lower interest rates or higher credit limits, to long-standing, trustworthy customers to strengthen relationships and encourage continued business. Option B correctly describes this positive influence. The other options are incorrect interpretations.",
+        "step_by_step": [],
+        "interpretation": "Customer loyalty adds a relationship value that can sometimes balance strict risk factors, fostering retention.",
+        "business_context": "CRM systems, integrated with MIS, help identify and manage loyal customers for such strategic considerations."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_12",
+      "tags": [
+        "Customer Loyalty",
+        "Credit Eligibility",
+        "Financial Services",
+        "Customer Relationship Management"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is considered a common mistake in credit eligibility decisions by financial institutions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Consistently applying credit criteria to all applicants.",
+        "B": "Balancing automated scoring with human oversight for complex cases.",
+        "C": "An over-reliance on automated credit scoring without human oversight.",
+        "D": "Considering a customer's long-term repayment history with the bank."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "An over-reliance on automated credit scoring without human oversight can lead to errors, such as rejecting potentially good customers due to data anomalies or approving high-risk ones. This mistake can result in missed opportunities or increased defaults. Options A, B, and D describe good practices in credit eligibility. Option C highlights a pitfall that neglects the nuances that human judgment can provide.",
+        "step_by_step": [],
+        "interpretation": "While automation is efficient, human judgment is often necessary for complex or borderline credit applications.",
+        "business_context": "MIS systems should support, not entirely replace, human decision-making in critical financial processes."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_12",
+      "tags": [
+        "Credit Eligibility",
+        "Common Mistakes",
+        "Risk Management",
+        "Automation"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which management level in an organization primarily deals with unstructured decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Operational Management",
+        "B": "Senior Management",
+        "C": "Middle Management",
+        "D": "Front-line Employees"
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Senior management is responsible for unstructured decisions, which involve high uncertainty and strategic thinking without a predefined procedure. Operational management handles structured decisions, and middle management addresses semistructured decisions.",
+        "step_by_step": [],
+        "interpretation": "Understanding the alignment between decision types and management levels is crucial for designing effective information systems.",
+        "business_context": "For example, a CEO (senior management) making a decision about entering a new market is an unstructured decision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_13",
+      "tags": [
+        "Management Levels",
+        "Unstructured Decisions",
+        "Organizational Structure"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Structured decisions are characterized by:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "High uncertainty and no agreed-upon procedure.",
+        "B": "A mix of data analysis and human judgment.",
+        "C": "Clear rules and procedures for making them.",
+        "D": "Being made exclusively by senior management."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Structured decisions are routine and repetitive, with clear rules and procedures that can often be automated. Options A and B describe unstructured and semistructured decisions, respectively, and senior management primarily makes unstructured decisions.",
+        "step_by_step": [],
+        "interpretation": "Recognizing the characteristics of structured decisions helps in identifying which processes can be automated or supported by transaction processing systems (TPS).",
+        "business_context": "An example is restocking inventory when it falls below a certain level, which is a routine decision based on established rules."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_13",
+      "tags": [
+        "Structured Decisions",
+        "Operational Management",
+        "Decision Characteristics"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which type of decision often involves a blend of data-driven insights and human judgment, typically handled by middle management?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Unstructured decisions",
+        "B": "Strategic decisions",
+        "C": "Structured decisions",
+        "D": "Semistructured decisions"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": {
+        "text": "Semistructured decisions have elements of both structured (data-driven) and unstructured (human judgment) problems, making them suitable for middle management. Unstructured decisions are novel and strategic, while structured decisions are routine and rule-based.",
+        "step_by_step": [],
+        "interpretation": "Semistructured decisions require information systems that can process data while also providing flexibility for human input and analysis.",
+        "business_context": "A regional sales manager deciding on a new marketing campaign based on sales reports and market trends is a classic example of a semistructured decision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_13",
+      "tags": [
+        "Semistructured Decisions",
+        "Middle Management",
+        "Decision Characteristics"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in designing information systems is attempting to support highly complex, non-routine strategic problems with systems built for simple, repetitive tasks. This mistake specifically relates to misapplying support for which type of decision?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Structured decisions",
+        "B": "Operational decisions",
+        "C": "Semistructured decisions",
+        "D": "Unstructured decisions"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": {
+        "text": "The common mistake described is trying to use rigid, rule-based systems (suitable for structured decisions) to solve unstructured problems, which require flexible tools for analysis and collaboration. This misapplication leads to ineffective decision support for unstructured problems.",
+        "step_by_step": [],
+        "interpretation": "Information systems must be tailored to the specific nature of the decisions they are intended to support.",
+        "business_context": "Using an inventory management system to plan a company merger would be an example of this mistake, as mergers involve highly unstructured decisions."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_13",
+      "tags": [
+        "Unstructured Decisions",
+        "Decision Support Systems",
+        "Common Mistakes"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Operational management in an organization typically focuses on decisions that are:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Novel, non-routine, and strategic.",
+        "B": "Partially routine with significant human judgment.",
+        "C": "Repetitive, routine, and governed by clear procedures.",
+        "D": "High-risk with long-term organizational impact."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Operational management deals with structured decisions, which are repetitive, routine, and have clear rules and procedures. Options A and D describe unstructured decisions (senior management), while option B describes semistructured decisions (middle management).",
+        "step_by_step": [],
+        "interpretation": "Understanding the decision scope for operational management helps in deploying appropriate transaction processing systems (TPS) and management information systems (MIS).",
+        "business_context": "Deciding to reorder office supplies when stock is low is a typical structured decision handled at the operational level."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_13",
+      "tags": [
+        "Operational Management",
+        "Structured Decisions",
+        "Decision Characteristics"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a defining characteristic of an unstructured decision?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "It can be fully automated using predefined rules.",
+        "B": "It involves a clear, agreed-upon procedure for problem-solving.",
+        "C": "It is novel, non-routine, and lacks an agreed-upon procedure.",
+        "D": "It is typically made by operational management."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Unstructured decisions are characterized by their novelty and non-routine nature, meaning there is no established procedure for making them. This contrasts with structured decisions (A and B) and is typically handled by senior management, not operational management (D).",
+        "step_by_step": [],
+        "interpretation": "The lack of an agreed-upon procedure makes unstructured decisions complex and often reliant on intuition and experience.",
+        "business_context": "Deciding whether to pivot the company's entire business model is an unstructured decision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_14",
+      "tags": [
+        "Unstructured Decisions",
+        "Decision Characteristics",
+        "Senior Management"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which management level is primarily responsible for making unstructured decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Operational Management",
+        "B": "Middle Management",
+        "C": "Senior Management",
+        "D": "Team Leaders"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Unstructured decisions, which are strategic and high-impact, are typically made by senior management. Operational and middle management handle structured and semistructured decisions, respectively.",
+        "step_by_step": [],
+        "interpretation": "The strategic nature of unstructured decisions aligns with the long-term vision and responsibility of senior leadership.",
+        "business_context": "A company's Board of Directors or CEO making a decision about a major acquisition is an example of senior management making an unstructured decision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_14",
+      "tags": [
+        "Senior Management",
+        "Unstructured Decisions",
+        "Organizational Structure"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "When a pharmaceutical company decides to invest billions of dollars into developing a completely new drug category, with no prior market, this is an example of what type of decision?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Structured decision",
+        "B": "Semistructured decision",
+        "C": "Operational decision",
+        "D": "Unstructured decision"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": {
+        "text": "This scenario describes an unstructured decision because it is novel, involves high uncertainty, and lacks a predefined procedure or market playbook. Structured and semistructured decisions involve more routine elements or existing data.",
+        "step_by_step": [],
+        "interpretation": "The 'completely new' aspect and 'no prior market' are key indicators of high uncertainty and lack of established procedures, characteristic of unstructured decisions.",
+        "business_context": "Decisions about pioneering new technologies or markets are hallmark unstructured decisions, requiring significant strategic insight from senior management."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_14",
+      "tags": [
+        "Unstructured Decisions",
+        "Strategic Decisions",
+        "Real-world Application"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a common pitfall when trying to manage unstructured decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Over-reliance on human intuition without any data.",
+        "B": "Trying to force them into structured frameworks or demanding precise ROI calculations.",
+        "C": "Failing to document the decision-making process.",
+        "D": "Delegating them to operational staff."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "A common mistake with unstructured decisions is attempting to apply structured frameworks, such as expecting precise ROI calculations or detailed project plans, when the core problem isn't fully defined. This can stifle innovation. Options A, C, and D are less direct common pitfalls for unstructured decisions.",
+        "step_by_step": [],
+        "interpretation": "Unstructured decisions inherently lack complete information and certainty, making rigid frameworks inappropriate and potentially harmful.",
+        "business_context": "Forcing a new product development, which is highly uncertain, into the same strict budget and timeline as a routine product update can lead to failure."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_14",
+      "tags": [
+        "Unstructured Decisions",
+        "Common Mistakes",
+        "Decision Support Systems"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Unstructured decisions are characterized by high uncertainty and often involve:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Routine, day-to-day operations.",
+        "B": "Fixed, predetermined outcomes.",
+        "C": "Strategic thinking and long-term implications.",
+        "D": "Strict adherence to established policies."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Unstructured decisions are strategic in nature, involve high uncertainty, and have significant long-term implications for the organization. They are not routine (A), do not have fixed outcomes (B), and do not rely on strict adherence to established policies (D) because such policies often don't exist for these novel situations.",
+        "step_by_step": [],
+        "interpretation": "The strategic importance of unstructured decisions means they shape the future direction and competitive position of the firm.",
+        "business_context": "A decision to merge with another company is an unstructured decision with long-term strategic implications."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_14",
+      "tags": [
+        "Unstructured Decisions",
+        "Strategic Decisions",
+        "Decision Characteristics"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What is a key characteristic of semistructured decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "They are entirely novel and non-routine.",
+        "B": "They can be solved with a definite procedure, but also require human judgment.",
+        "C": "They are fully automated and require no human input.",
+        "D": "They are exclusively made by senior executives."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Semistructured decisions combine elements of both structured (solvable by procedure) and unstructured (requiring human judgment) problems. Option A describes unstructured decisions, and Option C describes structured decisions. Option D is incorrect as semistructured decisions are typically handled by middle management.",
+        "step_by_step": [],
+        "interpretation": "The blend of data and human insight is what makes semistructured decisions distinct and often complex to support with information systems.",
+        "business_context": "A sales manager analyzing quarterly performance data (structured) and then deciding how to motivate underperforming teams (judgment) is a semistructured decision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_15",
+      "tags": [
+        "Semistructured Decisions",
+        "Decision Characteristics",
+        "Middle Management"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which management level is typically responsible for making semistructured decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Operational Management",
+        "B": "Senior Management",
+        "C": "Middle Management",
+        "D": "Individual Contributors"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Middle management is primarily responsible for semistructured decisions, which often involve tactical planning and resource allocation that combines data analysis with human judgment. Senior management handles unstructured decisions, and operational management handles structured decisions.",
+        "step_by_step": [],
+        "interpretation": "This alignment is key for designing management information systems (MIS) and decision support systems (DSS) that effectively serve middle management's needs.",
+        "business_context": "A department head (middle management) deciding on the allocation of a project budget based on project performance data and unforeseen circumstances is a semistructured decision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_15",
+      "tags": [
+        "Middle Management",
+        "Semistructured Decisions",
+        "Organizational Structure"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A university's admissions committee uses applicant GPA and test scores (structured data) but also evaluates essays and recommendation letters (requiring judgment) to select students for a new scholarship program. This scenario exemplifies what type of decision?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Unstructured decision",
+        "B": "Strategic decision",
+        "C": "Structured decision",
+        "D": "Semistructured decision"
+      },
+      "correct_answer": [
+        "D"
+      ],
+      "explanation": {
+        "text": "This decision is semistructured because it combines quantitative data (GPA, test scores) with qualitative judgment (essays, recommendations). This blend is characteristic of semistructured decisions, which fall between entirely routine (structured) and entirely novel (unstructured) decisions.",
+        "step_by_step": [],
+        "interpretation": "The presence of both definite procedures and the need for human discretion points directly to a semistructured decision-making process.",
+        "business_context": "Such decisions are common in areas like HR, marketing, and project management where data informs, but doesn't fully dictate, the final choice."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_15",
+      "tags": [
+        "Semistructured Decisions",
+        "Real-world Application",
+        "Decision Characteristics"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following describes a common mistake when dealing with semistructured decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Relying too heavily on intuition without considering any available data.",
+        "B": "Over-automating the decision process and removing necessary human judgment.",
+        "C": "Both A and B.",
+        "D": "Delegating the decision to senior management."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Common mistakes with semistructured decisions include both over-automating (removing human judgment) and under-utilizing available data (relying too heavily on intuition). The 'semi' part means both data and judgment are crucial, and neglecting either can lead to ineffective decisions. Delegating to senior management is not inherently a mistake but a misassignment of decision type.",
+        "step_by_step": [],
+        "interpretation": "Effective support for semistructured decisions requires a balance between information systems that provide data and human expertise for interpretation and judgment.",
+        "business_context": "A marketing manager who either relies solely on past experience without new market data or blindly follows an algorithm without creative input will likely fail to optimize a campaign."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_15",
+      "tags": [
+        "Semistructured Decisions",
+        "Common Mistakes",
+        "Decision Support Systems"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following statements accurately describe semistructured decisions? (Select all that apply)",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "They are typically made by middle management.",
+        "B": "They can be partially solved using definite procedures.",
+        "C": "They require human judgment for the overall decision.",
+        "D": "They are entirely novel and non-routine without any established procedures."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": {
+        "text": "Semistructured decisions are indeed typically made by middle management (A) and are characterized by having parts that can be solved with definite procedures (B), while still requiring human judgment for the broader context or overall decision (C). Option D describes unstructured decisions, not semistructured ones.",
+        "step_by_step": [],
+        "interpretation": "This combination of structured and unstructured elements highlights the need for flexible decision support tools for middle management.",
+        "business_context": "When a project manager (middle management) adjusts a project timeline (judgment) based on task completion rates (procedure), it's a semistructured decision."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_15",
+      "tags": [
+        "Semistructured Decisions",
+        "Middle Management",
+        "Decision Characteristics"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What defines a structured decision within an organization?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Decisions that are novel, non-routine, and have no pre-defined procedure.",
+        "B": "Decisions that are repetitive, routine, and involve a definite procedure or set of rules.",
+        "C": "Decisions made by senior management that impact the entire organization's long-term strategy.",
+        "D": "Decisions that require extensive human judgment and cannot be fully automated."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Option B accurately describes structured decisions as repetitive and routine, guided by definite procedures or rules. This contrasts with unstructured decisions (A) or strategic decisions typically made by senior management (C). While some human input might be involved in overseeing systems, the core characteristic is their rule-based nature, making them highly suitable for automation (D is incorrect).",
+        "step_by_step": [],
+        "interpretation": "Structured decisions are predictable and follow clear guidelines, making them efficient for operational tasks where consistency is key.",
+        "business_context": "Understanding structured decisions helps in designing efficient operational systems and processes, as they are prime candidates for automation to improve speed and reduce errors."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_16",
+      "tags": [
+        "Structured Decisions",
+        "Definition",
+        "Operational Management",
+        "MIS"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which level of management is typically responsible for making structured decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Senior Management",
+        "B": "Middle Management",
+        "C": "Operational Management",
+        "D": "Executive Management"
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Operational management, which includes individual employees and teams, primarily handles structured decisions. These decisions are often routine and rule-based, aligning with the day-to-day execution tasks at this level. Senior and Executive management typically deal with unstructured decisions, while Middle management handles semistructured ones.",
+        "step_by_step": [],
+        "interpretation": "The routine and rule-based nature of structured decisions aligns perfectly with the tasks and responsibilities of operational staff, who execute daily business processes.",
+        "business_context": "Information systems like Transaction Processing Systems (TPS) are specifically designed to support and automate these structured decisions for operational managers, ensuring smooth daily operations."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_16",
+      "tags": [
+        "Structured Decisions",
+        "Management Levels",
+        "Operational Management",
+        "MIS"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A key characteristic of structured decisions that makes them highly suitable for automation by information systems is their:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Need for extensive human intuition.",
+        "B": "Repetitive and routine nature.",
+        "C": "Unique, non-recurring problems.",
+        "D": "Requirement for complex, adaptive human judgment."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Structured decisions are characterized by their repetitive and routine nature, meaning they occur frequently and follow predictable patterns. This characteristic makes them ideal for automation, as rules can be programmed into information systems to handle them consistently and efficiently. Options A, C, and D describe qualities that make decisions less suitable for automation.",
+        "step_by_step": [],
+        "interpretation": "The predictability of structured decisions allows for the creation of clear rules and algorithms, which are the foundation of automation.",
+        "business_context": "By automating structured decisions, organizations can significantly reduce operational costs, increase processing speed, and improve the consistency of outcomes, leading to greater efficiency."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_16",
+      "tags": [
+        "Structured Decisions",
+        "Automation",
+        "Efficiency",
+        "MIS"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "In a manufacturing plant, the decision to order more raw materials when inventory drops below a pre-set level is an example of what type of decision?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Unstructured decision.",
+        "B": "Semi-structured decision.",
+        "C": "Structured decision.",
+        "D": "Strategic decision."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "This is a structured decision because it is repetitive, routine, and based on a clear, pre-defined rule ('if inventory < threshold then reorder'). No human judgment is required for each instance, making it highly automatable. Unstructured decisions are novel, semi-structured involve some human judgment, and strategic decisions are high-level, long-term choices.",
+        "step_by_step": [],
+        "interpretation": "Automated inventory reordering perfectly illustrates a structured decision due to its clear rules, predictability, and repetitive nature.",
+        "business_context": "Such automated systems are crucial for maintaining optimal inventory levels, preventing stockouts, and ensuring continuous production, directly supporting operational efficiency and supply chain management."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_16",
+      "tags": [
+        "Structured Decisions",
+        "Real-world Use Case",
+        "Inventory Management"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mca",
+      "question_text": "Which of the following are common mistakes organizations make when managing structured decisions? (Select all that apply)",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Failing to document or standardize the procedures for these decisions.",
+        "B": "Trying to apply human judgment to fully structured tasks where it's not needed.",
+        "C": "Utilizing information systems to guide or automate repetitive tasks.",
+        "D": "Consistently training employees on the standardized procedures."
+      },
+      "correct_answer": [
+        "A",
+        "B"
+      ],
+      "explanation": {
+        "text": "Options A and B are common mistakes. Failing to document or standardize procedures (A) leads to inconsistencies and errors, while applying unnecessary human judgment (B) introduces inefficiency and subjectivity where it's not needed. Option C describes a correct and beneficial approach to structured decisions, and D is a good practice, not a mistake.",
+        "step_by_step": [],
+        "interpretation": "Effective management of structured decisions relies on clear standardization and appropriate automation, avoiding unnecessary human intervention in predictable processes.",
+        "business_context": "Addressing these mistakes ensures that organizations fully leverage the benefits of structured decisions, such as efficiency, consistency, and reduced operational costs, thereby improving overall organizational performance."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_16",
+      "tags": [
+        "Structured Decisions",
+        "Common Mistakes",
+        "Process Management"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "What primary characteristic of Quick Commerce makes diverse decision-making types, from strategic to operational, essential for its success?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Its focus solely on physical store presence.",
+        "B": "The slow and deliberate pace of market expansion.",
+        "C": "The promise of rapid delivery (e.g., 10-minute delivery).",
+        "D": "Its exclusive use of manual processes for order fulfillment."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "The core characteristic of Quick Commerce that demands diverse decision-making is its promise of rapid delivery, often within minutes. This extreme speed requires seamless integration of strategic, semi-structured, and highly structured operational decisions to ensure efficiency and meet customer expectations. Options A, B, and D are incorrect as they don't align with Quick Commerce principles.",
+        "step_by_step": [],
+        "interpretation": "The extreme time sensitivity of Quick Commerce forces all levels of management to make decisions quickly and effectively, leveraging different decision types to ensure speed and accuracy.",
+        "business_context": "Achieving rapid delivery targets requires sophisticated Management Information Systems (MIS) to support everything from strategic micro-fulfillment center placement to real-time delivery route optimization."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_17",
+      "tags": [
+        "Quick Commerce",
+        "Decision Making",
+        "Rapid Delivery",
+        "MIS"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "In a Quick Commerce company, senior management's decision regarding which new cities to enter for expansion is an example of which type of decision?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Structured decision.",
+        "B": "Operational decision.",
+        "C": "Unstructured decision.",
+        "D": "Routine decision."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Expanding to a new geographic market is a complex, non-routine decision with significant uncertainty and high stakes, typically made by senior management. This defines an unstructured decision, which lacks a clear, pre-defined procedure. Structured and routine decisions are repetitive and rule-based, and operational decisions are typically low-level, day-to-day tasks.",
+        "step_by_step": [],
+        "interpretation": "Strategic choices like market entry require intuition, broad analysis, and judgment from experienced leaders, characteristic of unstructured decision-making.",
+        "business_context": "These high-level decisions shape the future direction and competitive strategy of the company and require support from Executive Support Systems (ESS) or advanced business intelligence tools."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_17",
+      "tags": [
+        "Quick Commerce",
+        "Unstructured Decisions",
+        "Senior Management"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is an example of a structured decision typically made by operational teams in Quick Commerce?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Deciding on the overall business model for expansion.",
+        "B": "Optimizing delivery routes based on real-time traffic data and order locations.",
+        "C": "Formulating a new marketing strategy for the upcoming quarter.",
+        "D": "Choosing which micro-fulfillment center locations to open next year."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Optimizing delivery routes based on real-time data is a repetitive, rule-based task that can be handled by algorithms and automated systems, making it a classic example of a structured decision for operational teams. Options A, C, and D are examples of unstructured or semi-structured decisions typically made at higher management levels.",
+        "step_by_step": [],
+        "interpretation": "Automated route optimization is crucial for meeting the rapid delivery promises of Quick Commerce by making efficient, rule-based choices in real-time.",
+        "business_context": "Effective routing algorithms directly impact delivery speed, fuel efficiency, and overall customer satisfaction, making them vital for Quick Commerce success and a core function of operational MIS."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_17",
+      "tags": [
+        "Quick Commerce",
+        "Structured Decisions",
+        "Operational Efficiency"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "The '10-minute delivery' promise in Quick Commerce necessitates what kind of approach to decision-making across the organization?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Focusing solely on unstructured decisions to encourage innovation.",
+        "B": "Relying mainly on manual decision-making at all levels for flexibility.",
+        "C": "Seamless integration of all decision types from strategic to operational.",
+        "D": "Limiting the use of real-time data to prevent information overload."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "The extreme time constraints of 10-minute delivery require highly efficient decision-making across all management levels. This means strategic decisions must align with semi-structured and structured operational decisions, and all must be seamlessly integrated and supported by MIS to achieve the goal. Manual decision-making (B) would be too slow, focusing only on unstructured (A) would neglect execution, and limiting data (D) would hinder informed choices.",
+        "step_by_step": [],
+        "interpretation": "Rapid delivery goals cannot be met without a cohesive approach that links high-level strategy to minute-by-minute execution through integrated decision support systems.",
+        "business_context": "Quick Commerce companies invest heavily in MIS that can support and automate decisions at every level, ensuring the entire operation functions as a well-oiled machine to meet stringent delivery promises."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_17",
+      "tags": [
+        "Quick Commerce",
+        "Decision Integration",
+        "Operational Efficiency",
+        "MIS"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "A common mistake in Quick Commerce decision-making, as identified in the flashcard, is:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Over-relying on automation for strategic decisions without adequate human oversight.",
+        "B": "Investing heavily in advanced analytics for demand forecasting.",
+        "C": "Standardizing operational procedures to improve consistency.",
+        "D": "Using real-time data to optimize delivery routes."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": {
+        "text": "A common mistake is over-relying on automation for strategic decisions, which require human oversight and judgment to account for unforeseen variables and long-term vision, potentially leading to poor strategic direction. Options B, C, and D describe good practices that enhance Quick Commerce operations.",
+        "step_by_step": [],
+        "interpretation": "While automation is vital for structured tasks, strategic decisions still require human intuition, critical thinking, and long-term vision to avoid critical errors and ensure adaptability.",
+        "business_context": "Balancing automation with human judgment at appropriate levels is key to sustainable success in fast-paced industries like Quick Commerce, ensuring both efficiency and strategic soundness."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_17",
+      "tags": [
+        "Quick Commerce",
+        "Common Mistakes",
+        "Automation",
+        "Strategic Decisions"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "When an airline makes passenger re-accommodation decisions due to a flight delay, which of the following is a critical factor they consider?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "The passenger's favorite color.",
+        "B": "The airline's daily stock market performance.",
+        "C": "The passenger's membership status and Customer Lifetime Value (CLV).",
+        "D": "The number of empty seats on competitive airlines, regardless of cost."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "Airlines prioritize high-value customers, such as those with elite membership status or a high Customer Lifetime Value (CLV), during re-accommodation to maintain loyalty and long-term profitability. Options A, B, and D are not directly critical factors for an individual passenger's re-accommodation decision.",
+        "step_by_step": [],
+        "interpretation": "Airlines use data to identify and prioritize passengers who are most valuable to their business, ensuring customer retention and strategically managing costs.",
+        "business_context": "This data-driven approach helps airlines mitigate the financial and reputational damage caused by flight disruptions by focusing resources where they yield the greatest return on investment and maintain customer loyalty."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_18",
+      "tags": [
+        "Airline Industry",
+        "Passenger Re-accommodation",
+        "Customer Lifetime Value",
+        "Membership Status"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Why would an airline consider a passenger's 'social media voice' when making re-accommodation decisions?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "To select passengers who are likely to tweet positive reviews.",
+        "B": "To identify potential influencers whose negative feedback could cause significant reputational damage.",
+        "C": "To find out if the passenger has posted about their travel plans previously.",
+        "D": "To determine if the passenger prefers digital communication channels."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "An influential passenger's negative social media post can quickly escalate into a public relations crisis, causing significant reputation damage to the airline's brand. Therefore, airlines may prioritize such passengers for better re-accommodation to prevent widespread negative sentiment. Options A, C, and D are not the primary reasons mentioned for considering social media voice in this context.",
+        "step_by_step": [],
+        "interpretation": "In the digital age, social media influence is a tangible factor that can impact a company's brand and bottom line, making it a critical consideration in sensitive customer service situations.",
+        "business_context": "Proactive management of social media sentiment, especially during service failures, is a key component of modern customer relationship management and brand protection strategies for airlines."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_18",
+      "tags": [
+        "Airline Industry",
+        "Social Media Influence",
+        "Reputation Management",
+        "Business Intelligence"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Besides customer value factors like CLV, what other operational factor might an airline consider when re-accommodating passengers after a flight cancellation?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "The passenger's favorite meal choice.",
+        "B": "The flight frequency of alternative routes to the destination.",
+        "C": "The passenger's shoe size for baggage allocation.",
+        "D": "The nearest public library opening hours for passenger entertainment."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "Flight frequency of alternative routes is a practical operational factor as it directly determines how quickly passengers can be moved to their destination. A route with higher frequency offers more rebooking options and reduces wait times, which is critical during disruptions. The other options are irrelevant to effective re-accommodation decisions.",
+        "step_by_step": [],
+        "interpretation": "Operational logistics, such as the availability and frequency of connecting flights, are crucial for efficient passenger re-accommodation and minimizing further delays.",
+        "business_context": "Airlines use complex algorithms and real-time data to analyze flight schedules and capacity across their network to find the most efficient and least costly re-accommodation solutions, balancing operational feasibility with customer impact."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_18",
+      "tags": [
+        "Airline Industry",
+        "Operational Factors",
+        "Flight Disruptions"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "An airline's decision-making system offers a Platinum Elite member a first-class seat on a partner airline due to a missed connection, while an economy traveler might be put on the next available flight of the same airline. This approach demonstrates the airline's effort to balance:",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Marketing costs with advertising reach.",
+        "B": "Customer satisfaction with operational costs and strategic objectives.",
+        "C": "Employee morale with training budgets.",
+        "D": "Fuel efficiency with baggage handling speed."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": {
+        "text": "This scenario illustrates how airlines balance various factors: satisfying high-value customers (customer satisfaction) to retain their loyalty (strategic objective) while managing the expense (operational costs) of re-accommodation for different passenger segments. Options A, C, and D describe unrelated business considerations or an incomplete understanding of the trade-offs.",
+        "step_by_step": [],
+        "interpretation": "Sophisticated decision-making in airlines involves a delicate balance between pleasing customers, controlling expenses, and achieving long-term business goals like customer retention.",
+        "business_context": "This balancing act is crucial for profitability and brand reputation, especially in an industry prone to disruptions, and is often enabled by advanced business intelligence and decision support systems."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_18",
+      "tags": [
+        "Airline Industry",
+        "Decision Making",
+        "Customer Satisfaction",
+        "Operational Costs",
+        "Strategic Objectives"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    },
+    {
+      "type": "mcq",
+      "question_text": "Which of the following is considered a common mistake in airline passenger re-accommodation, according to the flashcard?",
+      "question_visual": null,
+      "question_visual_type": "None",
+      "options": {
+        "A": "Prioritizing re-accommodation based on long-term customer value.",
+        "B": "Integrating all relevant data points into the decision-making system.",
+        "C": "Prioritizing solely based on ticket price or a first-come, first-served basis.",
+        "D": "Using automated systems to identify affected passengers quickly."
+      },
+      "correct_answer": [
+        "C"
+      ],
+      "explanation": {
+        "text": "A common mistake is prioritizing passengers solely by ticket price or a first-come, first-served basis, as this ignores crucial factors like Customer Lifetime Value (CLV) and social media influence, which can lead to alienating highly profitable or influential customers. Options A, B, and D describe good practices in effective re-accommodation.",
+        "step_by_step": [],
+        "interpretation": "Blindly applying simple metrics without considering the broader customer context and strategic implications can lead to suboptimal outcomes and damage long-term business relationships.",
+        "business_context": "Effective Management Information Systems (MIS) help airlines move beyond simplistic prioritization to a more nuanced, data-driven approach that considers strategic customer value and potential public relations impact."
+      },
+      "difficulty_level": 1,
+      "source_flashcard_id": "MIS_lec_5_18",
+      "tags": [
+        "Airline Industry",
+        "Common Mistakes",
+        "Passenger Re-accommodation",
+        "Customer Value"
+      ],
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": ""
+    }
+  ]
+}

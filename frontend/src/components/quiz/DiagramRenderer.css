@@ -1,0 +1,170 @@
+/* ============================================
+   DIAGRAM RENDERER - BRAND-ALIGNED STYLING
+   ============================================ */
+
+/* Base Container */
+.diagram-container {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.diagram-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e0;
+}
+
+/* Image Diagrams (Matplotlib, etc.) */
+.diagram-container.image-container {
+  text-align: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  padding: 2rem;
+}
+
+.diagram-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mermaid & Graphviz Diagrams */
+.mermaid-container,
+.graphviz-container {
+  overflow-x: auto;
+  text-align: center;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+  padding: 1.5rem;
+}
+
+.mermaid-render,
+.graphviz-render {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.mermaid-render svg,
+.graphviz-render svg {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+/* Plotly Interactive Charts */
+.plotly-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* LaTeX Formulas */
+.latex-container {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f0f9ff 100%);
+  border: 2px solid #3a9b4f;
+  border-radius: 10px;
+}
+
+/* Alt Text */
+.diagram-alt-text {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #718096;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Error State */
+.diagram-error {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fff3cd 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 10px;
+  color: #92400e;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Placeholder State */
+.placeholder-container {
+  text-align: center;
+}
+
+.diagram-placeholder {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+  border: 2px dashed #cbd5e0;
+  border-radius: 12px;
+  color: #4a5568;
+}
+
+.diagram-placeholder p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.diagram-placeholder p:first-child {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.placeholder-note {
+  font-size: 0.95rem;
+  color: #718096;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  .diagram-container {
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+  }
+
+  .diagram-container.image-container {
+    padding: 1.5rem;
+  }
+
+  .mermaid-container,
+  .graphviz-container {
+    padding: 1.25rem;
+  }
+
+  .latex-container {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .diagram-placeholder {
+    padding: 2rem 1.5rem;
+  }
+
+  .diagram-placeholder p:first-child {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .diagram-container {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .diagram-placeholder {
+    padding: 1.5rem 1rem;
+  }
+
+  .diagram-placeholder p:first-child {
+    font-size: 1.75rem;
+  }
+}

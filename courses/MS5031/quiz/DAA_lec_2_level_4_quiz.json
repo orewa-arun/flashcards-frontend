@@ -1,0 +1,346 @@
+{
+  "questions": [
+    {
+      "type": "mca",
+      "question_text": "A new e-commerce startup, \"TrendPulse,\" wants to understand its marketing effectiveness. They run a simple linear regression model where `Y` is daily sales revenue (in USD) and `X` is daily advertising spend on social media (in USD). After collecting 60 days of data, their initial model shows a strong positive linear relationship with a high R-squared value and a statistically significant advertising coefficient. However, the data scientist observes that on days with extremely high advertising spend, the residuals show a noticeable upward trend, and the sales figures for these high-spend days seem to plateau rather than continue increasing linearly. Furthermore, the marketing director is pushing to double the advertising budget next quarter, assuming the strong correlation means increased ad spend *directly causes* a proportional increase in sales. Which of the following issues should the data scientist raise to the marketing director, synthesizing the purpose of simple regression with OLS assumptions and common pitfalls? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The observed plateauing of sales at high ad spend, combined with an upward trend in residuals, indicates a violation of the linearity assumption, suggesting the simple linear model may not accurately capture the true relationship across all spending levels.",
+        "B": "Assuming that increased advertising spend *directly causes* a proportional increase in sales is a common pitfall of confusing correlation with causation; other unmeasured factors could be driving both ad spend and sales.",
+        "C": "Doubling the advertising budget next quarter based on the current model involves significant extrapolation beyond the observed range of advertising spend, which can lead to unreliable predictions as the underlying relationship might change.",
+        "D": "The high R-squared value, by itself, does not guarantee that the OLS assumptions, particularly homoscedasticity, are met, and the residual pattern suggests potential issues with the model's predictive power for higher ad spends.",
+        "E": "The statistically significant advertising coefficient implies that the observed relationship is not due to random chance, but it does not validate the model's assumptions for linearity or prevent issues from extrapolation."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "This question synthesizes the Simple Regression Model (FC1), OLS Assumptions (FC5), and Pitfalls of Extrapolation and Causation (FC5, FC8). Option A is correct because the upward trend in residuals at high X values and the plateauing sales suggest a non-linear relationship (e.g., diminishing returns), violating the linearity assumption for the simple linear model. This means the model's predictions at high ad spend will be systematically biased. Option B is correct as it directly addresses the 'correlation vs. causation' pitfall, a critical misconception in simple regression (FC1, common mistakes). Option C is correct because doubling the budget represents a significant extrapolation beyond the observed data range (FC5, FC8), making predictions unreliable, as the linear relationship may not hold. Option D points to a relevant issue (homoscedasticity) but the primary concern with the upward trend in residuals at high spend for the CEO's conclusion is linearity and extrapolation. Option E is true but doesn't address the core issues of assumption violation or misinterpretation of causation, and is a distractor that acknowledges a correct statistical finding without addressing its limitations.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "simple_regression_model",
+      "tags": [
+        "Simple Regression",
+        "OLS Assumptions",
+        "Linearity",
+        "Extrapolation",
+        "Correlation vs Causation",
+        "Residuals"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "OmniCorp, a diversified conglomerate, is evaluating the performance of its new autonomous delivery drone division. They use a simple regression model to predict the number of successful deliveries per day (`Y`) based on the number of active drones (`X`). After analyzing data from 90 operational days, the model appears to have a reasonable R-squared. However, a junior analyst notices that the residuals from days with very few active drones are consistently positive and small, while residuals from days with many active drones are much larger and also positive, forming a \"fan\" shape. The CEO, seeing the R-squared, concludes that simply adding more drones will linearly increase deliveries as predicted. What is the primary implication of the observed residual pattern for the CEO's conclusion, synthesizing regression diagnostics with the simple regression model's objective?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The fan-shaped residual pattern, where errors increase with X, indicates a violation of homoscedasticity, meaning the model's predictions are less precise when many drones are active.",
+        "B": "The consistently positive residuals for both low and high drone counts suggest a non-linear relationship, implying the linear model systematically underpredicts deliveries.",
+        "C": "The high R-squared value masks a fundamental problem with the independence of errors, leading to biased coefficient estimates for the impact of drones.",
+        "D": "The pattern indicates that the model is perfectly linear, but there are confounding factors that the regression model has failed to capture."
+      },
+      "correct_answer": [
+        "B"
+      ],
+      "explanation": "This question integrates the Simple Regression Model (FC1), Residuals (FC4), and OLS Assumptions (FC5). The description states that residuals are 'consistently positive and small' for low drone counts and 'much larger and also positive' for high drone counts. This means the actual Y values are consistently *above* the predicted ŷ values across the range, implying the linear model is systematically underpredicting. This pattern, particularly the consistent positivity, strongly suggests that the underlying relationship is not linear and a linear model is misspecified, violating the linearity assumption. While a fan shape *also* indicates heteroscedasticity (Option A), the consistently positive nature across the range points more directly to a non-linear relationship and systematic underprediction. If the residuals were randomly scattered but widened, it would be purely heteroscedasticity. Here, the systematic *positive* deviation from the line, even while widening, indicates the linear model is fundamentally missing the curve. Option C is incorrect; a fan shape doesn't directly indicate independence violation. Option D is incorrect; a fan shape with consistently positive residuals clearly shows a problem with the model, not perfect linearity.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "simple_regression_model",
+      "tags": [
+        "Simple Regression",
+        "Residuals",
+        "OLS Assumptions",
+        "Linearity",
+        "Model Diagnostics"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "GreenThumb,\" an agricultural tech company, develops a simple regression model to predict crop yield (Y, in kg/acre) based on a new organic fertilizer dosage (X, in kg/hectare). Their experimental data, collected from 100 plots, covers dosages from 50 kg/hectare to 200 kg/hectare. The estimated regression line is `ŷ = 150 + 2.5x`. The R&D team is excited, proposing to apply the fertilizer at 500 kg/hectare, expecting a massive yield boost, and also to market the fertilizer as a guaranteed method to increase yield. They haven't considered any external factors or limitations beyond their observed data range. Which of the following critical considerations must be addressed before GreenThumb proceeds with their R&D or marketing plans, integrating the estimated regression line with common pitfalls? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The proposed dosage of 500 kg/hectare constitutes severe extrapolation, as it is far outside the observed data range (50-200 kg/hectare), making the predicted yield unreliable and potentially dangerous (e.g., toxicity).",
+        "B": "Marketing the fertilizer as a 'guaranteed' method to increase yield is problematic because the regression model only describes association, not causation, and other factors could influence yield.",
+        "C": "The statement 'guaranteed method' ignores the inherent variability around the estimated regression line, which is captured by prediction intervals for individual plots, not just the point estimate.",
+        "D": "The estimated coefficients (b₀, b₁) are merely sample estimates of the true population parameters (β₀, β₁) and are subject to sampling variability, meaning the 'true' effect might be different."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "This question integrates the Estimated Regression Line (FC3), Simple Regression Model (FC1), and the Pitfalls of Extrapolation and Causation (FC5, FC8). Option A is correct because applying the fertilizer at 500 kg/hectare is a significant extrapolation (FC5, FC8) from the observed range of 50-200 kg/hectare. The linear relationship may not hold, and there could be diminishing returns or even negative effects (toxicity) at such high dosages. Option B is correct as the 'common mistake' in simple regression (FC1) and pitfalls (FC5, FC8) explicitly warns against confusing correlation with causation. The model shows association, but doesn't prove the fertilizer *causes* the yield increase, nor does it account for other necessary conditions. Option C is correct because the estimated line provides a point prediction, but individual outcomes (like a specific plot's yield) have inherent variability (residuals, FC4) around that prediction. Prediction intervals (FC6) account for this, and a 'guaranteed' outcome ignores this uncertainty. Option D is correct as it highlights the fundamental distinction between sample estimates (b₀, b₁) from the Estimated Regression Line (FC3) and the true, unknown Population Regression Function parameters (β₀, β₁) (FC2, FC3 common mistakes). Relying on b₁ as a 'fixed, universal truth' ignores sampling variability.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "simple_regression_model",
+      "tags": [
+        "Estimated Regression Line",
+        "Simple Regression",
+        "Extrapolation",
+        "Correlation vs Causation",
+        "Prediction Interval",
+        "Population Parameters",
+        "Sample Estimates"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "EduTech Solutions\" is developing an AI-powered tutor and uses a simple regression model to estimate student engagement (Y, on a 0-100 scale) based on daily interaction time with the AI (X, in minutes). They have collected data from 200 students over a semester. The OLS estimated line is `ŷ = 40 + 0.8X`. The lead data scientist notes that while the model seems to fit well within the observed interaction times (10-60 minutes/day), the underlying psychological principles suggest that beyond a certain point (e.g., 90 minutes), engagement might either plateau or even decrease due to cognitive overload, an effect not captured by the current linear model. Which of the following statements best describes the primary challenge in interpreting this model for future policy, synthesizing the theoretical PRF with OLS assumptions?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The primary challenge is that the estimated linear model likely violates the linearity assumption of OLS for interaction times beyond the observed range, meaning the true Population Regression Function is non-linear.",
+        "B": "The model's R-squared value is likely inflated, indicating that the impact of interaction time on engagement is not as strong as it appears within the observed range.",
+        "C": "The presence of cognitive overload suggests a violation of the independence of errors assumption, as one student's overload might influence another's engagement.",
+        "D": "The model's coefficients are biased because the error term (ε) in the PRF does not account for individual student differences in learning styles."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "This question integrates the Simple Regression Model (FC1), Population Regression Function (PRF) (FC2), and OLS Assumptions (FC5). The core issue described is that while the model fits within the observed range, theoretical understanding suggests a non-linear relationship (plateauing or decreasing engagement) outside this range. This directly points to a violation of the linearity assumption (FC5). The simple linear model assumes a straight-line relationship across all X values, but the true PRF (FC2) for engagement is likely curvilinear. Therefore, using the linear model for prediction or policy outside the observed range will be misleading. Option B is incorrect; an R-squared value for the observed range doesn't directly indicate a linearity violation outside that range, though it might be less useful. Option C is incorrect; cognitive overload is a property of the X-Y relationship or an unmodeled factor (part of ε), not a direct violation of independence between *errors* of different students. Option D is incorrect; individual differences are typically absorbed into the error term (ε) of the PRF (FC2) and don't inherently cause bias in OLS coefficients *unless* they are correlated with X, which is not stated here.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "simple_regression_model",
+      "tags": [
+        "Simple Regression",
+        "Population Regression Function",
+        "OLS Assumptions",
+        "Linearity",
+        "Extrapolation",
+        "Model Specification"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A health and wellness startup, \"VitaMetrics,\" uses a simple regression model to analyze the relationship between daily step count (X) and average nightly sleep duration (Y, in hours) for its users. After analyzing data from 500 users, they obtain an estimated regression line `ŷ = 6.5 + 0.0002X` with a 95% confidence interval for `β₁` as `[0.0001, 0.0003]`. They observe that the residuals show a slight \"bow-shaped\" pattern when plotted against predicted sleep duration, suggesting the linear model might slightly overpredict for very low and very high sleep durations. The marketing team wants to launch a campaign claiming \"every 1,000 steps adds 0.2 hours of sleep\" based on the point estimate. Which of the following points should the data scientist convey to the marketing team to ensure responsible communication of the model's findings? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The 'bow-shaped' residual pattern indicates a potential violation of the linearity assumption, suggesting that a simple linear relationship might not hold perfectly across all step counts, and the model's predictions could be biased at the extremes.",
+        "B": "The marketing claim of 'every 1,000 steps adds 0.2 hours of sleep' is an oversimplification, as the true effect (β₁) is estimated to be between 0.1 and 0.3 hours per 1,000 steps based on the confidence interval, not a single fixed value.",
+        "C": "The model only quantifies an *association* between step count and sleep duration, and does not establish a *causal* link; there might be other lifestyle factors influencing both.",
+        "D": "The point estimate of 0.0002 hours/step (or 0.2 hours/1000 steps) is an unbiased estimate, but it's important to communicate the uncertainty associated with it through the confidence interval."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "This question synthesizes the Simple Regression Model (FC1), Residuals (FC4), and Confidence Interval for Regression Coefficient (FC10), along with common pitfalls. Option A is correct because a 'bow-shaped' residual pattern (overpredicting at extremes) is a classic indicator of a violation of the linearity assumption (FC5), meaning the simple linear model is misspecified and doesn't capture the true relationship well across the entire range of X. Option B is correct because while the point estimate for 1,000 steps is 0.2 hours, the 95% confidence interval for β₁ (FC10) indicates the true population effect is estimated to be between 0.0001 and 0.0003 hours per step, which translates to 0.1 to 0.3 hours per 1,000 steps. Communicating this range provides a more accurate picture of uncertainty. Option C is correct as it addresses the fundamental pitfall of confusing correlation with causation (FC1, common mistakes). A statistical model identifies association, but doesn't inherently prove that increasing steps *causes* more sleep. Option D is correct because while the point estimate (b₁) is the best single estimate, it's subject to sampling variability (FC2, FC3 common mistakes). The confidence interval (FC10) provides the range of plausible values for the true population parameter (β₁), making communication more responsible by acknowledging this uncertainty.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "simple_regression_model",
+      "tags": [
+        "Simple Regression",
+        "Residuals",
+        "Confidence Interval",
+        "Causation vs Correlation",
+        "OLS Assumptions",
+        "Linearity"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A global logistics company, \"FreightFlow,\" wants to understand the true impact of fuel price fluctuations (X, in USD/gallon) on their average delivery cost per mile (Y, in USD). They hypothesize a PRF: `Y = β₀ + β₁X + ε`, where `β₁` represents the true, unknown sensitivity of cost to fuel price across all possible operations. From a sample of 120 delivery routes over a year, they estimate the SRF as `ŷ = 0.50 + 0.02x`. A junior analyst, new to the company, is preparing a report for the board and assumes that `b₁ = 0.02` is the exact, unchangeable impact. The analyst also notes that during periods of extreme fuel price volatility, the errors in their model seem much larger than during stable periods. Which of the following points are critical for the junior analyst to understand and communicate when presenting their findings, synthesizing the PRF with the estimated regression line and OLS assumptions? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The estimated coefficient `b₁ = 0.02` is a sample estimate, not the true population parameter `β₁`, and thus carries inherent uncertainty which should be quantified with a confidence interval.",
+        "B": "The observation that errors are larger during extreme fuel price volatility suggests a violation of the homoscedasticity assumption, meaning the model's predictions might be less reliable for volatile periods.",
+        "C": "The PRF represents the theoretical 'true' relationship, which is unknown, while the SRF is the best approximation derived from observed data, highlighting the distinction between population and sample.",
+        "D": "The error term `ε` in the PRF captures unobserved factors like varying road conditions or traffic, which, if correlated with X, could bias the estimate of `β₁`."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "This question synthesizes the Population Regression Function (PRF) (FC2), Estimated Regression Line (SRF) (FC3), and OLS Assumptions (FC5). Option A is correct because the flashcard for PRF (FC2) explicitly states that β₁ is the *true, unknown* population slope, and the common mistake (FC2, FC3) is confusing population parameters with sample estimates. Therefore, b₁ is an estimate subject to sampling variability, and a confidence interval (FC9, FC10) quantifies this uncertainty. Option B is correct because larger errors during extreme fuel price volatility directly describe heteroscedasticity (unequal variance of errors), a violation of a key OLS assumption (FC5). This implies that the model's reliability and precision vary across different fuel price levels. Option C is correct as it highlights the fundamental distinction between the theoretical PRF (FC2) and the practical SRF (FC3), which is crucial for understanding the limitations of the estimated model. Option D is correct as the error term `ε` (FC2) represents unobserved factors. If these factors (like road conditions) are correlated with the independent variable (X, fuel price), it violates an implicit OLS assumption (no correlation between X and ε), potentially leading to biased estimates of β₁ (FC5).",
+      "difficulty_level": 4,
+      "source_flashcard_id": "population_regression_function",
+      "tags": [
+        "Population Regression Function",
+        "Estimated Regression Line",
+        "OLS Assumptions",
+        "Homoscedasticity",
+        "Confidence Interval",
+        "Error Term"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "A pharmaceutical company is studying the long-term efficacy of a new drug, modeling the true relationship between dosage (X) and reduction in symptom severity (Y) using a PRF: `Y = β₀ + β₁X + ε`. They conduct a clinical trial on 200 patients, obtaining an estimated regression line. During the trial, they observe that for some patients, the drug interacts unexpectedly with other medications, leading to unusually high or low symptom reductions not explained by dosage alone. These unobserved interactions are considered part of the `ε` term. A research manager, reviewing the results, suggests that if the residuals (eᵢ) from the estimated model show a strong pattern (e.g., U-shaped), it primarily indicates a specific issue. Which of the following is the most direct and crucial implication if the residuals from their sample data exhibit a clear non-random pattern, relating it back to the theoretical PRF and OLS assumptions?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "A strong non-random pattern in residuals (e.g., U-shaped) primarily indicates a violation of the linearity assumption of OLS, suggesting the true relationship between dosage and symptom reduction is not linear as assumed by the PRF.",
+        "B": "The pattern suggests a violation of the normality of errors assumption, which will make the confidence intervals for the regression coefficients inaccurate.",
+        "C": "This indicates that the unobserved drug interactions (part of ε) are correlated with the dosage (X), leading to biased estimates of β₁.",
+        "D": "The residuals are not independent, meaning a patient's response affects another's, which is a critical concern for the clinical trial's design."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "This question integrates the Population Regression Function (PRF) (FC2), Residuals (FC4), and OLS Assumptions (FC5). A 'strong non-random pattern' like a U-shape in the residuals (eᵢ) plotted against predicted values (ŷᵢ) or X values is the most direct indicator that the linear model is misspecified, meaning the true underlying relationship (PRF, FC2) is not linear. This is a violation of the linearity assumption (FC5). While other assumptions might also be violated, the U-shape specifically points to the inadequacy of a linear fit. Option B, while a valid OLS assumption, is not the *primary* or *most direct* implication of a U-shaped pattern in residuals; that pattern typically suggests non-linearity before normality. Option C is a possible consequence of a misspecified model, but the U-shape points more directly to the non-linearity of the relationship itself rather than solely a correlation between X and ε. Option D relates to the independence of errors, which is important, but a U-shape doesn't directly imply that one patient's error affects another's; it implies a systematic bias in the model's fit across the range of X.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "population_regression_function",
+      "tags": [
+        "Population Regression Function",
+        "Residuals",
+        "OLS Assumptions",
+        "Linearity",
+        "Model Diagnostics"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "CityTransit,\" a public transportation authority, uses a simple regression model to analyze the relationship between daily bus ridership (Y) and the average daily temperature (X). They observe a strong positive correlation and an estimated slope `b₁` of 150, implying 150 more riders for every degree Celsius increase. The PRF in their minds is `Y = β₀ + β₁X + ε`, representing the true underlying relationship. The city council, upon seeing these results, immediately proposes increasing bus frequency during summer months, assuming the temperature *causes* ridership to increase and this policy will directly maximize passenger numbers. However, they've overlooked other factors like school holidays and tourist season. Which of the following points should be highlighted to the city council to ensure a nuanced understanding of their model and informed decision-making, synthesizing the PRF, simple regression, and common pitfalls? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The observed correlation, however strong, does not imply that temperature *causes* ridership changes. Confounding variables like school holidays and tourist season (which also correlate with temperature) might be the true drivers, forming part of the `ε` term in the PRF.",
+        "B": "The estimated slope `b₁ = 150` is a sample estimate of the true population parameter `β₁`. Its precision should be communicated using a confidence interval to reflect the uncertainty in this estimate.",
+        "C": "The simple regression model might violate the linearity assumption if the relationship between temperature and ridership is not consistently linear across all temperature ranges (e.g., extreme heat might deter ridership).",
+        "D": "Increasing bus frequency based solely on temperature ignores the potential for diminishing returns; at some point, additional buses may not yield proportional ridership increases, especially if the underlying demand is driven by other factors."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "This question synthesizes the Population Regression Function (PRF) (FC2), Simple Regression Model (FC1), OLS Assumptions (FC5), and Correlation vs. Causation Pitfall (FC5, FC8). Option A is correct because it directly addresses the 'correlation vs. causation' pitfall (FC1, FC5, FC8). The PRF's error term (ε, FC2) captures all unobserved factors, and if these (like school holidays and tourist season) are correlated with X (temperature) and Y (ridership), they can create a spurious correlation or mask the true causal effects. Option B is correct because b₁ is a sample estimate (FC3) of the true population parameter β₁ (FC2). It is subject to sampling variability, and its precision should be communicated using a confidence interval (FC9, FC10). Option C is correct as it highlights a potential violation of the linearity assumption (FC5). The simple linear model assumes a constant effect, but the true PRF (FC2) might be non-linear (e.g., extreme heat might reduce ridership). This would be evident in residual plots. Option D is correct as it touches upon the practical limitation of extrapolating beyond observed conditions or ignoring the underlying mechanisms. Even if there is some causal link, the linear increase might not hold indefinitely, especially if other factors are at play, leading to an inefficient policy choice.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "population_regression_function",
+      "tags": [
+        "Population Regression Function",
+        "Simple Regression",
+        "Correlation vs Causation",
+        "OLS Assumptions",
+        "Confidence Interval",
+        "Extrapolation"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "InnovateLabs,\" a tech startup, is researching the true relationship between the number of lines of code written per day (X) and the number of critical bugs found in testing (`Y`) for their development team, conceptualizing it as `Y = β₀ + β₁X + ε`. From a sample of 80 developer-days, their OLS model yields an estimated slope `b₁ = 0.05` (meaning 0.05 bugs per line of code). They also compute a 95% confidence interval for `β₁` as `[0.02, 0.08]`. A team lead, aiming to improve code quality, wants to implement strict coding standards that reduce lines of code, expecting a proportional reduction in bugs based on `b₁`. What is the most accurate interpretation of the 95% confidence interval for `β₁` in this context, synthesizing the PRF with estimation and inference?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "We are 95% confident that the true average change in critical bugs per additional line of code for the entire population of developer-days lies between 0.02 and 0.08.",
+        "B": "There is a 95% probability that the next observed `b₁` from a new sample will fall between 0.02 and 0.08.",
+        "C": "There is a 95% probability that any single developer-day will have between 0.02 and 0.08 bugs per line of code.",
+        "D": "The confidence interval indicates that reducing lines of code will *definitively* lead to a reduction in bugs, as zero is not included in the interval."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "This question synthesizes the Population Regression Function (PRF) (FC2), Estimated Regression Line (FC3), and Confidence Interval for Regression Coefficient (FC10). Option A is the correct interpretation of a confidence interval (FC9, FC10). It states that we are 95% confident that the *true population parameter* (β₁ in the PRF, FC2) lies within the given range. This range quantifies the uncertainty of the estimated slope (b₁, FC3). Option B is incorrect; the confidence interval is for the fixed, unknown population parameter, not for future sample estimates (FC9 common mistakes). Option C is incorrect; this describes a prediction interval for an individual observation (FC6), not a confidence interval for a population parameter (FC9, FC10). Option D is partially correct in that zero not being in the interval suggests statistical significance, but the term 'definitively' is too strong given it's an estimate, and it doesn't fully capture the meaning of the interval as a range of plausible values for β₁.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "population_regression_function",
+      "tags": [
+        "Population Regression Function",
+        "Estimated Regression Line",
+        "Confidence Interval",
+        "Regression Coefficient",
+        "Interpretation"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "A climate research institute is developing a model to predict sea level rise (Y) based on average global temperature anomaly (X), with a theoretical PRF `Y = β₀ + β₁X + ε`. They have decades of historical data, and their estimated regression line `ŷ = b₀ + b₁X` shows a clear upward trend. However, they are concerned that the rate of sea level rise might accelerate non-linearly with higher temperature anomalies, and that the variability of sea level measurements has increased over time due to more extreme weather events. They want to provide a 99% prediction interval for the sea level rise in the year 2050, given a projected temperature anomaly. Which of the following OLS assumptions are most likely to be critically violated in this scenario, potentially rendering their prediction interval for 2050 unreliable, and what are the implications? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The concern about sea level rise accelerating non-linearly suggests a violation of the linearity assumption (FC5), meaning the simple linear model's `b₁` may not accurately represent the relationship at higher temperature anomalies, making long-term predictions unreliable.",
+        "B": "The increased variability of sea level measurements over time points to a violation of the homoscedasticity assumption (FC5), which would cause the prediction interval (FC6) to be inaccurately wide or narrow, depending on the X value.",
+        "C": "Predicting for the year 2050 involves significant extrapolation beyond the historical data range for X (temperature anomaly), which is a critical assumption violation for prediction intervals (FC7) and leads to highly uncertain results.",
+        "D": "The increasing variability (heteroscedasticity) means that standard errors will be biased, potentially making the calculated prediction interval for 2050 too narrow or wide, thus misrepresenting the true uncertainty (FC5, FC7)."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "This question synthesizes the Population Regression Function (PRF) (FC2), OLS Assumptions (FC5), and Prediction Interval Assumptions (FC7). Option A is correct. The statement 'rate of sea level rise might accelerate non-linearly' directly implies that the true relationship (PRF, FC2) is not linear, violating the linearity assumption (FC5). This makes a simple linear model inadequate for future predictions, especially for 2050. Option B is correct. 'Variability of sea level measurements has increased over time' indicates that the error variance is not constant, which is a violation of the homoscedasticity assumption (FC5). This will lead to an unreliable prediction interval (FC6, FC7), where the reported uncertainty might be too small for high-variability periods or too large for low-variability periods. Option C is correct. Predicting for 2050 based on historical data likely means the projected temperature anomaly (X for 2050) falls outside the range of observed X values in the historical dataset. This is a clear violation of the 'no extrapolation' assumption for prediction intervals (FC7, FC8), making the prediction highly unreliable. Option D is correct. Heteroscedasticity (violation of homoscedasticity, FC5) leads to biased standard errors for the coefficients and thus biased standard errors for prediction. This directly impacts the width and reliability of the prediction interval (FC6, FC7), causing it to misrepresent the true uncertainty.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "population_regression_function",
+      "tags": [
+        "Population Regression Function",
+        "OLS Assumptions",
+        "Prediction Interval Assumptions",
+        "Linearity",
+        "Homoscedasticity",
+        "Extrapolation"
+      ]
+    },
+    {
+      "type": "mca",
+      "question_text": "\"HealthTrack,\" a wearable tech company, develops an estimated regression line to predict daily calorie burn (Y) based on steps taken (X) from a sample of 500 users. Their model is `ŷ = 300 + 0.05x`. They observe that the residuals from this model are not evenly scattered; instead, they show a distinct pattern where the model consistently overestimates calorie burn for users with very low step counts and underestimates for users with very high step counts. The data science team is preparing to integrate this model directly into their app for personalized calorie tracking. Which of the following conclusions can HealthTrack draw from the observed residual pattern, synthesizing the nature of the estimated regression line with regression diagnostics and OLS assumptions? (Select all that apply)",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The consistent overestimation at low X and underestimation at high X indicates a violation of the linearity assumption, suggesting the true relationship is likely curvilinear (e.g., U-shaped or inverted U-shaped) rather than linear.",
+        "B": "The model's estimated coefficients (b₀ and b₁) are likely biased, as a violation of the linearity assumption means OLS estimates are no longer BLUE (Best Linear Unbiased Estimators).",
+        "C": "Integrating this model directly into the app will lead to systematically inaccurate calorie burn predictions for users at the extremes of step counts, potentially causing user dissatisfaction or incorrect health recommendations.",
+        "D": "The pattern suggests that the error terms are not independent, implying that one user's calorie burn prediction error might be correlated with another's, which is a critical problem for the sample selection."
+      },
+      "correct_answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "This question synthesizes the Estimated Regression Line (FC3), Residuals (FC4), and OLS Assumptions (FC5). Option A is correct. The described residual pattern (overestimation at low X, underestimation at high X, or vice-versa) is a classic indicator of non-linearity, violating the linearity assumption (FC5). This means the true relationship between steps and calorie burn is likely curvilinear, and a simple linear model is misspecified. Option B is correct. If the linearity assumption is violated, OLS estimates (b₀, b₁) are no longer guaranteed to be BLUE (Best Linear Unbiased Estimators) (FC5). This means the coefficients are likely biased, and their interpretation as the true effect of X on Y is flawed. Option C is correct. Since the model systematically mispredicts at the extremes of step counts, implementing it directly will provide inaccurate personalized calorie tracking for a significant portion of users, leading to poor user experience and potentially misleading health advice. Option D is incorrect. While independence of errors (FC5) is crucial, a pattern in residuals (like a U-shape) primarily points to a linearity violation, not necessarily a correlation between errors of different individuals in this context, unless there's specific information about data collection order or group effects.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "estimated_regression_line",
+      "tags": [
+        "Estimated Regression Line",
+        "Residuals",
+        "OLS Assumptions",
+        "Linearity",
+        "Bias",
+        "Model Diagnostics"
+      ]
+    },
+    {
+      "type": "mcq",
+      "question_text": "\"CyberGuard Inc.\" provides cybersecurity services and uses an estimated regression line to model the relationship between a client's monthly IT security spending (X, in thousands of USD) and the number of security breaches (`Y`) they experience. From historical data of 100 clients, their OLS model is `ŷ = 5 - 0.2X`. A senior manager confidently states that for every $1,000 increase in IT security spending, clients *will definitively* experience exactly 0.2 fewer breaches. They are using this `b₁` value as a fixed, universal truth for all future clients. Which of the following statements best describes the flaw in the senior manager's interpretation, synthesizing the estimated regression line with the PRF and the concept of confidence intervals?",
+      "visual_type": "None",
+      "visual_code": "",
+      "alt_text": "",
+      "options": {
+        "A": "The estimated coefficient `b₁ = -0.2` is merely a sample estimate of the true population slope `β₁` in the PRF, meaning it's subject to sampling variability and not a definitive, universal truth.",
+        "B": "The model's R-squared value is likely too low to make such a definitive statement, regardless of the individual coefficient's significance.",
+        "C": "The interpretation ignores the residuals (error term), which represent the inevitable random variation in breaches that cannot be explained by IT spending alone.",
+        "D": "The negative coefficient suggests that increased spending *causes* more breaches, which is counterintuitive and likely a sign of reverse causality or confounding variables."
+      },
+      "correct_answer": [
+        "A"
+      ],
+      "explanation": "This question synthesizes the Estimated Regression Line (FC3), Population Regression Function (PRF) (FC2), and Confidence Interval (FC9). The core flaw is the manager treating a sample estimate (b₁, from FC3) as a definitive population parameter (β₁, from FC2). Option A correctly identifies this: `b₁` is an estimate derived from a sample and is subject to sampling variability, meaning the *true* population impact (β₁) is likely not *exactly* -0.2. A confidence interval (FC9, FC10) would provide a range of plausible values for the true `β₁`. Option B is incorrect; while R-squared is important, the primary flaw here is the misinterpretation of `b₁` as a fixed parameter, not necessarily the overall model fit. Option C is a true statement about residuals (FC4) but not the *primary* flaw in the manager's interpretation of `b₁` as a 'definitive, universal truth.' The manager is misinterpreting `b₁` itself. Option D is incorrect; a negative coefficient means Y decreases as X increases, so 0.2 *fewer* breaches per $1,000 is the correct interpretation of the sign, not an indication of reverse causality in itself, though causation remains a separate concern.",
+      "difficulty_level": 4,
+      "source_flashcard_id": "estimated_regression_line",
+      "tags": [
+        "Estimated Regression Line",
+        "Population Regression Function",
+        "Confidence Interval",
+        "Sample Estimates",
+        "Population Parameters",
+        "Interpretation"
+      ]
+    }
+  ]
+}

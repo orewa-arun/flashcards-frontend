@@ -23,7 +23,9 @@
         "C": "A method to describe the relationship between two categorical variables.",
         "D": "A method to find the average of a dataset."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because MLR models the relationship between a dependent variable and *two or more* independent variables. A describes Simple Linear Regression. C and D are unrelated to regression.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_1",
@@ -45,7 +47,9 @@
         "C": "Predicting categorical data.",
         "D": "Ignoring the error term."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because MLR uses *multiple* independent variables to predict the dependent variable, unlike SLR which uses only one. The other options are incorrect as they don't accurately describe the extension MLR provides.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_1",
@@ -67,7 +71,9 @@
         "C": "T-test",
         "D": "Chi-squared test"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because MLR is used to predict a dependent variable (sales) based on multiple independent variables (advertising spend, seasonality, competitor actions). SLR is for one independent variable. T-tests and Chi-squared tests are for comparing means or analyzing categorical data, respectively.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_1",
@@ -89,7 +95,9 @@
         "C": "Always excluding the intercept term.",
         "D": "Assuming the dependent variable is categorical."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because including too many irrelevant independent variables can lead to overfitting and poor generalization. A is the opposite problem. C is generally incorrect. D is not a typical use case for MLR.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_1",
@@ -111,7 +119,9 @@
         "C": "The square footage.",
         "D": "The price of the house."
       },
-      "correct_answer": "D",
+      "correct_answer": [
+        "D"
+      ],
       "explanation": "D is correct because the *dependent* variable is the one being predicted. The house price is being predicted based on the other factors. A, B, and C are independent variables (predictors).",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_1",
@@ -133,7 +143,9 @@
         "C": "The relationship between advertising spend and competitor actions.",
         "D": "The average advertising spend across all periods."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because a partial regression coefficient shows the impact of one independent variable *while holding all others constant*. A is incorrect because it doesn't account for other variables. C and D are irrelevant.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_2",
@@ -155,7 +167,9 @@
         "C": "Employees with more experience earn less.",
         "D": "Education level has no impact on salary."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because it accurately interprets the partial slope in the context of the MLR model, highlighting the 'holding other variables constant' aspect. A, C, and D are incorrect interpretations of the coefficient.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_2",
@@ -177,7 +191,9 @@
         "C": "Houses with more square footage cost less.",
         "D": "Location does not affect the price of the house."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because it explains the meaning of the partial slope, emphasizing that other factors (like location, bedrooms, etc.) are held constant. A is simply wrong. C is the opposite. D is incorrect as it makes a statement about a variable not mentioned in the coefficient interpretation.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_2",
@@ -199,7 +215,9 @@
         "C": "Ignoring the statistical significance of the coefficient.",
         "D": "Assuming the coefficient is always positive."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because the partial slope only reflects the *direct* effect, controlling for other variables, and not the total effect. A describes the correct interpretation. C and D are unrelated to the core mistake in interpreting the coefficient.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_2",
@@ -221,7 +239,9 @@
         "C": "The other independent variables are kept at their average values.",
         "D": "The effect of the other independent variables is removed from the calculation."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct. 'Holding constant' means that, for the purpose of measuring the effect of *one* variable, the values of the others are assumed to not change. A and C are incorrect. D is related, but B is a more direct answer.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_2",
@@ -243,7 +263,9 @@
         "C": "The error terms are normally distributed.",
         "D": "The independent variables are perfectly correlated."
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because Normality of Errors is a key assumption. A is false (MLR is for continuous dependent variables). B violates the Linearity assumption. D violates the Independence assumption (multicollinearity).",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_3",
@@ -267,7 +289,9 @@
         "C": "The relationship between the independent variables and the dependent variable is linear.",
         "D": "All variables are normally distributed."
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because Linearity requires a linear relationship between the independent and dependent variables. A and B are incorrect interpretations of linearity in this context. D relates to the Normality assumption.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_3",
@@ -291,7 +315,9 @@
         "C": "The variance of the error terms is constant across all levels of the independent variables.",
         "D": "All variables have zero variance."
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because homoscedasticity requires the error term's variance to be constant. A and B relate to the variables themselves. D is clearly wrong.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_3",
@@ -315,7 +341,9 @@
         "C": "Inaccurate hypothesis tests.",
         "D": "Reduced multicollinearity."
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because violating assumptions can lead to unreliable conclusions about statistical significance. A and B are the opposite of what happens. D is unrelated.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_3",
@@ -339,7 +367,9 @@
         "C": "Multicollinearity",
         "D": "Normality of Errors"
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because Multicollinearity is *not* an assumption; it's a *problem* that violates the assumption of Independence. A, B, and D are all valid assumptions.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_3",
@@ -363,7 +393,9 @@
         "C": "To perform hypothesis testing.",
         "D": "To create a 3D model of the data."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because a Scatmat displays scatterplots of every pair of variables. A, C, and D are not the main purposes of a Scatmat.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_4",
@@ -386,7 +418,9 @@
         "C": "Non-linearity",
         "D": "Autocorrelation"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct. A Scatmat helps visualize relationships between variables, which can reveal multicollinearity (high correlation between independent variables). While non-linearity can be observed, it's not the *primary* focus. The other options are not directly visualized in a Scatmat.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_4",
@@ -409,7 +443,9 @@
         "C": "The p-value of each independent variable.",
         "D": "The R-squared value of the model."
       },
-      "correct_answer": "A",
+      "correct_answer": [
+        "A"
+      ],
       "explanation": "A is correct because the Scatmat shows pairwise relationships, and thus it can show the correlation between house price (dependent) and square footage (independent). The other options refer to model outputs or summary statistics, not visualizations within the Scatmat.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_4",
@@ -432,7 +468,9 @@
         "C": "Using the Scatmat to perform regression analysis.",
         "D": "Assuming all relationships are linear."
       },
-      "correct_answer": "A",
+      "correct_answer": [
+        "A"
+      ],
       "explanation": "A is correct because the Scatmat shows marginal effects, not partial effects after controlling for other variables. B is incorrect because the diagonal shows the variable against itself. C is incorrect as Scatmat is for visualization, not regression. D is a separate issue (linearity), but A is the specified 'common mistake'.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_4",
@@ -455,7 +493,9 @@
         "C": "A correlation coefficient between two variables.",
         "D": "A boxplot of a single variable."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct as a scatterplot shows the relationship between two variables. A, C, and D are different types of visualizations that are not part of the standard scatterplot matrix.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_4",
@@ -478,7 +518,9 @@
         "C": "Causal relationships",
         "D": "Spurious relationships"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because a correlation matrix displays Pearson correlation coefficients, which measure the strength and direction of *linear* relationships between variables. A correlation matrix doesn't reveal non-linear or causal links. While it can suggest possible relationships, further analysis is needed to confirm causality.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_5",
@@ -500,7 +542,9 @@
         "C": "0",
         "D": "0.5"
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because a correlation coefficient of 0 indicates no *linear* relationship between the two variables. 1 indicates a perfect positive correlation, and -1 indicates a perfect negative correlation.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_5",
@@ -522,7 +566,9 @@
         "C": "Multicollinearity",
         "D": "Normality"
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because a high correlation between predictor variables suggests *multicollinearity*.  Multicollinearity can make it difficult to determine the individual effect of each predictor on the response variable. Heteroscedasticity, autocorrelation, and normality relate to the residuals of the model, not relationships between predictors.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_5",
@@ -544,7 +590,9 @@
         "C": "1",
         "D": "The average correlation"
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because the diagonal of a correlation matrix represents the correlation of a variable with itself, which is always 1. Values other than 1 on the diagonal would indicate an error in the matrix.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_5",
@@ -565,7 +613,9 @@
         "C": "A weak correlation does not mean a variable is useless.",
         "D": "Variables with negative correlations should always be removed."
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because a weak correlation doesn't automatically mean a variable is useless. It might have a significant partial effect when combined with other variables. The other options are incorrect as they make definitive statements about variable usefulness based solely on correlation strength or direction.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_5",
@@ -586,7 +636,9 @@
         "C": "The distribution of individual variables.",
         "D": "Missing values in the dataset."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because a Scatterplot Matrix displays *pairwise relationships* between variables, showing how each variable relates to every other variable in the dataset. It is a set of scatterplots. A Correlation Matrix shows linear correlations, and histograms or boxplots are used for distributions.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_6",
@@ -607,7 +659,9 @@
         "C": "Summary Statistics Table",
         "D": "Histogram"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct. A Scatterplot Matrix is better at spotting non-linear relationships because it visually displays the relationship between each pair of variables. The human eye can recognize patterns, clusters, and non-linear trends. Correlation matrices only show linear relationships.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_6",
@@ -629,7 +683,9 @@
         "C": "Box Plot",
         "D": "Frequency Table"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is the correct answer. The correlation matrix displays the Pearson correlation coefficient, which is a numerical value indicating the strength and direction of a linear relationship. A scatterplot matrix is a visual tool that can show relationships, but does not provide a numerical value.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_6",
@@ -650,7 +706,9 @@
         "C": "Correlation Matrix",
         "D": "Boxplot"
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because a correlation matrix displays the correlation coefficients between all pairs of variables, making it easy to identify high correlations (e.g., > 0.7) that suggest multicollinearity. A scatterplot matrix can also show this, but it is less precise for quick identification.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_6",
@@ -674,7 +732,9 @@
         "C": "Use both the Correlation Matrix and the Scatterplot Matrix.",
         "D": "Use neither; rely on summary statistics only."
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct because using both tools provides a more comprehensive understanding. The Correlation Matrix captures linear relationships, while the Scatterplot Matrix reveals both linear and non-linear associations. Relying on only one tool risks missing important insights.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_6",
@@ -697,7 +757,9 @@
         "C": "Before all else",
         "D": "By itself"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct. 'Ceteris paribus' is a Latin phrase meaning 'all other things being equal' or 'holding all other variables constant'. In regression analysis, it is used to isolate the effect of a single independent variable on the dependent variable.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_7",
@@ -718,7 +780,9 @@
         "C": "The intercept",
         "D": "The error term"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because 'ceteris paribus' means 'all other things being equal,' so when interpreting the effect of one independent variable, *all other independent variables in the model are held constant*. This isolates the effect of the variable of interest.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_7",
@@ -739,7 +803,9 @@
         "C": "Heteroscedasticity",
         "D": "Autocorrelation"
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct. The condition of holding all other variables constant while examining the effect of advertising spend is 'ceteris paribus'. The other options are related to model assumptions or issues, but not this specific concept.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_7",
@@ -760,7 +826,9 @@
         "C": "Ceteris paribus",
         "D": "Linearity"
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct. The 'ceteris paribus' condition requires that all other variables are held constant when interpreting the effect of a single variable. Ignoring the other variables violates this condition, leading to potentially misleading conclusions.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_7",
@@ -781,7 +849,9 @@
         "C": "The data is perfectly normally distributed.",
         "D": "There is no relationship between the variables."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct because 'ceteris paribus' directly translates to 'all other variables are held constant'. This is a crucial assumption when interpreting individual coefficients in a multiple regression model.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_7",
@@ -802,7 +872,9 @@
         "C": "The slope of the regression line.",
         "D": "The statistical significance of the model."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct. The Coefficient of Determination ($R^2$) represents the proportion of the variance in the dependent variable that is predictable from the independent variables. It indicates how well the model fits the data.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_8",
@@ -824,7 +896,9 @@
         "C": "70%",
         "D": "700%"
       },
-      "correct_answer": "C",
+      "correct_answer": [
+        "C"
+      ],
       "explanation": "C is correct. An $R^2$ of 0.70 means that 70% of the variation in the dependent variable is explained by the independent variables in the model. R-squared is interpreted as a percentage.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_8",
@@ -846,7 +920,9 @@
         "C": "The model is overfit.",
         "D": "The independent variables are perfectly correlated."
       },
-      "correct_answer": "B",
+      "correct_answer": [
+        "B"
+      ],
       "explanation": "B is correct. An $R^2$ close to 0 indicates that the independent variables in the model explain very little of the variation in the dependent variable, suggesting a poor model fit. An $R^2$ of 1 would indicate a perfect fit.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_8",
@@ -868,7 +944,9 @@
         "C": "$R^2$ measures the proportion of variance explained.",
         "D": "$R^2$ is also known as the Coefficient of Determination."
       },
-      "correct_answer": "A",
+      "correct_answer": [
+        "A"
+      ],
       "explanation": "A is correct because a high $R^2$ does *not* automatically mean the model is good. It doesn't account for things like omitted variable bias, spurious correlation, or overfitting. The other statements are true about $R^2$.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_8",
@@ -890,7 +968,9 @@
         "C": "0.5",
         "D": "1"
       },
-      "correct_answer": "D",
+      "correct_answer": [
+        "D"
+      ],
       "explanation": "D is correct. The Coefficient of Determination ($R^2$) ranges from 0 to 1, where 1 represents a perfect fit (the model explains 100% of the variance in the dependent variable). A negative value is impossible.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_8",
@@ -912,7 +992,10 @@
         "C": "$R^2$ tends to increase or stay the same as more predictors are added, even if those predictors are not significant.",
         "D": "$R^2$ only works with linear relationships."
       },
-      "correct_answer": "$R^2$ tends to increase or stay the same as more predictors are added, even if those predictors are not significant.",
+      "correct_answer": [
+        "$R^2$ tends to increase or stay the same as more predictors are added",
+        "even if those predictors are not significant."
+      ],
       "explanation": "C is correct because $R^2$ does not account for the number of predictors in the model, so it can be artificially inflated by adding irrelevant variables. A is incorrect because $R^2$ usually increases or stays the same. Blindly using higher $R^2$ leads to overfitting.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_9",
@@ -934,7 +1017,9 @@
         "C": "Perfect prediction",
         "D": "Multicollinearity"
       },
-      "correct_answer": "Overfitting",
+      "correct_answer": [
+        "Overfitting"
+      ],
       "explanation": "B is correct because a high $R^2$ without considering model complexity can lead to overfitting, where the model fits the training data too closely and performs poorly on new data. A is incorrect, underfitting is the opposite problem. Overfitting means memorizing the training data.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_9",
@@ -956,7 +1041,9 @@
         "C": "It tends to increase or stay the same.",
         "D": "It becomes zero."
       },
-      "correct_answer": "It tends to increase or stay the same.",
+      "correct_answer": [
+        "It tends to increase or stay the same."
+      ],
       "explanation": "C is correct because $R^2$ is susceptible to inflation with the addition of more predictors, even if they are irrelevant. A, B, and D are incorrect because adding predictors usually won't decrease $R^2$ and it's not related to the number of predictors.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_9",
@@ -978,7 +1065,9 @@
         "C": "Use adjusted $R^2$ or other model selection criteria.",
         "D": "Ignore $R^2$ entirely and only look at p-values."
       },
-      "correct_answer": "Use adjusted $R^2$ or other model selection criteria.",
+      "correct_answer": [
+        "Use adjusted $R^2$ or other model selection criteria."
+      ],
       "explanation": "C is correct. Adjusted $R^2$ penalizes the inclusion of irrelevant predictors, addressing the problem of $R^2$ inflation. B is incorrect, it is the common mistake. Adjusted R-squared addresses model complexity.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_9",
@@ -1000,7 +1089,10 @@
         "C": "The model has a low $R^2$ value.",
         "D": "The model includes only statistically significant predictors."
       },
-      "correct_answer": "The model performs well on the training data but poorly on new, unseen data.",
+      "correct_answer": [
+        "The model performs well on the training data but poorly on new",
+        "unseen data."
+      ],
       "explanation": "B is correct. Overfitting means the model has learned the noise in the training data, making it perform poorly on new data. A describes underfitting. Overfitting leads to poor generalization.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_9",
@@ -1022,7 +1114,9 @@
         "C": "To ignore the number of predictors in a model.",
         "D": "To only consider models with a small number of predictors."
       },
-      "correct_answer": "To penalize the inclusion of irrelevant predictors in a model.",
+      "correct_answer": [
+        "To penalize the inclusion of irrelevant predictors in a model."
+      ],
       "explanation": "B is correct because Adjusted R-squared adjusts for the number of predictors, penalizing the inclusion of those that don't significantly improve the model's fit. A is incorrect, Adjusted R-squared can decrease. Adjusted R-squared considers model complexity.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_10",
@@ -1045,7 +1139,9 @@
         "C": "The model is underfitting the data.",
         "D": "The model is perfectly predicting the data."
       },
-      "correct_answer": "The new predictor is likely irrelevant and the model may be overfitting.",
+      "correct_answer": [
+        "The new predictor is likely irrelevant and the model may be overfitting."
+      ],
       "explanation": "B is correct because the decrease in Adjusted R-squared suggests that the added predictor does not improve the model's fit sufficiently to justify its inclusion, indicating potential overfitting. A is incorrect because a strong predictor will increase both. Adjusted R-squared measures the true improvement.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_10",
@@ -1068,7 +1164,9 @@
         "C": "Ignoring the p-values of the predictors.",
         "D": "Only using models with a low R-squared value."
       },
-      "correct_answer": "Relying solely on R-squared and ignoring Adjusted R-squared.",
+      "correct_answer": [
+        "Relying solely on R-squared and ignoring Adjusted R-squared."
+      ],
       "explanation": "B is correct because R-squared alone doesn't account for model complexity, leading to potential overfitting. A is incorrect because adjusted R-squared helps in model selection. Adjusted R-squared penalizes unnecessary complexity.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_10",
@@ -1091,7 +1189,9 @@
         "C": "Determining if adding 'number of fireplaces' truly improves the model's predictive power beyond square footage and location.",
         "D": "Ignoring R-squared and Adjusted R-squared altogether."
       },
-      "correct_answer": "Determining if adding 'number of fireplaces' truly improves the model's predictive power beyond square footage and location.",
+      "correct_answer": [
+        "Determining if adding 'number of fireplaces' truly improves the model's predictive power beyond square footage and location."
+      ],
       "explanation": "C is correct. Adjusted R-squared helps determine if the added variable improves the model's predictive power or just adds noise. B is incorrect since p-value only determine statistical significance. Adjusted R-squared considers the benefit of adding variables.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_10",
@@ -1114,7 +1214,10 @@
         "C": "R-squared will always increase or stay the same, while Adjusted R-squared may increase or decrease.",
         "D": "R-squared and Adjusted R-squared will always change in the same direction."
       },
-      "correct_answer": "R-squared will always increase or stay the same, while Adjusted R-squared may increase or decrease.",
+      "correct_answer": [
+        "R-squared will always increase or stay the same",
+        "while Adjusted R-squared may increase or decrease."
+      ],
       "explanation": "C is correct. R-squared never decreases when a new variable is added, but Adjusted R-squared can decrease if the variable does not significantly improve the model. A, B, and D are incorrect because R-squared increases when a new variable is added. Adjusted R-squared measures model complexity.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_10",
@@ -1137,7 +1240,9 @@
         "C": "All the regression coefficients are equal to zero.",
         "D": "The error term has a normal distribution."
       },
-      "correct_answer": "All the regression coefficients are equal to zero.",
+      "correct_answer": [
+        "All the regression coefficients are equal to zero."
+      ],
       "explanation": "C is correct because the Global F-Test tests the null hypothesis that all regression coefficients are simultaneously equal to zero, meaning the model has no explanatory power. B describes the alternative hypothesis. A is incorrect. The F-test examines the overall significance of the model.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_11",
@@ -1160,7 +1265,9 @@
         "C": "All the individual predictors are statistically significant.",
         "D": "None of the individual predictors are statistically significant."
       },
-      "correct_answer": "The model as a whole is not statistically significant.",
+      "correct_answer": [
+        "The model as a whole is not statistically significant."
+      ],
       "explanation": "B is correct. A high p-value indicates that we fail to reject the null hypothesis, meaning the model has no significant explanatory power. A is the opposite case. The F-test is a gatekeeper for the regression model.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_11",
@@ -1183,7 +1290,12 @@
         "C": "The model is perfectly predicting sales.",
         "D": "The model is underfitting the data."
       },
-      "correct_answer": "Advertising spending, as a whole, does not significantly predict sales, and they should rethink their approach.",
+      "correct_answer": [
+        "Advertising spending",
+        "as a whole",
+        "does not significantly predict sales",
+        "and they should rethink their approach."
+      ],
       "explanation": "B is correct. An insignificant Global F-Test implies that the overall model lacks explanatory power, indicating a need to revise the approach. A is the opposite case, you shouldn't analyze individual channels until the global F-test is significant. The F-test is a check for the entire model.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_11",
@@ -1206,7 +1318,9 @@
         "C": "Only interpreting the Global F-Test and ignoring individual coefficients.",
         "D": "Always interpreting individual coefficients regardless of the Global F-Test."
       },
-      "correct_answer": "Interpreting individual coefficients even when the Global F-Test is not significant.",
+      "correct_answer": [
+        "Interpreting individual coefficients even when the Global F-Test is not significant."
+      ],
       "explanation": "A is correct because individual coefficient interpretations are unreliable if the overall model lacks significance. The Global F-Test must be significant first. The F-test is used to check the overall significance.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_11",
@@ -1229,7 +1343,9 @@
         "C": "ANOVA",
         "D": "Z-test"
       },
-      "correct_answer": "ANOVA",
+      "correct_answer": [
+        "ANOVA"
+      ],
       "explanation": "C is correct because the Global F-Test is a form of ANOVA (Analysis of Variance) used to assess the overall significance of a regression model. The Global F-test is a type of ANOVA.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_11",
@@ -1252,7 +1368,10 @@
         "C": "Whether the error terms are normally distributed.",
         "D": "Whether multicollinearity is present."
       },
-      "correct_answer": "Whether a specific predictor variable has a statistically significant effect on the response variable, given the other predictors in the model.",
+      "correct_answer": [
+        "Whether a specific predictor variable has a statistically significant effect on the response variable",
+        "given the other predictors in the model."
+      ],
       "explanation": "B is correct. The t-test examines the effect of one predictor while controlling for the others. A is tested by the Global F-test. The t-test measures the individual impact of a predictor.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_12",
@@ -1275,7 +1394,9 @@
         "C": "The coefficient of the predictor is equal to zero.",
         "D": "The error term is normally distributed."
       },
-      "correct_answer": "The coefficient of the predictor is equal to zero.",
+      "correct_answer": [
+        "The coefficient of the predictor is equal to zero."
+      ],
       "explanation": "C is correct because the t-test determines if the predictor's coefficient is significantly different from zero. B describes the alternative hypothesis. The t-test determines if the predictor variable has a significant effect.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_12",
@@ -1298,7 +1419,10 @@
         "C": "The model is perfectly predicting house prices.",
         "D": "The model is underfitting the data."
       },
-      "correct_answer": "'Number of bedrooms' is not a significant predictor, given square footage and location.",
+      "correct_answer": [
+        "'Number of bedrooms' is not a significant predictor",
+        "given square footage and location."
+      ],
       "explanation": "B is correct because a high p-value suggests that the number of bedrooms does not have a significant effect on house prices, *given* that square footage and location are already included. A is the opposite case, a strong predictor will have a low p-value. The t-test examines the effect controlling for other predictors.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_12",
@@ -1321,7 +1445,9 @@
         "C": "The predictor is definitely not important and should be removed from the model.",
         "D": "The model is perfectly predicting the response variable."
       },
-      "correct_answer": "The predictor might still be important for theoretical reasons or as a control variable.",
+      "correct_answer": [
+        "The predictor might still be important for theoretical reasons or as a control variable."
+      ],
       "explanation": "B is correct because a non-significant t-test only means the predictor doesn't have a significant effect *given the other predictors*, it doesn't mean it has no effect at all. A is incorrect because there could be theoretical reasons to keep the variable. The t-test examines the effect controlling for other predictors.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_12",
@@ -1344,7 +1470,9 @@
         "C": "Consider the result in the context of other marketing efforts and theoretical reasons before making a decision.",
         "D": "Increase spending on that advertising channel to improve its significance."
       },
-      "correct_answer": "Consider the result in the context of other marketing efforts and theoretical reasons before making a decision.",
+      "correct_answer": [
+        "Consider the result in the context of other marketing efforts and theoretical reasons before making a decision."
+      ],
       "explanation": "C is correct. The analyst should consider the result in the context of other variables and theoretical reasons before making a decision. A is too extreme as there might be theoretical reasons to keep it. The t-test examines the effect controlling for other predictors.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_12",
@@ -1367,7 +1495,9 @@
         "C": "The exact value of the response variable for a specific set of predictor values.",
         "D": "The variability of the predictor variables."
       },
-      "correct_answer": "The range within which the *average* value of the response variable falls for a given set of predictor values.",
+      "correct_answer": [
+        "The range within which the *average* value of the response variable falls for a given set of predictor values."
+      ],
       "explanation": "B is correct because a CI estimates the range for the *average* response. A is incorrect because that describes a Prediction Interval. C is incorrect because it attempts to pinpoint an exact value, and D is incorrect because it focuses on predictor variables.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_13",
@@ -1388,7 +1518,9 @@
         "C": "The PI and CI have the same width.",
         "D": "The PI's width only depends on the sample size, not the CI."
       },
-      "correct_answer": "The PI is generally wider than the CI.",
+      "correct_answer": [
+        "The PI is generally wider than the CI."
+      ],
       "explanation": "B is correct because the PI accounts for the variability of individual data points, in addition to the uncertainty in estimating the mean. A is incorrect because PI is wider. C is incorrect because they are not the same. D is incorrect because sample size affects both.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_13",
@@ -1410,7 +1542,9 @@
         "C": "Standard Error of the Estimate",
         "D": "Coefficient of Determination (R-squared)"
       },
-      "correct_answer": "Prediction Interval (PI)",
+      "correct_answer": [
+        "Prediction Interval (PI)"
+      ],
       "explanation": "B is correct because the PI estimates a single, new observation. A is incorrect because CI is for estimating the average. C and D are incorrect because they don't provide an interval estimate.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_13",
@@ -1432,7 +1566,9 @@
         "C": "Residual Standard Deviation",
         "D": "Mean Absolute Error (MAE)"
       },
-      "correct_answer": "Confidence Interval (CI)",
+      "correct_answer": [
+        "Confidence Interval (CI)"
+      ],
       "explanation": "B is correct because CI estimates the *average* value. A is incorrect because the PI estimates a single observation. C and D don't provide the desired interval.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_13",
@@ -1454,7 +1590,9 @@
         "C": "To estimate the accuracy of the regression coefficients.",
         "D": "To determine the statistical significance of the predictors."
       },
-      "correct_answer": "To estimate the range of a single future observation.",
+      "correct_answer": [
+        "To estimate the range of a single future observation."
+      ],
       "explanation": "B is correct because a PI focuses on predicting a single data point. A is incorrect because that's a Confidence Interval. C and D are related but not the primary purpose of a Prediction Interval.",
       "difficulty_level": 1,
       "source_flashcard_id": "DAA_lec_4_13",

@@ -69,21 +69,74 @@ For each of the 5 questions per flashcard:
 
 ---
 
-## 6. Visual Generation Toolkit
+## 6. Visual Generation Toolkit (Enhanced with Diagram Decision Framework)
 
-### Visual Type Decision Tree
-* IF question tests [graph/network relationships] → **Graphviz**
-* IF question tests [statistical distribution/trend] → **Plotly**
-* IF question tests [formula/calculation] → **LaTeX**
-* IF question tests [conceptual structure] → **Graphviz** OR **text**
-* IF question needs [interactive data exploration] → **Plotly**
+### Diagram Decision Framework (The "Feynman Test")
 
-### Visual Quality Requirements
-* **Graphviz:** ≤ 15 nodes, ≤ 4 levels, clear labels (≤ 20 chars), colorblind-safe (max 4 colors), specify `rankdir`.
-* **Plotly:** Always include axis labels (with units) and a descriptive title. Legend only if >1 series. 5-50 data points.
-* **LaTeX:** Use `\text{}` for words. Define variables. Use standard notation (e.g., `\Sigma`, `\frac`).
-* **Accessibility:** Alt text must describe the *insight* (e.g., "Scatter plot showing strong positive correlation..."), not just the content ("Graph showing data"). Color must not be the *only* differentiator.
-* **Level 2 Complexity:** Single visual illustrating 2-3 related elements (e.g., a small table schema to analyze).
+For each question, ask yourself:
+1. **Would a visual make this concept click for a struggling student?**
+2. **What would Richard Feynman or 3Blue1Brown use to explain this?**
+3. **Is the diagram essential, helpful, or just decorative?**
+
+**Generate diagrams ONLY when they are essential or highly helpful.**
+
+### Visual Type Decision Tree (Enhanced for Data Analytics)
+
+**🚨 CRITICAL RULE: STATISTICAL DATA = MATPLOTLIB, NOT MERMAID 🚨**
+
+**NEVER use Mermaid for:**
+- ❌ Residuals (use matplotlib scatter plot)
+- ❌ Distributions (use matplotlib probability curves)
+- ❌ Scatter plots (use matplotlib)
+- ❌ Regression lines (use matplotlib)
+- ❌ Confidence intervals on plots (use matplotlib)
+- ❌ Any actual data visualization (use matplotlib)
+
+**Mermaid is ONLY for:**
+- ✅ Process flows (e.g., "Steps to check assumptions")
+- ✅ Concept hierarchies (e.g., "Types of regression models")
+- ✅ Decision trees (e.g., "Which diagnostic to use when?")
+
+**Statistical Analysis (ALWAYS Matplotlib):**
+- **Matplotlib:** Distribution plots, scatter plots with trends, residual plots
+- **Use when:** Testing application of statistical concepts to **actual data**
+- **Example:** Scatter plot showing regression line and outliers with real data points
+- **Why:** Students need to see real data patterns, not flowcharts describing them
+
+**Conceptual Application (Mermaid ONLY for processes):**
+- **Mermaid:** Process flows, decision trees for **procedures and hierarchies**
+- **Use when:** Testing understanding of multi-step procedures (NOT data visualization)
+- **Example:** Flowchart for "Steps in checking regression assumptions" or "Decision tree for model selection"
+
+**Calculations:**
+- **LaTeX:** Formulas with specific values
+- **Use when:** Testing formula application with concrete data
+- **Example:** Confidence interval calculation with given values
+
+### Visual Quality Requirements (Textbook-Quality Standards)
+
+**Matplotlib Plots:**
+- Clear axis labels with units
+- Descriptive title
+- Annotations for key features (outliers, trends, intervals)
+- Professional appearance
+- Grid for readability
+
+**Mermaid/Graphviz:**
+- ≤ 12 nodes for Level 2
+- ≤ 3 levels deep
+- Clear labels showing relationships
+- Logical flow
+
+**LaTeX:**
+- Use `\text{}` for words
+- Show variable substitution
+- Standard notation
+
+**Level 2 Complexity:**
+- Single visual illustrating 2-3 related elements
+- May show before/after or comparison
+- Should require some interpretation
 
 ---
 
@@ -129,7 +182,56 @@ Run this check on every generated question. **Reject and regenerate if it fails.
 
 ---
 
-## 11. Output Format
+## 11. Enhanced Explanations - WORLD-CLASS STANDARD
+
+**CRITICAL: ALL questions MUST have enhanced explanations with step-by-step breakdowns when helpful.**
+
+### Teaching Philosophy: Think Like Feynman & 3Blue1Brown
+
+Before writing each explanation, ask yourself:
+
+**"How would Richard Feynman explain this application?"**
+- Break complex applications into simple steps
+- Show the reasoning process, not just the result
+- Use concrete examples with real numbers
+- Build intuition: "Here's what's really happening..."
+- Connect to familiar situations
+
+**"How would 3Blue1Brown demonstrate this?"**
+- What's the key visual insight for this application?
+- Can I show the calculation on a real plot?
+- What pattern should the student recognize?
+- Use diagrams to make the abstract concrete
+
+**Your goal:** A student should understand not just **what** to do, but **why** this approach works and **when** to use it.
+
+### When to Include Step-by-Step:
+- **ALWAYS** for questions involving calculations, formulas, or multi-step reasoning
+- **ALWAYS** for statistical concepts
+- **WHEN HELPFUL** for conceptual questions (use Feynman Test from Section 6)
+
+### Explanation Structure:
+```json
+"explanation": {
+  "text": "Brief 2-3 sentence summary",
+  "step_by_step": [
+    {
+      "step": 1,
+      "title": "Step title",
+      "content": "Detailed explanation",
+      "latex": "\\text{LaTeX if applicable}",
+      "diagram": {"type": "matplotlib", "plot_type": "scatter_regression", "params": {...}},
+      "diagram_type": "matplotlib"
+    }
+  ],
+  "interpretation": "What this means",
+  "business_context": "Real-world application"
+}
+```
+
+---
+
+## 12. Output Format
 
 Produce a single JSON array of question objects.
 
@@ -137,42 +239,70 @@ Produce a single JSON array of question objects.
 
 ### For MCQ (Single Correct Answer) Questions:
 ```json
-  {
+  { 
     "type": "mcq",
     "question_text": "...",
-    "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
-  "visual_code": "...",
-  "alt_text": "...",
+    "question_visual": {
+      "type": "matplotlib",
+      "plot_type": "scatter_regression",
+      "params": {
+        "x": [1, 2, 3, 4, 5],
+        "y": [2.1, 3.9, 6.2, 7.8, 10.1],
+        "title": "Sales vs. Advertising Spend"
+      }
+    },
+    "question_visual_type": "matplotlib",
     "options": {
       "A": "...",
       "B": "...",
       "C": "...",
       "D": "..."
     },
-  "correct_answer": ["A"], // ARRAY with exactly ONE option key (e.g., ["A"], ["B"], ["C"], or ["D"])
-    "explanation": "...",
+    "correct_answer": ["A"],
+    "explanation": {
+      "text": "Brief summary",
+      "step_by_step": [...],
+      "interpretation": "...",
+      "business_context": "..."
+    },
     "difficulty_level": 2,
-  "source_flashcard_id": "...",
-  "tags": ["...", "..."]
+    "source_flashcard_id": "...",
+    "tags": ["...", "..."]
 }
 ```
+
+**When to Include question_visual (Level 2 Focus):**
+- **ALWAYS** when testing application on visual data (e.g., "Given this scatter plot, what does the pattern suggest?")
+- **ALWAYS** when the question requires interpreting a diagram to apply a concept
+- **WHEN HELPFUL** to provide realistic context (e.g., showing actual data for a business scenario)
+- **Use `null` or omit** if the question tests application through text alone
+
+**Visual Type Rules for Questions (Generic for All Courses):**
+- Data visualization → `matplotlib` (charts, graphs, plots for any numeric/statistical data)
+- Mathematical notation → `latex` (equations, formulas, expressions)
+- System diagrams → `mermaid` or `graphviz` (flowcharts, architectures, hierarchies)
+- Code/pseudocode → Include in `question_text` with proper formatting
 
 ### For MCA (Multiple Correct Answers) Questions:
 ```json
 {
   "type": "mca",
   "question_text": "Which of the following are... (Select all that apply)",
-  "visual_type": "None" | "Graphviz" | "Plotly" | "LaTeX",
-  "visual_code": "...",
-  "alt_text": "...",
+  "question_visual": null,
+  "question_visual_type": "None",
   "options": {
     "A": "...",
     "B": "...",
     "C": "...",
     "D": "..."
   },
-  "correct_answer": ["A", "C"], // ARRAY with 2-3 option keys (e.g., ["A", "B"], ["B", "C", "D"])
-  "explanation": "A and C are correct because... B is incorrect because... D is incorrect because...",
+  "correct_answer": ["A", "C"],
+  "explanation": {
+    "text": "A and C are correct because... B is incorrect because...",
+    "step_by_step": [...],
+    "interpretation": "...",
+    "business_context": "..."
+  },
   "difficulty_level": 2,
   "source_flashcard_id": "...",
   "tags": ["...", "..."]
@@ -186,3 +316,10 @@ Produce a single JSON array of question objects.
 - The array contains option KEYS (A, B, C, D), NOT the full text of the options
 - Always include "(Select all that apply)" in MCA question text
 - MCA explanations must address why each option is correct or incorrect
+
+**CRITICAL JSON COMPLIANCE INSTRUCTIONS:**
+- Output ONLY perfectly valid and complete JSON. No additional text, commentary, or markdown outside the JSON block.
+- Ensure all strings are properly quoted and escaped. All arrays and objects must be correctly terminated.
+- Each question object must be complete with ALL required fields before moving to the next question.
+- If approaching token limits, complete the current question properly and close the JSON array rather than leaving it incomplete.
+- Test your JSON mentally: Does every opening brace/bracket have a closing one? Are all strings properly quoted?

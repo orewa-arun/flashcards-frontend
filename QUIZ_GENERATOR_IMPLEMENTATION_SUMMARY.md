@@ -184,7 +184,7 @@ courses/
 ## Configuration
 
 ### Model
-- Default: `gemini-2.0-flash-exp`
+- Default: `gemini-2.5-flash`
 - Temperature: `0.8` (creative question generation)
 - Max output tokens: `16384` (with progressive reduction on retry)
 

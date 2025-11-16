@@ -1,0 +1,12 @@
+{
+  "course_id": "MS5031",
+  "lecture_number": "2",
+  "enriched_content_path": "enriched_content/MS5031/MS5031_lecture_2.txt",
+  "flashcards_path": "courses/MS5031/cognitive_flashcards/DAA_lec_2.json",
+  "quiz_paths": {
+    "level_1": "courses/MS5031/quiz/DAA_lec_2_level_1.json",
+    "level_2": "courses/MS5031/quiz/DAA_lec_2_level_2.json",
+    "level_3": "courses/MS5031/quiz/DAA_lec_2_level_3.json",
+    "level_4": "courses/MS5031/quiz/DAA_lec_2_level_4.json"
+  }
+}

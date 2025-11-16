@@ -1,0 +1,534 @@
+=== RAW LLM RESPONSE ===
+Level: 1
+Chunk: Lecture 2
+Attempt: 1/3
+Flashcards: 7
+Max tokens: 16384
+
+=== RESPONSE TEXT ===
+```json
+[
+  {
+    "type": "mcq",
+    "question_text": "What is the primary objective of a Simple Regression Model in a business context?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "To analyze non-linear relationships between multiple variables.",
+      "B": "To predict the value of a single dependent variable based on a single independent variable.",
+      "C": "To describe qualitative characteristics of business operations.",
+      "D": "To determine causality between any two observed business metrics."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct because the Simple Regression Model is designed to predict the value of a single dependent variable (Y) using a single independent variable (X) and to understand their linear association. Option A is incorrect as it deals with non-linear or multiple variables, which are outside the scope of *simple* linear regression. Options C and D are not the primary statistical objectives.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "simple_regression_model_definition",
+    "tags": ["Simple Regression", "Dependent Variable", "Independent Variable", "Prediction"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A simple regression model is used to quantify the relationship between which types of variables?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "One qualitative and one quantitative variable.",
+      "B": "Multiple independent variables and one dependent variable.",
+      "C": "A single dependent variable and a single independent variable.",
+      "D": "Two dependent variables and one independent variable."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. The 'simple' in Simple Regression Model refers to the analysis of a linear relationship between exactly one dependent variable (Y) and one independent variable (X). Option B describes multiple regression, which is a different model.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "simple_regression_model_definition",
+    "tags": ["Simple Regression", "Dependent Variable", "Independent Variable", "Linear Relationship"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "In the context of a Simple Regression Model, if a retail company uses website visitors (X) to predict daily sales revenue (Y), which variable is the dependent variable?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Website visitors",
+      "B": "Daily sales revenue",
+      "C": "Both website visitors and daily sales revenue",
+      "D": "Neither variable is dependent"
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. The dependent variable (Y) is the outcome variable that is being predicted or explained, which in this case is daily sales revenue. Website visitors (X) is the independent variable used to make the prediction.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "simple_regression_model_definition",
+    "tags": ["Simple Regression", "Dependent Variable", "Independent Variable"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "Which characteristic describes the type of relationship typically analyzed by a Simple Regression Model?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Exponential",
+      "B": "Quadratic",
+      "C": "Non-linear",
+      "D": "Linear"
+    },
+    "correct_answer": ["D"],
+    "explanation": "D is correct. The Simple Regression Model is specifically designed to analyze and quantify the *linear* relationship between two variables. Options A, B, and C describe non-linear relationships, which would require different types of regression models.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "simple_regression_model_definition",
+    "tags": ["Simple Regression", "Linear Relationship"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A common mistake when using a simple regression model is applying it to situations involving:",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "A single independent variable.",
+      "B": "A linear relationship between two variables.",
+      "C": "Multiple independent variables or non-linear relationships.",
+      "D": "Prediction of a dependent variable."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. A common mistake is to try and apply a *simple* regression model to situations that involve multiple independent variables (which requires multiple regression) or non-linear relationships (which require non-linear regression). Simple regression is strictly for a linear relationship between two variables.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "simple_regression_model_definition",
+    "tags": ["Simple Regression", "Common Mistakes", "Non-linear Relationship", "Multiple Variables"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "What is extrapolation in regression analysis?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Predicting values of the dependent variable within the observed range of the independent variable.",
+      "B": "Predicting values of the dependent variable for independent variable values outside the observed data range.",
+      "C": "Using a non-linear model to forecast future trends.",
+      "D": "Adjusting the regression model based on new, incoming data points."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. Extrapolation occurs when a regression model is used to predict outcomes for independent variable (X) values that are outside the range of the data originally used to build the model. Option A describes interpolation, which is generally reliable.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "extrapolation_pitfall",
+    "tags": ["extrapolation", "prediction", "regression"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "Why is extrapolation considered a pitfall in regression analysis?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "It always leads to perfectly accurate predictions.",
+      "B": "The observed linear relationship may not hold true beyond the data's range.",
+      "C": "It requires more complex statistical calculations.",
+      "D": "It only applies to models with multiple independent variables."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. The primary reason extrapolation is a pitfall is that the linear relationship identified within the observed data range might not continue to hold true for values far outside that range, leading to unreliable and inaccurate predictions. Option A is incorrect as it leads to *unreliable* predictions, not accurate ones.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "extrapolation_pitfall",
+    "tags": ["extrapolation", "unreliability", "linear relationship"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A retail company used advertising spend data ranging from $1,000 to $10,000 to build a sales prediction model. What would be an example of extrapolation?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Predicting sales for an ad spend of $5,000.",
+      "B": "Predicting sales for an ad spend of $8,000.",
+      "C": "Predicting sales for an ad spend of $100,000.",
+      "D": "Predicting sales for an ad spend of $2,500."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. Extrapolation involves predicting for an independent variable value that is outside the range of the observed data. Since the model was built with ad spend between $1,000 and $10,000, predicting for $100,000 is extrapolation. Options A, B, and D are all within the observed range.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "extrapolation_pitfall",
+    "tags": ["extrapolation", "real-world use case"]
+  },
+  {
+    "type": "mca",
+    "question_text": "Which of the following are reasons why extrapolation leads to unreliable predictions? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The underlying linear relationship might not extend beyond the observed data range.",
+      "B": "It always results in predictions that are too high.",
+      "C": "The model's accuracy is only guaranteed within the range of the data it was trained on.",
+      "D": "It requires more computational power than interpolation."
+    },
+    "correct_answer": ["A", "C"],
+    "explanation": "A and C are correct. Extrapolation is unreliable because the observed linear relationship may not continue indefinitely outside the training data's range, and the model's predictive power is only validated for the data it learned from. B is incorrect because extrapolation can lead to predictions that are too high or too low, not always too high. D is incorrect as computational power is not the primary concern for reliability in extrapolation.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "extrapolation_pitfall",
+    "tags": ["extrapolation", "unreliability", "linear relationship", "common pitfalls"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "Before using a regression model to make a prediction, an analyst should always check if the new independent variable (X) value falls within the ____________ of the observed data.",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Mean",
+      "B": "Standard deviation",
+      "C": "Range",
+      "D": "Median"
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. To avoid extrapolation and ensure reliable predictions, an analyst should always check if the new X value is within the *range* (minimum to maximum) of the independent variable values used to train the model.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "extrapolation_pitfall",
+    "tags": ["extrapolation", "common mistakes", "observed data range"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "What does a strong statistical correlation between two variables (X and Y) indicate?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "X directly causes Y.",
+      "B": "Y directly causes X.",
+      "C": "X and Y tend to move together in a predictable pattern.",
+      "D": "There are no other factors influencing X or Y."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. Correlation indicates that two variables move together or are associated, but it does not imply a direct cause-and-effect relationship. Options A and B incorrectly infer causation, and D makes an unwarranted assumption about other factors.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "correlation_causation_pitfall",
+    "tags": ["correlation", "statistical relationship"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A common pitfall in regression analysis is confusing correlation with causation. What is a key reason this is problematic?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Correlation can only be observed in experimental studies.",
+      "B": "A strong correlation always means one variable directly influences the other.",
+      "C": "Other unmeasured factors (confounding variables) might be responsible for the observed relationship.",
+      "D": "Regression models are only designed to prove causation."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. Confusing correlation with causation is problematic because a strong correlation might be due to a third, unobserved 'confounding' variable that influences both X and Y, rather than a direct causal link between X and Y. Option B is the very mistake the pitfall warns against. Regression models quantify relationships, but do not inherently prove causation.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "correlation_causation_pitfall",
+    "tags": ["correlation", "causation", "confounding variables", "common pitfalls"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "If ice cream sales and shark attacks both increase during summer months, this is an example of:",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Causation, as eating ice cream causes shark attacks.",
+      "B": "Reverse causation, as shark attacks cause people to buy ice cream.",
+      "C": "Correlation, likely due to a confounding variable like hot weather.",
+      "D": "A statistically insignificant relationship."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. This is a classic example of correlation without causation. Both ice cream sales and shark attacks are influenced by a third factor (hot weather/more people at the beach), which is a confounding variable. There is no direct causal link between eating ice cream and shark attacks. The relationship is statistically significant, but not causal.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "correlation_causation_pitfall",
+    "tags": ["correlation", "causation", "confounding variables", "analogy"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "Which of the following statements about correlation and causation is TRUE?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Correlation always implies causation.",
+      "B": "Causation implies correlation.",
+      "C": "Correlation is irrelevant in regression analysis.",
+      "D": "Only strong correlations are relevant for business decisions."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. If X causes Y, then X and Y will be correlated (though correlation does not prove causation). However, correlation (X and Y moving together) does not necessarily imply causation. Option A is the common mistake highlighted in the flashcard. Correlation is crucial in regression analysis (C is wrong), and both strong and weak correlations can be relevant depending on the context (D is too absolute).",
+    "difficulty_level": 1,
+    "source_flashcard_id": "correlation_causation_pitfall",
+    "tags": ["correlation", "causation"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A marketing team observes a strong positive correlation between increased social media engagement and higher product sales. If they conclude that more engagement *causes* more sales without considering other factors, they are committing which common pitfall?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Extrapolation",
+      "B": "Confusing correlation with causation",
+      "C": "Ignoring heteroscedasticity",
+      "D": "Misinterpreting a confidence interval"
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. This scenario directly describes the pitfall of confusing correlation with causation. The observed association might be due to a confounding variable (like seasonal demand) rather than direct causation, and assuming causation without further evidence (like an experimental design) can lead to flawed strategies. Options A, C, and D are different regression pitfalls.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "correlation_causation_pitfall",
+    "tags": ["correlation", "causation", "common pitfalls", "real-world use case"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "What is the primary purpose of a Prediction Interval in regression analysis?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "To estimate the range of values for the true population mean.",
+      "B": "To provide a range for the true regression coefficient (slope).",
+      "C": "To quantify the uncertainty for a single, new individual observation of the dependent variable.",
+      "D": "To determine if the regression model is statistically significant."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. A prediction interval specifically quantifies the uncertainty for a *single, new, individual* observation of the dependent variable. Options A and B refer to confidence intervals for different parameters, and D is about hypothesis testing.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_definition",
+    "tags": ["Prediction Interval", "Forecasting", "Uncertainty", "Individual Observation"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A marketing manager uses a regression model to forecast sales for a *specific new product* in its first month. Which statistical tool would be most appropriate to provide a range for these sales, acknowledging inherent variability?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "A confidence interval for the mean sales.",
+      "B": "A confidence interval for the regression coefficient.",
+      "C": "A prediction interval for a new observation.",
+      "D": "A hypothesis test for the model's R-squared."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. A prediction interval is specifically designed to provide a range for a *single, new, individual* observation (like the sales of a specific new product), accounting for both model uncertainty and inherent variability. A confidence interval for the mean (A) would be for the average sales of *all* similar new products, which is narrower and less appropriate for a single item.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_definition",
+    "tags": ["Prediction Interval", "Real-world use case", "Forecasting"]
+  },
+  {
+    "type": "mca",
+    "question_text": "Which of the following statements accurately describe a Prediction Interval in regression analysis? (Select all that apply)",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "It provides a range for a single, new observation.",
+      "B": "It is typically narrower than a confidence interval for the mean response.",
+      "C": "It quantifies the uncertainty for specific future outcomes.",
+      "D": "It accounts for both the uncertainty in the regression line and the variability of individual data points."
+    },
+    "correct_answer": ["A", "C", "D"],
+    "explanation": "A, C, and D are correct. A prediction interval provides a range for a single, new observation (A), quantifies uncertainty for specific future outcomes (C), and accounts for both model uncertainty and the inherent variability of individual points (D). B is incorrect because prediction intervals are *always wider* than confidence intervals for the mean response, as they include an additional source of variability.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_definition",
+    "tags": ["Prediction Interval", "Uncertainty", "Individual Observation", "Common Mistakes"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "Why are prediction intervals generally wider than confidence intervals for the mean response?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Prediction intervals only account for the variability of the regression line.",
+      "B": "Prediction intervals account for the inherent variability of individual data points in addition to the line's uncertainty.",
+      "C": "Confidence intervals for the mean do not account for any variability.",
+      "D": "The critical t-value used for prediction intervals is always smaller."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. Prediction intervals are wider because they must account for two sources of uncertainty: the uncertainty in the estimated regression line itself AND the inherent, irreducible variability of individual data points around that line. Confidence intervals for the mean only account for the uncertainty in the estimated mean response.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_definition",
+    "tags": ["Prediction Interval", "Confidence Interval", "Common Mistakes", "Uncertainty"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "Which of the following is NOT a key assumption or condition required for a prediction interval to be valid?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Linearity of the relationship between variables.",
+      "B": "Independence of errors.",
+      "C": "Non-normality of errors.",
+      "D": "Homoscedasticity (equal variance of errors)."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. A key assumption for valid prediction intervals is the *normality* of errors, not non-normality. Options A, B, and D are all standard assumptions for the underlying linear regression model that prediction intervals rely upon.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_assumptions",
+    "tags": ["Prediction Interval", "Assumptions", "Normality"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "What is the term for the assumption that the variance of the errors is constant across all levels of the independent variable?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Linearity",
+      "B": "Independence",
+      "C": "Homoscedasticity",
+      "D": "Normality"
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. Homoscedasticity is the assumption that the variance of the errors (residuals) is constant for all values of the independent variable. Its violation, heteroscedasticity, leads to inaccurate prediction intervals. Options A, B, and D are other assumptions.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_assumptions",
+    "tags": ["Prediction Interval", "Assumptions", "Homoscedasticity"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "If a company uses a regression model to predict employee performance based on 10-40 hours of training, what is the risk of using this model to predict for an employee with 100 hours of training?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The prediction interval will be too narrow.",
+      "B": "The model will be perfectly accurate.",
+      "C": "The prediction will be unreliable due to extrapolation.",
+      "D": "The assumption of homoscedasticity will be met."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. Predicting for 100 hours of training when the model was trained on data from 10-40 hours is a clear example of extrapolation. This makes the prediction and its associated interval unreliable because the linear relationship observed in the training range may not hold true for such a high value. Option A is incorrect, as extrapolation often leads to absurdly wide or narrow intervals. Options B and D are highly unlikely consequences.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_assumptions",
+    "tags": ["Prediction Interval", "Assumptions", "Extrapolation", "Unreliable"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "The assumption of 'independence of errors' for a prediction interval means that:",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The errors are normally distributed.",
+      "B": "The variance of errors is constant.",
+      "C": "The error for one observation is not related to the error for another observation.",
+      "D": "The relationship between X and Y is linear."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. Independence of errors means that the residuals (errors) are not correlated with each other; the error for one data point does not influence the error for another. Options A, B, and D describe other distinct assumptions (normality, homoscedasticity, and linearity, respectively).",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_assumptions",
+    "tags": ["Prediction Interval", "Assumptions", "Independence"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "Violating which assumption can lead to prediction intervals that are either too wide or too narrow, thus misrepresenting the true uncertainty?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "Linearity",
+      "B": "Independence of errors",
+      "C": "Homoscedasticity",
+      "D": "Normality of independent variable"
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. Violating homoscedasticity (heteroscedasticity) means the error variance is not constant. This leads to incorrect standard errors, which directly impacts the calculated width of the prediction interval, making it inaccurate (either too wide or too narrow). Normality of the independent variable (D) is not a standard assumption for the validity of the prediction interval itself.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "prediction_interval_assumptions",
+    "tags": ["Prediction Interval", "Assumptions", "Homoscedasticity", "Inaccuracy"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "What is the primary purpose of a Confidence Interval for a regression coefficient, such as the slope (β₁)?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "To provide a point estimate for the slope.",
+      "B": "To estimate the range for the true population slope with a specified confidence level.",
+      "C": "To predict a single new observation of the dependent variable.",
+      "D": "To test for the linearity of the relationship."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. A confidence interval for a regression coefficient provides a range of plausible values for the true population parameter (like the slope) at a given confidence level, quantifying the uncertainty around the point estimate. Option A describes the point estimate itself. Option C describes a prediction interval. Option D is a diagnostic test, not the purpose of a CI.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "ci_regression_coefficient",
+    "tags": ["Confidence Interval", "Regression Coefficient", "Slope", "Population Parameter"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "The formula for a Confidence Interval for the slope (β₁) is `b₁ ± t* SE(b₁)`. What does `SE(b₁)` represent?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The standard deviation of the dependent variable.",
+      "B": "The standard error of the estimated slope's sampling distribution.",
+      "C": "The true population slope.",
+      "D": "The maximum possible value of the slope."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. `SE(b₁)` stands for the standard error of the estimated slope (`b₁`). It measures the variability of the sampling distribution of `b₁`, indicating how much `b₁` is expected to vary from sample to sample. It is a common mistake to confuse it with the standard deviation of `b₁` itself, or the dependent variable.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "ci_regression_coefficient",
+    "tags": ["Confidence Interval", "Slope", "Standard Error", "Formula"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "A business analyst calculates a 95% confidence interval for the regression slope (β₁) as [0.042, 0.058]. This means that:",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "There is a 95% chance that the true slope is exactly 0.05.",
+      "B": "If the sampling process were repeated many times, 95% of the calculated intervals would contain the true population slope.",
+      "C": "The estimated slope (b₁) is definitely between 0.042 and 0.058.",
+      "D": "The relationship between X and Y is weak."
+    },
+    "correct_answer": ["B"],
+    "explanation": "B is correct. The correct interpretation of a 95% confidence interval is that if we were to repeat the sampling and interval calculation process many times, 95% of those intervals would contain the true population parameter. It is a statement about the reliability of the method, not the probability of the true parameter being in *this specific* interval. The true parameter is fixed, it's either in the interval or not.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "ci_regression_coefficient",
+    "tags": ["Confidence Interval", "Interpretation", "Population Parameter", "Common Mistakes"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "In the formula for a Confidence Interval for the slope `b₁ ± t* SE(b₁)`, what does `t*` represent?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The sample size.",
+      "B": "The estimated slope.",
+      "C": "The critical t-value from the t-distribution.",
+      "D": "The standard deviation of the residuals."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. `t*` is the critical t-value obtained from the t-distribution, corresponding to the desired confidence level and the degrees of freedom (n-2 in simple linear regression). It is used to determine the margin of error.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "ci_regression_coefficient",
+    "tags": ["Confidence Interval", "Slope", "Formula", "t-value"]
+  },
+  {
+    "type": "mcq",
+    "question_text": "If a 95% confidence interval for a regression slope (β₁) is calculated as [-0.2, 0.5], what is the most appropriate conclusion regarding the effect of the independent variable on the dependent variable at the 5% significance level?",
+    "visual_type": "None",
+    "visual_code": null,
+    "alt_text": null,
+    "options": {
+      "A": "The independent variable has a significant positive effect.",
+      "B": "The independent variable has a significant negative effect.",
+      "C": "We cannot conclude a significant linear effect, as the interval includes zero.",
+      "D": "The independent variable definitely has no effect."
+    },
+    "correct_answer": ["C"],
+    "explanation": "C is correct. If a confidence interval for a regression coefficient includes zero, it means that at the chosen significance level (e.g., 5% for a 95% CI), we do not have sufficient statistical evidence to reject the null hypothesis that the true population slope is zero (i.e., no linear relationship). It does not definitively prove no effect (D), but rather indicates a lack of evidence for a non-zero effect. Options A and B are incorrect because the interval spans both negative and positive values, including zero.",
+    "difficulty_level": 1,
+    "source_flashcard_id": "ci_regression_coefficient",
+    "tags": ["Confidence Interval", "Slope", "Interpretation", "Hypothesis Testing", "Common Mistakes"]
+  }
+]
+```

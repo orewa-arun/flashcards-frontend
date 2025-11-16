@@ -1,7 +1,7 @@
 .quiz-view-wrapper {
   width: 100%;
   min-height: 100vh;
-  background: #f5f5f5;
+  background: #f5f7fa;
   padding: 80px 20px 40px 20px;
   display: flex;
   flex-direction: column;
@@ -284,34 +284,64 @@
 }
 
 .explanation-box {
-  margin-top: 25px;
-  padding: 20px;
-  background: #f8f9fa;
-  border-left: 4px solid #2196f3;
-  border-radius: 8px;
+  margin-top: 2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 .explanation-box h3 {
-  margin: 0 0 12px 0;
-  font-size: 1.2em;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.explanation-box h3::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #2d7a3e 0%, #3a9b4f 100%);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.explanation-box.incorrect h3::before {
+  content: '✗';
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
 }
 
 .explanation-box p {
   margin: 10px 0;
-  line-height: 1.6;
-  color: #555;
+  line-height: 1.7;
+  color: #4a5568;
 }
 
 .correct-answer-note {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #ddd;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f0f9ff 100%);
+  border-left: 4px solid #2d7a3e;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .action-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .action-button {

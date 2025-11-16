@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import DiagramRenderer from './quiz/DiagramRenderer'
 import './QuestionRenderer.css'
 
 function QuestionRenderer({ question, userAnswer, onAnswerChange, showFeedback, disabled }) {
@@ -102,6 +103,17 @@ function MCQRenderer({ question, userAnswer, onAnswerChange, showFeedback, disab
   
   return (
     <div className="question-container mcq-question">
+      {/* Question Visual */}
+      {question.question_visual && question.question_visual_type && question.question_visual_type !== 'None' && (
+        <div className="question-visual-container">
+          <DiagramRenderer 
+            diagram={question.question_visual}
+            diagramType={question.question_visual_type}
+            altText="Question diagram"
+          />
+        </div>
+      )}
+      
       {question.scenario && (
         <div className="scenario-box">
           <strong>Scenario:</strong>
@@ -190,6 +202,17 @@ function MCARenderer({ question, userAnswer, onAnswerChange, showFeedback, disab
   
   return (
     <div className="question-container mca-question">
+      {/* Question Visual */}
+      {question.question_visual && question.question_visual_type && question.question_visual_type !== 'None' && (
+        <div className="question-visual-container">
+          <DiagramRenderer 
+            diagram={question.question_visual}
+            diagramType={question.question_visual_type}
+            altText="Question diagram"
+          />
+        </div>
+      )}
+      
       {question.scenario && (
         <div className="scenario-box">
           <strong>Scenario:</strong>
@@ -297,6 +320,17 @@ function SequencingRenderer({ question, userAnswer, onAnswerChange, showFeedback
 
   return (
     <div className="question-container sequencing-question">
+      {/* Question Visual */}
+      {question.question_visual && question.question_visual_type && question.question_visual_type !== 'None' && (
+        <div className="question-visual-container">
+          <DiagramRenderer 
+            diagram={question.question_visual}
+            diagramType={question.question_visual_type}
+            altText="Question diagram"
+          />
+        </div>
+      )}
+      
       <div className="question-text">
         <h3>{question.question}</h3>
         <p className="instruction">Drag to reorder or use arrows to arrange in correct sequence</p>
@@ -374,6 +408,17 @@ function CategorizationRenderer({ question, userAnswer, onAnswerChange, showFeed
 
   return (
     <div className="question-container categorization-question">
+      {/* Question Visual */}
+      {question.question_visual && question.question_visual_type && question.question_visual_type !== 'None' && (
+        <div className="question-visual-container">
+          <DiagramRenderer 
+            diagram={question.question_visual}
+            diagramType={question.question_visual_type}
+            altText="Question diagram"
+          />
+        </div>
+      )}
+      
       <div className="question-text">
         <h3>{question.question}</h3>
       </div>
@@ -455,6 +500,17 @@ function MatchingRenderer({ question, userAnswer, onAnswerChange, showFeedback, 
 
   return (
     <div className="question-container matching-question">
+      {/* Question Visual */}
+      {question.question_visual && question.question_visual_type && question.question_visual_type !== 'None' && (
+        <div className="question-visual-container">
+          <DiagramRenderer 
+            diagram={question.question_visual}
+            diagramType={question.question_visual_type}
+            altText="Question diagram"
+          />
+        </div>
+      )}
+      
       <div className="question-text">
         <h3>{question.question}</h3>
       </div>
@@ -503,6 +559,17 @@ function FillInTheBlankRenderer({ question, userAnswer, onAnswerChange, showFeed
   
   return (
     <div className="question-container fill-in-the-blank-question">
+      {/* Question Visual */}
+      {question.question_visual && question.question_visual_type && question.question_visual_type !== 'None' && (
+        <div className="question-visual-container">
+          <DiagramRenderer 
+            diagram={question.question_visual}
+            diagramType={question.question_visual_type}
+            altText="Question diagram"
+          />
+        </div>
+      )}
+      
       <div className="question-text">
         <h3>
           {parts.map((part, index) => (
@@ -538,6 +605,17 @@ function TrueFalseRenderer({ question, userAnswer, onAnswerChange, showFeedback,
   
   return (
     <div className="question-container true-false-question">
+      {/* Question Visual */}
+      {question.question_visual && question.question_visual_type && question.question_visual_type !== 'None' && (
+        <div className="question-visual-container">
+          <DiagramRenderer 
+            diagram={question.question_visual}
+            diagramType={question.question_visual_type}
+            altText="Question diagram"
+          />
+        </div>
+      )}
+      
       <div className="question-text">
         <h3>{question.question}</h3>
       </div>

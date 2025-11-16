@@ -1,0 +1,74 @@
+# DAA Lecture 7
+**Lecture Number:** 7
+**Course:** Data Analysis Applications
+**Reference Textbook:** Statistics for Business: Decision Making and Analysis by Robert E Stine and Dean Foster, Pearson (ISBN: 978-81-317-3347-9)
+
+================================================================================
+
+## Logistic Regression
+
+### Core Definition
+Logistic regression is a statistical model used to predict the probability of a binary outcome (an event that either happens or does not happen) based on one or more predictor variables. Unlike linear regression, which is designed for continuous response variables, logistic regression models the relationship between the predictors and the *logit* of the probability of the event occurring, ensuring that predictions are constrained between 0 and 1. This makes it particularly suitable for classification tasks in business.
+
+### Key Concepts & Components
+
+-   **The Problem with Linear Regression for Binary Outcomes**:
+    Linear regression is unsuitable for binary dependent variables because its predictions can fall outside the [0, 1] range (making them invalid probabilities), and its assumptions (e.g., normally distributed errors, homoscedasticity) are violated. Logistic regression addresses this by transforming the probability.
+
+-   **The Logit Transformation**:
+    Logistic regression models the *logit* of the probability. The odds of an event are defined as the ratio of the probability of the event occurring to the probability of it not occurring, `Odds = P / (1 - P)`. The logit function is the natural logarithm of these odds:
+    `Logit(P) = ln(P / (1 - P))`
+    This transformation maps probabilities from [0, 1] to the entire real number line `(-∞, +∞)`, allowing a linear model to be fitted to the transformed variable.
+
+-   **Logistic Regression Equation (Log-Odds Form)**:
+    The core logistic regression model assumes a linear relationship between the predictor variables and the log-odds of the outcome:
+    `ln(P / (1 - P)) = β₀ + β₁X₁ + β₂X₂ + ... + βₚXₚ`
+    Where:
+    -   `P`: The probability that the binary response variable `Y` equals 1 (i.e., the event of interest occurs).
+    -   `Xᵢ`: The `i`-th predictor (independent) variable.
+    -   `β₀`: The intercept, representing the log-odds of the event when all `Xᵢ` are zero.
+    -   `βᵢ`: The coefficient for the `i`-th predictor, indicating the change in the log-odds of the outcome for a one-unit increase in `Xᵢ`, holding other predictors constant.
+
+-   **Probability Equation (Sigmoid Function)**:
+    To get the probability `P` directly, we can transform the log-odds equation back using the inverse of the logit function, which is the logistic (or sigmoid) function:
+    `P = 1 / (1 + e^-(β₀ + β₁X₁ + β₂X₂ + ... + βₚXₚ))`
+    This S-shaped curve ensures that the predicted probability `P` always lies between 0 and 1.
+
+-   **Interpretation of Coefficients (Odds Ratios)**:
+    While `βᵢ` represents the change in log-odds, a more intuitive interpretation comes from exponentiating the coefficients: `e^βᵢ`. This gives the *odds ratio*.
+    -   `e^βᵢ`: The factor by which the odds of the event occurring multiply for a one-unit increase in `Xᵢ`, holding other predictors constant.
+        -   If `e^βᵢ > 1`, the odds of the event increase.
+        -   If `e^βᵢ < 1`, the odds of the event decrease.
+        -   If `e^βᵢ = 1`, the odds remain unchanged.
+
+-   **Estimation Method**:
+    Unlike linear regression which uses Ordinary Least Squares (OLS), logistic regression coefficients are typically estimated using **Maximum Likelihood Estimation (MLE)**. MLE finds the coefficient values that maximize the likelihood of observing the actual binary outcomes in the dataset.
+
+### Textbook-Style Example
+
+A regional bank wants to predict which new applicants are likely to default on a small business loan within the first year to refine its lending criteria and reduce risk exposure. They collect data on past loan applicants, including whether they defaulted (1) or not (0), their credit score, the amount of the loan, and the business's operating cash flow ratio. Using logistic regression, they model the probability of default. The analysis yields the following (hypothetical) odds ratios: `e^β_CreditScore = 0.95`, `e^β_LoanAmount = 1.002`, and `e^β_CashFlowRatio = 0.88`. This means that for every one-point increase in credit score, the odds of defaulting *decrease* by 5% (1 - 0.95). Conversely, for every $1,000 increase in loan amount, the odds of defaulting *increase* by 0.2% (1.002 - 1). Most significantly, for every one-unit increase in the cash flow ratio, the odds of defaulting decrease by 12% (1 - 0.88), indicating a strong inverse relationship. This helps the bank make informed decisions by setting stricter credit score thresholds for larger loans or prioritizing applicants with higher cash flow ratios to mitigate default risk.
+
+### Business Interpretation & Application
+
+Logistic regression is a cornerstone tool in business analytics for predictive modeling involving binary outcomes. Managers and analysts use it to quantify the likelihood of an event and inform strategic decisions. For instance, in marketing, it predicts customer response to a campaign (buy/not buy); in finance, it forecasts loan default (default/no default) or credit card fraud (fraud/no fraud); in human resources, it can model employee turnover (stay/leave). By understanding which factors significantly influence the probability of an outcome, businesses can optimize resource allocation, tailor interventions, manage risks, and improve profitability.
+
+### Assumptions & Conditions
+
+-   **Binary Dependent Variable**: The response variable must be dichotomous (e.g., 0/1, Yes/No, Success/Failure).
+-   **Independence of Observations**: Each observation should be independent of the others.
+-   **No Multicollinearity**: Predictor variables should not be highly correlated with each other, as this can lead to unstable coefficient estimates.
+-   **Linearity of the Logit**: The relationship between the predictor variables and the *logit* of the outcome probability must be linear. This differs from the linear relationship assumed in OLS for the response itself.
+-   **Large Sample Sizes**: Maximum Likelihood Estimation requires sufficiently large sample sizes to produce reliable and stable coefficient estimates.
+
+### Common Pitfalls & Misconceptions
+
+-   **Interpreting Coefficients Directly as Probabilities**: A common mistake is to interpret `βᵢ` as the change in probability for a one-unit increase in `Xᵢ`. Instead, `βᵢ` represents the change in the *log-odds*, and `e^βᵢ` represents the *odds ratio*. Probabilities change non-linearly.
+-   **Assuming Linearity of the Response**: Students often confuse the linearity assumption with that of linear regression. Logistic regression assumes linearity in the *logit* of the probability, not in the probability itself.
+-   **Ignoring Class Imbalance**: If one outcome class is much rarer than the other (e.g., 99% non-fraud, 1% fraud), standard logistic regression might perform poorly. Special techniques (e.g., oversampling, undersampling, cost-sensitive learning) might be needed.
+-   **Overfitting**: Including too many predictor variables, especially with smaller datasets, can lead to a model that performs well on training data but poorly on new, unseen data.
+
+### Connection to Other Topics
+
+Logistic regression naturally extends the concepts of multiple linear regression by adapting to a different type of dependent variable. It is a fundamental method in **classification**, often serving as a baseline model for more complex techniques like decision trees or support vector machines. Its interpretation through odds ratios connects to concepts of **risk assessment** and **relative likelihood**, complementing hypothesis testing for individual coefficients, and providing a framework for **predictive analytics** that informs strategic business decisions.
+
+--------------------------------------------------------------------------------

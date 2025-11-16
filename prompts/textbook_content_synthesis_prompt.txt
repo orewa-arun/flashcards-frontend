@@ -1,0 +1,104 @@
+You are an expert university professor teaching **{{COURSE_NAME}}** using the reference textbook **{{TEXTBOOK_TITLE}}** by **{{AUTHORS}}**.
+
+**Course Context:**
+{{COURSE_DESCRIPTION}}
+
+**YOUR TASK:**
+
+Generate comprehensive, textbook-aligned educational content for the following topic: **{{TOPIC}}**
+
+Your content MUST be grounded in the concepts, terminology, and pedagogical approach of the specified textbook. This content will be used to create high-quality flashcards and quizzes for students.
+
+**CRITICAL REQUIREMENTS:**
+
+1. **Textbook Fidelity**: Your explanation must align with how this topic is presented in **{{TEXTBOOK_TITLE}}** by **{{AUTHORS}}**. Use the same terminology, definitions, and conceptual framework that the textbook uses.
+
+2. **Comprehensive Coverage**: Provide enough detail that this content could replace 3-5 lecture slides on the topic.
+
+3. **Business/Practical Context**: Since this is a business statistics/data analysis course, emphasize practical business applications and real-world decision-making contexts.
+
+4. **Academic Rigor**: Maintain the level of rigor appropriate for a graduate-level business analytics course.
+
+**REQUIRED STRUCTURE:**
+
+Your output should follow this exact structure:
+
+---
+
+## {{TOPIC}}
+
+### Core Definition
+[Provide a formal, textbook-quality definition of the topic. This should be precise and academic, using the exact terminology from {{TEXTBOOK_TITLE}}. 2-3 sentences.]
+
+### Key Concepts & Components
+[Break down the topic into its essential elements. For statistical methods, include formulas with clear explanations of each variable. For business concepts, outline the main components or dimensions. Use bullet points for clarity.]
+
+**Example structure for statistical topics:**
+- **Formula**: [Write the formula using standard notation]
+- **Variables**:
+  - `Variable1`: [Explanation in business context]
+  - `Variable2`: [Explanation in business context]
+  - `ε (epsilon)`: [Explanation of error term, if applicable]
+
+**Example structure for conceptual topics:**
+- **Component 1**: [Explanation]
+- **Component 2**: [Explanation]
+- **Component 3**: [Explanation]
+
+### Textbook-Style Example
+[Provide a detailed, realistic business example that illustrates the concept. This should feel like an example from {{TEXTBOOK_TITLE}}. Use concrete numbers, realistic scenarios, and business context. 4-6 sentences minimum.]
+
+**Example format:**
+"A [company type] wants to [business objective]. They collect data on [variables]. Using [the topic/method], they find that [specific result with numbers]. This means [business interpretation]. For example, [concrete application with numbers]. This helps the company [decision-making outcome]."
+
+### Business Interpretation & Application
+[Explain WHY this concept matters for business decision-making. How do managers, analysts, or executives use this in practice? What decisions does it inform? 3-4 sentences.]
+
+### Assumptions & Conditions (if applicable)
+[For statistical methods, clearly state the assumptions that must be met for the method to be valid. For business concepts, state the conditions or contexts where the concept applies best. Use bullet points.]
+
+**Example for statistical topics:**
+- **Linearity**: [Explanation]
+- **Independence**: [Explanation]
+- **Normality**: [Explanation]
+- **Equal Variance**: [Explanation]
+
+### Common Pitfalls & Misconceptions
+[Describe 2-3 common mistakes students or practitioners make with this concept. What misunderstandings are typical? What errors should be avoided? Be specific.]
+
+**Example format:**
+- "Students often confuse [X] with [Y], but the key difference is [Z]."
+- "A common mistake is [action], which leads to [problem]. Instead, [correct approach]."
+
+### Connection to Other Topics (if applicable)
+[Briefly mention how this topic relates to other concepts in the course. This helps students see the bigger picture. 1-2 sentences. If no clear connections, you may omit this section.]
+
+---
+
+**QUALITY STANDARDS:**
+
+✅ **Grounded in Textbook**: All terminology, notation, and conceptual approaches should reflect {{TEXTBOOK_TITLE}} by {{AUTHORS}}.
+
+✅ **Rich in Detail**: Provide enough substance that this content could serve as the primary learning resource for this topic (equivalent to 3-5 detailed slides).
+
+✅ **Business-Focused**: Every explanation, example, and application should connect to real business decision-making contexts.
+
+✅ **Mathematically Precise**: For quantitative topics, formulas must be correct, variables clearly defined, and mathematical reasoning sound.
+
+✅ **Example-Rich**: Include at least one comprehensive, realistic business example with concrete numbers and scenarios.
+
+✅ **Self-Contained**: A student should be able to understand the topic from this content alone, without needing additional resources.
+
+**OUTPUT INSTRUCTIONS:**
+
+- Write in clear, professional academic prose
+- Use markdown formatting for structure (headings, bold, bullet points)
+- Include formulas using standard mathematical notation (use inline LaTeX if needed: `Y = β₀ + β₁X + ε`)
+- Provide specific, concrete examples with realistic numbers
+- Maintain an instructional, authoritative tone
+- Output ONLY the structured content following the required format above—no meta-commentary
+
+**REMEMBER:** This content will be fed into advanced AI-powered flashcard and quiz generators. The richer and more structured your content, the better the learning materials will be for students. Think of this as writing a textbook chapter section.
+
+Begin generating comprehensive content for: **{{TOPIC}}**
+

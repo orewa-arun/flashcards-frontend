@@ -23,7 +23,13 @@
         "C": "Cutting marketing expenses is the superior choice because it will allow EcoBloom to focus on improving the product and reducing production costs, which are the primary drivers of profitability.",
         "D": "Investing further in targeted marketing and partnerships is the superior choice because it will allow EcoBloom to quickly reach the Maturity phase of the PLC, where profits are highest and marketing costs are lower."
       },
-      "correct_answer": "Investing further in targeted marketing and partnerships is the superior choice because it will create brand awareness, build customer loyalty, and establish a strong market position, ultimately driving long-term profitability, even with short-term losses.",
+      "correct_answer": [
+        "Investing further in targeted marketing and partnerships is the superior choice because it will create brand awareness",
+        "build customer loyalty",
+        "and establish a strong market position",
+        "ultimately driving long-term profitability",
+        "even with short-term losses."
+      ],
       "explanation": "This is a synthesis question combining the Introduction stage of the PLC (SI_PLC_4) with Brand Equity (from a previous lecture). The scenario highlights the trade-off between short-term profitability and long-term brand building during the introduction stage. Option A focuses on immediate cost reduction but sacrifices long-term market penetration and brand recognition. Option C misidentifies the primary issue; while product improvement is always relevant, the core challenge in the introduction phase is awareness. Option D incorrectly assumes that increased marketing will quickly propel the product to maturity, ignoring the natural progression of the PLC. The correct answer acknowledges the high initial costs and low profits inherent to the introduction stage and emphasizes the importance of building a strong foundation for future success through strategic marketing and partnerships to create strong brand equity, even if this means continued losses in the short term.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_4",
@@ -48,7 +54,10 @@
         "C": "Rapidly expand production and distribution to capitalize on initial demand, even if it means potentially overstocking retailers.",
         "D": "Immediately transition to cost-cutting measures and reduce marketing spend, assuming that the product's existing brand recognition will drive sales."
       },
-      "correct_answer": "Focus on a niche market of nostalgic gamers through targeted online advertising and limited-edition releases, accepting a slower growth rate.",
+      "correct_answer": [
+        "Focus on a niche market of nostalgic gamers through targeted online advertising and limited-edition releases",
+        "accepting a slower growth rate."
+      ],
       "explanation": "This question requires synthesizing the PLC stages (SI_PLC_2) with Market Segmentation (from a previous lecture). While the product is being re-introduced, its existing brand recognition changes the dynamics. Option A ignores the changed competitive landscape and the potential for marketing inefficiencies. Option C risks oversupply if the nostalgic demand is limited. Option D is too conservative, potentially missing a valuable market opportunity. The correct answer acknowledges the unique situation: the product isn't entirely new, but the market has evolved. A niche strategy leveraging targeted marketing to reach nostalgic gamers is the most effective way to capitalize on existing brand equity while avoiding the high costs and risks associated with a broad relaunch. This tailored approach aligns with effective market segmentation and allows for controlled growth and profitability.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_2",
@@ -71,7 +80,11 @@
         "C": "Slow down production and sales, publicly acknowledge the issues, and offer a partial refund to early adopters while working on a redesign.",
         "D": "Increase marketing efforts to drive sales further while downplaying the reports of discomfort and eye strain, as negative reviews will eventually fade."
       },
-      "correct_answer": "Slow down production and sales, publicly acknowledge the issues, and offer a partial refund to early adopters while working on a redesign.",
+      "correct_answer": [
+        "Slow down production and sales",
+        "publicly acknowledge the issues",
+        "and offer a partial refund to early adopters while working on a redesign."
+      ],
       "explanation": "This question synthesizes the PLC's growth stage (SI_PLC_3) with Quality Management principles (from a previous lecture). Option A prioritizes short-term profits over product quality and customer satisfaction, which is unsustainable. Option B is overly reactive and could damage the company's reputation and financial stability. Option D is unethical and will likely lead to significant long-term damage to the brand. The correct answer represents a balanced approach: slowing down production allows InnovateNow to address the quality issues without completely halting sales. Publicly acknowledging the problem and offering a refund demonstrates transparency and builds trust with customers. This approach minimizes short-term losses while prioritizing long-term product viability and customer loyalty, aligning with robust quality management practices.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_3",
@@ -94,7 +107,10 @@
         "C": "Drastically reduce marketing spend and focus on product improvements, assuming that the product will eventually gain traction through word-of-mouth.",
         "D": "Shift marketing efforts to target a completely different market segment, assuming that the initial target market was not a good fit."
       },
-      "correct_answer": "Focus on targeted promotions and incentives to existing customers to drive repeat purchases and referrals, leveraging the existing customer base.",
+      "correct_answer": [
+        "Focus on targeted promotions and incentives to existing customers to drive repeat purchases and referrals",
+        "leveraging the existing customer base."
+      ],
       "explanation": "This question synthesizes the Introduction stage of the PLC (SI_PLC_4) with CRM strategies (from a previous lecture). The key insight is that ConnectHome is primarily selling to existing customers. Option A ignores this and continues a costly, inefficient strategy. Option C is too passive and risks stagnation. Option D is a drastic measure that should only be considered after careful analysis. The correct answer leverages the existing customer base, which already understands the value proposition. Targeted promotions and incentives are a cost-effective way to drive repeat purchases, generate referrals, and build momentum, accelerating the transition to the Growth stage by maximizing the value of existing customer relationships. This aligns with effective CRM practices and leverages the initial investment in customer acquisition.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_4",
@@ -119,7 +135,9 @@
         "C": "Implement a combination of both strategies: introduce the new model in limited quantities while simultaneously working on cost reduction and reliability improvements.",
         "D": "Withdraw from the market and focus on developing entirely new product categories, as the electric scooter market is becoming too saturated."
       },
-      "correct_answer": "Implement a combination of both strategies: introduce the new model in limited quantities while simultaneously working on cost reduction and reliability improvements.",
+      "correct_answer": [
+        "Implement a combination of both strategies: introduce the new model in limited quantities while simultaneously working on cost reduction and reliability improvements."
+      ],
       "explanation": "This question requires synthesizing the Maturity stage of the PLC with Value Chain Analysis (from a previous lecture). Option A prioritizes innovation at the expense of cost efficiency, which is less critical in the maturity stage. Option B is too conservative and risks losing market share to competitors who are innovating. Option D is a drastic move that might be premature. The correct answer recognizes the need for a balanced approach. Introducing a new model, even in limited quantities, can create excitement and attract new customers, while simultaneously focusing on cost reduction and reliability improvements will maintain profitability and customer satisfaction. This approach aligns with Value Chain Analysis by optimizing both product differentiation (new model) and operational efficiency (cost reduction and reliability), extending the product life cycle and sustaining profitability in a competitive market.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_3",
@@ -142,7 +160,11 @@
         "C": "Option A (National Advertising Campaign) because it focuses on increasing current profits by maximizing sales of their existing IPA product in a wider market, requiring minimal product development costs.",
         "D": "Both options are equally viable as they both offer similar levels of risk and reward, making the decision dependent on management's personal preference."
       },
-      "correct_answer": "Option B (Hard Seltzer Line) because it represents product development, leveraging their existing infrastructure and brand reputation while tapping into a growing market segment, resulting in a more sustainable growth trajectory with manageable investment.",
+      "correct_answer": [
+        "Option B (Hard Seltzer Line) because it represents product development",
+        "leveraging their existing infrastructure and brand reputation while tapping into a growing market segment",
+        "resulting in a more sustainable growth trajectory with manageable investment."
+      ],
       "explanation": "This question synthesizes the PLC (specifically the Growth Stage trade-off) with the Ansoff Matrix. Hoppy Days is likely in the Maturity or late Growth stage for their IPA. Launching a national campaign (Market Development) is high-risk/high-reward but ignores their limited resources. Introducing hard seltzer (Product Development) is lower risk, leverages existing infrastructure, and taps a new market segment *without* abandoning their existing brand. Option A overestimates their ability to compete nationally. Option C misunderstands the long-term goals of the Growth Stage. Option D fails to recognize the differences in risk and resource allocation.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_5",
@@ -168,7 +190,10 @@
         "C": "Option B (Invest in R&D) because it represents a new product development strategy that can lead to a new growth stage, offsetting the losses from the declining product and creating a sustainable future revenue stream.",
         "D": "Option A (Price Reduction) because it reflects the most pragmatic harvesting strategy in the Decline stage, maximizing short-term profit extraction before the product becomes completely obsolete."
       },
-      "correct_answer": "Option C (Invest in R&D) because it represents a new product development strategy that can lead to a new growth stage, offsetting the losses from the declining product and creating a sustainable future revenue stream.",
+      "correct_answer": [
+        "Option C (Invest in R&D) because it represents a new product development strategy that can lead to a new growth stage",
+        "offsetting the losses from the declining product and creating a sustainable future revenue stream."
+      ],
       "explanation": "This question combines Decline Stage strategies with Growth Stage trade-offs. The drug is clearly in the Decline stage. Cutting price (Option A) is a superficial fix; it doesn't address the root cause (generic competition) and will lead to unsustainable losses. Option B (R&D) is a higher-risk, higher-reward strategy but is the *only* one that offers long-term growth and a new PLC. Option D is a misapplication of harvesting, as it only considers the immediate situation. The optimal approach is to use profits from the declining product to fund new growth, acknowledging that maintaining market share in the face of generics is a losing battle. Option B correctly identifies investment in R&D but incorrectly frames it as *harvesting*.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_5",
@@ -194,7 +219,10 @@
         "C": "Option B (Focus on Traditional Watches) because it represents market penetration, solidifying their position in the existing market by reinforcing their brand image and strengthening relationships with existing customers.",
         "D": "Option A (Smartwatch Line) because it aligns with market development, allowing them to expand into a new market segment with a product that capitalizes on current trends and consumer preferences."
       },
-      "correct_answer": "Option A (Smartwatch Line) because it represents product development, allowing them to leverage their brand reputation and manufacturing expertise to attract a new customer segment while mitigating the risk of alienating their existing customer base.",
+      "correct_answer": [
+        "Option A (Smartwatch Line) because it represents product development",
+        "allowing them to leverage their brand reputation and manufacturing expertise to attract a new customer segment while mitigating the risk of alienating their existing customer base."
+      ],
       "explanation": "This question combines Maturity Stage strategies with the Ansoff Matrix. The company is in the Maturity stage. Option B (focusing on traditional watches) is a short-term fix (harvesting), neglecting future growth opportunities. It also incorrectly identifies the strategy as market penetration; it's maintaining the current market. Option A (smartwatch line) represents Product Development, which leverages their brand and expertise *while* entering a new segment. Option D misidentifies the strategy as Market Development; they are selling a *new* product to a *new* segment with their existing brand. The correct answer balances the need to maintain existing sales with the need for future growth.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_6",
@@ -220,7 +248,11 @@
         "C": "Option A (Online Focus) because it reflects market development, enabling them to reach a wider audience through digital channels and adapt to changing consumer preferences.",
         "D": "Option B (Luxury Repositioning) because it represents product modification, enhancing the existing product with premium features and targeting a new segment within the existing market."
       },
-      "correct_answer": "Option B (Luxury Repositioning) because it combines a maintaining strategy with market modification, targeting a new, affluent segment with a premium product that aligns with their brand reputation and potentially generates higher profit margins.",
+      "correct_answer": [
+        "Option B (Luxury Repositioning) because it combines a maintaining strategy with market modification",
+        "targeting a new",
+        "affluent segment with a premium product that aligns with their brand reputation and potentially generates higher profit margins."
+      ],
       "explanation": "This question synthesizes Decline Stage strategies with Market Modification. The magazine is in the Decline stage. Option A (online focus) is a flawed harvesting strategy because it doesn't address the *reason* for the decline (lack of differentiation). Option B (luxury repositioning) combines a maintaining strategy (repositioning) with market modification (targeting a new segment). This leverages the brand's existing reputation for quality. Option C misidentifies the strategy as market development; the audience is smaller and more targeted, not wider. Option D misidentifies the strategy as product modification; the *market* is what's being modified, not the core journalism product. The correct answer preserves the brand while seeking a profitable niche.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_7",
@@ -244,7 +276,11 @@
         "C": "Option A (Enterprise Version) because it aligns with market penetration, enabling them to increase sales to existing customers by offering a more comprehensive product that meets their evolving needs.",
         "D": "Option B (Construction Industry Adaptation) because it represents diversification, allowing them to enter a completely new market with a modified product, reducing their reliance on the existing project management software market."
       },
-      "correct_answer": "Option B (Construction Industry Adaptation) because it combines market development with market modification, targeting a new industry segment with a tailored version of their existing product, potentially creating a new revenue stream with lower development costs.",
+      "correct_answer": [
+        "Option B (Construction Industry Adaptation) because it combines market development with market modification",
+        "targeting a new industry segment with a tailored version of their existing product",
+        "potentially creating a new revenue stream with lower development costs."
+      ],
       "explanation": "This question combines Ansoff Matrix strategies with Maturity Stage considerations. The software is likely in the Maturity stage. Option A (enterprise version) is Product Development, but faces intense competition in the enterprise market. Option B (construction industry) combines market development (new industry) with product modification (tailoring the existing tool). This leverages existing expertise while diversifying, mitigating risk. Option C misidentifies the strategy as market penetration; the clients are new. Option D misidentifies the strategy as diversification; it's *not* a completely new product. Option B is the best balance of risk/reward, leveraging their expertise in a new, less competitive area. It also aligns with strategies used in the Maturity phase.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_8",
@@ -271,7 +307,11 @@
         "C": "Develop the scooter sharing program. This will quickly boost revenue and diversify the product line, following a Growth-Decline pattern.",
         "D": "Maintain the current strategy. The plateau indicates maturity, and any intervention risks disrupting the existing customer base."
       },
-      "correct_answer": "Introduce the premium model, as this extends the product line's PLC by targeting a new segment and offering innovation, following an Innovative Maturity pattern.",
+      "correct_answer": [
+        "Introduce the premium model",
+        "as this extends the product line's PLC by targeting a new segment and offering innovation",
+        "following an Innovative Maturity pattern."
+      ],
       "explanation": "This question synthesizes applying the PLC beyond individual products (SI_PLC_9) and PLC curve patterns (SI_PLC_11). The problem is that Zoom's initial product is in maturity, and they need a strategy for future growth. Option A correctly identifies the Innovative Maturity pattern by introducing a premium model targeting a new segment, extending the product line's PLC. Option B attempts a Cycle-Recycle, which may not be sustainable given the competitive landscape. Option C could boost revenue but also create a Growth-Decline pattern by over-saturating the market and diluting the brand. Option D avoids risk but also misses the opportunity for growth. The key insight is that introducing a new product (premium model) allows Zoom to maintain relevance and extend the overall product line's lifecycle, mirroring Apple's strategy with iPhones.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_9",
@@ -299,7 +339,9 @@
         "C": "The eco-friendly line has the potential to become a Style, but StyleFast's marketing is not effectively communicating the long-term value to consumers. StyleFast should rebrand the line and focus on timeless designs and enduring quality.",
         "D": "The eco-friendly line is suffering from poor quality control. StyleFast should implement stricter quality checks to improve customer satisfaction and boost sales."
       },
-      "correct_answer": "The eco-friendly line was initially successful due to a Fashion trend but needs continuous innovation to maintain relevance. StyleFast should introduce new eco-friendly designs and materials regularly to keep the line fresh.",
+      "correct_answer": [
+        "The eco-friendly line was initially successful due to a Fashion trend but needs continuous innovation to maintain relevance. StyleFast should introduce new eco-friendly designs and materials regularly to keep the line fresh."
+      ],
       "explanation": "This question synthesizes applying the PLC beyond individual products (SI_PLC_9) and differences between Style, Fashion, and Fad PLCs (SI_PLC_12). The core issue is the sales decline despite initial success, implying a misidentification of the product's PLC type. Option B correctly identifies the eco-friendly line as a Fashion trend needing continuous innovation to maintain relevance. Option A assumes it's a Fad, which is too simplistic given the initial strong sales. Option C misidentifies it as a Style, which is unlikely given the fast-paced nature of fashion and consumer preferences. Option D addresses a symptom (poor quality) rather than the root cause (the product's position in the PLC). The key insight is that StyleFast needs to treat the eco-friendly line as a fashion item and constantly innovate to maintain its competitive edge.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_9",
@@ -327,7 +369,11 @@
         "C": "Discontinue the tool. The competitor's superior product indicates the end of the product's lifecycle.",
         "D": "Offer significant discounts to existing customers. This will boost short-term sales and retain the customer base."
       },
-      "correct_answer": "Launch the marketing campaign, emphasizing the tool's strengths. This leverages the tool's unique features to appeal to a specific niche, aiming for an Innovative Maturity pattern.",
+      "correct_answer": [
+        "Launch the marketing campaign",
+        "emphasizing the tool's strengths. This leverages the tool's unique features to appeal to a specific niche",
+        "aiming for an Innovative Maturity pattern."
+      ],
       "explanation": "This question synthesizes whether the PLC is identical for all products (SI_PLC_10) and PLC curve patterns (SI_PLC_11). The problem is that CodeCraft's product is declining due to a competitor. Option A correctly identifies that not all products have the same PLC and that focusing on the product's strengths (backend performance and security) can lead to an Innovative Maturity pattern by appealing to a specific niche. Option B tries to match the competitor, which may lead to feature parity but not a sustainable advantage. Option C is premature given the potential to reposition the product. Option D is a short-term fix that doesn't address the underlying problem. The key insight is that focusing on unique strengths rather than directly competing on features can lead to a longer and more sustainable PLC.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_10",
@@ -355,7 +401,10 @@
         "C": "Continue marketing the original energy drink, targeting a niche segment that is less health-conscious.",
         "D": "File for bankruptcy. The negative publicity has irreparably damaged the brand."
       },
-      "correct_answer": "Launch a new product line. This avoids further damage to the FizzCo brand by distancing the company from the energy drink, treating it as a Fad.",
+      "correct_answer": [
+        "Launch a new product line. This avoids further damage to the FizzCo brand by distancing the company from the energy drink",
+        "treating it as a Fad."
+      ],
       "explanation": "This question synthesizes whether the PLC is identical for all products (SI_PLC_10) and differences between Style, Fashion, and Fad PLCs (SI_PLC_12). The problem is that FizzCo's product experienced a rapid decline due to health concerns. Option B correctly identifies that the energy drink likely followed a Fad PLC and that launching a new product line is the best way to protect the overall brand. Option A attempts a Cycle-Recycle, which may be difficult given the health concerns. Option C is unethical and unsustainable. Option D is an extreme reaction. The key insight is that not all products have the same PLC, and sometimes it's best to cut losses and move on to a new product.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_10",
@@ -383,7 +432,10 @@
         "C": "License the robot technology to another company. This generates short-term revenue without further investment.",
         "D": "Discontinue the robot line and focus on a completely different type of toy."
       },
-      "correct_answer": "Develop the new generation of robots. This follows an Innovative Maturity pattern, extending the product line's PLC by targeting a new segment with innovative features.",
+      "correct_answer": [
+        "Develop the new generation of robots. This follows an Innovative Maturity pattern",
+        "extending the product line's PLC by targeting a new segment with innovative features."
+      ],
       "explanation": "This question synthesizes PLC curve patterns (SI_PLC_11) and differences between Style, Fashion, and Fad PLCs (SI_PLC_12). The problem is that PlayTime's robots are in decline. Option A correctly identifies the Innovative Maturity pattern by developing a new generation of robots targeting a new segment with innovative features. Option B attempts a Cycle-Recycle, which may not be sustainable. Option C generates short-term revenue but doesn't maximize long-term potential. Option D may be too drastic. The key insight is that focusing on innovation and targeting new segments can lead to a longer and more sustainable PLC, building upon the existing brand.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_11",
@@ -411,7 +463,11 @@
         "C": "Introduce a limited-edition line of modern furniture, capitalizing on the Fad before it fades.",
         "D": "Acquire the competitor specializing in modern furniture. This allows Evergreen to immediately capture market share."
       },
-      "correct_answer": "Introduce a new line of modern furniture, carefully branded as a separate collection, to capture the Fashion trend without diluting the core Evergreen brand.",
+      "correct_answer": [
+        "Introduce a new line of modern furniture",
+        "carefully branded as a separate collection",
+        "to capture the Fashion trend without diluting the core Evergreen brand."
+      ],
       "explanation": "This question synthesizes the PLC differences (SI_PLC_12) and the fact that PLCs vary (SI_PLC_10). Evergreen faces a challenge: a competing trend threatens their established business. Option B correctly recognizes that modern furniture is likely a Fashion trend and that a *separate* brand allows Evergreen to capitalize on it without damaging their existing Style PLC brand. Option A risks losing market share. Option C misinterprets the trend as a Fad. Option D is high-risk and may not integrate well. The core insight is the need to address the competitive pressure while preserving the original brand identity, recognizing that different product categories have different PLCs.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_12",
@@ -439,7 +495,12 @@
         "C": "Invest in automating specific parts of the production process, such as packaging and labeling, while retaining the handcrafted aspects of chocolate making, and implement lean manufacturing principles to optimize workflow and reduce waste.",
         "D": "Immediately shift marketing efforts to focus on a broader market segment to justify the high costs of artisanal production, even if it means diluting the brand's appeal to its original niche market."
       },
-      "correct_answer": "Invest in automating specific parts of the production process, such as packaging and labeling, while retaining the handcrafted aspects of chocolate making, and implement lean manufacturing principles to optimize workflow and reduce waste.",
+      "correct_answer": [
+        "Invest in automating specific parts of the production process",
+        "such as packaging and labeling",
+        "while retaining the handcrafted aspects of chocolate making",
+        "and implement lean manufacturing principles to optimize workflow and reduce waste."
+      ],
       "explanation": "This question requires synthesizing the Product Life Cycle (specifically the Growth stage) with lean manufacturing principles. The company is in the Growth stage of the PLC, characterized by rapidly rising sales. Option A fails to address the scaling issue, a critical component of growth, and prioritizes a niche exclusivity that could hinder broader market penetration. Option B sacrifices quality for short-term gains, potentially damaging the brand. Option D is a distraction that doesn't address the core issue of production bottlenecks. The correct answer (C) balances maintaining product quality (artisanal aspects) with the need for increased production efficiency using lean principles, addressing the root cause of the problem (inability to meet demand) without compromising the brand's core value proposition.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_13",
@@ -463,7 +524,11 @@
         "C": "Conduct a detailed analysis of customer segments to identify the specific needs and pain points of different user groups, and tailor the premium features and marketing messages to better resonate with those segments, focusing on value-based pricing.",
         "D": "Discontinue the freemium model and switch to a fully paid subscription model to eliminate the cost of supporting free users and focus resources on paying customers."
       },
-      "correct_answer": "Conduct a detailed analysis of customer segments to identify the specific needs and pain points of different user groups, and tailor the premium features and marketing messages to better resonate with those segments, focusing on value-based pricing.",
+      "correct_answer": [
+        "Conduct a detailed analysis of customer segments to identify the specific needs and pain points of different user groups",
+        "and tailor the premium features and marketing messages to better resonate with those segments",
+        "focusing on value-based pricing."
+      ],
       "explanation": "This question requires understanding of the PLC (transitioning from Growth to Maturity) and customer segmentation. The plateaued conversion and increased churn indicate the app is entering the Maturity stage. Option A focuses on acquisition, which is less effective in Maturity. Option B addresses price, but without understanding *why* users aren't converting or are churning. Option D is too drastic and ignores potential revenue from retaining some free users. The correct answer (C) addresses the root cause by focusing on understanding different customer segments and tailoring the value proposition accordingly. This acknowledges that in the Maturity stage, customer retention and satisfaction are paramount, and a one-size-fits-all approach is no longer sufficient. It also allows for value-based pricing, appealing to those who will pay more for valuable features.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_13",
@@ -487,7 +552,13 @@
         "C": "Diversify into new product categories, such as wearable technology or smart home devices, to reduce its reliance on the declining digital camera market.",
         "D": "Maintain the current product line and marketing strategy, assuming that the decline in sales is a temporary fluctuation and that the market will eventually rebound."
       },
-      "correct_answer": "Focus on developing a niche market segment, such as professional photographers or hobbyists, and differentiate its cameras through superior image quality, advanced features, and specialized accessories.",
+      "correct_answer": [
+        "Focus on developing a niche market segment",
+        "such as professional photographers or hobbyists",
+        "and differentiate its cameras through superior image quality",
+        "advanced features",
+        "and specialized accessories."
+      ],
       "explanation": "This question requires synthesizing the PLC (Decline stage) with Porter's Generic Strategies. The declining sales indicate the product is in the Decline stage. Option A, continuing a cost-leadership strategy, is unsustainable as smartphones become more competitive. Option C is a valid strategy but a separate decision, not directly addressing the camera business. Option D is denial and ignores the market trends. The correct answer (B) is a focused differentiation strategy. This acknowledges the decline of the mass market and focuses on a niche where specialized cameras can still offer value. This leverages differentiation through superior image quality and features, appealing to a specific segment willing to pay a premium.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_13",
@@ -511,7 +582,10 @@
         "C": "Invest in training programs for all employees to instill a culture of quality and continuous improvement, and implement standardized manufacturing processes based on TQM principles.",
         "D": "Outsource production to a cheaper manufacturer to reduce production costs and improve profit margins, even if it means sacrificing some control over quality."
       },
-      "correct_answer": "Invest in training programs for all employees to instill a culture of quality and continuous improvement, and implement standardized manufacturing processes based on TQM principles.",
+      "correct_answer": [
+        "Invest in training programs for all employees to instill a culture of quality and continuous improvement",
+        "and implement standardized manufacturing processes based on TQM principles."
+      ],
       "explanation": "This question requires synthesizing the PLC (Growth stage) with TQM principles. The recalls indicate a systemic quality problem. Option A treats the symptom (negative impact of recalls) rather than the root cause (lack of quality). Option B is a reactive approach, catching defects after they occur, rather than preventing them. Option D prioritizes cost over quality, which is detrimental in the long run. The correct answer (C) addresses the root cause by implementing a proactive, preventative approach based on TQM. This involves creating a culture of quality through employee training and standardizing processes to ensure consistent quality throughout the production process, ensuring sustainable growth.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_13",
@@ -535,7 +609,10 @@
         "C": "Divest the drug to a generic manufacturer to allow for wider access at a lower price, even if it means sacrificing potential profits.",
         "D": "Lobby government agencies to relax regulations and provide subsidies to offset the cost of the drug, allowing the company to maintain its pricing strategy without compromising access."
       },
-      "correct_answer": "Implement a tiered pricing strategy, offering the drug at a lower price in developing countries while maintaining a higher price in developed countries to maximize overall revenue and address ethical concerns.",
+      "correct_answer": [
+        "Implement a tiered pricing strategy",
+        "offering the drug at a lower price in developing countries while maintaining a higher price in developed countries to maximize overall revenue and address ethical concerns."
+      ],
       "explanation": "This question requires synthesizing the PLC (Growth stage), stakeholder management, and ethical considerations. Option A ignores the ethical concerns and potential reputational damage. Option C sacrifices potential profits unnecessarily. Option D relies on external factors and may not be feasible. The correct answer (B) is a tiered pricing strategy. This acknowledges the need to balance profit maximization with ethical considerations and stakeholder expectations. It allows the company to recoup its R&D investment while also providing access to the drug in developing countries. This addresses the concerns of advocacy groups and government agencies, mitigating potential reputational risks and ensuring long-term sustainability.",
       "difficulty_level": 4,
       "source_flashcard_id": "SI_PLC_13",

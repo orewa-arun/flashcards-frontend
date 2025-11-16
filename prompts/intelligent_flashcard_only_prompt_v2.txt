@@ -19,6 +19,31 @@ Generate high-quality, "cognitive" flashcards designed for deep understanding an
 4. **Mermaid.js diagrams** for visual concepts (contextual - generate when they add value)
 5. **Mathematical visualizations** (Graphviz/DOT) for quantitative concepts
 
+**CRITICAL QUANTITY REQUIREMENT - ABSOLUTELY NON-NEGOTIABLE:**
+
+🚨 **HARD LIMIT: You MUST generate EXACTLY 5-6 flashcards per content chunk. NEVER EXCEED 6 CARDS.** 🚨
+
+**This is a TECHNICAL CONSTRAINT, not a suggestion:**
+- Generating more than 6 cards will cause JSON truncation and system failure
+- The output token limit WILL cut off your response mid-generation
+- All cards after the 6th will be LOST and wasted
+
+**Quantity Guidelines:**
+- For content chunks with 15,000+ characters: Generate EXACTLY 6 flashcards
+- For content chunks with 10,000-15,000 characters: Generate 5-6 flashcards  
+- For content chunks with <10,000 characters: Generate 4-5 flashcards
+
+**STOP GENERATING AFTER 6 CARDS. NO EXCEPTIONS.**
+
+**Coverage Strategy (within the 5-6 card limit):**
+- Identify the TOP 5-6 most important concepts in the chunk
+- Prioritize concepts by exam relevance (score 8-10 first)
+- If there are more than 6 important concepts, they will be covered in subsequent chunks
+- Create comprehensive flashcards that may combine related sub-concepts
+- **NEVER sacrifice the 6-card limit for coverage** - incomplete JSON is worse than missing a concept
+
+**Quality over Quantity:** Generate 5-6 COMPLETE, thorough flashcards rather than attempting more and risking truncation. Your goal is HIGH-QUALITY coverage within the STRICT 5-6 card limit.
+
 **SCORING CRITERIA:**
 
 **High Score (8-10) - Essential Exam Material:**
@@ -269,9 +294,10 @@ Use these Mermaid diagram types effectively:
 **CONTENT TO PROCESS:**
 {{CONTENT_PLACEHOLDER}}
 
-**FINAL INSTRUCTIONS:**
-- Output ONLY valid JSON, no additional text
-- Create 3-7 flashcards for this chunk of content (content will be provided in manageable chunks)
+**FINAL INSTRUCTIONS (STRICT JSON COMPLIANCE):**
+- Output ONLY perfectly valid and complete JSON. No additional text, commentary, or markdown outside the JSON block.
+- Ensure all strings are properly quoted and escaped. All arrays and objects must be correctly terminated.
+- **🚨 HARD LIMIT: Create EXACTLY 5-6 flashcards. NEVER EXCEED 6 CARDS. STOP AFTER 6. 🚨**
 - EVERY flashcard must have: ALL 5 answer types in the `answers` object, `example`, `mermaid_diagrams`, and `math_visualizations`
 - The `answers` object must contain ALL 5 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`
 - The `mermaid_diagrams` object must contain ALL 6 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`, `example` (use empty string "" for diagrams that don't add value)
@@ -282,4 +308,10 @@ Use these Mermaid diagram types effectively:
 - Each diagram in `mermaid_diagrams` must be contextually relevant to its corresponding answer type
 - **CRITICAL**: All Graphviz DOT code must use proper `margin` settings and `fontsize` to prevent text overflow. This is non-negotiable.
 - **ABSOLUTE REQUIREMENT**: Generate flashcards ONLY from the provided content. Return `[]` if content is too sparse.
+
+**🚨 FINAL REMINDER BEFORE YOU START:**
+**COUNT YOUR FLASHCARDS. STOP AT 6. DO NOT GENERATE A 7TH CARD.**
+If you generate more than 6 cards, the JSON will be truncated and all your work will be wasted.
+
+Begin generating flashcards now. Remember: MAXIMUM 6 CARDS.
 
