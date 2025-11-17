@@ -24,8 +24,7 @@
         "D": "Growth, as they are experiencing rapid sales increases."
       },
       "correct_answer": [
-        "Introduction",
-        "as they are focused on creating awareness and driving initial adoption."
+        "C"
       ],
       "explanation": "The startup is using targeted marketing and free samples to build awareness for their new packaging. This aligns with the introduction stage, which focuses on creating product awareness and driving initial adoption. Decline involves reviving a product, maturity focuses on maintaining share, and growth involves rapid sales increases. Option B uses the right approach (marketing efforts) but in the wrong context (maturity phase)",
       "difficulty_level": 2,
@@ -49,8 +48,7 @@
         "D": "Decline, as sales are inevitably decreasing regardless of the campaign."
       },
       "correct_answer": [
-        "Maturity",
-        "as the company is trying to maintain sales and extend the product's life."
+        "C"
       ],
       "explanation": "The cereal brand is well-established and experiencing a slight sales dip. The company's actions (new campaign, limited edition flavor) are aimed at maintaining sales and extending the product's life. This is characteristic of the maturity stage. Introduction involves launching a new product, growth involves rapid sales increases, and while decline might be happening, the actions suggest an attempt to prolong maturity. Option A is the incorrect stage because the campaign is not a new product launch, but a refresh of an old one.",
       "difficulty_level": 2,
@@ -74,7 +72,7 @@
         "D": "To accelerate the Growth stage of their existing product line."
       },
       "correct_answer": [
-        "To restart the Introduction stage with a new product line."
+        "C"
       ],
       "explanation": "The bakery is introducing a new product line with marketing efforts and discounts, which indicates a focus on creating awareness and driving initial adoption. This aligns with the introduction stage. While they are struggling, they aren't necessarily in decline, and the gluten-free line is new, not optimized for maturity or part of an existing product. Option D is an incomplete solution because the question is about a new product line, not an existing one.",
       "difficulty_level": 2,
@@ -98,8 +96,7 @@
         "D": "Growth, as the positive feedback from beta testers indicates rapid adoption is guaranteed."
       },
       "correct_answer": [
-        "Introduction",
-        "as the company is launching a marketing campaign after beta testing."
+        "C"
       ],
       "explanation": "The app has moved beyond beta testing and is now being promoted to a wider audience through a marketing campaign. This signifies the introduction stage, where the focus is on creating awareness and driving initial adoption. The app is not yet in decline or maturity. While growth is expected, the campaign signifies the *start* of that phase. Option D makes a common mistake by assuming that good feedback automatically guarantees growth.",
       "difficulty_level": 2,
@@ -123,8 +120,7 @@
         "D": "Introduction, by making the product more user-friendly and accessible."
       },
       "correct_answer": [
-        "Growth",
-        "by appealing to a broader audience and increasing marketing efforts."
+        "C"
       ],
       "explanation": "The company is simplifying the product and increasing advertising to attract a wider audience. This aligns with the growth stage, which involves expanding market reach and increasing sales. They are not in decline, nor are they only focusing on maintaining share among advanced users. The simplification suggests moving *beyond* the initial introduction to a broader market. Option B uses a correct strategy (focusing on market share) but in the wrong context (maturity).",
       "difficulty_level": 2,
@@ -148,7 +144,7 @@
         "D": "Implementing aggressive pricing strategies to quickly capture market share from competitors."
       },
       "correct_answer": [
-        "Targeting early adopters and influencers through niche online communities and events."
+        "C"
       ],
       "explanation": "In the introduction stage, the focus is on creating awareness and driving initial adoption, often with limited resources. Targeting early adopters and influencers is a cost-effective way to generate buzz and build credibility. Mass media advertising is too expensive and broad for this stage, cost reduction is more relevant in later stages, and aggressive pricing is risky without established demand. Option B is a common oversimplification by assuming that more advertising is always better.",
       "difficulty_level": 2,
@@ -172,8 +168,7 @@
         "D": "Product Development, as they are preparing to ramp up production and distribution."
       },
       "correct_answer": [
-        "Product Development",
-        "as they are preparing to ramp up production and distribution."
+        "D"
       ],
       "explanation": "The company has completed market research and developed the shoe but is still in the process of preparing for production and distribution. This indicates that they are in the Product Development stage. They haven't yet launched the product, so it's not in introduction, growth, maturity, or decline. Option C might be true *later*, but right now the correct answer is Product Development. ",
       "difficulty_level": 2,
@@ -197,9 +192,7 @@
         "D": "Introduction, as initial sales are slow, but demand is gradually increasing."
       },
       "correct_answer": [
-        "Introduction",
-        "as initial sales are slow",
-        "but demand is gradually increasing."
+        "D"
       ],
       "explanation": "The software is experiencing slow initial sales but gradually increasing demand due to positive reviews and marketing. This is a hallmark of the Introduction stage. Growth would involve rapid sales, maturity would involve maintaining market share, and decline would involve decreasing sales. Option C is a common oversimplification, assuming that marketing always equals growth.",
       "difficulty_level": 2,
@@ -223,8 +216,7 @@
         "D": "Maturity, as they are focusing on brand loyalty and facing increasing competition."
       },
       "correct_answer": [
-        "Maturity",
-        "as they are focusing on brand loyalty and facing increasing competition."
+        "D"
       ],
       "explanation": "The company is experiencing consistent sales and profits but faces increasing competition. Their focus on brand loyalty and new flavors is a strategy to maintain their market position. This is characteristic of the maturity stage. Introduction involves launching a new product, growth involves rapid sales increases, and decline involves decreasing sales. Option A only addresses a symptom, not the root cause (maturity).",
       "difficulty_level": 2,
@@ -248,8 +240,7 @@
         "D": "Decline, as sales have been significantly decreasing over the past decade."
       },
       "correct_answer": [
-        "Decline",
-        "as sales have been significantly decreasing over the past decade."
+        "D"
       ],
       "explanation": "The product has experienced a significant decline in sales, and the company is considering phasing it out. This is indicative of the decline stage. While they tried to revive it (maturity strategies), the continued decline confirms the stage. Introduction and growth are not applicable as sales are decreasing, not increasing. Option A is an incomplete solution because just trying to revive a product does not guarantee that is in the maturity stage.",
       "difficulty_level": 2,
@@ -273,7 +264,7 @@
         "D": "Profits are decreasing as competition increases."
       },
       "correct_answer": [
-        "Profits are nonexistent or negative due to high initial costs."
+        "B"
       ],
       "explanation": "In the early stages of a product life cycle, particularly the introduction phase, high research and development costs, combined with low initial sales, typically result in nonexistent or negative profits. As sales increase and production costs decrease, profits will eventually become positive. The other options describe profit trends in later stages. Option A is a common oversimplification by assuming that low production costs automatically equals high profits.",
       "difficulty_level": 2,
@@ -297,7 +288,7 @@
         "D": "Sales start low and gradually increase before plateauing."
       },
       "correct_answer": [
-        "Sales start low and gradually increase before plateauing."
+        "D"
       ],
       "explanation": "The scenario describes sales starting slow and gradually increasing before reaching a plateau. This indicates a pattern of initial growth followed by stabilization, which is typical of the introduction transitioning into the growth and then maturity stages. Other options do not align with the described trend. Option A is an incomplete solution because it doesn't reflect the initial slow sales period.",
       "difficulty_level": 2,
@@ -321,7 +312,7 @@
         "D": "Decline; sales and profits are decreasing due to generic competition."
       },
       "correct_answer": [
-        "Decline; sales and profits are decreasing due to generic competition."
+        "D"
       ],
       "explanation": "The entry of generic versions due to patent expiration signals the decline stage. Generic competition leads to decreased sales and profits for the original drug. Maturity would involve stable sales, introduction would involve increasing sales for a new drug, and growth would involve rapidly increasing sales. Option A addresses the symptom, but not the root cause. Sales may decline despite brand loyalty.",
       "difficulty_level": 2,
@@ -345,7 +336,7 @@
         "D": "Profits remain consistently negative throughout both periods."
       },
       "correct_answer": [
-        "Profits transition from negative to positive."
+        "B"
       ],
       "explanation": "In the initial launch phase, high investment in marketing and low sales would result in negative profits. As the technology gains popularity and sales increase, profits would transition from negative to positive. The other options do not accurately reflect this progression. Option A is a common oversimplification by assuming that tech sales automatically equals high profits.",
       "difficulty_level": 2,
@@ -369,8 +360,7 @@
         "D": "Sales are low, and profits are low or negative."
       },
       "correct_answer": [
-        "Sales are low",
-        "and profits are low or negative."
+        "D"
       ],
       "explanation": "The scenario describes high initial investment and slow sales, which means the company is likely experiencing low or negative profits. Profits typically lag sales, especially during the introduction stage. Other options do not align with this pattern. Option A is incorrect because it assumes that investment automatically leads to high sales and profits.",
       "difficulty_level": 2,
@@ -394,7 +384,7 @@
         "D": "Low sales volume and low promotion expenses."
       },
       "correct_answer": [
-        "Low sales volume and high promotion expenses."
+        "B"
       ],
       "explanation": "The Introduction stage is characterized by high promotion expenses to create awareness and drive initial adoption, coupled with slow sales growth. Therefore, the most likely financial characteristic is low sales volume and high promotion expenses. Option A might be the *goal*, but it doesn't reflect the reality of the introduction phase. Option C is the right approach (sales and promotions) but the wrong context (not the introduction phase).",
       "difficulty_level": 2,
@@ -420,7 +410,7 @@
         "D": "Managing declining sales and extending the product's life cycle."
       },
       "correct_answer": [
-        "Creating product awareness and driving initial adoption."
+        "B"
       ],
       "explanation": "The company's activities (free trials, advertising, influencer partnerships) are all aimed at creating awareness and driving initial adoption, which is the primary focus of the Introduction stage. Other options are relevant to later stages. Option C is an incomplete solution because it doesn't explain the need for awareness.",
       "difficulty_level": 2,
@@ -446,7 +436,7 @@
         "D": "Reducing promotional spending to minimize losses during the initial phase."
       },
       "correct_answer": [
-        "Focusing on targeted social media campaigns and partnerships with local bike shops."
+        "C"
       ],
       "explanation": "Targeted social media and local partnerships are cost-effective ways to reach early adopters and build awareness during the Introduction stage. Deep discounts can hurt profitability, mass media is expensive, and reducing promotion would hinder adoption. Option B is a common oversimplification by assuming that more advertising is always better.",
       "difficulty_level": 2,
@@ -472,7 +462,7 @@
         "D": "Lowering prices to compete with established brands."
       },
       "correct_answer": [
-        "Building brand awareness and educating consumers about the benefits of organic baby food."
+        "C"
       ],
       "explanation": "Building brand awareness and educating consumers is critical during the Introduction stage to drive initial adoption. Cost reduction, wider distribution, and price competition are important, but secondary to creating awareness. Option B might be true *later*, but not now. ",
       "difficulty_level": 2,
@@ -498,7 +488,7 @@
         "D": "There is no demand for the product in the market."
       },
       "correct_answer": [
-        "The company has underestimated the promotional expenses required to create awareness."
+        "C"
       ],
       "explanation": "Low sales during the Introduction stage often result from insufficient market awareness. The company may be underestimating the promotional expenses needed to educate consumers about the product's value. The other options are less likely explanations. Option A is incorrect because if consumers were already familiar with the product, sales would be higher.",
       "difficulty_level": 2,
@@ -524,7 +514,7 @@
         "D": "Limiting the number of staff during peak hours to reduce labor expenses."
       },
       "correct_answer": [
-        "Offering significant discounts and running promotional campaigns to attract new customers and increase foot traffic."
+        "C"
       ],
       "explanation": "The scenario describes a coffee shop in a growth stage. Prioritizing market share means focusing on expanding the customer base. Offering discounts and promotions (Option C) directly incentivizes new customers to try the coffee shop, growing market share. Option A focuses on current profit; Option B reduces market visibility; Option D could hurt customer service and brand image.",
       "difficulty_level": 2,
@@ -549,8 +539,7 @@
         "D": "Focusing solely on user retention by improving customer support and ignoring new user acquisition."
       },
       "correct_answer": [
-        "Partnering with a larger company in a different industry to gain immediate access to their marketing resources",
-        "even if it means giving up a significant percentage of equity."
+        "B"
       ],
       "explanation": "The scenario presents a startup in the growth phase. Prioritizing market share involves actions that rapidly expand the user base. Partnering with a larger company (Option B) provides immediate marketing resources, which is crucial for capturing market share quickly, even if it means sacrificing some equity. Option A prioritizes profit; Option C slows down product development and user acquisition. Option D focuses on retention and ignores new user acquisition.",
       "difficulty_level": 2,
@@ -575,7 +564,7 @@
         "D": "Decreasing advertising spend and focusing solely on word-of-mouth marketing to reduce costs."
       },
       "correct_answer": [
-        "Offering free samples and running promotional events in new geographic regions to attract new customers."
+        "C"
       ],
       "explanation": "The scenario describes a growing organic snack bar company. Prioritizing market share involves actions that quickly expand the customer base. Offering free samples and promotions in new regions (Option C) is a direct way to attract new customers and expand the brand's reach. Option A increases prices, which could deter new customers; Option B reduces product value; Option D limits market visibility.",
       "difficulty_level": 2,
@@ -600,8 +589,7 @@
         "D": "Increasing shipping fees to offset rising transportation expenses."
       },
       "correct_answer": [
-        "Investing heavily in influencer marketing and social media advertising to reach a wider audience",
-        "even if it means reduced profit margins per sale."
+        "B"
       ],
       "explanation": "The scenario describes a fast-fashion retailer growing online. Prioritizing market share means investing in strategies to reach more customers. Investing in influencer marketing (Option B) directly increases brand visibility and attracts new customers, even if it reduces immediate profits. Option A discourages purchases; Option C limits product offerings; Option D increases cost to customers.",
       "difficulty_level": 2,
@@ -626,7 +614,7 @@
         "D": "Decreased brand awareness due to lower advertising spend."
       },
       "correct_answer": [
-        "Faster customer acquisition but potentially lower short-term profits."
+        "C"
       ],
       "explanation": "The scenario describes an energy drink company in a growth stage. Prioritizing market share means focusing on acquiring more customers. Investing in strategies to increase brand visibility leads to faster customer acquisition (Option C). This often comes at the cost of lower short-term profits due to increased expenses (e.g., advertising). Option A is wrong because increased prices would deter new customer. Option B and D are wrong because increased advertising increases brand visibility.",
       "difficulty_level": 2,
@@ -651,8 +639,7 @@
         "D": "Offering a limited-edition scent during the holiday season."
       },
       "correct_answer": [
-        "Targeting college students and young professionals with smaller",
-        "single-use detergent packs."
+        "C"
       ],
       "explanation": "The scenario involves a mature laundry detergent brand. Modifying the market involves finding new customer segments or increasing usage. Targeting a new segment like college students (Option C) with tailored packaging expands the market. Option A is product modification; Option B focuses on existing customers; Option D is marketing modification.",
       "difficulty_level": 2,
@@ -676,7 +663,7 @@
         "D": "Expanding distribution to new geographic regions."
       },
       "correct_answer": [
-        "Introducing a new line of flavored sparkling water with added vitamins."
+        "C"
       ],
       "explanation": "The scenario involves a mature bottled water brand. Modifying the product involves changing the product offering. Introducing a new line of flavored sparkling water (Option C) directly changes the product itself. Option A is marketing modification; Option B is marketing modification; Option D is market modification.",
       "difficulty_level": 2,
@@ -700,7 +687,7 @@
         "D": "Creating smaller, more portable coffee cups for customers on the go."
       },
       "correct_answer": [
-        "Offering a loyalty program with tiered rewards based on purchase frequency."
+        "B"
       ],
       "explanation": "The scenario presents a mature coffee shop chain. Modifying the marketing mix involves changing price, promotion, or service. A loyalty program (Option B) is a promotional tactic that directly adjusts the customer experience. Option A is product modification; Option C is market modification; Option D is product modification (packaging).",
       "difficulty_level": 2,
@@ -724,9 +711,7 @@
         "D": "Acquiring a digital camera company to diversify its product portfolio."
       },
       "correct_answer": [
-        "Reducing marketing expenses",
-        "closing underperforming retail locations",
-        "and focusing on selling remaining inventory to niche markets."
+        "C"
       ],
       "explanation": "The scenario involves a film camera company in decline. Harvesting involves minimizing costs and extracting remaining profits. Reducing expenses and focusing on niche markets (Option C) aligns with this. Option A is maintaining; Option B is maintaining; Option D is diversification, not decline-stage strategy.",
       "difficulty_level": 2,
@@ -750,7 +735,7 @@
         "D": "Selling the application to another company that specializes in legacy software."
       },
       "correct_answer": [
-        "Repositioning the application as a specialized tool for a niche market and adding features tailored to their needs."
+        "C"
       ],
       "explanation": "The scenario involves a declining desktop application. Maintaining involves trying to revive the product. Repositioning for a niche market (Option C) is a way to reinvigorate the product. Option A is dropping; Option B is harvesting; Option D is a form of dropping.",
       "difficulty_level": 2,
@@ -774,7 +759,7 @@
         "D": "Shifting production to a cheaper factory to cut costs."
       },
       "correct_answer": [
-        "Announcing that they will no longer manufacture the console or release new games for it."
+        "B"
       ],
       "explanation": "The scenario describes a video game console in decline. Dropping the product is to cease production and support. Announcing the end of manufacturing and game releases (Option B) clearly indicates dropping the product. Option A is harvesting; Option C is maintaining; Option D is harvesting.",
       "difficulty_level": 2,
@@ -798,7 +783,7 @@
         "D": "Diversification: Starting a catering business for corporate events."
       },
       "correct_answer": [
-        "Market Penetration: Offering a loyalty program to existing customers to increase their purchase frequency."
+        "C"
       ],
       "explanation": "The scenario describes a bakery. Market penetration involves selling existing products in existing markets. A loyalty program (Option C) encourages existing customers to buy more, which is the least risky strategy. Option A is market development; Option B is product development; Option D is diversification.",
       "difficulty_level": 2,
@@ -822,7 +807,7 @@
         "D": "Developing a new CRM (Customer Relationship Management) software for small businesses."
       },
       "correct_answer": [
-        "Selling the existing accounting software to larger enterprise clients."
+        "C"
       ],
       "explanation": "The scenario describes an accounting software company. Market development involves selling existing products in new markets. Selling to larger enterprises (Option C) expands the customer base. Option A is product development; Option B is market penetration; Option D is diversification.",
       "difficulty_level": 2,
@@ -846,8 +831,7 @@
         "D": "Developing a new line of bicycle accessories, such as helmets and cycling apparel."
       },
       "correct_answer": [
-        "Developing a new line of bicycle accessories",
-        "such as helmets and cycling apparel."
+        "D"
       ],
       "explanation": "The scenario describes a bicycle company. Product development involves selling new products in existing markets. Introducing bicycle accessories (Option D) expands the product line for existing customers. Option A is market penetration; Option B is market development; Option C is diversification.",
       "difficulty_level": 2,
@@ -871,7 +855,7 @@
         "D": "Increasing advertising spending to attract more customers to the existing paper products."
       },
       "correct_answer": [
-        "Acquiring a software company that develops document management systems."
+        "C"
       ],
       "explanation": "The scenario involves a paper manufacturing company. Diversification involves selling new products in new markets. Acquiring a software company (Option C) represents a move into a new industry and market. Option A is market development; Option B is product development; Option D is market penetration.",
       "difficulty_level": 2,
@@ -895,7 +879,7 @@
         "D": "Publishing books written by local authors."
       },
       "correct_answer": [
-        "Hosting book readings and signings to attract more local customers."
+        "B"
       ],
       "explanation": "The scenario describes a bookstore. Market penetration involves selling existing products in existing markets. Hosting book readings (Option B) attracts more local customers to buy books. Option A is market development; Option C is product development; Option D is product development.",
       "difficulty_level": 2,
@@ -919,9 +903,7 @@
         "D": "Only analyze the product class 'baked goods' as all products will have the same life cycle."
       },
       "correct_answer": [
-        "Analyze the PLC of sourdough bread (product form)",
-        "gluten-free pastries (product form)",
-        "and the overall bakery brand to understand market trends."
+        "C"
       ],
       "explanation": "The PLC concept allows for analysis at the product form, product class, and brand levels. Analyzing each allows the bakery to understand specific product performance and overall brand health. Option C is correct as it considers all three levels. Option A focuses too narrowly. Option B ignores individual product performance. Option D incorrectly assumes all baked goods have the same PLC.",
       "difficulty_level": 2,
@@ -947,8 +929,7 @@
         "D": "It would only be useful for determining the best marketing strategy for their existing desktop computers."
       },
       "correct_answer": [
-        "It would allow them to track the decline of desktop computers and the rise of mobile devices",
-        "informing their decision to diversify into a new product class."
+        "B"
       ],
       "explanation": "Analyzing the PLC at the product class level allows a company to see overall market trends. Seeing the decline of desktops and rise of mobile devices informs decisions about diversification. Option B is correct. Option A incorrectly states the PLC isn't useful at the product class level. Option C is unrealistic. Option D focuses too narrowly on desktops.",
       "difficulty_level": 2,
@@ -974,9 +955,7 @@
         "D": "Focusing exclusively on the marketing campaigns for the sustainable line."
       },
       "correct_answer": [
-        "Analyzing the overall brand perception",
-        "customer loyalty",
-        "and the performance of various product lines under the StyleCo brand."
+        "B"
       ],
       "explanation": "Applying the PLC concept at the 'brand' level involves assessing the overall health and trajectory of the brand itself. Option B correctly focuses on brand perception, customer loyalty, and overall product line performance. Option A is too narrow. Option C assumes all products have the same PLC. Option D is too focused on marketing.",
       "difficulty_level": 2,
@@ -1002,7 +981,7 @@
         "D": "Selling off the film camera division to focus solely on digital cameras."
       },
       "correct_answer": [
-        "Shifting resources and investment from film camera production to digital camera innovation."
+        "B"
       ],
       "explanation": "Understanding the PLC at the product class level (cameras) allows the company to recognize the shift from film to digital. Shifting resources reflects adapting to this change. Option B is correct. Option A goes against the trend. Option C ignores the market. Option D is a more extreme action that could be considered but is not the best *demonstration* of applying PLC knowledge.",
       "difficulty_level": 2,
@@ -1028,7 +1007,7 @@
         "D": "Analyzing the sales data of all products sold by the company."
       },
       "correct_answer": [
-        "Analyzing the specific trends and sales data of project management tools compared to other types of business software."
+        "B"
       ],
       "explanation": "Product form refers to a specific type of product within a broader class. Analyzing the trends of project management tools specifically (compared to other software) applies the PLC at the correct level. Option B is correct. Option A is too broad. Option C focuses on the brand. Option D is too broad and company-centric.",
       "difficulty_level": 2,
@@ -1054,8 +1033,7 @@
         "D": "It only proves that marketing is more important for social media apps."
       },
       "correct_answer": [
-        "It shows that the social media app has a shorter PLC than the productivity software",
-        "demonstrating that different products have different lifecycles."
+        "C"
       ],
       "explanation": "The scenario describes a social media app with a short, rapid growth and decline, and productivity software with a long, steady maturity. This shows differing PLCs. Option C is correct. Option A is incorrect based on the flashcard. Option B reverses the lifecycles. Option D doesn't address the PLC concept.",
       "difficulty_level": 2,
@@ -1081,9 +1059,7 @@
         "D": "Both products will eventually have the same PLC."
       },
       "correct_answer": [
-        "The fitness tracker has a short PLC",
-        "while the board game has a long PLC",
-        "demonstrating the unique PLC for each product."
+        "C"
       ],
       "explanation": "The fitness tracker's rapid rise and fall contrasts with the board game's sustained popularity, demonstrating that each product has a unique PLC. Option C is correct. Options A and B misinterpret the stages. Option D contradicts the core concept.",
       "difficulty_level": 2,
@@ -1109,8 +1085,7 @@
         "D": "It implies that the physical therapy clinic will eventually experience a decline similar to the online course."
       },
       "correct_answer": [
-        "It highlights that the online course has a shorter PLC compared to the physical therapy clinic",
-        "showcasing the unique PLC for each."
+        "B"
       ],
       "explanation": "The online course's rapid decline contrasts with the clinic's long-term stability. Option B correctly identifies this difference as evidence of unique PLCs. Option A incorrectly assumes similar PLCs. Option C is about marketing, not the PLC. Option D projects a decline without evidence.",
       "difficulty_level": 2,
@@ -1136,9 +1111,7 @@
         "D": "The sales decline of the VR headset is due to poor marketing, not the PLC."
       },
       "correct_answer": [
-        "The VR headset experienced a short PLC",
-        "while the coffee shop has had a longer PLC",
-        "illustrating that each product has a unique PLC."
+        "C"
       ],
       "explanation": "The VR headset's rapid rise and fall contrast with the coffee shop's sustained sales, indicating different PLC lengths. Option C is the correct application of the PLC concept. Option A is incorrect because they are in different stages. Option B is incorrect because tech products don't automatically have longer PLCs. Option D focuses on marketing, not the PLC.",
       "difficulty_level": 2,
@@ -1164,9 +1137,7 @@
         "D": "Both products are in the decline stage because leather goods are becoming less popular."
       },
       "correct_answer": [
-        "The wallet experienced a short PLC",
-        "while the belt has a longer PLC",
-        "showcasing the unique PLC for each product."
+        "B"
       ],
       "explanation": "The wallet's short-lived popularity contrasts with the belt's sustained sales, illustrating the principle of unique PLCs. Option B is correct. Option A misinterprets the stages. Option C makes an unwarranted assumption. Option D may be true, but is not the best answer.",
       "difficulty_level": 2,
@@ -1192,7 +1163,7 @@
         "D": "Continuous Growth"
       },
       "correct_answer": [
-        "Cycle-Recycle"
+        "C"
       ],
       "explanation": "The action figure's sales spike, decline, and then spike again with a new release. This represents a cycle that repeats, aligning with the Cycle-Recycle pattern. Option C is correct. Growth-Decline only has one peak. Innovative Maturity involves continuous improvement. Continuous Growth doesn't have declines.",
       "difficulty_level": 2,
@@ -1218,7 +1189,7 @@
         "D": "Stable Maturity"
       },
       "correct_answer": [
-        "Growth-Decline"
+        "C"
       ],
       "explanation": "The game experienced a rapid surge in popularity followed by a rapid decline. This corresponds to the Growth-Decline pattern. Option C is correct. Innovative Maturity has sustained growth through innovation. Cycle-Recycle has recurring cycles. Stable Maturity has consistent sales.",
       "difficulty_level": 2,
@@ -1244,7 +1215,7 @@
         "D": "Fad"
       },
       "correct_answer": [
-        "Innovative Maturity"
+        "C"
       ],
       "explanation": "Continuous improvement and new features leading to sustained growth exemplifies Innovative Maturity. Option C is correct. Growth-Decline features a single peak. Cycle-Recycle has repeating cycles of growth and decline. A Fad has a rapid climb and fall.",
       "difficulty_level": 2,
@@ -1270,7 +1241,7 @@
         "D": "Fad"
       },
       "correct_answer": [
-        "Cycle-Recycle"
+        "C"
       ],
       "explanation": "Recurring peaks and valleys of popularity indicate a Cycle-Recycle pattern. Option C is correct. Growth-Decline has one peak. Innovative Maturity involves continuous improvement. A Fad declines quickly.",
       "difficulty_level": 2,
@@ -1296,7 +1267,7 @@
         "D": "Style"
       },
       "correct_answer": [
-        "Growth-Decline"
+        "C"
       ],
       "explanation": "The initial surge in sales followed by a rapid decline due to competition indicates a Growth-Decline pattern. Option C is correct. Innovative Maturity requires sustained innovation. Cycle-Recycle involves recurring cycles. Style maintains consistent popularity.",
       "difficulty_level": 2,
@@ -1322,8 +1293,7 @@
         "D": "The jackets represent a 'Fad' PLC, while the toy represents a 'Style' PLC."
       },
       "correct_answer": [
-        "The jackets represent a 'Style' PLC",
-        "while the toy represents a 'Fad' PLC."
+        "B"
       ],
       "explanation": "Classic leather jackets maintain consistent popularity (Style). The toy had a short-lived popularity (Fad). Option B is correct. Options A and C misclassify the PLCs. Option D reverses the classifications.",
       "difficulty_level": 2,
@@ -1348,9 +1318,7 @@
         "D": "All three products follow the same 'Style' PLC."
       },
       "correct_answer": [
-        "Seasonal collections are 'Fashion",
-        "' t-shirts are 'Style",
-        "' and the novelty item is a 'Fad.'"
+        "B"
       ],
       "explanation": "Trendy collections reflect Fashion. Consistently popular items represent Style. Short-lived viral items are Fads. Option B is correct. The other options misclassify one or more of the PLC types.",
       "difficulty_level": 2,
@@ -1375,9 +1343,7 @@
         "D": "All products are examples of 'Fashion' PLCs."
       },
       "correct_answer": [
-        "Furniture is 'Style",
-        "' clothing is 'Fashion",
-        "' and the meme product is 'Fad.'"
+        "B"
       ],
       "explanation": "Long-lasting furniture represents Style. Trend-based clothing is Fashion. The meme-driven product is a Fad. Option B is correct. The other options misclassify the PLC types.",
       "difficulty_level": 2,
@@ -1402,8 +1368,7 @@
         "D": "Both the t-shirts and the trend-based line are examples of 'Style' PLCs."
       },
       "correct_answer": [
-        "The t-shirts are 'Style",
-        "' and the trend-based line is a 'Fad.'"
+        "C"
       ],
       "explanation": "The t-shirts have consistent appeal (Style). The trend-based clothing's rapid rise and fall is characteristic of a Fad. Option C is correct. The other options misclassify one or both of the PLCs.",
       "difficulty_level": 2,
@@ -1428,8 +1393,7 @@
         "D": "Both products are examples of a 'Fad' PLC."
       },
       "correct_answer": [
-        "The luxury watches represent a 'Style' PLC",
-        "while the limited-edition watch represents a 'Fad' PLC."
+        "B"
       ],
       "explanation": "The long-lasting popularity of the luxury watches signifies a Style PLC. The short-lived viral watch represents a Fad. Option B is correct. The other options misclassify one or both of the products.",
       "difficulty_level": 2,
@@ -1454,7 +1418,7 @@
         "D": "Decline stage; focus on reducing costs and harvesting remaining profits through minimal marketing efforts."
       },
       "correct_answer": [
-        "Introduction stage; focus on creating product awareness and educating potential customers through demonstrations and trials."
+        "C"
       ],
       "explanation": "GreenTech's solar panel is in the Introduction stage due to low sales and the need to educate the market about its new technology. The appropriate strategy is to focus on creating awareness through demonstrations and trials to encourage adoption. Option A is incorrect because it describes the Maturity stage. Option B is incorrect because it describes the Growth stage. Option D is incorrect as it describes the decline stage.",
       "difficulty_level": 2,
@@ -1478,9 +1442,7 @@
         "D": "Maturity; emphasize product differentiation, loyalty programs, and explore new market segments."
       },
       "correct_answer": [
-        "Maturity; emphasize product differentiation",
-        "loyalty programs",
-        "and explore new market segments."
+        "D"
       ],
       "explanation": "AquaFizz is likely in the Maturity stage because sales have plateaued, and profits are declining slightly. The best approach is to focus on differentiation, loyalty programs, and exploring new segments to maintain market share. Option A is incorrect because it describes the Growth stage. Option B is incorrect as it describes the decline stage. Option C is incorrect because it describes the Introduction stage.",
       "difficulty_level": 2,
@@ -1504,7 +1466,7 @@
         "D": "Maturity; implement price reductions and loyalty programs to maintain market share."
       },
       "correct_answer": [
-        "Decline; reduce marketing expenses and focus on harvesting remaining profits from loyal customers."
+        "C"
       ],
       "explanation": "The desktop application is likely in the Decline stage due to declining sales and the emergence of competing technologies. The most suitable strategy is to reduce marketing expenses and focus on profiting from remaining loyal customers. Option A is incorrect because it describes the Growth stage. Option B is incorrect because it describes the Introduction stage. Option D is incorrect because it describes the maturity stage.",
       "difficulty_level": 2,
@@ -1528,7 +1490,7 @@
         "D": "Introduction: Focus on building product awareness and educating potential customers about the benefits."
       },
       "correct_answer": [
-        "Introduction: Focus on building product awareness and educating potential customers about the benefits."
+        "D"
       ],
       "explanation": "The VR headset is in the Introduction stage due to low sales, limited distribution, and the need to educate customers. The MOST suitable strategy is to focus on creating awareness and educating potential customers. Option A is incorrect because it describes the Growth stage. Option B is incorrect because it describes the Maturity stage. Option C is incorrect as it describes the decline stage.",
       "difficulty_level": 2,
@@ -1552,9 +1514,7 @@
         "D": "Maturity: Focus on maintaining market share, optimizing profitability, and exploring line extensions."
       },
       "correct_answer": [
-        "Maturity: Focus on maintaining market share",
-        "optimizing profitability",
-        "and exploring line extensions."
+        "D"
       ],
       "explanation": "The bottled water brand is in the Maturity stage because sales are stable, and profit margins are high, but growth is limited. The most appropriate strategy is to focus on maintaining market share, optimizing profitability, and potentially exploring line extensions. Option A is incorrect because it describes the Growth stage. Option B is incorrect because it describes the Introduction stage. Option C is incorrect as it describes the decline stage.",
       "difficulty_level": 2,
@@ -1578,7 +1538,7 @@
         "D": "The old drug with low market share in a declining market."
       },
       "correct_answer": [
-        "The generic drug with high market share in a stable market."
+        "B"
       ],
       "explanation": "A 'Cash Cow' in the BCG matrix is characterized by high market share in a low-growth market. The generic drug fits this description, generating consistent revenue with minimal investment. Option A describes a Star. Option C describes a Question Mark. Option D describes a Dog.",
       "difficulty_level": 2,
@@ -1601,7 +1561,7 @@
         "D": "Unit D: Large market share in a rapidly growing market."
       },
       "correct_answer": [
-        "Unit D: Large market share in a rapidly growing market."
+        "D"
       ],
       "explanation": "A 'Star' in the BCG Matrix has a high market share in a high-growth market, requiring continued investment to maintain its position. Option A describes a Question Mark. Option B describes a Cash Cow. Option C describes a Dog.",
       "difficulty_level": 2,
@@ -1624,8 +1584,7 @@
         "D": "All of the products should receive similar investment."
       },
       "correct_answer": [
-        "Product X: Low market share in a mature",
-        "slow-growing market."
+        "A"
       ],
       "explanation": "A 'Dog' in the BCG Matrix is characterized by low market share in a low-growth market. Product X fits this description. Option B describes a Cash Cow. Option C describes a Star. Option D is incorrect because each product type requires a different strategy.",
       "difficulty_level": 2,
@@ -1648,7 +1607,7 @@
         "D": "Reduce investment and focus on short-term profitability."
       },
       "correct_answer": [
-        "Invest heavily to try and increase market share and turn it into a Star."
+        "A"
       ],
       "explanation": "A product with low market share in a high-growth market is classified as a 'Question Mark' in the BCG matrix. The MOST appropriate strategy is to invest heavily to attempt to increase market share and transform it into a Star. Option B is incorrect because it is more suitable for a Cash Cow. Options C and D are incorrect because they are more suitable for a Dog.",
       "difficulty_level": 2,
@@ -1671,7 +1630,7 @@
         "D": "The print newspaper."
       },
       "correct_answer": [
-        "The new podcasting platform."
+        "C"
       ],
       "explanation": "The new podcasting platform, with low market share in a fast-growing market, is a 'Question Mark'. Question Marks require careful evaluation to determine if they should be built into Stars or phased out. Option A, the streaming service, is a Star and requires continued investment. Option B, the television network, is a Cash Cow and requires minimal investment. Option D, the newspaper, is a Dog and may be divested.",
       "difficulty_level": 2,
@@ -1694,8 +1653,7 @@
         "D": "The 'Dog' product, to try and turn it into a 'Star'."
       },
       "correct_answer": [
-        "The 'Star' product",
-        "to sustain its growth and market leadership."
+        "A"
       ],
       "explanation": "Stars require heavy investment to sustain their growth and market leadership. Cash Cows need minimal investment. Question Marks need evaluation to determine investment. Dogs may not warrant further investment. Option B focuses on maximizing profits from an already profitable product. Option C would only occur after an evaluation. Option D is generally not recommended.",
       "difficulty_level": 2,
@@ -1719,7 +1677,7 @@
         "D": "Aggressively cut costs to improve profitability."
       },
       "correct_answer": [
-        "Maintain investment at a minimal level and focus on maximizing cash flow."
+        "B"
       ],
       "explanation": "A business unit that generates significant cash with limited growth is a 'Cash Cow'. The most appropriate strategy is to maintain minimal investment and focus on maximizing cash flow. Option A is incorrect as Cash Cows have limited growth potential. Option C might be considered, but maximizing cash flow is generally the primary goal. Option D should already be in place in the maturity stage.",
       "difficulty_level": 2,
@@ -1743,7 +1701,7 @@
         "D": "Maintain minimal investment and harvest any profits."
       },
       "correct_answer": [
-        "Conduct a thorough analysis to determine its potential and viability."
+        "B"
       ],
       "explanation": "A venture with low market share in a high-growth industry is a 'Question Mark'. The most appropriate initial action is to conduct a thorough analysis to determine its potential and viability. Option A is premature without proper analysis. Option C is too hasty before evaluating its potential. Option D is a passive approach that does not align with the growth potential.",
       "difficulty_level": 2,
@@ -1767,7 +1725,7 @@
         "D": "Reposition the product line to target a different market segment."
       },
       "correct_answer": [
-        "Divest or liquidate the product line."
+        "C"
       ],
       "explanation": "A product line with low market share in a slow-growing market is classified as a 'Dog'. The most suitable strategy is to divest or liquidate the product line. Option A is unlikely to be successful in a slow-growing market. Option B may not be sustainable. Option D could be considered, but the potential for success is low.",
       "difficulty_level": 2,
@@ -1791,7 +1749,7 @@
         "D": "The 'Dog' will maintain its current position, but with improved profitability."
       },
       "correct_answer": [
-        "The company will likely waste resources with little to no return on investment."
+        "B"
       ],
       "explanation": "Over-investing in 'Dogs' is a common mistake. Dogs, by definition, have low market share in slow-growing markets, making it unlikely that investment will result in significant growth. Option A is an unrealistic expectation. Option C and D are unlikely scenarios given the inherent characteristics of a 'Dog'.",
       "difficulty_level": 2,

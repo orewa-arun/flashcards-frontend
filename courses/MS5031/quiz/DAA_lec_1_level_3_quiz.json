@@ -24,8 +24,7 @@
         "D": "Multiply the point prediction by a scaling factor greater than 1 on product launch days, based on the ratio of actual traffic to predicted traffic during past launches."
       },
       "correct_answer": [
-        "Add a fixed constant to the point prediction on product launch days",
-        "determined by the average difference between the model's prediction and actual traffic during past launches."
+        "C"
       ],
       "explanation": "The question highlights a systematic underestimation of the model under specific conditions (product launches). Option C directly addresses this by adding a constant representing the average error during launches. This adjusts the point prediction to account for the known bias. Option A discards the model completely, which is wasteful. Option B is illogical, as changing the input (social media posts) doesn't correct for the launch effect. Option D, multiplying by a scaling factor, could exacerbate the error if the launch effect isn't proportional to the predicted traffic.",
       "difficulty_level": 3,
@@ -50,10 +49,7 @@
         "D": "Apply a discount factor to the point prediction based on the severity of the accident (e.g., minor accident = 5% discount, major accident = 20% discount), informed by historical data on accident-related value depreciation."
       },
       "correct_answer": [
-        "Apply a discount factor to the point prediction based on the severity of the accident (e.g.",
-        "minor accident = 5% discount",
-        "major accident = 20% discount)",
-        "informed by historical data on accident-related value depreciation."
+        "D"
       ],
       "explanation": "The question requires integrating qualitative data (accident history) with a quantitative prediction (regression model). Option D is the most effective because it uses a data-driven discount factor based on accident severity. This refines the point prediction without discarding it entirely. Option A is too extreme, ignoring the mileage information. Option B is too simplistic, applying a uniform discount that doesn't account for accident severity. Option C is impractical, requiring a separate model with likely limited data on accident history.",
       "difficulty_level": 3,
@@ -78,7 +74,7 @@
         "D": "Whether subtracting a fixed amount will negatively impact the R-squared value of the regression model."
       },
       "correct_answer": [
-        "Whether the effect of holidays on sales is constant across different levels of advertising spend."
+        "C"
       ],
       "explanation": "The key here is understanding interaction effects. If the impact of holidays on sales *depends* on the advertising spend, a simple subtraction is insufficient. Option C addresses this by asking whether the effect is constant. If the holiday effect is not constant, a more complex model (e.g., with interaction terms) is needed. Option A focuses on statistical significance, but a significant adjustment might still be inappropriate if the underlying relationship is more complex. Option B focuses on eliminating the over-prediction, but doesn't consider the overall fit of the model. Option D focuses on R-squared, which is not the primary concern when addressing a known bias.",
       "difficulty_level": 3,
@@ -103,8 +99,7 @@
         "D": "Log transformation will reduce the impact of outliers in the square footage data, making the model less sensitive to extreme values."
       },
       "correct_answer": [
-        "Log transformation will make the relationship between square footage and house price more linear",
-        "especially at higher square footage values."
+        "B"
       ],
       "explanation": "The problem is that the model overestimates the price of luxury homes, suggesting that the relationship between square footage and price is not linear, especially at high square footage values. A log transformation can linearize a relationship where the effect of the independent variable diminishes as its value increases (decreasing rate of return). Option B directly addresses this. Option A, while heteroscedasticity is a concern, is not the primary reason in this specific scenario. Option C, normality of residuals, is important but less directly relevant to the overestimation issue. Option D, outlier reduction, is a potential benefit, but the core issue is non-linearity, not just outliers.",
       "difficulty_level": 3,
@@ -129,8 +124,7 @@
         "D": "The log transformation should have been applied to the advertising spend (X) instead of the conversion rate (Y)."
       },
       "correct_answer": [
-        "The heteroscedasticity is caused by a different variable not included in the model",
-        "and transforming the dependent variable does not address the underlying cause."
+        "C"
       ],
       "explanation": "This question tests the understanding that transformations are not a universal fix. Heteroscedasticity often arises from omitted variables or model misspecification. Transforming the dependent variable only addresses heteroscedasticity *if* the variance is related to the *level* of the dependent variable itself. If a different variable (not in the model) is causing the variance to change, a transformation on Y won't help. Option C correctly identifies this. Option A is too basic. Option B conflates heteroscedasticity with non-linearity (they can co-exist but are distinct). Option D might be helpful, but it doesn't address the *reason* why the heteroscedasticity persists *after* transforming Y.",
       "difficulty_level": 3,
@@ -155,8 +149,7 @@
         "D": "Remove all customers with negative CLTV values from the dataset before applying the Box-Cox transformation."
       },
       "correct_answer": [
-        "Add a constant to all CLTV values to make them positive before applying the Box-Cox transformation",
-        "ensuring that the constant is large enough to shift all values above zero."
+        "B"
       ],
       "explanation": "The question tests the limitations of Box-Cox transformations. Box-Cox requires strictly positive data. Option B correctly identifies the need to shift the data by adding a constant before applying the transformation. Option A is incorrect as Box-Cox cannot handle negative values. Option C is a valid alternative, but the question asks specifically about Box-Cox. Option D is undesirable as it discards valuable information.",
       "difficulty_level": 3,
@@ -181,10 +174,7 @@
         "D": "Remove all data points where the pollution level is zero."
       },
       "correct_answer": [
-        "Add a small constant (e.g.",
-        "0.001) to all pollution level values",
-        "including the non-zero values",
-        "before applying the log transformation."
+        "C"
       ],
       "explanation": "Logarithms are undefined for zero. Replacing zero values with a small constant is a common workaround. However, the constant *must* be added to *all* values, not just the zeros, to preserve the relative relationships in the data. Option C is therefore correct. Option A distorts the data significantly. Option B is not appropriate as the mean may not be a meaningful replacement for zero. Option D discards potentially valuable information.",
       "difficulty_level": 3,
@@ -209,7 +199,7 @@
         "D": "100%"
       },
       "correct_answer": [
-        "10%"
+        "C"
       ],
       "explanation": "The key to this question is interpreting coefficients in a log-transformed model. When the dependent variable (Y) is log-transformed, the coefficient of the independent variable (X) represents the approximate *percentage* change in Y for a one-unit increase in X. Therefore, a coefficient of 0.1 means an approximate 10% increase. The 'trick' is to remember that it's a *percentage*, not a direct dollar amount. Option A and B are incorrect by factors of 100 and 10, respectively. Option D is a misinterpretation of the logarithmic scale.",
       "difficulty_level": 3,
@@ -234,7 +224,7 @@
         "D": "Use a different modeling technique that does not require data transformations, even if it results in a poorer fit to the data."
       },
       "correct_answer": [
-        "Back-transform the predicted wait times (Y) to the original scale and present the results as a graph showing the relationship between the number of representatives (X) and the predicted wait times (Y)."
+        "B"
       ],
       "explanation": "The question focuses on the trade-off between model accuracy and interpretability. Option B correctly addresses this by using the inverse transformation for modeling but presenting the results in the original scale, making them easily understandable. This allows the stakeholders to see the predicted wait times for different numbers of representatives. Option A is unhelpful, as it avoids interpretation. Option C is unrealistic, as it assumes non-technical stakeholders will understand the transformation's math. Option D sacrifices accuracy for interpretability, which is not the optimal approach when a good solution exists.",
       "difficulty_level": 3,
@@ -259,7 +249,7 @@
         "D": "The inverse transformation failed because the lifespan data (Y) is not normally distributed. Apply a log transformation to the lifespan before applying the inverse transformation to the temperature."
       },
       "correct_answer": [
-        "The inverse transformation failed because the temperature values are not centered around zero. Subtract the minimum temperature from all temperature values before applying the inverse transformation."
+        "C"
       ],
       "explanation": "The 'trick' here is understanding how the scale of the independent variable affects the inverse transformation. The inverse transformation is most effective when the independent variable spans a range including values close to zero, allowing the reciprocal to have a significant effect. If all values are relatively far from zero, the inverse transformation will have a limited impact. To make the inverse transformation more effective, you need to shift the values closer to zero *first*. Option C correctly identifies this by suggesting subtracting the minimum temperature. Options A, B and D do not address the underlying scaling problem.",
       "difficulty_level": 3,
@@ -284,8 +274,7 @@
         "D": "The coefficients of the quadratic model are incorrect and need to be recalculated using a different optimization technique that incorporates the irrigation limit."
       },
       "correct_answer": [
-        "The mathematical optimum might exceed the imposed irrigation limit",
-        "making it practically infeasible and leading to a yield lower than what could be achieved within the limit."
+        "C"
       ],
       "explanation": "The trick here is the constraint imposed by the water authority. While the quadratic model suggests an optimal irrigation level, this level might be higher than the allowed 200mm. Therefore, blindly following the mathematical optimum (derived from setting the derivative to zero) would be impractical and result in a lower yield within the imposed constraint. The researcher needs to find the best yield *within* the allowed range, which might not be the mathematical optimum. Option A ignores the practical constraint. Option B is an overly pessimistic assessment of the model. Option D suggests a more complex solution is needed when a simpler constraint check suffices.",
       "difficulty_level": 3,
@@ -311,8 +300,7 @@
         "D": "The trade-off between the accuracy of the quadratic model and the need for a more sophisticated machine learning algorithm, as the quadratic model might not be accurate enough to capture the true relationship between emails and revenue."
       },
       "correct_answer": [
-        "The trade-off between maximizing short-term revenue and minimizing customer churn",
-        "as excessive emails might increase revenue initially but lead to higher churn and lower long-term profitability."
+        "A"
       ],
       "explanation": "The core trick is recognizing that maximizing revenue (as suggested by the quadratic model alone) doesn't account for the negative impact of customer churn.  The most critical trade-off is between short-term revenue gains and the long-term cost of losing customers due to excessive emails. Option A directly addresses this conflict. Option B is a general concern but less relevant in this specific scenario. Option C is a valid consideration but secondary to churn. Option D overcomplicates the issue; the quadratic model is sufficient *if* churn is factored into the decision.",
       "difficulty_level": 3,
@@ -339,8 +327,7 @@
         "D": "The model should be refitted using only data points within the legally permissible dosage range to ensure that the model's predictions are always within the acceptable bounds."
       },
       "correct_answer": [
-        "Extrapolating the quadratic model beyond the range of legally permissible dosages is inappropriate",
-        "as the model's predictions in that region are not validated by clinical trials and may violate regulatory constraints."
+        "C"
       ],
       "explanation": "The trick is the legal constraint on dosage. While the quadratic model might fit the observed data well, it's crucial to recognize that extrapolating beyond the valid data range (defined by legal limits) is dangerous. Option C correctly identifies this extrapolation problem. Option A is too general; the model might be suitable within the valid range. Option B suggests a complex fix when simply respecting the limits is sufficient. Option D might be *necessary* if the model performs poorly within the legal range, but the primary issue is the extrapolation, making C a more direct answer.  The question tests understanding of model limitations in the context of external regulations.",
       "difficulty_level": 3,
@@ -367,8 +354,7 @@
         "D": "The coefficients of the quadratic model are likely biased due to multicollinearity between X and X^2, leading to inaccurate predictions."
       },
       "correct_answer": [
-        "The model doesn't capture the threshold effect where very small shelf space leads to consistently poor performance",
-        "regardless of the general trend."
+        "C"
       ],
       "explanation": "The trick is recognizing the 'threshold effect' for very small shelf space. The quadratic model captures the general curvilinear trend, but it doesn't account for the *consistent* underperformance below 2 sq ft. Option C highlights this specific problem. Option A is a general criticism of polynomial models but not the primary issue here. Option B is relevant but secondary; the consistent underperformance is more immediate. Option D is a valid statistical concern (multicollinearity) but less directly impactful than the threshold effect. The question requires considering both the model's strengths and its limitations in a real-world context.",
       "difficulty_level": 3,
@@ -394,9 +380,7 @@
         "D": "Focus on improving the accuracy of the model's predictions for loading times *below* 1 second, as this is where the greatest potential for conversion rate improvement lies."
       },
       "correct_answer": [
-        "Apply a variance-stabilizing transformation (e.g.",
-        "Box-Cox transformation) to the conversion rate (Y) to address the heteroscedasticity",
-        "then re-estimate the quadratic model."
+        "A"
       ],
       "explanation": "The trick is balancing statistical rigor (addressing heteroscedasticity) with practical feasibility (the loading time constraint). Addressing heteroscedasticity improves model reliability. Option A is the best approach because it directly addresses the violation of regression assumptions while still using the quadratic model. Option B is wrong because increasing model complexity is not the first step when there are assumption violations; it will likely worsen the problem. Option C is incorrect because heteroscedasticity violates core regression assumptions and can lead to unreliable inference. Option D is wrong because focusing on the infeasible region is a waste of resources. The data scientist should fix the existing model *before* trying to optimize the system in a non-existent scenario.",
       "difficulty_level": 3,
@@ -423,9 +407,7 @@
         "D": "Use a quadratic transformation instead of a log transformation, as quadratic transformations can handle zero values without modification."
       },
       "correct_answer": [
-        "Add a small constant (e.g.",
-        "0.01) to all advertising spend values before taking the logarithm",
-        "ensuring that all values are positive."
+        "C"
       ],
       "explanation": "The trick is dealing with zero values before a log transformation.  Adding a small constant (Option C) is a common and generally accepted technique. It allows you to keep the data points and apply the log transformation while minimizing bias. Option A (replacing with the mean) is problematic because it artificially inflates the spend for those periods and distorts the relationship. Option B (removing data) leads to a loss of information and can bias the model, especially if the zero spend periods are not random. Option D (quadratic transformation) might address the zero value issue, but doesn't directly address the core problem, and might not capture the diminishing returns as effectively as the log transformation. The question tests the practical application of transformations and awareness of common data handling issues.",
       "difficulty_level": 3,
@@ -452,7 +434,7 @@
         "D": "The data must be free from outliers and influential observations to prevent them from unduly affecting the coefficient estimate."
       },
       "correct_answer": [
-        "The price variable must also be log-transformed for the interpretation to be accurate (a log-log model)."
+        "A"
       ],
       "explanation": "The trick lies in understanding the correct interpretation of coefficients in *different* types of transformed models. The junior analyst's statement is a direct elasticity interpretation (percentage change in Y for percentage change in X). This interpretation *only* holds true for a log-log model (where both X and Y are log-transformed). Option A correctly identifies this critical condition. If only X is log-transformed, the interpretation is different (change in Y for a *percentage* change in X). Option B is a general concern about model complexity but not directly relevant to the coefficient interpretation. Option C is important for time series data but not the primary issue here. Option D is a general best practice but doesn't directly affect the interpretation of the coefficient in this specific context. This question tests understanding of coefficient interpretation in transformed regression models.",
       "difficulty_level": 3,
@@ -479,8 +461,7 @@
         "D": "The heteroscedasticity was not properly addressed by the log transformation, and a different transformation technique is required."
       },
       "correct_answer": [
-        "The decrease in R-squared is likely due to a change in the scale of the dependent variable",
-        "making the original variance decomposition no longer applicable."
+        "B"
       ],
       "explanation": "The trick is understanding how transformations affect R-squared. R-squared measures the proportion of variance *explained* by the model. When you transform the dependent variable (CLTV), you change the scale and distribution of the variance you're trying to explain. The original variance decomposition (used to calculate R-squared before the transformation) is no longer directly comparable to the variance decomposition after the transformation. Option B is the most accurate explanation. Option A is incorrect as log transformation does not inherently reduce explanatory power. Option C is unlikely as log transformation, when applied correctly, reduces bias due to heteroscedasticity. Option D might be true, but the *primary* reason for the R-squared change is the change in scale of the dependent variable. The question tests an understanding of the properties and limitations of R-squared in the context of transformations.",
       "difficulty_level": 3,

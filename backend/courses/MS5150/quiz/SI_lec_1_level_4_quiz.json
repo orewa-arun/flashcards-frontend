@@ -24,8 +24,7 @@
         "D": "The legal implications of using coffee grounds in their bread recipe, ensuring compliance with health and safety regulations and addressing any potential liability issues. (Focus on legal compliance)."
       },
       "correct_answer": [
-        "The degree to which Coffee Crafters' brand image and values align with Sweet Surrender's",
-        "and whether the collaboration will enhance or dilute Sweet Surrender's artisanal brand identity. (Focus on brand alignment)."
+        "B"
       ],
       "explanation": "This is a synthesis question combining the definition of a 'product' (SI_lec_1_1) with 'brand collaboration' (SI_lec_1_4). Sweet Surrender's core product is artisanal sourdough, and their brand is built on this. The collaboration could enhance or dilute this. Option A focuses solely on costs, missing the core value proposition. Option C focuses on market share but ignores the brand impact. Option D is important but secondary to the core brand alignment. The correct answer highlights the critical need to ensure the collaboration reinforces Sweet Surrender's core brand identity as an artisanal bakery, which is the key to their product's value.",
       "difficulty_level": 4,
@@ -55,8 +54,7 @@
         "D": "The potential for data privacy breaches or security vulnerabilities when sharing customer interaction data with Empathy Experts, complying with data protection regulations and maintaining customer trust. (Focus on data security)."
       },
       "correct_answer": [
-        "The ethical implications of using AI to simulate human emotions",
-        "ensuring transparency and avoiding manipulation or deception of customers through emotional mimicry. (Focus on ethical considerations)."
+        "C"
       ],
       "explanation": "This is a synthesis question combining the definition of a 'product' (SI_lec_1_1) with 'brand collaboration' (SI_lec_1_4). The core issue is the chatbot's perceived lack of empathy. While the collaboration aims to fix this, it introduces an ethical dilemma. Option A focuses on ROI, missing the ethical concern. Option B is a general risk of partnerships. Option D is important but secondary to the core ethical problem. The correct answer highlights the ethical risk of simulating emotions, which could backfire and damage Innovate Solutions' reputation if customers feel manipulated.",
       "difficulty_level": 4,
@@ -86,8 +84,7 @@
         "D": "Establish a clear framework for data sharing and privacy protection, ensuring compliance with data protection regulations and safeguarding the personal information of both Grand Estates' and Elite Access' clients. (Focus on data privacy and compliance)."
       },
       "correct_answer": [
-        "Create a co-branded marketing campaign that highlights the synergies between Grand Estates' luxury accommodations and Elite Access' exclusive experiences",
-        "targeting affluent travelers seeking unique and unforgettable travel experiences. (Focus on synergistic marketing and target audience)."
+        "C"
       ],
       "explanation": "This is a synthesis question combining the definition of a 'market offering' (SI_lec_1_2) with 'brand collaboration' (SI_lec_1_4). The collaboration's success hinges on effectively communicating the enhanced value proposition. Option A focuses on operational efficiency but misses the core value proposition. Option B is important but secondary to strategic marketing. Option D is essential but not the primary driver of value. The correct answer highlights the need to create a cohesive marketing message that emphasizes the unique combination of luxury accommodations and exclusive experiences, attracting the target audience and maximizing the collaboration's impact.",
       "difficulty_level": 4,
@@ -117,8 +114,7 @@
         "D": "The risk of diluting Quick Eats' brand identity by associating it with a fitness app, potentially alienating customers who perceive the brand as primarily focused on affordability and indulgence. (Focus on brand consistency)."
       },
       "correct_answer": [
-        "The challenge of effectively communicating the availability of healthier options to its existing customer base",
-        "without compromising the appeal of its core menu items. (Focus on targeted marketing and communication)."
+        "B"
       ],
       "explanation": "This is a synthesis question combining the definition of a 'market offering' (SI_lec_1_2) with 'brand collaboration' (SI_lec_1_4). Quick Eats faces a dilemma: attract health-conscious consumers *without* alienating their existing base. Option A focuses on cost, but communication is key. Option C focuses on operations, missing the strategic challenge. Option D is a risk, but effective communication can mitigate it. The correct answer highlights the need for a nuanced marketing strategy that promotes healthier options while still appealing to Quick Eats' core customer base, balancing both value propositions.",
       "difficulty_level": 4,
@@ -148,8 +144,7 @@
         "D": "The level of involvement of Code Wizards' existing users in the redesign process, gathering feedback and incorporating their suggestions to ensure that the new interface meets their needs and expectations. (Focus on user involvement and feedback)."
       },
       "correct_answer": [
-        "The extent to which the proposed redesign aligns with Code Wizards' overall product vision and strategic goals",
-        "ensuring that the new interface enhances rather than detracts from the product's core value proposition. (Focus on strategic alignment)."
+        "B"
       ],
       "explanation": "This is a synthesis question combining the definition of a 'product' (SI_lec_1_3) with 'brand collaboration' (SI_lec_1_4). The key is that the *product* (project management tool) needs to align with Code Wizard's vision *and* the redesign should improve it. Option A focuses on agency experience, but alignment is key. Option C focuses on cost, missing the strategic issue. Option D focuses on user feedback, but without a clear vision, it is not enough. The correct answer focuses on maintaining and enhancing the core value proposition while improving usability. If the redesign alters the product in a manner inconsistent with the company's vision, the entire initiative could be a failure.",
       "difficulty_level": 4,
@@ -179,9 +174,7 @@
         "D": "Rely solely on Trendsetter Tia's social media channels to promote the collaboration, minimizing the exposure of Style Haven's existing customers to the influencer's edgy fashion sense. (Focus on limited marketing exposure)."
       },
       "correct_answer": [
-        "Create a separate",
-        "limited-edition collection curated by Trendsetter Tia",
-        "marketed exclusively to younger consumers through online channels and select Style Haven stores. (Focus on targeted marketing and product differentiation)."
+        "A"
       ],
       "explanation": "This is a synthesis question combining the definition of a 'market offering' (SI_lec_1_3) with 'brand collaboration' (SI_lec_1_4). Style Haven faces a classic dilemma: attract new customers without losing existing ones. Option B risks alienating the core base. Option C is a weak attempt to force alignment. Option D limits the collaboration's potential. The correct answer, creating a *separate* collection, allows Style Haven to experiment and attract a new audience *without* jeopardizing its existing brand equity and established customer base.",
       "difficulty_level": 4,
@@ -211,8 +204,7 @@
         "D": "The implementation of efficient inventory management and point-of-sale systems, ensuring seamless transactions and minimizing wait times for customers purchasing books and coffee. (Focus on operational efficiency and customer service)."
       },
       "correct_answer": [
-        "The design and layout of the coffee shop",
-        "ensuring that it complements the bookstore's existing aesthetic and minimizes noise and distractions for customers seeking a quiet reading environment. (Focus on aesthetic integration and noise mitigation)."
+        "B"
       ],
       "explanation": "This is a synthesis question combining the definition of a 'product' (SI_lec_1_3) with 'brand collaboration' (SI_lec_1_4). Book Nook's core *product* is its curated selection of books and its quiet atmosphere. The collaboration risks disrupting that. Option A focuses on financial returns, but the atmosphere is key. Option C addresses product synergy, but the atmosphere is paramount. Option D focuses on operations, missing the core challenge. The correct answer emphasizes maintaining the bookstore's unique atmosphere while integrating the coffee shop, preserving its core value proposition and avoiding alienating its loyal customers.",
       "difficulty_level": 4,
@@ -242,10 +234,7 @@
         "D": "Offer exclusive discounts and promotions to Active Gear's existing customers who participate in Connect Life's fitness challenges, incentivizing them to embrace the brand's new social media presence. (Focus on customer loyalty and incentives)."
       },
       "correct_answer": [
-        "Develop a separate",
-        "less expensive line of fitness apparel specifically for Connect Life users",
-        "branded differently from Active Gear's core product line",
-        "to avoid diluting the brand's image and value. (Focus on product differentiation and brand separation)."
+        "B"
       ],
       "explanation": "This is a synthesis question combining the definition of 'brand collaboration' (SI_lec_1_4) with the definition of 'market offering' (SI_lec_1_2). Active Gear's core customer values high-performance apparel; Connect Life has a broader, less fitness-focused audience. A key to a successful collaboration is keeping the original brand distinct. Option A unduly limits the reach of the collaboration. Option C is brand dilution and bad marketing. Option D is backwards: forcing existing customers to use the new platform. Only Option B offers a way to reach a new audience *without* changing the original value offering of high-performance athletic wear to a dedicated athletic customer.",
       "difficulty_level": 4,
@@ -275,7 +264,7 @@
         "D": "The trade-off between the convenience of a single large sale versus the higher profit margins earned through direct consumer sales requiring more effort."
       },
       "correct_answer": [
-        "The trade-off between maintaining control over their brand image and customer experience versus increasing revenue through a large industrial buyer."
+        "B"
       ],
       "explanation": "This is a synthesis question combining product classification (SI_lec_1_7) and the nature of services/experiences (SI_lec_1_6). While all options present valid trade-offs, the MOST significant strategic trade-off is the loss of control over their brand and customer experience. Selling directly to consumers allows the farm to cultivate a specific image and provide a personalized experience (SI_lec_1_6). Selling to Maple Leaf Delights shifts the product into the industrial category (SI_lec_1_7) and sacrifices the farm's direct connection with the end consumer. Option A focuses on the raw vs. finished product aspect, which is relevant but less strategically significant. Option C is factually correct but less central to the farmer's dilemma. Option D focuses on profit margins but overlooks the more profound strategic impact on brand and customer relationships. By foregoing the direct consumer relationship, they cede control of the 'experience' associated with their product.",
       "difficulty_level": 4,
@@ -301,8 +290,7 @@
         "D": "The construction company did not properly classify the steel needed as a specialized industrial product, leading to incorrect sourcing."
       },
       "correct_answer": [
-        "The construction company did not properly classify the steel needed as a specialized industrial product",
-        "leading to incorrect sourcing."
+        "D"
       ],
       "explanation": "This is a synthesis question combining industrial product categories (SI_lec_1_8) and product classification (SI_lec_1_7). The *root cause* is not simply that the steel is inadequate (though that's a symptom). The core issue is that the *construction company* failed to properly identify and source a *specialized* industrial product (high-strength steel). The initial classification was insufficient, leading to the wrong type of steel being purchased. Options A and B address issues at other stages of the supply chain, but the *construction company* bears the responsibility for specifying their needs. Option C is partially correct, but it doesn't address the initial classification error; it's a symptom, not the root cause. The correct answer focuses on the initial misclassification, which then cascaded into downstream problems.",
       "difficulty_level": 4,
@@ -327,8 +315,7 @@
         "D": "Develop a comprehensive online training program and knowledge base to improve user onboarding and reduce the need for personalized consulting, while maintaining both product and service offerings."
       },
       "correct_answer": [
-        "Develop a comprehensive online training program and knowledge base to improve user onboarding and reduce the need for personalized consulting",
-        "while maintaining both product and service offerings."
+        "D"
       ],
       "explanation": "This is a synthesis question combining product classification (SI_lec_1_7) and services (SI_lec_1_6). The core problem is that the *product* alone isn't sufficient for many users, but the *service* is too expensive. The *best* strategy is to find a scalable, cost-effective way to improve user onboarding. Option D addresses this by creating an online training program, reducing the reliance on expensive personalized consulting. Option A avoids the problem but limits the company's market. Option B addresses the cost issue but might price out potential customers. Option C is an overreaction; mandating consulting for all clients may be unnecessary. Option D balances the need for support with cost-effectiveness, enabling a broader customer base to successfully use the software.",
       "difficulty_level": 4,
@@ -353,8 +340,7 @@
         "D": "Outsourcing the production of standard components to a third-party manufacturer will reduce workload (services - SI_lec_1_6) and improve turnaround time, but will sacrifice control over quality and craftsmanship."
       },
       "correct_answer": [
-        "Investing in automated equipment will increase output while preserving the custom design service",
-        "but may require significant capital investment and employee retraining."
+        "B"
       ],
       "explanation": "This is a synthesis question combining industrial product categories (materials, capital items) from SI_lec_1_8 and service offerings (SI_lec_1_6). The *core* challenge is scaling production *without* sacrificing the personalized service that differentiates the company. Option B, investing in automated equipment, directly addresses this. It allows them to increase output *while* maintaining custom designs. The trade-off is the capital investment and retraining. Option A sacrifices the core value proposition (custom service) for efficiency. Option C prioritizes profitability over customer relationships. Option D introduces quality control risks. The correct answer (B) acknowledges the investment required but preserves the critical service element. It demonstrates an understanding of the interplay between capital items and service offerings in achieving scalability.",
       "difficulty_level": 4,
@@ -381,7 +367,7 @@
         "D": "The balance between offering a wide selection of consumer products and maintaining their commitment to supporting local agriculture (raw goods). This impacts long-term brand equity."
       },
       "correct_answer": [
-        "The balance between offering a wide selection of consumer products and maintaining their commitment to supporting local agriculture (raw goods). This impacts long-term brand equity."
+        "D"
       ],
       "explanation": "This question synthesizes raw goods (SI_lec_1_5) and product classification (SI_lec_1_7). The *most critical* strategic consideration is the long-term impact on the grocery chain's brand. While cost (Option A) and supply chain are important, the core issue is whether to sacrifice their 'local' branding, which resonates with many consumers. Option B is a symptom, not the core strategic question. Option C is irrelevant to the decision. The *best* answer (D) recognizes the trade-off between product selection and brand promise. The grocery chain must decide whether the short-term gains from a wider selection outweigh the potential damage to their brand equity and the loss of consumer trust. Maintaining local sourcing, even with a limited selection, reinforces their brand and builds long-term loyalty.",
       "difficulty_level": 4,
@@ -406,8 +392,7 @@
         "D": "The product has successfully established itself as a specialty product within a niche market, and further growth requires maintaining exclusivity while exploring complementary premium products or services for the same customer base."
       },
       "correct_answer": [
-        "The product has successfully established itself as a specialty product within a niche market",
-        "and further growth requires maintaining exclusivity while exploring complementary premium products or services for the same customer base."
+        "D"
       ],
       "explanation": "This is a synthesis question combining consumer product classification (SI_lec_1_9), marketing considerations (SI_lec_1_10), and the concept of brand equity. The scenario describes a product successfully positioned as a specialty product, enjoying initial strong sales within a niche market. The consultant's suggestion to expand distribution aims to treat it like a convenience or shopping product, which would undermine its specialty status and brand equity. Option A is incorrect because it ignores the importance of brand perception for specialty products. Option B misdiagnoses the problem; the product is already *correctly* marketed as a specialty product to the *right* target audience. Option C focuses on pricing, a secondary consideration compared to the core issue of brand positioning and exclusivity. The correct answer recognizes that further growth requires leveraging the existing brand equity, not sacrificing it for short-term gains through mass distribution. This aligns with the marketing considerations for specialty products, which prioritize targeted promotion and exclusive distribution. A second-order effect of maintaining exclusivity is the need to find alternative avenues for growth beyond simply increasing the number of customers.",
       "difficulty_level": 4,
@@ -434,7 +419,7 @@
         "D": "The potential for cannibalization of existing sales through drugstores if the product is no longer available there."
       },
       "correct_answer": [
-        "The willingness of dentists and high-end retailers to stock the toothbrush and actively promote its unique features to their clientele."
+        "C"
       ],
       "explanation": "This is a synthesis question combining consumer product classification (SI_lec_1_9), marketing considerations (SI_lec_1_10), and the risks of repositioning. While all the options are relevant, the *most* important factor is the willingness of dentists and high-end retailers to stock and promote the product. A 'specialty product' strategy relies on exclusive distribution and targeted promotion, which cannot be achieved without the active participation of these key partners. Option A is important for financial viability but doesn't address the fundamental requirement for a successful 'specialty product' strategy. Option B is less relevant because the focus is shifting *away* from the 'shopping product' market. Option D is a valid concern, but the potential upside of a successful repositioning as a specialty product outweighs the risk of cannibalization, *if* the new distribution channels are secured. The successful repositioning is dependent on the acceptance of the product by the new distribution channels. The correct answer highlights the crucial dependency of the repositioning strategy on the buy-in and active promotion from the new distribution partners, addressing the second-order impact of their willingness to support the strategy.",
       "difficulty_level": 4,
@@ -463,7 +448,7 @@
         "D": "The marketing budget required to effectively promote the pre-packaged products in supermarkets and compete with established brands."
       },
       "correct_answer": [
-        "The potential impact on the perceived quality and exclusivity of their brand if their products are widely available in supermarkets."
+        "C"
       ],
       "explanation": "This is a synthesis question combining consumer product classification (SI_lec_1_9), marketing considerations (SI_lec_1_10), and the concept of brand dilution. The bakery's core business is built on selling 'specialty products' with a focus on quality and exclusivity. Moving to supermarkets means treating some of their products as 'convenience products,' which can damage their brand image. While options A, B, and D are relevant business considerations, they are secondary to the core issue of brand dilution. Option A focuses on direct revenue impact, but misses the long-term impact on brand perception. Option B focuses on cost and profit margins, which are important but not the *primary* concern. Option D focuses on marketing budget, which is relevant but less critical than preserving brand equity. The correct answer recognizes that brand equity is the bakery's most valuable asset and that expanding into supermarkets could undermine it. The second-order effect is that a diluted brand image can lead to decreased sales even *at* their retail locations, effectively destroying the initial value proposition of the company.",
       "difficulty_level": 4,
@@ -490,8 +475,7 @@
         "D": "Launch the lower-priced line under the existing brand name, but limit distribution to select department stores and online retailers, and use the same high-quality materials and craftsmanship as the luxury line."
       },
       "correct_answer": [
-        "Launch the lower-priced line under a completely *different* brand name",
-        "avoiding any association with the luxury brand."
+        "A"
       ],
       "explanation": "This is a synthesis question combining consumer product classification (SI_lec_1_9), marketing considerations (SI_lec_1_10) and brand architecture. The key trade-off is between increasing sales and preserving brand equity. The company is fundamentally a 'specialty product' business; diluting this can be disastrous. Option A is the best solution because it allows the company to target a new market segment without compromising the luxury brand's image. Option B is risky because even a different design and marketing campaign may not be enough to prevent brand dilution. Option C is a safe but potentially limiting approach; it prioritizes brand preservation over growth. Option D is the worst option because it attempts to straddle both markets, which is likely to alienate both luxury customers (due to the association with department stores) and mainstream customers (due to the lingering perception of high prices). The second-order effect of Option A is that it allows the company to experiment with new product categories and marketing strategies without risking the core brand. This allows for a new customer base, and protects the existing specialty product customer base. It is a targeted approach that balances growth and brand equity.",
       "difficulty_level": 4,
@@ -520,9 +504,7 @@
         "D": "Stop taking new orders until the production backlog is cleared, and then gradually increase production capacity in-house."
       },
       "correct_answer": [
-        "Outsource the production of *non-critical* components to a third-party",
-        "while maintaining in-house control over the design and assembly of the core motorcycle",
-        "and actively communicate these measures to customers."
+        "A"
       ],
       "explanation": "This is a synthesis question combining marketing considerations for specialty products (SI_lec_1_9 & SI_lec_1_10) and supply chain management. The company's success hinges on its reputation for quality and craftsmanship. The correct answer is A because it allows the company to address the immediate demand issue without compromising the core product. Option B is a viable but less desirable option because it may alienate potential new customers. Option C is the worst option because it would almost certainly damage the brand's reputation for quality. Option D is too conservative and could result in lost market share. Outsourcing non-critical components allows for increased throughput without sacrificing the key elements of the specialty product. The second-order effect is improved supply chain flexibility, while maintaining the key quality control needed to maintain the business model of the company.",
       "difficulty_level": 4,
@@ -548,9 +530,7 @@
         "D": "Focusing on direct-to-consumer sales, but aggressively discounting prices to attract new customers, sacrificing short-term profit margins to build brand awareness and loyalty. This will create a larger base for future upselling."
       },
       "correct_answer": [
-        "Focusing on direct-to-consumer sales through an enhanced online platform and targeted social media marketing",
-        "allowing for greater control over the brand message and customer experience",
-        "but potentially limiting market reach and economies of scale."
+        "C"
       ],
       "explanation": "This question requires synthesizing branding, market segmentation, and economies of scale/scope. Partnering with a national chain (Options A & B) risks diluting the brand's image of high-quality, ethically sourced beans due to the need for standardization and lower prices. This represents a failure to protect a differentiated brand. While it achieves economies of scale, it undermines the core brand promise. Discounting (Option D) can cheapen the brand in the long run. Direct-to-consumer (Option C) allows for greater control over branding and customer experience, preserving the brand's integrity, although it may limit scale. The correct answer addresses the trade-off between brand integrity and market reach, recognizing that for a brand built on quality and ethics, maintaining brand control is paramount, even if it means slower growth.",
       "difficulty_level": 4,
@@ -577,10 +557,7 @@
         "D": "Focusing on emphasizing the craftsmanship, heritage, and exclusivity of their mechanical watches, but expanding production to lower costs and make the watches more accessible to a wider audience. This will increase sales volume and profitability."
       },
       "correct_answer": [
-        "Focusing on emphasizing the craftsmanship",
-        "heritage",
-        "and exclusivity of their mechanical watches through targeted marketing campaigns and collaborations with luxury lifestyle brands",
-        "reinforcing the brand's unique value proposition and differentiating it from smartwatches."
+        "C"
       ],
       "explanation": "This question requires synthesizing branding, market segmentation, and competitive advantage. Developing a smartwatch (Options A & B) risks diluting the brand's image of craftsmanship and exclusivity, potentially alienating its core customer base. It is a competitive response, but not one aligned with their branding. Expanding production (Option D) can also diminish the brand's exclusivity. Focusing on craftsmanship and exclusivity (Option C) reinforces the brand's unique value proposition and differentiates it from smartwatches, leveraging its existing strengths. The correct answer recognizes that for a luxury brand, maintaining exclusivity and reinforcing its unique value proposition is crucial for long-term success, even if it means foregoing opportunities in the mass market.",
       "difficulty_level": 4,
@@ -606,8 +583,7 @@
         "D": "Maintaining hand-applied labels for all its beers, as the artistic flair is a key differentiator and a source of customer loyalty. The brewery can explore other ways to improve efficiency, such as optimizing its brewing process."
       },
       "correct_answer": [
-        "Maintaining hand-applied labels for its flagship beers and using automated labeling machines for new",
-        "mass-market beers. This will allow the brewery to cater to different customer segments while preserving its core brand identity."
+        "C"
       ],
       "explanation": "This question requires synthesizing branding and process optimization. Switching to fully automated labeling (Options A & B) risks diminishing the artistic flair that customers associate with the brewery's brand, potentially alienating its core customer base. Maintaining hand-applied labels for all beers (Option D) may limit growth and efficiency. Using a hybrid approach (Option C) allows the brewery to cater to different customer segments while preserving its core brand identity. The correct answer recognizes that for a craft brewery, the artistic flair of its labels is a key differentiator and a source of customer loyalty. A hybrid approach allows for both efficiency and brand preservation.",
       "difficulty_level": 4,
@@ -633,9 +609,7 @@
         "D": "Using eco-friendly packaging, but significantly increasing the donation amounts to offset the higher packaging costs. This will ensure that the organization maintains its profit margins while promoting sustainability."
       },
       "correct_answer": [
-        "Using eco-friendly",
-        "biodegradable packaging with prominent messaging about the organization's mission and the sustainability of the packaging itself",
-        "reinforcing the organization's values and potentially attracting environmentally conscious donors."
+        "C"
       ],
       "explanation": "This question requires synthesizing packaging, promotion, and cost-benefit analysis. Using standard, low-cost packaging (Options A & B) may be cost-effective, but it contradicts the organization's mission and fails to leverage the packaging as a promotional tool. Increasing donation amounts (Option D) may deter some donors. Using eco-friendly packaging (Option C) reinforces the organization's values and potentially attracts environmentally conscious donors. The correct answer recognizes that for a non-profit organization dedicated to environmental conservation, aligning its packaging strategy with its mission is crucial for building trust and maximizing fundraising effectiveness. While more expensive, the eco-friendly packaging provides promotion and demonstrates commitment.",
       "difficulty_level": 4,
@@ -660,8 +634,7 @@
         "D": "Partnering with a local recycling center, but discontinuing the use of glass jars altogether and switching to cheaper, recyclable plastic containers. This will further reduce costs and simplify the supply chain."
       },
       "correct_answer": [
-        "Continuing to offer a small discount for returned jars",
-        "as this incentivizes customers to participate in the reuse program and reinforces the company's commitment to sustainability. The cost of the discount is offset by the reduced cost of new jars."
+        "A"
       ],
       "explanation": "This question requires synthesizing packaging, promotion, and supply chain management. Partnering with a recycling center (Option C) may be environmentally responsible, but it eliminates the direct customer engagement and promotional opportunity associated with the reuse program. Switching to plastic containers (Option D) contradicts the company's commitment to sustainability. Increasing prices to cover the discount (Option B) may deter some customers. Continuing to offer a discount for returned jars (Option A) incentivizes customer participation and reinforces the company's commitment to sustainability. The correct answer recognizes that for an organic food company committed to sustainability, the reuse program is a valuable promotional tool and a way to engage customers in the company's mission. While logistically more complex, the customer engagement and brand reinforcement are worth the effort.",
       "difficulty_level": 4,

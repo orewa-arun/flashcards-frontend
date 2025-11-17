@@ -163,15 +163,70 @@ class AdaptiveQuizService:
         
         # Normalize text for matching
         import re
+
         def norm(s):
             text = str(s or '').strip().lower()
+            # Strip leading option label like "a.", "b)", "c:", or just "d "
+            text = re.sub(r'^[a-d]\s*[\.\):\-]?\s*', '', text, flags=re.IGNORECASE)
             # Remove common punctuation and markdown formatting
             text = text.replace('.', '').replace(',', '').replace('*', '').replace('_', '')
             text = text.replace('(', '').replace(')', '').replace('[', '').replace(']', '')
             text = text.replace('"', '').replace("'", '').replace(':', '').replace(';', '')
+            text = text.replace('`', '')  # Remove backticks for code formatting
             # Collapse multiple whitespace into single space
             text = re.sub(r'\s+', ' ', text).strip()
             return text
+        
+        def extract_letter_heuristic(value_str):
+            """Try to extract option letter from explanatory text."""
+            # Heuristic 1: "Option C" or "Approach D" pattern
+            label_match = re.search(r'\b(?:option|approach)\s+([a-d])\b', value_str, re.IGNORECASE)
+            if label_match:
+                return label_match.group(1).upper()
+            
+            # Heuristic 2: First letter followed by space/punctuation
+            first_match = re.match(r'^\s*([a-d])[\s:.\)\-\]]+', value_str, re.IGNORECASE)
+            if first_match:
+                return first_match.group(1).upper()
+            
+            return None
+        
+        # Special-case: some legacy questions split a single long answer across
+        # multiple strings in the correct_answer array (e.g., ["B: ...", "such as ...", "shifting ..."]).
+        # First, try to join them and match once against full option texts.
+        if len(raw_list) > 1:
+            joined_value = " ".join(str(item or '') for item in raw_list).strip()
+            if joined_value:
+                match_key = next(
+                    (k for k in option_keys if norm(options[k]) == norm(joined_value)),
+                    None
+                )
+                if match_key:
+                    logger.info(
+                        "✅ Normalized multi-part correct_answer to key '%s' for question: %s",
+                        match_key,
+                        question.get('question_text', '')[:60],
+                    )
+                    return [match_key]
+
+            # If the joined text doesn't exactly match any option, try a softer
+            # heuristic: find an option whose normalized text contains ALL of the
+            # normalized fragments (useful when the correct_answer is a set of
+            # key phrases taken from the full option text).
+            fragment_texts = [norm(item) for item in raw_list if norm(item)]
+            if fragment_texts:
+                candidate_keys = []
+                for k in option_keys:
+                    opt_text = norm(options[k])
+                    if all(fragment in opt_text for fragment in fragment_texts):
+                        candidate_keys.append(k)
+                if len(candidate_keys) == 1:
+                    logger.info(
+                        "✅ Heuristically mapped multi-part correct_answer to key '%s' for question: %s",
+                        candidate_keys[0],
+                        question.get('question_text', '')[:60],
+                    )
+                    return [candidate_keys[0]]
         
         keys = []
         for item in raw_list:
@@ -184,20 +239,36 @@ class AdaptiveQuizService:
                 keys.append(value)
                 continue
             
-            # Case 2: Match by option text
+            # Case 2: Try letter extraction heuristics first
+            extracted_letter = extract_letter_heuristic(value)
+            if extracted_letter and extracted_letter in option_keys:
+                keys.append(extracted_letter)
+                logger.debug(
+                    "✅ Extracted option key '%s' from explanatory text for question: %s",
+                    extracted_letter,
+                    question.get('question_text', '')[:60],
+                )
+                continue
+            
+            # Case 3: Match by option text
             match_key = next(
                 (k for k in option_keys if norm(options[k]) == norm(value)),
                 None
             )
             if match_key:
                 keys.append(match_key)
-                logger.info(f"✅ Normalized answer text to key '{match_key}' for question: {question.get('question_text', '')[:60]}")
+                logger.debug(
+                    "✅ Normalized answer text to key '%s' for question: %s",
+                    match_key,
+                    question.get('question_text', '')[:60],
+                )
             else:
-                # Fallback: keep the raw value (will cause issues, but log it)
-                logger.warning(f"❌ Could not normalize correct_answer '{value[:100]}' to option key for question: {question.get('question_text', '')[:60]}")
-                logger.warning(f"   Available options: {list(options.keys())}")
-                logger.warning(f"   Option texts (normalized): {[norm(options[k]) for k in option_keys]}")
-                logger.warning(f"   Target text (normalized): {norm(value)}")
+                # Fallback: keep the raw value (will cause issues, but only log at debug level)
+                logger.debug(
+                    "⚠️ Could not normalize correct_answer '%s' to option key for question: %s",
+                    value[:100],
+                    question.get('question_text', '')[:60],
+                )
                 keys.append(value)
         
         return keys

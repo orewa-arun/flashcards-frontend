@@ -24,9 +24,7 @@
         "D": "The data contains outliers with extremely high bill amounts and short contract lengths, unduly influencing the regression results. Removing these outliers will likely eliminate the positive coefficient."
       },
       "correct_answer": [
-        "Multicollinearity is suppressing the true effect of 'monthly bill amount'. The partial regression coefficient reflects the effect of bill amount *after* controlling for contract length",
-        "meaning that *for customers with the same contract length*",
-        "those with higher bills are more likely to churn."
+        "B"
       ],
       "explanation": "This question combines the concepts of multicollinearity (addressed implicitly in the 'common mistakes' of the MLR definition flashcard) and partial regression coefficients (DAA_lec_4_2). The key is understanding that the partial regression coefficient represents the effect of a variable *holding all others constant*. Multicollinearity inflates the variance of the coefficients, making interpretation difficult. Option A ignores the multicollinearity. Option C introduces an unrelated issue (omitted variable bias). Option D is a possible but less likely explanation, as multicollinearity is more fundamental here. The correct answer (B) highlights that the positive coefficient, while counterintuitive, reflects the effect of bill amount *after* controlling for contract length. Customers with the *same* contract length are more likely to churn if they have higher bills. The multicollinearity makes the overall interpretation complex, requiring careful consideration of the partial effect.",
       "difficulty_level": 4,
@@ -50,9 +48,7 @@
         "D": "The model will suffer from endogeneity bias. Analyst recommendations are likely influenced by the current stock price, creating a feedback loop that violates the assumptions of MLR and leads to inconsistent coefficient estimates."
       },
       "correct_answer": [
-        "Including both variables will likely lead to multicollinearity issues",
-        "making it difficult to interpret the individual coefficients and potentially inflating their standard errors. However",
-        "the overall predictive power of the model will remain unaffected."
+        "B"
       ],
       "explanation": "This question combines the purpose of Scatmat (DAA_lec_4_4) with multicollinearity (addressed implicitly in the 'common mistakes' of DAA_lec_4_1). The Scatmat reveals a strong relationship between P/E and analyst recommendations. This indicates likely multicollinearity. Option A is incorrect because multicollinearity *does* impact the interpretability of individual coefficients. Option C describes a spurious relationship and confounding, but multicollinearity is the more direct consequence here. Option D introduces endogeneity, which is a more complex issue not directly indicated by the Scatmat alone. The correct answer (B) acknowledges the multicollinearity and its impact on coefficient interpretation and standard errors. The overall predictive power *might* be okay, but individual coefficient analysis becomes problematic. This is a trade-off: potentially better prediction vs. interpretable parameters.",
       "difficulty_level": 4,
@@ -77,8 +73,7 @@
         "D": "Transform the dependent variable (AQI) using a logarithmic transformation. This often stabilizes the variance and reduces heteroscedasticity, while still allowing for a relatively straightforward interpretation of the coefficients (as percentage changes)."
       },
       "correct_answer": [
-        "Transform the dependent variable (AQI) using a logarithmic transformation. This often stabilizes the variance and reduces heteroscedasticity",
-        "while still allowing for a relatively straightforward interpretation of the coefficients (as percentage changes)."
+        "D"
       ],
       "explanation": "This question combines the assumptions of MLR (DAA_lec_4_3) with potential remedies for violating those assumptions. Heteroscedasticity violates the equal variance assumption. Option A is incorrect; Box-Cox transforms address non-normality, not heteroscedasticity directly. Option B suggests removing a variable based on VIF (multicollinearity), which is unrelated to heteroscedasticity. Option C, Weighted Least Squares, is a valid approach but requires careful estimation of the weights and can be less intuitive to interpret. The logarithmic transformation of the dependent variable (D) is often the *most* practical solution. It stabilizes the variance and allows for interpretation of the coefficients as approximate percentage changes, balancing correction with interpretability. The key is recognizing that transforming the *dependent* variable is often more effective and interpretable than transforming the *independent* variables in this scenario.",
       "difficulty_level": 4,
@@ -103,7 +98,7 @@
         "D": "Root cause: Non-linearity in the relationship between advertising spend and sales. Remedy: Use a polynomial regression model or add interaction terms to capture the non-linear relationship."
       },
       "correct_answer": [
-        "Root cause: Omitted variable bias due to unmeasured factors like seasonal trends or competitor actions influencing sales. Remedy: Incorporate lagged values of the dependent variable (previous week's sales) as an additional predictor in the model."
+        "B"
       ],
       "explanation": "This question combines the assumptions of MLR (DAA_lec_4_3) with potential causes and solutions for violating the independence assumption. The key is the *temporal* pattern in the residuals. Option A is incorrect because multicollinearity doesn't directly cause non-independence of *errors*. Option C is incorrect because heteroscedasticity (unequal variance) is a different issue than non-independence. Option D addresses non-linearity, which doesn't explain the temporal pattern in the residuals. The correct answer (B) identifies omitted variable bias as the most likely root cause. The temporal pattern suggests that unmeasured factors (like seasonality or competitor actions) are influencing sales and are correlated over time. Including lagged values of the dependent variable (previous week's sales) captures some of this temporal dependence, addressing the non-independence of errors. This introduces autocorrelation but mitigates the violation of the independence assumption.",
       "difficulty_level": 4,
@@ -128,9 +123,7 @@
         "D": "Combine 'square footage' and 'number of bedrooms' into a single composite variable (e.g., 'living space index') by averaging or weighting them based on their individual contributions to property value. Then, use this index in the MLR model."
       },
       "correct_answer": [
-        "Combine 'square footage' and 'number of bedrooms' into a single composite variable (e.g.",
-        "'living space index') by averaging or weighting them based on their individual contributions to property value. Then",
-        "use this index in the MLR model."
+        "D"
       ],
       "explanation": "This question combines the use of Scatmat (DAA_lec_4_4) for detecting multicollinearity with strategies for addressing it, emphasizing interpretability. Option A, removing a variable, is a common approach but sacrifices information and might not be the *best* solution if both variables are relevant. Option B, creating an interaction term, can address non-linearity or synergistic effects but does not directly solve multicollinearity and can complicate interpretation. Option C, PCA, creates uncorrelated variables but makes the model *less* interpretable because the principal components are abstract combinations of the original variables. The correct answer (D), creating a composite variable, directly addresses multicollinearity *and* maintains interpretability. A 'living space index' is easily understood by clients and captures the combined effect of square footage and bedrooms. This approach balances the need to address multicollinearity with the need for clear, understandable results for a non-technical audience. The trade-off is potential information loss in creating the index, but this is acceptable given the strong multicollinearity and the emphasis on interpretability.",
       "difficulty_level": 4,
@@ -155,9 +148,7 @@
         "D": "Removing 'customer tenure' will eliminate all multicollinearity issues, guaranteeing a more accurate and interpretable model, regardless of the observed non-linear relationship."
       },
       "correct_answer": [
-        "The model will underestimate CLTV for long-tenured customers",
-        "as the linear relationship between 'total purchases' and CLTV will fail to capture the non-linear plateau effect of 'customer tenure",
-        "' violating the ceteris paribus condition."
+        "C"
       ],
       "explanation": "This question synthesizes correlation matrices (Lec 4.5), scatterplot matrices (Lec 4.6), and ceteris paribus (Lec 4.7). The data scientist's action *partially* addresses multicollinearity but overlooks the non-linear relationship revealed by the scatterplot matrix. Option A is incorrect because removing a variable doesn't *always* increase $R^2$, especially if it contains unique information. Option B is plausible because 'total purchases' might capture some of the tenure effect, but the *main* problem is the loss of the non-linear plateau. Option D is wrong because removing one variable doesn't guarantee perfect model accuracy. The correct answer (C) identifies that by removing 'customer tenure', the model loses its ability to account for the plateau in CLTV after five years. The ceteris paribus condition is violated because the effect of 'total purchases' is now being interpreted *without* accounting for the effect of customer tenure, especially at longer tenures.",
       "difficulty_level": 4,
@@ -184,9 +175,7 @@
         "D": "The model will overestimate the impact of website traffic, due to the correlation with promotion frequency, but will still provide a better estimate of conversion than a model with promotion frequency."
       },
       "correct_answer": [
-        "The model will likely underestimate the impact of marketing efforts on online sales conversions",
-        "as the model fails to capture the initial positive effect of 'promotion frequency' on sales",
-        "despite the later diminishing returns."
+        "C"
       ],
       "explanation": "This question synthesizes correlation matrices (Lec 4.5), scatterplot matrices (Lec 4.6), and the coefficient of determination ($R^2$) (Lec 4.8). The analyst's decision to exclude 'promotion frequency' addresses multicollinearity but ignores the insight from the scatterplot matrix that 'promotion frequency' *does* have an initial positive impact on conversions. Option A is incorrect because removing a correlated variable doesn't *always* increase $R^2$. Option B is tempting because of the multicollinearity concern, but the loss of information about the initial positive effect outweighs this benefit. Option D is incorrect because while there might be some overestimation of the isolated impact of website traffic, the larger issue is the overall underestimation of marketing efforts. The correct answer (C) highlights that the model will underestimate marketing effectiveness because it completely misses the initial positive impact of promotions, even though the effect diminishes later. The scatterplot matrix shows that there is *some* predictive power in promotion frequency, even if it is non-linear and has diminishing returns.",
       "difficulty_level": 4,
@@ -213,10 +202,7 @@
         "D": "The $R^2$ of the model will increase, because number of bedrooms does not add substantial predictive power to a house price model given the inclusion of square footage."
       },
       "correct_answer": [
-        "The model will likely underestimate prices for larger homes with fewer bedrooms (e.g.",
-        "modern open-concept designs)",
-        "as the effect of 'square footage' is now being interpreted assuming a 'typical' number of bedrooms for a given square footage",
-        "violating ceteris paribus."
+        "C"
       ],
       "explanation": "This question integrates correlation matrices (Lec 4.5), scatterplot matrices (Lec 4.6), the coefficient of determination ($R^2$) (Lec 4.8), and ceteris paribus (Lec 4.7). Removing 'number of bedrooms' addresses multicollinearity but creates a bias. Option A is too optimistic; multicollinearity is reduced, but bias is introduced. Option B is partially correct; the coefficient for 'square footage' *changes*, but it doesn't necessarily become *more* accurate overall. Option D is not necessarily true; $R^2$ may decrease slightly. The correct answer (C) pinpoints the key problem: by removing 'number of bedrooms,' the model implicitly assumes a 'typical' relationship between square footage and bedrooms. This means that houses with significantly *fewer* bedrooms than average for their size will be systematically undervalued because the model doesn't account for the premium associated with open-concept layouts. The ceteris paribus condition is violated because the effect of square footage is now being interpreted *without* holding number of bedrooms constant; it's being interpreted *assuming* a certain number of bedrooms.",
       "difficulty_level": 4,
@@ -244,9 +230,7 @@
         "D": "The model will overestimate the negative impact of 'average resolution time' on customer satisfaction, as the effect of longer resolution times will now be partially confounded with the number of resolved tickets, violating the ceteris paribus condition."
       },
       "correct_answer": [
-        "The model will likely underestimate customer satisfaction for customers with a moderate number of resolved support tickets",
-        "as it fails to capture the initial positive effect of 'number of support tickets resolved",
-        "' while potentially overestimating satisfaction for those with very high numbers of resolved tickets."
+        "C"
       ],
       "explanation": "This question combines correlation matrices (Lec 4.5), scatterplot matrices (Lec 4.6), the coefficient of determination ($R^2$) (Lec 4.8), and ceteris paribus (Lec 4.7). While removing 'number of support tickets resolved' might reduce multicollinearity, it disregards the information from the scatterplot matrix indicating a non-linear relationship. Option A is incorrect; removing a variable doesn't always increase $R^2$. Option B is partially correct; interpretability *might* improve, but accuracy will likely suffer. Option D is plausible but secondary; while the effect of 'average resolution time' might be slightly distorted, the primary issue is the lost information about the *positive* impact of resolving a moderate number of tickets. The correct answer (C) emphasizes that the model will likely misrepresent customer satisfaction. By excluding 'number of support tickets resolved', the model fails to account for the initial positive effect of ticket resolution, leading to underestimation for customers with a moderate number of resolved tickets. Additionally, it may overestimate satisfaction for those with a very *high* number of resolved tickets because it doesn't capture the plateau/decline in satisfaction at high resolution volumes.",
       "difficulty_level": 4,
@@ -274,8 +258,7 @@
         "D": "The model will overestimate the impact of 'analyst ratings' on stock price, because the effect of company revenue will now be partially confounded with analyst ratings, leading to biased coefficient estimates and a violation of the ceteris paribus condition."
       },
       "correct_answer": [
-        "The model will likely underestimate the stock prices of companies with exceptionally low debt-to-equity ratios and high revenue",
-        "as it loses the ability to capture the synergistic effect of these two factors on stock price."
+        "C"
       ],
       "explanation": "This question synthesizes correlation matrices (Lec 4.5), scatterplot matrices (Lec 4.6), the coefficient of determination ($R^2$) (Lec 4.8), and ceteris paribus (Lec 4.7). Removing 'company revenue' to address multicollinearity is a plausible step, but it overlooks the critical information revealed by the scatterplot matrix: the *synergistic* effect of low debt and high revenue on stock price. Option A is incorrect; while $R^2$ might not change drastically, the *accuracy* for a specific subset of companies will be negatively affected. Option B is too optimistic; while coefficient estimates *might* be more reliable overall, the model will perform poorly for a specific group. Option D is plausible, but secondary. While the coefficient for 'analyst ratings' *might* be inflated, the primary issue is the lost ability to model the combined effect of low debt and high revenue. The correct answer (C) captures the core problem: the model will underestimate the stock prices of companies with this specific combination of factors. The scatterplot showed that these companies are outliers relative to a linear model that doesn't account for this synergy. The analyst made a critical error by assuming a linear model will capture the entire relationship.",
       "difficulty_level": 4,
@@ -303,9 +286,7 @@
         "D": "The model will fail to capture the increased churn rates for both young and old customers, as it only considers linear effects and disregards the U-shaped relationship revealed by the scatterplot matrix, violating the ceteris paribus condition."
       },
       "correct_answer": [
-        "The model will fail to capture the increased churn rates for both young and old customers",
-        "as it only considers linear effects and disregards the U-shaped relationship revealed by the scatterplot matrix",
-        "violating the ceteris paribus condition."
+        "D"
       ],
       "explanation": "This question requires understanding the differences between Scatterplot Matrices and Correlation Matrices (Lec 4.6) and how they inform regression modeling, as well as the meaning of Ceteris Paribus (Lec 4.7). The critical flaw is ignoring the non-linear relationship between 'customer age' and 'churn probability'. Option A is incorrect because it assumes *overestimation* of churn for *all* customers, which isn't necessarily true; the model will likely be more accurate for customers near the average age. Option B is incorrect because while 'customer satisfaction score' is important, it doesn't account for the age effect. Option C is plausible but incomplete; it only focuses on *middle-aged* customers, not the entire U-shape. The correct answer (D) identifies the core problem: by focusing solely on linear relationships, the model will miss the increased churn rates for *both* young and old customers. The ceteris paribus condition is being violated in a subtle way. The coefficients for 'customer satisfaction score' and 'years as customer' are being interpreted as *constant* effects *regardless* of age, which is demonstrably false based on the Scatterplot Matrix. A more sophisticated model would need to account for the non-linearity, perhaps through polynomial terms or interaction effects.",
       "difficulty_level": 4,
@@ -332,9 +313,7 @@
         "D": "The model will fail to capture the spending patterns of all customers, as it relies solely on linear relationships and ignores the cluster of high-spending, low-income customers revealed by the scatterplot matrix."
       },
       "correct_answer": [
-        "The $R^2$ of the model will be significantly lower than it could be",
-        "as the model fails to capture the spending patterns of the high-spending",
-        "low-income customer segment."
+        "A"
       ],
       "explanation": "This question requires synthesizing knowledge of Scatterplot Matrices (Lec 4.6), Correlation Matrices (Lec 4.5), and the Coefficient of Determination ($R^2$) (Lec 4.8). The critical error is dismissing 'income' as a predictor based solely on the correlation matrix, while ignoring the cluster of high-spending, low-income customers revealed by the scatterplot matrix. Option B is incorrect because even though 'website visits' may be a good predictor *overall*, it doesn't explain the behavior of the high-spending, low-income segment. Option C is plausible but not the *most* significant issue. While the model *might* overestimate spending for some low-income customers, the bigger problem is missing the high-spending segment. Option D is too broad; the model likely captures *some* spending patterns, just not the ones associated with this specific cluster. The correct answer (A) pinpoints the key issue: the model's overall fit ($R^2$) will be lower because it cannot explain the spending behavior of the high-spending, low-income group. These customers are outliers relative to the linear model the analyst is building. The analyst is making a mistake by relying too heavily on the *average* relationship revealed by the Correlation Matrix and ignoring the *specific* patterns revealed by the Scatterplot Matrix. These customers deviate significantly from the overall trend.",
       "difficulty_level": 4,
@@ -361,9 +340,7 @@
         "D": "The model will fail to accurately predict recovery time for patients over 65, as it disregards the sharp increase in recovery time for this age group, thus violating the ceteris paribus condition by assuming a constant effect of fitness and BMI regardless of age."
       },
       "correct_answer": [
-        "The model will fail to accurately predict recovery time for patients over 65",
-        "as it disregards the sharp increase in recovery time for this age group",
-        "thus violating the ceteris paribus condition by assuming a constant effect of fitness and BMI regardless of age."
+        "D"
       ],
       "explanation": "This question tests the ability to integrate information from Scatterplot Matrices (Lec 4.6) and Correlation Matrices (Lec 4.5) in the context of multiple linear regression (and implicitly, variable selection). The *critical* flaw is the researcher's decision to ignore the non-linear relationship between 'patient age' and 'recovery time' revealed by the Scatterplot Matrix. Option A is too broad; the model won't necessarily *underestimate* recovery time for *all* patients. Option B is incorrect; 'pre-surgery fitness level' is important, but it doesn't account for the age effect. Option C is plausible, but less significant than the effect on older patients; the *sharp* increase in recovery time after 65 is the dominant feature. The correct answer (D) highlights the key limitation: the model will be inaccurate for patients over 65 because it completely disregards the age effect. By assuming that 'fitness level' and 'BMI' have a *constant* effect on recovery time *regardless* of age, the researcher is violating the ceteris paribus condition (Lec 4.7). A more sophisticated model would need to account for this non-linearity, perhaps through interaction terms or a piecewise regression.",
       "difficulty_level": 4,
@@ -390,10 +367,7 @@
         "D": "The interpretation is entirely invalid, because the coefficient represents the effect of average order value on CLTV but it may be the result of a spurious correlation, and the R-squared value is irrelevant."
       },
       "correct_answer": [
-        "The interpretation is potentially misleading",
-        "as it assumes that other variables in the model are held constant (ceteris paribus)",
-        "and this assumption might not hold in reality",
-        "particularly if there are strong correlations between the predictor variables."
+        "C"
       ],
       "explanation": "This question requires a good understanding of ceteris paribus (Lec 4.7) and R-squared (Lec 4.8), and how they relate to interpreting coefficients in multiple linear regression. Option A is incorrect because a high R-squared doesn't guarantee the *validity* of the ceteris paribus assumption; it only indicates the overall fit of the model. Option B is partially correct in that a low R-squared *weakens* the interpretation, but the ceteris paribus assumption is still the core issue. Option D is too strong; the interpretation isn't *entirely* invalid, but it's incomplete and potentially misleading. The correct answer (C) highlights the crucial limitation: the interpretation assumes ceteris paribus, which may not be true, especially if there is multicollinearity. For example, if 'average order value' is strongly correlated with 'number of purchases,' then increasing 'average order value' might *also* influence 'number of purchases,' violating the assumption that all other variables are held constant. Therefore, the $50 increase in CLTV might be due to a combination of the increase in 'average order value' AND the associated increase in 'number of purchases.'",
       "difficulty_level": 4,
@@ -419,9 +393,7 @@
         "D": "The analyst's conclusion is potentially flawed because the model does not include any interaction variables."
       },
       "correct_answer": [
-        "The analyst's conclusion is potentially flawed because while the model explains 65% of the variation",
-        "it doesn't guarantee that the relationships are causal or that the model captures all relevant factors influencing rental prices",
-        "and the ceteris paribus condition might not hold."
+        "C"
       ],
       "explanation": "This question tests the understanding of R-squared (Lec 4.8) and ceteris paribus (Lec 4.7). The key issue is that a high R-squared doesn't guarantee a *good* model for all purposes, especially *causal* inference. Option A is incorrect because an R-squared of 0.65, while reasonable, doesn't guarantee reliable pricing decisions, especially without considering other factors. Option B is incorrect because there isn't a hard threshold for a 'high enough' R-squared; it depends on the context. Option D is a plausible concern, but not the *most* significant limitation. The correct answer (C) highlights the core limitations: R-squared only measures the proportion of variance explained, not causality. Furthermore, the model might be missing important variables (e.g., proximity to amenities, school district ratings). The *ceteris paribus* condition is also important: the model assumes that the effect of each variable (e.g., square footage) on rental price is constant, regardless of the values of other variables. However, this assumption might not be true. For example, the effect of 'square footage' on rental price might be different in a luxury apartment building than in a low-income housing complex. The conclusion assumes that the coefficients estimated from the data accurately represent the *true* relationship and will remain constant in a *new* situation (pricing new units), which is a leap of faith. The model is missing *context* and *causality*.",
       "difficulty_level": 4,
@@ -447,7 +419,7 @@
         "D": "Approach B is superior because it combines the strengths of both approaches: the Global F-Test confirms overall model significance, and then individual t-tests, alongside careful consideration of Adjusted R-squared, guide the selection of a reduced, more parsimonious model that avoids overfitting. This balanced approach is crucial when dealing with a large number of potential predictors."
       },
       "correct_answer": [
-        "Approach D is superior because it combines the strengths of both approaches: the Global F-Test confirms overall model significance",
+        "D",
         "and then individual t-tests",
         "alongside careful consideration of Adjusted R-squared",
         "guide the selection of a reduced",
@@ -478,9 +450,7 @@
         "D": "The most likely problem is heteroscedasticity, where the variance of the error term is not constant across all levels of the predictors. The best course of action is to transform the response variable (e.g., using a logarithmic transformation) and rebuild the model to address the heteroscedasticity, regardless of the R-squared or Adjusted R-squared values."
       },
       "correct_answer": [
-        "The most likely problem is that some of the added predictors are not truly related to sales",
-        "leading to a small increase in Adjusted R-squared despite a larger increase in R-squared. The best course of action is to perform t-tests on the individual coefficients and remove any predictors with p-values above a predetermined significance level (e.g.",
-        "0.05)."
+        "C"
       ],
       "explanation": "This question synthesizes R-squared and Adjusted R-squared (Lecture 4) with the concept of individual t-tests (Lecture 4) in the context of model building. While multicollinearity (Option A) and heteroscedasticity (Option D) could be present, they are not the *most likely* problem given the described scenario. Option B suggests reverting to the simpler model for out-of-sample prediction, but this doesn't address the underlying issue of why the more complex model is not performing well. The small increase in Adjusted R-squared, despite a larger increase in R-squared, suggests that some of the added predictors are not contributing meaningful information to the model. Performing t-tests (Option C) allows the data scientist to identify and remove these non-significant predictors, leading to a more parsimonious and generalizable model. The key is to use t-tests to identify the root cause of the R-squared inflation.",
       "difficulty_level": 4,
@@ -507,10 +477,7 @@
         "D": "Option B is most appropriate because the non-significance of the t-test only means that 'inflation' doesn't have a significant effect *given the other predictors in the model*. It might still be important for theoretical reasons or as a control variable, and its inclusion doesn't substantially reduce the Adjusted R-squared. Moreover, economic models often rely on established theoretical relationships, even if statistical significance is marginal."
       },
       "correct_answer": [
-        "Option B is most appropriate because the non-significance of the t-test only means that 'inflation' doesn't have a significant effect *given the other predictors in the model*. It might still be important for theoretical reasons or as a control variable",
-        "and its inclusion doesn't substantially reduce the Adjusted R-squared. Moreover",
-        "economic models often rely on established theoretical relationships",
-        "even if statistical significance is marginal."
+        "D"
       ],
       "explanation": "This question synthesizes the Global F-Test (Lecture 4), individual t-tests (Lecture 4), and the interplay between statistical significance and theoretical importance. Option A incorrectly assumes that a non-significant t-test means the predictor has *no* effect. Option C incorrectly assumes that removing a non-significant variable will *always* increase Adjusted R-squared (this is not guaranteed). Option B recognizes that a non-significant t-test result only means the predictor doesn't have a significant effect *given the other predictors in the model*. It highlights the importance of theoretical considerations and the role of variables as controls, even if they are not statistically significant. The edge case here is that the p-value is close to the significance level, suggesting a weak effect; removing 'inflation' *might* slightly improve Adjusted R-squared, but could also bias the model by omitting a theoretically relevant factor. The correct choice is to retain the variable.",
       "difficulty_level": 4,
@@ -536,11 +503,7 @@
         "D": "First, conduct a VIF analysis to address potential multicollinearity. Then, after addressing multicollinearity, reassess the significance of the t-test for \"number of website images\". It is possible that after removing collinear variables, the significance of \"number of website images\" will change."
       },
       "correct_answer": [
-        "First",
-        "conduct a VIF analysis to address potential multicollinearity. Then",
-        "after addressing multicollinearity",
-        "reassess the significance of the t-test for \"number of website images\". It is possible that after removing collinear variables",
-        "the significance of \"number of website images\" will change."
+        "D"
       ],
       "explanation": "This question synthesizes the concepts of Global F-Test (Lecture 4), individual t-tests (Lecture 4), and multicollinearity. Option A is premature, as the non-significance of the t-test for \"number of website images\" might be due to multicollinearity masking its effect. Option C is also not the most appropriate *first* step. While transformations can sometimes help, addressing multicollinearity should be prioritized. Option D correctly identifies the *causal relationship*: multicollinearity can influence the significance of other variables' t-tests. By first addressing multicollinearity, the analyst can obtain a more accurate assessment of the true effect of \"number of website images\". The analyst must address multicollinearity first (VIF analysis) and then reassess the significance of the number of images. Removing a collinear variable may make \"number of website images\" significant, therefore, the analyst shouldn't remove \"number of website images\" immediately.",
       "difficulty_level": 4,
@@ -566,8 +529,7 @@
         "D": "Create an interaction term between 'price' and 'brand reputation' and include this interaction term in the model instead of the individual variables. This may capture the combined effect of price and brand on customer satisfaction, and potentially alleviate the multicollinearity issue."
       },
       "correct_answer": [
-        "Create an interaction term between 'price' and 'brand reputation' and include this interaction term in the model instead of the individual variables. This may capture the combined effect of price and brand on customer satisfaction",
-        "and potentially alleviate the multicollinearity issue."
+        "D"
       ],
       "explanation": "This question requires synthesizing the concepts of t-tests (Lecture 4), multicollinearity, and model building strategies. Option A is incorrect because removing both variables discards potentially important information. Option B is better, but doesn't address the *reason* for the non-significance (multicollinearity). Option C acknowledges the issue but does not attempt to resolve it, which is suboptimal. The core issue is the multicollinearity *between* price and brand reputation. Multicollinearity can obscure the individual effects of these variables. The correct approach (Option D) creates an *interaction term* which is intended to capture the combined effect of the two variables. This addresses the multicollinearity issue by capturing the combined effect of price and brand, rather than trying to separate their individual effects. The interaction term could become significant, even if the individual variables are not, due to the combined effect. This approach acknowledges and addresses the theoretical importance of both variables while accounting for their statistical relationship.",
       "difficulty_level": 4,
@@ -594,9 +556,7 @@
         "D": "Segment the data into groups based on school district rating (even though the new district is unrated, assign it to the closest rated district), build separate regression models for each group, and then calculate a prediction interval for the new condo development using the model from the most similar rated district. Ignore the heteroscedasticity within that selected district's model."
       },
       "correct_answer": [
-        "Apply a variance-stabilizing transformation (e.g.",
-        "Box-Cox) to the response variable (sales price) to reduce heteroscedasticity",
-        "then calculate a prediction interval for individual condo prices using the transformed model. Back-transform the interval to the original scale for interpretation."
+        "B"
       ],
       "explanation": "This question synthesizes the concepts of prediction intervals (Lecture 4) and heteroscedasticity (and its remedies) from a later lecture on regression diagnostics. The problem is multi-faceted: predicting individual values (PI), the presence of heteroscedasticity violates regression assumptions, and the new development in an unrated district adds uncertainty. Option A only focuses on the CI, which is not the core concern. Option C attempts to compensate for heteroscedasticity by arbitrarily increasing the confidence level, which is statistically unsound. Option D introduces bias by forcing the new district into an existing category and ignores heteroscedasticity. The correct answer addresses the root cause (heteroscedasticity) with a proper transformation, allowing for a valid PI calculation. The back-transformation ensures results are interpretable in the original units. This approach balances statistical rigor with practical interpretability.",
       "difficulty_level": 4,
@@ -623,8 +583,7 @@
         "D": "Transform the 'age' and 'pre-existing conditions' variables into a single interaction term to eliminate the multicollinearity, then calculate both the confidence interval for the average blood pressure reduction and the prediction interval for an individual patient using the transformed model."
       },
       "correct_answer": [
-        "Use Ridge Regression (L2 regularization) to mitigate the effects of multicollinearity on the coefficient estimates",
-        "then calculate both the confidence interval for the average blood pressure reduction and the prediction interval for an individual patient using the regularized model."
+        "C"
       ],
       "explanation": "This question synthesizes the concepts of confidence intervals and prediction intervals (Lecture 4) with multicollinearity and regularization techniques (from a later lecture). The key is recognizing that both *average* (CI) and *individual* (PI) predictions are important, and multicollinearity affects both. Option A, removing a variable, might introduce bias and lose valuable information. Option B acknowledges the problem but doesn't address it, leading to unreliable intervals. Option D, creating an interaction term, might not fully resolve the multicollinearity and could create interpretability issues. Ridge Regression (Option C) is the most appropriate because it directly addresses multicollinearity by shrinking the coefficients, leading to more stable and reliable estimates for *both* the CI and PI, thus balancing the need for average and individual predictions.",
       "difficulty_level": 4,
@@ -651,9 +610,7 @@
         "D": "Completely rebuild the regression model using only the most recent month's data, assuming that the autocorrelation is due to a recent shift in customer behavior. This will provide the most up-to-date estimates, but historical patterns will be ignored."
       },
       "correct_answer": [
-        "Address the autocorrelation by incorporating lagged sales as a predictor variable in the regression model. Then",
-        "calculate prediction intervals for the next month",
-        "being cautious about extrapolating too far beyond the historical range of advertising spend. Potentially cap the advertising spend at a reasonable level in the forecast."
+        "B"
       ],
       "explanation": "This question integrates prediction intervals (Lecture 4) with autocorrelation (and its remedies) and extrapolation concerns (from later lectures). The problem is complex: daily forecasting needs PIs, autocorrelation violates regression assumptions, and increased advertising spend introduces extrapolation risk. Option A incorrectly dismisses the impact of autocorrelation on prediction intervals. Option C switches to CIs, which are not suitable for daily inventory management. Option D overreacts by discarding historical data, potentially losing valuable seasonal information. The correct answer addresses the autocorrelation by including lagged sales, improving the validity of the PIs. It also acknowledges and mitigates the extrapolation risk by suggesting caution and potentially capping the advertising spend. This approach balances statistical accuracy with practical forecasting considerations.",
       "difficulty_level": 4,
@@ -681,9 +638,7 @@
         "D": "Ignore the widening of the prediction intervals and focus solely on minimizing the standard error of the regression. This will ensure the most accurate estimates for the average default probability, which is the regulator's primary concern."
       },
       "correct_answer": [
-        "Use a model selection technique like stepwise regression or best subsets regression",
-        "using a metric like AIC or BIC that penalizes model complexity. This will help find a balance between model fit and the number of predictors",
-        "thus optimizing both confidence and prediction intervals. Consider using adjusted R-squared as well."
+        "C"
       ],
       "explanation": "This question synthesizes the concepts of confidence intervals and prediction intervals (Lecture 4) with model selection and complexity penalties (from later lectures). The problem is about balancing competing needs: regulatory reporting (CI) and individual risk assessment (PI), while also managing model complexity. Option A prioritizes R-squared over prediction accuracy, which is inappropriate for individual risk assessment. Option B arbitrarily removes variables, potentially sacrificing predictive power. Option D focuses solely on the average, neglecting individual predictions. The correct answer uses model selection techniques (AIC/BIC) to find the optimal trade-off between model fit and complexity, leading to narrower prediction intervals without sacrificing overall model performance. AIC and BIC are specifically designed to prevent overfitting, which directly addresses the widening of the PIs when more variables are added. Considering adjusted R-squared alongside AIC/BIC provides an additional layer of validation.",
       "difficulty_level": 4,
@@ -713,9 +668,7 @@
         "D": "Remove the fertilizer application variable from the model altogether. This will eliminate both the heteroscedasticity and the non-linearity, resulting in a simpler model with more reliable confidence and prediction intervals, albeit with lower predictive power."
       },
       "correct_answer": [
-        "Apply a variance-stabilizing transformation (e.g.",
-        "Box-Cox) to the response variable (crop yield) to address the heteroscedasticity. Add a quadratic term for fertilizer application to capture the non-linear relationship. Then",
-        "calculate both confidence and prediction intervals using the transformed model."
+        "B"
       ],
       "explanation": "This question synthesizes the concepts of confidence and prediction intervals (Lecture 4) with heteroscedasticity, non-linearity, and transformations (from later lectures). The problem is complex, involving heteroscedasticity, a non-linear relationship, and the need for both CI and PI. Option A ignores both problems, leading to unreliable intervals. Option C addresses the problems by creating separate models, which might lead to overfitting and data fragmentation. Option D oversimplifies by removing a key predictor. The correct answer addresses both the heteroscedasticity and non-linearity directly. The variance-stabilizing transformation corrects for unequal variances, ensuring valid interval calculations. The quadratic term captures the non-linear relationship, improving the model's fit and predictive power. This approach balances statistical rigor with practical modeling considerations, leading to more accurate and reliable yield forecasts for both average and individual farms.",
       "difficulty_level": 4,

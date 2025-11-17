@@ -24,7 +24,7 @@
         "D": "The relationship between 'number of bedrooms' and property price is non-linear and not captured by the linear model."
       },
       "correct_answer": [
-        "Multicollinearity between 'square footage' and 'number of bedrooms' is affecting the coefficient estimates."
+        "C"
       ],
       "explanation": "The trick here is recognizing the impact of multicollinearity. The negative coefficient for 'number of bedrooms' is likely due to its high correlation with 'square footage'. In the presence of multicollinearity, the coefficients can be unstable and have unexpected signs. The model is essentially trying to disentangle the effects of two highly related variables. While overfitting (A) and non-linearity (D) could be issues, the high correlation strongly suggests multicollinearity. Option B is unlikely to be universally true.",
       "difficulty_level": 3,
@@ -48,7 +48,7 @@
         "D": "The model is missing an interaction term between advertising spend and seasonality."
       },
       "correct_answer": [
-        "Multicollinearity between advertising spend and website traffic is attenuating the coefficient estimates."
+        "C"
       ],
       "explanation": "The scenario highlights a temporal dependency: promotional periods influence both advertising spend and website traffic, creating multicollinearity. The trick is recognizing that the *smaller* coefficients are a sign of this. Option C correctly identifies this issue. While non-linearity (A) and heteroscedasticity (B) might be present, multicollinearity is the most direct explanation for the smaller coefficients. Option D, while plausible, is not the *most likely* initial error.",
       "difficulty_level": 3,
@@ -72,7 +72,7 @@
         "D": "The data violates the assumption of normality of errors."
       },
       "correct_answer": [
-        "The model is overfitting the data due to the inclusion of irrelevant variables and noise."
+        "B"
       ],
       "explanation": "The high R-squared on the training data combined with poor performance on new data is a classic sign of overfitting. The trick is connecting high R-squared with poor generalization. Option B is the most likely explanation. While underfitting (A) is the opposite problem, violating independence (C) or normality (D) of errors would typically lead to less dramatic degradation in performance on new datasets. Overfitting is a direct consequence of including too many predictors, especially when some are noise.",
       "difficulty_level": 3,
@@ -96,7 +96,7 @@
         "D": "Fit two separate MLR models, one for recession periods and one for growth periods."
       },
       "correct_answer": [
-        "Include an interaction term between 'interest rates' and a binary variable indicating whether the economy is in a recession or growth phase."
+        "C"
       ],
       "explanation": "The key here is recognizing the potential for interaction effects based on the economic climate. Option C is the most appropriate solution. Creating an interaction term allows the model to estimate different slopes for 'interest rates' depending on whether the economy is in a recession or growth phase. Removing 'GDP growth' (A) might address multicollinearity but doesn't directly address the interaction concern. Logarithmic transformation (B) addresses non-linearity, which isn't the primary issue here. Fitting separate models (D) is an option, but using an interaction term in a single model is often more efficient and allows for direct comparison of the coefficients.",
       "difficulty_level": 3,
@@ -120,8 +120,7 @@
         "D": "The assumptions of MLR are violated, leading to biased coefficient estimates."
       },
       "correct_answer": [
-        "The partial regression coefficient for TV advertising spend represents the change in sales holding other variables constant",
-        "which may not reflect the real-world scenario."
+        "C"
       ],
       "explanation": "The discrepancy arises because the partial slope isolates the effect of TV advertising *while holding other variables constant*. The trick is understanding the 'holding all other variables constant' clause. In reality, increasing TV advertising might influence other factors (e.g., online advertising increases due to a coordinated campaign). Option C accurately explains this. Overfitting (A), non-linearity (B), and violated assumptions (D) are possible, but the core issue is misinterpreting the meaning of the partial slope in a dynamic marketing environment.",
       "difficulty_level": 3,
@@ -145,7 +144,7 @@
         "D": "If the data satisfies the assumption of normality of errors."
       },
       "correct_answer": [
-        "If the product quality and customer service remain constant."
+        "C"
       ],
       "explanation": "The core concept tested is the meaning of the partial slope: the change in the dependent variable for a one-unit change in the independent variable, *holding all other independent variables constant*. The trick is understanding this 'ceteris paribus' condition. Option C explicitly states this condition. A high R-squared (A), lack of multicollinearity (B), and normality of errors (D) are desirable properties of the model, but they don't guarantee the accuracy of the interpretation *unless* the other variables are held constant.",
       "difficulty_level": 3,
@@ -169,7 +168,7 @@
         "D": "The trade-off between the linear approximation of the MLR model and the true non-linear relationship between advertising spend and sales."
       },
       "correct_answer": [
-        "The trade-off between the linear approximation of the MLR model and the true non-linear relationship between advertising spend and sales."
+        "D"
       ],
       "explanation": "The question focuses on the limitations of the linear model when the true relationship is non-linear. The trick is recognizing that a linear model provides a *local* approximation. Option D is the most critical trade-off. The manager is assuming the partial slope holds true even at high levels of advertising spend, ignoring the diminishing returns. While cost-revenue (A), channel selection (B), and short-term vs. long-term (C) are important, the model's *inherent limitation* due to linearity is the primary oversight.",
       "difficulty_level": 3,
@@ -193,7 +192,7 @@
         "D": "The partial slope only represents the average effect of dosage across all patients and may not be accurate for individual patients."
       },
       "correct_answer": [
-        "The partial slope does not reflect the drug's effectiveness beyond the toxicity threshold."
+        "C"
       ],
       "explanation": "The key is the toxicity threshold. The partial slope is a *linear* approximation that doesn't capture the *non-linear* effect of toxicity. The trick is the business requirement contradicting the theory. Option C is the most significant limitation. While cost (A), interactions (B), and individual variation (D) are relevant, the toxicity threshold directly limits the *applicability* of the partial slope for dosage guidance. The model is valid only within the safe dosage range.",
       "difficulty_level": 3,
@@ -217,8 +216,7 @@
         "D": "The fact that the partial slope only represents the average effect of experience across all employees."
       },
       "correct_answer": [
-        "The non-linear relationship between years of experience and employee performance",
-        "particularly the plateau effect."
+        "C"
       ],
       "explanation": "The problem highlights a situation where the assumption of linearity is violated due to the plateau effect. The trick is linking the plateau effect to the violation of linearity. Option C is the most invalidating factor. While multicollinearity (A), individual talent (B), and average effect (D) are relevant, the *non-linearity* directly undermines the validity of using a *linear* partial slope to justify salaries across all experience levels. The linear model doesn't capture the diminishing returns of experience.",
       "difficulty_level": 3,
@@ -242,7 +240,7 @@
         "D": "Violation of the linearity assumption."
       },
       "correct_answer": [
-        "Multicollinearity between store size and number of employees."
+        "C"
       ],
       "explanation": "The scenario describes a situation where a business policy creates multicollinearity. The trick is connecting the policy to the statistical problem. Option C is the most likely issue. The high correlation between store size and number of employees makes it difficult to isolate the individual effects of each variable. While heteroscedasticity (A), non-normality (B), and non-linearity (D) could be present, the explicitly stated correlation points directly to multicollinearity as the primary driver of the prediction failure.",
       "difficulty_level": 3,
@@ -266,7 +264,7 @@
         "D": "Equal Variance (Homoscedasticity); inaccurate hypothesis tests."
       },
       "correct_answer": [
-        "Equal Variance (Homoscedasticity); inaccurate hypothesis tests."
+        "D"
       ],
       "explanation": "The residual plot clearly shows heteroscedasticity (unequal variance). The trick is recognizing the visual pattern and its consequence. Option D is the correct answer. Heteroscedasticity violates the assumption of equal variance, leading to inaccurate standard errors and, consequently, unreliable hypothesis tests. Linearity violation (A) would show a curved pattern in the residual plot. Independence violation (B) would show correlation between residuals. Non-normality (C) is less evident from this specific plot pattern.",
       "difficulty_level": 3,
@@ -290,7 +288,7 @@
         "D": "Equal Variance; transform the dependent variable (house price) using a logarithmic transformation."
       },
       "correct_answer": [
-        "Independence of Errors; include a spatial autocorrelation term in the model."
+        "B"
       ],
       "explanation": "The clustering of residuals by location indicates a violation of the independence of errors assumption. The trick is recognizing the spatial dependency. Option B correctly identifies the violated assumption and a potential solution. Spatial autocorrelation means that errors are correlated based on their proximity in space. A spatial autocorrelation term accounts for this dependency. Linearity violation (A) would show non-linear patterns in the residual plot. Non-normality (C) and unequal variance (D) are less directly related to the spatial clustering of residuals.",
       "difficulty_level": 3,
@@ -314,7 +312,7 @@
         "D": "Equal Variance; use weighted least squares regression."
       },
       "correct_answer": [
-        "Normality of Errors; transform the dependent variable (sales) using a logarithmic transformation."
+        "C"
       ],
       "explanation": "The skewed sales data and non-normal residuals suggest a violation of the normality of errors assumption. The trick is linking skewness to non-normality. Option C is the best approach. A logarithmic transformation can often reduce skewness and improve the normality of the residuals. While adding a quadratic term (A) addresses non-linearity, it doesn't directly fix the non-normality. Time series regression (B) addresses dependence in time series data. Weighted least squares (D) addresses heteroscedasticity.",
       "difficulty_level": 3,
@@ -338,7 +336,7 @@
         "D": "The high correlation between advertising spend and competitor price."
       },
       "correct_answer": [
-        "The high correlation between advertising spend and competitor price."
+        "D"
       ],
       "explanation": "The high correlation between advertising spend and competitor price suggests multicollinearity. The trick is identifying the *most critical* issue. Option D is the most critical issue. Multicollinearity can lead to unstable coefficient estimates and make it difficult to determine the individual effects of advertising spend and competitor price. The weak relationship between advertising spend and sales (A) and the strong negative relationship between price and sales (B) are informative, but they are less critical than addressing the multicollinearity. Non-linear relationships (C) are also a concern, but multicollinearity often takes precedence in initial model building.",
       "difficulty_level": 3,
@@ -362,7 +360,7 @@
         "D": "It suggests a coding error; review the data for inconsistencies."
       },
       "correct_answer": [
-        "It suggests a non-linear relationship; transform either square footage or the number of bathrooms to improve linearity."
+        "B"
       ],
       "explanation": "The non-linear U-shaped pattern in the Scatmat indicates a non-linear relationship between square footage and the number of bathrooms. The trick is interpreting the shape of the relationship in the Scatmat. Option B is the most appropriate action. Transforming one or both variables can help linearize the relationship. Multicollinearity (A) is possible, but the U-shaped pattern suggests a more fundamental issue of non-linearity. Heteroscedasticity (C) is not directly indicated by this pattern. A coding error (D) is possible, but the pattern is too structured to be random noise.",
       "difficulty_level": 3,
@@ -386,8 +384,7 @@
         "D": "The analyst has incorrectly specified the MLR model."
       },
       "correct_answer": [
-        "The Scatmat is misleading because it only shows marginal relationships",
-        "not partial relationships."
+        "A"
       ],
       "explanation": "The discrepancy arises because the Scatmat shows marginal relationships, while MLR models *partial* relationships. The trick is understanding the difference between marginal and partial effects. Option A is the most likely reason. The Scatmat doesn't account for the effects of other variables. The strong marginal relationship between square footage and price might be diminished when other variables are included in the model. Overfitting (B), violated assumptions (C), and model misspecification (D) are possible, but the core issue is the difference in what the Scatmat and MLR model are showing.",
       "difficulty_level": 3,
@@ -412,7 +409,7 @@
         "D": "An MLR model using these marketing channels as predictors will have a high R-squared value."
       },
       "correct_answer": [
-        "There is a positive association between spending on each marketing channel and sales."
+        "C"
       ],
       "explanation": "The Scatmat only shows associations, not causal relationships or relative effectiveness. The trick is not over-interpreting the Scatmat. Option C is the most justified conclusion. The strong positive correlations indicate a positive association between spending on each channel and sales. Claiming a significant increase (A), equal effectiveness (B), or a high R-squared (D) goes beyond what can be inferred solely from the Scatmat. The Scatmat doesn't account for other factors or the relationships between the marketing channels themselves (e.g., multicollinearity).",
       "difficulty_level": 3,
@@ -437,10 +434,7 @@
         "D": "The high correlation is not a problem because correlation matrices only show linear relationships, and multicollinearity only affects non-linear relationships. The model is correctly specified and no action is necessary."
       },
       "correct_answer": [
-        "The high correlation suggests potential multicollinearity. Variance Inflation Factors (VIFs) should be calculated to quantify the severity. If VIFs are high",
-        "consider centering the variables",
-        "collecting more data",
-        "or combining the variables into a single composite variable."
+        "C"
       ],
       "explanation": "The question focuses on diagnosing and addressing multicollinearity. The trick is that a high correlation in the correlation matrix is a *warning sign*, not a definitive diagnosis. Option A is incorrect because it suggests removing a variable without further investigation, which might discard valuable information. Option B is incorrect because multicollinearity is related to linear dependencies, not necessarily non-linear relationships with the response. Option D is incorrect because it incorrectly states that multicollinearity only affects non-linear relationships. Option C correctly identifies the next steps: calculating VIFs and considering appropriate remedies like centering, more data, or combining variables.",
       "difficulty_level": 3,
@@ -465,8 +459,7 @@
         "D": "The model is overfitting the data. Including a variable with a weak correlation is always a bad practice and leads to poor generalization."
       },
       "correct_answer": [
-        "The correlation matrix only shows bivariate relationships. Customer service call frequency might have a significant *partial* effect on churn when considered in conjunction with other variables",
-        "even if its direct correlation is weak."
+        "C"
       ],
       "explanation": "The question highlights the limitation of correlation matrices in capturing multivariate relationships. The trick is that a weak bivariate correlation doesn't mean a variable is useless in a multivariate model. Option A is wrong because correlation matrices *are* useful, just not in isolation. Option B is plausible but not the primary reason; while non-linear relationships are a concern, the more important factor is the partial effect. Option D is incorrect because including a weakly correlated variable is not *always* bad; it can improve the model if it contributes additional information when combined with other predictors. Option C correctly identifies the issue: customer service calls have a 'partial effect' only evident when combined with tenure.",
       "difficulty_level": 3,
@@ -491,8 +484,7 @@
         "D": "The error is not considering the sample size. With a large enough sample, even weak correlations can be statistically significant. The data scientist should perform hypothesis tests to determine if the correlations are statistically significant."
       },
       "correct_answer": [
-        "The error is focusing solely on bivariate correlations. The data scientist should explore interaction effects between patient characteristics. For example",
-        "the effect of high blood pressure on length of stay might be different for elderly patients compared to younger patients."
+        "C"
       ],
       "explanation": "This question focuses on the importance of considering interaction effects. The trick is the phrase \"relatively weak correlations between these characteristics and the length of stay.\" Option A is incorrect because even if there are non-linear relationships, interaction effects could still be present. Option B is incorrect because the focus should be on the relationship with the outcome, not just between predictors. Option D is partially correct; statistical significance is important, but doesn't address the *lack* of strong individual correlations. Option C correctly identifies that the effect of one predictor might depend on the value of another (interaction), which is missed by the correlation matrix.",
       "difficulty_level": 3,
@@ -517,7 +509,7 @@
         "D": "The correlation matrix is influenced by outliers. The cluster of low-spending customers is pulling down the overall correlation, making it appear weaker than it actually is."
       },
       "correct_answer": [
-        "The correlation matrix only captures linear relationships. The cluster likely represents a subgroup of customers with a different spending behavior that deviates from the overall linear trend."
+        "C"
       ],
       "explanation": "This question directly compares the correlation matrix and scatterplot matrix. The trick is the phrase \"a distinct cluster of customers who view a large number of products but have very low total spending.\" Option A is incorrect because the scatterplot provides valuable visual information. Option B, while technically true that Pearson correlation assumes normality, is not the *primary* reason for the discrepancy in this scenario. Option D is plausible (outliers can influence correlation), but Option C is a better explanation because it focuses on the linear nature of the correlation matrix and the existence of a subgroup with different behavior, evident in the scatterplot. Therefore, Option C is the correct answer.",
       "difficulty_level": 3,
@@ -542,8 +534,7 @@
         "D": "The trade-off is between using a correlation matrix for initial screening and relying solely on the scatterplot matrix for model selection. The scatterplot is subjective, and the correlation matrix provides objective numbers."
       },
       "correct_answer": [
-        "The trade-off is between model accuracy on the training data and generalization to new data. A non-linear model might fit the training data better",
-        "but it could also overfit and perform poorly on new data."
+        "B"
       ],
       "explanation": "This question tests the understanding of overfitting and generalization. The trick is the phrase \"stock market returns tend to increase with inflation up to a certain point, after which they start to decline.\" This describes a non-linear relationship that a linear model will miss. Option A is a general trade-off but doesn't address the specific problem of a non-linear relationship. Option C is less relevant to the core issue of model accuracy vs. generalization. Option D is incorrect because the scatterplot provides *valuable* information, even if it is visual. Option B correctly identifies the core trade-off: a more complex model might fit the *training* data better, but it risks overfitting and performing poorly on *new* data.",
       "difficulty_level": 3,
@@ -569,7 +560,7 @@
         "D": "The negative coefficient indicates that TV advertising is ineffective. The analyst should advise the company to discontinue TV advertising and allocate the budget to other channels."
       },
       "correct_answer": [
-        "The negative coefficient indicates multicollinearity. The analyst should examine the correlations between advertising spend across different channels and consider removing the TV advertising variable from the model."
+        "C"
       ],
       "explanation": "This question focuses on interpreting coefficients in the context of multicollinearity and 'ceteris paribus'. The trick is the phrase \"This contradicts the analyst's prior belief and general marketing theory, which suggests a positive relationship between advertising and sales.\" Option A is a plausible initial check, but less likely given the problem states 'Assuming the model is correctly specified and there are no data errors'. Option B is plausible in some cases, but the *negative* coefficient is a strong indicator of multicollinearity. Option D is a premature conclusion. Option C correctly identifies multicollinearity as the likely cause and suggests appropriate actions. The negative coefficient arises because TV ad spend is highly correlated with another ad channel, and its effect is being 'suppressed'.",
       "difficulty_level": 3,
@@ -594,7 +585,7 @@
         "D": "The adjusted $R^2$ decreased because the increase in $R^2$ was not large enough to offset the penalty for adding more variables. The new variables do not add enough explanatory power to justify their inclusion in the model."
       },
       "correct_answer": [
-        "The adjusted $R^2$ decreased because the increase in $R^2$ was not large enough to offset the penalty for adding more variables. The new variables do not add enough explanatory power to justify their inclusion in the model."
+        "D"
       ],
       "explanation": "This question focuses on the difference between $R^2$ and adjusted $R^2$. The trick is understanding why adjusted R-squared *decreases* even when R-squared increases. Option A is the most direct answer, but B is a close second. However, the question doesn't mention inflated standard errors, so multicollinearity isn't directly supported. Option C is incorrect because the adjusted R-squared adjusts for sample size. Option D accurately explains the adjusted R-squared's purpose: it penalizes the model for adding variables that don't significantly improve the fit. The improvement in $R^2$ was smaller than the penalty for adding more predictors.",
       "difficulty_level": 3,
@@ -619,7 +610,7 @@
         "D": "The high $R^2$ is irrelevant to forecasting accuracy. The analyst should focus on improving the model's residuals by transforming the dependent variable or adding interaction terms."
       },
       "correct_answer": [
-        "The high $R^2$ indicates overfitting. The analyst should simplify the model by removing some of the predictor variables and using techniques like cross-validation to evaluate the model's performance on unseen data."
+        "A"
       ],
       "explanation": "This question tests understanding of overfitting and its impact on forecasting. The trick is the phrase \"the predicted sales are significantly higher than the actual sales\" which indicates the model is not generalizing well to new data. Option A correctly identifies overfitting as the likely cause and suggests appropriate remedies: simplifying the model and using cross-validation. Option B is plausible (spurious correlations), but overfitting is the more direct explanation for poor forecasting. Option C (regularization) is a valid technique, but again, overfitting is the primary issue. Option D is incorrect; while residual analysis is important, the primary problem is overfitting, not just poor residuals. A model with high R-squared on the training data may not perform well on new data due to overfitting, especially if it is overly complex.",
       "difficulty_level": 3,
@@ -645,9 +636,7 @@
         "D": "The higher $R^2$ of Model C ensures that all predictors are statistically significant at the 0.05 level."
       },
       "correct_answer": [
-        "The increase in $R^2$ from Model B to Model C might not be statistically significant",
-        "indicating diminishing returns from the additional predictors",
-        "and violating the business requirement."
+        "B"
       ],
       "explanation": "The question tests understanding of $R^2$'s limitations and the importance of considering business constraints. The trick is that simply choosing the highest $R^2$ ignores the trade-off between model complexity and predictive power, especially given the computational constraints. While Model C has the highest $R^2$, the increase from Model B might be marginal and not justify the added complexity. Therefore, the most crucial trade-off is between predictive accuracy and computational efficiency. Option A is incorrect because a higher $R^2$ on training data doesn't guarantee a lower MSE on unseen data (overfitting). Option C is wrong because adding predictors can *increase* multicollinearity. Option D is wrong; a high R-squared does not guarantee that all predictors are significant.",
       "difficulty_level": 3,
@@ -672,8 +661,7 @@
         "D": "The change in sign is expected because the model is now capturing non-linear relationships between the predictors and the response variable."
       },
       "correct_answer": [
-        "The change in sign suggests potential multicollinearity between Social Media and Radio advertising",
-        "making the individual coefficients unstable and $R^2$ a poor indicator of model quality. This creates a new problem: unreliable coefficient interpretation."
+        "B"
       ],
       "explanation": "This question tests the understanding of multicollinearity and the limitations of $R^2$. The trick is the coefficient sign change, indicating a potential multicollinearity issue masked by the increased $R^2$. While $R^2$ increased, the model's interpretability is compromised. Option A is incorrect because a sign change doesn't indicate perfect calibration. Option C is wrong; it makes a direct channel effectiveness comparison based solely on the increased $R^2$, ignoring the multicollinearity issue. Option D is incorrect; while non-linear relationships can exist, multicollinearity is a more likely explanation for a coefficient sign change.",
       "difficulty_level": 3,
@@ -698,8 +686,7 @@
         "D": "The lower adjusted $R^2$ implies that Model Y is less sensitive to outliers in the data."
       },
       "correct_answer": [
-        "The lower adjusted $R^2$ suggests that the additional predictors in Model Y do not significantly improve the model's predictive power and might lead to overfitting",
-        "making model explainability the critical trade-off."
+        "B"
       ],
       "explanation": "The question tests the understanding of adjusted $R^2$ and its role in preventing overfitting, along with the business requirement of model explainability. The trick is the conflict between a higher $R^2$ and a lower adjusted $R^2$. The lower adjusted $R^2$ signals that the extra predictors in Model Y are not adding much value and could lead to overfitting, which also hurts model explainability. Option A is incorrect because adjusted $R^2$ is a better indicator of generalization performance than MAE on the training data alone. Option C is incorrect; adjusted $R^2$ is crucial for comparing models with different numbers of predictors. Option D is wrong; adjusted R-squared does not directly indicate sensitivity to outliers.",
       "difficulty_level": 3,
@@ -724,9 +711,7 @@
         "D": "The adjusted $R^2$ is not relevant because the company's objective is to maximize predictive accuracy on *training* data, not future data."
       },
       "correct_answer": [
-        "The slightly higher adjusted $R^2$ of Model P might be offset by the potential for Model Q to capture more complex relationships and generalize better to future data",
-        "despite the penalty for complexity",
-        "especially considering the objective."
+        "B"
       ],
       "explanation": "This question tests the understanding of adjusted $R^2$ and its limitations, especially when the goal is to maximize prediction on *future* data. The trick lies in the business objective conflicting with the typical interpretation of adjusted R-squared. While Model P has a slightly higher adjusted $R^2$, the question highlights that model Q has the potential to perform better on future data, therefore the trade off is complexity vs better capture of relationships within the data. Option A is incorrect, it is not guaranteed to have lower bias. Option C is incorrect because it is less likely to have multicollinearity, however that is not the focus of the question. Option D is incorrect, the objective is to maximize predictive accuracy on future data.",
       "difficulty_level": 3,
@@ -751,8 +736,7 @@
         "D": "The team should lower the significance level to 0.06 to make the Global F-Test significant and validate their approach."
       },
       "correct_answer": [
-        "The team is potentially drawing incorrect conclusions because the non-significant Global F-Test suggests that the model as a whole does not have significant explanatory power",
-        "making the individual t-tests unreliable. Increasing spending on online advertising might not lead to the predicted sales increase."
+        "C"
       ],
       "explanation": "This question tests the understanding of the Global F-Test and its importance in validating individual t-tests. The trick is the non-significant Global F-Test combined with a significant individual t-test. Since the Global F-Test is not significant, the entire model lacks explanatory power, meaning that the significant t-test on the online is not reliable. Option A is incorrect because it ignores the primary role of the global F test. Option B is wrong because focusing on individual coefficients makes sense only if the global F test is significant. Option D is incorrect, lowering the significance level would be poor methodology.",
       "difficulty_level": 3,
@@ -777,10 +761,7 @@
         "D": "The researcher should use a one-tailed t-test instead of a two-tailed t-test to increase the chances of finding a significant effect for SES."
       },
       "correct_answer": [
-        "The researcher is overlooking the possibility that SES might be correlated with other predictors in the model (e.g.",
-        "attendance",
-        "study hours)",
-        "and its effect is already captured by those variables. Removing SES could lead to omitted variable bias in the remaining coefficients."
+        "C"
       ],
       "explanation": "This question tests the understanding of individual t-tests and the potential for multicollinearity or omitted variable bias. The trick is the non-significant t-test for SES, which doesn't necessarily mean it has *no* effect. It means it has no significant effect *given the other predictors*. If SES is correlated with other predictors, its effect might be masked, and removing it could bias the remaining coefficients. Option A is incorrect because a non-significant t-test doesn't prove no effect. Option B is incorrect, increasing the sample size won't solve the issue of SES not being significant *given other predictors*. Option D is incorrect, using a one tailed test would be inappropriate.",
       "difficulty_level": 3,
@@ -805,8 +786,7 @@
         "D": "The company should perform a variable selection technique (e.g., stepwise regression) to automatically determine whether 'age of the house' should be included."
       },
       "correct_answer": [
-        "Keeping 'age of the house' is justified if it is theoretically important or serves as a control variable",
-        "even if not statistically significant. Removing it could lead to omitted variable bias or make the model less useful for practical decision-making."
+        "B"
       ],
       "explanation": "This question tests the understanding of the t-test and the importance of theoretical considerations in model building. The trick is the CEO's insistence on keeping a non-significant variable. Even if 'age of the house' isn't statistically significant *given the other variables*, it might be theoretically important or act as a control variable. Removing it could lead to omitted variable bias or make the model less realistic from a business perspective. Option A is wrong, the variable should be kept. Option C is incorrect because it is not perfectly multicollinear. Option D is incorrect, while variable selection techniques are useful, the CEO's decision justifies keeping the variable regardless of model selection.",
       "difficulty_level": 3,

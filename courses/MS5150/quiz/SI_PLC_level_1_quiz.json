@@ -24,7 +24,7 @@
         "D": "The process of designing and manufacturing a product."
       },
       "correct_answer": [
-        "The stages a product goes through from introduction to exit."
+        "B"
       ],
       "explanation": "B is correct because the PLC represents the stages a product goes through, from introduction to the market until its eventual exit. The other options describe related but different concepts. The PLC focuses on the product's journey in the market.",
       "difficulty_level": 1,
@@ -48,7 +48,7 @@
         "D": "Customer reviews and website traffic."
       },
       "correct_answer": [
-        "Sales and profit."
+        "B"
       ],
       "explanation": "B is correct because the PLC tracks the course of a product's sales and profit over its lifetime.  The other options are important metrics but not the primary focus of the PLC. The PLC is about financial performance.",
       "difficulty_level": 1,
@@ -72,7 +72,7 @@
         "D": "That the PLC can accurately predict competitor actions."
       },
       "correct_answer": [
-        "That all products follow the same PLC curve with predictable stage lengths."
+        "A"
       ],
       "explanation": "A is correct because it is a common mistake to assume all products have the same PLC curve and stage lengths. Product life cycles vary. The other options aren't typically misconceptions related to PLC.",
       "difficulty_level": 1,
@@ -96,7 +96,7 @@
         "D": "To eliminate the need for product innovation."
       },
       "correct_answer": [
-        "To guide marketing and strategic decisions based on a product's current stage."
+        "B"
       ],
       "explanation": "B is correct. Understanding the PLC helps in making informed marketing and strategic decisions. The other options are incorrect as the PLC does not guarantee success or eliminate innovation.",
       "difficulty_level": 1,
@@ -120,7 +120,7 @@
         "D": "The period of highest profitability for a product."
       },
       "correct_answer": [
-        "The initial launch of a product into the market."
+        "C"
       ],
       "explanation": "C is correct because the introduction stage is when a product is first launched. The other options refer to different stages or aspects of product management. Introduction is the first stage the product is available to consumers.",
       "difficulty_level": 1,
@@ -144,11 +144,7 @@
         "D": "Product Development, Growth, Introduction, Maturity, Decline"
       },
       "correct_answer": [
-        "Product Development",
-        "Introduction",
-        "Growth",
-        "Maturity",
-        "Decline"
+        "B"
       ],
       "explanation": "B is correct because it lists the stages in the standard order of the Product Life Cycle. The PLC begins with product development and ends with decline. The other options present incorrect sequences.",
       "difficulty_level": 1,
@@ -172,7 +168,7 @@
         "D": "Decline"
       },
       "correct_answer": [
-        "Maturity"
+        "C"
       ],
       "explanation": "C is correct because in the maturity stage, the focus shifts to maintaining market share against competitors. Growth focuses on increasing market share. Maturity is about defending your position.",
       "difficulty_level": 1,
@@ -196,7 +192,7 @@
         "D": "Reducing marketing expenses."
       },
       "correct_answer": [
-        "Investing resources in research and development."
+        "C"
       ],
       "explanation": "C is correct because the product development stage involves research and development activities. Options A and B relate to the introduction and growth stages. Development happens before launch.",
       "difficulty_level": 1,
@@ -220,7 +216,7 @@
         "D": "Maturity"
       },
       "correct_answer": [
-        "Growth"
+        "C"
       ],
       "explanation": "C is correct because the growth stage is marked by rapid sales increases as the product gains acceptance. Introduction has slow sales. Growth is when demand takes off.",
       "difficulty_level": 1,
@@ -244,7 +240,7 @@
         "D": "Essential for maintaining market share."
       },
       "correct_answer": [
-        "A waste of resources."
+        "C"
       ],
       "explanation": "C is correct because investing heavily in marketing during the decline stage is often a waste of resources. Sales are falling, and the product's end is near. It's better to invest elsewhere.",
       "difficulty_level": 1,
@@ -268,7 +264,7 @@
         "D": "Decline"
       },
       "correct_answer": [
-        "Maturity"
+        "C"
       ],
       "explanation": "C is correct. Profits typically peak in the maturity stage as sales are high and marketing costs are relatively stable. Growth sees increasing profits, but maturity is the peak.",
       "difficulty_level": 1,
@@ -292,7 +288,7 @@
         "D": "Low sales and nonexistent profits"
       },
       "correct_answer": [
-        "Low sales and nonexistent profits"
+        "D"
       ],
       "explanation": "D is correct because the introduction stage is characterized by slow sales growth and nonexistent profits due to high initial costs. It takes time to gain traction and recoup investments.",
       "difficulty_level": 1,
@@ -316,7 +312,7 @@
         "D": "Profits fluctuate randomly."
       },
       "correct_answer": [
-        "Profits also decline."
+        "C"
       ],
       "explanation": "C is correct because profits typically decline as sales fall during the decline stage.  Lower sales volume directly impacts profitability. Decline means less of everything.",
       "difficulty_level": 1,
@@ -340,7 +336,7 @@
         "D": "Sales fluctuate unpredictably."
       },
       "correct_answer": [
-        "Sales grow rapidly."
+        "C"
       ],
       "explanation": "C is correct because the growth stage is defined by rapid sales increases. The product is gaining popularity and market share. This is the 'hockey stick' phase.",
       "difficulty_level": 1,
@@ -364,7 +360,7 @@
         "D": "Reducing prices drastically."
       },
       "correct_answer": [
-        "Focusing solely on sales volume without considering profitability."
+        "B"
       ],
       "explanation": "B is correct. A common mistake is focusing on high sales volume while overlooking declining profits due to increased competition and costs in the maturity stage. Profit margins matter.",
       "difficulty_level": 1,
@@ -388,7 +384,7 @@
         "D": "Stable sales and consistent profits"
       },
       "correct_answer": [
-        "Slow sales growth and nonexistent profits"
+        "B"
       ],
       "explanation": "B is the correct answer because the introduction stage is characterized by slow sales growth and nonexistent profits due to high initial costs. Profitability takes time.",
       "difficulty_level": 1,
@@ -414,7 +410,7 @@
         "D": "To compete with established products"
       },
       "correct_answer": [
-        "To create product awareness and drive initial adoption"
+        "B"
       ],
       "explanation": "B is the correct answer because high promotion expenses are needed to create product awareness and encourage consumers to try the new product. Awareness is key for initial sales.",
       "difficulty_level": 1,
@@ -440,7 +436,7 @@
         "D": "Ignoring customer feedback"
       },
       "correct_answer": [
-        "Underestimating the required promotional expenses"
+        "B"
       ],
       "explanation": "B is correct because underestimating promotional expenses can lead to insufficient market awareness and hinder product adoption. You need to spend to get noticed.",
       "difficulty_level": 1,
@@ -466,7 +462,7 @@
         "D": "Eliminating competition"
       },
       "correct_answer": [
-        "Building brand awareness"
+        "B"
       ],
       "explanation": "B is the correct answer. Building brand awareness is crucial during the introduction stage to generate initial interest and adoption. Profits come later.",
       "difficulty_level": 1,
@@ -492,7 +488,7 @@
         "D": "Declining sales"
       },
       "correct_answer": [
-        "Slow sales growth"
+        "B"
       ],
       "explanation": "B is the correct answer because the introduction stage is marked by slow sales growth as the product is new and consumers are still learning about it. Adoption takes time.",
       "difficulty_level": 1,
@@ -518,7 +514,7 @@
         "D": "Choosing between exporting and domestic sales."
       },
       "correct_answer": [
-        "Prioritizing market share expansion versus maximizing current profit."
+        "B"
       ],
       "explanation": "B is correct because during the Growth stage, companies must often sacrifice short-term profits to invest in marketing and expansion to gain market share. Option A is incorrect because cost reduction and product quality are important in all PLC stages, not just growth. The trade-off is about investment versus immediate returns.",
       "difficulty_level": 1,
@@ -543,7 +539,7 @@
         "D": "Cost minimization."
       },
       "correct_answer": [
-        "Rapid market share expansion."
+        "C"
       ],
       "explanation": "C is correct because expanding market share typically requires investments in marketing, distribution, and product development. Option B, maximizing current profit, is often traded off against market share expansion during the Growth stage. Market share expansion requires investment.",
       "difficulty_level": 1,
@@ -569,7 +565,7 @@
         "D": "Faster product development cycles."
       },
       "correct_answer": [
-        "Competitors gaining market share."
+        "B"
       ],
       "explanation": "B is correct because prioritizing short-term profits can lead to underinvestment in areas that drive growth, allowing competitors to capture market share. Option A is incorrect because focusing on profits without investing in growth may not result in increased customer loyalty. Growth stage is about market share.",
       "difficulty_level": 1,
@@ -594,7 +590,7 @@
         "D": "Focusing only on existing customer needs."
       },
       "correct_answer": [
-        "Accepting lower short-term profits."
+        "B"
       ],
       "explanation": "B is correct because prioritizing market share often means accepting lower short-term profits due to increased investments in marketing, distribution, and product development. Option A is incorrect because market share expansion typically *requires* investment. Growth prioritizes market share over immediate profit.",
       "difficulty_level": 1,
@@ -620,7 +616,7 @@
         "D": "Eliminating advertising altogether."
       },
       "correct_answer": [
-        "Significantly increasing the advertising budget."
+        "B"
       ],
       "explanation": "B is correct because increasing the advertising budget is a direct investment in expanding market share by reaching more potential customers. Option A, maintaining the budget, reflects a focus on current profit, not expansion. Market share requires investment.",
       "difficulty_level": 1,
@@ -646,7 +642,7 @@
         "D": "Reducing the advertising budget."
       },
       "correct_answer": [
-        "Targeting new users or segments."
+        "C"
       ],
       "explanation": "C is correct because modifying the market involves finding new customer groups for the existing product. Option A is product modification, and options B and D are related to the marketing mix. Market modification focuses on *who* is buying.",
       "difficulty_level": 1,
@@ -670,7 +666,7 @@
         "D": "Increasing advertising spending."
       },
       "correct_answer": [
-        "Improving the product's packaging."
+        "B"
       ],
       "explanation": "B is correct because improving packaging is a way to enhance the product itself. Option A relates to the marketing mix, and option C is about market reach. Product modification changes the *what*.",
       "difficulty_level": 1,
@@ -694,7 +690,7 @@
         "D": "Cost minimization."
       },
       "correct_answer": [
-        "Marketing mix modification."
+        "C"
       ],
       "explanation": "C is correct because the marketing mix encompasses the elements of price, promotion, and service. Options A and B involve changes to the market or the product itself, respectively. Marketing mix is the *how*.",
       "difficulty_level": 1,
@@ -718,7 +714,7 @@
         "D": "Dropping the product."
       },
       "correct_answer": [
-        "Market modification."
+        "B"
       ],
       "explanation": "B is correct because targeting a new demographic (younger audience) is a direct example of modifying the market. Options C and D are strategies for the decline stage, and A involves changing the product itself. Market modification is finding new customers.",
       "difficulty_level": 1,
@@ -742,7 +738,7 @@
         "D": "Harvesting strategy."
       },
       "correct_answer": [
-        "Product modification."
+        "C"
       ],
       "explanation": "C is correct because adding a new feature directly changes the product itself. Market modification involves targeting new customer segments, and marketing mix modification involves changing pricing or promotion. Product modification focuses on *the product itself*.",
       "difficulty_level": 1,
@@ -766,7 +762,7 @@
         "D": "Product development."
       },
       "correct_answer": [
-        "Harvesting."
+        "B"
       ],
       "explanation": "B is correct because harvesting involves minimizing expenses to extract as much profit as possible from the declining product. Option A involves attempting to revitalize the product, while options C and D are growth strategies. Harvesting is about *extracting remaining value*.",
       "difficulty_level": 1,
@@ -790,7 +786,7 @@
         "D": "Diversification."
       },
       "correct_answer": [
-        "Maintaining."
+        "B"
       ],
       "explanation": "B is correct because maintaining involves efforts to keep the product relevant, possibly through repositioning or marketing changes. Options A and C represent different approaches to managing a declining product. Maintaining tries to *revitalize*.",
       "difficulty_level": 1,
@@ -814,7 +810,7 @@
         "D": "Increasing marketing spend."
       },
       "correct_answer": [
-        "Dropping the product entirely."
+        "C"
       ],
       "explanation": "C is correct because dropping the product means ceasing all production and sales. Option A reduces activity, while option B maintains it. Option D is usually not effective during decline. Dropping is the *most decisive*.",
       "difficulty_level": 1,
@@ -838,7 +834,7 @@
         "D": "Modifying the product."
       },
       "correct_answer": [
-        "Dropping the product."
+        "C"
       ],
       "explanation": "C is correct because discontinuing a product is the definition of dropping it. Maintaining involves trying to keep it alive, and harvesting involves extracting remaining profit. Dropping means *discontinuing*.",
       "difficulty_level": 1,
@@ -862,7 +858,7 @@
         "D": "Market Development."
       },
       "correct_answer": [
-        "Harvesting the product."
+        "B"
       ],
       "explanation": "B is correct because reducing costs and selling off inventory are key aspects of a harvesting strategy. Maintaining involves trying to keep the product alive. Product and Market development are growth strategies. Harvesting is about *reducing investment*.",
       "difficulty_level": 1,
@@ -886,8 +882,7 @@
         "D": "Customer satisfaction and brand loyalty."
       },
       "correct_answer": [
-        "New and existing products",
-        "new and existing markets."
+        "B"
       ],
       "explanation": "B is correct because the Ansoff Matrix is based on the dimensions of product novelty and market novelty. The other options are important business considerations but not the core of the Ansoff Matrix. Ansoff Matrix considers product and market *novelty*.",
       "difficulty_level": 1,
@@ -910,7 +905,7 @@
         "D": "Diversification."
       },
       "correct_answer": [
-        "Market Penetration."
+        "C"
       ],
       "explanation": "C is correct because Market Penetration focuses on increasing sales of current products to current customers. The other strategies involve either new products or new markets. Market penetration is low risk, focusing on *existing* markets and products.",
       "difficulty_level": 1,
@@ -934,7 +929,7 @@
         "D": "Diversification."
       },
       "correct_answer": [
-        "Product Development."
+        "C"
       ],
       "explanation": "C is correct because Product Development involves creating new products for the existing customer base. Market Penetration uses existing products, and Market Development uses existing markets. Product Development introduces *new products*.",
       "difficulty_level": 1,
@@ -958,7 +953,7 @@
         "D": "Market Development."
       },
       "correct_answer": [
-        "Market Development."
+        "D"
       ],
       "explanation": "D is correct because Market Development focuses on expanding into new customer segments or geographic regions with current products. Product Development creates new products for existing markets. Market development introduces to *new markets*.",
       "difficulty_level": 1,
@@ -982,7 +977,7 @@
         "D": "Diversification."
       },
       "correct_answer": [
-        "Diversification."
+        "D"
       ],
       "explanation": "D is correct because Diversification involves entering unfamiliar territories with unfamiliar products, increasing the potential for failure. Market Penetration is the least risky. Diversification involves *both* new products and markets.",
       "difficulty_level": 1,
@@ -1006,8 +1001,7 @@
         "D": "Analyzing the lifecycle of a product's features."
       },
       "correct_answer": [
-        "Analyzing the lifecycle of a general category of products",
-        "like 'electric cars'."
+        "B"
       ],
       "explanation": "Option B is correct because a 'product class' refers to a broad category of products. Option A refers to a brand, and option C to a product form. Applying PLC to a product class allows for analysis of broad market trends.",
       "difficulty_level": 1,
@@ -1031,8 +1025,7 @@
         "D": "Product PLC is simpler to analyze, while product form requires complex statistical analysis."
       },
       "correct_answer": [
-        "Product PLC focuses on a specific item's journey",
-        "while product form focuses on a category of similar products."
+        "B"
       ],
       "explanation": "Option B correctly identifies that a product PLC is specific, while a product form is a broader category. Options A, C, and D are incorrect because they introduce incorrect comparisons or assumptions about the PLC application.",
       "difficulty_level": 1,
@@ -1056,7 +1049,7 @@
         "D": "Analyzing the sales of athletic shoes."
       },
       "correct_answer": [
-        "Analyzing the sales of all products under the 'Nike' brand."
+        "C"
       ],
       "explanation": "Option C is correct because a brand encompasses all products associated with a particular company or name. The other options refer to specific products or product classes.",
       "difficulty_level": 1,
@@ -1080,7 +1073,7 @@
         "D": "Assuming the PLC is always a perfect bell curve."
       },
       "correct_answer": [
-        "Assuming all products within the class have identical lifecycles."
+        "A"
       ],
       "explanation": "Option A is the common mistake. Products within a class can have varying lifecycles. The other options are either too obvious or irrelevant.",
       "difficulty_level": 1,
@@ -1104,7 +1097,7 @@
         "D": "Determining the exact price point for a new product."
       },
       "correct_answer": [
-        "Analyzing market trends and strategic planning."
+        "C"
       ],
       "explanation": "Option C accurately reflects the use of the PLC. It helps understand market trends and plan strategies. The other options are incorrect because the PLC is not a guarantee or a pricing tool.",
       "difficulty_level": 1,
@@ -1127,7 +1120,7 @@
         "D": "The PLC is only relevant for technology products."
       },
       "correct_answer": [
-        "Each product has a unique PLC."
+        "C"
       ],
       "explanation": "Option C is correct because the PLC varies from product to product. The other options present inaccurate generalizations.",
       "difficulty_level": 1,
@@ -1151,7 +1144,7 @@
         "D": "It has a stable PLC."
       },
       "correct_answer": [
-        "It has a short PLC."
+        "C"
       ],
       "explanation": "Option C is correct. A rapid rise and fall indicate a short lifecycle. The other options describe different types of PLC stages.",
       "difficulty_level": 1,
@@ -1175,7 +1168,7 @@
         "D": "A limited-edition sneaker."
       },
       "correct_answer": [
-        "A classic soft drink."
+        "C"
       ],
       "explanation": "Option C is correct because classic products like soft drinks maintain consistent sales over a long period. The other options are prone to faster changes.",
       "difficulty_level": 1,
@@ -1198,7 +1191,7 @@
         "D": "Assuming that all products will eventually decline."
       },
       "correct_answer": [
-        "Applying a generic PLC template to all products."
+        "B"
       ],
       "explanation": "Option B is the common mistake. Each product has a unique PLC. The other options are less common mistakes.",
       "difficulty_level": 1,
@@ -1222,7 +1215,7 @@
         "D": "The color of the packaging."
       },
       "correct_answer": [
-        "Market dynamics and strategic interventions."
+        "C"
       ],
       "explanation": "Option C is correct because the PLC's length is influenced by market factors and company strategies. The other options are not directly related to the PLC length.",
       "difficulty_level": 1,
@@ -1246,7 +1239,7 @@
         "D": "Stable Maturity"
       },
       "correct_answer": [
-        "Growth-Decline"
+        "C"
       ],
       "explanation": "Option C is correct because Growth-Decline describes this pattern. The other options represent different PLC patterns.",
       "difficulty_level": 1,
@@ -1270,7 +1263,7 @@
         "D": "Stable sales over a long period."
       },
       "correct_answer": [
-        "Periods of declining sales followed by renewed growth."
+        "C"
       ],
       "explanation": "Option C accurately describes the Cycle-Recycle pattern. Sales fluctuate with periods of decline and revival. The other options describe different patterns or trends.",
       "difficulty_level": 1,
@@ -1294,7 +1287,7 @@
         "D": "A limited-edition collector's item."
       },
       "correct_answer": [
-        "A technology product with continuous upgrades."
+        "C"
       ],
       "explanation": "Option C is correct because 'Innovative Maturity' is sustained by continuous improvements. The other options are more likely to have shorter lifecycles.",
       "difficulty_level": 1,
@@ -1318,7 +1311,7 @@
         "D": "Identifying different stages of the PLC."
       },
       "correct_answer": [
-        "Assuming all products follow a standard bell curve."
+        "A"
       ],
       "explanation": "Option A is a common mistake. Not all products follow the standard bell curve. Recognizing different patterns is important.",
       "difficulty_level": 1,
@@ -1341,7 +1334,7 @@
         "D": "Guarantee product success."
       },
       "correct_answer": [
-        "Develop more flexible and effective strategic responses."
+        "B"
       ],
       "explanation": "Option B is correct. Understanding the PLC patterns helps companies adjust their strategies. The other options are unrealistic outcomes.",
       "difficulty_level": 1,
@@ -1364,7 +1357,7 @@
         "D": "A limited-edition collectible."
       },
       "correct_answer": [
-        "Classic furniture."
+        "C"
       ],
       "explanation": "Option C is correct because 'Style' products have steady sales over a long period, like classic furniture. The other options represent different PLC patterns.",
       "difficulty_level": 1,
@@ -1387,7 +1380,7 @@
         "D": "Sales that remain constant over a long period."
       },
       "correct_answer": [
-        "Recurring peaks and valleys in sales."
+        "B"
       ],
       "explanation": "Option B is correct because fashion trends come and go, resulting in peaks and valleys. The other options describe different PLC patterns.",
       "difficulty_level": 1,
@@ -1410,7 +1403,7 @@
         "D": "Slow and steady growth."
       },
       "correct_answer": [
-        "Rapid rise and fall in popularity."
+        "C"
       ],
       "explanation": "Option C is correct because fads are characterized by their short-lived popularity. The other options describe different PLC patterns.",
       "difficulty_level": 1,
@@ -1433,7 +1426,7 @@
         "D": "Understanding the difference between Style, Fashion, and Fad."
       },
       "correct_answer": [
-        "Confusing Fashion with Style."
+        "B"
       ],
       "explanation": "Option B is the common mistake. Thinking a trending item has lasting appeal (Style) when it is just Fashion is a frequent error. Option D is not a mistake at all.",
       "difficulty_level": 1,
@@ -1458,7 +1451,7 @@
         "D": "Innovative Maturity"
       },
       "correct_answer": [
-        "Fad"
+        "C"
       ],
       "explanation": "Option C is correct. Investing heavily in a fad expecting it to last is a common mistake. Fads have rapid declines.",
       "difficulty_level": 1,
@@ -1481,7 +1474,7 @@
         "D": "Decline"
       },
       "correct_answer": [
-        "Growth"
+        "B"
       ],
       "explanation": "B is correct because the Growth stage is defined by rapidly increasing sales and rising profits as the product gains market acceptance. A is incorrect because Introduction has low sales. C is incorrect because Maturity has peak sales but stabilizing profits. D is incorrect because Decline has declining sales and profits.",
       "difficulty_level": 1,
@@ -1504,7 +1497,7 @@
         "D": "Growth"
       },
       "correct_answer": [
-        "Introduction"
+        "C"
       ],
       "explanation": "C is correct because the Introduction stage requires creating awareness and educating consumers about the product. A is incorrect because Maturity focuses on defending market share. B is incorrect because the product is being phased out. D is incorrect because Growth focuses on acquiring market share.",
       "difficulty_level": 1,
@@ -1528,7 +1521,7 @@
         "D": "Decline"
       },
       "correct_answer": [
-        "Maturity"
+        "C"
       ],
       "explanation": "C is correct because the Maturity stage is characterized by peak sales as the product reaches its maximum market penetration. The other stages occur before or after this point. Introduction has low sales, Growth has rapidly rising sales, and Decline has declining sales.",
       "difficulty_level": 1,
@@ -1551,7 +1544,7 @@
         "D": "High costs"
       },
       "correct_answer": [
-        "Declining sales and profits"
+        "C"
       ],
       "explanation": "C is correct because the Decline stage is defined by declining sales and profits as the product loses market relevance. Option A describes the Growth stage. Option B describes the Maturity Stage. Option D, high costs, is more indicative of the Introduction stage.",
       "difficulty_level": 1,
@@ -1574,7 +1567,7 @@
         "D": "Focusing on acquiring new customers"
       },
       "correct_answer": [
-        "Focusing on creating awareness"
+        "B"
       ],
       "explanation": "B is correct. A common mistake is continuing to focus on creating awareness during the Maturity stage when the focus should be on defending market share and maximizing profit. Options A and C are correct strategies. Option D might be relevant, but less so than A or C.",
       "difficulty_level": 1,
@@ -1598,7 +1591,7 @@
         "D": "Employee Turnover and Profit Margin"
       },
       "correct_answer": [
-        "Market Growth Rate and Relative Market Share"
+        "B"
       ],
       "explanation": "B is correct because the BCG Matrix uses Market Growth Rate and Relative Market Share to categorize business units. The other options are relevant business metrics, but not part of the BCG Matrix.",
       "difficulty_level": 1,
@@ -1622,7 +1615,7 @@
         "D": "Dog"
       },
       "correct_answer": [
-        "Cash Cow"
+        "B"
       ],
       "explanation": "B is correct because Cash Cows are characterized by high market share in a low-growth market, generating consistent revenue. Stars have high growth and high market share. Question marks have low market share in a high growth market. Dogs have low market share in a low growth market.",
       "difficulty_level": 1,
@@ -1645,7 +1638,7 @@
         "D": "Dog"
       },
       "correct_answer": [
-        "Question Mark"
+        "C"
       ],
       "explanation": "C is correct because Question Marks have low market share but operate in a high-growth market, requiring careful evaluation. Stars have high growth and high market share. Cash Cows have low growth and high market share. Dogs have low growth and low market share.",
       "difficulty_level": 1,
@@ -1668,7 +1661,7 @@
         "D": "Low market share and high market growth rate."
       },
       "correct_answer": [
-        "Low market share and low market growth rate."
+        "B"
       ],
       "explanation": "B is correct because Dogs have both low market share and operate in a market with low growth. Option A describes a Star. Option C describes a Cash Cow. Option D describes a Question Mark.",
       "difficulty_level": 1,
@@ -1691,7 +1684,7 @@
         "D": "Ignoring Relative Market Share."
       },
       "correct_answer": [
-        "Neglecting Cash Cows."
+        "A"
       ],
       "explanation": "A is correct because a common mistake is neglecting Cash Cows, assuming they will always generate revenue without investment. B and D would make the matrix useless. C is not necessarily a mistake.",
       "difficulty_level": 1,
@@ -1713,7 +1706,7 @@
         "D": "Question Mark"
       },
       "correct_answer": [
-        "Star"
+        "C"
       ],
       "explanation": "C is correct because Stars require heavy investment to maintain their high growth rate and market share. Cash Cows require minimal investment. Dogs typically don't warrant heavy investment. Question Marks require evaluation before deciding whether to invest.",
       "difficulty_level": 1,
@@ -1737,7 +1730,7 @@
         "D": "Dog"
       },
       "correct_answer": [
-        "Cash Cow"
+        "B"
       ],
       "explanation": "B is correct because Cash Cows generate significant cash flow with relatively little investment needed. Stars require high investment. Question Marks may require high investment, but this is uncertain. Dogs generate little cash.",
       "difficulty_level": 1,
@@ -1761,7 +1754,7 @@
         "D": "Maintain the current level of investment."
       },
       "correct_answer": [
-        "Carefully evaluate its potential and then decide whether to invest or divest."
+        "C"
       ],
       "explanation": "C is correct because Question Marks require careful evaluation to determine whether they have the potential to become Stars or should be phased out. A is a possibility, but only after evaluation. B is a possibility, but only after evaluation. D is not an appropriate long-term strategy without evaluation.",
       "difficulty_level": 1,
@@ -1785,9 +1778,7 @@
         "D": "Increase prices to improve profitability."
       },
       "correct_answer": [
-        "Maintain minimal investment",
-        "focusing on short-term cash flow",
-        "or divest."
+        "B"
       ],
       "explanation": "B is correct because Dogs typically generate limited cash and have little potential for growth, so the strategy is to minimize investment or divest the business. A is incorrect because Dogs have low market share and low market growth. C is unlikely to be effective. D might improve profitability, but isn't the core strategy.",
       "difficulty_level": 1,
@@ -1810,7 +1801,7 @@
         "D": "Neglecting Question Marks."
       },
       "correct_answer": [
-        "Over-investing in Dogs."
+        "C"
       ],
       "explanation": "C is correct because a common mistake is over-investing in Dogs, hoping to turn them into Stars, despite their limited potential. A and D are both incorrect, as these represent missed opportunities. B is not typically a mistake, as cash cows generate revenue.",
       "difficulty_level": 1,

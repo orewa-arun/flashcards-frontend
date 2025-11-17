@@ -24,8 +24,7 @@
         "D": "The average value of the explanatory variable."
       },
       "correct_answer": [
-        "A single best estimate for the response variable",
-        "given a specific value of the explanatory variable."
+        "B"
       ],
       "explanation": "B is correct because a point prediction provides one specific estimated value for the response variable based on the regression equation. A is incorrect because it refers to the explanatory variable. Point prediction focuses on estimating a single value for the response variable.",
       "difficulty_level": 1,
@@ -48,8 +47,7 @@
         "D": "To eliminate any uncertainty in the regression analysis."
       },
       "correct_answer": [
-        "To obtain a single",
-        "best guess for the response variable at a particular value of the explanatory variable."
+        "C"
       ],
       "explanation": "C is correct because point prediction is used to provide a single estimate for the response variable. A is incorrect because it addresses model fit, which is different from point prediction. Point prediction helps in making informed decisions with a single, estimated value.",
       "difficulty_level": 1,
@@ -72,7 +70,7 @@
         "D": "Always using interpolation instead of extrapolation."
       },
       "correct_answer": [
-        "Assuming the point prediction is a guaranteed outcome."
+        "A"
       ],
       "explanation": "A is correct because point predictions are estimates and not guarantees. B is incorrect because the average is not necessarily a good point prediction from regression. Point predictions are based on the fitted model and are subject to uncertainty.",
       "difficulty_level": 1,
@@ -95,7 +93,7 @@
         "D": "To visualize the distribution of the response variable."
       },
       "correct_answer": [
-        "To provide the specific value needed to estimate the response variable."
+        "B"
       ],
       "explanation": "B is correct because the explanatory variable is used as input to the regression equation to calculate the point prediction for the response variable. A is incorrect because it relates to error calculation, not the explanatory variable's role in prediction. The explanatory variable drives the point prediction.",
       "difficulty_level": 1,
@@ -118,7 +116,7 @@
         "D": "Describing the overall trend of house prices over the last decade."
       },
       "correct_answer": [
-        "Predicting the sales for next month based on current marketing spend."
+        "C"
       ],
       "explanation": "C is correct because predicting sales based on marketing spend involves estimating a single value (sales) given another value (marketing spend). A is incorrect because it calculates an average, not a prediction. Point predictions provide a single, best-guess estimate for a specific scenario.",
       "difficulty_level": 1,
@@ -141,7 +139,7 @@
         "D": "To eliminate all outliers from the dataset."
       },
       "correct_answer": [
-        "To address violations of linear regression assumptions."
+        "B"
       ],
       "explanation": "B is correct because data transformations help to meet the assumptions of linear regression. A is incorrect as data transformation doesn't affect sample size. Data transformations improve the validity and reliability of the regression model.",
       "difficulty_level": 1,
@@ -164,7 +162,7 @@
         "D": "Having too many data points in the dataset."
       },
       "correct_answer": [
-        "Heteroscedasticity (unequal variance) of the error terms."
+        "B"
       ],
       "explanation": "B is correct because data transformations can stabilize the variance of the error terms. A addresses multicollinearity, which is handled differently. Addressing heteroscedasticity improves the reliability of the standard errors.",
       "difficulty_level": 1,
@@ -188,7 +186,7 @@
         "D": "Applying transformations to both dependent and independent variables."
       },
       "correct_answer": [
-        "Transforming data without understanding why."
+        "A"
       ],
       "explanation": "A is correct because random transformations can worsen the model. B, C, and D are valid uses of data transformations. Applying transformations purposefully ensures meaningful results.",
       "difficulty_level": 1,
@@ -211,7 +209,7 @@
         "D": "When there are only a few data points available."
       },
       "correct_answer": [
-        "When the residuals in a regression model show a clear curved pattern."
+        "B"
       ],
       "explanation": "B is correct because a curved pattern in residuals suggests a non-linear relationship that transformations can address. A and C don't require transformation. Transformations can help linearize relationships when patterns are observed in the residuals.",
       "difficulty_level": 1,
@@ -234,7 +232,7 @@
         "D": "To eliminate any remaining heteroscedasticity."
       },
       "correct_answer": [
-        "To express the results in the original scale of the data."
+        "B"
       ],
       "explanation": "B is correct because back-transformation converts the results back to the original units for easier understanding. A is incorrect because it's not the main purpose. Back-transformation ensures the results are interpretable in the context of the original data.",
       "difficulty_level": 1,
@@ -257,7 +255,7 @@
         "D": "To remove outliers from the data."
       },
       "correct_answer": [
-        "To linearize a non-linear relationship."
+        "B"
       ],
       "explanation": "B is correct because log transformations are used to convert exponential relationships into linear ones. A is incorrect because the goal is to linearize, not make it non-linear. Logarithmic transformation helps in simplifying the relationship for easier analysis.",
       "difficulty_level": 1,
@@ -281,7 +279,7 @@
         "D": "When data has negative values."
       },
       "correct_answer": [
-        "When data exhibits exponential growth."
+        "B"
       ],
       "explanation": "B is correct because log transformations are suitable for data showing exponential growth. D is incorrect because log transformations cannot be applied to negative values. Logarithmic transformation helps to model data that increases rapidly at first, then slows down.",
       "difficulty_level": 1,
@@ -305,7 +303,7 @@
         "D": "Data with values between 0 and 1."
       },
       "correct_answer": [
-        "Data with zero values."
+        "B"
       ],
       "explanation": "B is correct because the logarithm of zero is undefined. A, C, and D are suitable for log transformation. Logarithmic transformation requires the data to be strictly positive.",
       "difficulty_level": 1,
@@ -329,7 +327,7 @@
         "D": "Without any special consideration compared to non-transformed variables."
       },
       "correct_answer": [
-        "As the percentage change in the dependent variable for a one-unit change in the original independent variable."
+        "B"
       ],
       "explanation": "B is correct because the log-transformed variable changes the interpretation to percentage change. A is incorrect because it describes the interpretation for non-transformed variables. Interpretation of coefficients in log-transformed models requires careful attention.",
       "difficulty_level": 1,
@@ -353,7 +351,7 @@
         "D": "An exponential transformation."
       },
       "correct_answer": [
-        "A logarithmic transformation."
+        "B"
       ],
       "explanation": "B is correct because a logarithmic transformation can model diminishing returns. A is incorrect because a square transformation would emphasize the effect. Logarithmic transformation is appropriate for modeling saturation effects where the rate of return decreases.",
       "difficulty_level": 1,
@@ -377,7 +375,7 @@
         "D": "To remove outliers from the data."
       },
       "correct_answer": [
-        "To model relationships that approach an asymptote."
+        "B"
       ],
       "explanation": "B is correct because inverse transformations are used when the effect of a variable diminishes as its value increases, approaching a limit. A is incorrect because the goal is often to linearize. Inverse transformations help to model diminishing returns or asymptotic relationships.",
       "difficulty_level": 1,
@@ -401,7 +399,7 @@
         "D": "A relationship with normally distributed errors."
       },
       "correct_answer": [
-        "A relationship with a decreasing rate of change."
+        "C"
       ],
       "explanation": "C is correct because inverse transformations are appropriate when the effect of a variable diminishes as its value increases. B is better suited for a logarithmic transformation. Inverse transformations capture diminishing returns or saturation effects.",
       "difficulty_level": 1,
@@ -425,7 +423,7 @@
         "D": "The data must have a constant variance."
       },
       "correct_answer": [
-        "The data must not contain zero values."
+        "A"
       ],
       "explanation": "A is correct because the inverse of zero (1/0) is undefined. B, C, and D are general considerations for regression, not specific to inverse transformations. Inverse transformations are not applicable to datasets that contain zero values.",
       "difficulty_level": 1,
@@ -449,8 +447,7 @@
         "D": "It automatically converts the coefficients to percentages."
       },
       "correct_answer": [
-        "It requires careful consideration",
-        "as they relate to the inverse of the original variable."
+        "B"
       ],
       "explanation": "B is correct because the coefficients relate to the inverse of the original variable, requiring careful interpretation. A is incorrect because the interpretation is not simplified. Interpretation of the coefficients in inverse transformed models requires special attention to the transformed scale.",
       "difficulty_level": 1,
@@ -474,7 +471,7 @@
         "D": "A linear transformation on both variables."
       },
       "correct_answer": [
-        "An inverse transformation on the number of representatives."
+        "C"
       ],
       "explanation": "C is correct because an inverse transformation on the number of representatives will model the diminishing returns. A and B might not capture the plateau effect correctly. Inverse transformation is suitable for diminishing returns scenarios, where the impact decreases with increasing values.",
       "difficulty_level": 1,
@@ -498,7 +495,7 @@
         "D": "To simplify the interpretation of coefficients."
       },
       "correct_answer": [
-        "To model curvilinear relationships with a single turning point."
+        "B"
       ],
       "explanation": "The quadratic model is used to capture relationships where the effect of the independent variable changes direction, resulting in a curve with one maximum or minimum. Option A is incorrect because quadratic models are not used for linear relationships. ",
       "difficulty_level": 1,
@@ -522,7 +519,7 @@
         "D": "The interaction effect between X and another independent variable."
       },
       "correct_answer": [
-        "The curvilinear effect of X on Y."
+        "C"
       ],
       "explanation": "The \\(b_2 X^2\\) term captures the squared effect of X, which creates the curvature in the relationship between X and Y.  Option A represents the linear effect. ",
       "difficulty_level": 1,
@@ -546,7 +543,7 @@
         "D": "Eliminating the need for data visualization."
       },
       "correct_answer": [
-        "Overfitting the data."
+        "B"
       ],
       "explanation": "High-degree polynomials can fit the training data too closely, capturing noise and leading to poor generalization on new data (overfitting). Option A is incorrect because high-degree polynomials tend to overfit, not underfit.",
       "difficulty_level": 1,
@@ -570,7 +567,7 @@
         "D": "Logarithmic regression model."
       },
       "correct_answer": [
-        "Quadratic regression model."
+        "B"
       ],
       "explanation": "A quadratic model can capture the initial positive effect and the subsequent negative effect, reflecting the 'sweet spot' for fertilizer amount. Option A is wrong because linear regression assumes a constant effect.",
       "difficulty_level": 1,
@@ -594,9 +591,7 @@
         "D": "A relationship with no correlation between the variables."
       },
       "correct_answer": [
-        "A relationship where the dependent variable initially increases and then decreases",
-        "or vice versa",
-        "as the independent variable changes."
+        "C"
       ],
       "explanation": "Quadratic transformations are used when the relationship isn't linear; rather it has a curve, changing direction once (increasing then decreasing or decreasing then increasing). Option A and B are characteristic of linear relationships.",
       "difficulty_level": 1,
@@ -620,7 +615,7 @@
         "D": "Model selection."
       },
       "correct_answer": [
-        "Data visualization."
+        "B"
       ],
       "explanation": "Data visualization is the initial step to understand the relationships within the data before model selection or estimation. Options A, C, and D are steps that come later in the process.",
       "difficulty_level": 1,
@@ -645,7 +640,7 @@
         "D": "Predicting future values."
       },
       "correct_answer": [
-        "Model selection."
+        "B"
       ],
       "explanation": "Model selection involves choosing the appropriate form of the regression equation (linear, polynomial, etc.). Option A, C and D occur after the model is selected.",
       "difficulty_level": 1,
@@ -670,7 +665,7 @@
         "D": "Choosing an appropriate model."
       },
       "correct_answer": [
-        "Misinterpreting the units of the transformed variables."
+        "B"
       ],
       "explanation": "Transformations change the scale and meaning of the variables, so care must be taken to correctly interpret the coefficients in the original units. Options A and C are general regression mistakes. Option D is the *opposite* of a mistake.",
       "difficulty_level": 1,
@@ -695,7 +690,7 @@
         "D": "Selecting the best regression model."
       },
       "correct_answer": [
-        "Predicting the value of the dependent variable for a specific set of independent variable values."
+        "B"
       ],
       "explanation": "Point prediction provides a specific predicted value based on the regression model and given input values. Options A and D are steps taken to get to point prediction. Option C is the visualization step.",
       "difficulty_level": 1,
@@ -720,7 +715,7 @@
         "D": "Interpreting the elasticity."
       },
       "correct_answer": [
-        "Predicting future sales based on planned spend."
+        "C"
       ],
       "explanation": "After you estimate the coefficients, you can predict future sales based on those coefficients. Option A and B are steps that happened earlier. Option D comes after point prediction.",
       "difficulty_level": 1,

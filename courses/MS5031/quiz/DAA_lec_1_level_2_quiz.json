@@ -24,9 +24,7 @@
         "D": "$50,500"
       },
       "correct_answer": [
-        "$1",
-        "000",
-        "000"
+        "B"
       ],
       "explanation": "The scenario provides a regression model: Revenue = 500 + 10 * Spend. We are given Spend = $50,000, which is 50 in thousands of dollars. Plugging this into the model gives: Revenue = 500 + 10 * 50 = 500 + 500 = 1000, which is $1,000,000. Option A is an incomplete solution as it only adds the spend to the intercept. Option C and D misinterpret the units.",
       "difficulty_level": 2,
@@ -49,7 +47,7 @@
         "D": "There is no risk, as regression models are always accurate."
       },
       "correct_answer": [
-        "The model will be less accurate due to extrapolation."
+        "B"
       ],
       "explanation": "The scenario describes predicting website visits for 100 posts, but the model was built on data only up to 50 posts. This is extrapolation, which means applying the model outside the range of the data used to build it. This introduces risk because the relationship between posts and visits might change beyond the observed data. Option A describes interpolation, which is within the data range. Options C and D make incorrect assumptions about model accuracy.",
       "difficulty_level": 2,
@@ -73,7 +71,7 @@
         "D": "0.05"
       },
       "correct_answer": [
-        "0.5"
+        "A"
       ],
       "explanation": "The scenario provides the equation: Churn = 0.8 - 0.05 * Satisfaction. We are given Satisfaction = 6. Plugging this into the equation gives: Churn = 0.8 - 0.05 * 6 = 0.8 - 0.3 = 0.5. The predicted churn rate is 0.5. Other options either miscalculate or only state a single parameter from the equation.",
       "difficulty_level": 2,
@@ -96,8 +94,7 @@
         "D": "$25,000"
       },
       "correct_answer": [
-        "$115",
-        "000"
+        "B"
       ],
       "explanation": "The equation is Spending = 100 + 0.2 * Income. The income is $75,000, or 75 in thousands of dollars. Spending = 100 + 0.2 * 75 = 100 + 15 = 115, which is $115,000. Option A only states the intercept. Option C calculates only the product and not the sum. Option D uses the coefficient alone.",
       "difficulty_level": 2,
@@ -120,7 +117,7 @@
         "D": "Force the data to fit a linear model."
       },
       "correct_answer": [
-        "Apply a data transformation to either the Yield or Fertilizer variable."
+        "B"
       ],
       "explanation": "The scenario describes a non-linear relationship. Data transformations are used to linearize non-linear relationships in regression. Option A addresses sample size, not non-linearity. Option C addresses outliers, which is a separate issue. Option D is not a valid approach. Therefore, applying a data transformation is the best course of action.",
       "difficulty_level": 2,
@@ -143,7 +140,7 @@
         "D": "Remove any data point with a square footage above 3000."
       },
       "correct_answer": [
-        "Apply a logarithmic transformation to the housing prices."
+        "B"
       ],
       "explanation": "The scenario describes heteroscedasticity (unequal variance). A logarithmic transformation on the dependent variable (housing prices) can help stabilize the variance. Standardizing variables doesn't directly address heteroscedasticity. Log transforming only the square footage might not correct the variance issue. Removing data is usually not the best approach and can introduce bias. Therefore, logging the housing prices is best.",
       "difficulty_level": 2,
@@ -167,7 +164,7 @@
         "D": "Calculate the mean of both variables."
       },
       "correct_answer": [
-        "Apply a logarithmic transformation to either income or spending."
+        "B"
       ],
       "explanation": "The scenario states a curved relationship, indicating non-linearity. Logarithmic transformations are often used to linearize non-linear relationships. Calculating the correlation coefficient only measures the strength of a linear relationship, it doesn't address non-linearity. Increasing the sample size doesn't fix a non-linear relationship. Calculating the mean doesn't help with linearity. Thus, a log transformation is the best option.",
       "difficulty_level": 2,
@@ -190,7 +187,7 @@
         "D": "Remove the intercept term from the model."
       },
       "correct_answer": [
-        "Back-transform the results to the original scale of the data."
+        "B"
       ],
       "explanation": "The scenario involves a data transformation. After analysis on transformed data, it's crucial to back-transform the results to the original scale for proper interpretation. Option A is incorrect as transformations affect the coefficients' meaning. Option C, standardizing coefficients, doesn't address the transformation. Option D, removing the intercept, is not related to transformations. Therefore, back-transformation is essential.",
       "difficulty_level": 2,
@@ -213,7 +210,7 @@
         "D": "Apply a quadratic transformation to marketing spend."
       },
       "correct_answer": [
-        "Apply a logarithmic transformation to marketing spend."
+        "B"
       ],
       "explanation": "The scenario describes diminishing returns, which is often linearized by a logarithmic transformation of the independent variable (marketing spend). The log transformation compresses the scale of the independent variable, modeling the saturation effect. Options A and C are incorrect because they transform the dependent variable (customer acquisition). Option D can introduce multicollinearity.",
       "difficulty_level": 2,
@@ -237,7 +234,7 @@
         "D": "The coefficient represents the percentage change in salary for each additional year of experience."
       },
       "correct_answer": [
-        "The coefficient represents the change in salary for each percentage increase in years of experience."
+        "C"
       ],
       "explanation": "The scenario uses a log transformation on the independent variable (years of experience). When the independent variable is logged, the coefficient represents the change in the dependent variable (salary) for each percentage increase in the independent variable. The other options misinterpret the effect of the log transformation on the coefficient's interpretation.",
       "difficulty_level": 2,
@@ -260,7 +257,7 @@
         "D": "Exponential Transformation."
       },
       "correct_answer": [
-        "Logarithmic Transformation."
+        "B"
       ],
       "explanation": "The scenario describes a rapid initial increase followed by a plateau, suggesting diminishing returns. A logarithmic transformation is appropriate when the effect of a variable decreases as its value increases. The logarithm will scale down the initial rapid increase and make the relationship more linear. The other transformations are not appropriate to describe that initial behavior. An inverse transformation is more appropriate for asymptotic behavior where the rate of change approaches 0. ",
       "difficulty_level": 2,
@@ -284,7 +281,7 @@
         "D": "A Box-Cox transformation."
       },
       "correct_answer": [
-        "An inverse transformation."
+        "C"
       ],
       "explanation": "The scenario indicates diminishing returns on training. An inverse transformation models the diminishing returns effect, with early investments having a large impact and later investments having less. Therefore, using an inverse transformation on the 'hours of training' variable is best. Logarithmic transformation would work well, but an inverse transformation is a better first choice.",
       "difficulty_level": 2,
@@ -307,7 +304,7 @@
         "D": "The coefficient represents the change in the inverse of wait time for each additional representative."
       },
       "correct_answer": [
-        "The coefficient represents the change in wait time for each unit increase in the inverse of the number of representatives."
+        "B"
       ],
       "explanation": "With an inverse transformation on the independent variable (number of representatives), the coefficient is interpreted as the change in the dependent variable (wait time) for each unit increase in the *inverse* of the independent variable. The other options incorrectly describe the relationship or misinterpret the inverse transformation. The key is understanding that it is the inverse of the variable that is affecting the dependent variable.",
       "difficulty_level": 2,
@@ -330,7 +327,7 @@
         "D": "Apply a square root transformation to advertising expenditure."
       },
       "correct_answer": [
-        "Apply an inverse transformation to advertising expenditure."
+        "C"
       ],
       "explanation": "An inverse transformation to the independent variable is used when the effect of the independent variable diminishes as it increases. In this scenario, the advertising expenditure is the independent variable. Therefore, we transform advertising expenditure. We are trying to model the saturation effect on website traffic by transforming advertising expenditure.",
       "difficulty_level": 2,
@@ -354,7 +351,7 @@
         "D": "Ensure that the relationship between study time and exam scores is perfectly linear."
       },
       "correct_answer": [
-        "Ensure that there are no zero values in the study time data."
+        "B"
       ],
       "explanation": "An inverse transformation involves taking the reciprocal of a variable (1/X). If the variable has zero values, the inverse transformation will result in undefined values (1/0). Therefore, it's crucial to ensure that there are no zero values in the study time data before applying the inverse transformation. The presence of zero in the data will cause errors. ",
       "difficulty_level": 2,
@@ -377,7 +374,7 @@
         "D": "Y = b0 + b1 * log(X)"
       },
       "correct_answer": [
-        "Y = b0 + b1 * log(X)"
+        "D"
       ],
       "explanation": "The scenario describes diminishing returns, where the effect of X (complaints) on Y (satisfaction) decreases as X increases. This is characteristic of a logarithmic relationship. An inverse transformation (1/X) might be an even better fit, but the log is more commonly used and appropriate. A linear model (Option A) would not capture the diminishing effect. The quadratic model would suggest an increasing or decreasing effect.",
       "difficulty_level": 2,
@@ -401,8 +398,7 @@
         "D": "An exponential regression model, as it captures rapid growth."
       },
       "correct_answer": [
-        "A quadratic regression model",
-        "as it can model a curvilinear relationship with a single turning point."
+        "B"
       ],
       "explanation": "The scenario describes a curvilinear relationship where the yield increases initially and then decreases. This suggests a single turning point (maximum yield). A quadratic regression model ($\\hat{Y} = b_0 + b_1 X + b_2 X^2$) is designed to model such relationships. While a logarithmic model accounts for diminishing returns, it does not capture the decreasing trend after the peak. Option A is incorrect because linear regression cannot model curvilinear relationships. Option D is incorrect because exponential regression models continuous growth, not a turning point.",
       "difficulty_level": 2,
@@ -426,7 +422,7 @@
         "D": "At an advertising spending level of 100."
       },
       "correct_answer": [
-        "At an advertising spending level of 10."
+        "B"
       ],
       "explanation": "The scenario describes a quadratic model (Y = 100 + 2X - 0.1X^2). To find the X value that maximizes Y, we need to find the vertex of the parabola. This can be done by taking the derivative with respect to X and setting it to zero (as shown in the LaTeX visual). Solving for X yields X = 10. Therefore, the model predicts maximum sales at an advertising spending level of 10. The other options do not represent the solution to this optimization problem.",
       "difficulty_level": 2,
@@ -450,7 +446,7 @@
         "D": "An exponential model: Y = b0 * exp(b1*X)"
       },
       "correct_answer": [
-        "A quadratic model: Y = b0 + b1*X + b2*X^2"
+        "B"
       ],
       "explanation": "The scenario describes a curvilinear relationship with a single turning point: initially increasing scores with study time, then decreasing scores due to burnout. A quadratic model captures this inverted U-shaped relationship. The coefficient `b2` would be negative, reflecting the decreasing effect of study time beyond a certain point. Option A (linear) cannot capture the turning point. Option C (logarithmic) captures diminishing returns, but not a decrease in the dependent variable. Option D (exponential) models continuous growth.",
       "difficulty_level": 2,
@@ -474,9 +470,7 @@
         "D": "Modeling the relationship between the number of hours studied and exam scores, where scores increase consistently with each additional hour of study."
       },
       "correct_answer": [
-        "Modeling the relationship between exercise intensity and calorie burn",
-        "where calorie burn increases up to a point",
-        "then plateaus or decreases due to fatigue."
+        "C"
       ],
       "explanation": "A quadratic model is best suited for relationships with a curvilinear pattern and a single turning point. Option C describes such a relationship: calorie burn increases with intensity, then plateaus or decreases due to fatigue, creating an inverted U-shape. Option A is mostly constant and linear regression would be appropriate. Option B describes a linear relationship. Option D suggests a linear or logarithmic relationship, not a quadratic one with a turning point.",
       "difficulty_level": 2,
@@ -500,8 +494,7 @@
         "D": "The model is guaranteed to provide accurate predictions for all possible numbers of representatives."
       },
       "correct_answer": [
-        "The effect of the number of representatives on wait times depends on the value of both the number of representatives and its square",
-        "making interpretation more complex."
+        "B"
       ],
       "explanation": "Interpreting coefficients in a polynomial model is more complex than in a linear model. In a quadratic model, the effect of X on Y depends on both X and X^2. Therefore, the impact of adding one more representative depends on the current number of representatives. Option A oversimplifies the interpretation. Option C is true for all regression models, but it is not the specific concern for a quadratic model's coefficients. Option D is an overstatement; no model is guaranteed to be accurate for all values.",
       "difficulty_level": 2,
@@ -525,8 +518,7 @@
         "D": "Data visualization guarantees the accuracy of the regression model."
       },
       "correct_answer": [
-        "Data visualization helps in determining the appropriate model and any necessary transformations",
-        "such as logarithmic or polynomial transformations."
+        "B"
       ],
       "explanation": "Data visualization is crucial in the regression process because it helps identify the underlying relationship between variables. This helps in selecting the most appropriate model (linear, polynomial, logarithmic, etc.) and determining if transformations are needed to linearize the relationship or account for non-linear patterns. Option A is too narrow; visualization does more than just identify outliers. Option C focuses on presentation, not model selection. Option D is incorrect, visualization helps but doesn't guarantee accuracy.",
       "difficulty_level": 2,
@@ -551,7 +543,7 @@
         "D": "b1 represents the percentage change in price for every one percent increase in square footage (elasticity)."
       },
       "correct_answer": [
-        "b1 represents the percentage change in price for every one percent increase in square footage (elasticity)."
+        "D"
       ],
       "explanation": "In a log-log model, the coefficients are interpreted as elasticities. Specifically, b1 represents the percentage change in the dependent variable (Price) for every one percent change in the independent variable (SqFt). This is a key property of log-log models. Option A is the interpretation for a simple linear model. Option B is incorrect because it refers to a one-unit increase, not a percentage increase. Option C is incorrect because it describes the change in price, not the percentage change.",
       "difficulty_level": 2,
@@ -576,8 +568,7 @@
         "D": "The prediction is unreliable because the model did not include any transformations."
       },
       "correct_answer": [
-        "The prediction is unreliable because the R-squared value is low",
-        "indicating a poor fit of the model to the data."
+        "B"
       ],
       "explanation": "A low R-squared value (0.1) indicates that the model explains only a small portion (10%) of the variance in sales. This means the model's predictions are likely to be inaccurate and unreliable. Option A is incorrect because a linear model does not guarantee reliability. Option C addresses extrapolation, but the primary concern is the poor fit. Option D suggests transformations might help, but the immediate concern is the low R-squared.",
       "difficulty_level": 2,
@@ -602,7 +593,7 @@
         "D": "To eliminate any negative values in the loading time data."
       },
       "correct_answer": [
-        "To make the relationship between loading time and bounce rate linear."
+        "A"
       ],
       "explanation": "Logarithmic transformations are often used to linearize relationships where the effect of the independent variable diminishes or increases at a decreasing rate. This allows a linear regression model to be applied more effectively. Option B is a secondary benefit, not the primary purpose. Option C is related to assumptions of linear regression, but linearization is the main reason for the transformation. Option D is a potential benefit, but not the main reason for the transformation in this scenario.",
       "difficulty_level": 2,
@@ -627,7 +618,7 @@
         "D": "The model cannot be used for prediction if the coefficients are not interpreted."
       },
       "correct_answer": [
-        "The data scientist will not be able to understand the drivers of churn and develop effective strategies to reduce it."
+        "B"
       ],
       "explanation": "Interpreting the coefficients allows the data scientist to understand the impact of each independent variable on the dependent variable (churn). This understanding is crucial for developing strategies to address the root causes of churn. Option A is not a direct consequence. While model presentation is important (Option C), understanding the drivers of churn is the primary reason for interpretation. Option D is incorrect; the model can be used for prediction even without interpretation, but the insights gained will be limited.",
       "difficulty_level": 2,

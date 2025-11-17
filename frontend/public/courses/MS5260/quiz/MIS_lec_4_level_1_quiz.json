@@ -24,9 +24,7 @@
         "D": "To design and develop computer hardware."
       },
       "correct_answer": [
-        "To efficiently store",
-        "retrieve",
-        "and manage data."
+        "B"
       ],
       "explanation": "B is correct because a database's main purpose is to organize and handle data effectively. A is incorrect because presentations are unrelated. C is incorrect because stock market analysis is a specific application, not the database's core function. D is incorrect because databases are software, not hardware.",
       "difficulty_level": 1,
@@ -50,7 +48,7 @@
         "D": "A social media platform."
       },
       "correct_answer": [
-        "A meticulously organized filing cabinet."
+        "B"
       ],
       "explanation": "B is correct because the filing cabinet analogy highlights the organized storage and retrieval aspect of a database. A, C, and D are incorrect because they don't represent the core function of data organization.",
       "difficulty_level": 1,
@@ -74,7 +72,7 @@
         "D": "Spreadsheets are easier to secure than databases."
       },
       "correct_answer": [
-        "Spreadsheets lack the scalability and advanced features of a database."
+        "C"
       ],
       "explanation": "C is correct because databases are better suited for large, complex applications due to their scalability and features. A, B, and D are incorrect because they misrepresent the capabilities and limitations of spreadsheets compared to databases.",
       "difficulty_level": 1,
@@ -98,7 +96,7 @@
         "D": "Temporary data storage."
       },
       "correct_answer": [
-        "Organized and structured data storage."
+        "C"
       ],
       "explanation": "C is correct because databases are known for their organized structure. A, B and D contradict the core purpose of a database. ",
       "difficulty_level": 1,
@@ -122,7 +120,7 @@
         "D": "Playing a video game."
       },
       "correct_answer": [
-        "Managing inventory and sales data for a retail store."
+        "B"
       ],
       "explanation": "B is correct because databases are essential for managing large amounts of data like inventory and sales records. A, C and D are incorrect because they represent different applications.",
       "difficulty_level": 1,
@@ -146,7 +144,7 @@
         "D": "Video recordings of customer testimonials"
       },
       "correct_answer": [
-        "Video recordings of customer testimonials"
+        "D"
       ],
       "explanation": "D is correct because video data is unstructured and requires specialized tools for analysis, unlike the other options. A, B, and C are structured and easily stored in a database.",
       "difficulty_level": 1,
@@ -170,7 +168,7 @@
         "D": "An audio recording of a meeting."
       },
       "correct_answer": [
-        "A table of customer information in a database."
+        "B"
       ],
       "explanation": "B is correct because structured data is organized in a predefined format, like a table. A, C, and D are incorrect because handwritten notes, photos, and audio recordings are unstructured.",
       "difficulty_level": 1,
@@ -194,7 +192,7 @@
         "D": "Unstructured data is always more secure."
       },
       "correct_answer": [
-        "Structured data is easier to analyze."
+        "A"
       ],
       "explanation": "A is correct because structured data has a predefined format, making it easier to process. B, C, and D are incorrect generalizations or misrepresentations.",
       "difficulty_level": 1,
@@ -218,7 +216,7 @@
         "D": "A product catalog."
       },
       "correct_answer": [
-        "A customer review."
+        "C"
       ],
       "explanation": "C is correct because customer reviews are typically free-form text. A, B, and D are structured formats.",
       "difficulty_level": 1,
@@ -242,7 +240,7 @@
         "D": "Metadata."
       },
       "correct_answer": [
-        "Unstructured data."
+        "B"
       ],
       "explanation": "B is correct because email content is typically free-form text. A, C, and D are incorrect because emails lack the predefined structure.",
       "difficulty_level": 1,
@@ -266,7 +264,7 @@
         "D": "Logical Design"
       },
       "correct_answer": [
-        "Data Planning"
+        "C"
       ],
       "explanation": "C is correct because Data Planning, which involves developing a business process model, is the first step. A, B, and D are incorrect because they are subsequent steps.",
       "difficulty_level": 1,
@@ -290,7 +288,7 @@
         "D": "Data Planning"
       },
       "correct_answer": [
-        "Requirements Specification"
+        "B"
       ],
       "explanation": "B is correct because Requirements Specification is where user needs are defined. A, C, and D are steps focused on different aspects of database planning.",
       "difficulty_level": 1,
@@ -314,7 +312,7 @@
         "D": "Data Planning"
       },
       "correct_answer": [
-        "Logical Design"
+        "C"
       ],
       "explanation": "C is correct because Logical Design involves translating the conceptual model. A, B, and D focus on different aspects of the planning process.",
       "difficulty_level": 1,
@@ -338,7 +336,7 @@
         "D": "Conceptual Design"
       },
       "correct_answer": [
-        "Physical Design"
+        "C"
       ],
       "explanation": "C is correct because Physical Design deals with data storage structures. The other options concern other aspects of database planning.",
       "difficulty_level": 1,
@@ -362,7 +360,7 @@
         "D": "The database will automatically be more efficient."
       },
       "correct_answer": [
-        "The database may not meet the business needs."
+        "B"
       ],
       "explanation": "B is correct because Data Planning ensures the database aligns with business processes. A, C, and D are incorrect because skipping Data Planning has negative consequences.",
       "difficulty_level": 1,
@@ -386,7 +384,7 @@
         "D": "To create user interfaces."
       },
       "correct_answer": [
-        "To visually represent the structure of a database."
+        "B"
       ],
       "explanation": "B is correct because E-R models are diagramming techniques used for visualization. A, C, and D relate to different aspects of system development.",
       "difficulty_level": 1,
@@ -412,7 +410,7 @@
         "D": "A relationship between data points."
       },
       "correct_answer": [
-        "A real-world object or concept."
+        "C"
       ],
       "explanation": "C is correct because entities represent real-world objects like students or products. A, B and D describe other components of a database.",
       "difficulty_level": 1,
@@ -438,7 +436,7 @@
         "D": "The entire database."
       },
       "correct_answer": [
-        "A characteristic of an entity."
+        "B"
       ],
       "explanation": "B is correct because an attribute provides details about an entity. A and C are incorrect because they describe relationships and entity sets respectively. D is incorrect because it is too broad.",
       "difficulty_level": 1,
@@ -464,7 +462,7 @@
         "D": "Database"
       },
       "correct_answer": [
-        "Relationship"
+        "C"
       ],
       "explanation": "C is correct because a relationship defines how entities are connected. A and B are incorrect because they represent different components of the E-R model. D is incorrect because it's too broad.",
       "difficulty_level": 1,
@@ -490,7 +488,7 @@
         "D": "Using standard notation for entities and relationships."
       },
       "correct_answer": [
-        "Confusing entities with attributes."
+        "C"
       ],
       "explanation": "C is correct because incorrectly identifying entities and attributes is a common error. A, B, and D are good practices.",
       "difficulty_level": 1,
@@ -516,7 +514,7 @@
         "D": "To provide a user interface for accessing the database."
       },
       "correct_answer": [
-        "To represent a real-world object or concept about which data is stored."
+        "B"
       ],
       "explanation": "B is correct because an entity represents a real-world object or concept. Option A describes database relationships, C describes data constraints, and D describes a user interface. Entities are the fundamental building blocks representing things we want to track.",
       "difficulty_level": 1,
@@ -539,7 +537,7 @@
         "D": "A constraint on the values that can be stored in a database."
       },
       "correct_answer": [
-        "A characteristic or property that describes an entity."
+        "B"
       ],
       "explanation": "B is correct because an attribute is a characteristic or property that describes an entity. Option A describes a set, C describes relationships, and D describes data validation. Attributes provide details about entities.",
       "difficulty_level": 1,
@@ -562,7 +560,7 @@
         "D": "The library's address."
       },
       "correct_answer": [
-        "A specific book."
+        "C"
       ],
       "explanation": "C is correct because a 'book' is a real-world object about which the library stores data. Options A, B, and D are attributes (properties) of entities like 'Book' or 'Library Member'.",
       "difficulty_level": 1,
@@ -585,7 +583,7 @@
         "D": "The database server's IP address."
       },
       "correct_answer": [
-        "The student's major."
+        "B"
       ],
       "explanation": "B is correct because 'major' is a characteristic that describes a student. Option A is a separate entity, C is a relationship, and D is irrelevant to the 'Student' entity.",
       "difficulty_level": 1,
@@ -608,7 +606,7 @@
         "D": "Is a real-world object or concept."
       },
       "correct_answer": [
-        "Represents a relationship between objects."
+        "C"
       ],
       "explanation": "C is correct because entities represent objects, not relationships. Relationships are a separate component of the E-R model, typically represented by diamonds. A, B, and D are all true of entities.",
       "difficulty_level": 1,
@@ -631,7 +629,7 @@
         "D": "A type of data validation rule."
       },
       "correct_answer": [
-        "A real-world object or concept."
+        "B"
       ],
       "explanation": "B is correct because an entity in an E-R model stands for a real-world object or concept, such as a customer or product. Option A describes a relationship attribute, C is incorrect, and D describes data integrity constraints.",
       "difficulty_level": 1,
@@ -654,7 +652,7 @@
         "D": "An adverb in a sentence."
       },
       "correct_answer": [
-        "A noun in a sentence."
+        "C"
       ],
       "explanation": "C is correct because an entity, like a noun, represents a person, place, or thing. Adjectives describe nouns (attributes), verbs describe actions (relationships), and adverbs modify verbs.",
       "difficulty_level": 1,
@@ -677,7 +675,7 @@
         "D": "The total revenue generated."
       },
       "correct_answer": [
-        "A specific car."
+        "C"
       ],
       "explanation": "C is correct because a specific car is a real-world object that the company needs to track. Options A and B are attributes of the car entity. Option D is a calculated value, not an entity.",
       "difficulty_level": 1,
@@ -700,7 +698,7 @@
         "D": "To control network traffic."
       },
       "correct_answer": [
-        "To organize and store information about things."
+        "B"
       ],
       "explanation": "B is correct because entities are used to represent and store information about real-world objects or concepts. Option A describes spreadsheets, C describes front-end development, and D describes network administration.",
       "difficulty_level": 1,
@@ -723,7 +721,7 @@
         "D": "Price"
       },
       "correct_answer": [
-        "Price"
+        "D"
       ],
       "explanation": "D is correct because 'Price' is an attribute of an entity like 'Product' or 'Order Item', not an entity itself. Customer, Product, and Order are all real-world objects.",
       "difficulty_level": 1,
@@ -746,7 +744,7 @@
         "D": "A database management system."
       },
       "correct_answer": [
-        "A characteristic or property of an entity."
+        "C"
       ],
       "explanation": "C is correct because an attribute describes a characteristic or property of an entity, such as the name or age of a person. Option A refers to a database table, B refers to a relationship, and D refers to software.",
       "difficulty_level": 1,
@@ -769,7 +767,7 @@
         "D": "An adverb."
       },
       "correct_answer": [
-        "An adjective."
+        "C"
       ],
       "explanation": "C is correct because an attribute, like an adjective, describes a noun (entity). A verb describes an action, a noun represents a thing, and an adverb modifies a verb.",
       "difficulty_level": 1,
@@ -792,7 +790,7 @@
         "D": "Project"
       },
       "correct_answer": [
-        "Salary"
+        "B"
       ],
       "explanation": "B is correct because 'Salary' is a characteristic that describes an employee. 'Department' and 'Project' could be entities, and 'Manages' is a relationship between entities.",
       "difficulty_level": 1,
@@ -815,7 +813,7 @@
         "D": "To manage user permissions."
       },
       "correct_answer": [
-        "To describe the characteristics of an entity."
+        "B"
       ],
       "explanation": "B is correct because attributes provide details about entities. Option A describes relationships, C describes database queries, and D describes security features.",
       "difficulty_level": 1,
@@ -838,7 +836,7 @@
         "D": "It is a property of an entity."
       },
       "correct_answer": [
-        "It connects two different entities."
+        "C"
       ],
       "explanation": "C is correct because connections between entities are called relationships, not attributes. A, B, and D are all true of attributes.",
       "difficulty_level": 1,
@@ -861,7 +859,7 @@
         "D": "To encrypt sensitive data."
       },
       "correct_answer": [
-        "To uniquely identify each record in a table."
+        "B"
       ],
       "explanation": "B is correct because the primary key's main function is to uniquely identify each record. While it can aid in data retrieval (A), its primary purpose is uniqueness. C describes foreign keys, and D describes security measures.",
       "difficulty_level": 1,
@@ -884,7 +882,7 @@
         "D": "An index at the end of a book."
       },
       "correct_answer": [
-        "A street address for a house."
+        "B"
       ],
       "explanation": "B is correct because a street address uniquely identifies a house, similar to how a primary key uniquely identifies a record. The other options relate to organizing information within a book, not unique identification.",
       "difficulty_level": 1,
@@ -907,7 +905,7 @@
         "D": "Description"
       },
       "correct_answer": [
-        "ProductID"
+        "C"
       ],
       "explanation": "C is correct because 'ProductID' is likely a unique identifier for each product. 'ProductName' may not be unique, 'Price' can change, and 'Description' is a textual field that's unsuitable for a primary key.",
       "difficulty_level": 1,
@@ -930,7 +928,7 @@
         "D": "To make the database more visually appealing."
       },
       "correct_answer": [
-        "To ensure that each record can be distinguished from all others."
+        "B"
       ],
       "explanation": "B is correct because uniqueness is essential for identifying each record. Options A, C, and D are not related to the primary function of a primary key.",
       "difficulty_level": 1,
@@ -953,7 +951,7 @@
         "D": "Using a system-generated ID."
       },
       "correct_answer": [
-        "Choosing an attribute that is likely to change frequently."
+        "A"
       ],
       "explanation": "A is correct because a primary key should be stable and unchanging. Options B, C, and D represent good practices for choosing a primary key.",
       "difficulty_level": 1,
@@ -976,7 +974,7 @@
         "D": "A weak entity type that depends on another entity type."
       },
       "correct_answer": [
-        "A relationship between exactly two entity types."
+        "B"
       ],
       "explanation": "B is correct because a binary relationship, by definition, connects two entity types. A is incorrect because it describes a ternary or n-ary relationship. Binary relationships are the simplest form of association in E-R diagrams.",
       "difficulty_level": 1,
@@ -1000,7 +998,7 @@
         "D": "Student - Has - Major"
       },
       "correct_answer": [
-        "Author - Writes - Book"
+        "B"
       ],
       "explanation": "B is correct because it shows the relationship between two entities (Author and Book). A, C, and D all show either attributes of an entity, or relationships between more than two entities.",
       "difficulty_level": 1,
@@ -1024,7 +1022,7 @@
         "D": "It must have a one-to-one cardinality."
       },
       "correct_answer": [
-        "It connects two distinct entities."
+        "C"
       ],
       "explanation": "C is correct because a binary relationship's primary function is to link two separate entity types. While A and B can be true in some cases, and D is only true in specific situations, connecting two entities is *always* true for a binary relationship.",
       "difficulty_level": 1,
@@ -1048,9 +1046,7 @@
         "D": "Avoiding the use of cardinalities."
       },
       "correct_answer": [
-        "Clearly defining the relationship's nature (e.g.",
-        "'manages'",
-        "'owns')."
+        "B"
       ],
       "explanation": "B is correct because clearly defining the relationship's nature clarifies the connection between the entities. A and C would increase ambiguity, while D is incorrect because cardinalities are essential to understanding the relationship.",
       "difficulty_level": 1,
@@ -1074,7 +1070,7 @@
         "D": "It always requires a composite primary key."
       },
       "correct_answer": [
-        "It always requires a composite primary key."
+        "D"
       ],
       "explanation": "D is correct, because the requirement of a composite primary key is not universally true for binary relationships. A, B and C are all defining characteristics of a binary relationship.",
       "difficulty_level": 1,
@@ -1098,7 +1094,7 @@
         "D": "The data type of the relationship."
       },
       "correct_answer": [
-        "The maximum number of entities that can be involved in a relationship."
+        "B"
       ],
       "explanation": "B is correct because cardinality defines the upper limit on how many instances of one entity can relate to another. A describes participation constraints, while C and D relate to entity and attribute characteristics, respectively.",
       "difficulty_level": 1,
@@ -1122,7 +1118,7 @@
         "D": "Many-to-Many (M:M)"
       },
       "correct_answer": [
-        "One-to-Many (1:M)"
+        "B"
       ],
       "explanation": "B is correct because one student can enroll in multiple courses, but each course has many students. This matches the definition of a one-to-many relationship. The 'one' side is student, and the 'many' side is courses.",
       "difficulty_level": 1,
@@ -1146,8 +1142,7 @@
         "D": "Cardinality applies to entities, while participation applies to attributes."
       },
       "correct_answer": [
-        "Cardinality defines the *maximum* number",
-        "while participation defines whether the relationship is mandatory or optional."
+        "B"
       ],
       "explanation": "B is correct because cardinality sets the upper bound on the number of related entities, whereas participation specifies if involvement in the relationship is required. A reverses these definitions. C and D are incorrect as they misattribute the concepts.",
       "difficulty_level": 1,
@@ -1171,8 +1166,7 @@
         "D": "Each customer can place multiple orders, and each order can belong to multiple customers."
       },
       "correct_answer": [
-        "Each customer can place multiple orders",
-        "and each order belongs to only one customer."
+        "B"
       ],
       "explanation": "B is correct because one customer can have many orders, but each order is associated with only one customer. This aligns with the definition of a one-to-many relationship. The other options misrepresent the relationship or describe many-to-many.",
       "difficulty_level": 1,
@@ -1196,7 +1190,7 @@
         "D": "Focusing only on the attributes of each entity."
       },
       "correct_answer": [
-        "Clearly distinguishing between the *maximum* number of related entities and whether the relationship is mandatory."
+        "B"
       ],
       "explanation": "B is correct because understanding the difference between the maximum number of relationships (cardinality) and whether participation is required or not (participation constraint) is key. The other options suggest ignoring one aspect or the other, which leads to errors.",
       "difficulty_level": 1,
@@ -1220,8 +1214,7 @@
         "D": "One instance of an entity is related to at least one instance of another entity."
       },
       "correct_answer": [
-        "One instance of an entity is related to at most one instance of another entity",
-        "and vice versa."
+        "C"
       ],
       "explanation": "C is correct because it accurately describes a 1:1 relationship where each entity instance has at most one corresponding instance in the other entity. A, B, and D describe other types of relationships.",
       "difficulty_level": 1,
@@ -1245,8 +1238,7 @@
         "D": "A customer placing multiple orders."
       },
       "correct_answer": [
-        "A country having only one capital city",
-        "and each capital city belonging to only one country."
+        "C"
       ],
       "explanation": "C is correct because it represents a unique pairing: one country, one capital city. A, B, and D are examples of one-to-many relationships.",
       "difficulty_level": 1,
@@ -1270,7 +1262,7 @@
         "D": "Ignoring participation constraints."
       },
       "correct_answer": [
-        "Assuming a 1:1 relationship should *always* result in merging the two entities into a single table."
+        "C"
       ],
       "explanation": "C is correct because merging entities is not always the best solution for a 1:1 relationship; it depends on the specific requirements and future needs. A, B, and D are general database design mistakes, not specific to 1:1 relationships.",
       "difficulty_level": 1,
@@ -1294,7 +1286,7 @@
         "D": "The primary key of each entity."
       },
       "correct_answer": [
-        "The business rules of the system."
+        "C"
       ],
       "explanation": "C is correct because the business rules dictate how entities relate to each other, which determines the appropriate cardinality. The other options are related to database design but don't directly determine cardinality.",
       "difficulty_level": 1,
@@ -1318,7 +1310,7 @@
         "D": "It always involves a composite key."
       },
       "correct_answer": [
-        "Each entity instance can have only one related entity instance."
+        "C"
       ],
       "explanation": "C is correct because this is the core definition of a 1:1 relationship. A is incorrect, as 1:M and M:N are more common. B is incorrect because 1:1 relationships can be optional. D is incorrect; composite keys are not always required.",
       "difficulty_level": 1,
@@ -1342,8 +1334,7 @@
         "D": "There is no direct relationship between instances of the two entities."
       },
       "correct_answer": [
-        "Each instance of one entity can relate to at most one instance of another entity",
-        "and vice versa."
+        "B"
       ],
       "explanation": "B is the correct definition of a 1:1 relationship. A describes a one-to-many relationship. C describes a mandatory relationship, but doesn't specify the one-to-one aspect. D implies no relationship, which is incorrect.",
       "difficulty_level": 1,
@@ -1368,8 +1359,7 @@
         "D": "An author writing multiple books."
       },
       "correct_answer": [
-        "Each house having one address",
-        "and each address belonging to one house."
+        "C"
       ],
       "explanation": "C is the correct 1:1 example. Each house has a unique address, and each address corresponds to a single house. The other options represent one-to-many relationships.",
       "difficulty_level": 1,
@@ -1394,7 +1384,7 @@
         "D": "Many-to-Many (M:M)"
       },
       "correct_answer": [
-        "One-to-One (1:1)"
+        "C"
       ],
       "explanation": "C is the correct answer. Each employee has one laptop, and each laptop belongs to one employee, fitting the definition of a 1:1 relationship. The other options don't apply to this scenario.",
       "difficulty_level": 1,
@@ -1419,7 +1409,7 @@
         "D": "Using different data types for related attributes."
       },
       "correct_answer": [
-        "Always merging the two entities into a single table."
+        "A"
       ],
       "explanation": "A is correct. While merging is *sometimes* appropriate, it shouldn't be automatic. You need to consider distinct attributes and potential future changes to the relationship. B is wrong because merging can sometimes be the right choice. C and D are general database design errors, not specific to 1:1 relationships.",
       "difficulty_level": 1,
@@ -1444,7 +1434,7 @@
         "D": "Many-to-Many"
       },
       "correct_answer": [
-        "One-to-One"
+        "C"
       ],
       "explanation": "C is correct because one department corresponds to one chairperson, and one chairperson corresponds to one department. This fits the definition of a One-to-One relationship. The other options do not reflect this one-to-one correspondence.",
       "difficulty_level": 1,
@@ -1469,7 +1459,7 @@
         "D": "No instances of one entity can be associated with any instance of another entity."
       },
       "correct_answer": [
-        "One instance of an entity can be associated with multiple instances of another entity."
+        "B"
       ],
       "explanation": "B is correct because a 1:M relationship means one record in the first table can relate to many records in the second table. A is incorrect as that describes a 1:1 relationship. The 'many' side represents the possible occurrences.",
       "difficulty_level": 1,
@@ -1494,7 +1484,7 @@
         "D": "The total number of entities in the database."
       },
       "correct_answer": [
-        "The maximum number of allowed associations."
+        "B"
       ],
       "explanation": "B is correct because 'many' represents the maximum number of occurrences on that side of the relationship. A is incorrect because it relates to modality, not cardinality. The 'many' side can be 1, 2, 3, ..., n.",
       "difficulty_level": 1,
@@ -1519,7 +1509,7 @@
         "D": "One product is supplied by one supplier."
       },
       "correct_answer": [
-        "One customer can place many orders."
+        "C"
       ],
       "explanation": "C is correct because one customer can have multiple orders associated with them. The other options describe one-to-one relationships. The customer is on the 'one' side and the orders are on the 'many' side.",
       "difficulty_level": 1,
@@ -1544,7 +1534,7 @@
         "D": "Neither the 'Customers' nor the 'Orders' tables."
       },
       "correct_answer": [
-        "The 'Orders' table."
+        "B"
       ],
       "explanation": "B is correct because the foreign key is placed in the 'many' side of the relationship, which is the 'Orders' table in this scenario. The foreign key links each order to a specific customer. ",
       "difficulty_level": 1,
@@ -1569,7 +1559,7 @@
         "D": "It is a type of binary relationship."
       },
       "correct_answer": [
-        "It can be implemented without a foreign key."
+        "C"
       ],
       "explanation": "C is correct because a foreign key is essential for establishing and enforcing a 1:M relationship in a relational database. Without it, the relationship cannot be properly maintained. Options A, B, and D are true.",
       "difficulty_level": 1,
@@ -1594,7 +1584,7 @@
         "D": "Neither table."
       },
       "correct_answer": [
-        "The table on the 'many' side."
+        "B"
       ],
       "explanation": "B is correct because the foreign key, which references the primary key of the 'one' side table, resides in the 'many' side table. This allows multiple records in the 'many' side table to link back to a single record in the 'one' side table.",
       "difficulty_level": 1,
@@ -1619,7 +1609,7 @@
         "D": "To prevent duplicate data entries."
       },
       "correct_answer": [
-        "To link records between two tables in a specific relationship."
+        "B"
       ],
       "explanation": "B is correct because the core function of a foreign key is to create a link between tables based on a defined relationship, in this case, a one-to-many relationship. Option A describes a primary key. ",
       "difficulty_level": 1,
@@ -1644,7 +1634,7 @@
         "D": "The TotalAmount in the 'Customers' table."
       },
       "correct_answer": [
-        "The CustomerID in the 'Customers' table."
+        "B"
       ],
       "explanation": "B is correct because the 'Orders' table needs to link back to the 'Customers' table, so it contains a foreign key referencing the primary key (CustomerID) of the 'Customers' table. This ensures each order is associated with the correct customer.",
       "difficulty_level": 1,
@@ -1669,7 +1659,7 @@
         "D": "The foreign key must allow null values."
       },
       "correct_answer": [
-        "The foreign key must match the data type and size of the primary key it references."
+        "B"
       ],
       "explanation": "B is correct because the foreign key must be compatible with the primary key to ensure that only valid references are made, preventing data integrity issues. If the datatypes don't match, the link cannot be established.",
       "difficulty_level": 1,
@@ -1694,7 +1684,7 @@
         "D": "Referential Integrity"
       },
       "correct_answer": [
-        "Indexing"
+        "C"
       ],
       "explanation": "C is correct. Indexing improves query performance but is not directly required for establishing the 1:M relationship itself. Primary keys, data type consistency and referential integrity are all critical for correctly defining the relationship.",
       "difficulty_level": 1,
@@ -1719,8 +1709,7 @@
         "D": "No records in entity A are related to any records in entity B."
       },
       "correct_answer": [
-        "One record in entity A is related to many records in entity B",
-        "and vice versa."
+        "C"
       ],
       "explanation": "C is correct because, in a M-M relationship, records in both entities can be related to multiple records in the other entity. The key aspect is the bidirectional 'many' relationship.",
       "difficulty_level": 1,
@@ -1746,7 +1735,7 @@
         "D": "By using a single foreign key in one of the tables."
       },
       "correct_answer": [
-        "By creating an intermediary table (junction table) to link the two entities."
+        "B"
       ],
       "explanation": "B is correct. An intermediary table, also known as a junction table, resolves the M-M relationship into two 1-M relationships, linking the original entities without data redundancy. This table contains foreign keys referencing both original tables.",
       "difficulty_level": 1,
@@ -1772,7 +1761,7 @@
         "D": "To store the grades for each student."
       },
       "correct_answer": [
-        "To track which students are enrolled in which courses."
+        "C"
       ],
       "explanation": "C is correct because the intermediary table (e.g., 'Enrollments') directly links students to courses, resolving the M-M relationship. It typically contains foreign keys for both StudentID and CourseID.",
       "difficulty_level": 1,
@@ -1798,7 +1787,7 @@
         "D": "Ensuring the foreign keys in the junction table reference the correct primary keys."
       },
       "correct_answer": [
-        "Directly linking the two entities without a junction table."
+        "C"
       ],
       "explanation": "C is correct because directly linking the two entities without a junction table leads to data redundancy and difficulties in managing the relationship. A junction table is the correct approach. ",
       "difficulty_level": 1,
@@ -1824,8 +1813,7 @@
         "D": "AuthorName, BookID"
       },
       "correct_answer": [
-        "AuthorID",
-        "BookID"
+        "A"
       ],
       "explanation": "A is correct because the junction table needs foreign keys that reference the primary keys of both tables being linked. AuthorID is from the Author table and BookID is from the Book table.",
       "difficulty_level": 1,
@@ -1851,7 +1839,7 @@
         "D": "The data types of the attributes in an entity."
       },
       "correct_answer": [
-        "The maximum number of instances of one entity that can be associated with another entity."
+        "B"
       ],
       "explanation": "B is correct. Cardinality specifies the *maximum* number of relationships one entity instance can have with another. Option A describes modality.",
       "difficulty_level": 1,
@@ -1877,7 +1865,7 @@
         "D": "The physical storage size of the database."
       },
       "correct_answer": [
-        "The maximum number of related instances."
+        "C"
       ],
       "explanation": "C is correct because cardinality focuses on the maximum number of entities that can participate in a relationship. It helps define the constraints of the relationship. ",
       "difficulty_level": 1,
@@ -1903,7 +1891,7 @@
         "D": "Many-to-Many"
       },
       "correct_answer": [
-        "One-to-Many"
+        "B"
       ],
       "explanation": "B is correct because '1' represents one instance, and '*' represents many instances. The combination indicates that one instance of the first entity can be related to many instances of the second entity.",
       "difficulty_level": 1,
@@ -1929,8 +1917,7 @@
         "D": "Cardinality specifies the relationship type, while modality specifies the existence of a foreign key."
       },
       "correct_answer": [
-        "Cardinality specifies the maximum",
-        "while modality specifies the minimum number of relationships."
+        "C"
       ],
       "explanation": "C is correct because cardinality defines the maximum number of possible relationships, while modality defines whether the relationship is optional (minimum of zero) or mandatory (minimum of one).",
       "difficulty_level": 1,
@@ -1956,7 +1943,7 @@
         "D": "Many-to-Many"
       },
       "correct_answer": [
-        "One-to-Many"
+        "B"
       ],
       "explanation": "B is correct because each doctor can be associated with many patients, but each patient is only associated with one primary doctor. This fits the definition of a one-to-many relationship from the doctor's perspective. ",
       "difficulty_level": 1,
@@ -1982,7 +1969,7 @@
         "D": "The total number of instances of one entity in the database."
       },
       "correct_answer": [
-        "The minimum number of instances of one entity that must be related to another."
+        "B"
       ],
       "explanation": "B is correct because modality represents the *minimum* number of instances required in a relationship. A is incorrect because it describes cardinality, the *maximum* number. Modality determines if participation is mandatory or optional.",
       "difficulty_level": 1,
@@ -2008,7 +1995,7 @@
         "D": "An order must belong to one and only one customer."
       },
       "correct_answer": [
-        "A customer is not required to have any orders."
+        "C"
       ],
       "explanation": "C is correct because a modality of zero indicates that the relationship is optional. Option A describes a mandatory relationship, and option B describes cardinality.",
       "difficulty_level": 1,
@@ -2034,7 +2021,7 @@
         "D": "Cardinality of one"
       },
       "correct_answer": [
-        "Modality of one"
+        "B"
       ],
       "explanation": "B is correct because a modality of one signifies that participation in the relationship is required (mandatory). A modality of zero signifies optional participation.",
       "difficulty_level": 1,
@@ -2060,7 +2047,7 @@
         "D": "More flexible reporting"
       },
       "correct_answer": [
-        "Incorrect data validation"
+        "B"
       ],
       "explanation": "B is correct because ignoring modality can result in constraints not being properly enforced, leading to incorrect data being entered. For example, requiring a phone number when it's optional. The other options are not direct consequences of ignoring modality.",
       "difficulty_level": 1,
@@ -2086,7 +2073,7 @@
         "D": "Every order must have a customer."
       },
       "correct_answer": [
-        "A student may or may not have a parking permit."
+        "C"
       ],
       "explanation": "C is correct because it shows an optional relationship - a student is not required to have a parking permit. The other options all show mandatory relationships.",
       "difficulty_level": 1,
@@ -2112,7 +2099,7 @@
         "D": "A diamond"
       },
       "correct_answer": [
-        "A line ( | )"
+        "C"
       ],
       "explanation": "C is correct. A line ( | ) on the relationship line indicates mandatory participation. A circle indicates optional participation, and a crow's foot indicates 'many' cardinality.",
       "difficulty_level": 1,
@@ -2138,7 +2125,7 @@
         "D": "Many relationship"
       },
       "correct_answer": [
-        "Many relationship"
+        "D"
       ],
       "explanation": "D is correct. A crow's foot represents the 'many' side of a relationship, indicating cardinality. Options A and B relate to modality, not cardinality.",
       "difficulty_level": 1,
@@ -2164,7 +2151,7 @@
         "D": "Attribute type"
       },
       "correct_answer": [
-        "Modality"
+        "B"
       ],
       "explanation": "B is correct. Modality, representing minimum participation, is indicated by the inner symbol (line or circle). Cardinality is shown by the outer symbol (crow's foot).",
       "difficulty_level": 1,
@@ -2190,7 +2177,7 @@
         "D": "Two lines"
       },
       "correct_answer": [
-        "Line and a crow's foot"
+        "B"
       ],
       "explanation": "B is correct. A line represents mandatory (must exist), and a crow's foot represents many. The order is modality then cardinality.",
       "difficulty_level": 1,
@@ -2216,7 +2203,7 @@
         "D": "The entity has only one relationship."
       },
       "correct_answer": [
-        "The entity is optional."
+        "B"
       ],
       "explanation": "B is correct. A circle represents optional participation, meaning the entity is not required to participate in the relationship. Options C and D relate to cardinality, not modality.",
       "difficulty_level": 1,
@@ -2242,7 +2229,7 @@
         "D": "To optimize query performance."
       },
       "correct_answer": [
-        "To describe attributes specific to the relationship between two entities."
+        "B"
       ],
       "explanation": "B is correct because intersection data describes the attributes *of the relationship itself* between two entities. Option A describes entity attributes, not relationship attributes.",
       "difficulty_level": 1,
@@ -2266,7 +2253,7 @@
         "D": "Club's president"
       },
       "correct_answer": [
-        "Date student joined the club"
+        "C"
       ],
       "explanation": "C is correct. The date the student joined the club is specific to that *particular* student's relationship with that *particular* club. It's not a property of the student or club alone. The other options are properties of the entities themselves.",
       "difficulty_level": 1,
@@ -2290,7 +2277,7 @@
         "D": "Many-to-many"
       },
       "correct_answer": [
-        "Many-to-many"
+        "D"
       ],
       "explanation": "D is correct because many-to-many relationships often require additional information to describe the specific instances of the relationship. The other options typically don't require intersection data.",
       "difficulty_level": 1,
@@ -2314,7 +2301,7 @@
         "D": "The primary key"
       },
       "correct_answer": [
-        "One of the entities involved in the relationship"
+        "B"
       ],
       "explanation": "B is correct because intersection data belongs to the relationship, not solely to one of the entities. Assigning it to an entity incorrectly represents the data.",
       "difficulty_level": 1,
@@ -2338,7 +2325,7 @@
         "D": "Foreign key"
       },
       "correct_answer": [
-        "Intersection data"
+        "C"
       ],
       "explanation": "C is correct because the grade is specific to the student's *enrollment* in a *specific course*, and not just a property of the student or the course alone.  It describes the relationship.",
       "difficulty_level": 1,
@@ -2362,7 +2349,7 @@
         "D": "Five-sided box"
       },
       "correct_answer": [
-        "Five-sided box"
+        "D"
       ],
       "explanation": "D is correct. A five-sided box connected to the relationship diamond is used to visually represent intersection data. Rectangles represent entities, and diamonds represent relationships.",
       "difficulty_level": 1,
@@ -2386,7 +2373,7 @@
         "D": "Inside the attribute list"
       },
       "correct_answer": [
-        "Connected to the relationship diamond"
+        "B"
       ],
       "explanation": "B is correct. The five-sided box is visually linked to the relationship diamond, indicating that the data describes the relationship. The other options are incorrect locations for representing intersection data.",
       "difficulty_level": 1,
@@ -2410,7 +2397,7 @@
         "D": "To indicate a one-to-many relationship"
       },
       "correct_answer": [
-        "To distinguish relationship attributes from entity attributes"
+        "B"
       ],
       "explanation": "B is correct. The five-sided box makes it visually clear that these attributes describe the relationship, not the entities themselves. The other options describe different database concepts.",
       "difficulty_level": 1,
@@ -2434,7 +2421,7 @@
         "D": "'Date of Visit' is a primary key."
       },
       "correct_answer": [
-        "'Date of Visit' is an attribute of the relationship between Doctor and Patient."
+        "C"
       ],
       "explanation": "C is correct. The five-sided box indicates that 'Date of Visit' describes the specific *interaction* between a doctor and a patient. It's intersection data.",
       "difficulty_level": 1,
@@ -2458,7 +2445,7 @@
         "D": "The attributes will be assigned to the wrong entity."
       },
       "correct_answer": [
-        "The diagram will be incomplete and confusing."
+        "A"
       ],
       "explanation": "A is correct. While the database might still function, the E-R diagram will not clearly and accurately represent the database structure, making it harder to understand and maintain. It becomes unclear which attributes belong to the relationship vs the entities.",
       "difficulty_level": 1,
@@ -2482,7 +2469,7 @@
         "D": "To store primary keys of the related entities."
       },
       "correct_answer": [
-        "To store attributes that describe the relationship itself."
+        "B"
       ],
       "explanation": "B is correct because intersection data captures details specific to each instance of the relationship, not just the entities. A is incorrect because that's the purpose of the entity's attributes. Intersection data provides context *about* the link between entities.",
       "difficulty_level": 1,
@@ -2506,7 +2493,7 @@
         "D": "The professor teaching the course."
       },
       "correct_answer": [
-        "The grade the student received in the course."
+        "C"
       ],
       "explanation": "C is correct because the grade is specific to the student's enrollment in that particular course. A and B describe the entities themselves, not the relationship. Intersection data provides context *about* the link between entities.",
       "difficulty_level": 1,
@@ -2530,7 +2517,7 @@
         "D": "Listing the contact information for suppliers."
       },
       "correct_answer": [
-        "Recording the quantity of each product ordered by a customer in a specific order."
+        "C"
       ],
       "explanation": "C is correct because the quantity ordered is specific to the relationship between the customer and the product in that particular order. A, B, and D describe individual entities, not relationships. Intersection data provides context *about* the link between entities.",
       "difficulty_level": 1,
@@ -2554,7 +2541,7 @@
         "D": "Simplified database queries."
       },
       "correct_answer": [
-        "Data redundancy and loss of information about the relationship."
+        "C"
       ],
       "explanation": "C is correct. Failing to use intersection data when necessary can lead to storing the same information multiple times or losing important details about the relationship. B is the opposite of the truth. Intersection data enhances data integrity.",
       "difficulty_level": 1,
@@ -2578,7 +2565,7 @@
         "D": "Duplicated in both the 'Authors' and 'Books' tables."
       },
       "correct_answer": [
-        "In a junction table linking 'Authors' and 'Books'."
+        "C"
       ],
       "explanation": "C is correct. The 'contribution percentage' describes the *relationship* between an author and a book, so it's intersection data. A junction table is needed for the M:M relationship and is the proper place to store intersection data. Storing it in A or B would not properly represent the relationship.",
       "difficulty_level": 1,
@@ -2602,7 +2589,7 @@
         "D": "One record in the first table may or may not be related to a record in the second table."
       },
       "correct_answer": [
-        "Multiple records in one table are related to multiple records in another table."
+        "C"
       ],
       "explanation": "C is the correct definition of a many-to-many relationship. A describes a one-to-one relationship. B describes a one-to-many relationship. Understanding the fundamental relationship types is essential.",
       "difficulty_level": 1,
@@ -2627,7 +2614,7 @@
         "D": "To eliminate the need for primary keys in the related tables."
       },
       "correct_answer": [
-        "To properly represent the relationships between tables in a many-to-many relationship."
+        "C"
       ],
       "explanation": "C is correct. Junction tables are essential for resolving many-to-many relationships and avoiding data redundancy. B is incorrect because it's *incorrect* to directly link tables in M:M relationships without a junction table.",
       "difficulty_level": 1,
@@ -2652,7 +2639,7 @@
         "D": "Many-to-many (M:M)"
       },
       "correct_answer": [
-        "Many-to-many (M:M)"
+        "D"
       ],
       "explanation": "D is correct. Since one customer can buy many books, and one book can be bought by many customers, it's a many-to-many relationship. The key is recognizing that both sides of the relationship can have multiple records.",
       "difficulty_level": 1,
@@ -2677,7 +2664,7 @@
         "D": "Defining primary keys for each table."
       },
       "correct_answer": [
-        "Trying to directly link the two tables without using a junction table."
+        "C"
       ],
       "explanation": "C is correct. Directly linking tables in a many-to-many relationship leads to data redundancy and integrity issues. Using a junction table is the correct approach. Understanding common mistakes is crucial for avoiding errors.",
       "difficulty_level": 1,
@@ -2702,7 +2689,7 @@
         "D": "Store the list of followers as a comma-separated string in the 'Users' table."
       },
       "correct_answer": [
-        "Create a 'Followers' table with columns 'UserID' and 'FollowerID'."
+        "C"
       ],
       "explanation": "C is correct because the 'Followers' table acts as a junction table, linking users to their followers.  This correctly implements the many-to-many relationship. Options A, B, and D would not properly handle the many-to-many nature of the relationship.",
       "difficulty_level": 1,
@@ -2727,7 +2714,7 @@
         "D": "The primary key of related tables."
       },
       "correct_answer": [
-        "The attributes of the entity."
+        "C"
       ],
       "explanation": "C is correct. Each attribute of an entity is represented as a column in the relational table. A is wrong because the entity *becomes* the table. B describes a different concept (relationships).",
       "difficulty_level": 1,
@@ -2752,7 +2739,7 @@
         "D": "It becomes an index."
       },
       "correct_answer": [
-        "It becomes the primary key."
+        "B"
       ],
       "explanation": "B is correct. The unique identifier of the entity is used as the primary key in the table to uniquely identify each record. A is incorrect because a foreign key references a different table.  The primary key is essential for data integrity.",
       "difficulty_level": 1,
@@ -2777,7 +2764,7 @@
         "D": "Normalizing the table to 3NF."
       },
       "correct_answer": [
-        "Defining a primary key."
+        "B"
       ],
       "explanation": "B is correct. Without a primary key, it's difficult to uniquely identify each record, leading to potential data integrity issues. A (foreign key) applies to relationships, not single entities.  The primary key is essential for data integrity.",
       "difficulty_level": 1,
@@ -2802,9 +2789,7 @@
         "D": "Table: RelationalTable; Columns: EmployeeID, Name, Salary"
       },
       "correct_answer": [
-        "Table: Employee; Columns: EmployeeID",
-        "Name",
-        "Salary"
+        "B"
       ],
       "explanation": "B is correct. The entity name becomes the table name, and the entity attributes become the column names. This is the direct, straightforward conversion process. A is incorrect in both table and column naming.",
       "difficulty_level": 1,
@@ -2829,7 +2814,7 @@
         "D": "The physical location of the server where the database is stored."
       },
       "correct_answer": [
-        "The physical location of the server where the database is stored."
+        "D"
       ],
       "explanation": "D is correct. The physical location of the server is a deployment concern, not directly related to the logical conversion of an entity to a table. A, B, and C are crucial to the design process.",
       "difficulty_level": 1,
@@ -2854,7 +2839,7 @@
         "D": "Ignore the relationship."
       },
       "correct_answer": [
-        "Merge the tables."
+        "C"
       ],
       "explanation": "C is correct. Merging tables is simplest and avoids redundancy when the data is accessed together. A is used for many-to-many. B is another valid 1:1 option, but less ideal if accessed together.",
       "difficulty_level": 1,
@@ -2879,7 +2864,7 @@
         "D": "Do not create a relationship."
       },
       "correct_answer": [
-        "Add 'ParkingSpotID' as a foreign key in the 'Employee' table."
+        "B"
       ],
       "explanation": "B is correct. Adding a foreign key allows you to easily look up the parking spot from the employee record. A is viable if *always* accessed together, but B is better for this scenario. C is overkill for a simple 1:1.",
       "difficulty_level": 1,
@@ -2904,7 +2889,7 @@
         "D": "A citizen has one passport."
       },
       "correct_answer": [
-        "A citizen has one passport."
+        "D"
       ],
       "explanation": "D is correct. Each citizen has only one passport, and each passport belongs to only one citizen. A is one-to-many. B is many-to-many. C could be 1:M if one department has many employees.",
       "difficulty_level": 1,
@@ -2929,7 +2914,7 @@
         "D": "Improved data integrity."
       },
       "correct_answer": [
-        "Performance issues due to unnecessary data retrieval."
+        "C"
       ],
       "explanation": "C is correct. If you only need data from one of the original entities, merging them means you're retrieving more data than needed, impacting performance. A is a benefit of merging when *accessed together*. B can be a benefit, but not if accessed separately.",
       "difficulty_level": 1,
@@ -2954,7 +2939,7 @@
         "D": "When you want to improve query performance."
       },
       "correct_answer": [
-        "When you need to track additional information about the assignment."
+        "B"
       ],
       "explanation": "B is correct. A separate linking table is useful when you need to store attributes that describe the relationship itself. A suggests merging is better. C and D are not primary drivers for this approach.",
       "difficulty_level": 1,
@@ -2979,7 +2964,7 @@
         "D": "Both A and B."
       },
       "correct_answer": [
-        "Both A and B."
+        "D"
       ],
       "explanation": "D is correct. You can either combine the entities into one table or have separate tables with a foreign key relationship. C is wrong because it doesn't represent any relationship. Ignoring the relationship leads to data integrity issues.",
       "difficulty_level": 1,
@@ -3004,7 +2989,7 @@
         "D": "Improved data integrity."
       },
       "correct_answer": [
-        "Increased data redundancy if one entity has many attributes that are often empty."
+        "A"
       ],
       "explanation": "A is correct. If one entity has numerous optional attributes, combining tables can lead to wasted space and redundancy. B, C, and D are incorrect because they represent potential advantages, not drawbacks. Considering data characteristics helps choose the best representation.",
       "difficulty_level": 1,
@@ -3029,7 +3014,7 @@
         "D": "Duplicating all the data from one table into the other."
       },
       "correct_answer": [
-        "Using a foreign key in one table that references the primary key of the other table."
+        "B"
       ],
       "explanation": "B is correct. A foreign key establishes the link between related data in separate tables. A is incorrect because primary keys identify records, not relationships. C is wrong because it prevents linking. D is incorrect and leads to redundancy.",
       "difficulty_level": 1,
@@ -3054,7 +3039,7 @@
         "D": "To automatically generate new PatientIDs."
       },
       "correct_answer": [
-        "To ensure each medical record is associated with only one patient."
+        "A"
       ],
       "explanation": "A is correct. The foreign key enforces the relationship, linking records. B, C, and D are incorrect because they describe other database functions. Foreign keys maintain referential integrity between tables.",
       "difficulty_level": 1,
@@ -3079,7 +3064,7 @@
         "D": "Creating separate tables with no defined relationship."
       },
       "correct_answer": [
-        "Creating separate tables with no defined relationship."
+        "D"
       ],
       "explanation": "D is correct. Without a defined relationship, the tables are not linked and the 1:1 relationship is not enforced. A and B are valid. C is related to using foreign keys, which are needed.",
       "difficulty_level": 1,
@@ -3104,7 +3089,7 @@
         "D": "In both tables, referencing each other."
       },
       "correct_answer": [
-        "In the table representing the 'many' side of the relationship."
+        "B"
       ],
       "explanation": "B is correct. The foreign key goes on the 'many' side so that multiple records can reference the 'one' side. A is incorrect because it would not allow multiple instances on the 'many' side. C and D are incorrect database design practices.",
       "difficulty_level": 1,
@@ -3129,8 +3114,7 @@
         "D": "Nowhere; the relationship is implicit and doesn't need a foreign key."
       },
       "correct_answer": [
-        "In the 'Students' table",
-        "referencing the 'Teachers' table."
+        "B"
       ],
       "explanation": "B is correct. Each student would have a foreign key (TeacherID) linking them to their teacher. A is incorrect because it would require a list within the 'Teachers' table. C is used for M:M relationships. D is incorrect as foreign keys are needed for relational databases.",
       "difficulty_level": 1,
@@ -3155,8 +3139,7 @@
         "D": "No author information, as it is a separate entity."
       },
       "correct_answer": [
-        "The AuthorID as a foreign key",
-        "referencing the 'Authors' table."
+        "B"
       ],
       "explanation": "B is correct. The AuthorID in the 'Books' table links each book to its author. A would not be efficient. C is more complex than necessary. D ignores the relationship. Foreign keys maintain the link.",
       "difficulty_level": 1,
@@ -3181,7 +3164,7 @@
         "D": "Both tables contain a list of the primary keys from the other table."
       },
       "correct_answer": [
-        "The primary key of the 'one' side is placed as a foreign key in the 'many' side."
+        "B"
       ],
       "explanation": "B is correct. This allows multiple instances on the 'many' side to relate to one instance on the 'one' side. A is backwards. C is for M:M. D is inefficient and not how relational databases work.",
       "difficulty_level": 1,
@@ -3206,8 +3189,7 @@
         "D": "The customer's name duplicated in each order record."
       },
       "correct_answer": [
-        "The CustomerID as a foreign key",
-        "referencing the 'Customers' table."
+        "B"
       ],
       "explanation": "B is correct. CustomerID as a foreign key in Orders links orders to customers. A is inefficient. C describes a different table structure. D introduces redundancy. Foreign keys are the standard relational approach.",
       "difficulty_level": 1,
@@ -3232,7 +3214,7 @@
         "D": "To store additional information about the relationship."
       },
       "correct_answer": [
-        "To establish a link between the 'one' side and the 'many' side of the relationship."
+        "B"
       ],
       "explanation": "B is correct. The foreign key links the records, representing the relationship. A describes a primary key. C is a constraint. D is not the primary purpose. Foreign keys define how tables relate to each other.",
       "difficulty_level": 1,
@@ -3256,8 +3238,7 @@
         "D": "In a separate 'TeacherStudent' table."
       },
       "correct_answer": [
-        "In the 'Students' table",
-        "as a foreign key."
+        "B"
       ],
       "explanation": "B is correct. The TeacherID in the Students table links each student to their teacher. A is where the teacher's unique ID is defined. C is incorrect. D is used for M:M.",
       "difficulty_level": 1,
@@ -3281,7 +3262,7 @@
         "D": "The 'Customer' table contains the order details."
       },
       "correct_answer": [
-        "The 'Order' table contains a customer_id as a foreign key."
+        "B"
       ],
       "explanation": "B is correct. The customer_id in the Order table establishes the 1:M relationship. A is inefficient. C is for M:M. D is wrong; the order details belong in the Order table.",
       "difficulty_level": 1,
@@ -3305,7 +3286,7 @@
         "D": "Using the primary key as the foreign key."
       },
       "correct_answer": [
-        "Placing the foreign key on the 'one' side."
+        "B"
       ],
       "explanation": "B is correct. Placing the foreign key on the 'one' side would incorrectly imply that one order can belong to multiple customers. A is the correct approach. C would break the relationship. D correctly uses the primary key as a foreign key.",
       "difficulty_level": 1,
@@ -3329,7 +3310,7 @@
         "D": "To reduce data redundancy in the database."
       },
       "correct_answer": [
-        "To establish the link between the two tables."
+        "B"
       ],
       "explanation": "B is correct. Referencing the primary key establishes the connection between related data. A describes the function of the primary key. C and D are secondary benefits. Foreign keys are for linking related data.",
       "difficulty_level": 1,
@@ -3353,7 +3334,7 @@
         "D": "A weak entity"
       },
       "correct_answer": [
-        "An associative entity"
+        "B"
       ],
       "explanation": "B is correct. An associative entity (or junction table) resolves M:M relationships by creating two 1:M relationships. A, C, and D are different types of entities. Associative entities are key for handling M:M relationships in relational databases.",
       "difficulty_level": 1,
@@ -3377,8 +3358,7 @@
         "D": "To eliminate the need for foreign keys in the original entities."
       },
       "correct_answer": [
-        "To create two 1:M relationships",
-        "linking each original entity to the associative entity."
+        "B"
       ],
       "explanation": "B is correct. The associative entity breaks down the M:M into two 1:M relationships. A is incorrect because it violates the relational model. C and D are not the primary functions. Associative entities are fundamental for representing M:M relationships.",
       "difficulty_level": 1,
@@ -3402,8 +3382,7 @@
         "D": "A copy of all student and course information in a single table."
       },
       "correct_answer": [
-        "The student_id (FK) and course_id (FK) as foreign keys",
-        "referencing 'Students' and 'Courses' tables."
+        "C"
       ],
       "explanation": "C is correct. The associative entity links students and courses via foreign keys. A and B are inefficient. D leads to redundancy. Associative entities enable the correct representation of M:M relationships.",
       "difficulty_level": 1,
@@ -3427,7 +3406,7 @@
         "D": "Using the primary keys of the original entities as foreign keys in the associative entity."
       },
       "correct_answer": [
-        "Directly linking the two original entities with a foreign key in either table."
+        "B"
       ],
       "explanation": "B is correct. Directly linking violates relational model constraints. A, C, and D are the correct steps. Associative entities are required to handle M:M relationships correctly.",
       "difficulty_level": 1,
@@ -3451,7 +3430,7 @@
         "D": "To store additional information about the relationship between the original entities."
       },
       "correct_answer": [
-        "To establish the link between each original entity and the associative entity."
+        "B"
       ],
       "explanation": "B is correct. The foreign keys connect the associative entity to the original tables, creating the 1:M relationships. A is the purpose of a primary key. C is handled by constraints. D is a secondary function. Foreign keys are essential for establishing relationships.",
       "difficulty_level": 1,
@@ -3475,7 +3454,7 @@
         "D": "None of the tables contain foreign keys."
       },
       "correct_answer": [
-        "Only the associative entity table."
+        "B"
       ],
       "explanation": "B is correct. The associative entity table contains foreign keys referencing the primary keys of the two original entity tables, representing the relationship. The original tables do not have foreign keys to each other in this scenario. The three-table rule avoids redundancy by storing the link in the associative table.",
       "difficulty_level": 1,
@@ -3499,7 +3478,7 @@
         "D": "To decrease the number of tables in the database."
       },
       "correct_answer": [
-        "To store attributes specific to the relationship between the two entities."
+        "B"
       ],
       "explanation": "B is correct. The associative entity table allows storing data *about* the relationship itself (e.g., a timestamp, a quantity). A is wrong because the original entities aren't directly linked with foreign keys. Associative tables are key in managing M:M relationships.",
       "difficulty_level": 1,
@@ -3523,7 +3502,7 @@
         "D": "One-to-zero relationship."
       },
       "correct_answer": [
-        "Many-to-many relationship."
+        "C"
       ],
       "explanation": "C is correct. The 'three-table rule' is specifically designed to handle many-to-many relationships in relational databases. The associative table manages the complex links between the entities. Other relationship types are handled differently.",
       "difficulty_level": 1,
@@ -3547,7 +3526,7 @@
         "D": "Improved query performance."
       },
       "correct_answer": [
-        "Data inconsistency and redundancy."
+        "C"
       ],
       "explanation": "C is correct. Without an associative table, you'd likely store multiple values in a single field or repeat data, leading to inconsistency and redundancy. Options A, B, and D are benefits of *using* the three-table rule.",
       "difficulty_level": 1,
@@ -3571,7 +3550,7 @@
         "D": "It stores information about the club presidents."
       },
       "correct_answer": [
-        "It links students to the clubs they belong to."
+        "C"
       ],
       "explanation": "C is correct. The 'Student_Club' table, acting as an associative entity, directly links student records to club records, representing the many-to-many relationship. Options A and B describe the original entity tables; D is irrelevant.",
       "difficulty_level": 1,
@@ -3595,7 +3574,7 @@
         "D": "Lookup table"
       },
       "correct_answer": [
-        "Associative entity"
+        "C"
       ],
       "explanation": "C is correct. An intersection table is also commonly referred to as an associative entity because it associates records from two other tables. The other options describe different database concepts.",
       "difficulty_level": 1,
@@ -3621,7 +3600,7 @@
         "D": "A foreign key referencing another table."
       },
       "correct_answer": [
-        "A composite key consisting of the primary keys of the related tables."
+        "C"
       ],
       "explanation": "C is correct. The composite key in an intersection table is formed by combining the primary keys of the tables it connects. This ensures uniqueness for each relationship instance. Option A is wrong because it wouldn't link the tables.",
       "difficulty_level": 1,
@@ -3647,7 +3626,7 @@
         "D": "Many-to-many"
       },
       "correct_answer": [
-        "Many-to-many"
+        "D"
       ],
       "explanation": "D is correct. Intersection tables are specifically designed to handle many-to-many relationships by linking records from two tables. The other options are simpler relationships that don't necessitate an intersection table.",
       "difficulty_level": 1,
@@ -3673,7 +3652,7 @@
         "D": "The book's genre."
       },
       "correct_answer": [
-        "The author's contribution percentage to the book."
+        "C"
       ],
       "explanation": "C is correct. Intersection tables can store attributes specific to the *relationship* between entities. The contribution percentage describes the author's role in the creation of the book, which is a property of their relationship. The other options are attributes of the Authors or Books tables themselves.",
       "difficulty_level": 1,
@@ -3699,7 +3678,7 @@
         "D": "The database will create duplicate entries in the related tables."
       },
       "correct_answer": [
-        "The intersection table will not be able to uniquely identify each relationship."
+        "B"
       ],
       "explanation": "B is correct. The composite key ensures each relationship is uniquely identified. Without both keys, the intersection table cannot properly link the two entities, leading to data integrity issues. The other options are incorrect because the database cannot automatically correct this error, and the table will not function normally.",
       "difficulty_level": 1,
@@ -3725,7 +3704,7 @@
         "D": "To decrease data integrity."
       },
       "correct_answer": [
-        "To minimize data redundancy."
+        "B"
       ],
       "explanation": "B is correct. Data normalization aims to reduce the repetition of data across tables. This leads to improved data integrity and efficiency. Options A, C, and D are the opposite of the goals of data normalization.",
       "difficulty_level": 1,
@@ -3751,7 +3730,7 @@
         "D": "Slower query performance."
       },
       "correct_answer": [
-        "Improved data integrity."
+        "C"
       ],
       "explanation": "C is correct. Normalization ensures that data is consistent and accurate, which is crucial for data integrity. Options A, B, and D are potential drawbacks of *not* normalizing data, or of over-normalizing.",
       "difficulty_level": 1,
@@ -3777,8 +3756,7 @@
         "D": "Improved data integrity."
       },
       "correct_answer": [
-        "More complex joins",
-        "potentially slowing down query performance."
+        "C"
       ],
       "explanation": "C is correct. Over-normalization can lead to an excessive number of tables, requiring complex joins to retrieve data, which can slow down query performance. The other options are typically benefits of normalization, not drawbacks of over-normalization.",
       "difficulty_level": 1,
@@ -3804,7 +3782,7 @@
         "D": "To serve as primary keys."
       },
       "correct_answer": [
-        "To be minimized for redundancy."
+        "B"
       ],
       "explanation": "B is correct. Normalization focuses on organizing nonkey attributes to avoid redundancy. Key attributes *define* each record. Nonkey attributes describe the record. The goal is to store each piece of nonkey information only once.",
       "difficulty_level": 1,
@@ -3830,7 +3808,7 @@
         "D": "A small text editor."
       },
       "correct_answer": [
-        "A social media platform."
+        "B"
       ],
       "explanation": "B is correct. Social media platforms handle vast amounts of interconnected data. Normalization helps manage relationships between users, posts, comments, etc., ensuring data integrity and efficient updates. The other applications are simpler and don't require extensive normalization.",
       "difficulty_level": 1,
@@ -3856,7 +3834,7 @@
         "D": "It has a composite key."
       },
       "correct_answer": [
-        "Each attribute contains only a single value."
+        "C"
       ],
       "explanation": "C is correct. 1NF requires that each cell (attribute) in a table holds only one value (atomic value), eliminating repeating groups. Options A and B refer to higher normal forms (2NF and 3NF). Option D is not a requirement of 1NF.",
       "difficulty_level": 1,
@@ -3882,7 +3860,7 @@
         "D": "Atomic Value"
       },
       "correct_answer": [
-        "Repeating Group"
+        "B"
       ],
       "explanation": "B is correct. A repeating group is a set of multiple values stored in a single attribute, which 1NF aims to eliminate by creating separate rows or tables. A, C, and D refer to other database concepts, not multivalued attributes.",
       "difficulty_level": 1,
@@ -3908,7 +3886,7 @@
         "D": "Because it is optional for database design."
       },
       "correct_answer": [
-        "Because it addresses the most basic form of data redundancy."
+        "B"
       ],
       "explanation": "B is correct. 1NF tackles the most fundamental redundancy by ensuring each attribute contains only a single value. It's a prerequisite for higher normal forms. Option C is incorrect because 1NF alone doesn't guarantee complete data integrity.",
       "difficulty_level": 1,
@@ -3934,7 +3912,7 @@
         "D": "Boyce-Codd Normal Form (BCNF)"
       },
       "correct_answer": [
-        "First Normal Form (1NF)"
+        "C"
       ],
       "explanation": "C is correct. Storing multiple values in a single attribute ('PhoneNumbers') violates the rule that each attribute must contain only a single value, which is a requirement of 1NF. The other normal forms address different types of dependencies.",
       "difficulty_level": 1,
@@ -3960,7 +3938,7 @@
         "D": "Delete the multivalued attribute."
       },
       "correct_answer": [
-        "Create a separate table with a foreign key to the original table."
+        "B"
       ],
       "explanation": "B is correct. Creating a separate table with a foreign key allows you to store each value of the multivalued attribute in a separate row, linked to the original record. This eliminates the repeating group and satisfies 1NF. Leaving the attribute as is (A) violates 1NF.",
       "difficulty_level": 1,
@@ -3986,7 +3964,7 @@
         "D": "To ensure all tables have a primary key."
       },
       "correct_answer": [
-        "To eliminate partial dependencies."
+        "B"
       ],
       "explanation": "B is correct. 2NF specifically addresses partial dependencies, where non-key attributes depend on only part of the composite primary key. A is incorrect because it describes 1NF. C describes 3NF, and D is a general database design principle, not specific to 2NF.",
       "difficulty_level": 1,
@@ -4011,7 +3989,7 @@
         "D": "It must not have any foreign keys."
       },
       "correct_answer": [
-        "It must first be in First Normal Form (1NF)."
+        "C"
       ],
       "explanation": "C is correct. 2NF builds upon 1NF; a table must already satisfy the conditions of 1NF before it can be in 2NF. B is misleading because 2NF primarily addresses composite keys, but the table must still be in 1NF. A and D are incorrect statements about 2NF.",
       "difficulty_level": 1,
@@ -4035,7 +4013,7 @@
         "D": "A dependency between two primary keys in different tables."
       },
       "correct_answer": [
-        "A dependency where a non-key attribute depends on only part of a composite primary key."
+        "B"
       ],
       "explanation": "B is correct. A partial dependency exists when a non-key attribute is dependent on only a portion of the composite primary key, violating 2NF. C describes a transitive dependency (3NF), and A describes a full functional dependency (desired in 2NF).",
       "difficulty_level": 1,
@@ -4058,7 +4036,7 @@
         "D": "Have foreign keys referencing other tables."
       },
       "correct_answer": [
-        "Have a composite primary key."
+        "B"
       ],
       "explanation": "B is correct. 2NF is specifically designed to address issues arising from composite primary keys and partial dependencies. A is incorrect because 2NF does not apply if there is only one attribute in the primary key. C is incorrect because tables should always have a primary key. D is related to relationships, but not specifically to 2NF.",
       "difficulty_level": 1,
@@ -4082,8 +4060,7 @@
         "D": "Storing the total order amount in an ORDERS table where the primary key is OrderID."
       },
       "correct_answer": [
-        "Storing a product's price in an ORDER_ITEMS table where the composite primary key is (OrderID",
-        "ProductID) and the price depends only on ProductID."
+        "B"
       ],
       "explanation": "B is correct. This is a partial dependency because ProductPrice only depends on ProductID, not the entire (OrderID, ProductID) key. A, C, and D do not describe partial dependencies.",
       "difficulty_level": 1,
@@ -4108,7 +4085,7 @@
         "D": "To eliminate all redundancy."
       },
       "correct_answer": [
-        "To eliminate transitive dependencies."
+        "C"
       ],
       "explanation": "C is correct. 3NF is specifically concerned with removing transitive dependencies, where a non-key attribute depends on another non-key attribute. A refers to 1NF, B refers to 2NF, and D, while desirable, is not the *primary* goal of any single normal form.",
       "difficulty_level": 1,
@@ -4132,7 +4109,7 @@
         "D": "Boyce-Codd Normal Form (BCNF)"
       },
       "correct_answer": [
-        "Second Normal Form (2NF)"
+        "B"
       ],
       "explanation": "B is correct. Normalization is a step-by-step process; a table must satisfy the requirements of 2NF before it can be considered to be in 3NF. A describes a less strict condition, and C and D are more advanced normal forms.",
       "difficulty_level": 1,
@@ -4156,7 +4133,7 @@
         "D": "A dependency between two primary keys in different tables."
       },
       "correct_answer": [
-        "A dependency where a non-key attribute depends on another non-key attribute."
+        "C"
       ],
       "explanation": "C is correct. A transitive dependency is characterized by a non-key attribute being dependent on another non-key attribute, which in turn depends on the primary key. This violates 3NF. A describes a direct dependency which is desired. B and D are incorrect definitions.",
       "difficulty_level": 1,
@@ -4180,7 +4157,7 @@
         "D": "Multi-valued dependency"
       },
       "correct_answer": [
-        "Transitive dependency"
+        "C"
       ],
       "explanation": "C is correct. 3NF is specifically designed to remove transitive dependencies. A is handled by 2NF. B describes a desired state in 2NF and 3NF. D is related to 4NF.",
       "difficulty_level": 1,
@@ -4204,10 +4181,7 @@
         "D": "An ORDER table with OrderID (PK) and OrderDate."
       },
       "correct_answer": [
-        "An EMPLOYEE table with EmployeeID (PK)",
-        "DepartmentID",
-        "and DepartmentName",
-        "where DepartmentName depends on DepartmentID."
+        "B"
       ],
       "explanation": "B is correct. DepartmentName depends on DepartmentID, which in turn depends on EmployeeID (the primary key). This is a transitive dependency. A, C, and D do not exhibit transitive dependencies.",
       "difficulty_level": 1,

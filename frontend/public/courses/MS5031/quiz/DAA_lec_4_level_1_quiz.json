@@ -993,8 +993,7 @@
         "D": "$R^2$ only works with linear relationships."
       },
       "correct_answer": [
-        "$R^2$ tends to increase or stay the same as more predictors are added",
-        "even if those predictors are not significant."
+        "C"
       ],
       "explanation": "C is correct because $R^2$ does not account for the number of predictors in the model, so it can be artificially inflated by adding irrelevant variables. A is incorrect because $R^2$ usually increases or stays the same. Blindly using higher $R^2$ leads to overfitting.",
       "difficulty_level": 1,
@@ -1018,7 +1017,7 @@
         "D": "Multicollinearity"
       },
       "correct_answer": [
-        "Overfitting"
+        "B"
       ],
       "explanation": "B is correct because a high $R^2$ without considering model complexity can lead to overfitting, where the model fits the training data too closely and performs poorly on new data. A is incorrect, underfitting is the opposite problem. Overfitting means memorizing the training data.",
       "difficulty_level": 1,
@@ -1042,7 +1041,7 @@
         "D": "It becomes zero."
       },
       "correct_answer": [
-        "It tends to increase or stay the same."
+        "C"
       ],
       "explanation": "C is correct because $R^2$ is susceptible to inflation with the addition of more predictors, even if they are irrelevant. A, B, and D are incorrect because adding predictors usually won't decrease $R^2$ and it's not related to the number of predictors.",
       "difficulty_level": 1,
@@ -1066,7 +1065,7 @@
         "D": "Ignore $R^2$ entirely and only look at p-values."
       },
       "correct_answer": [
-        "Use adjusted $R^2$ or other model selection criteria."
+        "C"
       ],
       "explanation": "C is correct. Adjusted $R^2$ penalizes the inclusion of irrelevant predictors, addressing the problem of $R^2$ inflation. B is incorrect, it is the common mistake. Adjusted R-squared addresses model complexity.",
       "difficulty_level": 1,
@@ -1090,8 +1089,7 @@
         "D": "The model includes only statistically significant predictors."
       },
       "correct_answer": [
-        "The model performs well on the training data but poorly on new",
-        "unseen data."
+        "B"
       ],
       "explanation": "B is correct. Overfitting means the model has learned the noise in the training data, making it perform poorly on new data. A describes underfitting. Overfitting leads to poor generalization.",
       "difficulty_level": 1,
@@ -1115,7 +1113,7 @@
         "D": "To only consider models with a small number of predictors."
       },
       "correct_answer": [
-        "To penalize the inclusion of irrelevant predictors in a model."
+        "B"
       ],
       "explanation": "B is correct because Adjusted R-squared adjusts for the number of predictors, penalizing the inclusion of those that don't significantly improve the model's fit. A is incorrect, Adjusted R-squared can decrease. Adjusted R-squared considers model complexity.",
       "difficulty_level": 1,
@@ -1140,7 +1138,7 @@
         "D": "The model is perfectly predicting the data."
       },
       "correct_answer": [
-        "The new predictor is likely irrelevant and the model may be overfitting."
+        "B"
       ],
       "explanation": "B is correct because the decrease in Adjusted R-squared suggests that the added predictor does not improve the model's fit sufficiently to justify its inclusion, indicating potential overfitting. A is incorrect because a strong predictor will increase both. Adjusted R-squared measures the true improvement.",
       "difficulty_level": 1,
@@ -1165,7 +1163,7 @@
         "D": "Only using models with a low R-squared value."
       },
       "correct_answer": [
-        "Relying solely on R-squared and ignoring Adjusted R-squared."
+        "B"
       ],
       "explanation": "B is correct because R-squared alone doesn't account for model complexity, leading to potential overfitting. A is incorrect because adjusted R-squared helps in model selection. Adjusted R-squared penalizes unnecessary complexity.",
       "difficulty_level": 1,
@@ -1190,7 +1188,7 @@
         "D": "Ignoring R-squared and Adjusted R-squared altogether."
       },
       "correct_answer": [
-        "Determining if adding 'number of fireplaces' truly improves the model's predictive power beyond square footage and location."
+        "C"
       ],
       "explanation": "C is correct. Adjusted R-squared helps determine if the added variable improves the model's predictive power or just adds noise. B is incorrect since p-value only determine statistical significance. Adjusted R-squared considers the benefit of adding variables.",
       "difficulty_level": 1,
@@ -1215,8 +1213,7 @@
         "D": "R-squared and Adjusted R-squared will always change in the same direction."
       },
       "correct_answer": [
-        "R-squared will always increase or stay the same",
-        "while Adjusted R-squared may increase or decrease."
+        "C"
       ],
       "explanation": "C is correct. R-squared never decreases when a new variable is added, but Adjusted R-squared can decrease if the variable does not significantly improve the model. A, B, and D are incorrect because R-squared increases when a new variable is added. Adjusted R-squared measures model complexity.",
       "difficulty_level": 1,
@@ -1241,7 +1238,7 @@
         "D": "The error term has a normal distribution."
       },
       "correct_answer": [
-        "All the regression coefficients are equal to zero."
+        "C"
       ],
       "explanation": "C is correct because the Global F-Test tests the null hypothesis that all regression coefficients are simultaneously equal to zero, meaning the model has no explanatory power. B describes the alternative hypothesis. A is incorrect. The F-test examines the overall significance of the model.",
       "difficulty_level": 1,
@@ -1266,7 +1263,7 @@
         "D": "None of the individual predictors are statistically significant."
       },
       "correct_answer": [
-        "The model as a whole is not statistically significant."
+        "B"
       ],
       "explanation": "B is correct. A high p-value indicates that we fail to reject the null hypothesis, meaning the model has no significant explanatory power. A is the opposite case. The F-test is a gatekeeper for the regression model.",
       "difficulty_level": 1,
@@ -1291,10 +1288,7 @@
         "D": "The model is underfitting the data."
       },
       "correct_answer": [
-        "Advertising spending",
-        "as a whole",
-        "does not significantly predict sales",
-        "and they should rethink their approach."
+        "B"
       ],
       "explanation": "B is correct. An insignificant Global F-Test implies that the overall model lacks explanatory power, indicating a need to revise the approach. A is the opposite case, you shouldn't analyze individual channels until the global F-test is significant. The F-test is a check for the entire model.",
       "difficulty_level": 1,
@@ -1319,7 +1313,7 @@
         "D": "Always interpreting individual coefficients regardless of the Global F-Test."
       },
       "correct_answer": [
-        "Interpreting individual coefficients even when the Global F-Test is not significant."
+        "A"
       ],
       "explanation": "A is correct because individual coefficient interpretations are unreliable if the overall model lacks significance. The Global F-Test must be significant first. The F-test is used to check the overall significance.",
       "difficulty_level": 1,
@@ -1344,7 +1338,7 @@
         "D": "Z-test"
       },
       "correct_answer": [
-        "ANOVA"
+        "C"
       ],
       "explanation": "C is correct because the Global F-Test is a form of ANOVA (Analysis of Variance) used to assess the overall significance of a regression model. The Global F-test is a type of ANOVA.",
       "difficulty_level": 1,
@@ -1369,8 +1363,7 @@
         "D": "Whether multicollinearity is present."
       },
       "correct_answer": [
-        "Whether a specific predictor variable has a statistically significant effect on the response variable",
-        "given the other predictors in the model."
+        "B"
       ],
       "explanation": "B is correct. The t-test examines the effect of one predictor while controlling for the others. A is tested by the Global F-test. The t-test measures the individual impact of a predictor.",
       "difficulty_level": 1,
@@ -1395,7 +1388,7 @@
         "D": "The error term is normally distributed."
       },
       "correct_answer": [
-        "The coefficient of the predictor is equal to zero."
+        "C"
       ],
       "explanation": "C is correct because the t-test determines if the predictor's coefficient is significantly different from zero. B describes the alternative hypothesis. The t-test determines if the predictor variable has a significant effect.",
       "difficulty_level": 1,
@@ -1420,8 +1413,7 @@
         "D": "The model is underfitting the data."
       },
       "correct_answer": [
-        "'Number of bedrooms' is not a significant predictor",
-        "given square footage and location."
+        "B"
       ],
       "explanation": "B is correct because a high p-value suggests that the number of bedrooms does not have a significant effect on house prices, *given* that square footage and location are already included. A is the opposite case, a strong predictor will have a low p-value. The t-test examines the effect controlling for other predictors.",
       "difficulty_level": 1,
@@ -1446,7 +1438,7 @@
         "D": "The model is perfectly predicting the response variable."
       },
       "correct_answer": [
-        "The predictor might still be important for theoretical reasons or as a control variable."
+        "B"
       ],
       "explanation": "B is correct because a non-significant t-test only means the predictor doesn't have a significant effect *given the other predictors*, it doesn't mean it has no effect at all. A is incorrect because there could be theoretical reasons to keep the variable. The t-test examines the effect controlling for other predictors.",
       "difficulty_level": 1,
@@ -1471,7 +1463,7 @@
         "D": "Increase spending on that advertising channel to improve its significance."
       },
       "correct_answer": [
-        "Consider the result in the context of other marketing efforts and theoretical reasons before making a decision."
+        "C"
       ],
       "explanation": "C is correct. The analyst should consider the result in the context of other variables and theoretical reasons before making a decision. A is too extreme as there might be theoretical reasons to keep it. The t-test examines the effect controlling for other predictors.",
       "difficulty_level": 1,
@@ -1496,7 +1488,7 @@
         "D": "The variability of the predictor variables."
       },
       "correct_answer": [
-        "The range within which the *average* value of the response variable falls for a given set of predictor values."
+        "B"
       ],
       "explanation": "B is correct because a CI estimates the range for the *average* response. A is incorrect because that describes a Prediction Interval. C is incorrect because it attempts to pinpoint an exact value, and D is incorrect because it focuses on predictor variables.",
       "difficulty_level": 1,
@@ -1519,7 +1511,7 @@
         "D": "The PI's width only depends on the sample size, not the CI."
       },
       "correct_answer": [
-        "The PI is generally wider than the CI."
+        "B"
       ],
       "explanation": "B is correct because the PI accounts for the variability of individual data points, in addition to the uncertainty in estimating the mean. A is incorrect because PI is wider. C is incorrect because they are not the same. D is incorrect because sample size affects both.",
       "difficulty_level": 1,
@@ -1543,7 +1535,7 @@
         "D": "Coefficient of Determination (R-squared)"
       },
       "correct_answer": [
-        "Prediction Interval (PI)"
+        "B"
       ],
       "explanation": "B is correct because the PI estimates a single, new observation. A is incorrect because CI is for estimating the average. C and D are incorrect because they don't provide an interval estimate.",
       "difficulty_level": 1,
@@ -1567,7 +1559,7 @@
         "D": "Mean Absolute Error (MAE)"
       },
       "correct_answer": [
-        "Confidence Interval (CI)"
+        "B"
       ],
       "explanation": "B is correct because CI estimates the *average* value. A is incorrect because the PI estimates a single observation. C and D don't provide the desired interval.",
       "difficulty_level": 1,
@@ -1591,7 +1583,7 @@
         "D": "To determine the statistical significance of the predictors."
       },
       "correct_answer": [
-        "To estimate the range of a single future observation."
+        "B"
       ],
       "explanation": "B is correct because a PI focuses on predicting a single data point. A is incorrect because that's a Confidence Interval. C and D are related but not the primary purpose of a Prediction Interval.",
       "difficulty_level": 1,

@@ -2,24 +2,28 @@
 """
 Normalize `correct_answer` format in ALL `*_quiz.json` files.
 
-Goal:
-- Use **arrays for every question**, even when there is only one correct option.
+Goals:
+- Use **arrays of option KEYS** for every question, even when there is only one correct option.
   - MCQ:  ["C"]
   - MCA:  ["A", "C", "D"]
-
-Why:
-- Prompts and backend now expect arrays for both MCQ and MCA.
-- Some quiz files still have legacy formats like "C" or "A,B,C".
+- For legacy data where `correct_answer` is stored as long text (or split across multiple
+  strings) instead of option keys, **map it back to the correct option letter(s)** using
+  the same normalization logic as the adaptive quiz backend:
+  - Strip only the option label from the *option text* (e.g. "B: ..." → "…")
+  - Keep the option keys themselves in **caps** ("A", "B", "C", "D")
+  - Preserve arrays (e.g. multi-correct questions remain arrays of keys).
 
 What this script does:
 - Scans the entire repo for any `quiz/*.json` file
   (e.g. `backend/courses`, `courses`, `frontend/public/courses`, etc.).
-- For each question:
-  - If `correct_answer` is a string:
-      "C"       -> ["C"]
-      "A,B,C"   -> ["A", "B", "C"]
-  - If it's already a list: keeps it as-is (unless empty, which is logged).
-  - Any other type is logged and left untouched.
+- For each question with `options` and `correct_answer`:
+  - Uses `AdaptiveQuizService._normalize_correct_answer` to convert the stored
+    `correct_answer` into an array of option KEYS (["A"], ["B", "D"], etc.).
+  - This includes handling messy cases like:
+      ["B: Long text ...", "additional sentence", "final clause"]
+    which will be normalized to ["B"].
+- If the backend normalization cannot map the answer to option keys, the
+  original value is left untouched but logged.
 
 Usage (from repo root):
     source .venv/bin/activate
@@ -29,11 +33,24 @@ Usage (from repo root):
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 
 ROOT = Path(__file__).parent
+
+# Ensure we can import backend services (AdaptiveQuizService) by putting
+# the `backend` directory on sys.path.
+BACKEND_DIR = ROOT / "backend"
+if BACKEND_DIR.exists():
+    sys.path.insert(0, str(BACKEND_DIR))
+
+try:
+    from app.services.adaptive_quiz_service import AdaptiveQuizService
+except Exception as e:  # pragma: no cover - import failure is reported at runtime
+    AdaptiveQuizService = None  # type: ignore[assignment]
+    print(f"⚠️  Warning: could not import AdaptiveQuizService: {e}")
 
 
 def _load_questions(quiz_path: Path) -> Tuple[List[Dict[str, Any]], Any, str]:
@@ -57,38 +74,47 @@ def _load_questions(quiz_path: Path) -> Tuple[List[Dict[str, Any]], Any, str]:
         return [], data, "unknown"
 
 
-def _normalize_correct_answer(value: Any) -> Tuple[Any, str]:
+def _normalize_correct_answer(question: Dict[str, Any]) -> Tuple[Any, str]:
     """
-    Normalize a single correct_answer value to an array form.
+    Normalize `question["correct_answer"]` to an array of option KEYS, using the
+    same normalization logic as the adaptive quiz backend.
 
     Returns:
         (normalized_value, description_of_change)
         If no change, description_of_change is "".
     """
-    # Already a non-empty list -> keep as-is
-    if isinstance(value, list):
-        if not value:
-            return value, "empty_list"
-        return value, ""
+    original = question.get("correct_answer")
 
-    # String formats
-    if isinstance(value, str):
-        raw = value.strip()
-        if not raw:
-            return value, "empty_string"
+    # If we couldn't import AdaptiveQuizService (e.g., script run outside full app
+    # environment), fall back to a minimal array-only normalization.
+    if AdaptiveQuizService is None:
+        if isinstance(original, list):
+            if not original:
+                return original, "empty_list"
+            return original, ""
+        if isinstance(original, str):
+            raw = original.strip()
+            if not raw:
+                return original, "empty_string"
+            if "," in raw:
+                parts = [part.strip() for part in raw.split(",") if part.strip()]
+                if not parts:
+                    return original, "empty_after_split"
+                return parts, f'"{original}" -> {parts}'
+            return [raw], f'"{original}" -> ["{raw}"]'
+        return original, f"unsupported_type:{type(original).__name__}"
 
-        # Comma-separated -> split to array
-        if "," in raw:
-            parts = [part.strip() for part in raw.split(",") if part.strip()]
-            if not parts:
-                return value, "empty_after_split"
-            return parts, f'"{value}" -> {parts}'
+    # Use the backend's normalization, which:
+    # - strips only the option label from option texts
+    # - joins multi-part answers
+    # - returns an array of option KEYS in caps.
+    normalized = AdaptiveQuizService._normalize_correct_answer(question)
 
-        # Single token -> single-element array
-        return [raw], f'"{value}" -> ["{raw}"]'
+    if normalized == original:
+        # No effective change
+        return original, ""
 
-    # Any other type – leave untouched but mark
-    return value, f"unsupported_type:{type(value).__name__}"
+    return normalized, "normalized_with_backend_logic"
 
 
 def normalize_quiz_file(quiz_path: Path) -> bool:
@@ -112,7 +138,7 @@ def normalize_quiz_file(quiz_path: Path) -> bool:
             continue
 
         original = question["correct_answer"]
-        normalized, change_desc = _normalize_correct_answer(original)
+        normalized, change_desc = _normalize_correct_answer(question)
 
         if change_desc and not change_desc.startswith("unsupported_type"):
             question["correct_answer"] = normalized

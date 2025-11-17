@@ -153,8 +153,7 @@
         "D": "Fit a higher-degree polynomial model (e.g., cubic or quartic) to the data to capture any additional complexity in the relationship between fertilizer and yield, and then launch the 'more is better' campaign."
       },
       "correct_answer": [
-        "Conduct further residual analysis and visualize the data to check the quadratic model's fit and potential overfitting before launching any marketing campaign. Additionally",
-        "determine the fertilizer level that maximizes yield based on the quadratic model."
+        "B"
       ],
       "explanation": "This is a synthesis question integrating the quadratic model (Lecture 1.5) and the regression process (Lecture 1.6). Option A is flawed because it ignores the negative coefficient on the quadratic term and the potential for diminishing returns or negative effects. Option C ignores the model entirely and makes an unsupported claim. Option D suggests overfitting the data with an even more complex model without proper validation. The correct answer recognizes the importance of validating the quadratic model's fit through residual analysis and visualization, and also suggests finding the optimal fertilizer level predicted by the model. The trade-off is between maximizing yield and avoiding over-fertilization, which the correct answer addresses by finding the optimal point.",
       "difficulty_level": 4,
@@ -182,8 +181,7 @@
         "D": "Ignore the low R-squared and continue using the quadratic model, as it already captures the curvilinear relationship."
       },
       "correct_answer": [
-        "Proceed with the logarithmic transformation on both X and Y",
-        "and carefully interpret the transformed coefficients. Compare the R-squared and residual plots of both the quadratic model and the log-log model to determine which provides a better fit."
+        "B"
       ],
       "explanation": "This question synthesizes polynomial transformations (Lecture 1.5) and the regression process, including transformations and model assessment (Lecture 1.6). Option A is incorrect because a low R-squared doesn't automatically mean a linear model is better; the curvilinear relationship might be real but not well captured by the quadratic. Option C is a classic case of overfitting. Option D ignores the diagnostic information provided by the low R-squared. The correct answer suggests a reasonable alternative (log-log transformation) and emphasizes the importance of comparing model fit using both R-squared and residual plots. The trade-off is between capturing the curvature (quadratic) and potentially achieving a better fit and easier interpretation (log-log). The correct answer advocates for informed model selection based on empirical evidence.",
       "difficulty_level": 4,
@@ -211,7 +209,7 @@
         "D": "Remove the customer satisfaction variable ($X_1$) from the model to simplify the analysis."
       },
       "correct_answer": [
-        "Visually inspect the relationship between contract length ($X_2$) and churn using a scatterplot or other visualization technique to confirm the U-shaped pattern before adding the quadratic term."
+        "B"
       ],
       "explanation": "This question requires synthesizing knowledge of polynomial transformations (Lecture 1.5) and the regression process (Lecture 1.6). Option A is important but doesn't directly address the question of whether to add a quadratic term. Option C is incorrect because adding a quadratic term doesn't *always* improve the model, and it can lead to overfitting. Option D is an arbitrary simplification that could remove important information. The correct answer emphasizes the importance of *visualizing the data* to confirm the hypothesized U-shaped relationship *before* adding the quadratic term. This prevents blindly adding complexity without empirical justification. The question highlights the importance of data exploration as a prerequisite to model building.",
       "difficulty_level": 4,
@@ -239,9 +237,7 @@
         "D": "Fit a higher-degree polynomial model to better capture the relationship between email frequency and revenue."
       },
       "correct_answer": [
-        "Calculate the number of emails that maximizes the quadratic model. Then",
-        "conduct A/B testing with different email frequencies around that optimal point",
-        "measuring both revenue and email deliverability rates.  Adjust the email frequency based on the A/B test results to account for deliverability."
+        "B"
       ],
       "explanation": "This question combines the quadratic model (Lecture 1.5) with the regression process and its limitations (Lecture 1.6). Option A ignores the deliverability issue, which is a crucial real-world constraint. Option C is based on a flawed assumption and ignores the potential for diminishing returns and customer annoyance. Option D suggests overfitting the model. The correct answer acknowledges the model's prediction but also recognizes the importance of validating it with A/B testing and considering the practical constraint of email deliverability. The correct response understands that the quadratic model provides a starting point but that real-world factors need to be incorporated through experimentation and monitoring. It's a synthesis of model-based prediction and empirical validation.",
       "difficulty_level": 4,
@@ -269,9 +265,7 @@
         "D": "Ignore the quadratic model and recommend the highest possible dosage that can be manufactured, as this will likely lead to the greatest reduction in blood pressure."
       },
       "correct_answer": [
-        "Calculate the dosage that maximizes the reduction in blood pressure based on the quadratic model. Then",
-        "conduct further analysis to estimate the probability of side effects at different dosages. Recommend a dosage that balances the reduction in blood pressure with an acceptable risk of side effects",
-        "as defined by the regulatory affairs department."
+        "B"
       ],
       "explanation": "This question synthesizes the quadratic model (Lecture 1.5) with the regression process (Lecture 1.6), emphasizing the importance of interpretation and real-world constraints. Option A ignores the crucial issue of side effects and the regulatory constraints. Option C is an oversimplification that could miss the true relationship between dosage and blood pressure reduction. Option D is ethically irresponsible. The correct answer acknowledges the model's prediction but also recognizes the need to balance effectiveness with safety. It suggests a comprehensive approach that involves both statistical modeling and risk assessment, incorporating the regulatory constraints. The trade-off is between maximizing drug effectiveness and minimizing side effects, and the correct answer provides a framework for making that trade-off in a responsible manner. The ethical dimension adds complexity to the statistical analysis.",
       "difficulty_level": 4,
@@ -299,9 +293,7 @@
         "D": "The most likely cause is a coding error. To address this, meticulously review the code for errors."
       },
       "correct_answer": [
-        "The most likely cause is overfitting due to the added complexity of the quadratic term. To address this",
-        "consider using regularization techniques (e.g.",
-        "Ridge or Lasso regression) or simplify the model by removing the quadratic term and potentially other less important variables."
+        "B"
       ],
       "explanation": "This question synthesizes understanding of the regression process, particularly model fitting and prediction (Lecture 1.6), with the potential for overfitting when using polynomial transformations (Lecture 1.5). Option A, while multicollinearity *can* be a problem, doesn't address the core issue of overfitting. Removing the linear term and only using the quadratic would likely worsen the model's ability to predict the *increasing* portion of the curve. Option C (collecting more data) *could* help, but it doesn't address the immediate problem of overfitting with the *current* data. Option D (coding error) is a general troubleshooting step but isn't the *most likely* explanation given the scenario. The correct answer directly addresses the issue of overfitting by suggesting regularization or simplification. Regularization adds a penalty for model complexity, while removing the quadratic term directly reduces complexity. The trade-off is between model fit and model generalizability, and the correct answer prioritizes generalizability to unseen data.",
       "difficulty_level": 4,
@@ -329,7 +321,7 @@
         "D": "Randomly select a subset of customers and explain how the model predicts their churn probability based solely on their tenure."
       },
       "correct_answer": [
-        "Create a scatterplot of tenure vs. churn and overlay the predicted churn values from the model across the range of tenure values. Explain that the graph shows how churn initially decreases with tenure but then increases again for longer tenures."
+        "B"
       ],
       "explanation": "This question synthesizes the overall regression process (Lecture 1.6), with a focus on interpretation, and the complexities of polynomial models (Lecture 1.5). Option A is technically correct but highly unintuitive for a non-technical audience. Option C ignores a key aspect of the model (the quadratic term) and misrepresents the relationship. Option D is not a generalizable explanation. The correct answer provides a *visual* representation of the relationship, making it easier for the marketing team to understand the U-shaped effect of tenure on churn. It bridges the gap between the statistical model and actionable insights. The key insight is that the *visualization* of the model's predictions is often more effective than simply presenting the coefficients.",
       "difficulty_level": 4,
@@ -357,9 +349,7 @@
         "D": "Conclude that the model is adequate, as it already includes the most important predictors of house price."
       },
       "correct_answer": [
-        "Apply a variance-stabilizing transformation (e.g.",
-        "a logarithmic transformation) to the house price variable ($Y$) to address the heteroscedasticity indicated by the residual pattern. Then",
-        "refit the model (potentially including the quadratic term for location score)."
+        "B"
       ],
       "explanation": "This question integrates the regression process, especially model diagnostics (Lecture 1.6), with the use of transformations, including polynomial transformations (Lecture 1.5). Option A addresses the non-linearity but ignores the heteroscedasticity (non-constant variance) revealed by the residual pattern. Addressing heteroscedasticity is often a priority because it violates a key assumption of linear regression. Option C removes an important predictor. Option D ignores the model diagnostics, which is a critical mistake. The correct answer recognizes that the residual pattern indicates heteroscedasticity, which needs to be addressed *before* focusing solely on the non-linearity. A variance-stabilizing transformation (e.g., log transformation) can often reduce heteroscedasticity, allowing for a more reliable model fit. The key insight is that addressing the *assumptions* of linear regression is often a prerequisite to adding complexity to the model.",
       "difficulty_level": 4,

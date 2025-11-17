@@ -24,7 +24,7 @@
         "D": "The creation of social media marketing campaigns."
       },
       "correct_answer": [
-        "The study of information systems within organizations and their alignment with business goals."
+        "B"
       ],
       "explanation": "B is correct because MIS focuses on information systems in organizations and how they enable business strategy and operations. A, C, and D are incorrect because they represent narrower aspects of IT or business functions, not the core focus of MIS.",
       "difficulty_level": 1,
@@ -48,7 +48,7 @@
         "D": "To focus solely on internal operations, ignoring external factors."
       },
       "correct_answer": [
-        "To align IT infrastructure with the company's strategic objectives."
+        "B"
       ],
       "explanation": "B is correct because MIS aims to ensure that IT supports and enables the overall business strategy. Option A is incorrect because MIS leverages technology. Options C and D are incorrect because MIS promotes integration and considers the external environment.",
       "difficulty_level": 1,
@@ -72,7 +72,7 @@
         "D": "Ignoring customer feedback when making product decisions."
       },
       "correct_answer": [
-        "Implementing a system to analyze sales data and optimize inventory levels."
+        "B"
       ],
       "explanation": "B is correct because it describes a practical application of MIS to improve business operations. Options A, C, and D represent inefficient or counterproductive approaches that do not leverage the capabilities of MIS.",
       "difficulty_level": 1,
@@ -96,7 +96,7 @@
         "D": "The complexity of the programming code."
       },
       "correct_answer": [
-        "The human element and employee training."
+        "C"
       ],
       "explanation": "C is correct because the 'common mistakes' section highlights the importance of considering the human element. Even the best system will fail if employees don't understand or use it properly. A, B, and D are important, but less directly related to user adoption.",
       "difficulty_level": 1,
@@ -120,7 +120,7 @@
         "D": "The physical building where the company is located."
       },
       "correct_answer": [
-        "The physical building where the company is located."
+        "D"
       ],
       "explanation": "D is correct because the physical location of the company is not a component of an MIS. A, B, and C are all essential components of an information system.",
       "difficulty_level": 1,
@@ -144,7 +144,7 @@
         "D": "No relationship; organizations and IS operate independently."
       },
       "correct_answer": [
-        "A reciprocal relationship where each influences the other."
+        "C"
       ],
       "explanation": "C is correct because organizations and IS have a two-way influence: organizations use IS to improve, and IS are designed to support organizational goals. A and B are incorrect because they describe one-way relationships. D is incorrect because IS and organizations are intertwined.",
       "difficulty_level": 1,
@@ -168,7 +168,7 @@
         "D": "Enhanced customer relationships."
       },
       "correct_answer": [
-        "Decreased competitiveness."
+        "C"
       ],
       "explanation": "C is correct because a poorly designed IS hinders an organization's ability to compete effectively. Options A, B, and D are the opposite of the likely consequences.",
       "difficulty_level": 1,
@@ -192,9 +192,7 @@
         "D": "By focusing solely on automating routine tasks, ignoring strategic goals."
       },
       "correct_answer": [
-        "By improving efficiency",
-        "decision-making",
-        "and competitiveness."
+        "B"
       ],
       "explanation": "B is correct because IS enhance organizational performance in these key areas. Options A, C, and D describe negative or limited impacts.",
       "difficulty_level": 1,
@@ -218,7 +216,7 @@
         "D": "Immediate cost savings and streamlined operations."
       },
       "correct_answer": [
-        "Resistance to the system and underutilization of its capabilities."
+        "C"
       ],
       "explanation": "C is correct because lack of training often leads to resistance and underutilization. A, B, and D are unlikely without proper training.",
       "difficulty_level": 1,
@@ -242,7 +240,7 @@
         "D": "A company doesn't back up its important data."
       },
       "correct_answer": [
-        "A company installs new accounting software to track finances."
+        "A"
       ],
       "explanation": "A is correct because it directly demonstrates how IS supports an organizational goal (financial tracking). B, C, and D are all examples of not utilizing IS effectively.",
       "difficulty_level": 1,
@@ -266,7 +264,7 @@
         "D": "Ignoring customer needs and focusing solely on internal operations."
       },
       "correct_answer": [
-        "Having a favorable or superior business position."
+        "C"
       ],
       "explanation": "C is correct because competitive advantage implies a superior position in the market. A and B describe disadvantages, while D is unrelated to competitive advantage.",
       "difficulty_level": 1,
@@ -290,7 +288,7 @@
         "D": "By creating barriers to data access within the company."
       },
       "correct_answer": [
-        "By enabling innovation and new business models."
+        "B"
       ],
       "explanation": "B is correct because IS can drive innovation, which leads to a competitive edge. A, C, and D describe negative impacts that would hinder competitive advantage.",
       "difficulty_level": 1,
@@ -314,7 +312,7 @@
         "D": "By creating operational complexities."
       },
       "correct_answer": [
-        "By enhancing customer relationships and loyalty."
+        "B"
       ],
       "explanation": "B is correct because improved customer service strengthens relationships and fosters loyalty, creating a competitive advantage. Options A, C, and D describe negative impacts.",
       "difficulty_level": 1,
@@ -338,7 +336,7 @@
         "D": "Continuously innovating and improving the IS."
       },
       "correct_answer": [
-        "Thinking that simply implementing an IS will automatically create an advantage."
+        "C"
       ],
       "explanation": "C is correct because the 'common mistakes' section indicates that IS implementation alone doesn't guarantee competitive advantage. A, B, and D are actions that contribute to gaining competitive advantage.",
       "difficulty_level": 1,
@@ -362,7 +360,7 @@
         "D": "Reducing data security."
       },
       "correct_answer": [
-        "Reducing data security."
+        "D"
       ],
       "explanation": "D is correct because reducing data security does not contribute to competitive advantage. In fact, it would be detrimental. A, B, and C are all ways IS contributes.",
       "difficulty_level": 1,
@@ -386,7 +384,7 @@
         "D": "Avoiding technology to maintain traditional business practices."
       },
       "correct_answer": [
-        "Creating new business designs by integrating digital and physical worlds."
+        "B"
       ],
       "explanation": "B is correct because digital business is about blurring the lines between the digital and physical to create new business models. A, C, and D represent limited or opposing views of digital business.",
       "difficulty_level": 1,
@@ -410,9 +408,7 @@
         "D": "No, unless the store also closes its physical location."
       },
       "correct_answer": [
-        "No",
-        "because digital business requires a fundamental rethinking of the business model",
-        "not just online sales."
+        "B"
       ],
       "explanation": "B is correct because digital business goes beyond simply having a website; it involves re-evaluating the business model. A, C, and D are incorrect because they present superficial or inaccurate views of digital business.",
       "difficulty_level": 1,
@@ -436,9 +432,7 @@
         "D": "Maintaining traditional business processes without change."
       },
       "correct_answer": [
-        "Using digital technologies to create new value",
-        "experiences",
-        "and capabilities."
+        "B"
       ],
       "explanation": "B is correct because it highlights the core purpose of digital business: creating new value through technology. A, C, and D represent approaches that are not aligned with the principles of digital business.",
       "difficulty_level": 1,
@@ -462,7 +456,7 @@
         "D": "Immediate cost savings and streamlined operations."
       },
       "correct_answer": [
-        "Underutilization of the app and negative customer feedback."
+        "C"
       ],
       "explanation": "C is correct because neglecting the customer experience often leads to poor adoption and negative feedback. A, B, and D are unlikely without a focus on customer experience.",
       "difficulty_level": 1,
@@ -486,7 +480,7 @@
         "D": "Ignoring customer needs."
       },
       "correct_answer": [
-        "Ignoring customer needs."
+        "D"
       ],
       "explanation": "D is correct because digital business should focus on creating value and experiences for customers. A, B, and C are all characteristics of digital business.",
       "difficulty_level": 1,
@@ -510,8 +504,7 @@
         "D": "A non-profit organization focused on social causes."
       },
       "correct_answer": [
-        "A business that falls below certain size thresholds",
-        "which may vary by country and industry."
+        "B"
       ],
       "explanation": "B is correct because the definition of an SME is a business that falls below specific size thresholds that vary by country and industry. A is incorrect because it describes a large corporation, the opposite of an SME. SMEs are defined by their size relative to larger businesses.",
       "difficulty_level": 1,
@@ -536,7 +529,7 @@
         "D": "SMEs are always publicly traded companies."
       },
       "correct_answer": [
-        "SMEs typically have fewer employees and lower annual revenue."
+        "B"
       ],
       "explanation": "B is correct because SMEs are defined by falling below certain size thresholds, like number of employees or annual revenue. A, C, and D describe characteristics more commonly associated with large corporations. SMEs are smaller in scale.",
       "difficulty_level": 1,
@@ -561,7 +554,7 @@
         "D": "Effortless adaptation to technological changes."
       },
       "correct_answer": [
-        "Difficulty competing with larger retailers."
+        "C"
       ],
       "explanation": "C is correct because SMEs often struggle to compete with the scale and resources of larger retailers. A, B, and D are not typical challenges for SMEs; they often face limitations in these areas. SMEs have limited resources and market reach.",
       "difficulty_level": 1,
@@ -586,7 +579,7 @@
         "D": "The CEO's personal wealth."
       },
       "correct_answer": [
-        "The specific size definitions set by the country and industry."
+        "B"
       ],
       "explanation": "B is correct because the classification of a business as an SME depends on specific size definitions that vary across countries and industries. A, C, and D are not primary factors in determining SME status. SME classification is based on quantifiable metrics.",
       "difficulty_level": 1,
@@ -611,7 +604,7 @@
         "D": "Focus on a niche market segment."
       },
       "correct_answer": [
-        "Bureaucratic and highly structured management."
+        "B"
       ],
       "explanation": "B is correct because SMEs are usually less bureaucratic and more flexible in their management compared to larger organizations. A, C, and D are common characteristics of SMEs. SMEs are often more agile than larger companies.",
       "difficulty_level": 1,
@@ -636,7 +629,7 @@
         "D": "Submitting AI-generated reports as original work without attribution."
       },
       "correct_answer": [
-        "Using Gen-AI for brainstorming and idea refinement."
+        "C"
       ],
       "explanation": "C is correct because Gen-AI is useful for generating ideas and refining them. A, B, and D are inappropriate uses as they involve falsification, over-reliance, and plagiarism. Gen-AI should augment, not replace, human creativity.",
       "difficulty_level": 1,
@@ -662,7 +655,7 @@
         "D": "Using Gen-AI to create an outline for a paper."
       },
       "correct_answer": [
-        "Copying and pasting AI-generated content without attribution."
+        "B"
       ],
       "explanation": "B is correct because using AI-generated content without proper citation is considered plagiarism. A, C, and D are acceptable uses of Gen-AI. Plagiarism involves presenting someone else's work as your own.",
       "difficulty_level": 1,
@@ -688,7 +681,7 @@
         "D": "Ignoring the potential for misinformation."
       },
       "correct_answer": [
-        "Critically evaluating the output for accuracy and bias."
+        "B"
       ],
       "explanation": "B is correct because it's crucial to critically evaluate AI output for accuracy and potential biases. A, C, and D represent unethical or unwise practices. Ethical AI usage requires human oversight.",
       "difficulty_level": 1,
@@ -714,7 +707,7 @@
         "D": "Utilizing AI to generate different perspectives on a research topic."
       },
       "correct_answer": [
-        "Allowing AI to write the entire research paper without significant human contribution."
+        "C"
       ],
       "explanation": "C is correct because letting AI write an entire paper without human input is a form of academic dishonesty. A, B, and D are acceptable uses of AI in research. AI should be a tool to assist, not replace, human effort.",
       "difficulty_level": 1,
@@ -740,7 +733,7 @@
         "D": "Utilizing AI to analyze customer feedback to improve product offerings."
       },
       "correct_answer": [
-        "Fabricating data to inflate sales figures using AI-generated reports."
+        "C"
       ],
       "explanation": "C is correct because fabricating data is unethical and constitutes fraud. A, B, and D are examples of legitimate business uses of AI. Ethical AI usage requires transparency and integrity.",
       "difficulty_level": 1,
@@ -766,9 +759,7 @@
         "D": "The employees who work in an organization."
       },
       "correct_answer": [
-        "The hardware",
-        "software",
-        "and networks used by organizations."
+        "B"
       ],
       "explanation": "B is correct because IT refers to the physical and digital infrastructure. A describes Information Systems (IS). C and D are not directly related to IT. IT is the foundation upon which IS are built.",
       "difficulty_level": 1,
@@ -794,7 +785,7 @@
         "D": "The internet and World Wide Web."
       },
       "correct_answer": [
-        "Systems that use IT to manage information for decision-making."
+        "B"
       ],
       "explanation": "B is correct because IS uses IT to process and manage information for organizational purposes. A describes IT hardware. C is related to software development. D is a component of IT. IS utilizes IT for a specific purpose.",
       "difficulty_level": 1,
@@ -820,7 +811,7 @@
         "D": "To maintain the company's internet connection."
       },
       "correct_answer": [
-        "To manage and process information to support decision-making."
+        "B"
       ],
       "explanation": "B is correct because IS are designed to manage information and support organizational functions. A, C, and D are related to IT but not the core purpose of IS. IS provides valuable insights from data.",
       "difficulty_level": 1,
@@ -846,7 +837,7 @@
         "D": "The reports generated by a business intelligence system."
       },
       "correct_answer": [
-        "A company's network of servers and computers."
+        "B"
       ],
       "explanation": "B is correct because servers and computers are examples of IT hardware. A, C, and D are components or outputs of an Information System (IS). IT provides the infrastructure for IS.",
       "difficulty_level": 1,
@@ -872,7 +863,7 @@
         "D": "IT and IS are completely unrelated concepts."
       },
       "correct_answer": [
-        "IT is the infrastructure that IS uses to function."
+        "B"
       ],
       "explanation": "B is correct because IS relies on IT for its hardware, software, and network infrastructure. A and D are incorrect as IT and IS are related but distinct. C has the relationship reversed. IT enables IS.",
       "difficulty_level": 1,
@@ -898,7 +889,7 @@
         "D": "Decreased importance of app store rankings."
       },
       "correct_answer": [
-        "Rise of instant home services."
+        "C"
       ],
       "explanation": "C is correct because the text mentions the rise of instant home services as a technology trend in India. A, B and D are opposite of the trends mentioned. Instant services are gaining popularity.",
       "difficulty_level": 1,
@@ -924,7 +915,7 @@
         "D": "It has no impact on current technology trends in India."
       },
       "correct_answer": [
-        "It is being used for business applications with payments and AI tools."
+        "B"
       ],
       "explanation": "B is correct because WhatsApp Business is being increasingly adopted by businesses in India for customer engagement, payments and support. The other options are factually incorrect based on the provided context. WhatsApp is becoming a key business platform.",
       "difficulty_level": 1,
@@ -950,7 +941,7 @@
         "D": "Ignoring customer reviews and feedback."
       },
       "correct_answer": [
-        "App store rankings."
+        "B"
       ],
       "explanation": "B is correct because app store rankings are highlighted as an important trend. The other options do not align with the information provided. Visibility in app stores is crucial for success.",
       "difficulty_level": 1,
@@ -976,7 +967,7 @@
         "D": "The shift towards longer service delivery times."
       },
       "correct_answer": [
-        "The trend of on-demand services."
+        "B"
       ],
       "explanation": "B is correct because 'Insta Help' is a clear example of the growing trend for on-demand services in India. The other options are factually incorrect based on the provided context. Instant services cater to the demand for speed and convenience.",
       "difficulty_level": 1,
@@ -1002,7 +993,7 @@
         "D": "A decreased reliance on mobile technology."
       },
       "correct_answer": [
-        "A focus on localization and cultural relevance."
+        "C"
       ],
       "explanation": "C is correct because localization and cultural relevance are crucial for adapting trends to the Indian market. A, B, and D are opposite of the current trends. Indian business trends are heavily influenced by local culture.",
       "difficulty_level": 1,
@@ -1028,9 +1019,7 @@
         "D": "Choosing the cheapest CRM system available."
       },
       "correct_answer": [
-        "Considering people",
-        "processes",
-        "and the CRM technology itself."
+        "C"
       ],
       "explanation": "C is correct because successful implementation requires integrating people (training), processes (adapting workflows), and technology (the CRM). A, B, and D are incorrect because they focus on only one aspect and ignore the holistic view needed for success. Considering all three elements ensures the system is used effectively and delivers its potential benefits.",
       "difficulty_level": 1,
@@ -1057,7 +1046,7 @@
         "D": "The people who operate the system."
       },
       "correct_answer": [
-        "The steps and procedures for using the system."
+        "C"
       ],
       "explanation": "C is correct because 'process' refers to the defined steps and procedures that govern how an information system is used and how data is handled. The other options refer to other components of an information system (hardware, software, and people).",
       "difficulty_level": 1,
@@ -1084,7 +1073,7 @@
         "D": "Competitive Advantage"
       },
       "correct_answer": [
-        "Competitive Advantage"
+        "D"
       ],
       "explanation": "D is the correct answer. The prompt describes how the organization introduces new products and services ahead of its competitors. This is a competitive advantage. The other options describe other outcomes.",
       "difficulty_level": 1,
@@ -1111,7 +1100,7 @@
         "D": "The software used for data analysis."
       },
       "correct_answer": [
-        "The employees entering data into a database."
+        "C"
       ],
       "explanation": "C is correct because 'people' refers to the individuals who interact with and use the information system. Options A, B, and D describe technology components, not people.",
       "difficulty_level": 1,
@@ -1138,7 +1127,7 @@
         "D": "A competitive advantage over other companies."
       },
       "correct_answer": [
-        "Low adoption rates and failure to realize the system's benefits."
+        "C"
       ],
       "explanation": "C is correct because without proper training ('people' aspect), employees won't be able to use the technology effectively, leading to low adoption and failure to achieve the intended benefits. This highlights the importance of considering all three elements (people, process, and technology).",
       "difficulty_level": 1,
@@ -1165,7 +1154,7 @@
         "D": "Securing data with strong passwords."
       },
       "correct_answer": [
-        "Analyzing and leveraging data for insights."
+        "C"
       ],
       "explanation": "C is correct because the analogy implies that raw data needs to be 'refined' (analyzed and leveraged) to create value, just like crude oil needs to be refined into usable products. A, B, and D are necessary but not sufficient for realizing the value of data.",
       "difficulty_level": 1,
@@ -1191,7 +1180,7 @@
         "D": "Data is only useful for large corporations."
       },
       "correct_answer": [
-        "Data is a valuable resource that can drive competitive advantage."
+        "B"
       ],
       "explanation": "B is correct. The analogy implies data is a valuable raw material that, when processed, can lead to competitive advantages. Options A, C, and D are incorrect as they contradict the core message of the analogy.",
       "difficulty_level": 1,
@@ -1217,7 +1206,7 @@
         "D": "Stronger data security measures."
       },
       "correct_answer": [
-        "A clear plan for analyzing and using the data."
+        "B"
       ],
       "explanation": "B is correct because, like oil needing a refinery, data needs a plan for analysis and use to extract value. Options A, C, and D are important but secondary to having a plan for utilization.",
       "difficulty_level": 1,
@@ -1243,7 +1232,7 @@
         "D": "Reduction of data storage costs."
       },
       "correct_answer": [
-        "Improved decision-making."
+        "B"
       ],
       "explanation": "B is correct. Netflix is using the data to decide what to recommend to users and to create new content, both examples of decision-making. The other options are not directly exemplified by the scenario.",
       "difficulty_level": 1,
@@ -1269,7 +1258,7 @@
         "D": "Technology is the new management."
       },
       "correct_answer": [
-        "Data is the new gold."
+        "C"
       ],
       "explanation": "C is the closest analogy. Both oil and gold are valuable raw materials that require processing to be useful. The other options don't represent the same kind of raw material to refined product relationship.",
       "difficulty_level": 1,
@@ -1295,7 +1284,7 @@
         "D": "All levels are equally concerned with day-to-day tasks."
       },
       "correct_answer": [
-        "Operational Level"
+        "C"
       ],
       "explanation": "C is correct because the operational level is responsible for the routine tasks and transactions that keep the organization running on a daily basis. The other levels have broader, longer-term focuses.",
       "difficulty_level": 1,
@@ -1320,7 +1309,7 @@
         "D": "All levels share equal responsibility."
       },
       "correct_answer": [
-        "Executive/Strategic"
+        "C"
       ],
       "explanation": "C is correct because the executive level focuses on the overall direction and long-term strategy of the organization. A and B focus on more immediate concerns.",
       "difficulty_level": 1,
@@ -1345,7 +1334,7 @@
         "D": "Strategic"
       },
       "correct_answer": [
-        "Managerial/Tactical"
+        "C"
       ],
       "explanation": "C is correct. Analyzing sales data and adjusting staffing levels is a tactical decision aimed at implementing the overall strategy. Operational decisions are more routine and transaction-based, while executive/strategic decisions are longer-term and broader in scope.",
       "difficulty_level": 1,
@@ -1370,7 +1359,7 @@
         "D": "Deciding to enter a new market."
       },
       "correct_answer": [
-        "Processing a customer's online order."
+        "B"
       ],
       "explanation": "B is correct because processing a customer order is a routine, day-to-day transaction. The other options are examples of strategic or managerial decisions.",
       "difficulty_level": 1,
@@ -1395,7 +1384,7 @@
         "D": "Strategic"
       },
       "correct_answer": [
-        "Strategic"
+        "D"
       ],
       "explanation": "D is correct because investing in a new technology to expand the business into a different region is a long-term decision that sets the overall direction for the company. The other options refer to decisions with a shorter time horizon and narrower scope.",
       "difficulty_level": 1,
@@ -1420,7 +1409,7 @@
         "D": "Human Resources"
       },
       "correct_answer": [
-        "Human Resources"
+        "D"
       ],
       "explanation": "D is correct because HRIS is specifically designed to manage employee data, payroll, and other HR-related tasks. The other options are supported by different types of information systems.",
       "difficulty_level": 1,
@@ -1448,7 +1437,7 @@
         "D": "Human Resources"
       },
       "correct_answer": [
-        "Finance"
+        "C"
       ],
       "explanation": "C is correct. The finance department is responsible for managing the company's financial resources, including revenue, expenses, and investments. The other options focus on different aspects of the business.",
       "difficulty_level": 1,
@@ -1476,7 +1465,7 @@
         "D": "Human Resource Information System (HRIS)"
       },
       "correct_answer": [
-        "Marketing Information System (MIS)"
+        "C"
       ],
       "explanation": "C is correct. Marketing Information Systems are specifically designed to track customer data, analyze marketing campaigns, and support marketing decisions. The other options support different functional areas.",
       "difficulty_level": 1,
@@ -1504,7 +1493,7 @@
         "D": "Enhanced collaboration."
       },
       "correct_answer": [
-        "Poor decision-making."
+        "C"
       ],
       "explanation": "C is correct because siloed systems lead to data inconsistencies and a lack of a holistic view, hindering effective decision-making. The other options are the opposite of what would occur with siloed systems.",
       "difficulty_level": 1,
@@ -1532,7 +1521,7 @@
         "D": "Human Resources"
       },
       "correct_answer": [
-        "Operations"
+        "C"
       ],
       "explanation": "C is correct because operations is responsible for the day-to-day running of the business, including order fulfillment and logistics. The other options are responsible for different functional areas.",
       "difficulty_level": 1,
@@ -1560,7 +1549,7 @@
         "D": "By improving communication and collaboration among different departments."
       },
       "correct_answer": [
-        "By using data to predict future trends and needs."
+        "B"
       ],
       "explanation": "B is correct because anticipation, in the context of IS, refers to the ability to forecast future needs and trends based on data analysis. A, C, and D relate to efficiency, personalization, and coordination, respectively. IS enables organizations to anticipate changes and proactively respond.",
       "difficulty_level": 1,
@@ -1584,7 +1573,7 @@
         "D": "Reduced operational costs by automating manual processes."
       },
       "correct_answer": [
-        "Increased use of digital technologies across all levels and functions."
+        "C"
       ],
       "explanation": "C is correct because Digital Density refers to the extent to which digital technologies are integrated and used across an organization. A, B, and D, while beneficial, are not the central tenet of Digital Density. Higher digital density leads to improved organizational performance.",
       "difficulty_level": 1,
@@ -1607,7 +1596,7 @@
         "D": "Human resources."
       },
       "correct_answer": [
-        "Customer relationship management."
+        "B"
       ],
       "explanation": "B is correct because Customer Relationship Management (CRM) systems utilize IS to tailor interactions and offerings to individual customer preferences. A, C, and D may use IS but are not primarily focused on personalization. Personalization enhances customer satisfaction and loyalty.",
       "difficulty_level": 1,
@@ -1630,7 +1619,7 @@
         "D": "Ignoring employee feedback during system development."
       },
       "correct_answer": [
-        "Implementing IS without a clear strategy."
+        "B"
       ],
       "explanation": "B is correct because the flashcard mentions that implementing IS without a clear strategy leads to fragmented systems and wasted investment. A, C, and D may be potential issues, but the flashcard specifically highlights the lack of a clear strategy as a common mistake. A strategic approach is crucial for successful IS implementation.",
       "difficulty_level": 1,
@@ -1652,7 +1641,7 @@
         "D": "Generating financial reports for stakeholders."
       },
       "correct_answer": [
-        "Facilitating communication between different departments."
+        "B"
       ],
       "explanation": "B is correct because coordination involves synchronizing activities across different parts of the organization. IS enables this through communication tools and shared databases. A, C, and D are functions of IS but do not directly represent coordination. Effective coordination is crucial for organizational efficiency.",
       "difficulty_level": 1,
@@ -1675,7 +1664,7 @@
         "D": "Access to advanced medical facilities."
       },
       "correct_answer": [
-        "Reliable internet connectivity."
+        "C"
       ],
       "explanation": "C is correct because Digital Nomads rely on the internet to work remotely. A, B, and D, while potentially desirable, are not essential for their work. Reliable connectivity is paramount for digital nomads to maintain productivity.",
       "difficulty_level": 1,
@@ -1698,7 +1687,7 @@
         "D": "A type of software used for project management."
       },
       "correct_answer": [
-        "A person who works remotely using digital technologies from various locations."
+        "B"
       ],
       "explanation": "B is correct because the flashcard defines Digital Nomads as individuals who leverage the internet and mobile technology to work remotely from anywhere they choose. A, C, and D are incorrect definitions. Digital nomadism is enabled by technology and location independence.",
       "difficulty_level": 1,
@@ -1720,7 +1709,7 @@
         "D": "Limited access to entertainment."
       },
       "correct_answer": [
-        "Good weather."
+        "C"
       ],
       "explanation": "C is correct because good weather is an appealing lifestyle factor that many Digital Nomads prioritize. A, B, and D are undesirable conditions for digital nomads. A comfortable and enjoyable environment contributes to their well-being and productivity.",
       "difficulty_level": 1,
@@ -1743,7 +1732,7 @@
         "D": "Lack of opportunities for promotion."
       },
       "correct_answer": [
-        "Inconsistent Wi-Fi signals."
+        "B"
       ],
       "explanation": "B is correct because the flashcard mentions that Digital Nomads often face challenges with inconsistent Wi-Fi or cellular signals. A, C, and D are more relevant to traditional office environments. Reliable internet is crucial for their remote work.",
       "difficulty_level": 1,
@@ -1766,7 +1755,7 @@
         "D": "Improved opportunities for career advancement."
       },
       "correct_answer": [
-        "Greater financial flexibility and savings."
+        "C"
       ],
       "explanation": "C is correct because a lower cost of living allows Digital Nomads to stretch their income further and save more money. A, B, and D are not direct advantages related to the cost of living. Financial flexibility is a major draw for digital nomads.",
       "difficulty_level": 1,
@@ -1788,7 +1777,7 @@
         "D": "The availability of alternative products or services."
       },
       "correct_answer": [
-        "The likelihood of new competitors entering the industry."
+        "B"
       ],
       "explanation": "B is correct because the threat of new entrants represents the potential for new companies to enter the market and increase competition. A, C, and D refer to other forces in Porter's model. Understanding this threat helps companies prepare for increased competition.",
       "difficulty_level": 1,
@@ -1810,7 +1799,7 @@
         "D": "To manage a company's financial resources."
       },
       "correct_answer": [
-        "To assess the competitive intensity of an industry."
+        "B"
       ],
       "explanation": "B is correct because Porter's Five Forces is designed to analyze the competitive landscape and attractiveness of an industry. A refers to SWOT analysis, while C and D are related to marketing and finance, respectively. This model provides insights into industry profitability.",
       "difficulty_level": 1,
@@ -1833,7 +1822,7 @@
         "D": "The availability of substitute products or services."
       },
       "correct_answer": [
-        "The power of suppliers to influence prices of inputs."
+        "B"
       ],
       "explanation": "B is correct because the bargaining power of suppliers relates to their ability to raise prices or reduce the quality of goods and services. A, C, and D refer to other forces in the model. Strong supplier power can reduce industry profitability.",
       "difficulty_level": 1,
@@ -1855,7 +1844,7 @@
         "D": "Neglecting employee training and development."
       },
       "correct_answer": [
-        "Focusing only on existing competitors."
+        "A"
       ],
       "explanation": "A is correct because the flashcard mentions that a common mistake is focusing only on existing competitors and ignoring the other four forces. B, C, and D are important considerations but not specific to mistakes related to using Porter's Five Forces. A comprehensive analysis considers all five forces.",
       "difficulty_level": 1,
@@ -1877,7 +1866,7 @@
         "D": "The efficiency of internal operations."
       },
       "correct_answer": [
-        "The industry's profitability and competitive dynamics."
+        "B"
       ],
       "explanation": "B is correct because Porter's Five Forces analyzes the forces that shape competition and profitability within an industry. A, C, and D are important but not the primary focus of the model. This analysis informs strategic decisions.",
       "difficulty_level": 1,
@@ -1900,7 +1889,7 @@
         "D": "Narrow market/differentiation."
       },
       "correct_answer": [
-        "Broad market/low-cost."
+        "C"
       ],
       "explanation": "C is correct because a broad market/low-cost strategy aims to serve a wide customer base with the lowest prices. A, B, and D represent other competitive strategies. Walmart is a prime example of this strategy.",
       "difficulty_level": 1,
@@ -1924,7 +1913,7 @@
         "D": "Competing through unique product features."
       },
       "correct_answer": [
-        "Focusing on a specific niche of customers."
+        "C"
       ],
       "explanation": "C is correct because a narrow market focus involves targeting a specific segment of the customer base. A is the opposite of a narrow market, while B and D relate to low-cost and differentiation strategies, respectively. Niche markets allow for specialized offerings.",
       "difficulty_level": 1,
@@ -1947,7 +1936,7 @@
         "D": "Narrow market/differentiation."
       },
       "correct_answer": [
-        "Broad market/differentiation."
+        "C"
       ],
       "explanation": "C is correct because Apple targets a broad market with innovative and premium products, representing a differentiation strategy. A and B are low-cost strategies, and D targets a narrow market. Apple's focus is on innovation and brand image.",
       "difficulty_level": 1,
@@ -1971,7 +1960,7 @@
         "D": "Reducing operational costs."
       },
       "correct_answer": [
-        "Becoming 'stuck in the middle'."
+        "B"
       ],
       "explanation": "B is correct because the flashcard mentions that trying to be everything to everyone can result in a 'stuck in the middle' strategy, lacking focus and competitive advantage. A, C, and D are desirable outcomes but unlikely if a company lacks a clear strategy. Focus is key to competitive success.",
       "difficulty_level": 1,
@@ -1993,7 +1982,7 @@
         "D": "Narrow market/differentiation."
       },
       "correct_answer": [
-        "Narrow market/differentiation."
+        "D"
       ],
       "explanation": "D is correct because the studio targets a specific niche (narrow market) with a unique offering (differentiation). A and B target a broad market, while C focuses on low-cost. Specialization is the core of a narrow market/differentiation strategy.",
       "difficulty_level": 1,
