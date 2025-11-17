@@ -24,15 +24,15 @@
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 60px);
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(40px, 8vw, 100px);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(60px, 8vw, 100px);
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
 .hero-content {
-  max-width: 650px;
+  max-width: 600px;
 }
 
 .hero-eyebrow {
@@ -50,19 +50,19 @@
 }
 
 .hero-headline {
-  font-size: clamp(40px, 5.5vw, 72px);
-  font-weight: 800;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 700;
   color: var(--text-dark);
-  line-height: 1.1;
-  margin-bottom: clamp(20px, 3vw, 32px);
+  line-height: 1.15;
+  margin-bottom: clamp(20px, 2.5vw, 32px);
   letter-spacing: -0.02em;
 }
 
 .hero-subheadline {
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(18px, 2vw, 22px);
   color: var(--text-gray);
   margin-bottom: clamp(32px, 4vw, 48px);
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 400;
 }
 
@@ -108,19 +108,31 @@
 
 .hero-benefits {
   display: flex;
+  gap: clamp(24px, 3vw, 40px);
+  margin-top: clamp(24px, 3vw, 32px);
   flex-wrap: wrap;
-  gap: clamp(20px, 3vw, 32px);
-  font-size: clamp(14px, 1.2vw, 16px);
-  color: var(--text-gray);
 }
 
-.hero-benefits span {
+.benefit-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 500;
 }
 
+.benefit-icon {
+  width: clamp(20px, 2vw, 24px);
+  height: clamp(20px, 2vw, 24px);
+  color: var(--primary-green);
+  flex-shrink: 0;
+}
+
+.benefit-text {
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* Product Visual */
 .hero-visual {
   display: flex;
   justify-content: center;
@@ -128,37 +140,35 @@
   position: relative;
 }
 
-.hero-visual::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(45, 122, 62, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.mockup-placeholder {
+.product-card {
   width: 100%;
-  max-width: clamp(350px, 40vw, 450px);
-  background-color: var(--pure-white);
+  max-width: 500px;
+  background: var(--pure-white);
   border-radius: 20px;
-  box-shadow: var(--shadow-strong);
+  box-shadow: 0 20px 60px rgba(45, 122, 62, 0.15), 0 0 40px rgba(45, 122, 62, 0.1);
   overflow: hidden;
-  position: relative;
-  z-index: 2;
-  transform: rotate(-2deg);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.mockup-placeholder:hover {
-  transform: rotate(0deg) translateY(-8px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+.product-card.floating {
+  animation: float 6s ease-in-out infinite;
 }
 
-.mockup-header {
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-2deg);
+  }
+}
+
+.product-card:hover {
+  transform: translateY(-8px) rotate(0deg) !important;
+  box-shadow: 0 30px 80px rgba(45, 122, 62, 0.2), 0 0 60px rgba(45, 122, 62, 0.15);
+}
+
+.product-card-header {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   padding: 16px 20px;
   display: flex;
@@ -167,51 +177,50 @@
   border-bottom: 1px solid var(--border-light);
 }
 
-.mockup-dots {
+.card-dots {
   display: flex;
   gap: 8px;
 }
 
-.mockup-dots span {
-  width: 10px;
-  height: 10px;
+.card-dots span {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: #ccc;
   transition: all 0.3s ease;
 }
 
-.mockup-dots span:nth-child(1) {
+.card-dots span:nth-child(1) {
   background-color: #ff5f57;
 }
 
-.mockup-dots span:nth-child(2) {
+.card-dots span:nth-child(2) {
   background-color: #ffbd2e;
 }
 
-.mockup-dots span:nth-child(3) {
+.card-dots span:nth-child(3) {
   background-color: #28ca42;
 }
 
-.mockup-placeholder:hover .mockup-dots span {
+.product-card:hover .card-dots span {
   transform: scale(1.2);
 }
 
-.mockup-title {
+.card-title {
   font-size: 15px;
   font-weight: 600;
   color: var(--text-dark);
 }
 
-.mockup-content {
-  padding: clamp(20px, 3vw, 32px);
+.product-card-content {
+  padding: clamp(24px, 3vw, 32px);
 }
 
-.flashcard-preview {
+.flashcard-demo {
   text-align: left;
 }
 
-.flashcard-question {
-  font-size: clamp(14px, 1.2vw, 16px);
+.demo-question {
+  font-size: clamp(15px, 1.5vw, 17px);
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 20px;
@@ -219,39 +228,38 @@
   background: linear-gradient(135deg, var(--light-green) 0%, rgba(45, 122, 62, 0.08) 100%);
   border-radius: 12px;
   border-left: 4px solid var(--primary-green);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-.flashcard-tabs {
+.demo-tabs {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
-.tab {
-  padding: 8px 14px;
-  font-size: 12px;
+.demo-tab {
+  padding: 6px 12px;
+  font-size: 11px;
   font-weight: 500;
-  border-radius: 20px;
+  border-radius: 16px;
   background-color: var(--border-light);
   color: var(--text-gray);
-  cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
 }
 
-.tab.active {
+.demo-tab.active {
   background: var(--gradient-green);
   color: var(--pure-white);
   transform: translateY(-1px);
   box-shadow: var(--shadow-subtle);
 }
 
-.flashcard-answer {
-  font-size: clamp(12px, 1vw, 14px);
+.demo-answer {
+  font-size: clamp(13px, 1.2vw, 14px);
   color: var(--text-dark);
-  line-height: 1.6;
+  line-height: 1.7;
   padding: 18px;
   background-color: var(--pure-white);
   border-radius: 12px;
@@ -259,17 +267,18 @@
   box-shadow: var(--shadow-subtle);
 }
 
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .landing-hero {
-    min-height: 90vh;
+    min-height: auto;
     padding-top: 60px;
+    padding-bottom: 40px;
   }
   
   .hero-container {
     grid-template-columns: 1fr;
     gap: 40px;
-    text-align: center;
     padding: 0 20px;
   }
   
@@ -281,26 +290,16 @@
     order: 0;
   }
   
-  .hero-benefits {
-    justify-content: center;
-    gap: 16px;
+  .product-card {
+    max-width: 100%;
   }
   
-  .mockup-placeholder {
-    max-width: 320px;
-    transform: rotate(0deg);
+  .demo-tabs {
+    gap: 4px;
   }
   
-  .mockup-placeholder:hover {
-    transform: translateY(-4px);
-  }
-  
-  .flashcard-tabs {
-    justify-content: center;
-  }
-  
-  .tab {
-    font-size: 11px;
-    padding: 6px 12px;
+  .demo-tab {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 }

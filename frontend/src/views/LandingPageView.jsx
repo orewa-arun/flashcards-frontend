@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import LandingHero from '../components/LandingHero';
+import LandingExamFocus from '../components/LandingExamFocus';
+import LandingComparison from '../components/LandingComparison';
+import LandingHowItWorks from '../components/LandingHowItWorks';
+import LandingProductShowcase from '../components/LandingProductShowcase';
 import LandingValueProps from '../components/LandingValueProps';
 import LandingSocialProof from '../components/LandingSocialProof';
-import LandingHowItWorks from '../components/LandingHowItWorks';
-import LandingDemo from '../components/LandingDemo';
+import LandingFAQ from '../components/LandingFAQ';
 import LandingCTA from '../components/LandingCTA';
 import LandingFooter from '../components/LandingFooter';
-import LandingFAQ from '../components/LandingFAQ';
 import AuthModal from '../components/Auth/AuthModal';
 import './LandingPageView.css';
 
@@ -26,10 +28,12 @@ function LandingPageView() {
   return (
     <div className="landing-page-view">
       <LandingHero onOpenAuthModal={openAuthModal} />
+      <LandingExamFocus />
+      <LandingComparison />
+      <LandingHowItWorks />
+      <LandingProductShowcase />
       <LandingValueProps />
       <LandingSocialProof />
-      <LandingHowItWorks />
-      <LandingDemo />
       <LandingFAQ />
       <LandingCTA onOpenAuthModal={openAuthModal} />
       <LandingFooter />

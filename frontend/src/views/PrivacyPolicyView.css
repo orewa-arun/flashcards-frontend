@@ -15,7 +15,7 @@
 }
 
 .privacy-header {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
   color: white;
   padding: 2rem;
   text-align: center;
@@ -63,19 +63,20 @@
 }
 
 .privacy-section h2 {
-  color: var(--text-primary);
+  color: var(--text-dark);
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  border-bottom: 2px solid var(--accent-primary);
+  border-bottom: 2px solid var(--primary-green);
   padding-bottom: 0.5rem;
 }
 
 .privacy-section h3 {
-  color: var(--accent-primary);
+  color: var(--primary-green);
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 .privacy-section h4 {
@@ -115,15 +116,15 @@
 }
 
 .info-item {
-  background-color: var(--bg-tertiary);
+  background-color: var(--light-green);
   padding: 1.5rem;
   border-radius: 8px;
-  border-left: 4px solid var(--accent-primary);
+  border-left: 4px solid var(--primary-green);
 }
 
 .info-item h3 {
   margin-top: 0;
-  color: var(--accent-primary);
+  color: var(--primary-green);
 }
 
 .cookie-info {
@@ -151,19 +152,19 @@
 }
 
 .right-item {
-  background-color: var(--bg-tertiary);
+  background-color: var(--light-green);
   padding: 1.5rem;
   border-radius: 8px;
-  border-left: 4px solid var(--success);
+  border-left: 4px solid var(--primary-green);
 }
 
 .right-item h4 {
   margin-top: 0;
-  color: var(--success);
+  color: var(--primary-green);
 }
 
 .opt-out-btn {
-  background-color: var(--error);
+  background-color: var(--primary-green);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -176,15 +177,16 @@
 }
 
 .opt-out-btn:hover {
-  background-color: #dc2626;
+  background-color: var(--accent-green);
   transform: translateY(-1px);
 }
 
 .contact-info {
-  background-color: var(--bg-tertiary);
+  background-color: var(--light-green);
   padding: 1.5rem;
   border-radius: 8px;
   margin: 1rem 0;
+  border-left: 4px solid var(--primary-green);
 }
 
 .contact-info p {
@@ -193,6 +195,16 @@
 
 .contact-info p:last-child {
   margin-bottom: 0;
+}
+
+.contact-info a {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
 }
 
 .privacy-footer {
@@ -204,7 +216,7 @@
 
 .back-to-app {
   display: inline-block;
-  background-color: var(--accent-primary);
+  background-color: var(--primary-green);
   color: white;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
@@ -215,7 +227,7 @@
 }
 
 .back-to-app:hover {
-  background-color: var(--accent-secondary);
+  background-color: var(--accent-green);
   transform: translateY(-1px);
 }
 

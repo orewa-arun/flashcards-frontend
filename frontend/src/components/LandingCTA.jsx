@@ -10,15 +10,10 @@ function LandingCTA({ onOpenAuthModal }) {
       <div className="landing-section-inner">
         <div className="cta-content text-center">
           <h2 className="cta-headline mb-md">
-            Ready to Ace Your Exams?
+            Your Exam Is Approaching.<br />
+            Choose Your Path Forward.
           </h2>
-          
-          <div className="center-container">
-            <p className="cta-subheadline">
-              Join 20+ IIT Madras students who are already mastering their courses.
-            </p>
-          </div>
-          
+          <br/>
           <div className="cta-button-wrapper mb-lg">
             {user ? (
             <Link to="/courses" className="cta-button">
@@ -27,13 +22,10 @@ function LandingCTA({ onOpenAuthModal }) {
               </Link>
             ) : (
               <button onClick={() => onOpenAuthModal('signup')} className="cta-button">
-              <span className="button-text">Get Started Free</span>
+              <span className="button-text">Get Started</span>
               <span className="button-arrow">→</span>
               </button>
             )}
-            <p className="cta-guarantee">
-              Free forever • No credit card required
-            </p>
           </div>
         </div>
       </div>

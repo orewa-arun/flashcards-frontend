@@ -10,56 +10,77 @@ function LandingHero({ onOpenAuthModal }) {
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-eyebrow">
-            FOR IIT MADRAS DoMS STUDENTS
+            EXAM-FOCUSED LEARNING
           </div>
           
           <h1 className="hero-headline">
-            Exam in 2 Days? Master Your Syllabus in 3 Hours.
+            AI-Powered Exam Prep: Get Ready in 30 Minutes, Not 3 Hours
           </h1>
-          
+          <br/>
           <p className="hero-subheadline">
-            AI flashcards + adaptive quizzes that find your weak spots and fix them. Fast.
+            Our AI analyzes your knowledge gaps in real-time, creates personalized study paths, and adapts questions to your level—making every minute count.
           </p>
-          
+          <br/>
+
           {user ? (
           <Link to="/courses" className="hero-cta">
-              Go to Dashboard →
+              Continue Learning →
             </Link>
           ) : (
             <button onClick={() => onOpenAuthModal('signup')} className="hero-cta">
-            Start Preparing Free →
+            Start Preparing →
             </button>
           )}
           
           <div className="hero-benefits">
-            <span>✓ Used by 20+ IIT students</span>
-            <span>✓ 100% Free</span>
-            <span>✓ Start free in 30 seconds</span>
+            <span className="benefit-item">
+              <svg className="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+              <span className="benefit-text">3x Faster</span>
+            </span>
+            <span className="benefit-item">
+              <svg className="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              <span className="benefit-text">AI-Personalized</span>
+            </span>
+            <span className="benefit-item">
+              <svg className="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 3v18h18"/>
+                <path d="M18 17V9l-5 5-5-5v8"/>
+              </svg>
+              <span className="benefit-text">Track Progress</span>
+            </span>
           </div>
         </div>
         
         <div className="hero-visual">
-          <div className="mockup-placeholder">
-            <div className="mockup-header">
-              <div className="mockup-dots">
+          <div className="product-card floating">
+            <div className="product-card-header">
+              <div className="card-dots">
                 <span></span>
                 <span></span>
                 <span></span>
               </div>
-              <span className="mockup-title">ExamMate.ai</span>
+              <span className="card-title">exammate.ai</span>
             </div>
-            <div className="mockup-content">
-              <div className="flashcard-preview">
-                <div className="flashcard-question">
-                  What are the key components of an ER diagram and how do they represent database relationships?
+            <div className="product-card-content">
+              <div className="flashcard-demo">
+                <div className="demo-question">
+                  What are the key components of an ER diagram?
                 </div>
-                <div className="flashcard-tabs">
-                  <span className="tab active">Concise</span>
-                  <span className="tab">Analogy</span>
-                  <span className="tab">Example</span>
+                <div className="demo-tabs">
+                  <span className="demo-tab active">Concise</span>
+                  <span className="demo-tab">Analogy</span>
+                  <span className="demo-tab">ELI5</span>
+                  <span className="demo-tab">Example</span>
+                  <span className="demo-tab">Use Case</span>
+                  <span className="demo-tab">Mistakes</span>
                 </div>
-                <div className="flashcard-answer">
-                  ER diagrams use entities (rectangles), attributes (ovals), and relationships (diamonds) to model database structure. Entities represent objects, attributes describe properties, and relationships show how entities connect...
+                <div className="demo-answer">
+                  ER diagrams use entities (rectangles), attributes (ovals), and relationships (diamonds) to model database structure...
                 </div>
               </div>
             </div>

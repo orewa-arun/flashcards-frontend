@@ -21,15 +21,11 @@ function LandingSocialProof() {
           </div>
           
           <blockquote className="testimonial-quote">
-            "exammate.ai is a great app for MBA students. The unorganised & fast paced nature of the lectures can make it very difficult to take proper notes & find the necessary study & practice materials for the exams, that's where exammate.ai comes up as a life-saver.
-            <br/><br/>
-            I personally used it for two tests and found it quite helpful.
-            <br/><br/>
-            Mr. ArunKumar is doing a great job. I wish that this venture of his grows and improves consistently so that more & more students can benefit from it."
+            "I used exammate for 2 hours before my exam. I went from stressed to confident. It actually works."
           </blockquote>
           
           <cite className="testimonial-attribution">
-            — Ahmed Hossain, MBA Student
+            — Ahmed Hossain, Student
           </cite>
         </div>
       </div>

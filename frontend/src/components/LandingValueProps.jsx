@@ -28,11 +28,11 @@ function LandingValueProps() {
       <div className="landing-section-inner">
         <div className="value-props-header text-center mb-lg">
           <h2 className="value-props-title mb-md">
-            The Fastest Way to Master Any Subject
+            AI-Powered Learning That Adapts to You
           </h2>
           <div className="subtitle-container">
             <p className="value-props-subtitle">
-              Our AI-powered learning system adapts to your needs and gets you exam-ready in record time.
+              Our intelligent AI system analyzes your performance, personalizes your study path, and optimizes every minute to get you exam-ready faster.
             </p>
           </div>
         </div>
