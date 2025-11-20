@@ -179,6 +179,34 @@
   color: #8e8ea0;
 }
 
+.sidebar-footer {
+  padding: 12px;
+  border-top: 1px solid #444654;
+  background: #202123;
+}
+
+.new-chat-button-bottom {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid #565869;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.new-chat-button-bottom:hover {
+  background: #2a2b32;
+  border-color: #8e8ea0;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .conversation-sidebar {

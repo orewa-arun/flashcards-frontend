@@ -87,6 +87,12 @@ function ConversationSidebar({
           </div>
         ))}
       </div>
+
+      <div className="sidebar-footer">
+        <button className="new-chat-button-bottom" onClick={onNewChat}>
+          <FaPlus /> New Chat
+        </button>
+      </div>
     </div>
   );
 }
