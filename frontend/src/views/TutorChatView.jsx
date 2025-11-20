@@ -396,8 +396,8 @@ function TutorChatView() {
       />
 
       <div className="tutor-main-content">
-        <div className="tutor-chat-view">
-          <div className="tutor-chat-container">
+    <div className="tutor-chat-view">
+      <div className="tutor-chat-container">
         {/* Header */}
         <header className="tutor-header">
           {/* Breadcrumb Navigation */}
