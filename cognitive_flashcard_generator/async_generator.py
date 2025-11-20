@@ -177,6 +177,8 @@ class AsyncCognitiveFlashcardGenerator:
                 # Ensure optional fields exist
                 if 'example' not in card:
                     card['example'] = ""
+                if 'plantuml_diagrams' not in card:
+                    card['plantuml_diagrams'] = {}
                 if 'mermaid_diagrams' not in card:
                     card['mermaid_diagrams'] = {}
                 if 'math_visualizations' not in card:
@@ -184,6 +186,8 @@ class AsyncCognitiveFlashcardGenerator:
                 
                 diagram_types = ['concise', 'analogy', 'eli5', 'real_world_use_case', 'common_mistakes', 'example']
                 for diagram_type in diagram_types:
+                    if diagram_type not in card['plantuml_diagrams']:
+                        card['plantuml_diagrams'][diagram_type] = ""
                     if diagram_type not in card['mermaid_diagrams']:
                         card['mermaid_diagrams'][diagram_type] = ""
                     if diagram_type not in card['math_visualizations']:
@@ -250,7 +254,7 @@ class AsyncCognitiveFlashcardGenerator:
     
     def _validate_flashcard(self, card: Dict[str, Any], card_num: int) -> bool:
         """Validate a single flashcard has all required fields."""
-        required_fields = ['question', 'answers', 'relevance_score', 'mermaid_diagrams', 'math_visualizations']
+        required_fields = ['question', 'answers', 'relevance_score', 'plantuml_diagrams', 'math_visualizations']
         
         for field in required_fields:
             if field not in card:
@@ -264,8 +268,12 @@ class AsyncCognitiveFlashcardGenerator:
             if answer_type not in card['answers']:
                 return False
         
-        if not isinstance(card['mermaid_diagrams'], dict):
+        if not isinstance(card['plantuml_diagrams'], dict):
             return False
+        
+        if 'mermaid_diagrams' in card and card['mermaid_diagrams'] is not None:
+            if not isinstance(card['mermaid_diagrams'], dict):
+                return False
         
         if not isinstance(card['math_visualizations'], dict):
             return False

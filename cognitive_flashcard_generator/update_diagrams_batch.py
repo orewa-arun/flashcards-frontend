@@ -2,7 +2,7 @@
 """
 World-Class Diagram Generation Script
 
-This script completely regenerates mermaid_diagrams and math_visualizations
+This script completely regenerates plantuml_diagrams and math_visualizations
 for flashcard JSON files using Claude AI in "beast mode" for maximum quality.
 
 Usage:
@@ -51,16 +51,15 @@ client = anthropic.Anthropic(api_key=API_KEY)
 
 SYSTEM_PROMPT = """You are a world-class instructional designer and expert in data visualization.
 
-Your task: Generate `mermaid_diagrams` and `math_visualizations` for flashcards.
+Your task: Generate `plantuml_diagrams` and `math_visualizations` for flashcards.
 
-MERMAID DIAGRAM GUIDELINES:
-- Use modern Mermaid.js syntax (flowchart TD/LR, sequenceDiagram, graph, etc.)
-- Choose the BEST diagram type for each context (don't default to flowcharts)
-- Use professional color schemes with Material Design colors
-- Make diagrams clean, uncluttered, with concise labels
-- The eli5 diagram should be visibly simpler than the real_world_use_case diagram
-- Use styling like: style NodeName fill:#e3f2fd
-- Use edge labels: -->|label text| or -.label text.->
+PLANTUML DIAGRAM GUIDELINES:
+- Every diagram must be valid PlantUML wrapped with matching `@start...` and `@end...` tags.
+- Select the BEST PlantUML diagram flavor for each context (component, class, mindmap, deployment, activity, etc.).
+- Use `skinparam` to keep typography modern (Inter/Segoe) and backgrounds subtle (#F5F7FA / #FFFFFF combos).
+- Keep diagrams clean, label nodes clearly, and limit each line of text to < 30 characters. Break labels with `\\n`.
+- The `eli5` diagram should be visibly simpler than the `real_world_use_case` diagram (fewer nodes, playful metaphors).
+- Use directional arrows with labels `-->`, `-->` + `:label`, or `..>` for lightweight relationships.
 
 MATHEMATICAL VISUALIZATIONS (Graphviz/DOT) - CRITICAL RULES:
 
@@ -118,12 +117,12 @@ You MUST return valid JSON. Follow these rules EXACTLY:
 3. ALL diagram code must be ONE LINE with \\n for line breaks
 
 Example of CORRECT format:
-[{"flashcard_id":"ID","mermaid_diagrams":{"concise":"graph TD\\n  A-->B\\n  B-->C"},"math_visualizations":{"concise":"digraph G {\\n  node [margin=0.3, fontsize=11];\\n  A [label=\\"Formula\\\\nComponent\\"];\\n  A -> B;\\n}"}}]
+[{"flashcard_id":"ID","plantuml_diagrams":{"concise":"@startuml\\nskinparam monochrome true\\nA --> B\\n@enduml"},"math_visualizations":{"concise":"digraph G {\\n  node [margin=0.3, fontsize=11];\\n  A [label=\\"Formula\\\\nComponent\\"];\\n  A -> B;\\n}"}}]
 
 Example of WRONG format (will fail):
 ```json
 [{
-  "mermaid_diagrams": {
+  "plantuml_diagrams": {
     "concise": "graph TD
       A-->B"
   }
@@ -141,7 +140,7 @@ Example of WRONG format (will fail):
 Return structure:
 [{
   "flashcard_id": "...",
-  "mermaid_diagrams": {"concise":"...","analogy":"...","eli5":"...","real_world_use_case":"...","common_mistakes":"...","example":"..."},
+  "plantuml_diagrams": {"concise":"...","analogy":"...","eli5":"...","real_world_use_case":"...","common_mistakes":"...","example":"..."},
   "math_visualizations": {"concise":"...","analogy":"...","eli5":"...","real_world_use_case":"...","common_mistakes":"...","example":"..."}
 }]
 
@@ -230,7 +229,7 @@ FLASHCARD DATA:
 Your response must be VALID JSON that Python can parse.
 
 CORRECT example:
-[{{"flashcard_id":"ID","mermaid_diagrams":{{"concise":"graph TD\\n  A-->B"}},"math_visualizations":{{"concise":"digraph G {{\\n  A->B;\\n}}"}}}}]
+[{{"flashcard_id":"ID","plantuml_diagrams":{{"concise":"@startuml\\nA --> B\\n@enduml"}},"math_visualizations":{{"concise":"digraph G {{\\n  A->B;\\n}}"}}}}]
 
 WRONG example (DO NOT DO THIS):
 ```json

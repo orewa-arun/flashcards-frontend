@@ -448,3 +448,157 @@ class GeminiVisionAnalyzer:
             print(f"⚠️  {len(errors)} slides had errors during analysis")
 
         return analyzed_slides
+
+    def generate_lecture_summary(
+        self, analyzed_slides: List[Dict[str, Any]], max_retries: int = 3
+    ) -> Dict[str, Any]:
+        """
+        Generate a high-level summary and extract key concepts from all analyzed slides.
+        This is designed to provide foundational context for the AI Tutor chatbot.
+
+        Args:
+            analyzed_slides: List of analyzed slide data
+            max_retries: Maximum number of retry attempts
+
+        Returns:
+            Dictionary with 'lecture_summary' (str) and 'key_concepts' (list of str)
+        """
+        print(f"\n{'='*70}")
+        print(f"🧠 Generating Lecture Summary & Key Concepts")
+        print(f"{'='*70}")
+
+        # Extract all text content from the slides
+        all_slide_text = []
+        for slide in analyzed_slides:
+            analysis = slide.get("analysis", {})
+            if analysis.get("error"):
+                continue
+            
+            # Collect all text from the slide
+            slide_text_parts = []
+            
+            # Title
+            if analysis.get("title"):
+                slide_text_parts.append(f"Title: {analysis['title']}")
+            
+            # Main content
+            if analysis.get("main_content"):
+                slide_text_parts.append(f"Content: {analysis['main_content']}")
+            
+            # Key points
+            if analysis.get("key_points"):
+                key_points = analysis["key_points"]
+                if isinstance(key_points, list):
+                    slide_text_parts.append(f"Key Points: {', '.join(str(kp) for kp in key_points)}")
+                elif isinstance(key_points, str):
+                    slide_text_parts.append(f"Key Points: {key_points}")
+            
+            # Mathematical content
+            if analysis.get("mathematical_content"):
+                for math_item in analysis["mathematical_content"]:
+                    if isinstance(math_item, dict):
+                        if math_item.get("explanation"):
+                            slide_text_parts.append(f"Math: {math_item['explanation']}")
+                    elif isinstance(math_item, str):
+                        slide_text_parts.append(f"Math: {math_item}")
+            
+            # Examples
+            if analysis.get("examples"):
+                for example in analysis["examples"]:
+                    if isinstance(example, dict):
+                        if example.get("description"):
+                            slide_text_parts.append(f"Example: {example['description']}")
+                    elif isinstance(example, str):
+                        slide_text_parts.append(f"Example: {example}")
+            
+            if slide_text_parts:
+                all_slide_text.append("\n".join(slide_text_parts))
+
+        # Combine all text, truncate if too long (to avoid token limits)
+        combined_text = "\n\n".join(all_slide_text)
+        
+        # Truncate to approximately 30,000 characters (roughly 7,500 tokens)
+        if len(combined_text) > 30000:
+            combined_text = combined_text[:30000] + "\n\n[Content truncated for length...]"
+
+        # Course context for the prompt
+        course_name = self.course_context.get('course_name', 'this course')
+        lecture_name = self.course_context.get('lecture_name', 'this lecture')
+
+        # Create the summarization prompt
+        prompt = f"""You are an expert academic assistant. You have been given the complete text content extracted from a university lecture titled "{lecture_name}" from the course "{course_name}".
+
+Your task is to:
+1. Write a concise, one-paragraph summary (3-5 sentences) that captures the main learning objectives and overall theme of this lecture.
+2. Identify and list the 3-7 most important, core concepts or topics that a student should understand from this lecture.
+
+LECTURE CONTENT:
+{combined_text}
+
+Please respond in the following JSON format:
+{{
+  "lecture_summary": "A concise paragraph summarizing the main objectives and theme...",
+  "key_concepts": [
+    "First core concept",
+    "Second core concept",
+    "Third core concept"
+  ]
+}}
+
+Be precise, academic, and focus on the most critical information a student would need to master."""
+
+        # Call the model with retry logic
+        for attempt in range(max_retries):
+            try:
+                print(f"  📡 Calling Gemini API (attempt {attempt + 1}/{max_retries})...")
+                response = self.model.generate_content(prompt)
+                
+                # Extract JSON from response
+                response_text = response.text.strip()
+                
+                # Remove markdown code blocks if present
+                if response_text.startswith("```"):
+                    # Find the first and last ```
+                    lines = response_text.split("\n")
+                    response_text = "\n".join(lines[1:-1]) if len(lines) > 2 else response_text
+                
+                # Parse JSON
+                result = json.loads(response_text)
+                
+                # Validate the structure
+                if "lecture_summary" in result and "key_concepts" in result:
+                    print(f"  ✅ Summary generated successfully")
+                    print(f"     Summary: {result['lecture_summary'][:100]}...")
+                    print(f"     Key Concepts: {len(result['key_concepts'])} identified")
+                    return result
+                else:
+                    print(f"  ⚠️  Invalid response structure, retrying...")
+                    
+            except json.JSONDecodeError as e:
+                print(f"  ⚠️  JSON parsing error: {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(2)
+                    continue
+            except Exception as e:
+                error_msg = str(e)
+                if "429" in error_msg or "quota" in error_msg.lower():
+                    wait_time = 30 * (attempt + 1)
+                    print(f"  ⚠️  Rate limit hit, waiting {wait_time}s...")
+                    time.sleep(wait_time)
+                elif "500" in error_msg or "503" in error_msg:
+                    wait_time = 10 * (attempt + 1)
+                    print(f"  ⚠️  Server error, waiting {wait_time}s...")
+                    time.sleep(wait_time)
+                else:
+                    print(f"  ❌ Error: {e}")
+                    if attempt < max_retries - 1:
+                        time.sleep(5)
+                        continue
+        
+        # If all retries failed, return a fallback
+        print(f"  ⚠️  Failed to generate summary after {max_retries} attempts")
+        return {
+            "lecture_summary": f"This lecture from {course_name} covers the content presented in {lecture_name}.",
+            "key_concepts": ["Content analysis unavailable"],
+            "error": "Failed to generate comprehensive summary"
+        }

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaChevronRight, FaLayerGroup, FaClipboardCheck } from 'react-icons/fa';
 import { trackEvent } from '../utils/amplitude';
 import MixModeCard from '../components/MixMode/MixModeCard';
+import TutorCard from '../components/Tutor/TutorCard';
 import './LectureDetailView.css';
 
 function LectureDetailView() {
@@ -43,6 +44,11 @@ function LectureDetailView() {
   const handleMixClick = () => {
     trackEvent('Selected Mix Mode', { courseId, lectureId });
     navigate(`/courses/${courseId}/${lectureId}/mix`);
+  };
+
+  const handleTutorClick = () => {
+    trackEvent('Selected AI Tutor', { courseId, lectureId });
+    navigate(`/courses/${courseId}/${lectureId}/tutor`);
   };
 
   // Format lecture ID for display (e.g., "DAA_lec_1" -> "DAA Lecture 1")
@@ -89,6 +95,9 @@ function LectureDetailView() {
             courseId={courseId}
             deckId={lectureId}
           />
+          
+          {/* AI Tutor Panel */}
+          <TutorCard onClick={handleTutorClick} />
           
           {/* Primary Panel: Study Flashcards */}
           <div className="action-panel primary-panel" onClick={handleStudyClick}>

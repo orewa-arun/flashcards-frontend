@@ -54,7 +54,7 @@ class CognitiveFlashcardGenerator:
             chunk_info: Optional info about which chunk this is (e.g., "Chunk 1/5")
             
         Returns:
-            List of flashcard dictionaries with scores, examples, and mermaid diagrams
+            List of flashcard dictionaries with scores, examples, and PlantUML diagrams
         """
         # chunk_info is now passed from main.py, making this print statement useful
         chunk_display = f" ({chunk_info})" if chunk_info else "" 
@@ -121,16 +121,29 @@ class CognitiveFlashcardGenerator:
                     self._display_score_distribution(flashcards)
                     
                     # Display stats
-                    total_diagrams = 0
+                    total_plantuml = 0
+                    legacy_mermaid = 0
                     total_math_viz = 0
                     for card in flashcards:
-                        diagrams = card.get('mermaid_diagrams', {})
-                        total_diagrams += sum(1 for diagram in diagrams.values() if diagram.strip())
+                        plantuml_diagrams = card.get('plantuml_diagrams', {})
+                        if isinstance(plantuml_diagrams, dict):
+                            total_plantuml += sum(
+                                1 for diagram in plantuml_diagrams.values()
+                                if isinstance(diagram, str) and diagram.strip()
+                            )
+                        legacy_diagrams = card.get('mermaid_diagrams', {})
+                        if isinstance(legacy_diagrams, dict):
+                            legacy_mermaid += sum(
+                                1 for diagram in legacy_diagrams.values()
+                                if isinstance(diagram, str) and diagram.strip()
+                            )
                         math_viz = card.get('math_visualizations', {})
                         total_math_viz += sum(1 for viz in math_viz.values() if viz.strip())
                     
                     examples_count = sum(1 for card in flashcards if card.get('example', '').strip())
-                    print(f"   📊 Mermaid Diagrams: {total_diagrams} across all answer types")
+                    print(f"   🌿 PlantUML Diagrams: {total_plantuml} across all answer types")
+                    if legacy_mermaid:
+                        print(f"   🕰️ Legacy Mermaid Diagrams: {legacy_mermaid} preserved")
                     print(f"   🔢 Math Visualizations: {total_math_viz} Graphviz diagrams")
                     print(f"   📝 With Examples: {examples_count} cards")
                     
@@ -219,13 +232,17 @@ class CognitiveFlashcardGenerator:
                 # Ensure optional fields exist
                 if 'example' not in card:
                     card['example'] = ""
-                # Ensure all diagram types exist (already validated above, but ensure they're strings)
+                # Ensure all diagram container fields exist (already validated above, but ensure they're strings)
+                if 'plantuml_diagrams' not in card:
+                    card['plantuml_diagrams'] = {}
                 if 'mermaid_diagrams' not in card:
                     card['mermaid_diagrams'] = {}
                 if 'math_visualizations' not in card:
                     card['math_visualizations'] = {}
                 diagram_types = ['concise', 'analogy', 'eli5', 'real_world_use_case', 'common_mistakes', 'example']
                 for diagram_type in diagram_types:
+                    if diagram_type not in card['plantuml_diagrams']:
+                        card['plantuml_diagrams'][diagram_type] = ""
                     if diagram_type not in card['mermaid_diagrams']:
                         card['mermaid_diagrams'][diagram_type] = ""
                     if diagram_type not in card['math_visualizations']:
@@ -362,7 +379,7 @@ class CognitiveFlashcardGenerator:
     
     def _validate_flashcard(self, card: Dict[str, Any], card_num: int) -> bool:
         """Validate a single flashcard has all required fields."""
-        required_fields = ['question', 'answers', 'relevance_score', 'mermaid_diagrams', 'math_visualizations']
+        required_fields = ['question', 'answers', 'relevance_score', 'plantuml_diagrams', 'math_visualizations']
         
         # Check basic required fields
         for field in required_fields:
@@ -382,21 +399,33 @@ class CognitiveFlashcardGenerator:
                 print(f"   ⚠️  Flashcard {card_num} missing answer type: {answer_type}")
                 return False
         
-        # Validate mermaid_diagrams structure
-        if not isinstance(card['mermaid_diagrams'], dict):
-            print(f"   ⚠️  Flashcard {card_num}: 'mermaid_diagrams' must be an object/dict")
+        # Validate plantuml_diagrams structure
+        if not isinstance(card['plantuml_diagrams'], dict):
+            print(f"   ⚠️  Flashcard {card_num}: 'plantuml_diagrams' must be an object/dict")
             return False
         
         # Check all 6 diagram types are present (including example)
         required_diagram_types = ['concise', 'analogy', 'eli5', 'real_world_use_case', 'common_mistakes', 'example']
         for diagram_type in required_diagram_types:
-            if diagram_type not in card['mermaid_diagrams']:
+            if diagram_type not in card['plantuml_diagrams']:
                 print(f"   ⚠️  Flashcard {card_num} missing diagram type: {diagram_type}")
                 return False
             # Validate that diagram content is a string (can be empty)
-            if not isinstance(card['mermaid_diagrams'][diagram_type], str):
+            if not isinstance(card['plantuml_diagrams'][diagram_type], str):
                 print(f"   ⚠️  Flashcard {card_num} diagram '{diagram_type}' must be a string")
                 return False
+        
+        # Legacy mermaid diagrams (optional but validated if present)
+        if 'mermaid_diagrams' in card and card['mermaid_diagrams'] is not None:
+            if not isinstance(card['mermaid_diagrams'], dict):
+                print(f"   ⚠️  Flashcard {card_num}: 'mermaid_diagrams' must be an object/dict when provided")
+                return False
+            for diagram_type in required_diagram_types:
+                if diagram_type not in card['mermaid_diagrams']:
+                    card['mermaid_diagrams'][diagram_type] = ""
+                elif not isinstance(card['mermaid_diagrams'][diagram_type], str):
+                    print(f"   ⚠️  Flashcard {card_num} legacy diagram '{diagram_type}' must be a string")
+                    return False
         
         # Validate math_visualizations structure (optional but must exist)
         if not isinstance(card['math_visualizations'], dict):

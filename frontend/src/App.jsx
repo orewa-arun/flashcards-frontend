@@ -19,6 +19,7 @@ import TimetableView from './views/TimetableView'
 import MyScheduleView from './views/MyScheduleView'
 import WeakConceptsView from './views/WeakConceptsView'
 import MixSessionView from './views/MixSessionView'
+import TutorChatView from './views/TutorChatView'
 import CourseLayout from './layouts/CourseLayout'
 import ThemeToggle from './components/ThemeToggle'
 import CookieBanner from './components/CookieBanner'
@@ -61,6 +62,8 @@ function App() {
               <Route path=":lectureId" element={<LectureDetailView />} />
               <Route path=":lectureId/flashcards" element={<DeckView />} />
               <Route path=":lectureId/mix" element={<MixSessionView />} />
+              <Route path=":lectureId/tutor" element={<TutorChatView />} />
+              <Route path=":lectureId/tutor/:conversationId" element={<TutorChatView />} />
               <Route path=":lectureId/quiz" element={<QuizLevelSelectionView />} />
               <Route path=":lectureId/quiz/:level" element={<QuizView />} />
               <Route path=":lectureId/quiz/:level/results" element={<QuizResultsView />} />

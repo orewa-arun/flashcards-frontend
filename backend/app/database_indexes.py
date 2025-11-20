@@ -188,6 +188,40 @@ async def create_indexes(db: AsyncIOMotorDatabase):
             else:
                 logger.error(f"Error creating question performance indexes: {e}")
         
+        # Tutor conversations collection indexes
+        conversations_collection = db.tutor_conversations
+        conversations_indexes = [
+            IndexModel([("conversation_id", ASCENDING)], unique=True, name="conversation_id_unique"),
+            IndexModel([("user_id", ASCENDING), ("updated_at", ASCENDING)], name="user_conversations_index"),
+            IndexModel([("user_id", ASCENDING), ("course_id", ASCENDING), ("lecture_id", ASCENDING)], 
+                      name="user_course_lecture_index")
+        ]
+        
+        try:
+            await conversations_collection.create_indexes(conversations_indexes)
+            logger.info("✅ Created indexes for tutor_conversations collection")
+        except OperationFailure as e:
+            if "already exists" in str(e):
+                logger.info("Tutor conversations collection indexes already exist")
+            else:
+                logger.error(f"Error creating conversations indexes: {e}")
+        
+        # Tutor messages collection indexes
+        messages_collection = db.tutor_messages
+        messages_indexes = [
+            IndexModel([("conversation_id", ASCENDING), ("timestamp", ASCENDING)], 
+                      name="conversation_messages_index")
+        ]
+        
+        try:
+            await messages_collection.create_indexes(messages_indexes)
+            logger.info("✅ Created indexes for tutor_messages collection")
+        except OperationFailure as e:
+            if "already exists" in str(e):
+                logger.info("Tutor messages collection indexes already exist")
+            else:
+                logger.error(f"Error creating messages indexes: {e}")
+        
         logger.info("🎉 Database indexing completed successfully!")
         
     except Exception as e:

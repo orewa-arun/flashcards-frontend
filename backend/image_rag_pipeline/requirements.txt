@@ -1,0 +1,30 @@
+# Core dependencies for Image-RAG Pipeline
+# Versions matched to existing installation in root .venv
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+
+# Vector database
+qdrant-client==1.7.3
+
+# PDF processing
+# PyMuPDF: Install separately for Python 3.13 compatibility
+# Run: pip install --upgrade pymupdf
+# (Not included here to avoid build errors)
+PyMuPDF==1.26.4
+# Image and embedding
+# Pillow: Use newer version for Python 3.13 compatibility
+Pillow==11.3.0
+open-clip-torch==2.24.0
+torch>=2.6.0 
+# Utilities
+python-dotenv==1.0.0
+
+# LangChain for conversational RAG
+langchain==0.1.0
+langchain-core==0.1.10
+langchain-google-genai==0.0.6
+
+# Gradio for web UI (5.49.1+ includes audioop-lts for Python 3.13 compatibility)
+gradio>=5.49.0
+

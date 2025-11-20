@@ -18,7 +18,8 @@ from app.routers import (
     timetable,
     profile,
     performance,
-    mix_mode
+    mix_mode,
+    conversations
 )
 from app.firebase_auth import initialize_firebase
 from app.database_indexes import create_indexes
@@ -77,6 +78,7 @@ app.include_router(timetable.router)
 app.include_router(profile.router)
 app.include_router(performance.router, prefix="/api/v1/performance", tags=["performance"])
 app.include_router(mix_mode.router)
+app.include_router(conversations.router)
 
 @app.get("/")
 async def root():

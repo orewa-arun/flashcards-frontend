@@ -128,13 +128,23 @@ def process_course(course: dict, target_pdf_name: str = None) -> None:
             analyzed_slides = analyzer.analyze_all_slides(slides, delay_seconds=10, slides_per_batch=5)
             all_analyzed_slides.extend(analyzed_slides)
             
-            # Save structured JSON for this lecture
+            # Generate lecture summary and key concepts for AI Tutor
+            lecture_metadata = analyzer.generate_lecture_summary(analyzed_slides)
+            
+            # Save structured JSON for this lecture (with metadata)
             json_path = os.path.join(analysis_output_dir, f"{pdf_name}_structured_analysis.json")
-            InformationExtractor.save_structured_json(analyzed_slides, json_path)
+            InformationExtractor.save_structured_json(
+                analyzed_slides, 
+                json_path,
+                lecture_metadata=lecture_metadata
+            )
             
             print(f"\n✅ Completed: {lecture_name}")
             print(f"  • Slides analyzed: {len(analyzed_slides)}")
             print(f"  • Structured JSON: {json_path}")
+            if not lecture_metadata.get("error"):
+                print(f"  • Lecture summary: Generated ✓")
+                print(f"  • Key concepts: {len(lecture_metadata.get('key_concepts', []))} identified")
             
         except Exception as e:
             print(f"❌ Error processing {pdf_path}: {e}")

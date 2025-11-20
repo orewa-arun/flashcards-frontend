@@ -303,5 +303,51 @@
         "hasPDF": false
       }
     ]
+  },
+  {
+    "course_id": "MAPP_F_MKT404_EN_2025",
+    "course_name": "Customer experience and branding",
+    "course_code": "MAPP_F_MKT404_EN_2025",
+    "instructor": "Groups 5-11-15 (Professor Jean-Christophe Pineau)",
+    "reference_textbooks": [],
+    "course_description": "This course explores the concept of Customer Experience (CX) and Branding, covering the new consumer behavior, the CX framework, customer journey mapping, experiential marketing, and future challenges in the digital landscape. It also includes an introduction to UX design tools.",
+    "lecture_slides": [
+      {
+        "pdf_path": "courses_resources/MAPP_F_MKT404_EN_2025/lecture_slides/MAPP_F_MKT404_EN_2025_lec_1.pdf",
+        "lecture_name": "The New Consumer",
+        "lecture_number": "1",
+        "topics": [
+          "Major Trends and Evolution of the New Consumer",
+          "Three key changes in Consumer Behavior (Digital transformation, Consumer Empowerment, The key role of Emotion)",
+          "Digital Transformation: Technological, Demographic, and Socio-Economic Drivers",
+          "Consumer Empowerment: Competency, (Re)Creation, Consciousness, and Resistance",
+          "The key role of Emotion: Emotional Branding"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MAPP_F_MKT404_EN_2025/lecture_slides/MAPP_F_MKT404_EN_2025_lec_2.pdf",
+        "lecture_name": "What is Customer Experience?",
+        "lecture_number": "2",
+        "topics": [
+          "What is Customer Experience?",
+          "Introduction to UX design",
+          "Origins of the 'Experience' Concept (Lived experience, Philosophical, and Sociological approach)",
+          "From 'Experience' to 'Customer Experience' (Roots in Marketing, The Emergence of CX/Failure of CRM)",
+          "Customer Experience definition (Lemon & Verhoef, 2016)"
+        ]
+      },
+      {
+        "pdf_path": "courses_resources/MAPP_F_MKT404_EN_2025/lecture_slides/MAPP_F_MKT404_EN_2025_lec_3.pdf",
+        "lecture_name": "A Framework for Customer Experience",
+        "lecture_number": "3",
+        "topics": [
+          "A framework for conceptualizing consumer experience",
+          "The Customer Journey (Overview, Pre-purchase/Purchase/Post-purchase stages, Types of Touch Points, McKinsey purchasing funnel)",
+          "The construction of Personas (Definition, Why use them, Creation process)",
+          "UX Research",
+          "Le Wagon briefing"
+        ]
+      }
+    ]
   }
 ]

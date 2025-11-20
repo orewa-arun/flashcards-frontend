@@ -4,7 +4,8 @@ Diagram Generator - Creates textbook-quality diagrams for quiz explanations.
 Supports multiple diagram types:
 - Matplotlib: Statistical plots, distributions, regression lines
 - Plotly: Interactive visualizations
-- Mermaid: Concept maps, flowcharts
+- PlantUML: Concept maps, architecture diagrams
+- Mermaid: (legacy) flowcharts
 - Graphviz: Process flows, decision trees
 """
 
@@ -396,7 +397,7 @@ class DiagramGenerator:
             diagram_data: String (code) or Dict (plot spec)
             
         Returns:
-            Diagram type: 'mermaid', 'graphviz', 'matplotlib', 'plotly', or 'unknown'
+            Diagram type: 'plantuml', 'mermaid', 'graphviz', 'matplotlib', 'plotly', or 'unknown'
         """
         if isinstance(diagram_data, dict):
             if 'plot_type' in diagram_data:
@@ -406,6 +407,10 @@ class DiagramGenerator:
         
         if isinstance(diagram_data, str):
             diagram_lower = diagram_data.lower().strip()
+            
+            # Check for PlantUML
+            if diagram_lower.startswith('@start'):
+                return 'plantuml'
             
             # Check for Mermaid
             mermaid_keywords = ['graph', 'flowchart', 'sequencediagram', 'classdiagram']
