@@ -167,7 +167,7 @@ export const deleteConversation = async (conversationId) => {
     const token = await getAuthToken();
     const response = await fetch(`${API_BASE_URL}/api/tutor/conversations/${conversationId}`, {
       method: 'DELETE',
-      headers: {
+        headers: {
         'Authorization': `Bearer ${token}`
       }
     });
@@ -198,8 +198,8 @@ export const updateConversationTitle = async (conversationId, title) => {
     const token = await getAuthToken();
     const response = await fetch(`${API_BASE_URL}/api/tutor/conversations/${conversationId}/title`, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
+        headers: {
+          'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
@@ -221,12 +221,47 @@ export const updateConversationTitle = async (conversationId, title) => {
   }
 };
 
+/**
+ * Update conversation notes content
+ * 
+ * @param {string} conversationId - Conversation ID
+ * @param {string} notes - Notes content
+ * @returns {Promise<Object>} Success response
+ */
+export const updateConversationNotes = async (conversationId, notes) => {
+  try {
+    const token = await getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/api/tutor/conversations/${conversationId}/notes`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        notes
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.detail || `Failed to update notes: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('❌ Error updating notes:', error);
+    throw error;
+  }
+};
+
 export default {
   createConversation,
   getConversations,
   getConversation,
   sendMessage,
   deleteConversation,
-  updateConversationTitle
+  updateConversationTitle,
+  updateConversationNotes
 };
 

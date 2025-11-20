@@ -76,7 +76,8 @@ class ConversationService:
             title=title,
             created_at=datetime.now(timezone.utc),
             updated_at=datetime.now(timezone.utc),
-            message_count=0
+            message_count=0,
+            notes=""
         )
         
         try:
@@ -181,7 +182,8 @@ class ConversationService:
             lecture_id=conversation_doc["lecture_id"],
             created_at=conversation_doc["created_at"],
             updated_at=conversation_doc["updated_at"],
-            messages=messages
+            messages=messages,
+            notes=conversation_doc.get("notes", "")
         )
     
     async def add_message(
@@ -249,6 +251,30 @@ class ConversationService:
         
         if result.modified_count > 0:
             logger.info(f"✏️ Updated title for conversation {conversation_id}")
+            return True
+        return False
+    
+    async def update_conversation_notes(
+        self,
+        conversation_id: str,
+        user_id: str,
+        notes: str
+    ) -> bool:
+        """
+        Update a conversation's notes field.
+        """
+        result = await self.conversations_collection.update_one(
+            {"conversation_id": conversation_id, "user_id": user_id},
+            {
+                "$set": {
+                    "notes": notes,
+                    "updated_at": datetime.now(timezone.utc)
+                }
+            }
+        )
+        
+        if result.modified_count > 0:
+            logger.info(f"📝 Updated notes for conversation {conversation_id}")
             return True
         return False
     

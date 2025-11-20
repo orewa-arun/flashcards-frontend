@@ -68,6 +68,7 @@ class Conversation(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     message_count: int = Field(default=0, description="Number of messages in conversation")
+    notes: str = Field(default="", description="User-authored notes for this conversation")
     
     class Config:
         populate_by_name = True
@@ -96,6 +97,7 @@ class ConversationWithMessages(BaseModel):
     created_at: datetime
     updated_at: datetime
     messages: List[dict]
+    notes: str
 
 
 class CreateConversationRequest(BaseModel):

@@ -192,6 +192,44 @@ async def update_conversation_title(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@router.put("/{conversation_id}/notes")
+async def update_conversation_notes(
+    conversation_id: str,
+    request: Dict[str, str],
+    current_user: Dict[str, Any] = Depends(get_current_user),
+    service: ConversationService = Depends(get_conversation_service)
+):
+    """
+    Update a conversation's notes.
+    """
+    try:
+        user_id = current_user.get("uid")
+        notes = request.get("notes")
+
+        if notes is None:
+            raise HTTPException(status_code=400, detail="Notes content is required")
+
+        success = await service.update_conversation_notes(
+            conversation_id=conversation_id,
+            user_id=user_id,
+            notes=notes
+        )
+
+        if not success:
+            raise HTTPException(
+                status_code=404,
+                detail="Conversation not found or unauthorized"
+            )
+
+        return {"message": "Notes updated successfully"}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error updating conversation notes: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.post("/{conversation_id}/messages", response_model=SendMessageResponse)
 async def send_message(
     conversation_id: str,

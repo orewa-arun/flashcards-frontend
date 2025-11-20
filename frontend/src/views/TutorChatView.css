@@ -29,12 +29,25 @@
   left: 0;
 }
 
+.tutor-main-content {
+  display: flex;
+  flex: 1;
+  background: var(--tutor-bg);
+  min-width: 0;
+}
+
 .tutor-chat-view {
   flex: 1;
   min-height: 100vh;
-  background: var(--tutor-bg);
   padding-top: 80px;
   overflow-y: auto;
+}
+
+.notes-panel-wrapper {
+  width: 360px;
+  min-width: 320px;
+  border-left: 1px solid var(--tutor-border);
+  background: #fff;
 }
 
 .tutor-chat-container {
@@ -172,6 +185,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  position: relative;
 }
 
 /* Custom scrollbar */
@@ -190,6 +204,30 @@
 
 .chat-messages-area::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
+}
+
+.add-to-notes-button {
+  position: absolute;
+  z-index: 10;
+  background: var(--tutor-primary);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.add-to-notes-button:hover {
+  background: var(--tutor-primary-dark);
+}
+
+.add-to-notes-button:active {
+  transform: scale(0.97);
 }
 
 /* ========================================
@@ -653,6 +691,18 @@
 /* ========================================
    RESPONSIVE DESIGN
    ======================================== */
+
+@media (max-width: 1200px) {
+  .notes-panel-wrapper {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .notes-panel-wrapper {
+    display: none;
+  }
+}
 
 @media (max-width: 768px) {
   .tutor-chat-container {
