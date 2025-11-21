@@ -1,36 +1,27 @@
 # Core dependencies for Image-RAG Pipeline
-# Versions are based on the local working environment (Python 3.13)
+# Versions are an exact match of the local working environment (Python 3.13)
 fastapi==0.121.2
 uvicorn==0.24.0
 python-multipart==0.0.20
-
-# Vector database
 qdrant-client==1.7.3
-
-# PDF and Image processing
 PyMuPDF==1.26.4
 Pillow==10.4.0
-
-# ML Models and Frameworks
-# These large packages can sometimes cause memory issues during build on smaller plans.
-# If the build fails with code 137 (out of memory), we may need to switch to a CPU-only version.
+open-clip-torch==2.24.0
 torch==2.9.1
 torchvision==0.24.1
-open-clip-torch==2.24.0
-
-# Utilities
 python-dotenv==1.0.0
-
-# LangChain for conversational RAG
 langchain==0.1.0
 langchain-core==0.1.10
 langchain-google-genai==0.0.6
-
-# Google AI and gRPC
-# These will be compiled from source using the C++ compiler provided via nixpacks.toml
+google-ai-generativelanguage==0.4.0
+google-api-core==2.25.1
+google-auth==2.41.1
 google-generativeai==0.3.2
-pydantic==2.10.4
+googleapis-common-protos==1.70.0
 grpcio==1.76.0
 grpcio-tools==1.76.0
 protobuf==4.25.8
+pydantic==2.10.4
+requests==2.32.5
+urllib3==2.5.0
 
