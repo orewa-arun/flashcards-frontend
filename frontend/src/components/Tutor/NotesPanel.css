@@ -4,6 +4,8 @@
   flex-direction: column;
   background: #ffffff;
   border-left: 1px solid #e2e8f0;
+  padding-top: 80px;
+  box-sizing: border-box;
 }
 
 .notes-panel-header {
@@ -12,6 +14,7 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  align-items: flex-start;
 }
 
 .notes-panel-header h3 {
@@ -24,6 +27,34 @@
   margin: 0;
   font-size: 13px;
   color: #62748b;
+}
+
+.notes-panel-header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.notes-panel-action-button {
+  border: none;
+  background: #1d4ed8;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.notes-panel-action-button:hover {
+  background: #1e40af;
+}
+
+.notes-panel-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .notes-status {

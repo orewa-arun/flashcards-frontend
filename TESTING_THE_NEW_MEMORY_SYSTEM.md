@@ -258,3 +258,4 @@ Once this is working:
 
 For detailed architecture docs, see: `backend/image_rag_pipeline/AI_TUTOR_README.md`
 
+

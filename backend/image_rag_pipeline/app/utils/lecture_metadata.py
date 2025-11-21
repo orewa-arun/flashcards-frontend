@@ -133,3 +133,4 @@ def create_foundational_context(
     
     return "\n".join(context_parts)
 
+

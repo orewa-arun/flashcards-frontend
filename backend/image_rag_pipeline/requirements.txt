@@ -26,5 +26,6 @@ langchain-core==0.1.10
 langchain-google-genai==0.0.6
 
 # Gradio for web UI (5.49.1+ includes audioop-lts for Python 3.13 compatibility)
-gradio>=5.49.0
+# not needed.
+# gradio>=5.49.0
 

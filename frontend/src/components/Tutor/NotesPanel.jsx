@@ -1,7 +1,15 @@
 import React from 'react';
 import './NotesPanel.css';
 
-function NotesPanel({ notes, onChange, isSaving, lastSavedAt, disabled = false }) {
+function NotesPanel({ 
+  notes, 
+  onChange, 
+  isSaving, 
+  lastSavedAt, 
+  disabled = false,
+  actionLabel,
+  onAction 
+}) {
   return (
     <div className="notes-panel">
       <div className="notes-panel-header">
@@ -9,14 +17,25 @@ function NotesPanel({ notes, onChange, isSaving, lastSavedAt, disabled = false }
           <h3>Conversation Notes</h3>
           <p>Select text from the chat to add it here, or type directly.</p>
         </div>
-        <div className="notes-status">
-          {isSaving ? (
-            <span className="notes-status-saving">Saving...</span>
-          ) : lastSavedAt ? (
-            <span className="notes-status-saved">
-              Saved {lastSavedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </span>
-          ) : null}
+        <div className="notes-panel-header-right">
+          {actionLabel && onAction && (
+            <button 
+              type="button" 
+              className="notes-panel-action-button"
+              onClick={onAction}
+            >
+              {actionLabel}
+            </button>
+          )}
+          <div className="notes-status">
+            {isSaving ? (
+              <span className="notes-status-saving">Saving...</span>
+            ) : lastSavedAt ? (
+              <span className="notes-status-saved">
+                Saved {lastSavedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              </span>
+            ) : null}
+          </div>
         </div>
       </div>
 

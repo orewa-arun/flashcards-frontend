@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaChevronRight, FaPaperPlane, FaRobot, FaUser } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels';
 import { trackEvent } from '../utils/amplitude';
 import {
   createConversation,
@@ -15,6 +16,9 @@ import {
 import ConversationSidebar from '../components/Tutor/ConversationSidebar';
 import NotesPanel from '../components/Tutor/NotesPanel';
 import './TutorChatView.css';
+
+const PANEL_LAYOUT_STORAGE_KEY = 'tutor-notes-panel-layout';
+const DEFAULT_LAYOUT = [60, 40];
 
 /**
  * Preprocess markdown content to fix common issues
@@ -102,6 +106,29 @@ function TutorChatView() {
   const notesSaveTimeoutRef = useRef(null);
   const chatMessagesRef = useRef(null);
   const [selectionPrompt, setSelectionPrompt] = useState(null);
+  const storedLayout = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return [...DEFAULT_LAYOUT];
+    }
+    const serialized = window.localStorage.getItem(PANEL_LAYOUT_STORAGE_KEY);
+    if (serialized) {
+      try {
+        const parsed = JSON.parse(serialized);
+        if (Array.isArray(parsed) && parsed.length === 2) {
+          return parsed;
+        }
+      } catch (error) {
+        console.error('Error parsing saved panel layout', error);
+      }
+    }
+    return [...DEFAULT_LAYOUT];
+  }, []);
+  const [panelLayout, setPanelLayout] = useState(storedLayout);
+  const [lastNotesSize, setLastNotesSize] = useState(storedLayout[1] || DEFAULT_LAYOUT[1]);
+  const [isNotesCollapsed, setIsNotesCollapsed] = useState(storedLayout[1] < 5);
+  const notesPanelRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileNotesOpen, setIsMobileNotesOpen] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -231,6 +258,13 @@ function TutorChatView() {
     }
   };
 
+  const handleClearChat = async () => {
+    if (!conversationId) return;
+    const confirmed = window.confirm('Are you sure you want to clear this conversation? This action cannot be undone.');
+    if (!confirmed) return;
+    await handleDeleteConversation(conversationId);
+  };
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
@@ -314,6 +348,58 @@ function TutorChatView() {
       .join(' ');
   };
 
+  const updateLayout = useCallback((sizes, persist = true) => {
+    setPanelLayout(sizes);
+    if (sizes[1] > 5) {
+      setLastNotesSize(sizes[1]);
+      setIsNotesCollapsed(false);
+    } else {
+      setIsNotesCollapsed(true);
+    }
+    if (persist && typeof window !== 'undefined') {
+      window.localStorage.setItem(PANEL_LAYOUT_STORAGE_KEY, JSON.stringify(sizes));
+    }
+  }, []);
+
+  const handleLayoutChange = useCallback((sizes) => {
+    updateLayout(sizes);
+  }, [updateLayout]);
+
+  const toggleNotesPanel = useCallback(() => {
+    if (!notesPanelRef.current) return;
+    if (isNotesCollapsed) {
+      const restoredSize = Math.min(Math.max(lastNotesSize || DEFAULT_LAYOUT[1], 20), 70);
+      const sizes = [100 - restoredSize, restoredSize];
+      updateLayout(sizes);
+      notesPanelRef.current.expand();
+    } else {
+      updateLayout([100, 0]);
+      notesPanelRef.current.collapse();
+    }
+  }, [isNotesCollapsed, lastNotesSize, updateLayout]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setIsMobileNotesOpen(false);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!conversationId) {
+      setIsMobileNotesOpen(false);
+    }
+  }, [conversationId]);
+
   const scheduleNotesSave = (content) => {
     if (!conversationId) return;
     setIsNotesSaving(true);
@@ -384,23 +470,10 @@ function TutorChatView() {
     clearSelectionPrompt();
   };
 
-  return (
-    <div className="tutor-chat-view-container">
-      <ConversationSidebar
-        conversations={conversations}
-        currentConversationId={conversationId}
-        onSelectConversation={handleSelectConversation}
-        onNewChat={handleNewChat}
-        onDeleteConversation={handleDeleteConversation}
-        isLoading={isSidebarLoading}
-      />
-
-      <div className="tutor-main-content">
+  const chatContent = (
     <div className="tutor-chat-view">
       <div className="tutor-chat-container">
-        {/* Header */}
         <header className="tutor-header">
-          {/* Breadcrumb Navigation */}
           <nav className="breadcrumb-nav">
             <button onClick={() => navigate('/courses')} className="breadcrumb-link">
               Courses
@@ -417,7 +490,6 @@ function TutorChatView() {
             <span className="breadcrumb-current">AI Tutor</span>
           </nav>
 
-            {/* Title */}
           <div className="tutor-header-content">
             <div className="tutor-header-left">
               <div className="tutor-icon-header">
@@ -430,29 +502,46 @@ function TutorChatView() {
                 </p>
               </div>
             </div>
+            <div className="tutor-header-actions">
+              {!isMobile && (
+                <button
+                  type="button"
+                  className="notes-toggle-button"
+                  onClick={toggleNotesPanel}
+                >
+                  {isNotesCollapsed ? 'Show Notes' : 'Hide Notes'}
+                </button>
+              )}
+              {/* <button 
+                className="clear-chat-button" 
+                onClick={handleClearChat}
+                disabled={messages.length === 0}
+              >
+                Clear Chat
+              </button> */}
+            </div>
           </div>
         </header>
 
-        {/* Chat Messages Area */}
-          <div
-            className="chat-messages-area"
-            ref={chatMessagesRef}
-            onMouseUp={handleChatMouseUp}
-            onScroll={clearSelectionPrompt}
-          >
-            {selectionPrompt && (
-              <button
-                className="add-to-notes-button"
-                style={{
-                  top: `${selectionPrompt.top}px`,
-                  left: `${selectionPrompt.left}px`
-                }}
-                onClick={handleAddSelectionToNotes}
-              >
-                + Add to Notes
-              </button>
-            )}
-            {messages.length === 0 && !error && !conversationId && (
+        <div
+          className="chat-messages-area"
+          ref={chatMessagesRef}
+          onMouseUp={handleChatMouseUp}
+          onScroll={clearSelectionPrompt}
+        >
+          {selectionPrompt && (
+            <button
+              className="add-to-notes-button"
+              style={{
+                top: `${selectionPrompt.top}px`,
+                left: `${selectionPrompt.left}px`
+              }}
+              onClick={handleAddSelectionToNotes}
+            >
+              + Add to Notes
+            </button>
+          )}
+          {messages.length === 0 && !error && !conversationId && (
             <div className="empty-state">
               <div className="empty-state-icon">
                 <FaRobot />
@@ -532,7 +621,6 @@ function TutorChatView() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input Area */}
         <div className="chat-input-area">
           <div className="chat-input-container">
             <textarea
@@ -542,13 +630,13 @@ function TutorChatView() {
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
-                disabled={isLoading}
+              disabled={isLoading}
               rows={1}
             />
             <button 
               className="send-button" 
               onClick={handleSendMessage}
-                disabled={!inputMessage.trim() || isLoading}
+              disabled={!inputMessage.trim() || isLoading}
             >
               <FaPaperPlane />
             </button>
@@ -556,19 +644,81 @@ function TutorChatView() {
           <p className="chat-input-hint">
             Press Enter to send, Shift+Enter for new line
           </p>
-          </div>
-          </div>
         </div>
+      </div>
+    </div>
+  );
 
-        <div className="notes-panel-wrapper">
-          <NotesPanel
-            notes={notes}
-            onChange={handleNotesChange}
-            isSaving={isNotesSaving}
-            lastSavedAt={lastNotesSavedAt}
-            disabled={!conversationId}
-          />
-        </div>
+  return (
+    <div className="tutor-chat-view-container">
+      <ConversationSidebar
+        conversations={conversations}
+        currentConversationId={conversationId}
+        onSelectConversation={handleSelectConversation}
+        onNewChat={handleNewChat}
+        onDeleteConversation={handleDeleteConversation}
+        isLoading={isSidebarLoading}
+      />
+
+      <div className={`tutor-main-content ${isMobile ? 'is-mobile' : ''}`}>
+        {isMobile ? (
+          <>
+            {chatContent}
+            <button
+              type="button"
+              className="mobile-notes-toggle-btn"
+              onClick={() => setIsMobileNotesOpen(true)}
+              disabled={!conversationId}
+            >
+              Open Notes
+            </button>
+            {isMobileNotesOpen && (
+              <div className="notes-mobile-overlay">
+                <div className="notes-mobile-panel">
+                  <NotesPanel
+                    notes={notes}
+                    onChange={handleNotesChange}
+                    isSaving={isNotesSaving}
+                    lastSavedAt={lastNotesSavedAt}
+                    disabled={!conversationId}
+                    actionLabel="Close"
+                    onAction={() => setIsMobileNotesOpen(false)}
+                  />
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <PanelGroup
+            direction="horizontal"
+            layout={panelLayout}
+            onLayout={handleLayoutChange}
+            className="resizable-panels"
+          >
+            <Panel minSize={35}>
+              {chatContent}
+            </Panel>
+            <PanelResizeHandle className="panel-resize-handle" />
+            <Panel
+              ref={notesPanelRef}
+              minSize={20}
+              collapsible
+              collapsedSize={0}
+            >
+              <div className="notes-panel-wrapper">
+                <NotesPanel
+                  notes={notes}
+                  onChange={handleNotesChange}
+                  isSaving={isNotesSaving}
+                  lastSavedAt={lastNotesSavedAt}
+                  disabled={!conversationId}
+                  actionLabel={isNotesCollapsed ? 'Expand' : 'Collapse'}
+                  onAction={toggleNotesPanel}
+                />
+              </div>
+            </Panel>
+          </PanelGroup>
+        )}
       </div>
     </div>
   );

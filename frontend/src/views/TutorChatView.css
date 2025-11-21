@@ -36,6 +36,11 @@
   min-width: 0;
 }
 
+.tutor-main-content.is-mobile {
+  flex-direction: column;
+  position: relative;
+}
+
 .tutor-chat-view {
   flex: 1;
   min-height: 100vh;
@@ -43,9 +48,41 @@
   overflow-y: auto;
 }
 
+.resizable-panels {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.panel-resize-handle {
+  width: 10px;
+  cursor: col-resize;
+  position: relative;
+  background: linear-gradient(180deg, rgba(226, 232, 240, 0) 0%, rgba(226, 232, 240, 1) 50%, rgba(226, 232, 240, 0) 100%);
+}
+
+.panel-resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 36px;
+  border-radius: 999px;
+  background: #cbd5f5;
+  opacity: 0.7;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.panel-resize-handle:hover::after,
+.panel-resize-handle:active::after {
+  background: var(--tutor-primary-light);
+  opacity: 1;
+}
+
 .notes-panel-wrapper {
-  width: 360px;
-  min-width: 320px;
+  height: 100%;
   border-left: 1px solid var(--tutor-border);
   background: #fff;
 }
@@ -174,6 +211,33 @@
   cursor: not-allowed;
 }
 
+.tutor-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notes-toggle-button {
+  border: none;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--tutor-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.notes-toggle-button:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.notes-toggle-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* ========================================
    CHAT MESSAGES AREA
    ======================================== */
@@ -228,6 +292,49 @@
 
 .add-to-notes-button:active {
   transform: scale(0.97);
+}
+
+.mobile-notes-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(135deg, var(--tutor-primary) 0%, var(--tutor-primary-dark) 100%);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 18px 35px rgba(59, 130, 246, 0.35);
+  cursor: pointer;
+  z-index: 20;
+}
+
+.mobile-notes-toggle-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.notes-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 30;
+}
+
+.notes-mobile-panel {
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  background: #fff;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.3);
 }
 
 /* ========================================
