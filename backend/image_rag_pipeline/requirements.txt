@@ -1,24 +1,21 @@
 # Core dependencies for Image-RAG Pipeline
-# Optimized for Railway deployment
-# NOTE: PyTorch CPU-only is installed via railway-build.sh to reduce memory usage
-fastapi==0.104.1
+# Versions are based on the local working environment (Python 3.13)
+fastapi==0.121.2
 uvicorn==0.24.0
-python-multipart==0.0.6
+python-multipart==0.0.20
 
 # Vector database
 qdrant-client==1.7.3
 
-# PDF processing
+# PDF and Image processing
 PyMuPDF==1.26.4
+Pillow==10.4.0
 
-# Image processing
-Pillow==11.3.0
-
-# PyTorch - Install CPU-only version via build script (railway-build.sh)
-# This reduces install size from ~2GB+ to ~500MB
-# torch and torchvision are installed in railway-build.sh
-
-# CLIP model (requires torch to be installed first)
+# ML Models and Frameworks
+# These large packages can sometimes cause memory issues during build on smaller plans.
+# If the build fails with code 137 (out of memory), we may need to switch to a CPU-only version.
+torch==2.9.1
+torchvision==0.24.1
 open-clip-torch==2.24.0
 
 # Utilities
@@ -29,7 +26,11 @@ langchain==0.1.0
 langchain-core==0.1.10
 langchain-google-genai==0.0.6
 
-# Additional dependencies
+# Google AI and gRPC
+# These will be compiled from source using the C++ compiler provided via nixpacks.toml
 google-generativeai==0.3.2
 pydantic==2.10.4
+grpcio==1.76.0
+grpcio-tools==1.76.0
+protobuf==4.25.8
 

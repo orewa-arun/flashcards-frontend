@@ -504,7 +504,7 @@ function TutorChatView() {
             </div>
             <div className="tutor-header-actions">
               {!isMobile && (
-                <button
+            <button 
                   type="button"
                   className="notes-toggle-button"
                   onClick={toggleNotesPanel}
@@ -513,10 +513,10 @@ function TutorChatView() {
                 </button>
               )}
               {/* <button 
-                className="clear-chat-button" 
-                onClick={handleClearChat}
-                disabled={messages.length === 0}
-              >
+              className="clear-chat-button" 
+              onClick={handleClearChat}
+              disabled={messages.length === 0}
+            >
                 Clear Chat
               </button> */}
             </div>
