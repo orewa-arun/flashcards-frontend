@@ -1,5 +1,6 @@
 # Core dependencies for Image-RAG Pipeline
-# Versions matched to existing installation in root .venv
+# Optimized for Railway deployment
+# NOTE: PyTorch CPU-only is installed via railway-build.sh to reduce memory usage
 fastapi==0.104.1
 uvicorn==0.24.0
 python-multipart==0.0.6
@@ -8,15 +9,18 @@ python-multipart==0.0.6
 qdrant-client==1.7.3
 
 # PDF processing
-# PyMuPDF: Install separately for Python 3.13 compatibility
-# Run: pip install --upgrade pymupdf
-# (Not included here to avoid build errors)
 PyMuPDF==1.26.4
-# Image and embedding
-# Pillow: Use newer version for Python 3.13 compatibility
+
+# Image processing
 Pillow==11.3.0
+
+# PyTorch - Install CPU-only version via build script (railway-build.sh)
+# This reduces install size from ~2GB+ to ~500MB
+# torch and torchvision are installed in railway-build.sh
+
+# CLIP model (requires torch to be installed first)
 open-clip-torch==2.24.0
-torch>=2.6.0 
+
 # Utilities
 python-dotenv==1.0.0
 
@@ -25,7 +29,7 @@ langchain==0.1.0
 langchain-core==0.1.10
 langchain-google-genai==0.0.6
 
-# Gradio for web UI (5.49.1+ includes audioop-lts for Python 3.13 compatibility)
-# not needed.
-# gradio>=5.49.0
+# Additional dependencies
+google-generativeai==0.3.2
+pydantic==2.10.4
 
