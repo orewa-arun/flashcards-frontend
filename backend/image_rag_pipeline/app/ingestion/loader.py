@@ -168,7 +168,8 @@ class IngestionPipeline:
         pdf_path: str,
         json_path: str,
         course_id: str,
-        lecture_metadata: Optional[Dict] = None
+        lecture_metadata: Optional[Dict] = None,
+        skip_images: bool = False
     ) -> Dict:
         """
         Run hybrid ingestion: images from PDF, text from flashcard JSON.
@@ -178,10 +179,11 @@ class IngestionPipeline:
         focused text embeddings by excluding diagram code and math visualizations.
         
         Args:
-            pdf_path: Path to PDF file (for images)
+            pdf_path: Path to PDF file (for images, optional if skip_images=True)
             json_path: Path to flashcard JSON file (for text)
             course_id: Course identifier
             lecture_metadata: Additional metadata about the lecture
+            skip_images: If True, skip PDF image extraction
             
         Returns:
             Dictionary with ingestion statistics
@@ -194,14 +196,18 @@ class IngestionPipeline:
         
         pdf_id = os.path.splitext(os.path.basename(pdf_path))[0]
         
+        images = []
         # 1. Extract images from PDF (images-only mode)
-        logger.info("Extracting images from PDF...")
-        pdf_extractor_images_only = PDFExtractor(
-            output_dir=self.image_output_dir,
-            images_only=True
-        )
-        pdf_extraction = pdf_extractor_images_only.extract(pdf_path, pdf_id=pdf_id)
-        images = pdf_extraction["images"]
+        if not skip_images and os.path.exists(pdf_path):
+            logger.info("Extracting images from PDF...")
+            pdf_extractor_images_only = PDFExtractor(
+                output_dir=self.image_output_dir,
+                images_only=True
+            )
+            pdf_extraction = pdf_extractor_images_only.extract(pdf_path, pdf_id=pdf_id)
+            images = pdf_extraction["images"]
+        else:
+            logger.info("Skipping image extraction (skip_images=True or PDF not found)")
         
         # 2. Extract text from flashcard JSON
         logger.info("Extracting text from flashcard JSON...")

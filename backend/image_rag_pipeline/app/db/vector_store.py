@@ -136,12 +136,14 @@ class VectorStore:
                 ]
             )
         
-        results = self.client.search(
+        response = self.client.query_points(
             collection_name=collection_name,
-            query_vector=query_vector,
+            query=query_vector,
             query_filter=query_filter,
             limit=top_k
         )
+        
+        results = response.points
         
         return [
             {

@@ -34,7 +34,7 @@ def format_docs(docs) -> str:
     """
     formatted = []
     for i, doc in enumerate(docs, 1):
-        content = f"--- Source {i} ---\n"
+        content = f"<document index=\"{i}\">\n"
         content += doc.page_content
         
         # Add metadata for richer context
@@ -44,6 +44,7 @@ def format_docs(docs) -> str:
         if metadata.get("tags"):
             content += f"\n[Tags: {', '.join(metadata['tags'])}]"
         
+        content += "\n</document>"
         formatted.append(content)
     
     return "\n\n".join(formatted)
@@ -171,6 +172,7 @@ def create_conversational_chain(
     # Create the final answer chain
     # This uses the retrieved documents and chat history to generate an answer
     # NOW INCLUDES: Foundational context pinned to every response
+    
     answer_prompt = create_answer_prompt(foundational_context)
     answer_chain = (
         RunnablePassthrough.assign(

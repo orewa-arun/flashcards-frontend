@@ -160,18 +160,18 @@ def ingest_all_courses(
             
             pdf_path = os.path.abspath(pdf_path)
             
-            # Check if PDF exists
-            if not os.path.exists(pdf_path):
-                logger.warning(f"  Skipping missing PDF: {pdf_path}")
-                total_skipped += 1
-                continue
+            # Determine if we should process the PDF
+            pdf_exists = os.path.exists(pdf_path)
+            has_pdf_flag = lecture.get("hasPDF", True)
             
-            # Skip if marked as hasPDF: false
-            if lecture.get("hasPDF") == False:
-                logger.info(f"  Skipping (hasPDF=false): {lecture.get('lecture_name')}")
-                total_skipped += 1
-                continue
+            should_process_pdf = pdf_exists and has_pdf_flag
             
+            if not pdf_exists:
+                logger.warning(f"  PDF file missing: {pdf_path}")
+            
+            if not has_pdf_flag:
+                logger.info(f"  Lecture marked as hasPDF=false: {lecture.get('lecture_name')}")
+
             metadata = {
                 "course_id": current_course_id,
                 "course_name": course_name,
@@ -212,27 +212,44 @@ def ingest_all_courses(
                     json_path = path
                     break
             
+            # If neither PDF nor JSON exists, skip
+            if not should_process_pdf and not json_path:
+                logger.warning(f"  Skipping: No PDF (or hasPDF=false) and no flashcard JSON found for {lecture.get('lecture_name')}")
+                total_skipped += 1
+                continue
+
             try:
                 logger.info(f"\n  Processing: {lecture['lecture_name']}")
                 
-                # Use hybrid ingestion if JSON exists, otherwise fallback to PDF-only
+                # Use hybrid ingestion if JSON exists
                 if json_path:
                     logger.info(f"  Using hybrid ingestion (PDF + JSON)")
-                    logger.info(f"    - Images from: {os.path.basename(pdf_path)}")
+                    if should_process_pdf:
+                        logger.info(f"    - Images from: {os.path.basename(pdf_path)}")
+                    else:
+                        logger.info(f"    - Skipping PDF images (hasPDF=false or file missing)")
                     logger.info(f"    - Text from: {os.path.basename(json_path)}")
+                    
                     result = pipeline.ingest_lecture_hybrid(
                         pdf_path=pdf_path,
                         json_path=json_path,
                         course_id=current_course_id,
-                        lecture_metadata=metadata
+                        lecture_metadata=metadata,
+                        skip_images=not should_process_pdf
                     )
                     logger.info(f"  ✓ Success: {result['total_items']} items "
                               f"({result['flashcard_blocks']} flashcard blocks, {result['images']} images)")
-                else:
+                # Otherwise fallback to PDF-only if valid
+                elif should_process_pdf:
                     logger.info(f"  Using PDF-only ingestion (no flashcard JSON found)")
                     result = pipeline.ingest_pdf(pdf_path, current_course_id, metadata)
                     logger.info(f"  ✓ Success: {result['total_items']} items "
                               f"({result['text_chunks']} chunks, {result['images']} images)")
+                else:
+                    # This case should be caught by the check above, but just in case
+                    logger.warning("  Skipping: conditions not met for ingestion")
+                    total_skipped += 1
+                    continue
                 
                 total_processed += 1
             except Exception as e:
