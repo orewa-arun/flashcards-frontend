@@ -291,4 +291,3 @@ class IngestionPipeline:
         
         logger.info(f"Hybrid ingestion complete: {result}")
         return result
-

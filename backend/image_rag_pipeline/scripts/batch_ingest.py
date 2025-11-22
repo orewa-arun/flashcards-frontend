@@ -171,7 +171,7 @@ def ingest_all_courses(
             
             if not has_pdf_flag:
                 logger.info(f"  Lecture marked as hasPDF=false: {lecture.get('lecture_name')}")
-
+            
             metadata = {
                 "course_id": current_course_id,
                 "course_name": course_name,
@@ -217,7 +217,7 @@ def ingest_all_courses(
                 logger.warning(f"  Skipping: No PDF (or hasPDF=false) and no flashcard JSON found for {lecture.get('lecture_name')}")
                 total_skipped += 1
                 continue
-
+            
             try:
                 logger.info(f"\n  Processing: {lecture['lecture_name']}")
                 
@@ -225,7 +225,7 @@ def ingest_all_courses(
                 if json_path:
                     logger.info(f"  Using hybrid ingestion (PDF + JSON)")
                     if should_process_pdf:
-                        logger.info(f"    - Images from: {os.path.basename(pdf_path)}")
+                    logger.info(f"    - Images from: {os.path.basename(pdf_path)}")
                     else:
                         logger.info(f"    - Skipping PDF images (hasPDF=false or file missing)")
                     logger.info(f"    - Text from: {os.path.basename(json_path)}")

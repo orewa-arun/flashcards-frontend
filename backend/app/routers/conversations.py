@@ -16,9 +16,7 @@ from app.models.conversation import (
     ConversationSummary,
     ConversationWithMessages
 )
-
-# RAG Backend URL (should be moved to config later)
-RAG_API_BASE_URL = "http://localhost:8001"
+from app.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -277,9 +275,11 @@ async def send_message(
         
         # Call RAG backend
         try:
+            # Strip trailing slash from base URL to avoid double slashes
+            base_url = settings.RAG_API_BASE_URL.rstrip('/')
             async with httpx.AsyncClient(timeout=60.0) as client:
                 rag_response = await client.post(
-                    f"{RAG_API_BASE_URL}/chat/{conversation.course_id}",
+                    f"{base_url}/chat/{conversation.course_id}",
                     json={
                         "message": message_text,
                         "session_id": conversation_id  # Use conversation_id as session_id

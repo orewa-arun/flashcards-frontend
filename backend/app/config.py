@@ -25,6 +25,9 @@ class Settings:
         "http://localhost:5173,http://localhost:3000"
     ).split(",")
     
+    # RAG Backend Configuration
+    RAG_API_BASE_URL: str = os.getenv("RAG_API_BASE_URL", "http://localhost:8001")
+    
     # Collections
     USERS_COLLECTION = "users"
     DECK_PROGRESS_COLLECTION = "deck_progress" 
