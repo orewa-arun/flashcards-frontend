@@ -268,17 +268,23 @@ function TutorChatView() {
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
+    const userMessage = inputMessage.trim();
+    let activeConversationId = conversationId;
+
     // If no conversation is active, create one first
-    if (!conversationId) {
-      await handleNewChat();
-      // Wait a bit for the conversation to be created and navigation to happen
-      setTimeout(() => {
-        // The inputMessage will still be there, user can send again
-      }, 500);
-      return;
+    if (!activeConversationId) {
+      try {
+        activeConversationId = await createConversation(courseId, lectureId);
+        await loadConversations();
+        navigate(`/courses/${courseId}/${lectureId}/tutor/${activeConversationId}`);
+        trackEvent('Created New Chat', { courseId, lectureId });
+      } catch (error) {
+        console.error('Error creating conversation:', error);
+        setError('Failed to create new chat. Please try again.');
+        return;
+      }
     }
 
-    const userMessage = inputMessage.trim();
     setInputMessage('');
     setError(null);
 
@@ -297,7 +303,7 @@ function TutorChatView() {
 
     try {
       // Send message to backend
-      const response = await sendMessage(conversationId, userMessage);
+      const response = await sendMessage(activeConversationId, userMessage);
 
       // Add assistant response to chat
       const assistantMessage = {
