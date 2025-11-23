@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* World-Class Design System Variables */
 :root {
   --primary-green: #2D7A3E;
@@ -15,9 +17,6 @@
   --gradient-green: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
   --gradient-subtle: linear-gradient(180deg, var(--pure-white) 0%, var(--cream-bg) 100%);
 }
-
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* Global Reset and Base Styles */
 * {

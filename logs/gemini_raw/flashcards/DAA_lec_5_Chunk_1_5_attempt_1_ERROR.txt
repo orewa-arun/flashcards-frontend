@@ -1,0 +1,37 @@
+=== EXCEPTION DURING GENERATION ===
+Source: DAA_lec_5
+Chunk: Chunk 1/5
+Attempt: 1/3
+Error: 504 The request timed out. Please try again.
+
+=== TRACEBACK ===
+Traceback (most recent call last):
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/cognitive_flashcard_generator/generator.py", line 108, in _generate_with_retry
+    response = self.model.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/generativeai/generative_models.py", line 248, in generate_content
+    response = self._client.generate_content(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 566, in generate_content
+    response = rpc(
+               ^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arunkumarmurugesan/Documents/entreprenuer-apps/self-learning-ai/.venv/lib/python3.11/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.DeadlineExceeded: 504 The request timed out. Please try again.

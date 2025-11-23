@@ -269,14 +269,14 @@ class ContentOrchestrator:
         
         # Determine chunk size based on content type
         # Slide-based content is more structured/dense, needs smaller chunks to stay within 5-6 card limit
-        # Textbook-based content can handle larger chunks
+        # Textbook-based content: use similar size to slide-based to avoid timeouts
         if self.is_slide_based(lecture):
             max_chunk_size = 10000  # Smaller chunks for slide-based content (aims for 5-6 cards per chunk)
             overlap = 200  # Smaller overlap for slide-based content
             content_source = "slide-based"
         else:
-            max_chunk_size = 25000  # Larger chunks for textbook-based content (enhanced content)
-            overlap = 500
+            max_chunk_size = 12000  # Conservative size for textbook-based to avoid 504 timeouts
+            overlap = 300
             content_source = "textbook-based"
         
         print(f"🔍 Content type: {content_source}")
@@ -325,6 +325,12 @@ class ContentOrchestrator:
         if len(all_flashcards) < min_cards_threshold:
             print(f"\n⚠️  WARNING: Only {len(all_flashcards)} card(s) generated (threshold: {min_cards_threshold})")
             print(f"   This may indicate insufficient content or generation issues.\n")
+            # Treat the complete failure case (0 cards) as a hard error so callers can react
+            if len(all_flashcards) == 0:
+                raise RuntimeError(
+                    f"No flashcards were generated for course {course_id}, lecture {lecture_number}. "
+                    "Aborting without writing an empty flashcards file."
+                )
         
         # Add unique flashcard IDs (required by backend)
         print(f"🆔 Adding unique flashcard IDs...")

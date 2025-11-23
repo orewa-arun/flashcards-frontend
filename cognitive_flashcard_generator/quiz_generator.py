@@ -153,14 +153,14 @@ class QuizGenerator:
                 start_time = time.time()
                 self._start_progress_indicator()
                 try:
-                response = self.model.generate_content(
-                    prompt,
-                    generation_config=generation_config
-                )
+                    response = self.model.generate_content(
+                        prompt,
+                        generation_config=generation_config
+                    )
                     self._stop_progress_indicator()
                     elapsed_time = time.time() - start_time
                     print(f"   ⏱️  API response received in {elapsed_time:.1f} seconds")
-                result_text = response.text.strip()
+                    result_text = response.text.strip()
                 except Exception as api_error:
                     self._stop_progress_indicator()
                     elapsed_time = time.time() - start_time

@@ -33,7 +33,9 @@
     "react-plotly.js": "^2.6.0",
     "react-resizable-panels": "^3.0.6",
     "react-router-dom": "^7.9.3",
+    "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

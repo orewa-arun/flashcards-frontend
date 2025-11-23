@@ -94,7 +94,7 @@ class CognitiveFlashcardGenerator:
                 print(f"🤖 Analyzing content and generating flashcards with diagrams...")
                 
                 # Configure generation with progressive token limit reduction
-                base_tokens = 50000
+                base_tokens = 25000  # Reduced from 50000 to avoid timeouts
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))  # Reduce tokens on retry
                 
                 generation_config = {
