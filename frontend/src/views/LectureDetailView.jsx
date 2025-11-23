@@ -37,11 +37,30 @@ function LectureDetailView() {
   };
 
   const handleQuizClick = () => {
+    // Temporary frontend-only behavior for MS5031 (DAA):
+    // Quizzes are not available yet for this course. Keep users focused
+    // on flashcards and the AI Tutor.
+    if (courseId === 'MS5031') {
+      alert(
+        'Quizzes are not available yet for this lecture in Data Analysis Applications (MS5031).\n\n' +
+        'For now, please use the flashcards and your AI Tutor to study this lecture.'
+      );
+      return;
+    }
     trackEvent('Selected Quiz Mode', { courseId, lectureId });
     navigate(`/courses/${courseId}/${lectureId}/quiz`);
   };
 
   const handleMixClick = () => {
+    // Temporary frontend-only behavior for MS5031 (DAA):
+    // Adaptive Mix Mode is not available yet for this course.
+    if (courseId === 'MS5031') {
+      alert(
+        'Adaptive Mix Mode is not available yet for this lecture in Data Analysis Applications (MS5031).\n\n' +
+        'For now, please use the flashcards and your AI Tutor to practice this lecture.'
+      );
+      return;
+    }
     trackEvent('Selected Mix Mode', { courseId, lectureId });
     navigate(`/courses/${courseId}/${lectureId}/mix`);
   };

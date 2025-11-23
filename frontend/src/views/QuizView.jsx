@@ -13,6 +13,12 @@ const QuizView = () => {
   const { courseId, lectureId, level } = useParams();
   const navigate = useNavigate();
   
+  // Temporary frontend-only guard:
+  // DAA (MS5031) lectures 5, 6, 7 do not have quizzes yet.
+  const isDAAWithoutQuizzes =
+    courseId === 'MS5031' &&
+    ['DAA_lec_5', 'DAA_lec_6', 'DAA_lec_7'].includes(lectureId);
+  
   const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,8 +32,10 @@ const QuizView = () => {
   const userAnswersRef = useRef([]);
 
   useEffect(() => {
-    loadQuizSession();
-  }, [courseId, lectureId, level]);
+    if (!isDAAWithoutQuizzes) {
+      loadQuizSession();
+    }
+  }, [courseId, lectureId, level, isDAAWithoutQuizzes]);
 
   const loadQuizSession = async () => {
     try {
@@ -177,6 +185,19 @@ const QuizView = () => {
     }
   };
   
+  // Temporary message for lectures without quizzes
+  if (isDAAWithoutQuizzes) {
+    return (
+      <div className="quiz-error">
+        <h2>Quizzes not available yet</h2>
+        <p>
+          Quizzes for <strong>DAA Lecture 5, 6, and 7 (MS5031)</strong> are not loaded yet.
+          Please use the <strong>flashcards</strong> and <strong>AI Tutor</strong> for these lectures.
+        </p>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="quiz-loading">

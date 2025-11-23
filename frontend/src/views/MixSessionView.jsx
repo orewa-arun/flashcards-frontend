@@ -24,6 +24,12 @@ const MixSessionView = () => {
   const { courseId, lectureId } = useParams();
   const navigate = useNavigate();
   
+  // Temporary frontend-only guard:
+  // DAA (MS5031) lectures 5, 6, 7 do not have adaptive Mix Mode yet.
+  const isDAAWithoutMixMode =
+    courseId === 'MS5031' &&
+    ['DAA_lec_5', 'DAA_lec_6', 'DAA_lec_7'].includes(lectureId);
+  
   const {
     sessionId,
     status,
@@ -112,8 +118,10 @@ const MixSessionView = () => {
   
   // Initialize session on mount
   useEffect(() => {
-    initializeSession();
-  }, [initializeSession]);
+    if (!isDAAWithoutMixMode) {
+      initializeSession();
+    }
+  }, [initializeSession, isDAAWithoutMixMode]);
   
   const handleAnswerChange = (answer) => {
     if (showFeedback) return;
@@ -201,6 +209,21 @@ const MixSessionView = () => {
     }
   }, [currentActivity]);
   
+  // Temporary message for lectures without Mix Mode
+  if (isDAAWithoutMixMode) {
+    return (
+      <div className="mix-session-view">
+        <div className="mix-error-container">
+          <h2>Adaptive Mix Mode not available yet</h2>
+          <p>
+            Adaptive Mix Mode for <strong>DAA Lecture 5, 6, and 7 (MS5031)</strong> is not loaded yet.
+            Please use the <strong>flashcards</strong> and <strong>AI Tutor</strong> for these lectures.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   // Loading state
   if (isLoading && !currentActivity) {
     return (
