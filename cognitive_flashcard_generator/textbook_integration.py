@@ -13,7 +13,6 @@ import json
 from pathlib import Path
 from typing import Dict, Optional
 import sys
-import os
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -24,8 +23,10 @@ parent_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(parent_dir))
 
 # Import the enrichment and generation modules
+from config import Config
 from cognitive_flashcard_generator.textbook_enrichment import TextbookContentEnricher
 from cognitive_flashcard_generator.generator import CognitiveFlashcardGenerator
+from cognitive_flashcard_generator.llm_client import LLMClient
 from cognitive_flashcard_generator.quiz_generator import QuizGenerator
 
 
@@ -117,17 +118,26 @@ class TextbookToLearningMaterials:
         course_code = course['course_code']
         textbook = course['reference_textbooks'][0] if course['reference_textbooks'] else ""
         
-        # Get API key
-        api_key = os.getenv('GEMINI_API_KEY')
-        if not api_key:
-            raise ValueError("GEMINI_API_KEY not found in environment variables")
+        # Build LLM client (provider/model pulled from Config)
+        llm_settings = Config.get_llm_settings()
+        provider = llm_settings["provider"]
+        model_name = llm_settings["model"]
+        api_key = llm_settings["api_key"]
+        
+        if provider == "openai":
+            if not api_key:
+                raise ValueError("OPENAI_API_KEY not found in environment variables")
+            llm_client = LLMClient(provider="openai", model=model_name, openai_api_key=api_key)
+        else:
+            if not api_key:
+                raise ValueError("GEMINI_API_KEY not found in environment variables")
+            llm_client = LLMClient(provider="gemini", model=model_name, gemini_api_key=api_key)
         
         # Initialize flashcard generator
         flashcard_gen = CognitiveFlashcardGenerator(
-            api_key=api_key,
-            model="gemini-2.5-flash",
             course_name=course_name,
-            textbook_reference=textbook
+            textbook_reference=textbook,
+            llm_client=llm_client,
         )
         
         # Generate flashcards
@@ -153,10 +163,9 @@ class TextbookToLearningMaterials:
         
         # Initialize quiz generator
         quiz_gen = QuizGenerator(
-            api_key=api_key,
-            model="gemini-2.5-flash",
             course_name=course_name,
-            textbook_reference=textbook
+            textbook_reference=textbook,
+            llm_client=llm_client,
         )
         
         quiz_paths = {}

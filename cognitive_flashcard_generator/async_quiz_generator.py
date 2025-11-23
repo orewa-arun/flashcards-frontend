@@ -5,29 +5,49 @@ Async Quiz Generator - Generates multi-level quiz questions with batching suppor
 import os
 import json
 import asyncio
-from typing import Dict, List, Any
-import google.generativeai as genai
+from typing import Dict, List, Any, Optional
 
 from config import Config
+from cognitive_flashcard_generator.llm_client import LLMClient
 
 
 class AsyncQuizGenerator:
     """Async quiz generator with batching support."""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.5-flash",
-                 course_name: str = "", textbook_reference: str = ""):
+    def __init__(
+        self,
+        course_name: str = "",
+        textbook_reference: str = "",
+        *,
+        llm_client: Optional[LLMClient] = None,
+        api_key: Optional[str] = None,
+        model: Optional[str] = None,
+        provider: Optional[str] = None,
+    ):
         """
         Initialize the async quiz generator.
-        
-        Args:
-            api_key: Gemini API key
-            model: Gemini model to use
-            course_name: Name of the course
-            textbook_reference: Full textbook citation
         """
-        self.genai = genai
-        self.genai.configure(api_key=api_key)
-        self.model = self.genai.GenerativeModel(model)
+        if llm_client is not None:
+            self.llm_client = llm_client
+        else:
+            settings = Config.get_llm_settings(provider, model)
+            resolved_provider = settings["provider"]
+            resolved_model = settings["model"]
+            resolved_api_key = settings["api_key"] or api_key
+            
+            if resolved_provider == "openai":
+                self.llm_client = LLMClient(
+                    provider="openai",
+                    model=resolved_model,
+                    openai_api_key=resolved_api_key,
+                )
+            else:
+                self.llm_client = LLMClient(
+                    provider="gemini",
+                    model=resolved_model,
+                    gemini_api_key=resolved_api_key or Config.GEMINI_API_KEY,
+                )
+        
         self.course_name = course_name
         self.textbook_reference = textbook_reference
         self._prompt_templates = {}  # Cache for prompt templates
@@ -115,23 +135,24 @@ class AsyncQuizGenerator:
                 prompt = prompt.replace("{{TEXTBOOK_REFERENCE}}", self.textbook_reference)
                 prompt = prompt + f"\n\n## Input Flashcards:\n\n```json\n{flashcards_json}\n```\n\nGenerate the quiz questions now."
                 
-                # Configure generation
+                # Configure generation with progressive token limit reduction.
+                # With GPT-5.1 we can safely target larger completions again.
                 base_tokens = 50000
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))
-                
-                generation_config = {
-                    "max_output_tokens": max_tokens,
-                    "temperature": 0.7,
-                }
+                temperature = 0.7
                 
                 # Run the blocking API call in a thread pool
                 loop = asyncio.get_event_loop()
-                response = await loop.run_in_executor(
+                result_text = await loop.run_in_executor(
                     None,
-                    lambda: self.model.generate_content(prompt, generation_config=generation_config)
+                    lambda: self.llm_client.generate_text(
+                        prompt,
+                        max_tokens=max_tokens,
+                        temperature=temperature,
+                    ),
                 )
                 
-                result_text = response.text.strip()
+                result_text = result_text.strip()
                 
                 # Parse JSON response
                 questions = self._parse_quiz_response(result_text)

@@ -256,12 +256,6 @@ async def stream_message(
         if not conversation:
             raise HTTPException(status_code=404, detail="Conversation not found")
         
-        # Save user message first
-        await service.add_message(
-            conversation_id=conversation_id,
-            role="user",
-            content=message_text
-        )
         
         # Define generator for streaming
         async def response_generator() -> AsyncGenerator[bytes, None]:
@@ -270,12 +264,14 @@ async def stream_message(
             
             try:
                 async with httpx.AsyncClient(timeout=60.0) as client:
+                    # Build a session_id that encodes user, course, and lecture
+                    session_id = f"{user_id}_{conversation.course_id}_{conversation.lecture_id}"
                     async with client.stream(
                         "POST",
                         f"{base_url}/chat/{conversation.course_id}/stream",
                         json={
                             "message": message_text,
-                            "session_id": conversation_id
+                            "session_id": session_id
                         }
                     ) as response:
                         response.raise_for_status()
@@ -364,11 +360,13 @@ async def send_message(
             # Strip trailing slash from base URL to avoid double slashes
             base_url = settings.RAG_API_BASE_URL.rstrip('/')
             async with httpx.AsyncClient(timeout=60.0) as client:
+                # Build a session_id that encodes user, course, and lecture
+                session_id = f"{user_id}_{conversation.course_id}_{conversation.lecture_id}"
                 rag_response = await client.post(
                     f"{base_url}/chat/{conversation.course_id}",
                     json={
                         "message": message_text,
-                        "session_id": conversation_id  # Use conversation_id as session_id
+                        "session_id": session_id
                     }
                 )
                 rag_response.raise_for_status()

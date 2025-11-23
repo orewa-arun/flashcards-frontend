@@ -119,6 +119,7 @@ def create_conversational_chain(
     # Initialize retriever
     retriever = CourseTextRetriever(
         course_id=course_id,
+        lecture_id=lecture_id,
         vector_store=vector_store,
         embedder=embedder,
         top_k=top_k

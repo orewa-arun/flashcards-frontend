@@ -6,28 +6,48 @@ import os
 import json
 import asyncio
 from typing import Dict, List, Any, Optional
-import google.generativeai as genai
 
 from config import Config
+from cognitive_flashcard_generator.llm_client import LLMClient
 
 
 class AsyncCognitiveFlashcardGenerator:
     """Async flashcard generator with batching support."""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.5-flash",
-                 course_name: str = "", textbook_reference: str = ""):
+    def __init__(
+        self,
+        course_name: str = "",
+        textbook_reference: str = "",
+        *,
+        llm_client: Optional[LLMClient] = None,
+        api_key: Optional[str] = None,
+        model: Optional[str] = None,
+        provider: Optional[str] = None,
+    ):
         """
         Initialize the async cognitive flashcard generator.
-        
-        Args:
-            api_key: Gemini API key
-            model: Gemini model to use
-            course_name: Name of the course
-            textbook_reference: Full textbook citation
         """
-        self.genai = genai
-        self.genai.configure(api_key=api_key)
-        self.model = self.genai.GenerativeModel(model)
+        if llm_client is not None:
+            self.llm_client = llm_client
+        else:
+            settings = Config.get_llm_settings(provider, model)
+            resolved_provider = settings["provider"]
+            resolved_model = settings["model"]
+            resolved_api_key = settings["api_key"] or api_key
+            
+            if resolved_provider == "openai":
+                self.llm_client = LLMClient(
+                    provider="openai",
+                    model=resolved_model,
+                    openai_api_key=resolved_api_key,
+                )
+            else:
+                self.llm_client = LLMClient(
+                    provider="gemini",
+                    model=resolved_model,
+                    gemini_api_key=resolved_api_key or Config.GEMINI_API_KEY,
+                )
+        
         self.course_name = course_name
         self.textbook_reference = textbook_reference
         self._prompt_template = None
@@ -110,22 +130,22 @@ class AsyncCognitiveFlashcardGenerator:
                 prompt = prompt.replace("{{CONTENT_PLACEHOLDER}}", content)
                 
                 # Configure generation
-                base_tokens = 50000
+                base_tokens = 25000
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))
-                
-                generation_config = {
-                    "max_output_tokens": max_tokens,
-                    "temperature": 0.7,
-                }
+                temperature = 0.7
                 
                 # Run the blocking API call in a thread pool
                 loop = asyncio.get_event_loop()
-                response = await loop.run_in_executor(
+                result_text = await loop.run_in_executor(
                     None,
-                    lambda: self.model.generate_content(prompt, generation_config=generation_config)
+                    lambda: self.llm_client.generate_text(
+                        prompt,
+                        max_tokens=max_tokens,
+                        temperature=temperature,
+                    ),
                 )
                 
-                result_text = response.text.strip()
+                result_text = result_text.strip()
                 
                 # Parse JSON response
                 flashcards = self._parse_flashcard_response(result_text)
@@ -254,7 +274,8 @@ class AsyncCognitiveFlashcardGenerator:
     
     def _validate_flashcard(self, card: Dict[str, Any], card_num: int) -> bool:
         """Validate a single flashcard has all required fields."""
-        required_fields = ['question', 'answers', 'relevance_score', 'plantuml_diagrams', 'math_visualizations']
+        # Core fields required; diagrams are optional and can be enriched later.
+        required_fields = ['question', 'answers', 'relevance_score']
         
         for field in required_fields:
             if field not in card:
@@ -268,14 +289,16 @@ class AsyncCognitiveFlashcardGenerator:
             if answer_type not in card['answers']:
                 return False
         
-        if not isinstance(card['plantuml_diagrams'], dict):
+        plantuml_diagrams = card.get('plantuml_diagrams')
+        if plantuml_diagrams is not None and not isinstance(plantuml_diagrams, dict):
             return False
         
         if 'mermaid_diagrams' in card and card['mermaid_diagrams'] is not None:
             if not isinstance(card['mermaid_diagrams'], dict):
                 return False
         
-        if not isinstance(card['math_visualizations'], dict):
+        math_visualizations = card.get('math_visualizations')
+        if math_visualizations is not None and not isinstance(math_visualizations, dict):
             return False
         
         if not isinstance(card['relevance_score'], dict):

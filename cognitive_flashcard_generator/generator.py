@@ -5,29 +5,48 @@ Cognitive Flashcard Generator - Core AI generation logic.
 import os
 import json
 from pathlib import Path
-from typing import Dict, List, Any
-import google.generativeai as genai
-
+from typing import Dict, List, Any, Optional
 from config import Config
+from cognitive_flashcard_generator.llm_client import LLMClient
 
 
 class CognitiveFlashcardGenerator:
     """Universal flashcard generator with diagram support."""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.5-flash",
-                 course_name: str = "", textbook_reference: str = ""):
+    def __init__(
+        self,
+        course_name: str = "",
+        textbook_reference: str = "",
+        *,
+        llm_client: Optional[LLMClient] = None,
+        api_key: Optional[str] = None,
+        model: Optional[str] = None,
+        provider: Optional[str] = None,
+    ):
         """
         Initialize the cognitive flashcard generator.
-        
-        Args:
-            api_key: Gemini API key
-            model: Gemini model to use
-            course_name: Name of the course (e.g., "Information Systems")
-            textbook_reference: Full textbook citation
         """
-        self.genai = genai
-        self.genai.configure(api_key=api_key)
-        self.model = self.genai.GenerativeModel(model)
+        if llm_client is not None:
+            self.llm_client = llm_client
+        else:
+            settings = Config.get_llm_settings(provider, model)
+            resolved_provider = settings["provider"]
+            resolved_model = settings["model"]
+            resolved_api_key = settings["api_key"] or api_key
+            
+            if resolved_provider == "openai":
+                self.llm_client = LLMClient(
+                    provider="openai",
+                    model=resolved_model,
+                    openai_api_key=resolved_api_key,
+                )
+            else:
+                self.llm_client = LLMClient(
+                    provider="gemini",
+                    model=resolved_model,
+                    gemini_api_key=resolved_api_key or Config.GEMINI_API_KEY,
+                )
+        
         self.course_name = course_name
         self.textbook_reference = textbook_reference
     
@@ -73,7 +92,7 @@ class CognitiveFlashcardGenerator:
         original_content = content
         
         # Create logs directory for raw responses
-        logs_dir = Path("logs") / "gemini_raw" / "flashcards"
+        logs_dir = Path("logs") / "llm_raw" / "flashcards"
         logs_dir.mkdir(parents=True, exist_ok=True)
         
         for attempt in range(max_retries):
@@ -93,24 +112,36 @@ class CognitiveFlashcardGenerator:
                 
                 print(f"🤖 Analyzing content and generating flashcards with diagrams...")
                 
-                # Configure generation with progressive token limit reduction
-                base_tokens = 25000  # Reduced from 50000 to avoid timeouts
+                # Configure generation with progressive token limit reduction.
+                # With GPT-5.1 we can safely target larger completions again.
+                base_tokens = 50000
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))  # Reduce tokens on retry
-                
-                generation_config = {
-                    "max_output_tokens": max_tokens,
-                    "temperature": 0.7,
-                }
-                
+                temperature = 0.7
+
                 print(f"   📊 Content size: {len(content):,} characters")
                 print(f"   📊 Max output tokens: {max_tokens:,}")
-                
-                response = self.model.generate_content(
+
+                result_text = self.llm_client.generate_text(
                     prompt,
-                    generation_config=generation_config
-                )
-                result_text = response.text.strip()
-                
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                ).strip()
+
+                # Always log the raw LLM output so it can be inspected later,
+                # regardless of whether parsing/validation succeeds.
+                source_safe = source_name.replace('/', '_').replace(' ', '_') if source_name else "unknown"
+                chunk_safe = chunk_info.replace('/', '_').replace(' ', '_') if chunk_info else f"attempt_{attempt + 1}"
+                log_file = logs_dir / f"{source_safe}_{chunk_safe}_attempt_{attempt + 1}.txt"
+                with open(log_file, 'w', encoding='utf-8') as f:
+                    f.write("=== RAW LLM RESPONSE ===\n")
+                    f.write(f"Source: {source_name}\n")
+                    f.write(f"Chunk: {chunk_info}\n")
+                    f.write(f"Attempt: {attempt + 1}/{max_retries}\n")
+                    f.write(f"Content size: {len(content)} characters\n")
+                    f.write(f"Max tokens: {max_tokens}\n")
+                    f.write("\n=== RESPONSE TEXT ===\n")
+                    f.write(result_text)
+
                 # Parse JSON response
                 flashcards = self._parse_flashcard_response(result_text)
                 
@@ -149,21 +180,6 @@ class CognitiveFlashcardGenerator:
                     
                     return flashcards
                 else:
-                    # Log raw response when no flashcards generated
-                    source_safe = source_name.replace('/', '_').replace(' ', '_') if source_name else "unknown"
-                    chunk_safe = chunk_info.replace('/', '_').replace(' ', '_') if chunk_info else f"attempt_{attempt + 1}"
-                    log_file = logs_dir / f"{source_safe}_{chunk_safe}_attempt_{attempt + 1}.txt"
-                    
-                    with open(log_file, 'w', encoding='utf-8') as f:
-                        f.write(f"=== RAW LLM RESPONSE ===\n")
-                        f.write(f"Source: {source_name}\n")
-                        f.write(f"Chunk: {chunk_info}\n")
-                        f.write(f"Attempt: {attempt + 1}/{max_retries}\n")
-                        f.write(f"Content size: {len(content)} characters\n")
-                        f.write(f"Max tokens: {max_tokens}\n")
-                        f.write(f"\n=== RESPONSE TEXT ===\n")
-                        f.write(result_text)
-                    
                     print(f"⚠️  No flashcards generated on attempt {attempt + 1}")
                     print(f"   📝 Raw response saved to: {log_file}")
                     if attempt < max_retries - 1:
@@ -379,7 +395,10 @@ class CognitiveFlashcardGenerator:
     
     def _validate_flashcard(self, card: Dict[str, Any], card_num: int) -> bool:
         """Validate a single flashcard has all required fields."""
-        required_fields = ['question', 'answers', 'relevance_score', 'plantuml_diagrams', 'math_visualizations']
+        # Only the core learning fields are strictly required here.
+        # Diagram fields are treated as OPTIONAL because they can be
+        # generated or enriched later by dedicated scripts.
+        required_fields = ['question', 'answers', 'relevance_score']
         
         # Check basic required fields
         for field in required_fields:
@@ -399,48 +418,25 @@ class CognitiveFlashcardGenerator:
                 print(f"   ⚠️  Flashcard {card_num} missing answer type: {answer_type}")
                 return False
         
-        # Validate plantuml_diagrams structure
-        if not isinstance(card['plantuml_diagrams'], dict):
-            print(f"   ⚠️  Flashcard {card_num}: 'plantuml_diagrams' must be an object/dict")
+        # Validate plantuml_diagrams structure when present.
+        # Missing diagrams are acceptable; they will be initialized to
+        # empty containers later in the pipeline.
+        plantuml_diagrams = card.get('plantuml_diagrams')
+        if plantuml_diagrams is not None and not isinstance(plantuml_diagrams, dict):
+            print(f"   ⚠️  Flashcard {card_num}: 'plantuml_diagrams' must be an object/dict when provided")
             return False
-        
-        # Check all 6 diagram types are present (including example)
-        required_diagram_types = ['concise', 'analogy', 'eli5', 'real_world_use_case', 'common_mistakes', 'example']
-        for diagram_type in required_diagram_types:
-            if diagram_type not in card['plantuml_diagrams']:
-                print(f"   ⚠️  Flashcard {card_num} missing diagram type: {diagram_type}")
-                return False
-            # Validate that diagram content is a string (can be empty)
-            if not isinstance(card['plantuml_diagrams'][diagram_type], str):
-                print(f"   ⚠️  Flashcard {card_num} diagram '{diagram_type}' must be a string")
-                return False
         
         # Legacy mermaid diagrams (optional but validated if present)
         if 'mermaid_diagrams' in card and card['mermaid_diagrams'] is not None:
             if not isinstance(card['mermaid_diagrams'], dict):
                 print(f"   ⚠️  Flashcard {card_num}: 'mermaid_diagrams' must be an object/dict when provided")
                 return False
-            for diagram_type in required_diagram_types:
-                if diagram_type not in card['mermaid_diagrams']:
-                    card['mermaid_diagrams'][diagram_type] = ""
-                elif not isinstance(card['mermaid_diagrams'][diagram_type], str):
-                    print(f"   ⚠️  Flashcard {card_num} legacy diagram '{diagram_type}' must be a string")
-                    return False
         
-        # Validate math_visualizations structure (optional but must exist)
-        if not isinstance(card['math_visualizations'], dict):
-            print(f"   ⚠️  Flashcard {card_num}: 'math_visualizations' must be an object/dict")
+        # Validate math_visualizations structure when present.
+        math_visualizations = card.get('math_visualizations')
+        if math_visualizations is not None and not isinstance(math_visualizations, dict):
+            print(f"   ⚠️  Flashcard {card_num}: 'math_visualizations' must be an object/dict when provided")
             return False
-        
-        # Check all 6 math visualization types are present (can be empty strings)
-        for viz_type in required_diagram_types:
-            if viz_type not in card['math_visualizations']:
-                print(f"   ⚠️  Flashcard {card_num} missing math_visualization type: {viz_type}")
-                return False
-            # Validate that math visualization content is a string (can be empty)
-            if not isinstance(card['math_visualizations'][viz_type], str):
-                print(f"   ⚠️  Flashcard {card_num} math_visualization '{viz_type}' must be a string")
-                return False
         
         # Validate relevance_score
         if not isinstance(card['relevance_score'], dict):

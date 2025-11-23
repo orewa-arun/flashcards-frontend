@@ -72,3 +72,5 @@ intelligent_flashcards/
 without_slide_processor/
 
 ./backend/serviceAccountKey.json
+
+logs/

@@ -141,6 +141,10 @@ function TutorChatView() {
   const [isMobileNotesOpen, setIsMobileNotesOpen] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  // When we create a brand-new conversation and immediately send a message,
+  // we want to skip the first auto-load from the backend so that our local
+  // streaming placeholder isn't clobbered. This flag tracks that case.
+  const skipNextConversationLoadRef = useRef(false);
 
   // Load course and lecture data
   useEffect(() => {
@@ -180,6 +184,13 @@ function TutorChatView() {
   // Load specific conversation when conversationId changes
   useEffect(() => {
     if (conversationId) {
+      // If this conversation was just created as part of sending the first
+      // message, we already have local state (user + streaming placeholder)
+      // and don't want to overwrite it with an immediate backend load.
+      if (skipNextConversationLoadRef.current) {
+        skipNextConversationLoadRef.current = false;
+        return;
+      }
       loadConversationMessages(conversationId);
     } else {
       // No conversation selected - show empty state
@@ -280,12 +291,16 @@ function TutorChatView() {
 
     const userMessage = inputMessage.trim();
     let activeConversationId = conversationId;
+    const isNewConversation = !activeConversationId;
 
     // If no conversation is active, create one first
-    if (!activeConversationId) {
+    if (isNewConversation) {
       try {
         activeConversationId = await createConversation(courseId, lectureId);
         await loadConversations();
+        // Mark that the next conversation load should be skipped so that
+        // our locally streamed first message is visible immediately.
+        skipNextConversationLoadRef.current = true;
         navigate(`/courses/${courseId}/${lectureId}/tutor/${activeConversationId}`);
         trackEvent('Created New Chat', { courseId, lectureId });
       } catch (error) {
@@ -325,8 +340,12 @@ function TutorChatView() {
       await streamMessage(activeConversationId, userMessage, (chunk) => {
         setMessages(prev => {
           const newMessages = [...prev];
+          if (newMessages.length === 0) {
+            // No messages to update (component may have reset); just return state unchanged
+            return newMessages;
+          }
           const lastMsg = newMessages[newMessages.length - 1];
-          if (lastMsg.role === 'assistant') {
+          if (lastMsg && lastMsg.role === 'assistant') {
             lastMsg.content += chunk;
           }
           return newMessages;
@@ -336,8 +355,11 @@ function TutorChatView() {
       // Mark streaming as done
       setMessages(prev => {
         const newMessages = [...prev];
+        if (newMessages.length === 0) {
+          return newMessages;
+        }
         const lastMsg = newMessages[newMessages.length - 1];
-        if (lastMsg.role === 'assistant') {
+        if (lastMsg && lastMsg.role === 'assistant') {
           lastMsg.isStreaming = false;
         }
         return newMessages;

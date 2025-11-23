@@ -7,9 +7,1040 @@
     "source": "DAA_lec_6",
     "lecture_name": "DAA_lec_6",
     "lecture_number": "6",
-    "chunks_processed": 2,
-    "total_cards": 0,
+    "chunks_processed": 4,
+    "total_cards": 21,
     "content_type": "enhanced_content"
   },
-  "flashcards": []
+  "flashcards": [
+    {
+      "type": "concept",
+      "question": "What are categorical explanatory variables and how are they incorporated into regression models?",
+      "answers": {
+        "concise": "Categorical explanatory variables (qualitative variables) represent groupings or classifications rather than numeric quantities. In regression, they are incorporated using dummy (indicator) variables coded 0/1 so their effect on the dependent variable can be estimated and compared across categories while holding other predictors constant.",
+        "analogy": "Think of a categorical variable like colored jerseys on players in a game—red, blue, and green. The regression model can’t work directly with colors, so we give each jersey color its own yes/no flag: ‘Is this player wearing blue?’ ‘Is this player wearing green?’. These flags let the model learn how performance differs by jersey color compared with a chosen baseline color.",
+        "eli5": "Imagine you sort your toys into boxes: cars, dolls, and blocks. The computer can’t understand ‘cars’ or ‘dolls’, so you tell it yes or no for each box: ‘Is this toy a car?’ yes or no, ‘Is this toy a doll?’ yes or no. These yes/no answers are what the computer uses to see how each kind of toy is different.",
+        "real_world_use_case": "A retailer might want to see how store type (mall, high-street, online-only) affects daily sales while also accounting for advertising spend. Store type is categorical, so they create dummy variables for ‘high-street’ and ‘online-only’, leaving ‘mall’ as the reference. The regression then quantifies how much more or less each store type sells compared with mall stores, at the same ad spend. This allows management to compare formats and allocate resources toward the most effective channels.",
+        "common_mistakes": "One mistake is trying to put labels like ‘North’, ‘South’, ‘East’ directly into a regression without converting them into dummy variables, which software may silently mishandle or misinterpret. Another is treating the category codes as numeric (e.g., 1, 2, 3) and assuming the numbers have meaningful distances, which can impose a fake ordering or spacing that does not exist. A further error is forgetting that these dummies represent group membership, not measured quantities like revenue or time."
+      },
+      "context": "Categorical explanatory variables in regression; foundation for dummy variable encoding.",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core definition underpinning all regression models with qualitative predictors and linked to ANOVA/ANCOVA."
+      },
+      "example": "Suppose a bank models loan default risk using customer ‘Employment Type’ with categories ‘Salaried’, ‘Self-Employed’, and ‘Student’. The analyst creates two dummy variables: D_Self (1 if self-employed, 0 otherwise) and D_Student (1 if student, 0 otherwise), leaving ‘Salaried’ as the reference. The regression might show that, holding income and credit score constant, self-employed customers have a higher average default probability than salaried workers, while students have an even higher probability. This transformation of labels into 0/1 indicators is what allows the bank to quantify and compare the risk associated with each employment group.",
+      "mermaid_diagrams": {
+        "concise": "graph LR; Categorical[Categorical\nvariable\n(e.g. Region)] -->|encoded as| Dummies[Dummy\nvariables\n0/1]; Dummies --> Regression[Regression\nmodel\nY = ...];",
+        "analogy": "graph TD; Jerseys[Players with\nred/blue/green\njerseys] --> Flags[Yes/No flags:\nIsBlue?, IsGreen?]; Flags --> Model[Model learns\nperformance\ndifferences];",
+        "eli5": "graph TD; Toys[Different kinds\nof toys] --> Boxes[Car box?\nDoll box?]; Boxes --> YesNo[Yes/No answers\nfor each box]; YesNo --> Computer[Computer\nfinds which\ntoys are\nspecial];",
+        "real_world_use_case": "flowchart LR; StoreType[Store type:\nMall/High-street/\nOnline] --> Encode[Create dummy\nvariables]; Encode --> Regress[Run\nregression\nSales ~ AdSpend\n+ D_HS + D_Online]; Regress --> Compare[Compare\nstore formats];",
+        "common_mistakes": "graph TD; RawCats[Raw categories\nused directly] --> Error[Misinterpretation\nor software\nissues]; NumCodes[Codes 1,2,3\ntreated as numeric] --> FakeOrder[Fake ordering\n& spacing]; Proper[Proper 0/1\ndummies] --> SoundModel[Sound\nregression];",
+        "example": "flowchart TD; EmpType[Employment\nType:\nSalaried/\nSelf-Employed/\nStudent] --> Dummies[D_Self,\nD_Student\n(0/1)]; Dummies --> RiskModel[Default risk\nmodel]; RiskModel --> Insights[Compare risk\nacross\nemployment\ngroups];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; C[label=\"Categorical\nX (k levels)\n(e.g. A,B,C)\"]; D[label=\"Dummy vars\nX_B, X_C\n0/1 coding\"]; M[label=\"Regression\nY = β₀ + β₁X₁\n+ β₂X_B + β₃X_C\n+ ε\"]; C -> D [label=\"encode\"]; D -> M [label=\"used in\nmodel\"]; }",
+        "analogy": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=ellipse]; Jerseys[label=\"Jersey colors\nRed/Blue/Green\"]; Flags[label=\"Flags:\nIsBlue=0/1\nIsGreen=0/1\"]; Perf[label=\"Performance\ncomparison\"]; Jerseys -> Flags; Flags -> Perf; }",
+        "eli5": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; Toys[label=\"Toys\n(cars,dolls,\nblocks)\"]; YesNo[label=\"Yes/No\nfor each kind\"]; Learn[label=\"See which\nkind matters\"]; Toys -- encode --> YesNo; YesNo -- analyze --> Learn; }",
+        "real_world_use_case": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; Store[label=\"Store type\nMall/HS/Online\"]; D[label=\"D_HS,\nD_Online\n0/1\"]; Eq[label=\"Sales = β₀\n+ β₁ AdSpend\n+ β₂ D_HS\n+ β₃ D_Online\n+ ε\"]; Store -- dummies --> D; D -- in model --> Eq; }",
+        "common_mistakes": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; A[label=\"Use codes\n1,2,3 as\nnumeric\"]; B[label=\"Assume\nordered\nspacing\"]; C[label=\"Bias in\nestimates\"]; A -> B -> C; D[label=\"Correct:\n0/1 dummies\"]; D -> E[label=\"Valid\ncomparisons\"]; }",
+        "example": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; Emp[label=\"Employment:\nSalaried/\nSelf/\nStudent\"]; D[label=\"D_Self,\nD_Student\"]; Eq[label=\"DefaultProb =\nβ₀ + β₁ Income\n+ β₂ CreditScore\n+ β₃ D_Self\n+ β₄ D_Student\n+ ε\"]; Emp -- encode --> D; D -- used in --> Eq; }"
+      },
+      "tags": [
+        "categorical explanatory variables",
+        "qualitative variables",
+        "dummy variables",
+        "regression"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_1"
+    },
+    {
+      "type": "concept",
+      "question": "What are dummy variables and how do reference levels work when encoding a categorical explanatory variable with k categories?",
+      "answers": {
+        "concise": "Dummy (indicator) variables are binary 0/1 variables created to represent the categories of a qualitative variable in regression. For a categorical variable with k levels, we create k−1 dummy variables and omit one category as the reference (baseline); coefficients on the dummies measure differences from this reference category.",
+        "analogy": "Imagine a hotel that keeps three separate switches for room views: ‘sea view’, ‘city view’, and ‘garden view’. To avoid wiring problems, the electrician uses only two switches—say, ‘sea view’ and ‘city view’; if both are off, it must be ‘garden view’. The ‘garden view’ is like the reference level, and the two switches are like the dummy variables that tell you when you are not in the baseline.",
+        "eli5": "Think of choosing ice cream flavors: chocolate, vanilla, and strawberry. You only need two yes/no questions: ‘Is it vanilla?’ and ‘Is it strawberry?’ If both answers are no, then it must be chocolate. Chocolate is the special ‘baseline’ flavor you don’t ask about directly.",
+        "real_world_use_case": "In the ‘Region’ example with North, South, and East, an analyst creates D_South and D_East, leaving North as the reference. In the regression, the intercept gives the expected outcome for North, and the coefficients on D_South and D_East show how much higher or lower the outcome is in those regions compared with North. This lets a company quickly see whether, say, East underperforms North after controlling for other variables, and adjust regional strategies accordingly.",
+        "common_mistakes": "A classic error is creating k dummy variables for k categories and including all of them, causing perfect multicollinearity (the dummy variable trap). Another mistake is forgetting which category is the reference and then misinterpreting coefficients as absolute levels rather than differences. Students also sometimes think the ‘missing’ category is not in the model, when in fact it is embedded in the intercept and the 0/0 dummy pattern."
+      },
+      "context": "Dummy variable encoding, reference category, and k−1 rule in regression with categorical predictors.",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Central to correctly specifying and interpreting regression models with qualitative predictors; directly tested and linked to multicollinearity."
+      },
+      "example": "Consider a firm modeling employee monthly sales using ‘Region’ with categories North, South, and East. They create D_South (1 if South, 0 otherwise) and D_East (1 if East, 0 otherwise), with North as the reference. Suppose the fitted model is Sales = 50 + 5·D_South − 3·D_East. This means average sales in North are 50 units, South is 55 units (50 + 5), and East is 47 units (50 − 3). The omitted North category is still represented in the model: when both D_South and D_East are 0, the employee is in North.",
+      "mermaid_diagrams": {
+        "concise": "graph LR; Region[Region with\nk categories\n(e.g. North,\nSouth, East)] --> Dummies[Create k-1\ndummies:\nD_South,\nD_East]; Dummies --> Ref[Reference:\nNorth when\nboth = 0];",
+        "analogy": "graph TD; Views[Room views:\nSea/City/Garden] --> Switches[Switches:\nSea=0/1,\nCity=0/1]; Switches --> Baseline[If both 0:\nGarden view\n(reference)];",
+        "eli5": "graph TD; Flavors[Flavors:\nChoc/Vanilla/\nStrawberry] --> Questions[Ask:\nVanilla? yes/no\nStrawberry? yes/no]; Questions --> Baseline[If both no:\nChocolate];",
+        "real_world_use_case": "flowchart LR; Region[Region:\nNorth/South/East] --> Encode[Create\nD_South,\nD_East]; Encode --> Model[Sales = 50\n+ 5 D_South\n- 3 D_East]; Model --> Compare[Compare\nregional\nsales];",
+        "common_mistakes": "graph TD; AllK[Create k\ndummies\nfor k levels] --> Trap[Dummy\nvariable\ntrap\n(perfect\nmulticollinearity)]; Kminus1[Create k-1\ndummies] --> OK[Model is\nestimable];",
+        "example": "flowchart TD; RegionEx[Region:\nNorth/South/East] --> DEx[D_South,\nD_East]; DEx --> EqEx[Sales = 50\n+ 5 D_South\n- 3 D_East]; EqEx --> MeansEx[Means:\nNorth 50,\nSouth 55,\nEast 47];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; Cats[label=\"k categories\n(e.g. A,B,C)\"]; Dums[label=\"k-1 dummies\nD_B, D_C\n0/1\"]; Ref[label=\"Reference\ncategory A:\nD_B=0,D_C=0\"]; Cats -> Dums; Dums -> Ref; }",
+        "analogy": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; Sea[label=\"Sea switch\n0/1\"]; City[label=\"City switch\n0/1\"]; Garden[label=\"Garden view\nif Sea=0\nand City=0\"]; Sea -> Garden [style=dashed]; City -> Garden [style=dashed]; }",
+        "eli5": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; V[label=\"Vanilla?\n0/1\"]; S[label=\"Strawberry?\n0/1\"]; C[label=\"Chocolate if\nV=0 and S=0\"]; V -- combo --> C; S -- combo --> C; }",
+        "real_world_use_case": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; D[label=\"D_South,\nD_East\"]; Eq[label=\"Sales = 50\n+ 5 D_South\n- 3 D_East\"]; North[label=\"North:\n(0,0)\nSales=50\"]; South[label=\"South:\n(1,0)\nSales=55\"]; East[label=\"East:\n(0,1)\nSales=47\"]; D -- used in --> Eq; Eq -- gives --> North; Eq -- gives --> South; Eq -- gives --> East; }",
+        "common_mistakes": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; Full[label=\"Include k\ndummies\nD_A,D_B,D_C\"]; Sum[label=\"D_A + D_B\n+ D_C = 1\nfor all obs\"]; Multi[label=\"Perfect\nmulticollinearity\"]; Full -> Sum -> Multi; }",
+        "example": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; Eq[label=\"Sales = 50\n+ 5 D_South\n- 3 D_East\"]; N[label=\"North:\nD_S=0,D_E=0\nSales=50\"]; S[label=\"South:\nD_S=1,D_E=0\nSales=55\"]; E[label=\"East:\nD_S=0,D_E=1\nSales=47\"]; Eq -> N; Eq -> S; Eq -> E; }"
+      },
+      "tags": [
+        "dummy variables",
+        "reference level",
+        "baseline category",
+        "k-1 rule",
+        "dummy variable trap"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_2"
+    },
+    {
+      "type": "concept",
+      "question": "How do we interpret regression coefficients when a model includes both a quantitative predictor and categorical dummy variables?",
+      "answers": {
+        "concise": "In a model like Y = β₀ + β₁X₁ + β₂D_B + β₃D_C + ε with category A as reference, β₁ is the change in Y for a one-unit increase in X₁ holding category fixed. β₂ and β₃ are the differences in mean Y between categories B and A, and C and A, respectively, at the same X₁. The intercept β₀ is the expected Y when X₁ = 0 and the categorical variable is at the reference level A.",
+        "analogy": "Picture three parallel train tracks (categories A, B, C) all sloping upward as you move along distance X₁. The slope of the tracks (β₁) is the same for all, but each track starts at a different height: B is β₂ units above A, and C is β₃ units above A. The intercept is the starting height of track A at distance 0.",
+        "eli5": "Imagine three slides at a playground: red, blue, and green. All slides are tilted the same amount (that’s β₁), so when you climb one more step up the ladder (X₁), you go up the same extra height no matter the color. But the blue slide might start higher than the red one, and the green slide might start even higher—those starting differences are what β₂ and β₃ tell us.",
+        "real_world_use_case": "In the Global Retailers Inc. example, the model Visitors = 15.0 + 3.2·AdSpend + 5.5·D_FreeShipping + 8.0·D_LoyaltyPoints uses ‘Discount Offers’ as the reference. Here, 3.2 is the extra thousand visitors expected from each additional thousand dollars in ad spend, regardless of campaign type. The 5.5 and 8.0 coefficients show how many more thousands of visitors ‘Free Shipping’ and ‘Loyalty Points’ generate compared with ‘Discount Offers’ at the same ad spend. The intercept 15.0 is the expected visitors (in thousands) for a Discount Offers campaign when ad spend is zero.",
+        "common_mistakes": "Students often misread dummy coefficients as absolute levels instead of differences from the reference category. Another mistake is forgetting that the meaning of the intercept and dummy coefficients depends on the scaling of X₁ (e.g., X₁ = 0 may be outside the data range). It is also incorrect to conclude that a positive β₂ means category B is better than all other categories; it only guarantees B is higher than the reference A, holding X₁ constant."
+      },
+      "context": "Interpretation of regression coefficients with both quantitative and categorical explanatory variables.",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Key for interpreting fitted models and exam questions involving combined categorical and quantitative predictors."
+      },
+      "example": "Using the campaign model Visitors = 15.0 + 3.2·AdSpend + 5.5·D_FreeShipping + 8.0·D_LoyaltyPoints, suppose AdSpend = 10 (i.e., $10,000). For ‘Discount Offers’ (reference: both dummies 0), predicted visitors are 15.0 + 3.2·10 = 47 thousand. For ‘Free Shipping’ (D_FreeShipping = 1, D_LoyaltyPoints = 0), the prediction is 47 + 5.5 = 52.5 thousand; for ‘Loyalty Points’, it is 47 + 8.0 = 55 thousand. These calculations illustrate that the dummy coefficients shift the baseline line for ‘Discount Offers’ up or down for other campaign types while keeping the same slope 3.2 with respect to ad spend.",
+      "mermaid_diagrams": {
+        "concise": "graph TD; Eq[Model:\nY = β₀ + β₁X₁\n+ β₂D_B\n+ β₃D_C] --> B1[β₁:\nchange in Y\nper unit X₁]; Eq --> B2[β₂:\nB vs A\ndifference]; Eq --> B3[β₃:\nC vs A\ndifference]; Eq --> B0[β₀:\nY at X₁=0,\nA];",
+        "analogy": "graph LR; ATrack[Track A\n(reference)] -->|slope β₁| AUp[Higher Y\nas X₁ grows]; BTrack[Track B\n(β₂ higher)] -->|same slope β₁| BUp; CTrack[Track C\n(β₃ higher)] -->|same slope β₁| CUp;",
+        "eli5": "graph TD; Slides[Slides:\nRed=A,\nBlue=B,\nGreen=C] --> SameTilt[Same tilt\n(β₁)]; Slides --> StartDiff[Different\nstarting\nheights\n(β₂, β₃)];",
+        "real_world_use_case": "flowchart LR; Eq[Visitors = 15\n+ 3.2 AdSpend\n+ 5.5 D_FS\n+ 8.0 D_LP] --> B1[3.2:\nper $1k\nad spend]; Eq --> FS[5.5:\nFS vs DO\nextra visitors]; Eq --> LP[8.0:\nLP vs DO\nextra visitors];",
+        "common_mistakes": "graph TD; PosB2[β₂ > 0] --> Wrong[\"Assume B is\nbest overall\"] ; PosB2 --> Correct[\"Actually:\nB > A only,\nholding X₁\nconstant\"];",
+        "example": "flowchart TD; Ad10[AdSpend=10] --> DO[Discount:\nD_FS=0,\nD_LP=0\nVisitors=47]; Ad10 --> FS[FreeShip:\nD_FS=1\nVisitors=52.5]; Ad10 --> LP[Loyalty:\nD_LP=1\nVisitors=55];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; Eq[label=\"Y = β₀ + β₁X₁\n+ β₂D_B + β₃D_C\n+ ε\"]; B0[label=\"β₀:\nY when X₁=0,\nA (ref)\"]; B1[label=\"β₁:\nΔY per 1 unit\nX₁ (all cats)\"]; B2[label=\"β₂:\n(Y_B - Y_A)\nat same X₁\"]; B3[label=\"β₃:\n(Y_C - Y_A)\nat same X₁\"]; Eq -> B0; Eq -> B1; Eq -> B2; Eq -> B3; }",
+        "analogy": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; A[label=\"Track A:\nY = β₀ + β₁X₁\"]; B[label=\"Track B:\nY = (β₀+β₂)\n+ β₁X₁\"]; C[label=\"Track C:\nY = (β₀+β₃)\n+ β₁X₁\"]; A -- parallel --> B; A -- parallel --> C; }",
+        "eli5": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; Red[label=\"Red slide\n(A):\nstart β₀\"]; Blue[label=\"Blue slide\n(B):\nstart β₀+β₂\"]; Green[label=\"Green slide\n(C):\nstart β₀+β₃\"]; Step[label=\"Each step up\nladder adds\nβ₁\"]; Red -- same slope --> Step; Blue -- same slope --> Step; Green -- same slope --> Step; }",
+        "real_world_use_case": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; Eq[label=\"Visitors = 15\n+ 3.2 AdSpend\n+ 5.5 D_FS\n+ 8.0 D_LP\"]; DO[label=\"DO line:\nY = 15 + 3.2X\"]; FS[label=\"FS line:\nY = 20.5 + 3.2X\"]; LP[label=\"LP line:\nY = 23 + 3.2X\"]; Eq -> DO; Eq -> FS; Eq -> LP; }",
+        "common_mistakes": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; Pos[label=\"β₂ > 0\"]; Wrong[label=\"Wrong:\nB best vs\nall cats\"]; Right[label=\"Right:\nB > A only\nat same X₁\"]; Pos -> Wrong [style=dashed, color=red]; Pos -> Right [color=green]; }",
+        "example": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; X10[label=\"AdSpend=10\"]; DO[label=\"DO:\n15+3.2*10\n=47\"]; FS[label=\"FS:\n47+5.5\n=52.5\"]; LP[label=\"LP:\n47+8.0\n=55\"]; X10 -- compute --> DO; X10 -- +dummy --> FS; X10 -- +dummy --> LP; }"
+      },
+      "tags": [
+        "regression coefficients",
+        "interpretation",
+        "dummy variables",
+        "quantitative predictor"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_3"
+    },
+    {
+      "type": "concept",
+      "question": "What are the key OLS assumptions when using regression models with categorical explanatory (dummy) variables?",
+      "answers": {
+        "concise": "Regression models with dummy variables rely on the standard OLS assumptions: linearity in parameters, independence of errors, homoscedasticity (constant variance of errors), normality of errors (for inference), and no perfect multicollinearity. The last condition explains why one category must be omitted when creating dummy variables to avoid the dummy variable trap.",
+        "analogy": "Think of building a house on several pillars: if any pillar is weak, the house may tilt or crack. Linearity, independence, constant variance, normality, and no perfect multicollinearity are the pillars that hold up the reliability of your regression results. Including all k dummies for k categories is like adding a redundant pillar that jams the structure so the engineer can’t even compute the load.",
+        "eli5": "It’s like doing a science experiment: you want to change things in a simple way, make sure each test is separate, and that the ‘noise’ is about the same each time. You also don’t want two knobs that always move together, because then you can’t tell which knob caused what. These rules help the math in regression work properly when we use yes/no dummy questions.",
+        "real_world_use_case": "When a company fits a model with campaign type dummies and ad spend, they assume the relationship between visitors and predictors is linear in the parameters, that daily error terms are independent, and that the spread of residuals is roughly constant across levels of ad spend and campaign types. They also rely on approximate normality of errors to build confidence intervals and p-values. Violating ‘no perfect multicollinearity’—for example, by including all campaign dummies—would make the software unable to estimate the model.",
+        "common_mistakes": "A frequent mistake is to think that dummy variables somehow change the OLS assumptions; in fact, the same assumptions apply. Another is ignoring multicollinearity created by including all category dummies or redundant combinations of dummies and other variables. Students may also overlook dependence in errors (e.g., time series of daily visitors) and still interpret standard t-tests and confidence intervals as if independence held."
+      },
+      "context": "OLS assumptions applied to regression with categorical explanatory variables and dummy coding.",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Essential for valid inference and directly tied to the dummy variable trap and model diagnostics."
+      },
+      "example": "Suppose Global Retailers Inc. runs the visitors regression with campaign dummies and ad spend on consecutive days. If there is a strong day-of-week pattern in visitors not captured by the model, residuals for Mondays may all be high and for Sundays all be low, violating independence. If they also mistakenly include dummies for all three campaign types plus an intercept, the design matrix becomes perfectly collinear and the software reports that coefficients can’t be estimated. Recognizing that one dummy must be dropped, and that extra structure (like day-of-week) may be needed to improve independence and homoscedasticity, is part of applying OLS assumptions correctly.",
+      "mermaid_diagrams": {
+        "concise": "graph TD; OLS[OLS with\ndummies] --> Lin[Linearity\nin parameters]; OLS --> Indep[Independence\nof errors]; OLS --> Homo[Homoscedasticity]; OLS --> Norm[Normality\nof errors]; OLS --> NoMulti[No perfect\nmulticollinearity];",
+        "analogy": "graph TD; House[Regression\nresults] --> P1[Linearity\npillar]; House --> P2[Independence\npillar]; House --> P3[Constant\nvariance\npillar]; House --> P4[Normality\npillar]; House --> P5[No perfect\nmulticollinearity\npillar];",
+        "eli5": "graph TD; Experiment[Regression\nas experiment] --> Simple[Change things\nin simple way\n(linearity)]; Experiment --> Separate[Tests are\nseparate\n(independence)]; Experiment --> EvenNoise[Noise similar\nsize\n(homoscedastic)];",
+        "real_world_use_case": "flowchart LR; Model[Visitors model\nwith dummies] --> Check1[Check\nlinearity\nvs residuals]; Model --> Check2[Check\nindependence\n(time plots)]; Model --> Check3[Check equal\nspread\n(residuals)]; Model --> Check4[Drop one\ndummy to\navoid trap];",
+        "common_mistakes": "graph TD; AllDummies[Include all\nk dummies\n+ intercept] --> Trap[Dummy\nvariable trap]; IgnoreDep[Ignore time\npatterns\nin errors] --> WrongInf[Misleading\np-values\nand CIs];",
+        "example": "flowchart TD; Retail[Global Retailers\nvisitors model] --> Viol1[Mon/Sun\npattern in\nresiduals\n(violates\nindependence)]; Retail --> Viol2[All 3\ncampaign\ndummies\ncause\ncollinearity]; Viol2 --> Fix[Drop one\ndummy\n(reference)];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; M[label=\"Y = Xβ + ε\n(with dummies\nin X)\"]; L[label=\"E[Y|X] = Xβ\n(linearity)\"]; I[label=\"Cov(ε_i,ε_j)=0\n(i≠j)\"]; H[label=\"Var(ε_i)=σ²\n(constant)\"]; N[label=\"ε ~ Normal\n(0,σ²)\"]; C[label=\"No column of X\nis exact linear\ncombo of others\"]; M -> L; M -> I; M -> H; M -> N; M -> C; }",
+        "analogy": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; House[label=\"Reliable\nregression\nhouse\"]; P1[label=\"Linearity\"]; P2[label=\"Independence\"]; P3[label=\"Equal\nvariance\"]; P4[label=\"Normality\"]; P5[label=\"No perfect\nmulticollinearity\"]; House -- rests on --> P1; House -- rests on --> P2; House -- rests on --> P3; House -- rests on --> P4; House -- rests on --> P5; }",
+        "eli5": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; Simple[label=\"Simple\nchange\n(linear)\"]; Separate[label=\"Separate\ntries\n(independent)\"]; SameNoise[label=\"Same size\nnoise\"]; Simple -- good --> Separate; Separate -- good --> SameNoise; }",
+        "real_world_use_case": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; VModel[label=\"Visitors model\nwith dummies\"]; ResPlot[label=\"Residual plot\nvs AdSpend\"]; TimePlot[label=\"Residuals\nvs day\"]; Collinearity[label=\"X matrix\nwith all 3\ndummies\"]; VModel -- check --> ResPlot; VModel -- check --> TimePlot; VModel -- check --> Collinearity; }",
+        "common_mistakes": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; Kdum[label=\"k dummies\n+ intercept\"]; Sum[label=\"Sum of\ndummies = 1\nfor each obs\"]; Sing[label=\"Singular X'\nX (no\ninverse)\"]; Kdum -> Sum -> Sing; }",
+        "example": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; Retail[label=\"Global Retailers\nvisitors model\"]; MonSun[label=\"Residuals by\nday-of-week\npattern\"]; All3[label=\"All 3\ncampaign\ndummies\nincluded\"]; Fail[label=\"OLS fails:\nviolated\nassumptions\nor singular\nmatrix\"]; Retail -> MonSun; Retail -> All3; MonSun -> Fail; All3 -> Fail; }"
+      },
+      "tags": [
+        "OLS assumptions",
+        "linearity",
+        "independence",
+        "homoscedasticity",
+        "normality",
+        "multicollinearity"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_4"
+    },
+    {
+      "type": "concept",
+      "question": "What is the hypothesis testing framework for two-sample comparisons, and how do independent and paired samples differ?",
+      "answers": {
+        "concise": "Two-sample comparisons test whether a difference between two population parameters (e.g., means μ₁ and μ₂ or proportions p₁ and p₂) is statistically significant. The null hypothesis typically states no difference (μ₁ = μ₂), while the alternative states a difference (e.g., μ₁ ≠ μ₂). Independent samples come from unrelated groups, whereas paired samples consist of matched or repeated measurements on the same units, and analysis focuses on the within-pair differences.",
+        "analogy": "Comparing independent samples is like comparing the average height of players on two different teams. Paired samples are like measuring the same players’ heights before and after a training program: each ‘before’ has its own ‘after’ partner. The testing logic is the same—ask whether differences are real or just random—but in the paired case you zoom in on the change within each pair.",
+        "eli5": "Sometimes you compare two separate groups, like kids from School A and School B. Other times, you measure the same kids twice, like before and after they get new glasses. In both cases you ask, ‘Are these two sets of numbers truly different, or could it just be luck?’ but for the second case you look at how each kid’s score changed.",
+        "real_world_use_case": "A business might use an independent two-sample comparison to test if average sales differ between two marketing campaigns run in different regions. In contrast, they would use a paired design to compare customer satisfaction scores before and after introducing a loyalty program to the same customers. The hypothesis test then evaluates whether the observed difference between group means (independent) or mean of within-customer changes (paired) is large enough, relative to sampling variability, to reject the null of no difference.",
+        "common_mistakes": "A common error is treating naturally paired data as independent, which discards information and usually reduces power. Another is failing to clearly state the null and alternative hypotheses in terms of population parameters, instead focusing only on sample differences. Students may also confuse the direction of the difference (e.g., μ₁ − μ₂ vs μ₂ − μ₁), which affects the sign of the test statistic but not the p-value for two-sided tests."
+      },
+      "context": "Two-sample comparison framework, null and alternative hypotheses, and distinction between independent and paired samples.",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Fundamental conceptual basis for all two-sample tests discussed in the course."
+      },
+      "example": "Suppose a company runs Campaign A in Region 1 and Campaign B in Region 2 and measures average weekly revenue; these are independent samples, and the null might be H₀: μ_A = μ_B. Separately, the firm surveys the same set of customers before and after a website redesign; here, each customer’s ‘before’ and ‘after’ scores form a pair, and the test focuses on the mean of the individual differences. In both cases, the analyst uses sample data to decide whether to reject H₀ in favor of the alternative that the campaigns or the redesign truly change performance. Clearly identifying which situation is independent versus paired determines the correct test and data structure to use.",
+      "mermaid_diagrams": {
+        "concise": "graph TD; TwoSample[Two-sample\ncomparison] --> H0[H₀:\nμ₁ = μ₂\nor p₁ = p₂]; TwoSample --> HA[H_A:\nμ₁ ≠ μ₂\n(or >,<)]; TwoSample --> Type1[Independent\nsamples]; TwoSample --> Type2[Paired\nsamples];",
+        "analogy": "graph LR; Teams[Two teams\nof players] --> Indep[Independent\ncomparison]; BeforeAfter[Same players\nbefore/after] --> Paired[Paired\ncomparison\non changes];",
+        "eli5": "graph TD; GroupA[Kids from\nSchool A] --> IndepCase[Compare to\nSchool B\nkids]; SameKids[Same kids\nbefore/after] --> PairedCase[Compare\nchanges for\neach kid];",
+        "real_world_use_case": "flowchart LR; Biz[Business\nquestion] --> IndepCase2[Campaign A vs B\nin different\nregions\n(independent)]; Biz --> PairedCase2[Before/after\nloyalty program\non same\ncustomers\n(paired)];",
+        "common_mistakes": "graph TD; PairedData[Naturally\npaired data] --> WrongTest[Use\nindependent\ntest]; PairedData --> RightTest[Use\npaired\ntest on\nwithin-pair\ndifferences];",
+        "example": "flowchart TD; Camp[Campaigns\nA vs B\n(Region1 vs 2)] --> IndepTest[H₀: μ_A = μ_B\nindependent\nsamples]; Redesign[Website\nredesign\nbefore/after] --> PairedTest[H₀: mean\nchange = 0\npaired\nsamples];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; H0[label=\"H₀:\nμ₁ = μ₂\n(or p₁ = p₂)\"]; HA2[label=\"H_A:\nμ₁ ≠ μ₂,\nμ₁ > μ₂,\nμ₁ < μ₂\"]; Indep[label=\"Independent\nsamples\"]; Paired[label=\"Paired\nsamples\n(use d_i)\"]; H0 -> Indep; H0 -> Paired; HA2 -> Indep; HA2 -> Paired; }",
+        "analogy": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; Team1[label=\"Team 1\nheights\"]; Team2[label=\"Team 2\nheights\"]; Before[label=\"Heights\nbefore\"]; After[label=\"Heights\nafter\"]; Team1 -- vs --> Team2; Before -- per player --> After; }",
+        "eli5": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; A[label=\"School A\nscores\"]; B[label=\"School B\nscores\"]; BA[label=\"Before\nscores\"]; AA[label=\"After\nscores\"]; A -- compare --> B; BA -- compare\nper kid --> AA; }",
+        "real_world_use_case": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; CampA[label=\"Revenue\nCampaign A\nRegion 1\"]; CampB[label=\"Revenue\nCampaign B\nRegion 2\"]; CustBefore[label=\"Customer\nsatisfaction\nbefore\"]; CustAfter[label=\"Customer\nsatisfaction\nafter\"]; CampA -- indep --> CampB; CustBefore -- paired --> CustAfter; }",
+        "common_mistakes": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; Pairs[label=\"Paired\nobservations\"]; IndepTest[label=\"Apply\nindependent\nt-test\"]; Lost[label=\"Lose\npower /\nignore\npairing\"]; Pairs -> IndepTest -> Lost; }",
+        "example": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; Camp[label=\"Campaign A vs B\nμ_A, μ_B\"]; Redesign[label=\"Before/After\nscores\non same\ncustomers\"]; H0A[label=\"H₀: μ_A = μ_B\"]; H0R[label=\"H₀: mean\nchange = 0\"]; Camp -> H0A; Redesign -> H0R; }"
+      },
+      "tags": [
+        "two-sample comparisons",
+        "hypothesis testing",
+        "independent samples",
+        "paired samples"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_5"
+    },
+    {
+      "type": "concept",
+      "question": "How are test statistics computed for comparing two independent means and for paired means (paired t-test)?",
+      "answers": {
+        "concise": "For two independent means using Welch’s t-test, the test statistic is t = (x̄₁ − x̄₂) / √(s₁²/n₁ + s₂²/n₂), where x̄ᵢ, sᵢ², and nᵢ are the sample mean, variance, and size for group i. For paired data, we compute differences dᵢ within each pair, then use t = d̄ / (s_d / √n), where d̄ is the mean of the differences, s_d their standard deviation, and n the number of pairs.",
+        "analogy": "For independent groups, imagine comparing two separate piles of coins: you look at how far apart their average heights are, then divide by how shaky each pile is and how many coins are in each (that’s the standard error). For paired data, you instead look at each person’s ‘before-after’ coin difference, pile those differences up, and ask whether their average is far enough from zero compared with the spread of those differences.",
+        "eli5": "With two separate groups, you take the average of group 1, subtract the average of group 2, and then see how big that gap is compared to how wiggly the numbers are and how many you have. With before-and-after data on the same people, you first find each person’s change, then see if the average change is big compared to how much those changes jump around.",
+        "real_world_use_case": "A company comparing average processing times for two independent call centers would use Welch’s t-test: they plug in each center’s sample mean time, variance, and sample size to compute t and then get a p-value from software using the Welch–Satterthwaite degrees of freedom. For a training program evaluated on the same employees before and after, the firm computes each employee’s time improvement, summarizes these differences with d̄ and s_d, and uses the paired t formula to test whether the mean improvement is significantly different from zero. In both cases, the computed t-statistic quantifies how large the observed effect is relative to its estimated sampling variability.",
+        "common_mistakes": "One mistake is using the independent-samples formula when the data are actually paired, which ignores the within-pair correlation and can understate the true effect. Another is miscomputing the standard error by omitting the square root or mixing up variances and standard deviations. Students sometimes also forget that Welch’s t-test does not assume equal variances and that the degrees of freedom are not simply n₁ + n₂ − 2 but are computed via the Welch–Satterthwaite approximation handled by software."
+      },
+      "context": "Formulas and interpretation of t-statistics for two independent means (Welch’s t-test) and for paired means.",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core computational formulas for two-sample inference; likely to appear in exams and needed for software interpretation."
+      },
+      "example": "Suppose Center 1 has n₁ = 40 calls with x̄₁ = 6 minutes and s₁² = 4, and Center 2 has n₂ = 50 calls with x̄₂ = 5 minutes and s₂² = 3. The Welch t-statistic is t = (6 − 5) / √(4/40 + 3/50). In a separate paired study, 30 employees’ processing times are measured before and after new software, and their individual improvements have mean d̄ = −1.2 minutes (negative means faster) and s_d = 2.0 minutes. The paired t-statistic is t = −1.2 / (2.0/√30), which software uses with df = 29 to test whether the mean improvement differs from zero.",
+      "mermaid_diagrams": {
+        "concise": "graph TD; Indep[Independent\nmeans] --> Tind[t = (x̄₁ - x̄₂)\n/ sqrt(s₁²/n₁\n+ s₂²/n₂)]; Paired[Paired\nmeans] --> Tpair[t = d̄ /\n(s_d / sqrt(n))];",
+        "analogy": "graph LR; Pile1[Coin pile\nGroup 1] --> Gap[Average\ngap]; Pile2[Coin pile\nGroup 2] --> Gap; Gap --> SE[Divide by\nstandard error\nfrom spreads\nand sizes];",
+        "eli5": "graph TD; TwoGroups[Two groups\nof numbers] --> DiffAvgs[Average1\n- Average2]; DiffAvgs --> SizeCheck[Compare to\nwiggle size\n(standard\nerror)];",
+        "real_world_use_case": "flowchart LR; CallCenters[Call centers\n1 and 2] --> Welch[Compute Welch\nt-statistic]; Training[Before/after\ntraining data] --> PairedT[Compute\npaired t on\nimprovements];",
+        "common_mistakes": "graph TD; PairedData2[Paired\nbefore/after\ndata] --> WrongFormula[Use\nindependent\nformula]; WrongFormula --> LostInfo[Lose\nwithin-pair\ninformation];",
+        "example": "flowchart TD; IndepEx[Center1: n₁=40,\nx̄₁=6,s₁²=4;\nCenter2: n₂=50,\nx̄₂=5,s₂²=3] --> Tcalc1[t = (6-5)/\n√(4/40+3/50)]; PairedEx[30 employees,\nd̄=-1.2,\ns_d=2.0] --> Tcalc2[t = -1.2 /\n(2/√30)];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; Indep[label=\"Welch t:\nt = (x̄₁ - x̄₂)\n/ sqrt(s₁²/n₁\n+ s₂²/n₂)\"]; Paired[label=\"Paired t:\nt = d̄ /\n(s_d / sqrt(n))\"]; Indep -> Paired [style=dotted]; }",
+        "analogy": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; MeanGap[label=\"Mean gap\nx̄₁ - x̄₂\"]; Spread[label=\"Spreads\ns₁²,s₂²\nand sizes\nn₁,n₂\"]; tstat[label=\"t = gap /\nstandard\nerror\"]; MeanGap -- with --> Spread; Spread -- gives --> tstat; }",
+        "eli5": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11]; Avg1[label=\"Average\nGroup 1\"]; Avg2[label=\"Average\nGroup 2\"]; Gap[label=\"Gap =\nAvg1-Avg2\"]; Wiggle[label=\"How much\nnumbers\nwiggle\"]; t[label=\"t = Gap /\nWiggle\"]; Avg1 -- minus --> Avg2 -- gives --> Gap; Gap -- vs --> Wiggle -- gives --> t; }",
+        "real_world_use_case": "/* layout=neato */ graph G { node [margin=0.3, fontsize=11, shape=box]; C1[label=\"Center 1:\nx̄₁,s₁²,n₁\"]; C2[label=\"Center 2:\nx̄₂,s₂²,n₂\"]; Welch[label=\"Welch t\nformula\"]; Before[label=\"Before times\"]; After[label=\"After times\"]; Diff[label=\"Differences\nd_i\"]; PairedT[label=\"Paired t\nformula\"]; C1 -- inputs --> Welch; C2 -- inputs --> Welch; Before -- per emp --> After -- gives --> Diff -- inputs --> PairedT; }",
+        "common_mistakes": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11]; Pair[label=\"Paired data\nwith d_i\"]; IndepForm[label=\"Use t = (x̄₁-x̄₂)/...\"]; Lose[label=\"Ignore\ncorrelation\nwithin pairs\"]; Pair -> IndepForm -> Lose; }",
+        "example": "/* layout=dot */ digraph G { rankdir=LR; node [margin=0.3, fontsize=11, shape=box]; IndepEx[label=\"n₁=40,x̄₁=6,s₁²=4;\nn₂=50,x̄₂=5,s₂²=3\"]; T1[label=\"t = (6-5)/\n√(4/40+3/50)\"]; PairEx[label=\"n=30,\nd̄=-1.2,\ns_d=2.0\"]; T2[label=\"t = -1.2 /\n(2/√30)\"]; IndepEx -> T1; PairEx -> T2; }"
+      },
+      "tags": [
+        "two-sample t-test",
+        "Welch t-test",
+        "paired t-test",
+        "test statistic",
+        "independent means",
+        "paired means"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_6"
+    },
+    {
+      "type": "concept",
+      "question": "What are the key assumptions for independent samples t-tests, paired samples t-tests, and independent samples Z-tests for proportions?",
+      "answers": {
+        "concise": "Independent samples t-tests assume independence within and between groups, random sampling, and approximate normality of the population (or large samples, typically n ≥ 30). Paired samples t-tests assume independent differences, random sampling of pairs, and approximate normality of the distribution of differences (or sufficiently large n). Independent samples Z-tests for proportions assume independence within and between groups, random sampling, and sufficiently large sample sizes so that successes and failures in each group are at least 10.",
+        "analogy": "Think of each test as a recipe that only works if certain kitchen conditions are met. The independent t‑test needs two separate bowls of ingredients mixed independently and a large enough batch or well‑behaved ingredients (normality). The paired t‑test needs matched items—like socks in pairs—that are sampled randomly, and the differences between socks must look roughly bell‑shaped or be numerous. The Z‑test for proportions needs enough candies of each color in each jar so that percentages behave predictably.",
+        "eli5": "Each math test has some rules you must follow before you use it. For the t‑tests, the groups or pairs must be chosen fairly (randomly), not affect each other, and there must be enough data or it must look roughly like a smooth hill when you draw it. For the Z‑test with percentages, you need enough \"yes\" and \"no\" answers in each group so that the fractions act nicely and the math works.",
+        "real_world_use_case": "When a firm compares average sales across two regions using an independent t‑test, they must ensure the regions’ sales data are from independent stores, sampled randomly, and that either sales are roughly normal or there are many stores. For a training effectiveness study using a paired t‑test, they must check that each employee’s before–after difference is independent of others and that the distribution of differences is not extremely skewed unless the sample is large. In an email campaign comparing open rates with a Z‑test, analysts verify that both groups have at least 10 opens and 10 non‑opens to justify the normal approximation before trusting the p‑value.",
+        "common_mistakes": "A common error is ignoring independence, such as using an independent t‑test when observations within a group are clustered or related. Another mistake is applying these tests on very small samples without checking normality or the minimum success/failure counts, which undermines the validity of p‑values. Analysts also sometimes forget that the large-sample rules (like n ≥ 30 or at least 10 successes and failures) are conditions, not guarantees; extreme skewness or dependence can still break the assumptions."
+      },
+      "context": "Assumptions and conditions for two-sample tests (means and proportions)",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Assumptions are heavily tested conceptually and are critical for valid application of all inference procedures."
+      },
+      "example": "A marketing team compares average spending between customers who received a coupon and those who did not using an independent t‑test. They first check that each customer belongs to only one group and that purchases are not influenced by group interactions, satisfying independence. With 200 customers per group, they rely on the Central Limit Theorem to justify approximate normality despite some skewness. In a separate A/B test on click‑through rates with 50 users per group and only 3 clicks in one group, they realize the success count is below 10 and that the standard Z‑test for proportions is not appropriate under these conditions. Recognizing such assumption violations prevents them from drawing overconfident or incorrect conclusions.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  Start[Choose test] --> Tind[Independent\nt-test]\n  Start --> Tpair[Paired\nt-test]\n  Start --> Zprop[Z-test\nfor proportions]\n  Tind --> A1[Independence\nwithin/between\ngroups]\n  Tind --> A2[Random\nsampling]\n  Tind --> A3[Normality or\nn ≥ 30]\n  Tpair --> B1[Independent\ndifferences]\n  Tpair --> B2[Random\nsample of pairs]\n  Tpair --> B3[Normality of\ndifferences or\nn ≥ 30]\n  Zprop --> C1[Independence]\n  Zprop --> C2[Random\nsampling]\n  Zprop --> C3[≥10 successes\nand failures\nper group]",
+        "analogy": "flowchart LR\n  Recipe[Choose\nstatistical\nrecipe] --> Bowl1[Two bowls\n(independent\nt-test)]\n  Recipe --> Socks[Pairs of\nsocks\n(paired t-test)]\n  Recipe --> Candy[Two candy\njars\n(Z-test\nproportions)]\n  Bowl1 --> Check1[Separate bowls\n& enough mix]\n  Socks --> Check2[Proper pairs\n& fair sample]\n  Candy --> Check3[Enough candies\nof each color]",
+        "eli5": "flowchart TD\n  Rules[Follow rules\nbefore math] --> GroupRule[Groups or pairs\npicked fairly]\n  Rules --> NoInfluence[They don't\nbother each\nother]\n  Rules --> EnoughData[Enough data or\nnice smooth\nshape]\n  Rules --> EnoughYesNo[Enough yes and\nno answers]",
+        "real_world_use_case": "sequenceDiagram\n  participant Analyst\n  participant Data\n  Analyst->>Data: Get two-group\nsales data\n  Analyst->>Analyst: Check independence\n& random sampling\n  Analyst->>Analyst: Check n or\nnormality\n  Analyst->>Data: Get email\ncampaign counts\n  Analyst->>Analyst: Verify ≥10\nsuccess/failure\nper group\n  Analyst-->>Data: Proceed with\nt or Z-test\nonly if\nassumptions ok",
+        "common_mistakes": "graph TD\n  IgnoreInd[Ignore\nindependence] --> BadP[Misleading\np-values]\n  TinyN[Use tests\nwith tiny n\n& no checks] --> BadP\n  FewSucc[Use Z-test\nwhen successes\n< 10] --> BadApprox[Poor\nnormal\napproximation]\n  BadApprox --> BadP",
+        "example": "flowchart LR\n  Spend[Compare\nspending\n(coupon vs none)] --> CheckT[Check t-test\nassumptions]\n  CheckT --> UseT[Use independent\nt-test]\n  Clicks[Compare\nclick rates\n(A/B)] --> CheckZ[Check ≥10\nsuccesses &\nfailures]\n  CheckZ --> BlockZ[Do NOT use\nZ-test if\ncounts too\nsmall]"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  Tind[label=\"Independent\nt-test\"];\n  Tpair[label=\"Paired\nt-test\"];\n  Zprop[label=\"Z-test\nproportions\"];\n  A1[label=\"Independence\"];\n  A2[label=\"Random\nsampling\"];\n  A3[label=\"Normality\nor large n\"];\n  C3[label=\"≥10 successes\n& failures\"];\n  Tind -> A1;\n  Tind -> A2;\n  Tind -> A3;\n  Tpair -> A1;\n  Tpair -> A2;\n  Tpair -> A3;\n  Zprop -> A1;\n  Zprop -> A2;\n  Zprop -> C3;\n}",
+        "analogy": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Recipe[label=\"Test\nrecipe\"];\n  Bowl[label=\"Two bowls\n(independent)\"];\n  Socks[label=\"Pairs\n(paired)\"];\n  Candy[label=\"Candies\n(proportions)\"];\n  Cond1[label=\"Enough\ningredients/\ndata\"];\n  Recipe -- Bowl;\n  Recipe -- Socks;\n  Recipe -- Candy;\n  Bowl -- Cond1;\n  Socks -- Cond1;\n  Candy -- Cond1;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11, shape=circle];\n  Fair[label=\"Picked\nfairly\"];\n  Apart[label=\"Don't\nbother each\nother\"];\n  Many[label=\"Enough\nnumbers\"];\n  Hill[label=\"Nice hill\nshape\"];\n  Fair -- Many;\n  Apart -- Hill;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Sales[label=\"Sales\n2 regions\"];\n  Email[label=\"Email\ncampaign\"];\n  Ttest[label=\"t-test\nif assumptions\nok\"];\n  Ztest[label=\"Z-test\nif counts\n≥10\"];\n  Sales -- Ttest;\n  Email -- Ztest;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  IgnoreInd[label=\"Ignore\nindependence\"];\n  SmallN[label=\"Very small n\nno normality\ncheck\"];\n  Few[label=\"Few successes\nor failures\"];\n  Bad[label=\"Invalid\ninference\"];\n  IgnoreInd -> Bad;\n  SmallN -> Bad;\n  Few -> Bad;\n}",
+        "example": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Coupon[label=\"Coupon vs\nno coupon\"];\n  Check1[label=\"Check\nindependence,\nrandom,\nlarge n\"];\n  UseT[label=\"Use\nindependent\nt-test\"];\n  AB[label=\"A/B clicks\n50 per group\"];\n  Check2[label=\"3 clicks\n<10: fail\ncondition\"];\n  NoZ[label=\"Do not\nuse Z-test\"];\n  Coupon -- Check1 -- UseT;\n  AB -- Check2 -- NoZ;\n}"
+      },
+      "tags": [
+        "assumptions",
+        "independence",
+        "normality",
+        "large sample conditions",
+        "two-sample tests"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_7"
+    },
+    {
+      "type": "concept",
+      "question": "What are common pitfalls and misconceptions in two-sample comparisons, and why are they problematic?",
+      "answers": {
+        "concise": "Key pitfalls include confusing independent and paired samples, misinterpreting non-significant results as proof of no difference, ignoring test assumptions (like independence or equal variances), and failing to distinguish statistical from practical significance. These errors can lead to invalid tests, overconfident conclusions, and poor business decisions.",
+        "analogy": "Using the wrong two-sample test is like using the wrong medical test for a symptom—if you treat a broken bone with a blood test, you’ll miss the real issue. Treating a non-significant result as \"no effect\" is like saying a metal detector that didn’t beep means there is definitely no coin buried, even if the detector’s battery is weak. Confusing statistical and practical significance is like celebrating a 0.1% fuel efficiency gain in a car that costs millions more—technically better, but not meaningful.",
+        "eli5": "Sometimes people use the wrong tool, like using a hammer when they need a screwdriver. In statistics, that can mean pretending two groups are separate when they are actually the same people measured twice. People also think that if the test doesn’t find a difference, then there is no difference at all, or they get excited about a tiny change that doesn’t really matter in real life.",
+        "real_world_use_case": "A firm tests a new training program by comparing average productivity before and after using an independent t‑test instead of a paired t‑test, ignoring the natural pairing of employees; this wastes information and may reduce power. Another team runs a massive A/B test and finds a minuscule but statistically significant increase in click‑through rate, then invests heavily in a redesign, only to discover that the gain is too small to cover the costs, reflecting confusion between statistical and practical significance. In a supplier quality comparison, analysts ignore unequal variances and use a pooled t‑test, inflating the risk of falsely flagging a supplier as worse.",
+        "common_mistakes": "Common mistakes include: (1) treating before–after data as independent groups instead of paired, or vice versa; (2) interpreting p > α as evidence that the groups are identical rather than as \"insufficient evidence\"; (3) ignoring independence, normality, or variance assumptions when choosing a test; and (4) focusing only on p-values without considering the effect size and business impact. Each of these can mislead decision‑makers about whether to adopt a policy, choose a supplier, or launch a new product."
+      },
+      "context": "Pitfalls and misconceptions in two-sample inference",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Conceptual understanding of pitfalls is frequently examined and crucial for correct application in practice."
+      },
+      "example": "A retailer compares weekly sales before and after a promotion across the same 60 stores but incorrectly uses an independent samples t‑test, ignoring the pairing by store. This underutilizes the structure that each store serves as its own control and can lead to a less sensitive test. Later, they run a huge A/B test on a new homepage and find a p‑value of 0.001 for a 0.05 percentage point increase in conversion; they declare a big win and roll out the change, only to find that the additional profit is negligible relative to implementation costs, highlighting confusion between statistical and practical significance. In another project, analysts see a p‑value of 0.12 and announce \"no difference\" between two marketing channels, overlooking that the sample size is small and the confidence interval includes differences that would be important to the business.",
+      "mermaid_diagrams": {
+        "concise": "graph TD\n  Pitfalls[Two-sample\npitfalls] --> P1[Wrong test:\nindependent vs\npaired]\n  Pitfalls --> P2[Misread\nnon-significant\nresults]\n  Pitfalls --> P3[Ignore\nassumptions]\n  Pitfalls --> P4[Confuse\nstatistical vs\npractical\nsignificance]",
+        "analogy": "graph LR\n  WrongTool[Wrong\nstatistical tool] --> BadDiag[Wrong\ndiagnosis]\n  WeakDetector[Weak\nmetal detector] --> FalseNoCoin[Think no\ncoin exists]\n  TinyGain[Tiny\nimprovement] --> Overcelebrate[Celebrate\nmeaningless\ngain]",
+        "eli5": "flowchart TD\n  Start[Doing\nmath test] --> Tool[Pick the\nright tool]\n  Tool --> Wrong[Pick wrong\ntool]\n  Wrong --> Confuse[Get confused\nanswers]\n  Start --> Think[Think about\nwhat result\nreally means]\n  Think --> Tiny[Small change\nmight not\nmatter]",
+        "real_world_use_case": "sequenceDiagram\n  participant Team\n  participant Data\n  Team->>Data: Before/after\nstore sales\n  Team->>Team: Use independent\nt-test (wrong)\n  Team-->>Data: Low power,\nunclear effect\n  Team->>Data: Huge A/B\nclick data\n  Team->>Team: See tiny but\nsignificant effect\n  Team-->>Data: Overinvest\nin minor change",
+        "common_mistakes": "graph TD\n  M1[Use independent\nt-test on\npaired data] --> C1[Lost\npower]\n  M2[Say p>α\nmeans no\ndifference] --> C2[False sense\nof certainty]\n  M3[Ignore\nassumptions] --> C3[Invalid\ninference]\n  M4[Focus only\non p-value] --> C4[Ignore\nbusiness\nimpact]",
+        "example": "flowchart LR\n  Stores[60 stores\nbefore & after] --> WrongTest[Use\nindependent\nt-test]\n  WrongTest --> WeakResult[Weaker\nevidence]\n  AB[Large A/B\nhomepage test] --> TinyEff[Tiny effect\nsize]\n  TinyEff --> SigP[p=0.001]\n  SigP --> BadDecision[Costly rollout\nwith little\nprofit]"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  Pit[label=\"Pitfalls\nin 2-sample\ninference\"];\n  IndepPair[label=\"Independent\nvs paired\nmisuse\"];\n  Pval[label=\"Misuse\nof p-values\"];\n  Assump[label=\"Ignored\nassumptions\"];\n  Pract[label=\"Ignore\npractical\nsignificance\"];\n  Pit -> IndepPair;\n  Pit -> Pval;\n  Pit -> Assump;\n  Pit -> Pract;\n}",
+        "analogy": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Tool[label=\"Wrong\ntool\"];\n  Detect[label=\"Weak\ndetector\"];\n  Tiny[label=\"Tiny\nimprovement\"];\n  Error[label=\"Bad\nconclusion\"];\n  Tool -- Error;\n  Detect -- Error;\n  Tiny -- Error;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11, shape=circle];\n  Hammer[label=\"Hammer\"];\n  Screw[label=\"Screw\"];\n  Mix[label=\"Mixed-up\nthinking\"];\n  Hammer -- Screw;\n  Screw -- Mix;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  BeforeAfter[label=\"Before/after\nsame stores\"];\n  IndepT[label=\"Independent\nt-test used\"];\n  PairedT[label=\"Paired t-test\nshould be used\"];\n  AB[label=\"Huge A/B\nsample\"];\n  TinyEff[label=\"Tiny\nΔ in rate\"];\n  Cost[label=\"High\nimplementation\ncost\"];\n  BeforeAfter -- IndepT;\n  BeforeAfter -- PairedT;\n  AB -- TinyEff;\n  TinyEff -- Cost;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  WrongTest[label=\"Wrong\ntest\"];\n  Pgt[label=\"Interpret p>α\nas no\ndifference\"];\n  Ignore[label=\"Ignore\nassumptions\"];\n  TinySig[label=\"Tiny but\nsignificant\"];\n  Bad[label=\"Bad\nbusiness\nchoice\"];\n  WrongTest -> Bad;\n  Pgt -> Bad;\n  Ignore -> Bad;\n  TinySig -> Bad;\n}",
+        "example": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Stores[label=\"60 stores\nbefore/after\"];\n  Indep[label=\"Independent\nt-test\"];\n  Paired[label=\"Paired\nt-test\"];\n  AB[label=\"A/B test\"];\n  P001[label=\"p=0.001\"];\n  Tiny[label=\"0.05% Δ\"];\n  Stores -- Indep;\n  Stores -- Paired;\n  AB -- Tiny;\n  Tiny -- P001;\n}"
+      },
+      "tags": [
+        "pitfalls",
+        "misconceptions",
+        "independent vs paired",
+        "p-values",
+        "practical significance"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_8"
+    },
+    {
+      "type": "concept",
+      "question": "How is ANCOVA applied in business experiments, and what is the role of covariates in improving decision-making?",
+      "answers": {
+        "concise": "In business, ANCOVA is used to compare group means (e.g., treatments, designs, strategies) while controlling for continuous covariates such as prior engagement, baseline spending, or experience. Covariates reduce error variance and adjust group means, providing a clearer estimate of the factor’s effect and supporting more reliable decisions about which option performs best.",
+        "analogy": "Evaluating a marketing campaign without covariates is like judging a race where some runners started closer to the finish line but you only look at who crossed first. Including a covariate like prior engagement is like adjusting each runner’s time based on how far they actually ran, so you can see who is truly the fastest. ANCOVA does this statistical \"handicap adjustment\" for business treatments.",
+        "eli5": "If you want to know which game is more fun, but some kids already love games more than others, you might want to take that into account. You first look at how much each kid already liked games, then compare how much extra fun each game gave them. That way, you don’t just pick the game that happened to be played by kids who already loved games.",
+        "real_world_use_case": "In an A/B/C website test, an e-commerce firm suspects that visitors assigned to one design had lower prior engagement, measured by pages viewed in a previous session. Using ANCOVA, they treat design as a factor and prior pages as a covariate, modeling conversion rate as a function of both. The analysis may show that Design B, which had lower raw conversion, actually has the highest adjusted conversion once prior engagement is equalized. This supports rolling out Design B as the truly superior design, independent of pre-existing visitor behavior.",
+        "common_mistakes": "A common mistake is to ignore important covariates like baseline metrics, leading to noisy comparisons and possibly masking real treatment effects. Another is to misinterpret adjusted means as raw observed averages, failing to communicate that they represent performance at a standardized covariate level. Some analysts also include covariates that are affected by the treatment, which undermines the idea of \"controlling\" for pre-existing differences and can bias conclusions."
+      },
+      "context": "Business interpretation and application of ANCOVA with covariates",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Directly connects ANCOVA to business decision-making; important for applied understanding and exam interpretation questions."
+      },
+      "example": "A subscription service tests three onboarding flows (Flow A, B, C) and measures 30‑day retention as the outcome. They also record each user’s prior activity score from a free trial period, which strongly predicts retention. A simple ANOVA on retention suggests Flow C is best, but ANCOVA with prior activity as a covariate reveals that Flow B actually has the highest adjusted retention when users are compared at the same baseline activity level. This insight leads the company to choose Flow B, avoiding a decision that would have been biased by differences in initial user engagement.",
+      "mermaid_diagrams": {
+        "concise": "graph LR\n  Cov[Covariate\n(e.g., prior\nspending)] --> Adj[Adjusted\ngroup means]\n  Factor[Factor\n(e.g., design)] --> Adj\n  Adj --> Decision[Better,\nclearer\nbusiness\ndecisions]",
+        "analogy": "flowchart TD\n  StartLine[Different\nstart lines\nfor runners] --> AdjustTimes[Adjust times\nfor distance]\n  AdjustTimes --> TrueFast[See who is\ntruly fastest]\n  TrueFast --> Business[Like seeing\nwhich strategy\nis truly best]",
+        "eli5": "flowchart TD\n  Kids[Kids like\ngames\nmore/less] --> Know[Know how\nmuch they\nalready like]\n  Know --> FairGame[Compare games\nfairly]\n  FairGame --> Pick[Pick the\nbest game]",
+        "real_world_use_case": "sequenceDiagram\n  participant Company\n  participant Analyst\n  Company->>Analyst: Data: design,\nconversion,\nprior pages\n  Analyst->>Analyst: Fit ANCOVA\nwith design &\nprior pages\n  Analyst-->>Company: Report\nadjusted\nconversion by\ndesign\n  Company-->>Company: Choose\nbest design\nbased on\nadjusted means",
+        "common_mistakes": "graph TD\n  IgnoreCov[Ignore\nimportant\ncovariates] --> Noisy[Noisy\ncomparisons]\n  PostCov[Use covariate\nchanged by\ntreatment] --> Bias[Biased\ncontrol]\n  RawAdj[Confuse raw\nand adjusted\nmeans] --> MisComm[Misleading\ncommunication]",
+        "example": "flowchart LR\n  Flows[Flows A,B,C] --> ANOVA[ANOVA:\nFlow C best\n(raw)]\n  Flows --> ANCOVA[ANCOVA with\nprior activity]\n  Prior[Prior\nactivity\nscore] --> ANCOVA\n  ANCOVA --> AdjRes[Adjusted\nretention:\nFlow B best]\n  AdjRes --> Choice[Choose\nFlow B]"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Y[label=\"Outcome\nY\"];\n  X[label=\"Covariate\nX\"];\n  F[label=\"Factor\n(groups)\"];\n  Adj[label=\"Adjusted\nmeans\"];\n  X -- Y;\n  F -- Y;\n  Y -- Adj;\n}",
+        "analogy": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Dist[label=\"Distance\nrun\"];\n  Time[label=\"Raw\ntime\"];\n  Adj[label=\"Adjusted\ntime\"];\n  Rank[label=\"True\nrank\"];\n  Dist -- Time;\n  Time -- Adj;\n  Adj -- Rank;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11, shape=circle];\n  Like[label=\"Already\nlike games\"];\n  Game[label=\"Game\nplayed\"];\n  Fun[label=\"Extra\nfun\"];\n  Pick[label=\"Pick best\ngame\"];\n  Like -- Fun;\n  Game -- Fun;\n  Fun -- Pick;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Design[label=\"Design\nA,B,C\"];\n  Prior[label=\"Prior\npages X\"];\n  Conv[label=\"Conversion\nY\"];\n  ANC[label=\"ANCOVA\nfit\"];\n  Adj[label=\"Adjusted\nconversion\"];\n  Design -- ANC;\n  Prior -- ANC;\n  ANC -- Conv;\n  Conv -- Adj;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  Ignore[label=\"Ignore X\"];\n  Post[label=\"X affected\nby factor\"];\n  Raw[label=\"Use raw\nmeans\"];\n  Noise[label=\"High\nnoise\"];\n  Bias[label=\"Biased\nestimate\"];\n  Mis[label=\"Misleading\nstory\"];\n  Ignore -> Noise;\n  Post -> Bias;\n  Raw -> Mis;\n}",
+        "example": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  Flow[label=\"Flows\nA,B,C\"];\n  Prior[label=\"Prior\nactivity\"];\n  Ret[label=\"30-day\nretention\"];\n  Plain[label=\"Plain ANOVA\"];\n  Cov[label=\"ANCOVA\nwith prior\"];\n  Flow -- Plain;\n  Flow -- Cov;\n  Prior -- Cov;\n  Cov -- Ret;\n}"
+      },
+      "tags": [
+        "ANCOVA",
+        "business experiments",
+        "covariate adjustment",
+        "conversion rate",
+        "engagement"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_9"
+    },
+    {
+      "type": "concept",
+      "question": "What are the key assumptions required for valid ANCOVA results, and why does each matter?",
+      "answers": {
+        "concise": "ANCOVA assumes: (1) independence of observations, (2) normality of residuals within groups, (3) homogeneity of variances across groups, (4) linearity between Y and the covariate within each group, (5) homogeneity of regression slopes across groups, and (6) independence of the covariate and the factor. Violations can bias estimates, invalidate tests, or make adjusted means misleading.",
+        "analogy": "Think of ANCOVA like comparing runners’ speeds after adjusting for their starting positions. Independence means each runner runs their own lane without bumping others; normality and equal variance mean their random wobbles are similar across lanes; linearity means the relationship between starting position and finish time is a straight trend; equal slopes mean that starting position helps or hurts all runners similarly; independence of covariate and factor means the coach didn’t secretly give some runners a head start only in one group.",
+        "eli5": "Imagine you want to see which of two teachers helps kids score better, but kids started with different math skills. ANCOVA is like first correcting for how good they were at math before, then comparing teachers. For this to be fair, kids can’t copy each other, the score differences should look roughly bell-shaped, the link between starting skill and final score should be straight, and that link should be similar in both teachers’ classes. Also, the teacher shouldn’t be the one who changed the kids’ starting skill.",
+        "real_world_use_case": "In an A/B test for a new app feature, a company might use ANCOVA to compare post-experiment engagement (Y) between control and treatment, adjusting for baseline engagement (covariate). Independence assumes users’ behaviors don’t influence each other across conditions. Normal residuals and equal variances support valid p-values. Linearity and homogeneous slopes mean baseline engagement affects post-engagement similarly in A and B. Independence of covariate and factor is satisfied if baseline metrics were measured before random assignment and not changed by the treatment.",
+        "common_mistakes": "A frequent error is checking only normality and homoscedasticity but ignoring homogeneity of regression slopes, even though unequal slopes can completely change the meaning of adjusted group comparisons. Another mistake is using a covariate that was measured after treatment (or changed by it), which breaks the independence of covariate and factor and turns the “adjustment” into a biased control. People also sometimes assume linearity without plotting Y versus the covariate for each group."
+      },
+      "context": "ANCOVA assumptions and conditions in regression-based group comparisons",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core assumptions govern when ANCOVA is valid and are highly testable in exams and applications."
+      },
+      "example": "Suppose a university evaluates three online course designs (Factor: A, B, C) on final exam scores (Y), adjusting for students’ prior GPA (covariate). They use ANCOVA to compare adjusted exam means across designs. For valid conclusions, students must be independently sampled and not collaborate across course sections (independence). Residuals within each design should be roughly normal and have similar spread (normality and homoscedasticity). Plots of exam score vs. GPA within each design should show straight-line patterns with similar slopes—if one design helps low-GPA students much more than high-GPA students, the slopes differ and a standard ANCOVA without interaction is inappropriate. Finally, GPA must be a pre-existing measure unaffected by which design students receive; if the university let high-GPA students self-select into a particular design, the covariate–factor independence is compromised and causal claims become suspect.",
+      "mermaid_diagrams": {
+        "concise": "graph LR;\n  ANCOVA[\"ANCOVA\nModel\"] --> AssumpInd[\"Independence\nof observations\"];\n  ANCOVA --> AssumpNorm[\"Normality\nof residuals\"];\n  ANCOVA --> AssumpVar[\"Equal\nvariances\"];\n  ANCOVA --> AssumpLin[\"Linearity\nY vs covariate\"];\n  ANCOVA --> AssumpSlope[\"Homogeneity\nof slopes\"];\n  ANCOVA --> AssumpCovFact[\"Covariate\nindependent of\nfactor\"];",
+        "analogy": "graph TD;\n  Race[\"Race with\nstarting offsets\"] --> LaneInd[\"Each runner in\nown lane\n(Independence)\"];\n  Race --> Wobble[\"Similar random\nwobbles\n(Normality &\nEqual variance)\"];\n  Race --> OffsetLine[\"Straight link\nstart -> finish\n(Linearity)\"];\n  Race --> SameSlope[\"Offsets help\nall equally\n(Homog. slopes)\"];\n  Race --> FairStart[\"Coach didn't\nchange starting\npositions by group\n(Covariate–factor\nindependence)\"];",
+        "eli5": "graph TD;\n  CompareTeachers[\"Compare\nTeachers\"] --> CheckCopy[\"Kids don't\ncopy\n(Independent)\"];\n  CompareTeachers --> Bell[\"Score\npatterns\nlook normal\"];\n  CompareTeachers --> StraightLine[\"Better starting\nkids do better\nin a straight\nway\"];\n  CompareTeachers --> SameLine[\"That straight\nline similar\nfor both\nteachers\"];\n  CompareTeachers --> StartBefore[\"Starting skill\nmeasured\nbefore class\"];",
+        "real_world_use_case": "sequenceDiagram;\n  participant DataTeam as Data Team\n  participant Users as Users\n  participant Experiment as A/B Experiment\n  participant Model as ANCOVA Model\n  DataTeam->>Users: Measure baseline metric (covariate)\n  DataTeam->>Experiment: Randomly assign users to A or B\n  Experiment-->>Users: Show feature A or B\n  Users-->>DataTeam: Return post metric (Y)\n  DataTeam->>Model: Fit ANCOVA with factor + covariate\n  Model-->>DataTeam: Adjusted means & p-values (valid if assumptions hold)",
+        "common_mistakes": "graph TD;\n  IgnoreSlope[\"Ignore\nslope\nhomogeneity\"] --> WrongAdj[\"Misleading\nadjusted\nmeans\"];\n  PostCov[\"Use covariate\nmeasured after\nTreatment\"] --> Bias[\"Biased\nfactor effect\"];\n  NoPlots[\"Assume\nlinearity\nwithout plots\"] --> HiddenNonlin[\"Hidden\nnonlinear\nrelationships\"];",
+        "example": "flowchart TD;\n  Start[\"Start ANCOVA\nstudy\"] --> MeasureGPA[\"Measure prior\nGPA (covariate)\"];\n  MeasureGPA --> AssignDesign[\"Assign to\nDesign A/B/C\"];\n  AssignDesign --> CollectScores[\"Collect final\nexam scores (Y)\"];\n  CollectScores --> CheckAssumptions[\"Check independence,\nnormality, equal\nvariance, linearity,\nslopes, covariate\nindependence\"];\n  CheckAssumptions --> FitANCOVA[\"Fit ANCOVA\nmodel\"];\n  FitANCOVA --> Interpret[\"Interpret\nadjusted means\nand tests\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph ANCOVA_Assump {\n  node [margin=0.3, fontsize=11, shape=box];\n  Model [label=\"ANCOVA\nY = group + covariate\"];\n  Assump1 [label=\"Independence\nof observations\"];\n  Assump2 [label=\"Normal residuals\nwithin groups\"];\n  Assump3 [label=\"Equal residual\nvariance\nacross groups\"];\n  Assump4 [label=\"Linearity:\nE(Y|X,group)\nlinear in X\"];\n  Assump5 [label=\"Homogeneous\nregression slopes\"];\n  Assump6 [label=\"Covariate X\nindependent of\nfactor\"];\n  Model -> Assump1;\n  Model -> Assump2;\n  Model -> Assump3;\n  Model -> Assump4;\n  Model -> Assump5;\n  Model -> Assump6;\n}",
+        "analogy": "/* layout=dot */\ndigraph Race_Analogy {\n  node [margin=0.3, fontsize=11, shape=ellipse];\n  Race [label=\"Race\ncomparison\"];\n  Lane [label=\"Separate lanes\n=> independent\nobservations\"];\n  Wobble [label=\"Random wobbles\n~ N(0,σ²)\"];\n  Offset [label=\"Start offset\n(covariate X)\"];\n  Time [label=\"Finish time Y\n= β0 + β1*Offset\"];\n  Race -> Lane;\n  Race -> Wobble;\n  Offset -> Time;\n}",
+        "eli5": "/* layout=neato */\ngraph Kids_Teachers {\n  node [margin=0.3, fontsize=11, shape=box];\n  StartSkill [label=\"Start skill\n(covariate X)\"];\n  FinalScore [label=\"Final score\n(Y)\"];\n  TeacherA [label=\"Teacher A\"];\n  TeacherB [label=\"Teacher B\"];\n  StartSkill -- FinalScore [label=\"straight\nrelationship\"];\n  TeacherA -- FinalScore;\n  TeacherB -- FinalScore;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph AB_ANCOVA {\n  node [margin=0.3, fontsize=11, shape=box];\n  Baseline [label=\"Baseline\nmetric X\"];\n  GroupA [label=\"Group A\"];\n  GroupB [label=\"Group B\"];\n  Outcome [label=\"Post metric Y\"];\n  Model [label=\"Y = β0 + β1*Group\n+ β2*X\"];\n  Baseline -- Outcome;\n  GroupA -- Outcome;\n  GroupB -- Outcome;\n  Model -- Outcome;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph ANCOVA_Errors {\n  node [margin=0.3, fontsize=11, shape=box];\n  TrueModel [label=\"True:\nY = β0 + β1*Group\n+ β2*X + β3*Group*X\"];\n  WrongModel1 [label=\"Wrong:\nY = β0 + β1*Group\n+ β2*X (β3 omitted)\"];\n  PostX [label=\"X measured\nafter treatment\"];\n  Bias [label=\"Biased\nβ1 estimate\"];\n  TrueModel -> WrongModel1 [label=\"β3≠0 but\nignored\"];\n  PostX -> Bias;\n}",
+        "example": "/* layout=neato */\ngraph Course_Design {\n  node [margin=0.3, fontsize=11, shape=box];\n  GPA [label=\"Prior GPA\n(X)\"];\n  DesignA [label=\"Design A\"];\n  DesignB [label=\"Design B\"];\n  DesignC [label=\"Design C\"];\n  Exam [label=\"Final exam\nscore Y\"];\n  Model [label=\"Y = β0 + β1*Design\n+ β2*GPA\"];\n  GPA -- Exam;\n  DesignA -- Exam;\n  DesignB -- Exam;\n  DesignC -- Exam;\n  Model -- Exam;\n}"
+      },
+      "tags": [
+        "ANCOVA",
+        "assumptions",
+        "independence",
+        "linearity",
+        "homoscedasticity",
+        "homogeneity of slopes",
+        "covariate-factor independence"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_10"
+    },
+    {
+      "type": "concept",
+      "question": "What is meant by homogeneity of regression slopes in ANCOVA, and how is it handled if violated?",
+      "answers": {
+        "concise": "Homogeneity of regression slopes means that the slope relating the dependent variable Y to the covariate is the same for all groups (levels of the factor). If slopes differ, there is an interaction between the factor and the covariate, and a standard ANCOVA without an interaction term gives misleading adjusted means; the model must then include a factor×covariate interaction and main-effect interpretations change.",
+        "analogy": "Imagine several straight ramps going up a hill, one for each group. Homogeneous slopes mean all ramps rise at the same steepness, just starting at different heights. If one ramp is much steeper, then how much higher you go depends on which ramp you’re on and how far you walk—that’s an interaction. In that case, you can’t fairly summarize each ramp with a single adjusted height at a shared walking distance without acknowledging the different steepness.",
+        "eli5": "Think of kids in different classes getting extra practice problems. If every extra problem helps by the same amount no matter which class you’re in, the lines showing ‘problems vs. score’ all tilt the same way—that’s equal slopes. If in one class extra problems help a lot and in another they hardly help, the tilts are different. Then we can’t just ‘correct’ scores in a simple way; we have to say the effect of practice depends on the class.",
+        "real_world_use_case": "A company uses ANCOVA to compare average sales across regions (factor) while adjusting for store size (covariate). Homogeneous slopes mean that each additional square meter of store size increases sales by the same amount in all regions. If diagnostics show that large stores in urban regions benefit more from size than rural stores (slopes differ), the analyst must include a Region×Size interaction. Then the effect of region on sales is interpreted at specific values of size, and management decisions about expansion must consider that the benefit of extra floor space depends on region.",
+        "common_mistakes": "One common mistake is never testing for or visualizing the factor×covariate interaction before running ANCOVA, implicitly assuming parallel lines. Another is continuing to report and interpret adjusted means from a no-interaction model even after finding a significant interaction, which hides the fact that group differences change across covariate levels. Students also sometimes think heterogeneous slopes only ‘slightly’ affect results, underestimating how they can reverse conclusions at different covariate values."
+      },
+      "context": "Key ANCOVA assumption about factor–covariate relationships",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Highlighted as a critical assumption and frequent source of error; often examined conceptually and via plots."
+      },
+      "example": "Consider a pharmaceutical trial comparing two blood pressure drugs (Drug A and Drug B) where baseline blood pressure is used as a covariate. Homogeneity of slopes means that for every 1 mmHg higher baseline, the follow-up blood pressure increases by, say, 0.5 mmHg in both drugs—lines are parallel. Suppose, however, that for Drug A, high-baseline patients see much larger reductions than low-baseline patients, while Drug B works similarly regardless of baseline; plotting follow-up vs. baseline shows clearly different slopes. A standard ANCOVA without a Drug×Baseline term would report a single adjusted mean difference that hides this pattern. Including the interaction reveals that Drug A is especially effective for severely hypertensive patients, while Drug B is more uniform, leading to different clinical decisions for different patient subgroups.",
+      "mermaid_diagrams": {
+        "concise": "graph LR;\n  Covariate[\"Covariate X\"] -->|Same slope β| Y_Group1[\"Y in Group 1\"];\n  Covariate -->|Same slope β| Y_Group2[\"Y in Group 2\"];\n  Factor[\"Factor (groups)\"] --> Y_Group1;\n  Factor --> Y_Group2;",
+        "analogy": "graph TD;\n  Hill[\"Hill\"] --> Ramp1[\"Ramp for\nGroup 1\n(slope = m)\"];\n  Hill --> Ramp2[\"Ramp for\nGroup 2\n(slope = m)\"];\n  Hill --> SteepRamp[\"Steeper ramp\n(Group 3,\n slope > m)\"];\n  SteepRamp:::warn;\n  classDef warn fill=#fdd,stroke=#f00,stroke-width=2px;",
+        "eli5": "graph TD;\n  Problems[\"Extra\nproblems\"] --> ClassA[\"Class A\nline\"];\n  Problems --> ClassB[\"Class B\nline\"];\n  ClassA --> ScoreA[\"Scores in\nClass A\"];\n  ClassB --> ScoreB[\"Scores in\nClass B\"];\n  note right of ClassA: Same tilt\n  note right of ClassB: Different tilt\n  ",
+        "real_world_use_case": "graph LR;\n  Size[\"Store size\n(covariate)\"] --> RegionA[\"Sales in\nRegion A\"];\n  Size --> RegionB[\"Sales in\nRegion B\"];\n  RegionA --> Compare[\"Compare\nregions\nat given size\"];\n  RegionB --> Compare;",
+        "common_mistakes": "graph TD;\n  NoCheck[\"Skip\ninteraction\ncheck\"] --> AssumeParallel[\"Assume\nparallel\nslopes\"] --> WrongANCOVA[\"Use standard\nANCOVA\"] --> MisAdj[\"Misleading\nadjusted\nmeans\"];\n  FindInt[\"Find\nsignificant\ninteraction\"] --> StillNoInt[\"Still omit\ninteraction\nterm\"] --> WrongConcl[\"Wrong\nconclusions\nabout factor\"];\n",
+        "example": "flowchart TD;\n  Start[\"Trial: Drug A vs B\"] --> MeasureBase[\"Measure\nbaseline BP\n(X)\"];\n  MeasureBase --> Treat[\"Assign\nDrug A/B\"];\n  Treat --> FollowUp[\"Measure\nfollow-up BP\n(Y)\"];\n  FollowUp --> Plot[\"Plot Y vs X\nby drug\"];\n  Plot --> CheckSlope[\"Check if\nslopes parallel\"];\n  CheckSlope -->|Parallel| StdANCOVA[\"Standard\nANCOVA\"];\n  CheckSlope -->|Not parallel| IntModel[\"Include\nDrug×Baseline\ninteraction\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=neato */\ngraph Homog_Slopes {\n  node [margin=0.3, fontsize=11, shape=box];\n  Eq1 [label=\"Group g:\nE(Y|X,g) = α_g + βX\"];\n  Beta [label=\"Same β\nfor all g\"];\n  Eq1 -- Beta;\n}",
+        "analogy": "/* layout=neato */\ngraph Ramps {\n  node [margin=0.3, fontsize=11, shape=box];\n  Ramp1 [label=\"Ramp 1:\nheight = a1 + m*d\"];\n  Ramp2 [label=\"Ramp 2:\nheight = a2 + m*d\"];\n  Ramp3 [label=\"Ramp 3:\nheight = a3 + m3*d\"];\n  mSame [label=\"m same for\nRamp1 & 2\"];\n  mDiff [label=\"m3 ≠ m\"];\n  Ramp1 -- mSame;\n  Ramp2 -- mSame;\n  Ramp3 -- mDiff;\n}",
+        "eli5": "/* layout=neato */\ngraph Classes_Slope {\n  node [margin=0.3, fontsize=11, shape=box];\n  ClassA [label=\"Class A:\nScore = a + b*Problems\"];\n  ClassB [label=\"Class B:\nScore = c + d*Problems\"];\n  Equal [label=\"Equal slopes:\nb = d\"];\n  Diff [label=\"Different:\nb ≠ d\"];\n  ClassA -- Equal;\n  ClassB -- Equal;\n  ClassB -- Diff;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph Region_Size {\n  node [margin=0.3, fontsize=11, shape=box];\n  RegionA [label=\"Region A:\nSales = α_A + β*Size\"];\n  RegionB [label=\"Region B:\nSales = α_B + β*Size\"];\n  Parallel [label=\"β same\n=> parallel\nlines\"];\n  RegionA -- Parallel;\n  RegionB -- Parallel;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph Slope_Errors {\n  node [margin=0.3, fontsize=11, shape=box];\n  TrueEq [label=\"True:\nY = β0 + β1*Group\n+ β2*X + β3*Group*X\"];\n  OmitInt [label=\"Fit:\nY = β0 + β1*Group\n+ β2*X\"];\n  Beta3 [label=\"β3 ≠ 0\"];\n  Bias [label=\"Adjusted means\nvary with X\nbut ignored\"];\n  TrueEq -> Beta3;\n  TrueEq -> OmitInt;\n  OmitInt -> Bias;\n}",
+        "example": "/* layout=neato */\ngraph BP_Example {\n  node [margin=0.3, fontsize=11, shape=box];\n  DrugA [label=\"Drug A:\nY = α_A + β_A*Baseline\"];\n  DrugB [label=\"Drug B:\nY = α_B + β_B*Baseline\"];\n  Int [label=\"Interaction:\nβ_A ≠ β_B\"];\n  Model [label=\"Model with\nDrug×Baseline\"];\n  DrugA -- Int;\n  DrugB -- Int;\n  Int -- Model;\n}"
+      },
+      "tags": [
+        "ANCOVA",
+        "homogeneity of regression slopes",
+        "interaction",
+        "parallel lines",
+        "assumption"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_11"
+    },
+    {
+      "type": "concept",
+      "question": "What are adjusted means in ANCOVA, and how do they differ from raw group means?",
+      "answers": {
+        "concise": "Adjusted means in ANCOVA are the estimated group means of the dependent variable after statistically controlling for the covariate, typically evaluated at a common covariate value (often the overall mean). They are model-based expectations, not simple arithmetic averages of observed Y values within each group, and they answer: ‘What would each group’s mean be if all groups had the same average covariate level?’",
+        "analogy": "Think of comparing students’ final test scores from different schools, but first putting everyone at the same starting grade level in your imagination. Raw means are like comparing scores with students starting at all kinds of grades. Adjusted means are like asking, ‘If all schools had students who started at Grade 5, what average score would each school get?’—a fairer comparison that levels the playing field.",
+        "eli5": "Raw means are just, ‘Let’s add up all the scores in a group and divide by how many kids there are.’ Adjusted means say, ‘But some kids started ahead or behind. Let’s pretend they all started at the same place and then see what the average would be.’ That pretend average is the adjusted mean.",
+        "real_world_use_case": "In an A/B test, suppose treatment users have slightly higher baseline usage than control users. The raw post-test means might show higher engagement in the treatment, but part of this could be due to their higher starting point. ANCOVA uses baseline as a covariate and produces adjusted means for control and treatment at a common baseline level. Product managers then compare these adjusted means to understand the effect of the new feature, apart from pre-existing differences.",
+        "common_mistakes": "A common mistake is to report adjusted means as if they were observed sample averages, without clarifying that they are model-based predictions at a specific covariate value. Another is to compare raw and adjusted means directly without understanding that they answer different questions—raw means describe the actual sample; adjusted means describe a hypothetical scenario with equalized covariates. Students also sometimes forget that if the covariate is weakly related to Y, adjusted means may be very similar to raw means, offering limited gain."
+      },
+      "context": "Interpretation of adjusted means in ANCOVA",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Directly mentioned as a common source of confusion; central to interpreting ANCOVA output."
+      },
+      "example": "An ed-tech company compares two online learning platforms, X and Y, on final quiz scores (Y), using pre-course diagnostic scores as a covariate. In the sample, platform Y happens to attract slightly more advanced learners, so its raw mean quiz score is 82 vs. 78 for X. An ANCOVA model uses the diagnostic score to adjust both platforms to the same baseline (e.g., diagnostic = 70). The adjusted means might be 80 for X and 79 for Y, reversing the apparent advantage of Y once starting ability is equalized. This tells the company that, for students with the same prior knowledge, platform X slightly outperforms Y, even though raw averages initially suggested otherwise.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  Cov[\"Covariate\n(e.g., baseline)\"] --> Model[\"ANCOVA\nmodel\"];\n  Group[\"Groups\n(factor)\"] --> Model;\n  Model --> AdjMeans[\"Adjusted\nmeans at\ncommon X\"];\n  Group --> RawMeans[\"Raw\nsample\nmeans\"];",
+        "analogy": "graph LR;\n  StartLevels[\"Different\nstarting\nlevels\"] --> RawComp[\"Raw\ncomparison\"];\n  SameStart[\"Imagined\nsame start\nfor all\"] --> FairComp[\"Adjusted\ncomparison\"];\n  RawComp -. unfair .-> FairComp;",
+        "eli5": "graph TD;\n  RealScores[\"Real\nscores\"] --> RawMean[\"Raw\nmean\"];\n  RealScores --> PretendSame[\"Pretend\nsame\nstart\"] --> AdjMean[\"Adjusted\nmean\"];",
+        "real_world_use_case": "sequenceDiagram;\n  participant Analyst\n  participant Data\n  participant Model\n  Analyst->>Data: Get post metric Y\n  Analyst->>Data: Get baseline X\n  Analyst->>Model: Fit ANCOVA (Y ~ Group + X)\n  Model-->>Analyst: Adjusted means at X = X_bar\n  Analyst-->>Analyst: Compare adjusted means for A vs B",
+        "common_mistakes": "graph TD;\n  Confuse[\"Confuse\nraw vs\nadjusted\"] --> WrongStory[\"Tell wrong\nstory about\nwhich group\nis better\"];\n  ThinkObserved[\"Treat adjusted\nmeans as\nobserved\"] --> Misinterp[\"Ignore they\nare model\npredictions\"];",
+        "example": "flowchart TD;\n  Data[\"Scores on\nPlatform X & Y\n+ diagnostics\"] --> Fit[\"Fit ANCOVA\nY = β0 + β1*Platform\n+ β2*Diagnostic\"];\n  Fit --> Raw[\"Compute raw\nmeans: 78 vs 82\"];\n  Fit --> Adj[\"Compute adjusted\nmeans at\nDiagnostic=70\"];\n  Adj --> Result[\"Adjusted: 80 (X)\nvs 79 (Y)\"];\n  Result --> Decision[\"Prefer X for\nsame-ability\nstudents\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph AdjMeans {\n  node [margin=0.3, fontsize=11, shape=box];\n  Model [label=\"Y = β0 + β1*Group\n+ β2*X\"];\n  Xbar [label=\"Common X = X̄\"];\n  AdjG1 [label=\"Adj mean\nGroup 1:\nμ1* = β0 + β1*0\n+ β2*X̄\"];\n  AdjG2 [label=\"Adj mean\nGroup 2:\nμ2* = β0 + β1*1\n+ β2*X̄\"];\n  Model -> Xbar;\n  Xbar -> AdjG1;\n  Xbar -> AdjG2;\n}",
+        "analogy": "/* layout=neato */\ngraph StartLevel {\n  node [margin=0.3, fontsize=11, shape=box];\n  Raw [label=\"Raw mean\nSchool A:\nE(Y|A)\"];\n  RawB [label=\"Raw mean\nSchool B:\nE(Y|B)\"];\n  SameStart [label=\"Adjusted to\nsame start\nX = x0\"];\n  AdjA [label=\"Adj mean A:\nE(Y|A,X=x0)\"];\n  AdjB [label=\"Adj mean B:\nE(Y|B,X=x0)\"];\n  Raw -- SameStart;\n  RawB -- SameStart;\n  SameStart -- AdjA;\n  SameStart -- AdjB;\n}",
+        "eli5": "/* layout=neato */\ngraph Pretend_Start {\n  node [margin=0.3, fontsize=11, shape=box];\n  Real [label=\"Real scores\n& starting\nlevels\"];\n  Raw [label=\"Raw mean\n= average of\nreal scores\"];\n  Pretend [label=\"Pretend all\nstart same\n(X = x0)\"];\n  Adj [label=\"Adjusted mean\n= predicted\naverage at x0\"];\n  Real -- Raw;\n  Real -- Pretend;\n  Pretend -- Adj;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph AB_Adjusted {\n  node [margin=0.3, fontsize=11, shape=box];\n  Model [label=\"Y = β0 + β1*Treat\n+ β2*Baseline\"];\n  Xbar [label=\"Baseline\nX̄\"];\n  Ctrl [label=\"Adj mean\nControl:\nβ0 + β2*X̄\"];\n  Trt [label=\"Adj mean\nTreatment:\nβ0 + β1 + β2*X̄\"];\n  Model -- Xbar;\n  Xbar -- Ctrl;\n  Xbar -- Trt;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph Adj_Errors {\n  node [margin=0.3, fontsize=11, shape=box];\n  Raw [label=\"Raw mean\n= 1/n Σ Y_i\"];\n  Adj [label=\"Adjusted mean\n= model-based\nE(Y|Group,X=x0)\"];\n  Confuse [label=\"Treat them\nas same\"];\n  Raw -> Confuse;\n  Adj -> Confuse;\n}",
+        "example": "/* layout=neato */\ngraph Platform_Example {\n  node [margin=0.3, fontsize=11, shape=box];\n  Model [label=\"Y = β0 + β1*PlatformY\n+ β2*Diag\"];\n  RawX [label=\"Raw X:\nmean 78\"];\n  RawY [label=\"Raw Y:\nmean 82\"];\n  X0 [label=\"Diag = 70\"];\n  AdjX [label=\"Adj X:\n80\"];\n  AdjY [label=\"Adj Y:\n79\"];\n  Model -- X0;\n  X0 -- AdjX;\n  X0 -- AdjY;\n}"
+      },
+      "tags": [
+        "ANCOVA",
+        "adjusted means",
+        "covariate",
+        "raw means",
+        "interpretation"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_12"
+    },
+    {
+      "type": "concept",
+      "question": "What is an interaction term in a regression model, and how is it represented mathematically?",
+      "answers": {
+        "concise": "An interaction term in regression is a predictor formed by multiplying two existing predictors (e.g., X₁X₂) to model situations where the effect of one predictor on Y depends on the level of another. In a two-predictor model, this is written as Y = β₀ + β₁X₁ + β₂X₂ + β₃X₁X₂ + ε, where β₃ quantifies the interaction effect.",
+        "analogy": "Think of baking where flour and sugar each affect the taste of a cake, but the combination of flour and sugar together can create a sweetness–texture effect that neither has alone. The individual amounts are like X₁ and X₂, and the special combined effect is like X₁X₂. The interaction term captures that ‘1 cup of sugar’ doesn’t taste the same in every recipe—it depends on how much flour is there too.",
+        "eli5": "Imagine you water a plant and give it sunlight. Water helps it grow, and sunlight helps it grow. But when you have both water and sunlight together, the plant might grow extra well, more than just adding the two effects. That special ‘extra’ from having both is the interaction.",
+        "real_world_use_case": "A retailer models daily sales (Y) using number of sales associates (X₁) and an indicator for urban vs suburban store (X₂). They suspect the benefit of extra associates might differ by location. By including an Associates×Urban interaction term, the model allows the slope of sales vs associates to be different for urban and suburban stores. The estimated coefficient β₃ on the interaction, with its p-value and confidence interval, tells managers whether staffing policies should differ by store type.",
+        "common_mistakes": "One mistake is to include an interaction term X₁X₂ but forget to include the corresponding main effects X₁ and X₂, which usually leads to misinterpreted coefficients. Another is to interpret β₁ and β₂ as overall main effects even when a significant interaction is present; in that case, β₁ is the effect of X₁ only when X₂ = 0, and β₂ is the effect of X₂ only when X₁ = 0. People also sometimes create many interaction terms without theoretical justification, increasing complexity and over-fitting."
+      },
+      "context": "Core definition and formula of interactions in multiple regression",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Fundamental to the 'Interactions and inference' section; directly formula-based and central to modeling conditional effects."
+      },
+      "example": "A large retail chain fits the model Spending = β₀ + β₁*Associates + β₂*Urban + β₃*Associates*Urban + ε to study average daily customer spending. The estimated equation is Spending = 50 + 2.5*Associates + 15*Urban − 0.5*Associates*Urban. For suburban stores (Urban = 0), the interaction drops out and the model is Spending = 50 + 2.5*Associates, so each additional associate adds $2.50. For urban stores (Urban = 1), the model becomes Spending = 65 + 2.0*Associates, so each additional associate adds only $2.00. The significant interaction term (p = 0.02) shows that the staffing effect differs by location, guiding the company to adjust staffing strategies for urban versus suburban stores.",
+      "mermaid_diagrams": {
+        "concise": "graph LR;\n  X1[\"X₁\"] --> Main1[\"β₁X₁\"];\n  X2[\"X₂\"] --> Main2[\"β₂X₂\"];\n  X1 --> Interact[\"X₁X₂\"];\n  X2 --> Interact;\n  Interact --> Term3[\"β₃X₁X₂\"];\n  Main1 --> Y[\"Y\"];\n  Main2 --> Y;\n  Term3 --> Y;",
+        "analogy": "graph TD;\n  Flour[\"Flour\n(X₁)\"] --> Taste[\"Cake taste\n(Y)\"];\n  Sugar[\"Sugar\n(X₂)\"] --> Taste;\n  Flour --> Combo[\"Flour×Sugar\ninteraction\"];\n  Sugar --> Combo;\n  Combo --> Extra[\"Extra special\ntexture/sweetness\"] --> Taste;",
+        "eli5": "graph TD;\n  Water[\"Water\"] --> Grow[\"Plant\ngrowth\"];\n  Sun[\"Sunlight\"] --> Grow;\n  Water --> Both[\"Water×Sun\"];\n  Sun --> Both;\n  Both --> ExtraGrow[\"Extra good\ngrowth\"] --> Grow;",
+        "real_world_use_case": "graph LR;\n  Assoc[\"Associates\n(X₁)\"] --> Sales[\"Sales Y\"];\n  Urban[\"Urban dummy\n(X₂)\"] --> Sales;\n  Assoc --> AxU[\"Associates×Urban\"];\n  Urban --> AxU;\n  AxU --> Sales;\n  note bottom of Sales: Different slopes\n  for urban vs\n  suburban",
+        "common_mistakes": "graph TD;\n  OnlyInt[\"Include only\nX₁X₂\"] --> MisSpec[\"Model\nmisspecified\"];\n  SigInt[\"Significant\nβ₃\"] --> MisMain[\"Still interpret\nβ₁, β₂ as\noverall main\neffects\"] --> WrongInterp[\"Wrong\ninterpretation\nof effects\"];",
+        "example": "flowchart TD;\n  Data[\"Collect data:\nSpending, #Associates,\nUrban/Suburban\"] --> Fit[\"Fit model\nY = 50 + 2.5*Assoc\n+ 15*Urban -0.5*Assoc*Urban\"];\n  Fit --> SubModel[\"Urban=0:\nY = 50 + 2.5*Assoc\"];\n  Fit --> UrbModel[\"Urban=1:\nY = 65 + 2.0*Assoc\"];\n  SubModel --> SubEffect[\"+2.5 per\nassociate\"];\n  UrbModel --> UrbEffect[\"+2.0 per\nassociate\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph Interaction_Formula {\n  node [margin=0.3, fontsize=11, shape=box];\n  Eq [label=\"Y = β0 + β1*X1\n+ β2*X2 + β3*X1*X2\n+ ε\"];\n  Beta3 [label=\"β3:\nchange in slope\nof Y vs X1\nper unit X2\"];\n  Eq -> Beta3;\n}",
+        "analogy": "/* layout=neato */\ngraph Cake_Analogy {\n  node [margin=0.3, fontsize=11, shape=box];\n  Flour [label=\"Flour = X1\"];\n  Sugar [label=\"Sugar = X2\"];\n  Base [label=\"Base taste\n= a + b*Flour\n+ c*Sugar\"];\n  Inter [label=\"Interaction\n= d*Flour*Sugar\"];\n  Total [label=\"Total taste\n= Base + Inter\"];\n  Flour -- Base;\n  Sugar -- Base;\n  Flour -- Inter;\n  Sugar -- Inter;\n  Base -- Total;\n  Inter -- Total;\n}",
+        "eli5": "/* layout=neato */\ngraph Plant_Interaction {\n  node [margin=0.3, fontsize=11, shape=box];\n  Water [label=\"Water = X1\"];\n  Sun [label=\"Sun = X2\"];\n  Growth [label=\"Growth Y\"];\n  Alone [label=\"Alone effects:\nβ1*Water,\nβ2*Sun\"];\n  Together [label=\"Together:\nβ3*Water*Sun\"];\n  Water -- Alone;\n  Sun -- Alone;\n  Water -- Together;\n  Sun -- Together;\n  Alone -- Growth;\n  Together -- Growth;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph Retail_Interact {\n  node [margin=0.3, fontsize=11, shape=box];\n  Assoc [label=\"X1:\nAssociates\"];\n  Urban [label=\"X2:\nUrban(1)/Sub(0)\"];\n  Inter [label=\"X1*X2\"];\n  Eq [label=\"Y = β0 + β1*X1\n+ β2*X2 + β3*X1*X2\"];\n  Assoc -- Eq;\n  Urban -- Eq;\n  Assoc -- Inter;\n  Urban -- Inter;\n  Inter -- Eq;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph Inter_Errors {\n  node [margin=0.3, fontsize=11, shape=box];\n  Correct [label=\"Correct:\nY = β0 + β1*X1\n+ β2*X2 + β3*X1*X2\"];\n  Wrong1 [label=\"Wrong:\nY = β0 + β3*X1*X2\"];\n  Sig [label=\"β3 significant\"];\n  MisMain [label=\"Misread β1,β2\nas global\nmain effects\"];\n  Correct -> Sig;\n  Sig -> MisMain;\n  Correct -> Wrong1;\n}",
+        "example": "/* layout=neato */\ngraph Assoc_Urban_Ex {\n  node [margin=0.3, fontsize=11, shape=box];\n  Eq [label=\"Y = 50 + 2.5*A\n+ 15*U -0.5*A*U\"];\n  Sub [label=\"U=0:\nY = 50 + 2.5*A\"];\n  Urb [label=\"U=1:\nY = 65 + 2.0*A\"];\n  SlopeSub [label=\"Slope\n= 2.5\"];\n  SlopeUrb [label=\"Slope\n= 2.0\"];\n  Eq -- Sub;\n  Eq -- Urb;\n  Sub -- SlopeSub;\n  Urb -- SlopeUrb;\n}"
+      },
+      "tags": [
+        "interaction",
+        "multiple regression",
+        "interaction term",
+        "β3",
+        "conditional effects"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_13"
+    },
+    {
+      "type": "process",
+      "question": "How do we perform inference for an interaction coefficient in a regression model, and what does significance imply?",
+      "answers": {
+        "concise": "Inference for an interaction coefficient (β₃) typically involves testing H₀: β₃ = 0 versus Hₐ: β₃ ≠ 0 and constructing a confidence interval for β₃. A small p-value and an interval that excludes zero indicate a statistically significant interaction, meaning the effect of one predictor on Y depends on the level of the other.",
+        "analogy": "Testing an interaction is like checking whether two ingredients in a recipe really ‘team up’ to create a special flavor beyond their individual effects. The null hypothesis says, ‘There is no special teamwork; they just add separately.’ If the taste test (statistical test) shows a big enough difference and we’re confident it’s not just random, we conclude there is a real teamwork effect—an interaction.",
+        "eli5": "We ask, ‘Does having both things together change the result in a special way?’ We do some math that tells us how big that extra ‘together’ effect is and how sure we are about it. If the math says, ‘This extra effect is big and probably not just luck,’ we say there is an interaction.",
+        "real_world_use_case": "In the retail example, analysts estimate Spending = β₀ + β₁*Associates + β₂*Urban + β₃*Associates*Urban + ε and obtain a p-value of 0.02 for β₃. Testing H₀: β₃ = 0, they reject at the 5% level, concluding that the sales–associates relationship differs between urban and suburban stores. A confidence interval for β₃ might show that each additional associate in urban stores has between $0.2 and $0.8 less impact than in suburban stores. This quantifies the interaction and supports region-specific staffing policies.",
+        "common_mistakes": "One mistake is to focus only on the overall model F-test and ignore the specific test for β₃, missing important interaction structure. Another is to declare ‘no interaction’ solely because β₃’s p-value is slightly above 0.05, without considering sample size, effect size, and confidence intervals. People also sometimes interpret a significant interaction without re-expressing and plotting the conditional effects (e.g., slopes at different levels of the other predictor), leaving the practical meaning vague."
+      },
+      "context": "Hypothesis testing and confidence intervals for interaction terms in regression",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Directly tied to 'Interactions and inference'; combines core regression inference with interaction interpretation."
+      },
+      "example": "Returning to the retail chain, suppose the estimated interaction coefficient is β₃ = −0.5 with a standard error of 0.21. The t-statistic is −0.5/0.21 ≈ −2.38, yielding a p-value of 0.02 under H₀: β₃ = 0. A 95% confidence interval might be [−0.92, −0.08], which does not include zero. This tells the analyst that the marginal effect of an extra associate on spending is between $0.08 and $0.92 smaller in urban stores than in suburban stores. The company can then quantify the diminishing returns of additional associates in urban locations and adjust staffing budgets accordingly.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  Model[\"Fit model\nY = β₀ + ... + β₃X₁X₂\"] --> Test[\"Test H₀: β₃=0\"];\n  Test --> Pval[\"Compute\np-value\"];\n  Test --> CI[\"Build\nCI for β₃\"];\n  Pval --> Decision[\"Interaction\nsignificant?\"];",
+        "analogy": "graph LR;\n  Ingredients[\"Ingredient 1\n& 2\"] --> TasteTest[\"Taste test\n(statistical test)\"];\n  TasteTest --> NoTeam[\"No special\nteamwork\n(H₀ true)\"];\n  TasteTest --> Team[\"Special\nteamwork\n(interaction)\"];",
+        "eli5": "graph TD;\n  Ask[\"Do they work\nspecially\ntogether?\"] --> Math[\"Do math\n(test)\"] --> Answer[\"Yes, special\ncombo\" / \"No,\njust normal\"];\n  Math --> Sure[\"How sure?\n(Confidence\ninterval)\"];",
+        "real_world_use_case": "sequenceDiagram;\n  participant Analyst\n  participant Model\n  Analyst->>Model: Fit with X₁, X₂, X₁X₂\n  Model-->>Analyst: β₃ estimate & SE\n  Analyst->>Model: Test H₀: β₃=0\n  Model-->>Analyst: p-value & CI\n  Analyst-->>Analyst: Decide if effect\n  depends on other predictor",
+        "common_mistakes": "graph TD;\n  OnlyF[\"Look only at\noverall F-test\"] --> MissInt[\"Miss\ninteraction\nstructure\"];\n  Pgt05[\"p just > 0.05\"] --> DeclareNone[\"Declare\n'no interaction'\"];\n  DeclareNone --> IgnoreCI[\"Ignore\nwide CI\n& low power\"];",
+        "example": "flowchart TD;\n  Est[\"Estimate β₃ = -0.5,\nSE = 0.21\"] --> Tstat[\"t = -0.5/0.21\n≈ -2.38\"];\n  Tstat --> Pval[\"p = 0.02\"];\n  Est --> CI[\"95% CI:\n[-0.92, -0.08]\"];\n  Pval --> Concl[\"Reject H₀:\ninteraction\npresent\"];\n  CI --> Quant[\"Quantify:\nurban slope is\n0.08–0.92 less\"];\n  Quant --> Action[\"Adjust\nurban staffing\nstrategy\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph Inter_Test {\n  node [margin=0.3, fontsize=11, shape=box];\n  Beta3 [label=\"β₃ estimate\"];\n  SE [label=\"SE(β₃)\"];\n  T [label=\"t = β₃ / SE(β₃)\"];\n  P [label=\"p-value\nfrom t\"];\n  CI [label=\"CI(β₃) = β₃ ± t*SE\"];\n  Beta3 -> SE;\n  Beta3 -> T;\n  SE -> T;\n  T -> P;\n  Beta3 -> CI;\n  SE -> CI;\n}",
+        "analogy": "/* layout=neato */\ngraph Taste_Test {\n  node [margin=0.3, fontsize=11, shape=box];\n  Null [label=\"H₀:\nno combo\neffect\n(β₃=0)\"];\n  Est [label=\"Estimate\nβ₃\"];\n  Big [label=\"Estimate far\nfrom 0?\"];\n  Decide [label=\"Conclude\ncombo effect\nexists\"];\n  Null -- Est;\n  Est -- Big;\n  Big -- Decide;\n}",
+        "eli5": "/* layout=neato */\ngraph Simple_Test {\n  node [margin=0.3, fontsize=11, shape=box];\n  Together [label=\"Together\nextra effect\n= β₃\"];\n  Zero [label=\"Compare to\n0 (no extra)\"];\n  Far [label=\"Is β₃ far\nfrom 0?\"];\n  Answer [label=\"If far, say:\nYes, special\ncombo\"];\n  Together -- Zero;\n  Together -- Far;\n  Far -- Answer;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph Retail_Test {\n  node [margin=0.3, fontsize=11, shape=box];\n  Eq [label=\"Y = 50 + 2.5*A\n+ 15*U -0.5*A*U\"];\n  B3 [label=\"β₃ = -0.5\"];\n  SE [label=\"SE = 0.21\"];\n  T [label=\"t ≈ -2.38\"];\n  P [label=\"p = 0.02\"];\n  CI [label=\"95% CI\n[-0.92,-0.08]\"];\n  Eq -- B3;\n  B3 -- SE;\n  B3 -- T;\n  SE -- T;\n  T -- P;\n  B3 -- CI;\n  SE -- CI;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph Inter_Inference_Errors {\n  node [margin=0.3, fontsize=11, shape=box];\n  FocusF [label=\"Only overall\nF-test\"];\n  IgnoreB3 [label=\"Ignore\nβ₃ test\"];\n  LowPower [label=\"Small n,\nwide CI\"];\n  Pjust [label=\"p=0.06\nfor β₃\"];\n  WrongNone [label=\"Conclude\n'no interaction'\"];\n  FocusF -> IgnoreB3;\n  LowPower -> Pjust;\n  Pjust -> WrongNone;\n}",
+        "example": "/* layout=neato */\ngraph B3_Example {\n  node [margin=0.3, fontsize=11, shape=box];\n  B3 [label=\"β₃ = -0.5\"];\n  SE [label=\"SE = 0.21\"];\n  T [label=\"t = -2.38\"];\n  P [label=\"p = 0.02\"];\n  CI [label=\"CI = [-0.92,-0.08]\"];\n  B3 -- SE;\n  B3 -- T;\n  SE -- T;\n  T -- P;\n  B3 -- CI;\n  SE -- CI;\n}"
+      },
+      "tags": [
+        "interaction",
+        "hypothesis testing",
+        "confidence interval",
+        "β3",
+        "regression inference"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_14"
+    },
+    {
+      "type": "concept",
+      "question": "What are common pitfalls when working with interaction terms in regression, especially regarding main effects and multicollinearity?",
+      "answers": {
+        "concise": "Common pitfalls include misinterpreting main effects when an interaction is present—β₁ and β₂ represent effects only when the other predictor is zero—and ignoring multicollinearity introduced by interaction terms, which inflates standard errors. Over-fitting by adding many interaction and higher-order terms without theoretical justification is another frequent problem.",
+        "analogy": "If two people are talking together on stage (the interaction), it’s hard to judge each person’s message (main effect) without knowing what the other is saying at that moment. Also, if their voices are very similar (highly correlated predictors), it becomes hard for the audience to separate who said what (multicollinearity). Adding too many speakers and side conversations (many interactions) can make the show so noisy that nobody understands the story (over-fitting).",
+        "eli5": "When two things work together in a special way, you can’t talk about what one thing ‘does by itself’ without saying what the other thing is doing. Also, if two numbers in your math are very similar, the calculator has a hard time telling which one is really causing the change. If you add too many special ‘together’ terms, your math fits the old data perfectly but doesn’t work well on new data.",
+        "real_world_use_case": "In a marketing model with AdSpend (X₁), Age (X₂), and AdSpend×Age, a significant interaction means the effect of ad spend differs by age. Interpreting β₁ as the ‘overall’ effect of ad spend without conditioning on Age=0 (which may be unrealistic) is misleading. Creating the interaction can also increase multicollinearity between X₁, X₂, and X₁X₂, enlarging standard errors and making coefficients appear insignificant. Centering continuous predictors before forming interactions can mitigate collinearity, and marketers should only include interactions that are theoretically and practically meaningful.",
+        "common_mistakes": "People often read β₁ as ‘the effect of X₁ on Y’ even when a strong interaction with X₂ exists, ignoring that it is actually the effect when X₂ = 0. They may also fail to check variance inflation or consider centering predictors, leading to unstable estimates. Another mistake is to add numerous two-way and three-way interactions simply because software makes it easy, resulting in an over-fitted model that fits noise and is hard to interpret."
+      },
+      "context": "Pitfalls and misconceptions in using and interpreting interaction terms",
+      "relevance_score": {
+        "score": 7,
+        "justification": "Explicitly listed as common pitfalls; important for correct interpretation though slightly more applied than core formulas."
+      },
+      "example": "Suppose an analyst models customer spending with predictors Income (X₁), LoyaltyScore (X₂), and their interaction X₁X₂. The interaction is significant, but the analyst still reports β₁ as ‘the effect of income on spending’ without mentioning that it applies only when LoyaltyScore = 0, a value that may not even occur in the data. Additionally, because Income and Income×LoyaltyScore are highly correlated, the standard error of β₁ is large, and its p-value is not significant; the analyst wrongly concludes that income ‘doesn’t matter.’ By centering Income and LoyaltyScore before creating the interaction and by interpreting effects at meaningful loyalty levels (e.g., low, medium, high), the analyst obtains more stable estimates and a clearer story about how income and loyalty jointly influence spending.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  Interact[\"Interaction\nX₁X₂ present\"] --> MainEff[\"Main effects\nβ₁, β₂ depend\non other X\"];\n  Interact --> Collinearity[\"Higher\nmulticollinearity\"];\n  Collinearity --> BigSE[\"Larger\nstandard errors\"];",
+        "analogy": "graph LR;\n  Speaker1[\"Speaker 1\"] --> Stage[\"Stage\"];\n  Speaker2[\"Speaker 2\"] --> Stage;\n  Duo[\"Dialogue\n(interaction)\"] --> Stage;\n  Stage --> ConfuseMsg[\"Hard to tell\nwho said what\"];\n  Many[\"Many speakers\n+ side talks\"] --> Noise[\"Noisy,\nconfusing show\"];",
+        "eli5": "graph TD;\n  TwoThings[\"Two things\nwork together\"] --> HardSolo[\"Hard to say\nwhat one\nthing does\nalone\"];\n  SimilarNums[\"Numbers very\nsimilar\"] --> CalcHard[\"Calculator\ncan't tell\nwhich causes\nchange\"];",
+        "real_world_use_case": "graph LR;\n  AdSpend[\"AdSpend\n(X₁)\"] --> Model[\"Model with\nX₁, X₂, X₁X₂\"];\n  Age[\"Age\n(X₂)\"] --> Model;\n  Model --> Interp[\"Interpret\nβ₁ at Age=0\n(if used)\"];\n  Model --> VIF[\"Check\nmulticollinearity\"];\n  VIF --> Center[\"Center X₁,X₂\nbefore X₁X₂\"];",
+        "common_mistakes": "graph TD;\n  SigInt[\"Significant\ninteraction\"] --> WrongMain[\"Interpret β₁\nas global\nmain effect\"] --> MisStory[\"Misleading\nstory\"];\n  ManyInts[\"Add many\ninteraction\nterms\"] --> Overfit[\"Over-fitting\n& poor\nprediction\"];",
+        "example": "flowchart TD;\n  Start[\"Model: Y ~ Income\n+ Loyalty + Income*Loyalty\"] --> Sig[\"Interaction\nsignificant\"];\n  Sig --> Misinterp[\"Analyst: β₁ is\n'Income effect' \"];\n  Sig --> HighVIF[\"High collinearity\n=> big SEs\"];\n  HighVIF --> WrongNoEff[\"Conclude\nIncome doesn't\nmatter\"];\n  Sig --> Center[\"Center Income\nand Loyalty\"];\n  Center --> Refit[\"Refit model\nwith centered\ninteraction\"];\n  Refit --> Clearer[\"Clearer effects\nat low/med/high\nloyalty\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph Inter_Pitfalls {\n  node [margin=0.3, fontsize=11, shape=box];\n  Eq [label=\"Y = β0 + β1*X1\n+ β2*X2 + β3*X1*X2\"];\n  Beta1 [label=\"β1 = effect\nof X1 when\nX2=0\"];\n  Beta2 [label=\"β2 = effect\nof X2 when\nX1=0\"];\n  Col [label=\"corr(X1,X1X2)\ncan be high\"];\n  SE [label=\"High corr\n=> large SEs\"];\n  Eq -> Beta1;\n  Eq -> Beta2;\n  Eq -> Col;\n  Col -> SE;\n}",
+        "analogy": "/* layout=neato */\ngraph Voices {\n  node [margin=0.3, fontsize=11, shape=box];\n  Solo1 [label=\"Solo 1\n(main effect)\"];\n  Solo2 [label=\"Solo 2\n(main effect)\"];\n  Duet [label=\"Duet\n(interaction)\"];\n  Similar [label=\"Similar voices\n(high corr)\"];\n  Confuse [label=\"Hard to know\nwho contributes\nwhat\"];\n  Solo1 -- Duet;\n  Solo2 -- Duet;\n  Duet -- Similar;\n  Similar -- Confuse;\n}",
+        "eli5": "/* layout=neato */\ngraph Simple_Pitfall {\n  node [margin=0.3, fontsize=11, shape=box];\n  Together [label=\"Together term\nX1*X2\"];\n  Alone [label=\"Alone term\nX1\"];\n  Zero [label=\"Alone effect\nonly when\nX2=0\"];\n  Together -- Alone;\n  Alone -- Zero;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph Ad_Model {\n  node [margin=0.3, fontsize=11, shape=box];\n  Eq [label=\"Y = β0 + β1*Ad\n+ β2*Age + β3*Ad*Age\"];\n  Beta1 [label=\"β1:\nAd effect\nat Age=0\"];\n  Center [label=\"Center Age,\nAd\"];\n  Col [label=\"High corr\n(Ad,Ad*Age)\"];\n  SE [label=\"Large SEs\"];\n  Eq -- Beta1;\n  Eq -- Col;\n  Col -- SE;\n  Center -- Eq;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph Inter_Mistakes {\n  node [margin=0.3, fontsize=11, shape=box];\n  True [label=\"True model\nwith interaction\"];\n  MisMain [label=\"Interpret β1,\nβ2 as global\nmain effects\"];\n  Many [label=\"Many\ninteraction\nterms\"];\n  Overfit [label=\"Over-fitting\n& unstable\ncoeffs\"];\n  True -> MisMain;\n  True -> Many;\n  Many -> Overfit;\n}",
+        "example": "/* layout=neato */\ngraph Income_Loyalty {\n  node [margin=0.3, fontsize=11, shape=box];\n  Eq [label=\"Y = β0 + β1*Inc\n+ β2*Loy + β3*Inc*Loy\"];\n  Beta1 [label=\"β1: Income\neffect at\nLoy=0\"];\n  Corr [label=\"corr(Inc, Inc*Loy)\nhigh\"];\n  SE [label=\"SE(β1)\nlarge\"];\n  Center [label=\"Center Inc,\nLoy\"];\n  Eq -- Beta1;\n  Eq -- Corr;\n  Corr -- SE;\n  Center -- Eq;\n}"
+      },
+      "tags": [
+        "interaction",
+        "main effects",
+        "multicollinearity",
+        "over-fitting",
+        "interpretation errors"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_15"
+    },
+    {
+      "type": "concept",
+      "question": "What are categorical variables and how are they incorporated into regression models using dummy (indicator) variables?",
+      "answers": {
+        "concise": "Categorical variables represent distinct groups (e.g., region, gender) rather than numeric quantities. In regression, they are incorporated by creating dummy (indicator) variables coded 0/1 so that the model can estimate how each category’s mean outcome differs from a chosen reference group, typically by shifting the intercept (and, with interactions, possibly slopes).",
+        "analogy": "Think of categorical variables like different teams in a sports league and the regression line like a base salary. Dummy variables are team flags you raise (1) or lower (0) to say which team a player belongs to; raising a team’s flag adds or subtracts a fixed bonus from the base salary compared to the reference team. By comparing bonuses across teams, you see how much each team differs from the baseline.",
+        "eli5": "Imagine you have red, blue, and green candies and you want to know if people like some colors more. The computer can’t use words like “red” or “blue,” so we make special yes/no switches: “Is it red?” “Is it blue?” If the answer is yes, we write 1; if no, we write 0. These switches help the math see which candy colors people like more than a starting color.",
+        "real_world_use_case": "A bank studying loan default risk might include customer occupation (e.g., salaried, self-employed, student, retired) as a categorical predictor. It creates dummy variables for three of these groups and uses the omitted one as the reference category. The regression then estimates how much more or less likely each occupation group is to default compared with the reference group, holding other variables (like income and age) constant. This informs targeted risk policies and pricing.",
+        "common_mistakes": "One mistake is trying to put raw category labels (like 'North', 'South') directly into a regression algorithm instead of converting them to dummies. Another is forgetting that dummy variables shift the intercept relative to a reference category, not defining a separate regression line from scratch for each category unless interactions are added. Students also sometimes treat dummy variables as ordered numbers (0 < 1 < 2) when the categories are actually just names with no natural ordering."
+      },
+      "context": "Regression with categorical predictors and dummy (indicator) variables",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Core foundation for including qualitative factors in regression models and repeatedly used in business applications."
+      },
+      "example": "Suppose an airline wants to explain ticket prices using distance flown and cabin class (Economy, Premium Economy, Business). Cabin class is categorical, so the analyst chooses Economy as the reference and creates two dummy variables: D_Premium (1 if Premium Economy, 0 otherwise) and D_Business (1 if Business, 0 otherwise). The regression model is Price = β₀ + β₁·Distance + β₂·D_Premium + β₃·D_Business + ε. Here β₂ estimates how much more a Premium Economy ticket costs than Economy for the same distance, and β₃ estimates the Business premium over Economy. This lets the airline quantify fare uplifts by cabin while still controlling for distance.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  Categorical[\"Categorical\nVariable\n(e.g., Region)\"] --> Dummies[\"Dummy\nVariables\n(0/1)\"];\n  Dummies --> Regression[\"Regression\nModel with\nIntercept Shifts\"];",
+        "analogy": "graph LR;\n  Teams[\"Teams\n(A, B, C)\"] --> Flags[\"Team Flags\n(0/1)\"];\n  BaseSalary[\"Base\nSalary\"] --> TotalPay[\"Total Pay\n(Base + Team\nBonus)\"];\n  Flags --> TotalPay;",
+        "eli5": "graph TD;\n  Colors[\"Candy Colors\n(red, blue,\n green)\"] --> Switches[\"Yes/No\nSwitches\n(0 or 1)\"];\n  Switches --> Math[\"Math can\ncompare which\ncolor is liked\nmore\"];",
+        "real_world_use_case": "flowchart TD;\n  Start[\"Collect\nOccupation\nData\"] --> Encode[\"Create\n0/1 Dummy\nVariables\"];\n  Encode --> Fit[\"Fit\nRegression\nModel\"];\n  Fit --> Interpret[\"Compare\nEach Group to\nReference\"];\n  Interpret --> Decisions[\"Adjust\nRisk & Pricing\nPolicies\"];",
+        "common_mistakes": "graph TD;\n  RawCats[\"Use raw\nlabels in\nregression\"] --> Error1[\"Model\nfails or\nnonsense\nresults\"];\n  NoRef[\"Treat all\ncategories as\nseparate\nwithout\nreference\"] --> Error2[\"Interpretation\nconfusion\"];\n  Correct[\"Create 0/1\ndummies with\nclear\nreference\"] --> Clarity[\"Clear\ncategory\ncomparisons\"];",
+        "example": "flowchart TD;\n  Start[\"Cabin Class:\nEconomy,\nPremium,\nBusiness\"] --> Dummies[\"Create\nD_Premium,\nD_Business\"];\n  Dummies --> Model[\"Price = β₀ + β₁·Distance\n+ β₂·D_Premium\n+ β₃·D_Business\"];\n  Model --> Insights[\"Estimate\nfare uplifts\nvs Economy\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  cat[label=\"Categorical\nX\n(e.g., 3 levels)\"];\n  d1[label=\"D1 = 1 if\nCat = A\nelse 0\"];\n  d2[label=\"D2 = 1 if\nCat = B\nelse 0\"];\n  eq[label=\"Y = β₀ + β₁·D1\n+ β₂·D2 + ε\n(Ref = C)\"];\n  cat -> d1;\n  cat -> d2;\n  d1 -> eq;\n  d2 -> eq;\n}",
+        "analogy": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  base[label=\"Base Pay\nβ₀\"];\n  flagA[label=\"Flag_A\n(0 or 1)\"];\n  flagB[label=\"Flag_B\n(0 or 1)\"];\n  pay[label=\"Pay = β₀ + β_A·Flag_A\n+ β_B·Flag_B\"];\n  base -> pay;\n  flagA -> pay;\n  flagB -> pay;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  red[label=\"Red?\n1 or 0\"];\n  blue[label=\"Blue?\n1 or 0\"];\n  like[label=\"Liking\nScore Y\"];\n  red -- like;\n  blue -- like;\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  occ[label=\"Occupation\n(4 levels)\"];\n  d1[label=\"D_Salaried\"];\n  d2[label=\"D_SelfEmp\"];\n  d3[label=\"D_Student\"];\n  eq[label=\"DefaultProb = β₀ + β₁·D_Salaried\n+ β₂·D_SelfEmp\n+ β₃·D_Student + ...\"];\n  occ -> d1;\n  occ -> d2;\n  occ -> d3;\n  d1 -> eq;\n  d2 -> eq;\n  d3 -> eq;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  rankdir=LR;\n  node [margin=0.3, fontsize=11];\n  wrong[label=\"Wrong:\nY = β₀ + β₁·D_A\n+ β₂·D_B\n+ β₃·D_C\n+ ε\n(with intercept)\"];\n  trap[label=\"Dummy\nVariable\nTrap:\nD_A + D_B + D_C = 1\"];\n  right[label=\"Right:\nUse only\nk-1 dummies\n(e.g., D_A,\nD_B)\"];\n  wrong -> trap;\n  trap -> right;\n}",
+        "example": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  dist[label=\"Distance\"];\n  dPrem[label=\"D_Premium\"];\n  dBus[label=\"D_Business\"];\n  eq[label=\"Price = β₀ + β₁·Distance\n+ β₂·D_Premium\n+ β₃·D_Business + ε\"];\n  dist -> eq;\n  dPrem -> eq;\n  dBus -> eq;\n}"
+      },
+      "tags": [
+        "categorical variables",
+        "dummy variables",
+        "indicator variables",
+        "regression",
+        "reference category"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_16"
+    },
+    {
+      "type": "concept",
+      "question": "How are dummy variables constructed for a categorical variable with k categories, and what is the role of the reference category?",
+      "answers": {
+        "concise": "For a categorical variable with k categories, we construct k−1 dummy variables, each coded 1 if an observation is in a specific category and 0 otherwise. The omitted category is the reference category, and the coefficients on the dummies measure how much each included category’s mean outcome differs from this reference, holding other predictors constant.",
+        "analogy": "Imagine a menu with four pizza sizes: small, medium, large, extra-large. You choose medium as your reference size and then write notes only when someone orders small, large, or extra-large, saying how much more or less pizza they get compared to medium. Those notes are like dummy variables; medium is the silent baseline you compare everything else to.",
+        "eli5": "If you have four school houses—Red, Blue, Green, Yellow—you secretly pick one, say Red, as your starting house. Then you make three yes/no questions: “Is it Blue?”, “Is it Green?”, “Is it Yellow?”. You don’t need a question for Red, because if all the answers are no, you know it must be Red. Red is your hidden starting point, the reference.",
+        "real_world_use_case": "A retailer segments customers into four regions: North, South, East, and West. In a sales regression, they choose North as the reference and create three dummies: D_South, D_East, D_West. The model Y = β₀ + β₁·X₁ + β₂·D_South + β₃·D_East + β₄·D_West + ε lets them read β₂ as the average sales difference between South and North, β₃ between East and North, and β₄ between West and North, after controlling for X₁ (like store size). This structure keeps the model estimable and interpretations clear.",
+        "common_mistakes": "A frequent mistake is creating k dummies for k categories and including an intercept, which causes perfect multicollinearity (the dummy variable trap). Another is forgetting which category was chosen as the reference, leading to misstatements like “South sells 10 units more than West” when the coefficient actually compares South to North. Some students also assume the reference must be the most frequent or best-performing category, when in fact the choice is arbitrary but should be made for interpretive convenience."
+      },
+      "context": "Construction and interpretation of k−1 dummy variables and reference category",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Essential for correctly specifying and interpreting regression models with multi-level categorical predictors."
+      },
+      "example": "Consider a telecom company modeling monthly data usage (GB) with a categorical variable for subscription plan: Basic, Standard, Premium. They select Basic as the reference and create two dummies: D_Standard and D_Premium. The model is Usage = 5 + 3·D_Standard + 8·D_Premium + ε. This means Basic users average 5 GB, Standard users average 5 + 3 = 8 GB, and Premium users average 5 + 8 = 13 GB. The coefficients 3 and 8 are interpreted as differences from Basic, not absolute usage levels by themselves.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  KCat[\"k Categories\"] --> Kminus1[\"Create k-1\nDummy Vars\"];\n  Kminus1 --> Ref[\"Omitted\nCategory =\nReference\"];\n  Ref --> Compare[\"Coefficients\n= Differences\nfrom Reference\"];",
+        "analogy": "graph LR;\n  Sizes[\"Pizza Sizes:\nS,M,L,XL\"] --> RefM[\"Reference:\nMedium\"];\n  RefM --> Notes[\"Notes for\nS,L,XL vs M\n(Like\nDummy Vars)\"];",
+        "eli5": "graph TD;\n  Houses[\"4 Houses:\nRed, Blue,\nGreen, Yellow\"] --> PickRef[\"Pick Red\nas Hidden\nReference\"];\n  PickRef --> Questions[\"Ask 3\nYes/No\nQuestions for\nothers\"];",
+        "real_world_use_case": "flowchart TD;\n  Regions[\"Regions:\nN,S,E,W\"] --> ChooseRef[\"Choose North\nas Reference\"];\n  ChooseRef --> CreateD[\"Create D_South,\nD_East,\nD_West\"];\n  CreateD --> FitModel[\"Fit\nRegression\"];\n  FitModel --> Interpret[\"Interpret\nDifferences\nvs North\"];",
+        "common_mistakes": "graph TD;\n  AllK[\"Create k\ndummies +\nintercept\"] --> Trap[\"Dummy\nVariable Trap\n(multicollinearity)\"];\n  ForgetRef[\"Forget\nreference\ncategory\"] --> WrongInterp[\"Wrong\ncoefficient\ninterpretation\"];",
+        "example": "flowchart TD;\n  Plans[\"Plans:\nBasic,\nStandard,\nPremium\"] --> RefBasic[\"Reference:\nBasic\"];\n  RefBasic --> DStdPrem[\"Create\nD_Standard,\nD_Premium\"];\n  DStdPrem --> Eq[\"Usage = 5 + 3·D_Standard\n+ 8·D_Premium + ε\"];\n  Eq --> Means[\"Means:\nBasic=5,\nStandard=8,\nPremium=13\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n  rankdir=LR;\n  node [margin=0.3, fontsize=11];\n  k[label=\"k\nCategories\"];\n  km1[label=\"k-1\nDummies\"];\n  ref[label=\"Reference\nCategory\n(omitted)\"];\n  eq[label=\"Y = β₀ + β₁·X₁\n+ Σ β_j·D_j + ε\"];\n  k -> km1;\n  k -> ref;\n  km1 -> eq;\n  ref -> eq;\n}",
+        "analogy": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  M[label=\"Medium\n(Reference)\"];\n  S[label=\"Small\nDummy\"];\n  L[label=\"Large\nDummy\"];\n  XL[label=\"XL\nDummy\"];\n  eq[label=\"PizzaSizeEffect\n= β_S·S + β_L·L\n+ β_XL·XL\n(vs Medium)\"];\n  S -> eq;\n  L -> eq;\n  XL -> eq;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  red[label=\"Red\n(Reference)\"];\n  blueQ[label=\"Is Blue?\n0/1\"];\n  greenQ[label=\"Is Green?\n0/1\"];\n  yellowQ[label=\"Is Yellow?\n0/1\"];\n  red -- blueQ;\n  red -- greenQ;\n  red -- yellowQ;\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  north[label=\"North\n(Reference)\"];\n  dS[label=\"D_South\"];\n  dE[label=\"D_East\"];\n  dW[label=\"D_West\"];\n  eq[label=\"Y = β₀ + β₁·X₁\n+ β₂·D_South\n+ β₃·D_East\n+ β₄·D_West + ε\"];\n  dS -> eq;\n  dE -> eq;\n  dW -> eq;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  rankdir=LR;\n  node [margin=0.3, fontsize=11];\n  wrong[label=\"Wrong:\nUse k dummies\n+ intercept\"];\n  sum1[label=\"Σ D_j = 1\nfor each row\"];\n  sing[label=\"Design\nmatrix\nsingular\"];\n  right[label=\"Right:\nUse k-1\ndummies\"];\n  wrong -> sum1 -> sing;\n  sing -> right;\n}",
+        "example": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  basic[label=\"Basic\n(Reference)\"];\n  dStd[label=\"D_Standard\"];\n  dPrem[label=\"D_Premium\"];\n  eq[label=\"Usage = 5 + 3·D_Standard\n+ 8·D_Premium + ε\"];\n  basic -> eq;\n  dStd -> eq;\n  dPrem -> eq;\n}"
+      },
+      "tags": [
+        "dummy variables",
+        "k-1 rule",
+        "reference category",
+        "categorical encoding",
+        "regression specification"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_17"
+    },
+    {
+      "type": "concept",
+      "question": "How do you interpret dummy variable coefficients in a regression model, especially in the presence of a continuous predictor?",
+      "answers": {
+        "concise": "The coefficient of a dummy variable represents the average difference in the dependent variable between that category and the reference category, holding all other variables (including continuous predictors) constant. In a model like Y = β₀ + β₁·X₁ + β₂·D + ε, β₂ is the vertical shift between the two groups’ regression lines at any given X₁, while β₁ is the common slope.",
+        "analogy": "Picture two parallel escalators going up at the same angle (same slope) but starting from different floors. The escalator angle is like β₁, the shared effect of X₁, and the floor difference is like β₂, the dummy coefficient. No matter where you stand along the escalator (what X₁ is), the height difference between floors stays the same—that’s the group difference captured by the dummy.",
+        "eli5": "Imagine two classes taking the same math test. If we say everyone gets 2 points extra for each homework sheet (that’s the slope), but Class A always gets 5 bonus points more than Class B, then that 5 is like the dummy coefficient. It’s how much one group’s scores are always higher or lower than the other group’s, no matter how many homework sheets they did.",
+        "real_world_use_case": "In the store sales example, the model Monthly_Sales = 50 + 0.15·Store_Size + 25·D_Urban says that for any given store size, urban stores have 25 thousand dollars higher expected monthly sales than suburban stores. The 0.15 coefficient shows how sales grow with store size, and it is assumed to be the same in both locations. Managers can interpret 25 as a location premium, separate from the effect of store size, when evaluating expansion strategies.",
+        "common_mistakes": "A common error is to read the dummy coefficient as the absolute level for that category rather than as a difference from the reference. Another is to ignore the presence of other predictors, forgetting that the interpretation is “holding X constant.” Students also sometimes misinterpret β₀ as the mean outcome for all observations, when it is actually the expected Y for the reference category at X = 0, which may or may not be a meaningful value of X."
+      },
+      "context": "Interpretation of dummy coefficients and group differences in regression",
+      "relevance_score": {
+        "score": 10,
+        "justification": "Central to making business sense of regression output involving categorical predictors."
+      },
+      "example": "Consider an HR analyst modeling employee monthly performance score (0–100) using years of experience (Exp) and a dummy for whether the employee completed a training program (D_Train = 1 if trained, 0 if not). The regression is Score = 60 + 1.5·Exp + 4·D_Train + ε. Here, 1.5 means each additional year of experience increases the expected score by 1.5 points for both groups. The 4 means trained employees score, on average, 4 points higher than untrained employees with the same experience. The intercept 60 is the expected score for an untrained employee with Exp = 0 (even if that’s not realistic, it anchors the line).",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  Model[\"Y = β₀ + β₁·X₁\n+ β₂·D + ε\"] --> Lines[\"Two Parallel\nLines\"];\n  Lines --> Diff[\"β₂ = Vertical\nDifference\nbetween Groups\nat each X₁\"];",
+        "analogy": "graph LR;\n  FloorA[\"Lower\nFloor\"] --> EscA[\"Escalator A\n(Group 0)\"];\n  FloorB[\"Higher\nFloor\"] --> EscB[\"Escalator B\n(Group 1)\"];\n  Angle[\"Same Angle\n= Same Slope\nβ₁\"] --> EscA;\n  Angle --> EscB;",
+        "eli5": "graph TD;\n  HW[\"Homework\nSheets (X)\"] --> ScoreA[\"Class A\nScores\"];\n  HW --> ScoreB[\"Class B\nScores\"];\n  Bonus[\"Extra 5 points\nfor Class A\n(β₂)\"] --> ScoreA;",
+        "real_world_use_case": "flowchart TD;\n  Inputs[\"Store_Size,\nLocation_Type\"] --> Model[\"Sales = 50 + 0.15·Size\n+ 25·D_Urban\"];\n  Model --> SizeEff[\"0.15 = Size\nEffect\"];\n  Model --> LocPrem[\"25 = Urban\nLocation\nPremium\"];\n  LocPrem --> Decisions[\"Decide on\nUrban vs\nSuburban\nExpansion\"];",
+        "common_mistakes": "graph TD;\n  MisAbs[\"Treat β₂ as\nabsolute level\nfor category\"] --> Wrong1[\"Ignore\nreference\ncategory\"];\n  MisHold[\"Forget\n'holding X\nconstant'\"] --> Wrong2[\"Misread\ncausal size\nof effect\"];",
+        "example": "flowchart TD;\n  Vars[\"Exp,\nD_Train\"] --> Eq[\"Score = 60 + 1.5·Exp\n+ 4·D_Train + ε\"];\n  Eq --> ExpEff[\"1.5 per\nyear for\nboth groups\"];\n  Eq --> TrainDiff[\"4-point\ntraining\npremium\"];\n  TrainDiff --> HRUse[\"Evaluate\ntraining\nprogram\nimpact\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  line0[label=\"Group 0:\nY = β₀ + β₁·X₁\"];\n  line1[label=\"Group 1:\nY = (β₀ + β₂)\n+ β₁·X₁\"];\n  diff[label=\"Difference\n= β₂\n(constant in X₁)\"];\n  line0 -- line1;\n  line1 -- diff;\n}",
+        "analogy": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  floor0[label=\"Floor 0\"];\n  floor1[label=\"Floor 0 + β₂\"];\n  angle[label=\"Angle\nβ₁\"];\n  floor0 -- angle;\n  floor1 -- angle;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  classB[label=\"Class B:\nScore = a + b·HW\"];\n  classA[label=\"Class A:\nScore = (a+5)\n+ b·HW\"];\n  gap[label=\"Gap = 5\npoints\"];\n  classB -- classA;\n  classA -- gap;\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  size[label=\"Store_Size\"];\n  dummy[label=\"D_Urban\"];\n  eq[label=\"Sales = 50 + 0.15·Size\n+ 25·D_Urban\"];\n  urban[label=\"Urban:\n50+25 + 0.15·Size\"];\n  sub[label=\"Suburban:\n50 + 0.15·Size\"];\n  size -> eq;\n  dummy -> eq;\n  eq -> urban;\n  eq -> sub;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  abs[label=\"Mistake:\nβ₂ is\ncategory mean\"];\n  ref[label=\"Reality:\nβ₂ is\nDifference\nvs Reference\"];\n  xconst[label=\"Mistake:\nIgnore 'hold X\nconstant'\"];\n  cond[label=\"Correct:\nInterpret at\nfixed X\"];\n  abs -> ref;\n  xconst -> cond;\n}",
+        "example": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  exp[label=\"Exp\"];\n  dtrain[label=\"D_Train\"];\n  eq[label=\"Score = 60 + 1.5·Exp\n+ 4·D_Train + ε\"];\n  untrain[label=\"Untrained:\n60 + 1.5·Exp\"];\n  train[label=\"Trained:\n64 + 1.5·Exp\"];\n  exp -> eq;\n  dtrain -> eq;\n  eq -> untrain;\n  eq -> train;\n}"
+      },
+      "tags": [
+        "dummy coefficients",
+        "interpretation",
+        "parallel lines",
+        "group differences",
+        "regression"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_18"
+    },
+    {
+      "type": "concept",
+      "question": "What is the dummy variable trap and how does the k−1 rule prevent perfect multicollinearity in regression?",
+      "answers": {
+        "concise": "The dummy variable trap occurs when you include k dummy variables for a k-category predictor along with an intercept, making the design matrix perfectly collinear because the dummies sum to 1 for every observation. Using only k−1 dummies (choosing one category as the reference) removes this exact linear dependence and allows the regression coefficients to be estimated.",
+        "analogy": "Think of having four friends and writing an attendance list with four separate columns—one for each friend—but also a fifth column that says “someone is here.” If exactly one friend is present each day, that fifth column is always just the sum of the first four, so it adds no new information and actually causes confusion. Dropping one friend’s column (using it as the silent reference) is like following the k−1 rule to avoid the trap.",
+        "eli5": "If you have three lights and a rule that exactly one light is on at a time, then if you know what two lights are doing, you always know what the third one is doing. So you don’t need a switch for all three plus a special “one light is on” sign—that’s too much and makes the problem impossible to solve. In regression, having that extra, perfectly predictable dummy makes the math break.",
+        "real_world_use_case": "A company modeling sales by region mistakenly creates four dummies (North, South, East, West) and includes them all with an intercept. Their software complains about singular matrices or automatically drops one dummy because the four dummies and the intercept are perfectly collinear. By explicitly using only three dummies and defining the omitted region as the reference, the model becomes stable, and the analyst can clearly interpret each coefficient as a difference from that reference region.",
+        "common_mistakes": "One mistake is thinking that more dummies mean more detailed modeling, without realizing that k dummies plus an intercept make the design matrix non-invertible. Another is letting software silently drop a dummy and then misinterpreting which category is the reference. Some users also misattribute numerical instability to other causes (like small sample size) when the real problem is the dummy variable trap."
+      },
+      "context": "Perfect multicollinearity, dummy variable trap, and the k−1 rule",
+      "relevance_score": {
+        "score": 9,
+        "justification": "Key technical constraint when encoding categorical variables; often tested conceptually and in practice."
+      },
+      "example": "Suppose a marketing analyst includes a categorical variable Channel with four categories: Email, Social, TV, and Radio. They create four dummies (D_Email, D_Social, D_TV, D_Radio) and fit Y = β₀ + β₁·D_Email + β₂·D_Social + β₃·D_TV + β₄·D_Radio + ε. For each observation, exactly one dummy equals 1 and the others are 0, so D_Email + D_Social + D_TV + D_Radio = 1, which is the same as the intercept column. This exact linear relationship means the matrix of predictors is not invertible. The correct fix is to drop one dummy, say D_Email, making Email the reference and avoiding the trap.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  Kd[\"k Dummies\n+ Intercept\"] --> Sum1[\"Each row:\nΣ D_j = 1\"];\n  Sum1 --> Collinear[\"Perfect\nMulticollinearity\"];\n  Collinear --> Trap[\"Dummy\nVariable Trap\"];\n  Trap --> Fix[\"Use k-1\nDummies\"]",
+        "analogy": "graph LR;\n  F1[\"Friend 1\"] --> Att[\"Attendance\nList\"];\n  F2[\"Friend 2\"] --> Att;\n  F3[\"Friend 3\"] --> Att;\n  F4[\"Friend 4\"] --> Att;\n  SumCol[\"Someone\nHere?\"] --> Att;\n  Note[\"SumCol = F1+F2+F3+F4\"]",
+        "eli5": "graph TD;\n  Light1[\"Light 1\"] --> Rule[\"Exactly one\nlight on\"];\n  Light2[\"Light 2\"] --> Rule;\n  Light3[\"Light 3\"] --> Rule;\n  Rule --> Extra[\"Extra sign is\njust the sum\nof lights\"];",
+        "real_world_use_case": "flowchart TD;\n  Start[\"Create 4\nregion dummies\n+ intercept\"] --> Error[\"Software\nreports\nsingular\nmatrix\"];\n  Error --> Diagnose[\"Recognize\nDummy\nVariable Trap\"];\n  Diagnose --> Fix[\"Drop one\ndummy\n(define\nreference)\"];\n  Fix --> Stable[\"Stable\nestimation\nand clear\ninterpretation\"];",
+        "common_mistakes": "graph TD;\n  MoreD[\"Add all\nk dummies\"] --> Trap[\"Trap:\nPerfect\ncollinearity\"];\n  AutoDrop[\"Software\nauto-drops\none dummy\"] --> Confuse[\"User\nmisreads\nreference\ncategory\"];",
+        "example": "flowchart TD;\n  Channel[\"Channel:\nEmail, Social,\nTV, Radio\"] --> D4[\"Create 4\ndummies\"];\n  D4 --> EqWrong[\"Y = β₀ + β₁·D_Email\n+ β₂·D_Social\n+ β₃·D_TV\n+ β₄·D_Radio\"];\n  EqWrong --> Sum1[\"Σ D_j = 1\n= intercept\"];\n  Sum1 --> Fix[\"Drop D_Email\n(Email is\nreference)\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n  rankdir=LR;\n  node [margin=0.3, fontsize=11];\n  dsum[label=\"For each row:\nD₁ + ... + D_k = 1\"];\n  int[label=\"Intercept\ncolumn = 1\"];\n  rel[label=\"Linear\nRelation:\nIntercept = Σ D_j\"];\n  sing[label=\"X'X\nnot invertible\"];\n  dsum -> rel;\n  int -> rel;\n  rel -> sing;\n}",
+        "analogy": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  f1[label=\"Friend1\n(0/1)\"];\n  f2[label=\"Friend2\n(0/1)\"];\n  f3[label=\"Friend3\n(0/1)\"];\n  f4[label=\"Friend4\n(0/1)\"];\n  sum[label=\"SomeoneHere\n= f1+f2+f3+f4\"];\n  f1 -- sum;\n  f2 -- sum;\n  f3 -- sum;\n  f4 -- sum;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  L1[label=\"L1\"];\n  L2[label=\"L2\"];\n  L3[label=\"L3\"];\n  rule[label=\"Exactly\none ON\"];\n  sign[label=\"Sign = L1+L2+L3\"];\n  L1 -- rule;\n  L2 -- rule;\n  L3 -- rule;\n  rule -- sign;\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  dE[label=\"D_Email\"];\n  dS[label=\"D_Social\"];\n  dT[label=\"D_TV\"];\n  dR[label=\"D_Radio\"];\n  int[label=\"Intercept\n(1)\"];\n  rel[label=\"D_Email + D_Social\n+ D_TV + D_Radio\n= Intercept\"];\n  dE -> rel;\n  dS -> rel;\n  dT -> rel;\n  dR -> rel;\n  int -> rel;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  more[label=\"Use all\nk dummies\"];\n  col[label=\"Perfect\ncollinearity\"];\n  drop[label=\"Software\ndrops one\ncolumn\"];\n  ref[label=\"Reference\ncategory\nchanges\"];\n  more -> col -> drop -> ref;\n}",
+        "example": "/* layout=dot */\ndigraph G {\n  rankdir=LR;\n  node [margin=0.3, fontsize=11];\n  eqWrong[label=\"Y = β₀ + β₁·D_Email\n+ β₂·D_Social\n+ β₃·D_TV\n+ β₄·D_Radio\"];\n  sum[label=\"D_Email + D_Social\n+ D_TV + D_Radio = 1\"];\n  sing[label=\"X'X\nsingular\"];\n  fix[label=\"Drop D_Email;\nEmail = Ref\"];\n  eqWrong -> sum -> sing -> fix;\n}"
+      },
+      "tags": [
+        "dummy variable trap",
+        "multicollinearity",
+        "k-1 rule",
+        "design matrix",
+        "regression pitfalls"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_19"
+    },
+    {
+      "type": "concept",
+      "question": "In the model Monthly_Sales = 50 + 0.15·Store_Size + 25·D_Urban, how should each coefficient be interpreted and how does this illustrate the use of categorical variables in regression?",
+      "answers": {
+        "concise": "In this model, 50 is the intercept: expected monthly sales (in thousands) for a suburban store (reference category) of size 0. The 0.15 coefficient means each additional square foot increases expected sales by 0.15 thousand dollars, regardless of location. The 25 coefficient on D_Urban indicates that, for any given store size, urban stores have 25 thousand dollars higher expected monthly sales than suburban stores.",
+        "analogy": "Imagine a base rent of $50, plus $0.15 for every square foot, and an extra $25 if the property is downtown instead of in the suburbs. The base and per-square-foot charge are like the intercept and Store_Size slope, while the downtown premium is like the D_Urban coefficient. The dummy variable just adds a fixed premium when the location switch is turned on.",
+        "eli5": "Think of selling lemonade in two places: a quiet street and a busy city square. You always make more money if your stand is bigger (that’s the 0.15 part), and you always make an extra 25 dollars if you are in the busy city square (that’s D_Urban). The 50 is like the money you’d make with the tiniest possible stand on the quiet street.",
+        "real_world_use_case": "A retail chain uses this model to compare performance across locations while controlling for store size. By reading 25 as the 'urban premium,' they can quantify how much extra revenue is associated with being in an urban area, separate from store size. This helps in deciding whether to open new stores in urban or suburban areas and in evaluating whether higher urban rents are justified by higher sales. The size coefficient 0.15 informs decisions about optimal store footprints.",
+        "common_mistakes": "One mistake is to interpret 25 as the total expected sales for urban stores, rather than as an increment over suburban stores. Another is to treat 50 as the average sales for all stores, ignoring that it applies specifically to suburban stores at Store_Size = 0. Students may also incorrectly assume the size effect (0.15) differs by location, when in this model it is constrained to be the same for both urban and suburban stores because no interaction term is included."
+      },
+      "context": "Applied interpretation of dummy variables and continuous predictors in a business regression model",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Concrete example that synthesizes dummy interpretation, intercept, and slope; highly useful for exam-style problems."
+      },
+      "example": "Suppose the chain is considering a 10,000 square-foot store. For a suburban location, the model predicts Monthly_Sales = 50 + 0.15·10,000 + 25·0 = 50 + 1,500 = 1,550 thousand dollars. For an urban location of the same size, the prediction is 50 + 0.15·10,000 + 25·1 = 1,575 thousand dollars. The difference of 25 thousand dollars is exactly the D_Urban coefficient, illustrating that the dummy shifts the line upwards in parallel. This allows the company to explicitly quantify the revenue trade-off when choosing between urban and suburban sites of similar size.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  Model[\"Sales = 50 + 0.15·Size\n+ 25·D_Urban\"] --> Inter[\"50: Intercept\n(Suburban,\nSize=0)\"];\n  Model --> Slope[\"0.15: Effect\nper sq ft\"];\n  Model --> UrbanPrem[\"25: Urban\npremium vs\nSuburban\"];",
+        "analogy": "graph LR;\n  Base[\"Base Rent\n$50\"] --> Total[\"Total\nPayment\"];\n  SizeFee[\"$0.15 per\nsq ft\"] --> Total;\n  Downtown[\"+ $25 if\nDowntown\"] --> Total;",
+        "eli5": "graph TD;\n  Tiny[\"Tiny Stand\non Quiet\nStreet\"] --> Money[\"$50\"];\n  Bigger[\"More\nSpace\"] --> Extra[\"More money\n0.15 each\nsq ft\"];\n  City[\"Busy City\nSquare\"] --> Bonus[\"Extra $25\"];\n  Money --> Extra;\n  Extra --> Bonus;",
+        "real_world_use_case": "flowchart TD;\n  Inputs[\"Store_Size,\nLocation_Type\"] --> Model[\"Fit model:\nSales = 50 + 0.15·Size\n+ 25·D_Urban\"];\n  Model --> UrbanPrem[\"Interpret\n25 as\nUrban Premium\"];\n  Model --> SizeEff[\"Interpret\n0.15 as\nSize Effect\"];\n  UrbanPrem --> SiteChoice[\"Compare\nUrban vs\nSuburban\nsites\"];\n  SizeEff --> Footprint[\"Decide\nstore size\"]",
+        "common_mistakes": "graph TD;\n  Mis25[\"Treat 25 as\nurban sales\nlevel\"] --> Wrong1[\"Ignore it is\nincrement vs\nSuburban\"];\n  Mis50[\"Treat 50 as\nmean of all\nstores\"] --> Wrong2[\"Ignore\nreference\nand Size=0\"];",
+        "example": "flowchart TD;\n  Size10000[\"Size = 10,000\"] --> SubCalc[\"Suburban:\n50 + 0.15·10,000\n= 1,550\"];\n  Size10000 --> UrbCalc[\"Urban:\n50 + 0.15·10,000\n+ 25 = 1,575\"];\n  SubCalc --> Diff[\"Difference\n= 25\"];\n  UrbCalc --> Diff;"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  eq[label=\"Sales = 50 + 0.15·Size\n+ 25·D_Urban\"];\n  sub[label=\"Suburban:\nD_Urban=0\nSales = 50 + 0.15·Size\"];\n  urb[label=\"Urban:\nD_Urban=1\nSales = 75 + 0.15·Size\"];\n  eq -> sub;\n  eq -> urb;\n}",
+        "analogy": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  base[label=\"Base = 50\"];\n  per[label=\"Per sq ft\n= 0.15\"];\n  prem[label=\"Downtown\nPremium = 25\"];\n  total[label=\"Total = 50 + 0.15·Size\n+ 25·I(Downtown)\"]; \n  base -> total;\n  per -> total;\n  prem -> total;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  quiet[label=\"Quiet Street\nLine\"];\n  city[label=\"City Line\n= Quiet + 25\"];\n  gap[label=\"Gap = 25\nalways\"];\n  quiet -- city;\n  city -- gap;\n}",
+        "real_world_use_case": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  size[label=\"Size\"];\n  loc[label=\"Location\n(Urban/Sub)\"];\n  sales[label=\"Predicted\nSales\"];\n  prem[label=\"Urban\nPremium 25\"];\n  size -- sales;\n  loc -- prem;\n  prem -- sales;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  mis1[label=\"Misread\n25 as urban\nsales\"];\n  corr1[label=\"Correct:\n25 is\nincrement\nvs suburban\"];\n  mis2[label=\"Misread\n50 as overall\nmean\"];\n  corr2[label=\"Correct:\n50 is\nsuburban,\nSize=0\"];\n  mis1 -> corr1;\n  mis2 -> corr2;\n}",
+        "example": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  size[label=\"Size = 10,000\"];\n  sub[label=\"Suburban:\n50 + 0.15·10,000\n= 1,550\"];\n  urb[label=\"Urban:\n50 + 0.15·10,000\n+ 25 = 1,575\"];\n  diff[label=\"Urban - Suburban\n= 25\"];\n  size -> sub;\n  size -> urb;\n  sub -> diff;\n  urb -> diff;\n}"
+      },
+      "tags": [
+        "example",
+        "dummy variable",
+        "interpretation",
+        "store sales",
+        "regression coefficients"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_20"
+    },
+    {
+      "type": "concept",
+      "question": "What OLS assumptions and connections to other methods are important when using categorical variables and interactions in regression models?",
+      "answers": {
+        "concise": "When including categorical variables and interactions in OLS regression, the standard assumptions still apply: linearity in parameters, independence of errors, homoscedasticity, normality of errors, and no perfect multicollinearity (ensured by the k−1 rule). Interactions extend multiple regression to non-additive relationships, and models with only categorical predictors are equivalent to ANOVA, while models mixing categorical and continuous predictors relate to ANCOVA.",
+        "analogy": "Think of a regression model as a building: the OLS assumptions are the foundation and beams that must be solid regardless of whether you add rooms for categorical variables or fancy interaction balconies. ANOVA and ANCOVA are like specialized wings of the same building—different layouts, but they share the same structural supports. If you overload the building with too many awkward interaction extensions, it may look impressive but become unstable and hard to navigate.",
+        "eli5": "Using yes/no switches (dummies) and combos of switches (interactions) is still the same kind of math house—you just add more rooms. The house must still stand straight (linearity), not wobble (equal spread of errors), and not have secret passages that go in circles (no perfect multicollinearity). Some rooms are just for group differences (like ANOVA), and some mix group differences with number lines (like ANCOVA).",
+        "real_world_use_case": "A firm models sales using advertising spend (continuous), region (categorical via dummies), and their interaction to see if advertising works differently by region. They must still check residual plots for homoscedasticity and independence, and ensure they have not created too many high-order interactions that overfit. Understanding that the model with only region dummies is equivalent to ANOVA helps them compare group means, while adding advertising and its interaction with region moves them into ANCOVA territory, where they compare adjusted means at given ad levels.",
+        "common_mistakes": "Analysts sometimes believe that adding categorical variables or interactions changes or relaxes the OLS assumptions; it does not—the same conditions must be checked. Another mistake is adding many interaction terms (especially three-way or higher) without theoretical justification, creating overly complex models that fit sample noise and generalize poorly. Some also fail to recognize that dummy-only regressions are just ANOVA under a different name, missing useful connections between methods."
+      },
+      "context": "OLS assumptions with categorical predictors, interactions, and links to ANOVA/ANCOVA",
+      "relevance_score": {
+        "score": 8,
+        "justification": "Integrates assumptions, model complexity, and methodological connections; important for deeper understanding and advanced topics."
+      },
+      "example": "Suppose a beverage company wants to test whether the effect of a price discount on weekly sales differs between urban and rural stores. They specify Sales = β₀ + β₁·Discount + β₂·D_Urban + β₃·(Discount×D_Urban) + ε. Here, D_Urban is a dummy, and the interaction term allows the slope of Discount to differ by location. They still need to check residual plots for constant variance and independence, and ensure they have not added unnecessary higher-order interactions (like a three-way interaction with season) without strong theory. If they drop Discount and its interaction, leaving only location dummies, the model reduces to an ANOVA comparing mean sales across locations.",
+      "mermaid_diagrams": {
+        "concise": "graph TD;\n  OLS[\"OLS\nAssumptions\"] --> Lin[\"Linearity\nin parameters\"];\n  OLS --> Indep[\"Independent\nErrors\"];\n  OLS --> Homo[\"Homoscedastic\nErrors\"];\n  OLS --> Normal[\"Normal\nErrors\"];\n  OLS --> NoMulti[\"No Perfect\nMulticollinearity\n(k-1 rule)\"];\n  Cats[\"Categoricals\n& Interactions\"] --> ANOVA[\"Dummy-only\n= ANOVA\"];\n  Cats --> ANCOVA[\"Mix with\ncontinuous\n= ANCOVA\"];",
+        "analogy": "graph LR;\n  Base[\"Building\nStructure\n(OLS)\"] --> Rooms[\"Rooms for\nCategoricals\"];\n  Rooms --> Wings[\"ANOVA /\nANCOVA\nwings\"];\n  Overload[\"Too many\ninteraction\nextensions\"] --> Unstable[\"Hard to\ninterpret /\nunstable\"];",
+        "eli5": "graph TD;\n  House[\"Math House\"] --> Room1[\"Group\nRooms\n(ANOVA)\"];\n  House --> Room2[\"Number +\nGroup Rooms\n(ANCOVA)\"];\n  Rules[\"House Rules:\nstraight,\nno wobble\"] --> House;",
+        "real_world_use_case": "flowchart TD;\n  Inputs[\"Discount,\nLocation\"] --> Model[\"Sales = β₀ + β₁·Discount\n+ β₂·D_Urban\n+ β₃·(Discount×D_Urban)\"];\n  Model --> CheckAssump[\"Check\nresiduals,\nmulticollinearity\"];\n  Model --> Compare[\"Compare\nslopes by\nLocation\"];\n  Compare --> Strategy[\"Tailor\nDiscount\nStrategy by\nRegion\"];",
+        "common_mistakes": "graph TD;\n  MisAssump[\"Think OLS\nassumptions\nchange with\ndummies\"] --> Wrong1[\"Skip\nresidual\nchecks\"];\n  ManyInt[\"Add many\nhigh-order\ninteractions\"] --> Overfit[\"Overfit and\npoor\ngeneralization\"];\n  IgnoreLink[\"Ignore\nANOVA link\"] --> Lost[\"Miss\nsimpler\ninterpretation\"];",
+        "example": "flowchart TD;\n  Start[\"Urban & Rural\nstores\"] --> Model[\"Sales = β₀ + β₁·Discount\n+ β₂·D_Urban\n+ β₃·Discount×D_Urban\"];\n  Model --> NoDisc[\"Drop Discount\n& interaction\"];\n  NoDisc --> ANOVA[\"ANOVA-like\ncomparison of\nmean sales\nby location\"];"
+      },
+      "math_visualizations": {
+        "concise": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  eq1[label=\"Y = Xβ + ε\"];\n  lin[label=\"Linearity:\nY linear in β\"];\n  indep[label=\"Independence:\nCov(ε_i, ε_j)=0\"];\n  homo[label=\"Homoscedastic:\nVar(ε_i)=σ²\"];\n  norm[label=\"Normal:\nε_i ~ N(0,σ²)\"];\n  multi[label=\"No Perfect\nMulticollinearity\"];\n  eq1 -> lin;\n  eq1 -> indep;\n  eq1 -> homo;\n  eq1 -> norm;\n  eq1 -> multi;\n}",
+        "analogy": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  struct[label=\"Structure\n(Assumptions)\"];\n  rooms[label=\"Categorical\nRooms\"];\n  wings[label=\"ANOVA /\nANCOVA\nWings\"];\n  struct -- rooms;\n  rooms -- wings;\n}",
+        "eli5": "/* layout=neato */\ngraph G {\n  node [margin=0.3, fontsize=11];\n  straight[label=\"Straight\nLines\"];\n  even[label=\"Even\nSpread\"];\n  noLoop[label=\"No\nCircle\nPaths\"];\n  straight -- even;\n  even -- noLoop;\n}",
+        "real_world_use_case": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  disc[label=\"Discount\"];\n  loc[label=\"D_Urban\"];\n  inter[label=\"Discount×D_Urban\"];\n  eq[label=\"Sales = β₀ + β₁·Disc\n+ β₂·D_Urban\n+ β₃·Disc×D_Urban\"];\n  disc -> eq;\n  loc -> eq;\n  inter -> eq;\n}",
+        "common_mistakes": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  skip[label=\"Skip\nassumption\nchecks\"];\n  many[label=\"Add many\ninteractions\"];\n  prob1[label=\"Biased /\ninvalid\ninference\"];\n  prob2[label=\"High\nvariance /\npoor\nprediction\"];\n  skip -> prob1;\n  many -> prob2;\n}",
+        "example": "/* layout=dot */\ndigraph G {\n  node [margin=0.3, fontsize=11];\n  full[label=\"Sales = β₀ + β₁·Disc\n+ β₂·D_Urban\n+ β₃·Disc×D_Urban\"];\n  anova[label=\"Sales = β₀ + β₂·D_Urban\"];\n  full -> anova[label=\"Drop\nDisc &\nInteraction\"];\n}"
+      },
+      "tags": [
+        "OLS assumptions",
+        "categorical variables",
+        "interactions",
+        "ANOVA",
+        "ANCOVA"
+      ],
+      "plantuml_diagrams": {
+        "concise": "",
+        "analogy": "",
+        "eli5": "",
+        "real_world_use_case": "",
+        "common_mistakes": "",
+        "example": ""
+      },
+      "flashcard_id": "DAA_lec_6_21"
+    }
+  ]
 }

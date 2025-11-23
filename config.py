@@ -5,7 +5,7 @@ Loads settings from .env file and provides easy access
 
 import os
 from pathlib import Path
-from typing import Optional
+from typing import Dict, Optional
 
 try:
     from dotenv import load_dotenv  # type: ignore
@@ -22,6 +22,13 @@ class Config:
     # --- Gemini API ---
     GEMINI_API_KEY: Optional[str] = os.getenv("GEMINI_API_KEY")
     GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    
+    # --- OpenAI API ---
+    OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
+    OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-5.1")
+
+    # --- LLM Provider Selection ---
+    LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "gemini").lower()
     
     # ==================== Directory Configuration ====================
     INPUT_DIR: str = os.getenv("INPUT_DIR", "./slides")
@@ -65,6 +72,10 @@ class Config:
         if not cls.GEMINI_API_KEY:
             return False, "GEMINI_API_KEY is not set. Please set it in .env file or environment."
         
+        provider = (cls.LLM_PROVIDER or "gemini").lower()
+        if provider == "openai" and not cls.OPENAI_API_KEY:
+            return False, "OPENAI_API_KEY is not set but LLM_PROVIDER=openai. Please set it in .env."
+        
         if cls.MAX_CHUNK_SIZE < 100:
             return False, "MAX_CHUNK_SIZE must be at least 100 characters."
         
@@ -91,6 +102,37 @@ class Config:
             print(f"  • Batch Size: {cls.BATCH_SIZE if cls.BATCH_SIZE > 0 else 'Unlimited'}")
         print(f"  • LaTeX Enabled: {cls.LATEX_ENABLED}")
         print(f"  • Anki Enabled: {cls.ANKI_ENABLED}")
-        api_key_preview = cls.GEMINI_API_KEY[:10] + "..." if cls.GEMINI_API_KEY else "NOT SET"
-        print(f"  • API Key: {api_key_preview}")
+        provider = (cls.LLM_PROVIDER or 'gemini').lower()
+        print(f"  • LLM Provider: {provider}")
+        if provider == "openai":
+            model = cls.OPENAI_MODEL
+            api_key_preview = cls.OPENAI_API_KEY[:10] + "..." if cls.OPENAI_API_KEY else "NOT SET"
+        else:
+            model = cls.GEMINI_MODEL
+            api_key_preview = cls.GEMINI_API_KEY[:10] + "..." if cls.GEMINI_API_KEY else "NOT SET"
+        print(f"  • LLM Model: {model}")
+        print(f"  • LLM API Key: {api_key_preview}")
+
+    @classmethod
+    def get_llm_settings(
+        cls,
+        provider_override: Optional[str] = None,
+        model_override: Optional[str] = None,
+    ) -> Dict[str, Optional[str]]:
+        """
+        Helper to resolve provider/model/api_key combinations.
+        """
+        provider = (provider_override or cls.LLM_PROVIDER or "gemini").lower()
+        if provider == "openai":
+            return {
+                "provider": provider,
+                "model": model_override or cls.OPENAI_MODEL,
+                "api_key": cls.OPENAI_API_KEY,
+            }
+        # Default to Gemini
+        return {
+            "provider": "gemini",
+            "model": model_override or cls.GEMINI_MODEL,
+            "api_key": cls.GEMINI_API_KEY,
+        }
 

@@ -38,12 +38,33 @@ from datetime import datetime
 
 from config import Config
 from .generator import CognitiveFlashcardGenerator
+from .llm_client import LLMClient
 from .quiz_generator import QuizGenerator
 from .async_generator import AsyncCognitiveFlashcardGenerator
 from .async_quiz_generator import AsyncQuizGenerator
 from .batch_coordinator import run_batch_generation
 from .renderer import DiagramRenderer
 from .utils import load_courses, get_course_by_id
+
+
+def create_llm_client(
+    provider_override: Optional[str] = None,
+    model_override: Optional[str] = None,
+) -> LLMClient:
+    """Helper that instantiates an LLM client with the configured provider/model."""
+    settings = Config.get_llm_settings(provider_override, model_override)
+    provider = settings["provider"]
+    model = settings["model"]
+    api_key = settings["api_key"]
+    
+    if provider == "openai":
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY is not configured.")
+        return LLMClient(provider="openai", model=model, openai_api_key=api_key)
+    
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY is not configured.")
+    return LLMClient(provider="gemini", model=model, gemini_api_key=api_key)
 
 
 def save_flashcards_json(flashcards, metadata, output_path):
@@ -337,11 +358,11 @@ def process_course_flashcards(course: Dict[str, Any], slide_analysis_prefix: Opt
         print(f"    To install: brew install graphviz (macOS) or apt-get install graphviz (Linux)")
     
     # Initialize generator with course context
+    flashcard_llm = create_llm_client()
     generator = CognitiveFlashcardGenerator(
-        api_key=Config.GEMINI_API_KEY,
-        model=Config.GEMINI_MODEL,
         course_name=course_name,
-        textbook_reference=textbook_reference
+        textbook_reference=textbook_reference,
+        llm_client=flashcard_llm,
     )
     
     # Process each lecture
@@ -556,11 +577,11 @@ def process_course_quizzes(course: Dict[str, Any], slide_analysis_prefix: Option
     quiz_output_dir.mkdir(exist_ok=True)
     
     # Initialize quiz generator
+    quiz_llm = create_llm_client()
     quiz_generator = QuizGenerator(
-        api_key=Config.GEMINI_API_KEY,
-        model=Config.GEMINI_MODEL,
         course_name=course_name,
-        textbook_reference=textbook_reference
+        textbook_reference=textbook_reference,
+        llm_client=quiz_llm,
     )
     
     # Process each flashcard file
@@ -729,18 +750,18 @@ def process_course_batch(course: Dict[str, Any], slide_analysis_prefix: Optional
     print(f"📊 Found {len(structured_analysis_files)} lecture(s) to process")
     
     # Initialize async generators
+    async_flashcard_llm = create_llm_client()
     flashcard_generator = AsyncCognitiveFlashcardGenerator(
-        api_key=Config.GEMINI_API_KEY,
-        model=Config.GEMINI_MODEL,
         course_name=course_name,
-        textbook_reference=textbook_reference
+        textbook_reference=textbook_reference,
+        llm_client=async_flashcard_llm,
     )
     
+    async_quiz_llm = create_llm_client()
     quiz_generator = AsyncQuizGenerator(
-        api_key=Config.GEMINI_API_KEY,
-        model=Config.GEMINI_MODEL,
         course_name=course_name,
-        textbook_reference=textbook_reference
+        textbook_reference=textbook_reference,
+        llm_client=async_quiz_llm,
     )
     
     # ==============================================================================

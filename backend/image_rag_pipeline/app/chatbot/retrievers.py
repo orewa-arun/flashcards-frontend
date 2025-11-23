@@ -3,7 +3,7 @@ LangChain retriever integration for the Image-RAG pipeline.
 Wraps our existing ImageRetriever to work with LangChain's ecosystem.
 """
 import logging
-from typing import List
+from typing import List, Optional
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.documents import Document
 from langchain_core.callbacks import CallbackManagerForRetrieverRun
@@ -28,6 +28,7 @@ class CourseTextRetriever(BaseRetriever):
     vector_store: VectorStore
     embedder: Embedder
     top_k: int = 5
+    lecture_id: Optional[str] = None
     
     class Config:
         """Pydantic config."""
@@ -39,6 +40,7 @@ class CourseTextRetriever(BaseRetriever):
         vector_store: VectorStore,
         embedder: Embedder,
         top_k: int = 5,
+        lecture_id: Optional[str] = None,
         **kwargs
     ):
         """
@@ -55,8 +57,11 @@ class CourseTextRetriever(BaseRetriever):
             vector_store=vector_store,
             embedder=embedder,
             top_k=top_k,
+            lecture_id=lecture_id,
             **kwargs
         )
+        # Store lecture_id separately (not handled by BaseRetriever/Pydantic automatically)
+        self.lecture_id = lecture_id
         # Don't store retriever as attribute (Pydantic v1 doesn't allow it)
         # We'll create it on-the-fly when needed
     
@@ -87,7 +92,8 @@ class CourseTextRetriever(BaseRetriever):
         results = retriever.query_text_to_text(
             query=query,
             course_id=self.course_id,
-            top_k=self.top_k
+            top_k=self.top_k,
+            lecture_id=self.lecture_id
         )
         
         # Convert to LangChain Document format

@@ -2,7 +2,7 @@
 Retrieval module for text-to-image search.
 """
 import logging
-from typing import List, Dict
+from typing import List, Dict, Optional
 from ..db.vector_store import VectorStore
 from ..ingestion.embedder import Embedder
 
@@ -28,7 +28,8 @@ class ImageRetriever:
         self,
         query: str,
         course_id: str,
-        top_k: int = 5
+        top_k: int = 5,
+        lecture_id: Optional[str] = None
     ) -> Dict:
         """
         Search for images using text query.
@@ -51,7 +52,8 @@ class ImageRetriever:
             course_id=course_id,
             query_vector=query_embedding,
             filter_type="image",
-            top_k=top_k
+            top_k=top_k,
+            lecture_id=lecture_id
         )
         
         # Format results
@@ -79,7 +81,8 @@ class ImageRetriever:
         self,
         query: str,
         course_id: str,
-        top_k: int = 5
+        top_k: int = 5,
+        lecture_id: Optional[str] = None
     ) -> Dict:
         """
         Search for text chunks using text query.
@@ -102,7 +105,8 @@ class ImageRetriever:
             course_id=course_id,
             query_vector=query_embedding,
             filter_type="text",
-            top_k=top_k
+            top_k=top_k,
+            lecture_id=lecture_id
         )
         
         # Format results - include all metadata for richer context

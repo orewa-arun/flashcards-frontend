@@ -7,31 +7,51 @@ import os
 import json
 from pathlib import Path
 from typing import Dict, List, Any, Optional
-import google.generativeai as genai
 import time
 import threading
 
 from config import Config
 from cognitive_flashcard_generator.diagram_generator import DiagramGenerator
+from cognitive_flashcard_generator.llm_client import LLMClient
 
 
 class QuizGenerator:
     """Generates quiz questions at different difficulty levels from flashcard content."""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.5-flash",
-                 course_name: str = "", textbook_reference: str = ""):
+    def __init__(
+        self,
+        course_name: str = "",
+        textbook_reference: str = "",
+        *,
+        llm_client: Optional[LLMClient] = None,
+        api_key: Optional[str] = None,
+        model: Optional[str] = None,
+        provider: Optional[str] = None,
+    ):
         """
         Initialize the quiz generator.
-        
-        Args:
-            api_key: Gemini API key
-            model: Gemini model to use
-            course_name: Name of the course (e.g., "Information Systems")
-            textbook_reference: Full textbook citation
         """
-        self.genai = genai
-        self.genai.configure(api_key=api_key)
-        self.model = self.genai.GenerativeModel(model)
+        if llm_client is not None:
+            self.llm_client = llm_client
+        else:
+            settings = Config.get_llm_settings(provider, model)
+            resolved_provider = settings["provider"]
+            resolved_model = settings["model"]
+            resolved_api_key = settings["api_key"] or api_key
+            
+            if resolved_provider == "openai":
+                self.llm_client = LLMClient(
+                    provider="openai",
+                    model=resolved_model,
+                    openai_api_key=resolved_api_key,
+                )
+            else:
+                self.llm_client = LLMClient(
+                    provider="gemini",
+                    model=resolved_model,
+                    gemini_api_key=resolved_api_key or Config.GEMINI_API_KEY,
+                )
+        
         self.course_name = course_name
         self.textbook_reference = textbook_reference
         self._progress_active = False
@@ -111,7 +131,7 @@ class QuizGenerator:
         original_chunk = flashcards_chunk
         
         # Create logs directory for raw responses
-        logs_dir = Path("logs") / "gemini_raw" / "quizzes"
+        logs_dir = Path("logs") / "llm_raw" / "quizzes"
         logs_dir.mkdir(parents=True, exist_ok=True)
         
         for attempt in range(max_retries):
@@ -137,14 +157,11 @@ class QuizGenerator:
                 
                 print(f"🤖 Analyzing {len(flashcards_chunk)} flashcard(s) and generating Level {level} questions...")
                 
-                # Configure generation with progressive token limit reduction
+                # Configure generation with progressive token limit reduction.
+                # With GPT-5.1 we can safely target larger completions again.
                 base_tokens = 50000
                 max_tokens = max(4096, int(base_tokens * (0.8 ** attempt)))  # Reduce tokens on retry
-                
-                generation_config = {
-                    "max_output_tokens": max_tokens,
-                    "temperature": 0.8,  # Slightly higher for creative question generation
-                }
+                temperature = 0.8  # Slightly higher for creative question generation
                 
                 print(f"   📊 Flashcards: {len(flashcards_chunk)}")
                 print(f"   📊 Max output tokens: {max_tokens:,}")
@@ -153,14 +170,15 @@ class QuizGenerator:
                 start_time = time.time()
                 self._start_progress_indicator()
                 try:
-                    response = self.model.generate_content(
+                    result_text = self.llm_client.generate_text(
                         prompt,
-                        generation_config=generation_config
+                        max_tokens=max_tokens,
+                        temperature=temperature,
                     )
                     self._stop_progress_indicator()
                     elapsed_time = time.time() - start_time
                     print(f"   ⏱️  API response received in {elapsed_time:.1f} seconds")
-                    result_text = response.text.strip()
+                    result_text = result_text.strip()
                 except Exception as api_error:
                     self._stop_progress_indicator()
                     elapsed_time = time.time() - start_time

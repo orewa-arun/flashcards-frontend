@@ -108,7 +108,8 @@ class VectorStore:
         course_id: str,
         query_vector: List[float],
         filter_type: str = None,
-        top_k: int = 5
+        top_k: int = 5,
+        lecture_id: Optional[str] = None
     ) -> List[Dict[str, Any]]:
         """
         Search for similar embeddings in a course collection.
@@ -125,16 +126,25 @@ class VectorStore:
         collection_name = f"course_{course_id}"
         
         # Build filter if specified
-        query_filter = None
+        must_conditions = []
+        
         if filter_type:
-            query_filter = Filter(
-                must=[
-                    FieldCondition(
-                        key="type",
-                        match=MatchValue(value=filter_type)
-                    )
-                ]
+            must_conditions.append(
+                FieldCondition(
+                    key="type",
+                    match=MatchValue(value=filter_type)
+                )
             )
+        
+        if lecture_id:
+            must_conditions.append(
+                FieldCondition(
+                    key="lecture_id",
+                    match=MatchValue(value=lecture_id)
+                )
+            )
+        
+        query_filter = Filter(must=must_conditions) if must_conditions else None
         
         response = self.client.query_points(
             collection_name=collection_name,

@@ -6,7 +6,6 @@ from both slide-based and textbook-based content sources.
 """
 
 import json
-import os
 import re
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -15,7 +14,9 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+from config import Config
 from cognitive_flashcard_generator.generator import CognitiveFlashcardGenerator
+from cognitive_flashcard_generator.llm_client import LLMClient
 from cognitive_flashcard_generator.quiz_generator import QuizGenerator
 from cognitive_flashcard_generator.validate_quiz_consistency import (
     validate_flashcard_quiz_consistency,
@@ -89,11 +90,6 @@ class ContentOrchestrator:
         # Load courses data
         with open(courses_json_path, 'r') as f:
             self.courses_data = json.load(f)
-        
-        # Get API key
-        self.api_key = os.getenv('GEMINI_API_KEY')
-        if not self.api_key:
-            raise ValueError("GEMINI_API_KEY not found in environment variables")
     
     def get_course(self, course_id: str) -> Optional[Dict]:
         """Get course by ID."""
@@ -127,6 +123,27 @@ class ContentOrchestrator:
         
         # If hasPDF is True or missing (None), treat as slide-based
         return True
+    
+    def _build_llm_client(self) -> LLMClient:
+        """
+        Build an LLMClient instance based on configuration.
+        
+        Returns:
+            LLMClient instance configured with the appropriate provider and API key
+        """
+        settings = Config.get_llm_settings()
+        provider = settings["provider"]
+        model = settings["model"]
+        api_key = settings["api_key"]
+        
+        if provider == "openai":
+            if not api_key:
+                raise ValueError("OPENAI_API_KEY is not configured.")
+            return LLMClient(provider="openai", model=model, openai_api_key=api_key)
+        else:
+            if not api_key:
+                raise ValueError("GEMINI_API_KEY is not configured.")
+            return LLMClient(provider="gemini", model=model, gemini_api_key=api_key)
     
     def resolve_content_source(self, course: Dict, lecture: Dict, lecture_number: str) -> tuple[str, Path]:
         """
@@ -260,11 +277,12 @@ class ContentOrchestrator:
             raise
         
         # Initialize batch coordinator and generator
+        flashcard_llm = self._build_llm_client()
+        print(f"🤖 Provider: {flashcard_llm.provider} | Model: {flashcard_llm.model}\n")
         generator = CognitiveFlashcardGenerator(
-            api_key=self.api_key,
-            model="gemini-2.5-flash",
             course_name=course_name,
-            textbook_reference=textbook
+            textbook_reference=textbook,
+            llm_client=flashcard_llm,
         )
         
         # Determine chunk size based on content type
@@ -426,11 +444,12 @@ class ContentOrchestrator:
         print(f"📚 Loaded {len(flashcards)} flashcard(s)\n")
         
         # Initialize quiz generator
+        quiz_llm = self._build_llm_client()
+        print(f"🤖 Provider: {quiz_llm.provider} | Model: {quiz_llm.model}\n")
         quiz_gen = QuizGenerator(
-            api_key=self.api_key,
-            model="gemini-2.5-flash",
             course_name=course_name,
-            textbook_reference=textbook
+            textbook_reference=textbook,
+            llm_client=quiz_llm,
         )
         
         # Generate quizzes for each level
