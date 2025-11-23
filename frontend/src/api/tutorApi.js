@@ -157,6 +157,49 @@ export const sendMessage = async (conversationId, message) => {
 };
 
 /**
+ * Send a message and stream the response
+ * 
+ * @param {string} conversationId - Conversation ID
+ * @param {string} message - User's message
+ * @param {Function} onChunk - Callback for each text chunk
+ * @returns {Promise<void>}
+ */
+export const streamMessage = async (conversationId, message, onChunk) => {
+  try {
+    const token = await getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/api/tutor/conversations/${conversationId}/stream`, {
+      method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ message })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Stream failed: ${response.status} ${errorText}`);
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      const text = decoder.decode(value, { stream: true });
+      onChunk(text);
+    }
+    
+    console.log('✅ Stream completed');
+  } catch (error) {
+    console.error('❌ Error streaming message:', error);
+    throw error;
+  }
+};
+
+/**
  * Delete a conversation
  * 
  * @param {string} conversationId - Conversation ID

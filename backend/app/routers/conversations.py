@@ -2,8 +2,10 @@
 
 import logging
 import httpx
-from typing import List, Dict, Any
+import json
+from typing import List, Dict, Any, AsyncGenerator
 from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.database import get_database
@@ -225,6 +227,90 @@ async def update_conversation_notes(
         raise
     except Exception as e:
         logger.error(f"Error updating conversation notes: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/{conversation_id}/stream")
+async def stream_message(
+    conversation_id: str,
+    request: Dict[str, str],
+    current_user: Dict[str, Any] = Depends(get_current_user),
+    service: ConversationService = Depends(get_conversation_service)
+):
+    """
+    Send a message and stream the AI response chunk by chunk.
+    """
+    try:
+        user_id = current_user.get("uid")
+        message_text = request.get("message", "").strip()
+        
+        if not message_text:
+            raise HTTPException(status_code=400, detail="Message cannot be empty")
+        
+        # Get conversation
+        conversation = await service.get_conversation_with_messages(
+            conversation_id=conversation_id,
+            user_id=user_id
+        )
+        
+        if not conversation:
+            raise HTTPException(status_code=404, detail="Conversation not found")
+        
+        # Save user message first
+        await service.add_message(
+            conversation_id=conversation_id,
+            role="user",
+            content=message_text
+        )
+        
+        # Define generator for streaming
+        async def response_generator() -> AsyncGenerator[bytes, None]:
+            full_response = ""
+            base_url = settings.RAG_API_BASE_URL.rstrip('/')
+            
+            try:
+                async with httpx.AsyncClient(timeout=60.0) as client:
+                    async with client.stream(
+                        "POST",
+                        f"{base_url}/chat/{conversation.course_id}/stream",
+                        json={
+                            "message": message_text,
+                            "session_id": conversation_id
+                        }
+                    ) as response:
+                        response.raise_for_status()
+                        async for chunk in response.aiter_bytes():
+                            # Accumulate full response for saving later
+                            text_chunk = chunk.decode("utf-8")
+                            full_response += text_chunk
+                            yield chunk
+                            
+                # Save the full AI response to database after streaming is done
+                # Note: We need a new service instance or context here if the generator runs after the request scope
+                # But since we are inside the endpoint, we can use 'service'
+                await service.add_message(
+                    conversation_id=conversation_id,
+                    role="assistant",
+                    content=full_response
+                )
+                
+                # Auto-generate title if needed
+                if len(conversation.messages) == 0:
+                    auto_title = message_text[:50] + ("..." if len(message_text) > 50 else "")
+                    await service.update_conversation_title(
+                        conversation_id=conversation_id,
+                        user_id=user_id,
+                        title=auto_title
+                    )
+                    
+            except Exception as e:
+                logger.error(f"Error during streaming: {e}")
+                yield f"\n[Error: {str(e)}]".encode("utf-8")
+
+        return StreamingResponse(response_generator(), media_type="text/plain")
+
+    except Exception as e:
+        logger.error(f"Error setting up stream: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

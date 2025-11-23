@@ -359,6 +359,51 @@ class ConversationManager:
             "session_id": session_id
         }
     
+    def stream_chat(
+        self,
+        session_id: str,
+        message: str
+    ):
+        """
+        Stream the chat response chunk by chunk.
+        
+        Args:
+            session_id: Unique session identifier
+            message: User's message
+            
+        Yields:
+            Chunks of the response text
+        """
+        logger.info(f"\n{'='*70}")
+        logger.info(f"🌊 STREAMING MESSAGE | Session: {session_id}")
+        logger.info(f"   User said: '{message}'")
+        logger.info(f"{'='*70}")
+        
+        memory = self.get_or_create_memory(session_id)
+        raw_chat_history = memory.load_memory_variables({}).get("chat_history", [])
+        
+        chat_history = [
+            msg for msg in raw_chat_history 
+            if isinstance(msg, (HumanMessage, AIMessage))
+        ]
+        
+        full_response = ""
+        
+        # Use the chain's stream method
+        for chunk in self.chain.stream({
+            "input": message,
+            "chat_history": chat_history
+        }):
+            full_response += chunk
+            yield chunk
+            
+        # Save context after full response is generated
+        memory.save_context(
+            {"input": message},
+            {"output": full_response}
+        )
+        logger.info(f"💾 Stream complete. Saved full response ({len(full_response)} chars) to memory")
+    
     def clear_session(self, session_id: str):
         """
         Clear the chat history for a session.

@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FaChevronRight, FaPaperPlane, FaRobot, FaUser } from 'react-icons/fa';
+import { FaChevronRight, FaPaperPlane, FaRobot, FaUser, FaPenNib } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels';
 import { trackEvent } from '../utils/amplitude';
 import {
@@ -10,6 +13,7 @@ import {
   getConversations,
   getConversation,
   sendMessage,
+  streamMessage,
   deleteConversation,
   updateConversationNotes
 } from '../api/tutorApi';
@@ -75,6 +79,12 @@ const preprocessMarkdown = (content) => {
     codeBlockIndex++;
     return placeholder;
   });
+  
+  // Standardize LaTeX delimiters for remark-math
+  // Convert \[ ... \] to $$ ... $$ (Block Math)
+  processed = processed.replace(/\\\[([\s\S]*?)\\\]/g, '$$$$$1$$$$');
+  // Convert \( ... \) to $ ... $ (Inline Math)
+  processed = processed.replace(/\\\(([\s\S]*?)\\\)/g, '$$$1$$');
   
   // Normalize whitespace outside code blocks
   processed = processed.replace(/[ \t]{3,}/g, ' ');
@@ -288,13 +298,22 @@ function TutorChatView() {
     setInputMessage('');
     setError(null);
 
-    // Add user message to chat immediately for better UX
+    // Add user message to chat immediately
     const newUserMessage = {
       role: 'user',
       content: userMessage,
       timestamp: new Date()
     };
-    setMessages(prev => [...prev, newUserMessage]);
+    
+    // Add empty assistant message placeholder
+    const placeholderMessage = {
+      role: 'assistant',
+      content: '',
+      timestamp: new Date(),
+      isStreaming: true
+    };
+    
+    setMessages(prev => [...prev, newUserMessage, placeholderMessage]);
 
     // Track message sent
     trackEvent('Sent Tutor Message', { courseId, lectureId, messageLength: userMessage.length });
@@ -302,34 +321,49 @@ function TutorChatView() {
     setIsLoading(true);
 
     try {
-      // Send message to backend
-      const response = await sendMessage(activeConversationId, userMessage);
+      // Use streaming API
+      await streamMessage(activeConversationId, userMessage, (chunk) => {
+        setMessages(prev => {
+          const newMessages = [...prev];
+          const lastMsg = newMessages[newMessages.length - 1];
+          if (lastMsg.role === 'assistant') {
+            lastMsg.content += chunk;
+          }
+          return newMessages;
+        });
+      });
 
-      // Add assistant response to chat
-      const assistantMessage = {
-        role: 'assistant',
-        content: response.answer,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, assistantMessage]);
+      // Mark streaming as done
+      setMessages(prev => {
+        const newMessages = [...prev];
+        const lastMsg = newMessages[newMessages.length - 1];
+        if (lastMsg.role === 'assistant') {
+          lastMsg.isStreaming = false;
+        }
+        return newMessages;
+      });
 
-      // Refresh conversations list to update the title and timestamp
+      // Refresh conversations list
       await loadConversations();
 
-      // Track response received
       trackEvent('Received Tutor Response', { 
         courseId, 
         lectureId, 
-        responseLength: response.answer.length 
+        responseType: 'stream'
       });
     } catch (error) {
       console.error('Error sending message:', error);
       setError('Failed to get response. Please try again.');
       
-      // Remove the user message if request failed
-      setMessages(prev => prev.slice(0, -1));
+      // Remove the placeholder if it's empty, or keep partial response
+      setMessages(prev => {
+        const last = prev[prev.length - 1];
+        if (last.role === 'assistant' && !last.content) {
+          return prev.slice(0, -2); // Remove both user msg and placeholder
+        }
+        return prev; // Keep partial response
+      });
       
-      // Restore the input
       setInputMessage(userMessage);
     } finally {
       setIsLoading(false);
@@ -468,8 +502,39 @@ function TutorChatView() {
 
   const handleAddSelectionToNotes = () => {
     if (!selectionPrompt?.text) return;
+    
+    // Simple approach: Just collapse single-character lines
+    // Split by newlines, if a line is 1 char, merge it with previous
+    const lines = selectionPrompt.text.split('\n');
+    let result = '';
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      
+      if (!line) {
+        // Empty line - preserve as paragraph break
+        if (result && !result.endsWith('\n\n')) {
+          result += '\n\n';
+        }
+        continue;
+      }
+      
+      if (line.length === 1) {
+        // Single character - append without newline
+        result += line;
+      } else {
+        // Multi-character line
+        if (result && !result.endsWith('\n') && !result.endsWith(' ')) {
+          result += ' ';
+        }
+        result += line;
+      }
+    }
+    
+    const cleanedText = result.trim();
+
     setNotes(prev => {
-      const updated = prev ? `${prev}\n\n${selectionPrompt.text}` : selectionPrompt.text;
+      const updated = prev ? `${prev}\n\n${cleanedText}` : cleanedText;
       scheduleNotesSave(updated);
       return updated;
     });
@@ -499,7 +564,7 @@ function TutorChatView() {
           <div className="tutor-header-content">
             <div className="tutor-header-left">
               <div className="tutor-icon-header">
-                <FaRobot />
+                <FaPenNib />
               </div>
               <div>
                 <h1 className="tutor-header-title">AI Tutor</h1>
@@ -550,7 +615,7 @@ function TutorChatView() {
           {messages.length === 0 && !error && !conversationId && (
             <div className="empty-state">
               <div className="empty-state-icon">
-                <FaRobot />
+                <FaPenNib />
               </div>
               <h2 className="empty-state-title">Welcome to your AI Tutor!</h2>
               <p className="empty-state-description">
@@ -587,14 +652,25 @@ function TutorChatView() {
               className={`chat-message ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
             >
               <div className="message-avatar">
-                {message.role === 'user' ? <FaUser /> : <FaRobot />}
+                {message.role === 'user' ? <FaUser /> : <FaPenNib />}
               </div>
               <div className="message-content">
                 {message.role === 'assistant' ? (
                   <div className="message-text markdown-content">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {message.isStreaming && !message.content ? (
+                      <div className="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    ) : (
+                      <ReactMarkdown 
+                        remarkPlugins={[remarkGfm, remarkMath]}
+                        rehypePlugins={[rehypeKatex]}
+                      >
                       {preprocessMarkdown(message.content)}
                     </ReactMarkdown>
+                    )}
                   </div>
                 ) : (
                   <div className="message-text">{message.content}</div>
@@ -602,21 +678,6 @@ function TutorChatView() {
               </div>
             </div>
           ))}
-
-          {isLoading && (
-            <div className="chat-message assistant-message">
-              <div className="message-avatar">
-                <FaRobot />
-              </div>
-              <div className="message-content">
-                <div className="typing-indicator">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          )}
 
           {error && (
             <div className="error-message">
@@ -731,3 +792,4 @@ function TutorChatView() {
 }
 
 export default TutorChatView;
+

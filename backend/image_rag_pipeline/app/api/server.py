@@ -6,7 +6,7 @@ import os
 import logging
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Optional
@@ -392,6 +392,27 @@ async def chat(course_id: str, request: ChatRequest):
         import traceback
         logger.error(f"Chat failed: {e}")
         logger.error(f"Full traceback:\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/chat/{course_id}/stream")
+async def stream_chat(course_id: str, request: ChatRequest):
+    """
+    Stream chat response from the AI Tutor.
+    """
+    try:
+        lecture_id = extract_lecture_id_from_session(request.session_id, course_id)
+        conversation_manager = get_conversation_manager(course_id, lecture_id)
+        
+        return StreamingResponse(
+            conversation_manager.stream_chat(
+                session_id=request.session_id,
+                message=request.message
+            ),
+            media_type="text/plain"
+        )
+    except Exception as e:
+        logger.error(f"Stream chat failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

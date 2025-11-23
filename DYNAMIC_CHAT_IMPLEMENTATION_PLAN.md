@@ -111,3 +111,4 @@ This phase introduces the capability for the AI to generate and display Python-b
             *   Render the `explanation` text below the image, passing it through the `ContentRenderer` (as explanations may also contain LaTeX).
 
 This comprehensive plan ensures a phased, manageable approach to building a highly dynamic and effective AI-powered chat interface.
+
