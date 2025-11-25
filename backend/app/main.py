@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import connect_to_mongo, close_mongo_connection
+from app.db.postgres import init_postgres_db, close_postgres_db
 from app.routers import (
     health,
     auth,
@@ -19,7 +20,8 @@ from app.routers import (
     profile,
     performance,
     mix_mode,
-    conversations
+    conversations,
+    content
 )
 from app.firebase_auth import initialize_firebase
 from app.database_indexes import create_indexes
@@ -39,6 +41,9 @@ async def lifespan(app: FastAPI):
     await connect_to_mongo()
     initialize_firebase()
     
+    # Initialize PostgreSQL database
+    await init_postgres_db()
+    
     # Create database indexes
     from app.database import get_database
     db = get_database()
@@ -47,6 +52,7 @@ async def lifespan(app: FastAPI):
     # Shutdown
     logger.info("Shutting down Analytics API...")
     await close_mongo_connection()
+    await close_postgres_db()
 
 # Create FastAPI application
 app = FastAPI(
@@ -79,6 +85,7 @@ app.include_router(profile.router)
 app.include_router(performance.router, prefix="/api/v1/performance", tags=["performance"])
 app.include_router(mix_mode.router)
 app.include_router(conversations.router)
+app.include_router(content.router)
 
 @app.get("/")
 async def root():

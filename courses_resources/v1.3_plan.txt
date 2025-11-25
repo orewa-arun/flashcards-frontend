@@ -1,0 +1,56 @@
+Create a front-end form where the user enters:
+{
+    "course_id": "MAPP_F_MKT404_EN_2025",
+    "course_name": "Customer experience and branding",
+    "instructor": "Groups 5-11-15 (Professor Jean-Christophe Pineau)",
+    "reference_textbooks": [],
+    "additional_info": "Groups 5-11-15"
+}
+
+and lecture pdfs (just pdfs no extra details)
+
+That must add the course metadata into @courses.json and @lectures.json as mentioned.
+
+And push the pdfs into cloudflare R2 bucket:
+    with the path:
+        docs/course_slides_pdf/{course_id}/{pdf_name}
+        docs/course_slides_pdf/MAPP_F_MKT404_EN_2025/Session 1 - The New Consumer.pdf
+
+Then we run a script for creating structured_analysis.json:
+
+    (We use gemini-2.5-pro for this)
+
+    input : course_id, course_slides_pdf_paths: []
+    courses : Session 1 - The New Consumer.pdf -> MAPP_F_MKT404_EN_2025_Session_1_-_The_New_Consumer_structured_analysis.json (Replaced space with "_")
+    
+    Store the structured_analysis in psql as json blob.
+    In a table, something like:
+        PK, course_id, course_slides_pdf_path, structured_analysis(json blob)
+
+Then we run a script for creating flashcards_only.json:
+
+    (We use claude-4.5-haiku for this)
+
+    input : course_id, course_slides_pdf_paths: [], max_flashcards_per_structured_analysis_chunk
+    
+    They use structured_analysis(json blob) of the inputs from the above table and create the flashcards_only json
+    
+    Basically the table becomes:
+        PK, course_id, course_slides_pdf_path, structured_analysis(json blob), flashcards(json blob)
+        1,MAPP_F_MKT404_EN_2025, docs/course_slides_pdf/MAPP_F_MKT404_EN_2025/Session 1 - The New Consumer.pdf, {...}, {...}
+
+Then we run a script for creating quiz.json:
+
+    (We use gemini-2.5-flash for this)
+    
+    input: course_id, course_slides_pdf_paths: [], max_questions_for_each_level_per_flashcard_chunk
+
+    They use the flashcards(json blob) of the inputs from the above table and create the quiz.json for each level
+
+    Basically the table becomes:
+        PK, course_id, course_slides_pdf_path, structured_analysis(json blob), flashcards(json blob), quiz_questions_level_1(json blob), quiz_questions_level_2(json blob), quiz_questions_level_3(json blob), quiz_questions_level_4(json blob)
+
+Then we run a script for processing flashcards into the qdrant DB. They get the flashcards.json from the inputs:
+
+    input : course_id, course_slides_pdf_paths: []
+    They access the table and get the flashcards(json blob) and accordingly process it for the qdrant DB.

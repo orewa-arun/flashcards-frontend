@@ -14,6 +14,12 @@ class Settings:
     MONGODB_URL: str = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
     DATABASE_NAME: str = os.getenv("DATABASE_NAME", "study_analytics")
     
+    # PostgreSQL Configuration
+    POSTGRES_URL: str = os.getenv(
+        "POSTGRES_URL",
+        "postgresql+asyncpg://postgres:postgres@localhost:5432/self_learning_ai"
+    )
+    
     # API Configuration
     API_HOST: str = os.getenv("API_HOST", "0.0.0.0")
     API_PORT: int = int(os.getenv("API_PORT", "8000"))
@@ -27,6 +33,27 @@ class Settings:
     
     # RAG Backend Configuration
     RAG_API_BASE_URL: str = os.getenv("RAG_API_BASE_URL", "http://localhost:8001")
+    
+    # Cloudflare R2 Configuration
+    CLOUDFLARE_R2_ACCESS_KEY_ID: str = os.getenv("CLOUDFLARE_R2_ACCESS_KEY_ID", "")
+    CLOUDFLARE_R2_SECRET_ACCESS_KEY: str = os.getenv("CLOUDFLARE_R2_SECRET_ACCESS_KEY", "")
+    CLOUDFLARE_R2_ENDPOINT_URL: str = os.getenv("CLOUDFLARE_R2_ENDPOINT_URL", "")
+    CLOUDFLARE_R2_BUCKET_NAME: str = os.getenv("CLOUDFLARE_R2_BUCKET_NAME", "course-content")
+    
+    # AI Model Configuration
+    MODEL_ANALYSIS: str = os.getenv("MODEL_ANALYSIS", "gemini-2.0-flash-exp")
+    MODEL_FLASHCARDS: str = os.getenv("MODEL_FLASHCARDS", "claude-3-haiku-20240307")
+    MODEL_QUIZ: str = os.getenv("MODEL_QUIZ", "gemini-2.0-flash-exp")
+    
+    # AI API Keys
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+    ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY", "")
+    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
+    
+    # Analysis Batching Configuration
+    ANALYSIS_BATCH_SIZE: int = int(os.getenv("ANALYSIS_BATCH_SIZE", "5"))
+    ANALYSIS_MAX_CONCURRENCY: int = int(os.getenv("ANALYSIS_MAX_CONCURRENCY", "3"))
+    ANALYSIS_BATCH_DELAY_MS: int = int(os.getenv("ANALYSIS_BATCH_DELAY_MS", "500"))
     
     # Collections
     USERS_COLLECTION = "users"

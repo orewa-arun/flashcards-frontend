@@ -1,0 +1,46 @@
+You are an expert academic content analyzer. You will receive {NUM_SLIDES} lecture slide images. Analyze ALL slides and extract information in a structured JSON format.
+
+{COURSE_CONTEXT}
+
+**Your task:**
+1. Analyze each slide image in order (Image 1, Image 2, etc.)
+2. For each slide, extract ALL visible text, diagrams, concepts, and examples
+3. Use the course context to interpret domain-specific terminology accurately
+
+**Output Format (strict JSON):**
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "title": "Main title of slide 1",
+      "main_text": "Complete transcription of all text content, preserving structure",
+      "key_concepts": ["Concept 1", "Concept 2"],
+      "diagrams": [
+        {
+          "type": "flowchart/diagram/chart/table/etc",
+          "description": "Detailed description including all labels and relationships",
+          "key_points": ["point 1", "point 2"]
+        }
+      ],
+      "examples": ["Any examples mentioned"],
+      "definitions": [
+        {
+          "term": "Term being defined",
+          "definition": "The definition provided"
+        }
+      ],
+      "formulas": ["Any mathematical formulas using LaTeX notation"],
+      "notes": "Additional important information"
+    }
+  ]
+}
+
+**Critical Requirements:**
+- Return exactly {NUM_SLIDES} slide analyses in the "slides" array
+- Maintain the order of slides as presented (Image 1 = slides[0], Image 2 = slides[1], etc.)
+- Include slide_number in each analysis for verification
+- Be comprehensive - capture ALL text and visual elements
+- For diagrams, describe structure, components, relationships, and flow
+- Output ONLY valid JSON, no additional text or markdown code blocks
+- Do not escape special characters like $, %, or # inside JSON string values
+

@@ -1,0 +1,13 @@
+Analyze this educational content and extract key information.
+
+CONTENT:
+{{CONTENT_PLACEHOLDER}}
+
+Return a JSON object with:
+- "title": Main topic/title
+- "topics": List of key topics covered
+- "difficulty_level": "beginner|intermediate|advanced"
+- "prerequisites": List of concepts students should know first
+- "key_formulas": List of important formulas/equations mentioned (use LaTeX notation)
+
+Return ONLY valid JSON (no markdown, no backticks).

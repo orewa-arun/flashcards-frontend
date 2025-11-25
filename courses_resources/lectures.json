@@ -1,0 +1,16 @@
+{
+    "MAPP_F_MKT404_EN_2025": [
+      {
+        "pdf_path": "Session 1 - The New Consumer.pdf",
+        "lecture_number": "1"
+      },
+      {
+        "pdf_path": "Session 2 - Customer Experience",
+        "lecture_number": "2"
+      },
+      {
+        "pdf_path": "Session 3 - Framework for customer experience.pdf",
+        "lecture_number": "3"
+      }
+    ]
+}

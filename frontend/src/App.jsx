@@ -13,6 +13,7 @@ import PrivacyPolicyView from './views/PrivacyPolicyView'
 import BookmarksView from './views/BookmarksView'
 import QuizHistoryView from './views/QuizHistoryView'
 import AdminDashboardView from './views/AdminDashboardView'
+import AdminUploadView from './views/AdminUploadView'
 import QuizLevelSelectionView from './views/QuizLevelSelectionView'
 import QuizResultsView from './views/QuizResultsView'
 import TimetableView from './views/TimetableView'
@@ -91,10 +92,15 @@ function App() {
               </ProtectedRoute>
             } />
             
-            {/* Admin Route - Also Protected */}
+            {/* Admin Routes - Also Protected */}
             <Route path="/secret-admin-dashboard-xyz" element={
               <ProtectedRoute>
                 <AdminDashboardView />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/upload" element={
+              <ProtectedRoute>
+                <AdminUploadView />
               </ProtectedRoute>
             } />
         </Routes>

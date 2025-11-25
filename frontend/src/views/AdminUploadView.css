@@ -1,0 +1,146 @@
+/* Admin Upload View Styling */
+.admin-upload-view {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 32px 24px;
+}
+
+/* Header */
+.admin-upload-header {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-upload-header h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.title-icon {
+  color: var(--accent-primary);
+  font-size: 40px;
+}
+
+.header-subtitle {
+  color: var(--text-secondary);
+  font-size: 17px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Content */
+.admin-upload-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Footer */
+.admin-upload-footer {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.pipeline-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.info-icon {
+  font-size: 20px;
+  color: var(--accent-primary);
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.info-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.info-text strong {
+  color: var(--text-primary);
+}
+
+.info-text span {
+  color: var(--text-secondary);
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-upload-view {
+    padding: 24px 16px;
+  }
+
+  .admin-upload-header h1 {
+    font-size: 28px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .title-icon {
+    font-size: 36px;
+  }
+
+  .header-subtitle {
+    font-size: 15px;
+  }
+
+  .pipeline-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .info-text {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-upload-view {
+    padding: 16px 12px;
+  }
+
+  .admin-upload-header h1 {
+    font-size: 24px;
+  }
+
+  .admin-upload-content {
+    gap: 24px;
+  }
+}
+
