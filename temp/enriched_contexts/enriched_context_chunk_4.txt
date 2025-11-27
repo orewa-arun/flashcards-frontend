@@ -1,0 +1,51 @@
+# TOPIC BRIEF 4: Never Stop Daring & Le Wagon First Sessions
+# Educational Value: 0.65
+# Definitions: 1
+# Examples: 1
+# Diagrams: 0
+
+# TOPIC: Never Stop Daring & Le Wagon First Sessions
+Educational Value: 0.65/1.0
+Source Slides: 1, 5
+
+## DEFINITIONS (Use for `concise` answers)
+- **L'audace (Audacity)**: According to the slide, audacity is a quality to be cultivated at all ages. It involves believing in oneself, launching initiatives, innovating, learning from failures, recovering and starting again. It also entails engaging with and for others, acting as a responsible, respectful, and caring manager, and positively impacting society. It is presented as a force for personal growth, broadening horizons, and fueling imagination to transform the world.
+
+## KEY CONCEPTS TO COVER
+Audacity (L'audace), Innovation, Resilience, Responsible Management, Societal Impact, Lifelong Learning, Branding, Le Wagon, BlackBoard, Online Sessions, Designer Tools, Product Pitch, UX Personas, User Journeys, User flow
+
+## REAL-WORLD EXAMPLES (Use for `real_world_use_case` and `example`)
+1. The list of contents to complete on LeWagon: Introduction, Using Designer Tools, Product Pitch, UX Personas, User Journeys, User flow.
+
+## DETAILED CONTENT
+Audencia
+audencia.com
+
+NEVER STOP DARING
+
+"
+Cultiver l'audace, toujours et à tout âge,
+croire en soi, se lancer, innover,
+apprendre de ses échecs,
+se relever et recommencer.
+S'engager avec et pour les autres,
+agir en manager responsable,
+respectueux et bienveillant,
+impacter positivement la société.
+
+L'audace nous grandit,
+élargit notre horizon,
+nourrit notre imagination
+pour mieux transformer le monde.
+"
+
+• How it works
+• Make sure you received an e-mail explaining how to access the platform
+• Check the video on BlackBoard that explains how to approach these 2 online sessions
+• Before next off-line session (in 2 weeks), you MUST go through the following contents on LeWagon :
+  • Introduction
+  • Using Designer Tools
+  • Product Pitch
+  • UX Personas
+  • User Journeys
+  • User flow

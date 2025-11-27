@@ -13,6 +13,7 @@ from app.content_generation.llm.client import create_llm_client
 from app.content_generation.analyzers.pdf_extractor import PDFImageExtractor
 from app.content_generation.analyzers.slide_analyzer import SlideAnalyzer
 from app.content_generation.analyzers.content_condenser import ContentCondenser
+from app.content_generation.analyzers.content_consolidator import ContentConsolidator
 
 logger = logging.getLogger(__name__)
 
@@ -153,6 +154,43 @@ class StructuredAnalysisService:
                 content_field="structured_analysis",
                 content_data=structured_analysis
             )
+            
+            # Step 4: Consolidate structured analysis for flashcard generation
+            logger.info(f"Consolidating structured analysis for lecture {lecture_id}")
+            consolidator = ContentConsolidator(min_educational_value=0.3)
+            consolidated_result = consolidator.consolidate(
+                raw_slide_analyses=slide_analyses,
+                lecture_title=lecture["lecture_title"]
+            )
+            
+            # Add lecture metadata to consolidated result
+            consolidated_analysis = {
+                "lecture_info": {
+                    "id": lecture_id,
+                    "course_code": lecture["course_code"],
+                    "lecture_title": lecture["lecture_title"],
+                    "analysis_status": "completed"
+                },
+                "consolidation_stats": {
+                    "original_slides": consolidated_result.get("total_original_slides", 0),
+                    "educational_slides": consolidated_result.get("educational_slides_count", 0),
+                    "filtered_slides": consolidated_result.get("filtered_slides_count", 0),
+                    "topics_created": consolidated_result.get("topic_count", 0),
+                    "semantic_chunks": len(consolidated_result.get("semantic_chunks", [])),
+                    "summary": consolidated_result.get("consolidation_summary", "")
+                },
+                "topics": consolidated_result.get("topics", []),
+                "semantic_chunks": consolidated_result.get("semantic_chunks", []),
+                "full_result": consolidated_result
+            }
+            
+            # Save consolidated analysis to database
+            await self.repository.update_lecture_content(
+                lecture_id=lecture_id,
+                content_field="consolidated_structured_analysis",
+                content_data=consolidated_analysis
+            )
+            logger.info(f"Saved consolidated analysis for lecture {lecture_id}")
             
             await self.repository.update_lecture_status(
                 lecture_id=lecture_id,

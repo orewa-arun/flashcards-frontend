@@ -24,9 +24,24 @@ def load_prompt(filename: str) -> str:
         return f.read()
 
 
-def get_flashcard_prompt() -> str:
-    """Get the flashcard generation prompt template."""
+def get_flashcard_prompt(version: int = 2) -> str:
+    """
+    Get the flashcard generation prompt template.
+    
+    Args:
+        version: Prompt version (2 = legacy, 3 = enriched with answer-type sections)
+        
+    Returns:
+        Flashcard prompt template
+    """
+    if version == 3:
+        return load_prompt("intelligent_flashcard_only_prompt_v3.txt")
     return load_prompt("intelligent_flashcard_only_prompt_v2.txt")
+
+
+def get_enriched_flashcard_prompt() -> str:
+    """Get the enriched flashcard prompt (v3) optimized for consolidated content."""
+    return load_prompt("intelligent_flashcard_only_prompt_v3.txt")
 
 
 def get_quiz_prompt(level: int) -> str:

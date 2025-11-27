@@ -1,0 +1,59 @@
+{
+  "topic_name": "The Customer Journey",
+  "educational_value": 1.0,
+  "source_slides": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "statistics": {
+    "definitions_count": 7,
+    "examples_count": 10,
+    "diagrams_count": 5,
+    "key_concepts_count": 20,
+    "academic_references": [
+      "Lemon & Verhoef (2016)"
+    ],
+    "relationships": [
+      "'Brand-Owned' vs 'Customer-Owned' - Don't confuse these related but distinct concepts",
+      "'Brand-Owned' vs 'Partner-Owned' - Don't confuse these related but distinct concepts",
+      "'Partner-Owned' vs 'Customer-Owned' - Don't confuse these related but distinct concepts",
+      "'Purchase' vs 'Consumption' - Don't confuse these related but distinct concepts",
+      "The stages are sequential - understand the order and what happens at each"
+    ]
+  },
+  "sample_definitions": [
+    {
+      "term": "Purchase Stage",
+      "definition": "This stage encompasses all customer interactions with the brand during the purchase. It includes behaviors such as choice, ordering, and payment. It is considered as the most “temporally compressed” of the three stages."
+    },
+    {
+      "term": "Partner-owned touch points",
+      "definition": "These touch points are jointly designed, controlled and managed by the firm and its partner(s). The partners could be multivendor partners, multichannel distributors partners, communication partners, etc."
+    },
+    {
+      "term": "Social/external touch points",
+      "definition": "These touch points are all external people that may influence the customer experience. It may concerns the advices of customers (e.g. Comments on TripAdvisor) or peer influences, independent information sources, etc. Sometimes influencers may be independent and sometimes they are in line with firm expectations."
+    }
+  ],
+  "sample_examples": [
+    "A screenshot of an Instagram post from the influencer 'xsqueezie' announcing a collaboration with Nike. The caption (in French) discusses a new fitness program in partnership with Nike, illustrating an influencer acting as an external touchpoint in line with firm expectations.",
+    "The 'IKEA hackers' website, where customers share modifications to IKEA products, is an example of a customer-owned touch point.",
+    "The exercise itself is an example: creating a persona for a Nike brand segment and mapping their journey to buy sneakers online."
+  ],
+  "sample_key_concepts": [
+    "Customer Journey",
+    "Purchase Stage",
+    "Pre purchase",
+    "Post purchase",
+    "Touchpoints",
+    "Behaviors",
+    "Temporally compressed",
+    "Touch Points",
+    "Partner-owned touch points",
+    "Social/external touch points"
+  ],
+  "context_length": 9697
+}

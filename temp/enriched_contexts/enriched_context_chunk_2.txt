@@ -1,0 +1,124 @@
+# TOPIC BRIEF 2: The Construction Of Personas
+# Educational Value: 1.00
+# Definitions: 1
+# Examples: 8
+# Diagrams: 5
+
+# TOPIC: The Construction Of Personas
+Educational Value: 1.00/1.0
+Source Slides: 1, 2, 3, 4, 5
+
+## DEFINITIONS (Use for `concise` answers)
+- **Persona**: a semi-fictional representation of your ideal customer based on market research and real data about your existing customers
+
+## KEY CONCEPTS TO COVER
+Persona, Shopper Persona, Buyer Persona, Persona Construction, Goals, Expectations, Quotes, Persona definition, Semi-fictional representation, Ideal customer, Market research, Customer data, User Persona, UX Designer, Influencer, Demographics, Pain Points, Needs, Motivations, Personality Traits
+
+## REAL-WORLD EXAMPLES (Use for `real_world_use_case` and `example`)
+1. A persona named 'Robert' who is a career-successful individual valuing family, culture, and authentic products.
+2. Jane Doe, a 21-year-old UX Designer from Atlanta.
+3. Drew, a 25-29 year old influencer and vlogger.
+4. Using personas to adapt and communicate with segments, for example, through targeted 'messages'.
+5. The numerous user persona templates available on Canva.
+6. 'consumption trends' is given as an example of 'Other research'.
+7. The entire slide is a detailed example of a persona named 'Robert'.
+8. Robert reads HBR (Harvard Business Review) and FT (Financial Times).
+
+## VISUAL FRAMEWORKS (Use for `mermaid_diagrams` and `analogy`)
+- [EMBEDDED VIDEO]: An embedded YouTube video player is shown. The video is paused at 0:11 of a 2:43 total length. The video thumbnail or initial frame displays the word 'PERSONAS' in large, orange, handwritten-style fon
+  • The slide introduces the concept of Personas via a video.
+  • The video distinguishes between Shopper Personas and Buyer Personas.
+- [TABLE]: A three-section table outlining the components of a persona named 'Robert'. The sections are GOALS, EXPECTATIONS, and QUOTES, each with guiding questions and example answers.
+  • GOALS include intellectual/cultural development and sharing time with grandchildren.
+  • EXPECTATIONS include quality, emotions, comfort, and uniqueness.
+  • QUOTES reflect the persona's life stage and values regarding authenticity and family.
+- [SLIDER CHART]: A set of five horizontal sliders representing Jane Doe's personality on a spectrum between two opposing traits: Introvert/Extrovert, Analytical/Creative, Busy/Organized, Messy/Team player, Independent
+  • Leans towards Extrovert
+  • Leans towards Creative
+  • Leans towards Organized
+- [CHECKLIST]: A checklist titled 'EVENT INFLUENCERS' for the persona Drew. It lists factors that influence his event attendance, with all items checked.
+  • Friends
+  • Cultural
+  • Location
+- [TABLE/PROFILE]: A structured profile of a persona named 'Robert'. The profile is divided into three main sections: BACKGROUND, DEMOGRAPHICS, and IDENTIFIERS. Each section has guiding questions (e.g., 'Job? Career pat
+  • The profile provides a concrete example of how data is synthesized into a persona.
+  • It includes professional background, family details, demographic data, and psychographic identifiers
+
+## ACADEMIC REFERENCES (Cite in answers)
+- Kusinitz (2014)
+
+## CONCEPT RELATIONSHIPS (Use for `common_mistakes`)
+These distinctions help prevent confusion:
+- 'Buyer' vs 'Shopper' - Don't confuse these related but distinct concepts
+
+## DETAILED CONTENT
+The construction of Personas
+
+• What is a Persona? [Embedded YouTube Video]
+PERSONAS
+- SHOPPER PERSONAS
+- BUYERS PERSONAS
+
+https://www.youtube.com/watch?v=AVs59ddkzuQ
+
+The construction of Personas
+
+• How do we create them? WHAT? Name: Robert
+
+GOALS
+Primary goal? Secondary goal? • Intellectual and cultural development
+• Sharing time and experience with her grandchildren
+
+EXPECTATIONS
+Primary expectation? Secondary expectation? • Quality
+• Emotions
+• Comfort
+• Uniqueness, originality
+
+QUOTES
+About goals, expectations, etc. • "Now I've achieved a successful career, I want to enjoy my life in sharing time with my family". • "I love authentic products whose originality, quality and passion for making them can be appreciated."
+
+(Kusinitz 2014)
+
+A persona is « a semi-fictional representation of your ideal customer based on market research and real data about your existing customers »
+
+Lemon & Verhoef (2016, p.73)
+
+USER PERSONA
+Jane Doe
+ABOUT
+Jane is a UX Designer that works for a Fortune 500 company in Atlanta, GA. Ever since she was a child, she loved to make stuff on her own and show them to her parents, friends and classmates. Over the course of her childhood and throughout high school, she won numerous design prizes at various art contests both locally and in the United States and Canada. Due to her passion for design, she decided to pursue a Master's degree in Human-Computer Interaction and learn more about User Experience (UX) and how she can become a better designer. "I design with all my heart, thinking about the users"
+AGE 21
+JOB TITLE UX Designer
+STATUS Single
+LOCATION Atlanta, GA
+PASSIONATE EMPATHETIC CURIOUS ADVENTUROUS
+FAVORITE BRANDS
+[Facebook, Spotify, Coca-Cola logos]
+GOALS
+• Become a designer who communicates well her ideas at any place
+• Easily explain her design ideas to other designers, researchers and engineers
+PAIN POINTS
+• There are too many tools that forces her to spend time learning them
+• Cannot rely on other people's opinion because they are highly subjective
+• Certain situations require different tools to communicate her thoughts
+NEEDS
+• Looking for a design tool that helps to cut down unnecessary time and effort
+• Receive feedback on her progress whenever needed before presentation
+
+Drew
+Influencer
+ABOUT
+Age 25-29
+Skill: Vlogger
+High tech proficiency
+EVENT ATTENDANCE ATTRIBUTES
+Frequent event goer (monthly). Tied to the city for work. Would travel nationally/internationally for an event. Tends to go to events with a few friends. MOTIVATIONS
+His favorite thing is to find & share them with network, helping influence. Being the first to know about something and share it gives him a thrill. CORE NEEDS
+Finding events on social media and being able to find tickets easily. Knowing what the trending events that will sell out are. Also, being able to buy tickets last minute with the first to get tickets. PAIN POINTS
+Finding the time to attend events and staying on budget. 39% Total Universe D18+ (Event Goers)
+12 Events per month
+
+ht
+
+[Content truncated for brevity...]

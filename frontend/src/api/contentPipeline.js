@@ -69,5 +69,25 @@ export const contentPipeline = {
     const response = await fetch(`${API_BASE_URL}/api/v1/content/courses`);
     if (!response.ok) throw new Error('Failed to fetch courses');
     return response.json();
+  },
+
+  /**
+   * Delete a lecture (soft delete)
+   * @param {number} lectureId - ID of the lecture to delete
+   * @returns {Promise<Object>} Response data
+   */
+  async deleteLecture(lectureId) {
+    const response = await fetch(`${API_BASE_URL}/api/v1/content/lectures/${lectureId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || 'Failed to delete lecture');
+    }
+    return response.json();
   }
 };

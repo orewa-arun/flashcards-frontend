@@ -147,7 +147,7 @@ class LLMClient:
         system_prompt: Optional[str] = None,
         **kwargs
     ) -> str:
-        """Generate using Claude."""
+        """Generate using Claude with streaming to avoid timeouts on long requests."""
         messages = [{"role": "user", "content": prompt}]
         
         params = {
@@ -160,8 +160,15 @@ class LLMClient:
         if system_prompt:
             params["system"] = system_prompt
         
-        response = self.client.messages.create(**params)
-        return response.content[0].text
+        # Use streaming to avoid timeout on long-running requests
+        # See: https://github.com/anthropics/anthropic-sdk-python#long-requests
+        try:
+            with self.client.messages.stream(**params) as stream:
+                response_text = "".join(text for text in stream.text_stream)
+            return response_text
+        except Exception as e:
+            logger.error(f"Anthropic streaming generation failed: {str(e)}")
+            raise
     
     def _generate_openai(
         self,

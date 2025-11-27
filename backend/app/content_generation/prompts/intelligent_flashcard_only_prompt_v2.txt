@@ -14,7 +14,7 @@ You MUST generate flashcards **ONLY** from the concepts, terms, and examples pre
 
 Generate high-quality, "cognitive" flashcards designed for deep understanding and long-term retention. Each flashcard must include:
 1. A **relevance score** (1-10) indicating exam importance
-2. **5 types of answers** that provide multi-faceted understanding (concise, analogy, eli5, real_world_use_case, common_mistakes)
+2. **6 types of answers** that provide multi-faceted understanding (concise, analogy, eli5, real_world_use_case, common_mistakes, example)
 3. A powerful, memorable **example** that serves as a mini-lesson
 4. **Mermaid.js diagrams** for visual concepts (contextual - generate when they add value)
 5. **Mathematical visualizations** (Graphviz/DOT) for quantitative concepts
@@ -103,7 +103,7 @@ Use these Mermaid diagram types effectively:
 
 **MULTI-FACETED ANSWERS: THE LEARNING REVOLUTION**
 
-**Philosophy:** A single answer isn't enough. True mastery requires understanding a concept from multiple angles. Each flashcard must provide **5 different answer types** that together create comprehensive understanding:
+**Philosophy:** A single answer isn't enough. True mastery requires understanding a concept from multiple angles. Each flashcard must provide **6 different answer types** that together create comprehensive understanding:
 
 **1. `concise`** - The Straightforward Answer
   - Purpose: Provides the direct, textbook-style definition or explanation
@@ -240,14 +240,14 @@ Use these Mermaid diagram types effectively:
       "analogy": "A powerful metaphor or comparison that connects this concept to something familiar. 'Think of it like...' 2-4 sentences.",
       "eli5": "Explain like I'm 5. Very simple language with no jargon. Could a child understand this? 2-4 sentences.",
       "real_world_use_case": "A practical, professional scenario showing when/why you'd use this in real business or technical context. Specific and actionable. 3-5 sentences.",
-      "common_mistakes": "Typical misunderstandings, pitfalls, or errors people make with this concept. What to watch out for. 2-4 sentences."
+      "common_mistakes": "Typical misunderstandings, pitfalls, or errors people make with this concept. What to watch out for. 2-4 sentences.",
+      "example": "A comprehensive, textbook-quality example following the NEW STANDARD above. Must be strong, sharp, crisp, and memorable. 3-5 sentences minimum for complex concepts. Use real company names (Amazon, Netflix, Tesla, Apple, Walmart) or detailed realistic scenarios. The example should teach the concept independently."
     },
     "context": "A brief, helpful topic category (e.g., 'Core E-commerce Concepts', 'Part of Porter's Five Forces', 'Key Business Metrics'). DO NOT reference slide numbers.",
     "relevance_score": {
       "score": 8,
       "justification": "Core concept that defines the foundation of this subject"
     },
-    "example": "A comprehensive, textbook-quality example following the NEW STANDARD above. Must be strong, sharp, crisp, and memorable. 3-5 sentences minimum for complex concepts. Use real company names (Amazon, Netflix, Tesla, Apple, Walmart) or detailed realistic scenarios. The example should teach the concept independently.",
     "mermaid_diagrams": {
       "concise": "graph TD; CoreConcept[Core Concept] --> Definition[Definition]; // Technical diagram showing core structure. Use empty string \"\" if not helpful.",
       "analogy": "graph LR; FamiliarThing[Familiar Thing] -.->|Like| NewConcept[New Concept]; // Visual representation of the analogy itself. Use empty string \"\" if not helpful.",
@@ -275,7 +275,7 @@ Use these Mermaid diagram types effectively:
 
 ✅ **Sparse Content Handling:** If the content is too minimal (e.g., only a title or closing slide), have I returned an empty JSON array `[]` instead of inventing unrelated topics?
 
-✅ **Multi-Faceted Answers:** Does EVERY flashcard have ALL 5 answer types (concise, analogy, eli5, real_world_use_case, common_mistakes)? Is each distinct and valuable?
+✅ **Multi-Faceted Answers:** Does EVERY flashcard have ALL 6 answer types (concise, analogy, eli5, real_world_use_case, common_mistakes, example)? Is each distinct and valuable?
 
 ✅ **Mathematical Visualization Completeness:** Have I generated mathematical visualizations for ALL answer types that contain even slight quantitative, structural, or mathematical elements? Have I looked beyond just `concise`?
 
@@ -298,7 +298,7 @@ Use these Mermaid diagram types effectively:
 - Output ONLY perfectly valid and complete JSON. No additional text, commentary, or markdown outside the JSON block.
 - Ensure all strings are properly quoted and escaped. All arrays and objects must be correctly terminated.
 - **🚨 HARD LIMIT: Create EXACTLY 5-6 flashcards. NEVER EXCEED 6 CARDS. STOP AFTER 6. 🚨**
-- EVERY flashcard must have: ALL 5 answer types in the `answers` object, `example`, `mermaid_diagrams`, and `math_visualizations`
+- EVERY flashcard must have: ALL 6 answer types in the `answers` object, `mermaid_diagrams`, and `math_visualizations`
 - The `answers` object must contain ALL 5 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`
 - The `mermaid_diagrams` object must contain ALL 6 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`, `example` (use empty string "" for diagrams that don't add value)
 - The `math_visualizations` object must contain ALL 6 keys: `concise`, `analogy`, `eli5`, `real_world_use_case`, `common_mistakes`, `example`. **MANDATORY**: Generate mathematical visualizations for ALL answer types that contain ANY mathematical, quantitative, structural, or data-related component. Use empty string "" ONLY when there is absolutely no mathematical element possible.

@@ -81,6 +81,7 @@ async def _create_tables():
             lecture_title TEXT NOT NULL,
             r2_pdf_path TEXT NOT NULL,
             structured_analysis JSONB,
+            consolidated_structured_analysis JSONB,
             flashcards JSONB,
             quizzes JSONB,
             analysis_status VARCHAR(50) NOT NULL DEFAULT 'pending',

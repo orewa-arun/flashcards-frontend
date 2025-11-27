@@ -13,7 +13,8 @@ import {
   FaDatabase,
   FaChevronDown,
   FaChevronUp,
-  FaExclamationTriangle
+  FaExclamationTriangle,
+  FaTrash
 } from 'react-icons/fa'
 import { contentPipeline } from '../../api/contentPipeline'
 import './LecturePipelineList.css'
@@ -40,6 +41,9 @@ function LecturePipelineList({ refreshTrigger }) {
   const [error, setError] = useState(null)
   const [expandedLectures, setExpandedLectures] = useState(new Set())
   const [actionInProgress, setActionInProgress] = useState({})
+  const [deleteInProgress, setDeleteInProgress] = useState({})
+  // Track whether we're on the very first load of the component
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
 
   const fetchData = useCallback(async () => {
     setLoading(true)
@@ -74,6 +78,8 @@ function LecturePipelineList({ refreshTrigger }) {
       setError(err.message || 'Failed to fetch data')
     } finally {
       setLoading(false)
+      // After the first fetch attempt (success or error), we are no longer in initial load
+      setIsInitialLoad(false)
     }
   }, [selectedCourse])
 
@@ -134,6 +140,35 @@ function LecturePipelineList({ refreshTrigger }) {
     }
   }
 
+  const handleDeleteLecture = async (lecture) => {
+    // Show confirmation dialog
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${lecture.lecture_title}"?\n\n` +
+      `This will remove it from the list. The data will be preserved in the database but hidden from view.`
+    )
+    
+    if (!confirmed) return
+    
+    setDeleteInProgress(prev => ({ ...prev, [lecture.id]: true }))
+    
+    try {
+      await contentPipeline.deleteLecture(lecture.id)
+      // Remove from local state immediately for instant feedback
+      setLectures(prev => prev.filter(l => l.id !== lecture.id))
+      // Also close expanded view if open
+      setExpandedLectures(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(lecture.id)
+        return newSet
+      })
+    } catch (err) {
+      console.error('Failed to delete lecture:', err)
+      alert(`Failed to delete lecture: ${err.message}`)
+    } finally {
+      setDeleteInProgress(prev => ({ ...prev, [lecture.id]: false }))
+    }
+  }
+
   const renderStatusBadge = (status) => {
     const config = STATUS_CONFIG[status] || STATUS_CONFIG.pending
     const Icon = config.icon
@@ -151,17 +186,19 @@ function LecturePipelineList({ refreshTrigger }) {
     const isLoading = actionInProgress[actionKey]
     const canTrigger = canTriggerAction(lecture, stageIndex)
     const status = lecture[stage.key]
-    
-    // Don't show button if in progress (handled by status badge)
-    if (status === 'in_progress') {
-      return null
-    }
 
     // Determine button style based on status
     let btnClass = 'run'
     let btnText = 'Run'
     
-    if (status === 'failed') {
+    if (status === 'in_progress') {
+      // Show spinner instead of button when in progress
+      return (
+        <span className="action-loading">
+          <FaSpinner className="spinning" />
+        </span>
+      )
+    } else if (status === 'failed') {
       btnClass = 'retry-failed'
       btnText = 'Retry'
     } else if (status === 'completed') {
@@ -209,7 +246,9 @@ function LecturePipelineList({ refreshTrigger }) {
     )
   }
 
-  if (loading && lectures.length === 0) {
+  // Only show the full-page loading state on the very first load,
+  // when we truly have no lecture data yet.
+  if (isInitialLoad && loading && lectures.length === 0) {
     return (
       <div className="pipeline-list-container">
         <div className="loading-state">
@@ -317,12 +356,30 @@ function LecturePipelineList({ refreshTrigger }) {
 
                   {renderErrorLog(lecture.error_log)}
 
-                  <div className="lecture-meta">
-                    <span>ID: {lecture.id}</span>
-                    <span>Created: {new Date(lecture.created_at).toLocaleString()}</span>
-                    {lecture.updated_at && (
-                      <span>Updated: {new Date(lecture.updated_at).toLocaleString()}</span>
-                    )}
+                  <div className="lecture-footer">
+                    <div className="lecture-meta">
+                      <span>ID: {lecture.id}</span>
+                      <span>Created: {new Date(lecture.created_at).toLocaleString()}</span>
+                      {lecture.updated_at && (
+                        <span>Updated: {new Date(lecture.updated_at).toLocaleString()}</span>
+                      )}
+                    </div>
+                    <button
+                      className="delete-btn"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleDeleteLecture(lecture)
+                      }}
+                      disabled={deleteInProgress[lecture.id]}
+                      title="Delete this lecture"
+                    >
+                      {deleteInProgress[lecture.id] ? (
+                        <FaSpinner className="spinning" />
+                      ) : (
+                        <FaTrash />
+                      )}
+                      Delete
+                    </button>
                   </div>
                 </div>
               )}

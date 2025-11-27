@@ -157,7 +157,8 @@ class ContentRepository:
             )
             VALUES ($1, $2, $3, 'pending', 'pending', 'pending', 'pending', $4, $5)
             RETURNING id, course_code, lecture_title, r2_pdf_path,
-                      structured_analysis, flashcards, quizzes,
+                      structured_analysis, consolidated_structured_analysis,
+                      flashcards, quizzes,
                       analysis_status, flashcard_status, quiz_status, qdrant_status,
                       error_log, created_at, updated_at
         """
@@ -179,7 +180,8 @@ class ContentRepository:
         """Get lecture by ID."""
         query = """
             SELECT id, course_code, lecture_title, r2_pdf_path,
-                   structured_analysis, flashcards, quizzes,
+                   structured_analysis, consolidated_structured_analysis,
+                   flashcards, quizzes,
                    analysis_status, flashcard_status, quiz_status, qdrant_status,
                    error_log, created_at, updated_at
             FROM lectures
@@ -192,30 +194,64 @@ class ContentRepository:
     
     async def list_lectures(
         self,
-        course_code: Optional[str] = None
+        course_code: Optional[str] = None,
+        include_deleted: bool = False
     ) -> List[Dict[str, Any]]:
-        """List lectures, optionally filtered by course_code."""
+        """
+        List lectures, optionally filtered by course_code.
+        
+        Args:
+            course_code: Optional course code to filter by
+            include_deleted: Whether to include soft-deleted lectures (default: False)
+        """
         if course_code:
-            query = """
-                SELECT id, course_code, lecture_title, r2_pdf_path,
-                       structured_analysis, flashcards, quizzes,
-                       analysis_status, flashcard_status, quiz_status, qdrant_status,
-                       error_log, created_at, updated_at
-                FROM lectures
-                WHERE course_code = $1
-                ORDER BY created_at DESC
-            """
+            if include_deleted:
+                query = """
+                    SELECT id, course_code, lecture_title, r2_pdf_path,
+                           structured_analysis, consolidated_structured_analysis,
+                           flashcards, quizzes,
+                           analysis_status, flashcard_status, quiz_status, qdrant_status,
+                           error_log, is_deleted, created_at, updated_at
+                    FROM lectures
+                    WHERE course_code = $1
+                    ORDER BY created_at DESC
+                """
+            else:
+                query = """
+                    SELECT id, course_code, lecture_title, r2_pdf_path,
+                           structured_analysis, consolidated_structured_analysis,
+                           flashcards, quizzes,
+                           analysis_status, flashcard_status, quiz_status, qdrant_status,
+                           error_log, is_deleted, created_at, updated_at
+                    FROM lectures
+                    WHERE course_code = $1
+                      AND (is_deleted IS NULL OR is_deleted = FALSE)
+                    ORDER BY created_at DESC
+                """
             async with self.pool.acquire() as conn:
                 rows = await conn.fetch(query, course_code)
         else:
-            query = """
-                SELECT id, course_code, lecture_title, r2_pdf_path,
-                       structured_analysis, flashcards, quizzes,
-                       analysis_status, flashcard_status, quiz_status, qdrant_status,
-                       error_log, created_at, updated_at
-                FROM lectures
-                ORDER BY created_at DESC
-            """
+            if include_deleted:
+                query = """
+                    SELECT id, course_code, lecture_title, r2_pdf_path,
+                           structured_analysis, consolidated_structured_analysis,
+                           flashcards, quizzes,
+                           analysis_status, flashcard_status, quiz_status, qdrant_status,
+                           error_log, is_deleted, created_at, updated_at
+                    FROM lectures
+                    ORDER BY created_at DESC
+                """
+            else:
+                query = """
+                    SELECT id, course_code, lecture_title, r2_pdf_path,
+                           structured_analysis, consolidated_structured_analysis,
+                           flashcards, quizzes,
+                           analysis_status, flashcard_status, quiz_status, qdrant_status,
+                           error_log, is_deleted, created_at, updated_at
+                    FROM lectures
+                    WHERE is_deleted IS NULL OR is_deleted = FALSE
+                    ORDER BY created_at DESC
+                """
             async with self.pool.acquire() as conn:
                 rows = await conn.fetch(query)
         
@@ -276,7 +312,7 @@ class ContentRepository:
         Returns:
             True if updated, False if lecture not found
         """
-        valid_fields = ['structured_analysis', 'flashcards', 'quizzes']
+        valid_fields = ['structured_analysis', 'consolidated_structured_analysis', 'flashcards', 'quizzes']
         if content_field not in valid_fields:
             raise ValueError(f"Invalid content field: {content_field}")
         
@@ -381,15 +417,67 @@ class ContentRepository:
         
         query = f"""
             SELECT id, course_code, lecture_title, r2_pdf_path,
-                   structured_analysis, flashcards, quizzes,
+                   structured_analysis, consolidated_structured_analysis,
+                   flashcards, quizzes,
                    analysis_status, flashcard_status, quiz_status, qdrant_status,
                    error_log, created_at, updated_at
             FROM lectures
             WHERE {status_field} = $1
+              AND (is_deleted IS NULL OR is_deleted = FALSE)
             ORDER BY created_at ASC
         """
         
         async with self.pool.acquire() as conn:
             rows = await conn.fetch(query, status_value)
             return [dict(row) for row in rows]
+    
+    # ==================== Delete Operations ====================
+    
+    async def mark_lecture_deleted(self, lecture_id: int) -> bool:
+        """
+        Soft delete a lecture by setting is_deleted = TRUE.
+        
+        Args:
+            lecture_id: ID of the lecture to delete
+            
+        Returns:
+            True if deleted, False if lecture not found
+        """
+        query = """
+            UPDATE lectures
+            SET is_deleted = TRUE,
+                updated_at = $2
+            WHERE id = $1
+            RETURNING id
+        """
+        
+        now = datetime.utcnow()
+        
+        async with self.pool.acquire() as conn:
+            row = await conn.fetchrow(query, lecture_id, now)
+            return row is not None
+    
+    async def restore_lecture(self, lecture_id: int) -> bool:
+        """
+        Restore a soft-deleted lecture by setting is_deleted = FALSE.
+        
+        Args:
+            lecture_id: ID of the lecture to restore
+            
+        Returns:
+            True if restored, False if lecture not found
+        """
+        query = """
+            UPDATE lectures
+            SET is_deleted = FALSE,
+                updated_at = $2
+            WHERE id = $1
+            RETURNING id
+        """
+        
+        now = datetime.utcnow()
+        
+        async with self.pool.acquire() as conn:
+            row = await conn.fetchrow(query, lecture_id, now)
+            return row is not None
 

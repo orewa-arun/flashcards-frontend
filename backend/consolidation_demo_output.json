@@ -1,0 +1,149 @@
+{
+  "lecture_title": "Customer Experience and Branding - Session 2",
+  "total_original_slides": 10,
+  "educational_slides_count": 5,
+  "filtered_slides_count": 5,
+  "topic_count": 2,
+  "topics": [
+    {
+      "name": "example of customer experience",
+      "slides": [
+        11,
+        31,
+        46
+      ],
+      "main_text": "adidas\n\nControl\nshipping address...\n\n\u2022 The Roots of Customer Experience In Marketing\n\n\u2022 Why do we need to focus on Customer Experience? Elements | Traditional Marketing | Experiential Marketing\n--- | --- | ---\nEmphasis | Focus on functional aspects and benefits | Focus on customer experiences...",
+      "key_concepts": [
+        "Customer Experience",
+        "Checkout Process",
+        "UI",
+        "UX",
+        "A/B Testing",
+        "Customer buying behavior",
+        "Customer satisfaction",
+        "Service quality",
+        "Relationship marketing",
+        "CRM",
+        "Customer centricity",
+        "Customer engagement",
+        "Traditional Marketing",
+        "Experiential Marketing"
+      ],
+      "definitions": [],
+      "examples": [
+        "The Adidas online checkout process is used as an example to compare two different user experiences..."
+      ],
+      "diagrams": [
+        {
+          "type": "comparative screenshots",
+          "key_points": [
+            "The 'Control' version is a single-page checkout process.",
+            "The 'Variation 1' version requires users to first choose a checkout method..."
+          ],
+          "description": "Two screenshots of the Adidas website checkout process..."
+        },
+        {
+          "type": "timeline",
+          "key_points": [
+            "Customer buying behavior process models (1960s\u20131970s)",
+            "Customer satisfaction and loyalty (1970s)",
+            "Service quality (1980s)",
+            "Relationship marketing (1990s)",
+            "CRM (2000s)",
+            "Customer centricity (2000s\u20132010s)",
+            "Customer engagement (2010s)"
+          ],
+          "description": "A horizontal timeline showing the evolution of marketing concepts..."
+        },
+        {
+          "type": "table",
+          "key_points": [
+            "Traditional Marketing emphasizes functional benefits...",
+            "Experiential Marketing focuses on customer experiences...",
+            "Clients: rational decision-makers vs rational and emotional actors"
+          ],
+          "description": "A table comparing 'Traditional Marketing' and 'Experiential Marketing'..."
+        }
+      ],
+      "formulas": [],
+      "notes": "The slide presents a comparison between two different checkout flows... Reference: Lemon & Verhoef (2016, p. 71), JM... The slide compares Traditional Marketing vs Experiential Marketing...",
+      "educational_value": 0.65
+    },
+    {
+      "name": "origins of the experience concept",
+      "slides": [
+        17,
+        22
+      ],
+      "main_text": "\u2022 Philosophical approach\n\nAccording to the philosophical approach, an experience is an event induced by a stimulus. Therefore, an experience is not self-produced, it is the result of a link between an individual and his or her environment. It produces knowledge and know-how. Batat (2019) highlights 3 forms of experience in philosophy :\n\nSociological approach\n\nWhat the sociological approach brings more to the knowledge of the Experience? According to sociological, we should consider these experiences below ... as anchored to the sociocultural context",
+      "key_concepts": [
+        "Philosophical definition of experience",
+        "Stimulus-induced event",
+        "Individual-environment link",
+        "Knowledge and know-how",
+        "Forms of experience (Batat, 2019)",
+        "Sociological approach",
+        "Immediate experience",
+        "Experimentation",
+        "Lived experience",
+        "Sociocultural context"
+      ],
+      "definitions": [
+        {
+          "term": "Experience (philosophical approach)",
+          "definition": "An event induced by a stimulus. It is not self-produced, it is the result of a link between an individual and his or her environment. It produces knowledge and know-how."
+        }
+      ],
+      "examples": [],
+      "diagrams": [
+        {
+          "type": "flowchart",
+          "key_points": [
+            "Experience progresses through three forms..."
+          ],
+          "description": "A horizontal flowchart with three connected chevrons..."
+        },
+        {
+          "type": "flowchart",
+          "key_points": [
+            "Experience is a process...",
+            "The process is cyclical...",
+            "Anchored in sociocultural context."
+          ],
+          "description": "A horizontal, three-stage process diagram..."
+        }
+      ],
+      "formulas": [],
+      "notes": "This slide defines experience from a philosophical viewpoint... This slide breaks down the sociological view...",
+      "educational_value": 0.9500000000000001
+    }
+  ],
+  "semantic_chunks": [
+    {
+      "topics": [
+        "origins of the experience concept",
+        "example of customer experience"
+      ],
+      "content": "\n\n==================================================\n## Topic: Origins Of The Experience Concept\n(Source slides: 17, 22)\n\n### Content\n\u2022 Philosophical approach\n\nAccording to the philosophical approach, an experience is an event induced by a stimulus. Therefore, an experience is not self-produced, it is the result of a link between an individual and his or her environment. It produces knowledge and know-how. Batat (2019) highlights 3 forms of experience in philosophy :\n\nSociological approach\n\nWhat the sociological approach brings more to the knowledge of the Experience? According to sociological, we should consider these experiences below ... as anchored to the sociocultural context\n\n### Definitions\n- **Experience (philosophical approach)**: An event induced by a stimulus. It is not self-produced, it is the result of a link between an individual and his or her environment. It produces knowledge and know-how.\n\n### Key Concepts: Philosophical definition of experience, Stimulus-induced event, Individual-environment link, Knowledge and know-how, Forms of experience (Batat, 2019), Sociological approach, Immediate experience, Experimentation, Lived experience, Sociocultural context\n\n### Visual Elements\n- [flowchart] A horizontal flowchart with three connected chevrons...\n  Key points: Experience progresses through three forms...\n- [flowchart] A horizontal, three-stage process diagram...\n  Key points: Experience is a process..., The process is cyclical..., Anchored in sociocultural context.\n\n==================================================\n## Topic: Example Of Customer Experience\n(Source slides: 11, 31, 46)\n\n### Content\nadidas\n\nControl\nshipping address...\n\n\u2022 The Roots of Customer Experience In Marketing\n\n\u2022 Why do we need to focus on Customer Experience? Elements | Traditional Marketing | Experiential Marketing\n--- | --- | ---\nEmphasis | Focus on functional aspects and benefits | Focus on customer experiences...\n\n### Key Concepts: Customer Experience, Checkout Process, UI, UX, A/B Testing, Customer buying behavior, Customer satisfaction, Service quality, Relationship marketing, CRM, Customer centricity, Customer engagement, Traditional Marketing, Experiential Marketing\n\n### Examples\n- The Adidas online checkout process is used as an example to compare two different user experiences...\n\n### Visual Elements\n- [comparative screenshots] Two screenshots of the Adidas website checkout process...\n  Key points: The 'Control' version is a single-page checkout process., The 'Variation 1' version requires users to first choose a checkout method...\n- [timeline] A horizontal timeline showing the evolution of marketing concepts...\n  Key points: Customer buying behavior process models (1960s\u20131970s), Customer satisfaction and loyalty (1970s), Service quality (1980s), Relationship marketing (1990s), CRM (2000s), Customer centricity (2000s\u20132010s), Customer engagement (2010s)\n- [table] A table comparing 'Traditional Marketing' and 'Experiential Marketing'...\n  Key points: Traditional Marketing emphasizes functional benefits..., Experiential Marketing focuses on customer experiences..., Clients: rational decision-makers vs rational and emotional actors",
+      "key_concepts": [
+        "Philosophical definition of experience",
+        "Stimulus-induced event",
+        "Individual-environment link",
+        "Knowledge and know-how",
+        "Forms of experience (Batat, 2019)",
+        "Sociological approach",
+        "Immediate experience",
+        "Experimentation",
+        "Lived experience",
+        "Sociocultural context",
+        "Customer Experience",
+        "Checkout Process",
+        "UI",
+        "UX",
+        "A/B Testing"
+      ],
+      "educational_value": 0.9500000000000001
+    }
+  ],
+  "consolidation_summary": "Consolidated into 2 topics: example of customer experience, origins of the experience concept. Contains 1 definitions, 1 examples, and 24 key concepts."
+}

@@ -302,3 +302,48 @@ async def get_lecture(
     except Exception as e:
         logger.error(f"Error getting lecture: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class DeleteResponse(BaseModel):
+    """Response model for delete operations."""
+    success: bool
+    message: str
+    lecture_id: int
+
+
+@router.delete("/lectures/{lecture_id}", response_model=DeleteResponse)
+async def delete_lecture(
+    lecture_id: int,
+    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
+    repository: ContentRepository = Depends(get_repository)
+):
+    """
+    Soft delete a lecture by marking it as deleted.
+    
+    The lecture will no longer appear in lists but remains in the database
+    and can be restored if needed.
+    """
+    try:
+        # First check if lecture exists
+        lecture = await repository.get_lecture_by_id(lecture_id)
+        if not lecture:
+            raise HTTPException(status_code=404, detail=f"Lecture {lecture_id} not found")
+        
+        # Mark as deleted
+        success = await repository.mark_lecture_deleted(lecture_id)
+        
+        if success:
+            logger.info(f"Lecture {lecture_id} marked as deleted")
+            return DeleteResponse(
+                success=True,
+                message=f"Lecture '{lecture['lecture_title']}' has been deleted",
+                lecture_id=lecture_id
+            )
+        else:
+            raise HTTPException(status_code=500, detail="Failed to delete lecture")
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error deleting lecture {lecture_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))

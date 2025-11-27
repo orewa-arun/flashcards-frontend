@@ -299,13 +299,13 @@
 }
 
 .action-btn.run {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary, #2563EB));
   color: white;
 }
 
 .action-btn.run:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .action-btn.retry {
@@ -337,6 +337,15 @@
   box-shadow: none !important;
 }
 
+/* Loading spinner when action is in progress */
+.action-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  color: var(--accent-primary);
+}
+
 /* Error Log */
 .error-log {
   background: #fef2f2;
@@ -364,6 +373,16 @@
   overflow-y: auto;
 }
 
+/* Lecture Footer */
+.lecture-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+
 /* Lecture Meta */
 .lecture-meta {
   display: flex;
@@ -371,8 +390,34 @@
   gap: 16px;
   font-size: 12px;
   color: var(--text-muted);
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
+}
+
+/* Delete Button */
+.delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.delete-btn:hover:not(:disabled) {
+  background: #fee2e2;
+  border-color: #f87171;
+  transform: translateY(-1px);
+}
+
+.delete-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
 /* Spinning Animation */

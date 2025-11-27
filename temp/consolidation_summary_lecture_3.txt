@@ -1,0 +1,176 @@
+CONSOLIDATION SUMMARY
+======================================================================
+
+Lecture: Session 3 - Framework for customer experience.pdf
+Lecture ID: 3
+Course Code: MAPP_F_MKT404_EN_2025
+
+STATISTICS:
+  Original slides: 41
+  Educational slides: 34
+  Filtered (non-educational): 7
+  Consolidated topics: 6
+  Semantic chunks: 4
+
+SUMMARY: Consolidated into 6 topics: the customer journey, mckinsey purchasing funnel, the construction of personas, never stop daring, gen ai is reshaping customer journeys (+1 more). Contains 9 definitions, 58 examples, and 155 key concepts.
+
+TOPICS:
+----------------------------------------------------------------------
+
+1. THE CUSTOMER JOURNEY
+   Slides: [1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
+   Educational Value: 1.00
+   Key Concepts: Customer Journey, Purchase Stage, Pre purchase, Post purchase, Touchpoints
+   Definitions: 7
+   Examples: 41
+   Diagrams: 14
+
+2. MCKINSEY PURCHASING FUNNEL
+   Slides: [1, 2, 3, 4]
+   Educational Value: 0.75
+   Key Concepts: McKinsey purchasing funnel, Awareness, Familiarity, Consideration, Purchase
+   Examples: 2
+   Diagrams: 4
+
+3. THE CONSTRUCTION OF PERSONAS
+   Slides: [1, 1, 2, 2, 3, 3, 4, 5]
+   Educational Value: 1.00
+   Key Concepts: Persona, Shopper Persona, Buyer Persona, Persona Construction, Goals
+   Definitions: 1
+   Examples: 8
+   Diagrams: 6
+
+4. NEVER STOP DARING
+   Slides: [1]
+   Educational Value: 0.65
+   Key Concepts: Audacity (L'audace), Innovation, Resilience, Responsible Management, Societal Impact
+   Definitions: 1
+
+5. GEN AI IS RESHAPING CUSTOMER JOURNEYS
+   Slides: [5]
+   Educational Value: 0.90
+   Key Concepts: Generative AI (Gen AI), Customer Journey, Personalized Advertising, Augmented Reality, Interactive Assistant
+   Examples: 6
+   Diagrams: 1
+
+6. LE WAGON FIRST SESSIONS
+   Slides: [5]
+   Educational Value: 0.50
+   Key Concepts: Le Wagon, BlackBoard, Online Sessions, Designer Tools, Product Pitch
+   Examples: 1
+   Diagrams: 1
+
+
+SEMANTIC CHUNKS:
+----------------------------------------------------------------------
+
+Chunk 1:
+   Topics: the customer journey
+   Key Concepts: Customer Journey, Purchase Stage, Pre purchase, Post purchase, Touchpoints
+   Content Size: 21332 chars
+   Educational Value: 1.00
+   Preview:
+## Topic: The Customer Journey
+(Source slides: 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5)
+
+### Content
+• Pre purchase, purchase and post purchase stages
+
+Purchase Stage:
+This stage encompasses all customer interactions with the brand during the purchase. It includes behaviors such as choice, ordering, and payment. It is considered as the most “temporally compressed” of the three stages.
+
+The Customer Journey
+
+- Types of Touch Points
+
+Partner-owned touch points:
+
+These touch points ...
+
+Chunk 2:
+   Topics: the construction of personas
+   Key Concepts: Persona, Shopper Persona, Buyer Persona, Persona Construction, Goals
+   Content Size: 8787 chars
+   Educational Value: 1.00
+   Preview:
+
+
+==================================================
+## Topic: The Construction Of Personas
+(Source slides: 1, 1, 2, 2, 3, 3, 4, 5)
+
+### Content
+The construction of Personas
+
+• What is a Persona? [Embedded YouTube Video]
+PERSONAS
+- SHOPPER PERSONAS
+- BUYERS PERSONAS
+
+https://www.youtube.com/watch?v=AVs59ddkzuQ
+
+The construction of Personas
+
+• How do we create them? WHAT? Name: Robert
+
+GOALS
+Primary goal? Secondary goal? • Intellectual and cultural development
+• Sharing time and experience with h...
+
+Chunk 3:
+   Topics: gen ai is reshaping customer journeys, mckinsey purchasing funnel
+   Key Concepts: Generative AI (Gen AI), Customer Journey, Personalized Advertising, Augmented Reality, Interactive Assistant
+   Content Size: 9266 chars
+   Educational Value: 0.90
+   Preview:
+
+
+==================================================
+## Topic: Gen Ai Is Reshaping Customer Journeys
+(Source slides: 5)
+
+### Content
+Gen AI is reshaping customer journeys
+
+Illustrative
+
+https://www.bcg.com/publications/2024/three-ways-genai-will-transform-customer-experience
+https://www.bain.com/insights/generative-ai-potential-to-improve-customer-experience/
+https://onlinelibrary.wiley.com/doi/10.1002/mar.70036
+
+Source: BCG analysis.
+
+### Key Concepts: Generative AI (Gen AI), Customer Journey, ...
+
+Chunk 4:
+   Topics: never stop daring, le wagon first sessions
+   Key Concepts: Audacity (L'audace), Innovation, Resilience, Responsible Management, Societal Impact
+   Content Size: 2576 chars
+   Educational Value: 0.65
+   Preview:
+
+
+==================================================
+## Topic: Never Stop Daring
+(Source slides: 1)
+
+### Content
+Audencia
+audencia.com
+
+NEVER STOP DARING
+
+"
+Cultiver l'audace, toujours et à tout âge,
+croire en soi, se lancer, innover,
+apprendre de ses échecs,
+se relever et recommencer.
+S'engager avec et pour les autres,
+agir en manager responsable,
+respectueux et bienveillant,
+impacter positivement la société.
+
+L'audace nous grandit,
+élargit notre horizon,
+nourrit notre imagination
+pour mieux tr...

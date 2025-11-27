@@ -1,0 +1,63 @@
+# TOPIC BRIEF 3: Mckinsey Purchasing Funnel & Gen Ai Is Reshaping Customer Journeys
+# Educational Value: 0.90
+# Definitions: 0
+# Examples: 8
+# Diagrams: 5
+
+# TOPIC: Mckinsey Purchasing Funnel & Gen Ai Is Reshaping Customer Journeys
+Educational Value: 0.90/1.0
+Source Slides: 1, 2, 3, 4, 5
+
+## KEY CONCEPTS TO COVER
+McKinsey purchasing funnel, Awareness, Familiarity, Consideration, Purchase, Loyalty, Online vs Offline channels, Solution Evaluation, Evaluation of the Purchasing Experience, Shopping Value, Value in use, Customer journey mapping, Brand consideration set, Brand choice, Camera market, Generative AI (Gen AI), Customer Journey, Personalized Advertising, Augmented Reality, Interactive Assistant
+
+## REAL-WORLD EXAMPLES (Use for `real_world_use_case` and `example`)
+1. A customer journey for purchasing a camera, starting with awareness of brands like Nikon, Sony, Canon, etc., and ending with the purchase of a Canon 5D MK4.
+2. A customer journey for purchasing a camera, showing brands like Nikon, Sony, Canon, etc., and culminating in the purchase of a Canon product.
+3. Receiving personalized advertising with AI-generated content.
+4. Using an interactive assistant to browse a catalog.
+5. Using GenAI and augmented reality to demonstrate products in a physical space.
+6. Using auto-generated user guides and tutorials after purchase.
+7. A call center agent using AI dynamic scripts to troubleshoot a query.
+8. An agent receiving next-best-action prompts for cross-selling during a call.
+
+## VISUAL FRAMEWORKS (Use for `mermaid_diagrams` and `analogy`)
+- [FLOWCHART]: A five-stage flowchart representing the McKinsey purchasing funnel. The stages are labeled from left to right: AWARENESS, FAMILIARITY, CONSIDERATION, PURCHASE, LOYALTY. Each stage is depicted with a g
+  • The funnel illustrates a progressive reduction of options.
+  • The process starts with broad awareness of many options.
+  • It narrows down to familiarity with a smaller set.
+- [DIAGRAM]: A detailed diagram of the 5-step purchasing funnel, showing specific marketing channels and customer activities within each stage. The funnel is divided horizontally into 'ONLINE' and 'OFFLINE' sectio
+  • The funnel maps specific online and offline marketing tactics to each stage of the customer journey.
+  • The customer journey involves both 'Solution Evaluation' and 'Evaluation of the Purchasing Experienc
+  • The goal is to provide 'Shopping Value' and achieve 'Value in use' for the customer.
+- [DIAGRAM]: An example application of the McKinsey purchasing funnel for buying a camera. The diagram structure is the same as the previous slide, with ONLINE/OFFLINE channels and the five stages. It shows the na
+  • Illustrates how a broad set of camera brands (Nikon, Olympus, Pentax, Sony, Canon, Panasonic) is nar
+  • The consumer moves from awareness of 6 brands to considering 3 brands (Sony, Canon, Nikon).
+  • The final purchase is a Canon camera.
+- [DIAGRAM]: An example application of the McKinsey purchasing funnel for buying a camera, nearly identical to the previous slide but without the illustrative icons and the specific final product model. The diagra
+  • Illustrates the narrowing of a brand consideration set for cameras, from 6 initial brands down to 1 
+  • The consumer journey progresses through awareness, familiarity, and consideration stages.
+  • The final purchase decision is for the 'CANON' brand.
+- [FLOWCHART]: A diagram showing two customer journey flows and how Gen AI can impact them. The top flow represents the purchase journey (Discovery -> Research -> Comparison -> Purchase decision -> Payment -> Delive
+  • Gen AI can be applied across the entire customer journey, from discovery to post-purchase support.
+  • In the purchase phase, Gen AI can improve click-through rates, conversion, and brand awareness.
+  • In the post-purchase phase, Gen AI can lower returns, reduce service costs, and increase loyalty thr
+
+## CONCEPT RELATIONSHIPS (Use for `common_mistakes`)
+These distinctions help prevent confusion:
+- 'Awareness' vs 'Consideration' - Don't confuse these related but distinct concepts
+- 'Familiarity' vs 'Loyalty' - Don't confuse these related but distinct concepts
+
+## DETAILED CONTENT
+McKinsey purchasing funnel
+• 5 steps purchasing funnel
+
+Gen AI is reshaping customer journeys
+
+Illustrative
+
+https://www.bcg.com/publications/2024/three-ways-genai-will-transform-customer-experience
+https://www.bain.com/insights/generative-ai-potential-to-improve-customer-experience/
+https://onlinelibrary.wiley.com/doi/10.1002/mar.70036
+
+Source: BCG analysis.

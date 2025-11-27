@@ -1,0 +1,160 @@
+# TOPIC BRIEF 1: The Customer Journey
+# Educational Value: 1.00
+# Definitions: 7
+# Examples: 10
+# Diagrams: 5
+
+# TOPIC: The Customer Journey
+Educational Value: 1.00/1.0
+Source Slides: 1, 2, 3, 4, 5
+
+## DEFINITIONS (Use for `concise` answers)
+- **Purchase Stage**: This stage encompasses all customer interactions with the brand during the purchase. It includes behaviors such as choice, ordering, and payment. It is considered as the most “temporally compressed” of the three stages.
+- **Partner-owned touch points**: These touch points are jointly designed, controlled and managed by the firm and its partner(s). The partners could be multivendor partners, multichannel distributors partners, communication partners, etc.
+- **Social/external touch points**: These touch points are all external people that may influence the customer experience. It may concerns the advices of customers (e.g. Comments on TripAdvisor) or peer influences, independent information sources, etc. Sometimes influencers may be independent and sometimes they are in line with firm expectations.
+- **Post purchase Stage**: The last stage concerns all interactions with the brand and its environment after purchase. It includes the use/consumption of the product/service, and service requests. It is an important phase where the customer will evaluate his shopping experience. Based on this evaluation, he will engage or not with the brand, become loyal or not, use negative or positive W.O.M’s.
+- **Brand-owned touch points**: These touch points customer interactions are designed, controlled and managed by the firm. It may concern the marketing mix (products, price strategy, service, distribution) and more broadly the brand owned media such as advertising, websites, loyalty programs, etc.
+- **Customer-owned touch points**: These touch points concerned all customer actions that are part of the customer experience. The company, its partners or others do not influence or control these actions. These actions may include customers reflecting on their needs and desires and the transformation of a company product into a use not intended by the firm.
+- **Pre purchase Stage**: This stage encompasses all direct or indirect customer interactions with the brand before the purchase. It generally starts with the “need/goal/impulse recognition to consideration of satisfying that need/goal/impulse with a purchase” including the search stage (Lemon & Verhoef, 2016, p.76).
+
+## KEY CONCEPTS TO COVER
+Customer Journey, Purchase Stage, Pre purchase, Post purchase, Touchpoints, Behaviors, Temporally compressed, Touch Points, Partner-owned touch points, Social/external touch points, Customer Experience, Peer Influence, Influencers, Post purchase Stage, Customer Evaluation, Brand Loyalty, Word-of-Mouth (W.O.M.), Consumption, Service Requests, E-commerce
+
+## REAL-WORLD EXAMPLES (Use for `real_world_use_case` and `example`)
+1. A screenshot of an Instagram post from the influencer 'xsqueezie' announcing a collaboration with Nike. The caption (in French) discusses a new fitness program in partnership with Nike, illustrating a...
+2. The 'IKEA hackers' website, where customers share modifications to IKEA products, is an example of a customer-owned touch point.
+3. The exercise itself is an example: creating a persona for a Nike brand segment and mapping their journey to buy sneakers online.
+4. Coca-Cola
+5. Walt Disney
+6. IKEA
+7. Microsoft
+8. Samsung
+9. The entire slide is a detailed example of a Customer Journey Map for the brand Nike.
+10. Nike's e-commerce website
+
+## VISUAL FRAMEWORKS (Use for `mermaid_diagrams` and `analogy`)
+- [FLOWCHART]: A flowchart diagram illustrates the three stages of the customer journey as three sequential, overlapping chevrons pointing from left to right. The first stage is 'Prepurchase Stage' in blue. The midd
+  • Prepurchase Stage (Blue Chevron): Touchpoints: Brand owned, partner owned, customer owned, social/ex
+  • Purchase Stage (Yellow Highlighted Chevron): Touchpoints: Brand owned, partner owned, customer owned
+  • Postpurchase Stage (Blue Chevron): Touchpoints: Brand owned, partner owned, customer owned, social/e
+- [FLOWCHART]: A flowchart diagram illustrates the three stages of the customer journey as three sequential, overlapping chevrons pointing from left to right. The first stage is 'Prepurchase Stage' in blue. The midd
+  • Prepurchase Stage (Blue Chevron): Touchpoints: Brand owned, partner owned, customer owned, social/ex
+  • Purchase Stage (Blue Chevron): Touchpoints: Brand owned, partner owned, customer owned, social/exter
+  • Postpurchase Stage (Yellow Highlighted Chevron): Touchpoints: Brand owned, partner owned, customer o
+- [FLOWCHART AND TABLE]: The slide presents a template for a customer journey map. At the top, a flowchart shows three main phases: 'Prepurchase', 'Purchase', and 'Postpurchase', connected by arrows. Below this, a red bar is 
+  • The customer journey is divided into three main phases: Prepurchase, Purchase, and Postpurchase.
+  • The journey is further broken down into 6 specific steps.
+  • The map tracks three key aspects at each step: Customer activities, Experience/Feelings, and Touchpo
+- [FRAMEWORK/TABLE]: A template for a customer journey map. It has a timeline at the top divided into three main stages: Prepurchase, Purchase, and Postpurchase. Below this, the timeline is marked with six steps (Step 1 t
+  • The customer journey is divided into Prepurchase, Purchase, and Postpurchase stages.
+  • Each stage consists of multiple steps.
+  • For each step, the map analyzes customer activities, their emotional experience, and the touchpoints
+- [TABLE/MATRIX]: A detailed customer journey map for the brand Nike, structured as a grid. The columns represent the five stages of the journey: Awareness, Consideration, Decision, Service, and Loyalty. The rows repre
+  • Awareness Stage: Touchpoint is Nike.com; customer feels interested but hesitant due to difficulty fi
+  • Consideration Stage: Touchpoint is Product Pages; customer is curious but faces uncertainty about pr
+  • Decision Stage: Touchpoint is Online Shopping; customer is excited but faces a lengthy checkout proc
+
+## ACADEMIC REFERENCES (Cite in answers)
+- Lemon & Verhoef (2016)
+
+## CONCEPT RELATIONSHIPS (Use for `common_mistakes`)
+These distinctions help prevent confusion:
+- 'Brand-Owned' vs 'Customer-Owned' - Don't confuse these related but distinct concepts
+- 'Brand-Owned' vs 'Partner-Owned' - Don't confuse these related but distinct concepts
+- 'Partner-Owned' vs 'Customer-Owned' - Don't confuse these related but distinct concepts
+- 'Purchase' vs 'Consumption' - Don't confuse these related but distinct concepts
+- The stages are sequential - understand the order and what happens at each
+
+## DETAILED CONTENT
+• Pre purchase, purchase and post purchase stages
+
+Purchase Stage:
+This stage encompasses all customer interactions with the brand during the purchase. It includes behaviors such as choice, ordering, and payment. It is considered as the most “temporally compressed” of the three stages.
+
+The Customer Journey
+
+- Types of Touch Points
+
+Partner-owned touch points:
+
+These touch points are jointly designed, controlled and managed by the firm and its partner(s). The partners could be multivendor partners, multichannel distributors partners, communication partners, etc.
+
+The Customer Journey
+
+- Types of Touch Points
+
+Social/external touch points:
+
+These touch points are all external people that may influence the customer experience. It may concerns the advices of customers (e.g. Comments on TripAdvisor) or peer influences, independent information sources, etc. Sometimes influencers may be independent and sometimes they are in line with firm expectations. Lemon & Verhoef (2016)
+
+It includes the use/consumption of the product/service, and service requests. It is an important phase where the customer will evaluate his shopping experience. Based on this evaluation, he will engage or not with the brand, become loyal or not, use negative or positive W.O.M’s.
+
+• Today's exercise
+
+Customer activities
+(what is the customer doing?)
+
+Experience (what is the customer's feeling : positive, negative, neutral; High versus Low)
+
+Touchpoints
+
+• Types of Touch Points
+
+Brand-owned touch points:
+These touch points customer interactions are designed, controlled and managed by the firm. It may concern the marketing mix (products, price strategy, service, distribution) and more broadly the brand owned media such as advertising, websites, loyalty programs, etc.
+
+The Customer Journey Map
+
+- What are the steps in a customer journey? Customer activities
+(what is the customer doing?)
+
+Experience (what is the customer's feeling : positive, negative, neutral; High versus Low)
+
+Touchpoints
+
+• Example Nike
+
+https://www.questionpro.com/blog/nike-customer-experience/
+
+The Customer Journey
+
+Overview of the Customer Journey
+
+Feedback
+
+PREVIOUS EXPERIENCE (t-n)
+Prepurchase Stage
+Purchase Stage
+Postpurchase Stage
+
+CURRENT EXPERIENCE (t)
+Pre purchase Stage
+Touchpoints: Brand owned, partner owned, customer owned, social/external
+Behaviors: need recognition, consideration, search
+
+Purchase Stage
+Touchpoints: Brand owned, partner owned, customer owned, social/external
+Behaviors: choice, ordering, payment
+
+Post purchase Stage
+Touchpoints: Brand owned, partner owned, customer owned, social/external
+Behaviors: consumption, usage, engagement, service requests
+
+FUTURE EXPERIENCE (t+n)
+Prepurchase Stage
+Purchase Stage
+Postpurchase Stage
+
+Customer Journey
+
+Extracted from Lemon & Verhoef (2016, p. 77)
+
+The Customer Journey
+
+- Types of Touch Points
+
+Customer-owned touch points:
+
+These touch points concerned all customer actions that are part of the customer experience. The company, its partners or others
+
+[Content truncated for brevity...]
