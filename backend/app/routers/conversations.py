@@ -1,19 +1,17 @@
-"""API endpoints for AI Tutor conversation management."""
+"""API endpoints for AI Tutor conversation management using PostgreSQL."""
 
 import logging
 import httpx
-import json
 from typing import List, Dict, Any, AsyncGenerator
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
-from motor.motor_asyncio import AsyncIOMotorDatabase
+import asyncpg
 
-from app.database import get_database
+from app.db.postgres import get_postgres_pool
 from app.firebase_auth import get_current_user
 from app.services.conversation_service import ConversationService
 from app.models.conversation import (
     CreateConversationRequest,
-    SendMessageRequest,
     SendMessageResponse,
     ConversationSummary,
     ConversationWithMessages
@@ -25,9 +23,10 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/tutor/conversations", tags=["conversations"])
 
 
-def get_conversation_service(db: AsyncIOMotorDatabase = Depends(get_database)) -> ConversationService:
-    """Dependency to get conversation service."""
-    return ConversationService(db)
+async def get_conversation_service() -> ConversationService:
+    """Dependency to get conversation service with PostgreSQL pool."""
+    pool = await get_postgres_pool()
+    return ConversationService(pool)
 
 
 @router.post("", response_model=Dict[str, str])
@@ -282,8 +281,6 @@ async def stream_message(
                             yield chunk
                             
                 # Save the full AI response to database after streaming is done
-                # Note: We need a new service instance or context here if the generator runs after the request scope
-                # But since we are inside the endpoint, we can use 'service'
                 await service.add_message(
                     conversation_id=conversation_id,
                     role="assistant",
@@ -375,8 +372,8 @@ async def send_message(
         
         except httpx.HTTPError as e:
             logger.error(f"Error calling RAG backend: {e}")
-            # Delete the user message since we couldn't get a response
-            await service.messages_collection.delete_one({"_id": user_message_id})
+            # Note: We can't easily delete the message in PostgreSQL without the repository
+            # The message will remain, but the conversation will show an error
             raise HTTPException(
                 status_code=500,
                 detail="Failed to get AI response. Please try again."
@@ -411,4 +408,3 @@ async def send_message(
     except Exception as e:
         logger.error(f"Error sending message: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-

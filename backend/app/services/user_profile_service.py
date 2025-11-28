@@ -1,23 +1,26 @@
-"""Service layer for user profiles and course enrollment."""
+"""Service layer for user profiles and course enrollment using PostgreSQL."""
 
 import logging
 from typing import Optional, List
-from motor.motor_asyncio import AsyncIOMotorDatabase
+import asyncpg
+
+from app.repositories.user_repository import UserRepository
 
 logger = logging.getLogger(__name__)
 
 
 class UserProfileService:
-    """Service for managing user profiles and course enrollment."""
+    """Service for managing user profiles and course enrollment using PostgreSQL."""
     
-    def __init__(self, database: AsyncIOMotorDatabase):
-        self.db = database
-        self.collection = database.user_profiles
-    
-    async def initialize_indexes(self):
-        """Create indexes for efficient querying."""
-        await self.collection.create_index("user_id", unique=True)
-        logger.info("User profile indexes created")
+    def __init__(self, pool: asyncpg.Pool):
+        """
+        Initialize service with PostgreSQL connection pool.
+        
+        Args:
+            pool: AsyncPG connection pool
+        """
+        self.pool = pool
+        self.repository = UserRepository(pool)
     
     async def get_profile(self, user_id: str) -> Optional[dict]:
         """
@@ -29,8 +32,7 @@ class UserProfileService:
         Returns:
             Profile document or None if not found
         """
-        profile = await self.collection.find_one({"user_id": user_id})
-        return profile
+        return await self.repository.get_profile(user_id)
     
     async def get_enrolled_courses(self, user_id: str) -> List[str]:
         """
@@ -42,10 +44,7 @@ class UserProfileService:
         Returns:
             List of course IDs
         """
-        profile = await self.get_profile(user_id)
-        if not profile:
-            return []
-        return profile.get('enrolled_courses', [])
+        return await self.repository.get_enrolled_courses(user_id)
     
     async def enroll_course(self, user_id: str, course_id: str) -> bool:
         """
@@ -58,21 +57,12 @@ class UserProfileService:
         Returns:
             True if successful
         """
-        try:
-            result = await self.collection.update_one(
-                {"user_id": user_id},
-                {
-                    "$addToSet": {"enrolled_courses": course_id}  # $addToSet prevents duplicates
-                },
-                upsert=True
-            )
-            
-            logger.info(f"✅ User {user_id} enrolled in course {course_id}")
-            return True
+        success = await self.repository.enroll_course(user_id, course_id)
         
-        except Exception as e:
-            logger.error(f"Error enrolling user {user_id} in course {course_id}: {e}")
-            return False
+        if success:
+            logger.info(f"User {user_id} enrolled in course {course_id}")
+        
+        return success
     
     async def unenroll_course(self, user_id: str, course_id: str) -> bool:
         """
@@ -85,20 +75,12 @@ class UserProfileService:
         Returns:
             True if successful
         """
-        try:
-            result = await self.collection.update_one(
-                {"user_id": user_id},
-                {
-                    "$pull": {"enrolled_courses": course_id}
-                }
-            )
-            
-            logger.info(f"User {user_id} unenrolled from course {course_id}")
-            return True
+        success = await self.repository.unenroll_course(user_id, course_id)
         
-        except Exception as e:
-            logger.error(f"Error unenrolling user {user_id} from course {course_id}: {e}")
-            return False
+        if success:
+            logger.info(f"User {user_id} unenrolled from course {course_id}")
+        
+        return success
     
     async def is_enrolled(self, user_id: str, course_id: str) -> bool:
         """
@@ -111,6 +93,11 @@ class UserProfileService:
         Returns:
             True if enrolled, False otherwise
         """
-        enrolled_courses = await self.get_enrolled_courses(user_id)
-        return course_id in enrolled_courses
+        return await self.repository.is_enrolled(user_id, course_id)
 
+
+async def get_user_profile_service() -> UserProfileService:
+    """Get user profile service instance with PostgreSQL pool."""
+    from app.db.postgres import get_postgres_pool
+    pool = await get_postgres_pool()
+    return UserProfileService(pool)

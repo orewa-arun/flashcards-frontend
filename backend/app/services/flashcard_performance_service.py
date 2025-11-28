@@ -1,5 +1,5 @@
 """
-Service for managing user flashcard performance tracking.
+Service for managing user flashcard performance tracking using PostgreSQL.
 
 This service is responsible for updating and calculating performance metrics
 at the flashcard level for the Exam Readiness Engine V2.
@@ -7,10 +7,12 @@ at the flashcard level for the Exam Readiness Engine V2.
 
 import math
 import logging
+import json
 from datetime import datetime, timezone
 from typing import List, Dict, Optional
-from motor.motor_asyncio import AsyncIOMotorDatabase
+import asyncpg
 
+from app.repositories.analytics_repository import AnalyticsRepository
 from app.models.readiness_v2 import (
     UserFlashcardPerformance,
     PerformanceByLevel,
@@ -26,22 +28,20 @@ class FlashcardPerformanceService:
     """
     Service for tracking and calculating flashcard-level performance.
     
-    This service updates the user_flashcard_performance collection and
+    This service updates the user_flashcard_performance table and
     recalculates the three pillar scores (coverage, accuracy, momentum)
     for each flashcard.
     """
     
-    def __init__(self, database):
-        self.db = database
-        self.collection = database.user_flashcard_performance
-    
-    async def initialize_indexes(self):
-        """Create indexes for efficient querying."""
-        await self.collection.create_index(
-            [("user_id", 1), ("flashcard_id", 1)],
-            unique=True
-        )
-        logger.info("Flashcard performance indexes created")
+    def __init__(self, pool: asyncpg.Pool):
+        """
+        Initialize service with PostgreSQL connection pool.
+        
+        Args:
+            pool: AsyncPG connection pool
+        """
+        self.pool = pool
+        self.repository = AnalyticsRepository(pool)
     
     async def update_performance_from_quiz(
         self,
@@ -75,95 +75,104 @@ class FlashcardPerformanceService:
             is_correct = question_result.is_correct
             partial_credit = question_result.partial_credit_score
             
-            # Fetch or create performance document
-            perf_doc = await self.collection.find_one({
-                "user_id": user_id,
-                "flashcard_id": flashcard_id
-            })
+            # Fetch existing performance
+            perf_data = await self.repository.get_flashcard_performance(user_id, flashcard_id)
             
-            if perf_doc:
-                # Update existing document
-                performance = UserFlashcardPerformance(**perf_doc)
+            if perf_data:
+                # Parse existing performance data
+                performance_json = perf_data.get("performance_data", {})
+                performance_by_level = performance_json.get("performance_by_level", {})
+                recent_attempts = performance_json.get("recent_attempts", [])
+                is_weak = perf_data.get("is_weak", False)
             else:
-                # Create new document
-                performance = UserFlashcardPerformance(
-                    user_id=user_id,
-                    flashcard_id=flashcard_id,
-                    course_id=course_id,
-                    lecture_id=lecture_id
-                )
+                # Initialize new performance
+                performance_by_level = {}
+                recent_attempts = []
+                is_weak = False
             
             # Update performance_by_level
-            if level not in performance.performance_by_level:
-                performance.performance_by_level[level] = PerformanceByLevel(points=0.0)
+            if level not in performance_by_level:
+                performance_by_level[level] = {"attempts": 0, "correct": 0, "points": 0.0}
             
-            performance.performance_by_level[level].attempts += 1
+            performance_by_level[level]["attempts"] += 1
             if is_correct:
-                performance.performance_by_level[level].correct += 1
+                performance_by_level[level]["correct"] += 1
             
             # Calculate points earned for this attempt (supports partial credit)
-            points_earned = self._calculate_points_for_attempt(level, is_correct, partial_credit if partial_credit is not None else 0.0)
+            points_earned = self._calculate_points_for_attempt(
+                level, is_correct, 
+                partial_credit if partial_credit is not None else 0.0
+            )
             
             # Add points to performance_by_level
-            performance.performance_by_level[level].points += points_earned
+            performance_by_level[level]["points"] += points_earned
             
             # Add to recent_attempts (capped)
-            new_attempt = RecentAttempt(
-                timestamp=datetime.now(timezone.utc),
-                level=level,
-                is_correct=is_correct,
-                points_earned=points_earned
-            )
-            performance.recent_attempts.append(new_attempt)
+            new_attempt = {
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "level": level,
+                "is_correct": is_correct,
+                "points_earned": points_earned
+            }
+            recent_attempts.append(new_attempt)
             
             # Cap recent_attempts to configured limit
-            if len(performance.recent_attempts) > config.MOMENTUM_RECENT_ATTEMPTS_LIMIT:
-                performance.recent_attempts = performance.recent_attempts[-config.MOMENTUM_RECENT_ATTEMPTS_LIMIT:]
+            if len(recent_attempts) > config.MOMENTUM_RECENT_ATTEMPTS_LIMIT:
+                recent_attempts = recent_attempts[-config.MOMENTUM_RECENT_ATTEMPTS_LIMIT:]
             
             # Recalculate scores
-            performance.coverage_score = self._calculate_coverage_score(
-                performance.performance_by_level
-            )
-            performance.accuracy_score = self._calculate_accuracy_score(
-                performance.performance_by_level
-            )
-            # total_points_earned is the same as accuracy_score (cumulative points)
-            performance.total_points_earned = performance.accuracy_score
-            performance.momentum_score = self._calculate_momentum_score(
-                performance.recent_attempts
-            )
-            
-            # Calculate Comfortability Score and determine next level
-            performance.comfortability_score = self._calculate_comfortability_score(
-                performance.recent_attempts
-            )
-            performance.question_next_level = self._determine_question_next_level(
-                performance.comfortability_score
-            )
+            coverage_score = self._calculate_coverage_score(performance_by_level)
+            accuracy_score = self._calculate_accuracy_score(performance_by_level)
+            momentum_score = self._calculate_momentum_score(recent_attempts)
+            comfortability_score = self._calculate_comfortability_score(recent_attempts)
+            next_level = self._determine_question_next_level(comfortability_score)
             
             # Update weak state
-            performance.is_weak = self._determine_weak_state(
-                performance.accuracy_score,
-                performance.is_weak,
-                is_correct
-            )
+            is_weak = self._determine_weak_state(accuracy_score, is_weak, is_correct)
             
-            performance.last_updated = datetime.now(timezone.utc)
+            # Prepare performance_data JSONB
+            performance_data = {
+                "performance_by_level": performance_by_level,
+                "recent_attempts": recent_attempts
+            }
             
             # Save to database
-            await self.collection.update_one(
-                {"user_id": user_id, "flashcard_id": flashcard_id},
-                {"$set": performance.model_dump(exclude={"id"})},
-                upsert=True
+            await self.repository.update_flashcard_performance(
+                user_id=user_id,
+                flashcard_id=flashcard_id,
+                course_id=course_id,
+                lecture_id=lecture_id,
+                is_weak=is_weak,
+                next_level=next_level,
+                coverage_score=coverage_score,
+                accuracy_score=accuracy_score,
+                momentum_score=momentum_score,
+                comfortability_score=comfortability_score,
+                total_points_earned=accuracy_score,
+                performance_data=performance_data
+            )
+            
+            # Also record the individual quiz attempt
+            question_hash = self._hash_question(question_result)
+            await self.repository.record_quiz_attempt(
+                user_id=user_id,
+                course_id=course_id,
+                lecture_id=lecture_id,
+                flashcard_id=flashcard_id,
+                question_hash=question_hash,
+                is_correct=is_correct,
+                partial_credit=partial_credit if partial_credit else 0.0,
+                time_taken_seconds=question_result.time_taken if question_result.time_taken else 0,
+                difficulty_level=level
             )
             
             logger.debug(f"Updated performance for flashcard {flashcard_id}: "
-                        f"coverage={performance.coverage_score:.2f}, "
-                        f"accuracy={performance.accuracy_score:.2f}, "
-                        f"momentum={performance.momentum_score:.2f}, "
-                        f"cs={performance.comfortability_score:.2f}, "
-                        f"next_level={performance.question_next_level}, "
-                        f"is_weak={performance.is_weak}")
+                        f"coverage={coverage_score:.2f}, "
+                        f"accuracy={accuracy_score:.2f}, "
+                        f"momentum={momentum_score:.2f}, "
+                        f"cs={comfortability_score:.2f}, "
+                        f"next_level={next_level}, "
+                        f"is_weak={is_weak}")
         
         # Invalidate deck readiness cache for affected lectures
         from app.services.readiness_v2_service import ReadinessV2Service
@@ -171,6 +180,12 @@ class FlashcardPerformanceService:
             ReadinessV2Service.invalidate_deck_cache(user_id, [lecture])
         
         return list(affected_lectures)
+    
+    def _hash_question(self, question_result: QuestionResult) -> str:
+        """Generate a hash for a question to track unique attempts."""
+        import hashlib
+        question_text = question_result.question.get("question_text", "") if isinstance(question_result.question, dict) else str(question_result.question)
+        return hashlib.sha256(question_text.encode()).hexdigest()[:16]
     
     def _map_difficulty_to_level(self, difficulty: str) -> str:
         """Map various difficulty representations to standardized levels."""
@@ -202,7 +217,7 @@ class FlashcardPerformanceService:
         else:
             return float(level_points.get("incorrect", 0))
     
-    def _calculate_coverage_score(self, performance_by_level: Dict[str, PerformanceByLevel]) -> float:
+    def _calculate_coverage_score(self, performance_by_level: Dict[str, Dict]) -> float:
         """
         Calculate coverage score for a flashcard.
         
@@ -212,12 +227,12 @@ class FlashcardPerformanceService:
         
         for level, perf in performance_by_level.items():
             if level in config.COVERAGE_POINTS:
-                total_coverage += perf.attempts * config.COVERAGE_POINTS[level]
+                total_coverage += perf.get("attempts", 0) * config.COVERAGE_POINTS[level]
         
         # Cap at maximum
         return min(total_coverage, config.MAX_COVERAGE_POINTS_PER_FLASHCARD)
     
-    def _calculate_accuracy_score(self, performance_by_level: Dict[str, PerformanceByLevel]) -> float:
+    def _calculate_accuracy_score(self, performance_by_level: Dict[str, Dict]) -> float:
         """
         Calculate accuracy score for a flashcard.
         
@@ -228,11 +243,11 @@ class FlashcardPerformanceService:
         
         for level, perf in performance_by_level.items():
             # Use the stored points which already accounts for partial credit
-            total_accuracy += perf.points
+            total_accuracy += perf.get("points", 0.0)
         
         return total_accuracy
     
-    def _calculate_momentum_score(self, recent_attempts: List[RecentAttempt]) -> float:
+    def _calculate_momentum_score(self, recent_attempts: List[Dict]) -> float:
         """
         Calculate momentum score using time-weighted accuracy.
         
@@ -247,27 +262,22 @@ class FlashcardPerformanceService:
         weighted_total = 0.0
         
         for attempt in recent_attempts:
-            # Calculate time decay factor
-            attempt_ts = attempt.timestamp
-            # Normalize attempt timestamp to be timezone-aware (UTC) if it's naive
-            if isinstance(attempt_ts, datetime) and attempt_ts.tzinfo is None:
+            # Parse timestamp
+            attempt_ts = attempt.get("timestamp")
+            if isinstance(attempt_ts, str):
+                attempt_ts = datetime.fromisoformat(attempt_ts.replace('Z', '+00:00'))
+            if attempt_ts.tzinfo is None:
                 attempt_ts = attempt_ts.replace(tzinfo=timezone.utc)
+            
             age_days = (now - attempt_ts).total_seconds() / 86400
             decay_factor = math.exp(-math.log(2) * age_days / config.MOMENTUM_HALF_LIFE_DAYS)
             
-            # Use stored points_earned if available, otherwise calculate from level
-            if hasattr(attempt, 'points_earned') and attempt.points_earned is not None:
-                earned_points = attempt.points_earned
-            else:
-                # Fallback: calculate from level and is_correct (for backward compatibility)
-                level_points = config.ACCURACY_POINTS.get(attempt.level, {})
-                if attempt.is_correct:
-                    earned_points = level_points.get("correct", 1)
-                else:
-                    earned_points = level_points.get("incorrect", 0)
+            # Use stored points_earned
+            earned_points = attempt.get("points_earned", 0)
             
             # Get max points for this level (for normalization)
-            level_points = config.ACCURACY_POINTS.get(attempt.level, {})
+            level = attempt.get("level", "medium")
+            level_points = config.ACCURACY_POINTS.get(level, {})
             max_points = level_points.get("correct", 1)
             
             weighted_correct += earned_points * decay_factor
@@ -280,14 +290,14 @@ class FlashcardPerformanceService:
         momentum = weighted_correct / weighted_total
         return max(0.0, min(1.0, momentum))  # Clamp to [0, 1]
     
-    def _calculate_comfortability_score(self, recent_attempts: List[RecentAttempt]) -> float:
+    def _calculate_comfortability_score(self, recent_attempts: List[Dict]) -> float:
         """
         Calculate Comfortability Score (CS) based on recent performance.
         
         Formula: Average points_earned in the most recent 3 attempts + max(2 - wrong answers in last 3, 0)
         
         Args:
-            recent_attempts: List of recent attempts (already capped)
+            recent_attempts: List of recent attempts
             
         Returns:
             Comfortability score (float)
@@ -299,11 +309,11 @@ class FlashcardPerformanceService:
         last_three = recent_attempts[-3:]
         
         # Calculate average points earned
-        total_points = sum(attempt.points_earned for attempt in last_three)
+        total_points = sum(attempt.get("points_earned", 0) for attempt in last_three)
         avg_points = total_points / len(last_three)
         
         # Count wrong answers in last 3 attempts
-        wrong_answers = sum(1 for attempt in last_three if not attempt.is_correct)
+        wrong_answers = sum(1 for attempt in last_three if not attempt.get("is_correct", False))
         
         # Calculate bonus: max(2 - wrong_answers, 0)
         bonus = max(2 - wrong_answers, 0)
@@ -372,14 +382,13 @@ class FlashcardPerformanceService:
         flashcard_id: str
     ) -> Optional[UserFlashcardPerformance]:
         """Get performance data for a specific flashcard."""
-        perf_doc = await self.collection.find_one({
-            "user_id": user_id,
-            "flashcard_id": flashcard_id
-        })
+        perf_data = await self.repository.get_flashcard_performance(user_id, flashcard_id)
         
-        if perf_doc:
-            return UserFlashcardPerformance(**perf_doc)
-        return None
+        if not perf_data:
+            return None
+        
+        # Convert to Pydantic model
+        return self._dict_to_performance_model(perf_data)
     
     async def get_weak_flashcards_for_user(
         self,
@@ -387,20 +396,56 @@ class FlashcardPerformanceService:
         course_id: Optional[str] = None
     ) -> List[UserFlashcardPerformance]:
         """Get all weak flashcards for a user, optionally filtered by course."""
-        query = {"user_id": user_id, "is_weak": True}
-        if course_id:
-            query["course_id"] = course_id
+        weak_perfs = await self.repository.get_weak_flashcards(user_id, course_id)
         
-        cursor = self.collection.find(query)
-        weak_perfs = await cursor.to_list(length=None)
+        return [self._dict_to_performance_model(perf) for perf in weak_perfs]
+    
+    def _dict_to_performance_model(self, perf_data: Dict) -> UserFlashcardPerformance:
+        """Convert a dict from the database to a Pydantic model."""
+        performance_json = perf_data.get("performance_data", {})
         
-        return [UserFlashcardPerformance(**perf) for perf in weak_perfs]
+        # Parse performance_by_level
+        perf_by_level = {}
+        for level, data in performance_json.get("performance_by_level", {}).items():
+            perf_by_level[level] = PerformanceByLevel(
+                attempts=data.get("attempts", 0),
+                correct=data.get("correct", 0),
+                points=data.get("points", 0.0)
+            )
+        
+        # Parse recent_attempts
+        recent_attempts = []
+        for attempt in performance_json.get("recent_attempts", []):
+            timestamp = attempt.get("timestamp")
+            if isinstance(timestamp, str):
+                timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+            recent_attempts.append(RecentAttempt(
+                timestamp=timestamp,
+                level=attempt.get("level", "medium"),
+                is_correct=attempt.get("is_correct", False),
+                points_earned=attempt.get("points_earned", 0.0)
+            ))
+        
+        return UserFlashcardPerformance(
+            user_id=perf_data["user_id"],
+            flashcard_id=perf_data["flashcard_id"],
+            course_id=perf_data["course_id"],
+            lecture_id=perf_data["lecture_id"],
+            is_weak=perf_data.get("is_weak", False),
+            question_next_level=perf_data.get("next_level", "easy"),
+            coverage_score=perf_data.get("coverage_score", 0.0),
+            accuracy_score=perf_data.get("accuracy_score", 0.0),
+            momentum_score=perf_data.get("momentum_score", 0.0),
+            comfortability_score=perf_data.get("comfortability_score", 0.0),
+            total_points_earned=perf_data.get("total_points_earned", 0.0),
+            performance_by_level=perf_by_level,
+            recent_attempts=recent_attempts,
+            last_updated=perf_data.get("last_updated")
+        )
 
 
-def get_flashcard_performance_service(db=None) -> FlashcardPerformanceService:
+def get_flashcard_performance_service(pool: asyncpg.Pool = None) -> FlashcardPerformanceService:
     """Dependency injection helper."""
-    from app.database import get_database
-    if db is None:
-        db = get_database()
-    return FlashcardPerformanceService(db)
-
+    if pool is None:
+        raise ValueError("PostgreSQL pool is required")
+    return FlashcardPerformanceService(pool)

@@ -19,7 +19,7 @@ class QuestionPerformance(BaseModel):
 
 
 class UserPerformanceDocument(BaseModel):
-    """MongoDB document for tracking user performance in a lecture."""
+    """Model for tracking user performance in a lecture."""
     user_id: str
     course_id: str
     lecture_id: str

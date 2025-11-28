@@ -1,22 +1,28 @@
-"""User service for managing user data and authentication."""
+"""User service for managing user data and authentication using PostgreSQL."""
 
 from datetime import datetime, timezone
 from typing import Optional
-from motor.motor_asyncio import AsyncIOMotorDatabase
-from pymongo.errors import DuplicateKeyError
+import asyncpg
 import logging
 
-from ..models.user import User, UserCreate, UserSummary
-from ..database import get_database
+from app.repositories.user_repository import UserRepository
+from app.models.user import User, UserCreate, UserSummary
 
 logger = logging.getLogger(__name__)
 
+
 class UserService:
-    """Service for managing user operations."""
+    """Service for managing user operations using PostgreSQL."""
     
-    def __init__(self, db: AsyncIOMotorDatabase):
-        self.db = db
-        self.collection = db.users
+    def __init__(self, pool: asyncpg.Pool):
+        """
+        Initialize service with PostgreSQL connection pool.
+        
+        Args:
+            pool: AsyncPG connection pool
+        """
+        self.pool = pool
+        self.repository = UserRepository(pool)
     
     async def get_user_by_firebase_uid(self, firebase_uid: str) -> Optional[User]:
         """
@@ -29,9 +35,9 @@ class UserService:
             User object if found, None otherwise
         """
         try:
-            user_doc = await self.collection.find_one({"firebase_uid": firebase_uid})
-            if user_doc:
-                return User(**user_doc)
+            user_dict = await self.repository.get_user_by_firebase_uid(firebase_uid)
+            if user_dict:
+                return User(**user_dict)
             return None
         except Exception as e:
             logger.error(f"Error fetching user by Firebase UID {firebase_uid}: {e}")
@@ -46,34 +52,19 @@ class UserService:
             
         Returns:
             Created User object
-            
-        Raises:
-            DuplicateKeyError: If user with Firebase UID already exists
         """
         try:
-            user = User(
+            user_dict = await self.repository.create_user(
                 firebase_uid=user_data.firebase_uid,
                 email=user_data.email,
                 name=user_data.name,
                 picture=user_data.picture,
-                email_verified=user_data.email_verified,
-                created_at=datetime.now(timezone.utc),
-                last_active=datetime.now(timezone.utc)
+                email_verified=user_data.email_verified
             )
             
-            # Convert to dict for MongoDB insertion
-            user_dict = user.model_dump(by_alias=True, exclude={"id"})
-            
-            # Insert into database
-            result = await self.collection.insert_one(user_dict)
-            user.id = result.inserted_id
-            
             logger.info(f"Created new user with Firebase UID: {user_data.firebase_uid}")
-            return user
+            return User(**user_dict)
             
-        except DuplicateKeyError:
-            logger.warning(f"Attempted to create duplicate user with Firebase UID: {user_data.firebase_uid}")
-            raise
         except Exception as e:
             logger.error(f"Error creating user: {e}")
             raise
@@ -89,18 +80,19 @@ class UserService:
             True if updated successfully, False otherwise
         """
         try:
-            result = await self.collection.update_one(
-                {"firebase_uid": firebase_uid},
-                {"$set": {"last_active": datetime.now(timezone.utc)}}
-            )
-            return result.modified_count > 0
+            return await self.repository.update_last_active(firebase_uid)
         except Exception as e:
             logger.error(f"Error updating last active for user {firebase_uid}: {e}")
             return False
     
-    async def get_or_create_user(self, firebase_uid: str, email: Optional[str] = None, 
-                                name: Optional[str] = None, picture: Optional[str] = None,
-                                email_verified: bool = False) -> User:
+    async def get_or_create_user(
+        self,
+        firebase_uid: str,
+        email: Optional[str] = None,
+        name: Optional[str] = None,
+        picture: Optional[str] = None,
+        email_verified: bool = False
+    ) -> User:
         """
         Get existing user or create new one if doesn't exist.
         
@@ -122,23 +114,28 @@ class UserService:
                 # Update last active timestamp
                 await self.update_last_active(firebase_uid)
                 
-                # Update user info if provided and different
-                update_fields = {}
+                # Check if we need to update user info
+                needs_update = False
                 if email and user.email != email:
-                    update_fields["email"] = email
+                    needs_update = True
                 if name and user.name != name:
-                    update_fields["name"] = name
+                    needs_update = True
                 if picture and user.picture != picture:
-                    update_fields["picture"] = picture
+                    needs_update = True
                 if email_verified != user.email_verified:
-                    update_fields["email_verified"] = email_verified
+                    needs_update = True
                 
-                if update_fields:
-                    await self.collection.update_one(
-                        {"firebase_uid": firebase_uid},
-                        {"$set": update_fields}
+                if needs_update:
+                    updated_dict = await self.repository.update_user(
+                        firebase_uid=firebase_uid,
+                        email=email if email and user.email != email else None,
+                        name=name if name and user.name != name else None,
+                        picture=picture if picture and user.picture != picture else None,
+                        email_verified=email_verified if email_verified != user.email_verified else None
                     )
-                    logger.info(f"Updated user info for Firebase UID: {firebase_uid}")
+                    if updated_dict:
+                        logger.info(f"Updated user info for Firebase UID: {firebase_uid}")
+                        return User(**updated_dict)
                 
                 return user
             else:
@@ -167,14 +164,7 @@ class UserService:
             True if updated successfully, False otherwise
         """
         try:
-            result = await self.collection.update_one(
-                {"firebase_uid": firebase_uid},
-                {
-                    "$inc": {"total_decks_studied": 1},
-                    "$set": {"last_active": datetime.now(timezone.utc)}
-                }
-            )
-            return result.modified_count > 0
+            return await self.repository.increment_stats(firebase_uid, decks_studied=1)
         except Exception as e:
             logger.error(f"Error incrementing decks studied for user {firebase_uid}: {e}")
             return False
@@ -190,14 +180,7 @@ class UserService:
             True if updated successfully, False otherwise
         """
         try:
-            result = await self.collection.update_one(
-                {"firebase_uid": firebase_uid},
-                {
-                    "$inc": {"total_quiz_attempts": 1},
-                    "$set": {"last_active": datetime.now(timezone.utc)}
-                }
-            )
-            return result.modified_count > 0
+            return await self.repository.increment_stats(firebase_uid, quiz_attempts=1)
         except Exception as e:
             logger.error(f"Error incrementing quiz attempts for user {firebase_uid}: {e}")
             return False
@@ -230,9 +213,9 @@ class UserService:
             logger.error(f"Error getting user summary for Firebase UID {firebase_uid}: {e}")
             raise
 
-# Dependency to get user service
-def get_user_service() -> UserService:
-    """Get user service instance."""
-    from ..database import get_database
-    db = get_database()
-    return UserService(db)
+
+async def get_user_service() -> UserService:
+    """Get user service instance with PostgreSQL pool."""
+    from app.db.postgres import get_postgres_pool
+    pool = await get_postgres_pool()
+    return UserService(pool)

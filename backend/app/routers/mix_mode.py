@@ -1,10 +1,10 @@
-"""API endpoints for Mix Mode adaptive study sessions."""
+"""API endpoints for Mix Mode adaptive study sessions using PostgreSQL."""
 
 import logging
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.database import get_database
+from app.db.postgres import get_postgres_pool
 from app.firebase_auth import get_current_user
 from app.models.mix_session import (
     MixSessionStartRequest,
@@ -28,8 +28,7 @@ router = APIRouter(prefix="/mix", tags=["Mix Mode"])
 @router.post("/start", response_model=MixSessionStartResponse)
 async def start_mix_session(
     request: MixSessionStartRequest,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Start a new mix mode study session.
@@ -44,7 +43,6 @@ async def start_mix_session(
     Args:
         request: Contains course_id and deck_ids
         user_id: Firebase UID from JWT token
-        db: Database connection
         
     Returns:
         Session ID and total flashcard count
@@ -54,7 +52,8 @@ async def start_mix_session(
     """
     try:
         user_id = current_user['uid']
-        service = MixSessionService(db)
+        pool = await get_postgres_pool()
+        service = MixSessionService(pool)
         session_id, total_flashcards = await service.start_session(
             user_id=user_id,
             course_id=request.course_id,
@@ -84,8 +83,7 @@ async def start_mix_session(
 @router.get("/session/{session_id}")
 async def get_session(
     session_id: str,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Retrieve an existing mix session by ID.
@@ -96,7 +94,6 @@ async def get_session(
     Args:
         session_id: The session identifier
         current_user: Firebase user from JWT token
-        db: Database connection
         
     Returns:
         Session details including status, progress, and metadata
@@ -106,7 +103,8 @@ async def get_session(
     """
     try:
         user_id = current_user['uid']
-        service = MixSessionService(db)
+        pool = await get_postgres_pool()
+        service = MixSessionService(pool)
         session = await service.get_session(
             session_id=session_id,
             user_id=user_id
@@ -151,8 +149,7 @@ async def get_session(
 @router.get("/session/{session_id}/next", response_model=Optional[MixActivityResponse])
 async def get_next_activity(
     session_id: str,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Get the next activity in the mix session.
@@ -168,7 +165,6 @@ async def get_next_activity(
     Args:
         session_id: The session identifier
         user_id: Firebase UID from JWT token
-        db: Database connection
         
     Returns:
         Next activity details or None if session is complete
@@ -178,7 +174,8 @@ async def get_next_activity(
     """
     try:
         user_id = current_user['uid']
-        service = MixSessionService(db)
+        pool = await get_postgres_pool()
+        service = MixSessionService(pool)
         activity = await service.get_next_activity(
             session_id=session_id,
             user_id=user_id
@@ -209,8 +206,7 @@ async def get_next_activity(
 async def submit_answer(
     session_id: str,
     answer: MixAnswerSubmission,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Submit an answer for grading and update performance.
@@ -228,7 +224,6 @@ async def submit_answer(
         session_id: The session identifier
         answer: Answer submission details
         user_id: Firebase UID from JWT token
-        db: Database connection
         
     Returns:
         Grading results including correctness and points earned
@@ -238,30 +233,38 @@ async def submit_answer(
     """
     try:
         user_id = current_user['uid']
-        service = MixSessionService(db)
+        pool = await get_postgres_pool()
+        service = MixSessionService(pool)
         
-        # For now, we need to fetch the correct answer
-        # In a real implementation, this would come from loading the question
-        # Let's load the question to get the correct answer
-        session_doc = await db.mix_sessions.find_one({"session_id": session_id})
-        if not session_doc:
+        # Get session from PostgreSQL
+        session_data = await service.get_session_data(session_id, user_id)
+        if not session_data:
             raise ValueError(f"Session {session_id} not found")
         
         # Load the question to get correct answer
         from app.services.adaptive_quiz_service import AdaptiveQuizService
-        quiz_service = AdaptiveQuizService()
+        quiz_service = AdaptiveQuizService(pool)
         
         # Map level to file number
         level_map = {"easy": 1, "medium": 2, "hard": 3, "boss": 4}
         level_num = level_map.get(answer.level, 2)
         
         # Extract deck_id from flashcard_id
-        parts = answer.flashcard_id.rsplit("_", 1)
-        deck_id = parts[0] if len(parts) > 1 else answer.flashcard_id
+        # Format: {course_code}_L{lecture_id}_FC{index}
+        if "_L" in answer.flashcard_id:
+            try:
+                lecture_part = answer.flashcard_id.split("_L")[1]
+                deck_id = lecture_part.split("_")[0]
+            except IndexError:
+                parts = answer.flashcard_id.rsplit("_", 1)
+                deck_id = parts[0] if len(parts) > 1 else answer.flashcard_id
+        else:
+            parts = answer.flashcard_id.rsplit("_", 1)
+            deck_id = parts[0] if len(parts) > 1 else answer.flashcard_id
         
         # Load questions
         questions = await quiz_service.load_quiz_questions(
-            session_doc["course_id"],
+            session_data["course_id"],
             deck_id,
             level_num
         )
@@ -320,8 +323,7 @@ async def submit_answer(
 async def reveal_answer(
     session_id: str,
     reveal: MixRevealRequest,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Reveal the answer to a question without recording performance.
@@ -346,7 +348,8 @@ async def reveal_answer(
     """
     try:
         user_id = current_user['uid']
-        service = MixSessionService(db)
+        pool = await get_postgres_pool()
+        service = MixSessionService(pool)
         
         result = await service.reveal_answer(
             session_id=session_id,
@@ -387,8 +390,7 @@ async def reveal_answer(
 @router.get("/session/{session_id}/status")
 async def get_session_status(
     session_id: str,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Get the current status of a mix session.
@@ -402,36 +404,31 @@ async def get_session_status(
     Args:
         session_id: The session identifier
         user_id: Firebase UID from JWT token
-        db: Database connection
         
     Returns:
         Session status and progress information
     """
     try:
         user_id = current_user['uid']
-        session_doc = await db.mix_sessions.find_one({"session_id": session_id})
-        if not session_doc:
+        pool = await get_postgres_pool()
+        service = MixSessionService(pool)
+        
+        session_data = await service.get_session_data(session_id, user_id)
+        if not session_data:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="Session not found"
             )
         
-        # Verify ownership
-        if session_doc["user_id"] != user_id:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="Session does not belong to this user"
-            )
-        
         return {
             "session_id": session_id,
-            "status": session_doc["status"],
-            "current_round": session_doc.get("current_round", 1),
-            "total_flashcards": len(session_doc["flashcard_master_order"]),
-            "seen_in_current_round": len(session_doc.get("seen_in_current_round", [])),
-            "activities_remaining": len(session_doc.get("activity_queue", [])),
-            "created_at": session_doc["created_at"],
-            "last_updated": session_doc["last_updated"]
+            "status": session_data["status"],
+            "current_round": session_data.get("current_round", 1),
+            "total_flashcards": len(session_data.get("flashcard_master_order", [])),
+            "seen_in_current_round": len(session_data.get("seen_in_current_round", [])),
+            "activities_remaining": len(session_data.get("activity_queue", [])),
+            "created_at": session_data["created_at"],
+            "last_updated": session_data["last_updated"]
         }
     except HTTPException:
         raise
@@ -447,8 +444,7 @@ async def get_session_status(
 async def get_flashcard_reference(
     course_id: str,
     flashcard_id: str,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Get flashcard content for reference during Mix Mode questions.
@@ -461,7 +457,6 @@ async def get_flashcard_reference(
         course_id: Course identifier
         flashcard_id: Flashcard identifier
         current_user: Firebase user from JWT token
-        db: Database connection
         
     Returns:
         Full flashcard content including front, back, diagrams, etc.
@@ -470,7 +465,8 @@ async def get_flashcard_reference(
         HTTPException: If flashcard not found
     """
     try:
-        service = MixSessionService(db)
+        pool = await get_postgres_pool()
+        service = MixSessionService(pool)
         
         flashcard = await service.get_flashcard_for_reference(
             course_id=course_id,
@@ -499,8 +495,7 @@ async def get_flashcard_reference(
 @router.post("/deck-readiness", response_model=UserExamReadiness)
 async def get_deck_exam_readiness(
     request: DeckReadinessRequest,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ):
     """
     Get exam readiness score for one or more decks.
@@ -517,7 +512,6 @@ async def get_deck_exam_readiness(
     Args:
         request: Contains course_id, deck_ids, and optional force_refresh flag
         current_user: Firebase user from JWT token
-        db: Database connection
         
     Returns:
         UserExamReadiness with overall score and Trinity breakdown
@@ -527,7 +521,8 @@ async def get_deck_exam_readiness(
     """
     try:
         user_id = current_user['uid']
-        readiness_service = ReadinessV2Service(db)
+        pool = await get_postgres_pool()
+        readiness_service = ReadinessV2Service(pool)
         
         # Get or calculate deck readiness
         readiness = await readiness_service.get_or_calculate_deck_readiness(

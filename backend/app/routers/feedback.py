@@ -1,56 +1,29 @@
-"""Feedback API endpoints for flashcard like/dislike tracking."""
+"""Feedback API endpoints for flashcard like/dislike tracking using PostgreSQL."""
 
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from fastapi import APIRouter, HTTPException, Depends
-from app.database import get_database
-from app.models.feedback import FlashcardFeedback, FeedbackRequest, FeedbackResponse, UserFeedbackSummary
-from app.config import settings
+
+from app.db.postgres import get_postgres_pool
+from app.models.feedback import FeedbackRequest, FeedbackResponse, UserFeedbackSummary
 from app.firebase_auth import get_current_user
+from app.repositories.bookmark_feedback_repository import BookmarkFeedbackRepository
+from app.repositories.user_repository import UserRepository
 import logging
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/feedback", tags=["feedback"])
 
-async def ensure_user_exists(firebase_uid: str, db) -> dict:
+
+async def ensure_user_exists(firebase_uid: str, pool) -> dict:
     """Ensure user exists in database, create if not. For Firebase authenticated users."""
-    from datetime import datetime, timezone
-    users_collection = db[settings.USERS_COLLECTION]
-    
-    # Check if user exists (Firebase user with firebase_uid field)
-    user_doc = await users_collection.find_one({"firebase_uid": firebase_uid})
-    
-    if not user_doc:
-        # Create new Firebase user document
-        new_user_doc = {
-            "firebase_uid": firebase_uid,
-            "created_at": datetime.now(timezone.utc),
-            "last_active": datetime.now(timezone.utc),
-            "total_decks_studied": 0,
-            "total_quiz_attempts": 0,
-            "email": None,
-            "name": None,
-            "picture": None,
-            "email_verified": False
-        }
-        result = await users_collection.insert_one(new_user_doc)
-        
-        # Fetch the created user
-        user_doc = await users_collection.find_one({"_id": result.inserted_id})
-        logger.info(f"Created new Firebase user: {firebase_uid}")
-    else:
-        # Update last_active
-        await users_collection.update_one(
-            {"firebase_uid": firebase_uid},
-            {"$set": {"last_active": datetime.now(timezone.utc)}}
-        )
-    
-    return user_doc
+    repository = UserRepository(pool)
+    return await repository.get_or_create_user(firebase_uid=firebase_uid)
+
 
 @router.post("", response_model=FeedbackResponse)
 async def submit_feedback(
     feedback_data: FeedbackRequest,
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """Submit or update feedback for a flashcard."""
     try:
@@ -61,76 +34,32 @@ async def submit_feedback(
         if feedback_data.rating not in [1, -1]:
             raise HTTPException(status_code=400, detail="Rating must be 1 (like) or -1 for dislike)")
         
+        pool = await get_postgres_pool()
+        
         # Ensure user exists
-        await ensure_user_exists(user_id, db)
+        await ensure_user_exists(user_id, pool)
         
-        feedback_collection = db[settings.FLASHCARD_FEEDBACK_COLLECTION]
+        # Submit feedback
+        repository = BookmarkFeedbackRepository(pool)
+        feedback_doc = await repository.submit_feedback(
+            user_id=user_id,
+            course_id=feedback_data.course_id,
+            deck_id=feedback_data.deck_id,
+            flashcard_index=feedback_data.flashcard_index,
+            rating=feedback_data.rating,
+            session_id=feedback_data.session_id
+        )
         
-        # Check if feedback already exists for this user and flashcard
-        existing_feedback = await feedback_collection.find_one({
-            "user_id": user_id,
-            "course_id": feedback_data.course_id,
-            "deck_id": feedback_data.deck_id,
-            "flashcard_index": feedback_data.flashcard_index
-        })
-        
-        if existing_feedback:
-            # Update existing feedback
-            await feedback_collection.update_one(
-                {
-                    "user_id": user_id,
-                    "course_id": feedback_data.course_id,
-                    "deck_id": feedback_data.deck_id,
-                    "flashcard_index": feedback_data.flashcard_index
-                },
-                {
-                    "$set": {
-                        "rating": feedback_data.rating,
-                        "session_id": feedback_data.session_id,
-                        "created_at": feedback_data.created_at if hasattr(feedback_data, 'created_at') else existing_feedback["created_at"]
-                    }
-                }
-            )
-            
-            # Get updated document
-            updated_doc = await feedback_collection.find_one({
-                "user_id": user_id,
-                "course_id": feedback_data.course_id,
-                "deck_id": feedback_data.deck_id,
-                "flashcard_index": feedback_data.flashcard_index
-            })
-            
-            logger.info(f"Updated feedback for user {user_id}: {feedback_data.course_id}:{feedback_data.deck_id}:{feedback_data.flashcard_index} = {feedback_data.rating}")
-            
-        else:
-            # Create new feedback
-            new_feedback = FlashcardFeedback(
-                user_id=user_id,
-                session_id=feedback_data.session_id,
-                course_id=feedback_data.course_id,
-                deck_id=feedback_data.deck_id,
-                flashcard_index=feedback_data.flashcard_index,
-                rating=feedback_data.rating
-            )
-            
-            # Save to database
-            result = await feedback_collection.insert_one(
-                new_feedback.model_dump(by_alias=True, exclude={"id"})
-            )
-            
-            # Get created document
-            updated_doc = await feedback_collection.find_one({"_id": result.inserted_id})
-            
-            logger.info(f"Created feedback for user {user_id}: {feedback_data.course_id}:{feedback_data.deck_id}:{feedback_data.flashcard_index} = {feedback_data.rating}")
+        logger.info(f"Submitted feedback for user {user_id}: {feedback_data.course_id}:{feedback_data.deck_id}:{feedback_data.flashcard_index} = {feedback_data.rating}")
         
         return FeedbackResponse(
-            user_id=updated_doc["user_id"],
-            course_id=updated_doc["course_id"],
-            deck_id=updated_doc["deck_id"],
-            flashcard_index=updated_doc["flashcard_index"],
-            session_id=updated_doc["session_id"],
-            rating=updated_doc["rating"],
-            created_at=updated_doc["created_at"]
+            user_id=feedback_doc["user_id"],
+            course_id=feedback_doc["course_id"],
+            deck_id=feedback_doc["deck_id"],
+            flashcard_index=feedback_doc["flashcard_index"],
+            session_id=feedback_doc["session_id"],
+            rating=feedback_doc["rating"],
+            created_at=feedback_doc["created_at"]
         )
         
     except HTTPException:
@@ -139,19 +68,21 @@ async def submit_feedback(
         logger.error(f"Error submitting feedback for user {user_id}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to submit feedback: {str(e)}")
 
+
 @router.get("/user", response_model=List[UserFeedbackSummary])
 async def get_user_feedback(
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """Get all feedback for a user."""
+    user_id: str | None = None
     try:
         user_id = current_user['uid']
-        feedback_collection = db[settings.FLASHCARD_FEEDBACK_COLLECTION]
+        
+        pool = await get_postgres_pool()
+        repository = BookmarkFeedbackRepository(pool)
         
         # Get all feedback for the user
-        cursor = feedback_collection.find({"user_id": user_id}).sort("created_at", -1)
-        feedback_list = await cursor.to_list(length=None)
+        feedback_list = await repository.get_user_feedback(user_id)
         
         # Convert to response format
         feedback_summaries = []
@@ -168,29 +99,31 @@ async def get_user_feedback(
         return feedback_summaries
         
     except Exception as e:
-        logger.error(f"Error getting feedback for user {user_id}: {e}")
+        logger.error(f"Error getting feedback for user {user_id or 'unknown'}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to get feedback: {str(e)}")
+
 
 @router.delete("")
 async def clear_feedback(
     feedback_data: FeedbackRequest,
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """Clear/remove feedback for a specific flashcard."""
     try:
         user_id = current_user['uid']
-        feedback_collection = db[settings.FLASHCARD_FEEDBACK_COLLECTION]
+        
+        pool = await get_postgres_pool()
+        repository = BookmarkFeedbackRepository(pool)
         
         # Find and delete the feedback
-        result = await feedback_collection.delete_one({
-            "user_id": user_id,
-            "course_id": feedback_data.course_id,
-            "deck_id": feedback_data.deck_id,
-            "flashcard_index": feedback_data.flashcard_index
-        })
+        success = await repository.clear_feedback(
+            user_id=user_id,
+            course_id=feedback_data.course_id,
+            deck_id=feedback_data.deck_id,
+            flashcard_index=feedback_data.flashcard_index
+        )
         
-        if result.deleted_count == 0:
+        if not success:
             raise HTTPException(status_code=404, detail="Feedback not found")
         
         logger.info(f"Cleared feedback for user {user_id}: {feedback_data.course_id}:{feedback_data.deck_id}:{feedback_data.flashcard_index}")

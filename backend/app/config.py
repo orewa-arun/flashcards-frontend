@@ -45,11 +45,7 @@ def _parse_chunk_size_by_level(env_value: str) -> Dict[str, int]:
 class Settings:
     """Application settings."""
     
-    # MongoDB Configuration
-    MONGODB_URL: str = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
-    DATABASE_NAME: str = os.getenv("DATABASE_NAME", "study_analytics")
-    
-    # PostgreSQL Configuration
+    # PostgreSQL Configuration (PRIMARY DATABASE)
     POSTGRES_URL: str = os.getenv(
         "POSTGRES_URL",
         "postgresql+asyncpg://postgres:postgres@localhost:5432/self_learning_ai"
@@ -106,14 +102,7 @@ class Settings:
     )
     # Maximum concurrent API calls for parallel quiz generation
     QUIZ_MAX_CONCURRENCY: int = int(os.getenv("QUIZ_MAX_CONCURRENCY", "4"))
-    
-    # Collections
-    USERS_COLLECTION = "users"
-    DECK_PROGRESS_COLLECTION = "deck_progress" 
-    QUIZ_RESULTS_COLLECTION = "quiz_results"
-    STUDY_SESSIONS_COLLECTION = "study_sessions"
-    BOOKMARKS_COLLECTION = "bookmarks"
-    FLASHCARD_FEEDBACK_COLLECTION = "flashcard_feedback"
+
 
 # Global settings instance
 settings = Settings()

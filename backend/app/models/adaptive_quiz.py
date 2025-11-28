@@ -186,6 +186,7 @@ class QuestionResult(BaseModel):
     correct_answer: Any
     is_correct: bool
     partial_credit_score: Optional[float] = Field(None, description="Partial credit score for MCA questions (0.0 to 1.0)")
+    time_taken: Optional[int] = Field(None, description="Time taken to answer in seconds")
 
 
 class FlashcardWeakness(BaseModel):

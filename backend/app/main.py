@@ -1,11 +1,10 @@
-"""FastAPI application for analytics backend."""
+"""FastAPI application for analytics backend using PostgreSQL."""
 
 import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
-from app.database import connect_to_mongo, close_mongo_connection
 from app.db.postgres import init_postgres_db, close_postgres_db
 from app.routers import (
     health,
@@ -24,7 +23,6 @@ from app.routers import (
     content
 )
 from app.firebase_auth import initialize_firebase
-from app.database_indexes import create_indexes
 
 # Configure logging
 logging.basicConfig(
@@ -33,26 +31,28 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Manage application lifespan events."""
     # Startup
     logger.info("Starting up Analytics API...")
-    await connect_to_mongo()
+    
+    # Initialize Firebase
     initialize_firebase()
     
-    # Initialize PostgreSQL database
+    # Initialize PostgreSQL database (primary database)
+    logger.info("Initializing PostgreSQL database...")
     await init_postgres_db()
     
-    # Create database indexes
-    from app.database import get_database
-    db = get_database()
-    await create_indexes(db)
+    logger.info("Database initialization complete")
     yield
+    
     # Shutdown
     logger.info("Shutting down Analytics API...")
-    await close_mongo_connection()
     await close_postgres_db()
+    logger.info("PostgreSQL connection closed")
+
 
 # Create FastAPI application
 app = FastAPI(
@@ -87,6 +87,7 @@ app.include_router(mix_mode.router)
 app.include_router(conversations.router)
 app.include_router(content.router)
 
+
 @app.get("/")
 async def root():
     """Root endpoint."""
@@ -95,6 +96,7 @@ async def root():
         "version": "1.0.0",
         "status": "running"
     }
+
 
 if __name__ == "__main__":
     import uvicorn

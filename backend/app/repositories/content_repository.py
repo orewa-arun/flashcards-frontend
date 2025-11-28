@@ -122,13 +122,18 @@ class ContentRepository:
             return dict(row) if row else None
     
     async def list_courses(self) -> List[Dict[str, Any]]:
-        """List all courses."""
+        """List all courses with lecture counts."""
         query = """
-            SELECT id, course_code, course_name, instructor,
-                   additional_info, reference_textbooks,
-                   created_at, updated_at
-            FROM courses
-            ORDER BY created_at DESC
+            SELECT c.id, c.course_code, c.course_name, c.instructor,
+                   c.additional_info, c.reference_textbooks,
+                   c.created_at, c.updated_at,
+                   COUNT(l.id) FILTER (WHERE l.is_deleted IS NULL OR l.is_deleted = FALSE) as lecture_count
+            FROM courses c
+            LEFT JOIN lectures l ON c.course_code = l.course_code
+            GROUP BY c.id, c.course_code, c.course_name, c.instructor,
+                     c.additional_info, c.reference_textbooks,
+                     c.created_at, c.updated_at
+            ORDER BY c.created_at DESC
         """
         
         async with self.pool.acquire() as conn:

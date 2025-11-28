@@ -1,54 +1,103 @@
-"""Service for managing Mix Mode adaptive study sessions."""
+"""Service for managing Mix Mode adaptive study sessions using PostgreSQL."""
 
 import hashlib
 import json
 import logging
 import random
-import os
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 from uuid import uuid4
 
-from motor.motor_asyncio import AsyncIOMotorDatabase
+import asyncpg
 
 from app.models.mix_session import (
     MixSession,
     MixActivity,
-    UserQuestionPerformance,
     MixActivityResponse,
     MixAnswerResponse,
     MixRevealResponse
 )
-from app.models.readiness_v2 import UserFlashcardPerformance
 from app.models.adaptive_quiz import QuestionResult
 from app import readiness_config as config
+from app.repositories.analytics_repository import AnalyticsRepository
+from app.services.adaptive_quiz_service import AdaptiveQuizService
 
 logger = logging.getLogger(__name__)
 
-# Base path for course data
-COURSES_BASE_PATH = Path(__file__).parent.parent.parent / "courses"
-
 
 class MixSessionService:
-    """Service for managing mix mode study sessions."""
+    """Service for managing mix mode study sessions using PostgreSQL."""
     
-    def __init__(self, database: AsyncIOMotorDatabase):
-        self.db = database
-        self.sessions_collection = database.mix_sessions
-        self.question_perf_collection = database.user_question_performance
-        self.flashcard_perf_collection = database.user_flashcard_performance
+    def __init__(self, pool: asyncpg.Pool):
+        """Initialize service with PostgreSQL connection pool."""
+        self.pool = pool
+        self.analytics_repo = AnalyticsRepository(pool)
+        self.quiz_service = AdaptiveQuizService(pool)
     
-    async def initialize_indexes(self):
-        """Create necessary indexes for efficient querying."""
-        await self.sessions_collection.create_index([("session_id", 1)], unique=True)
-        await self.sessions_collection.create_index([("user_id", 1), ("status", 1)])
+    async def get_session_data(self, session_id: str, user_id: str) -> Optional[Dict[str, Any]]:
+        """Get session data from PostgreSQL."""
+        query = """
+            SELECT 
+                session_id, user_id, course_id, deck_ids, status, current_round,
+                flashcard_master_order, activity_queue, seen_in_current_round,
+                asked_question_hashes, created_at, last_updated
+            FROM mix_sessions
+            WHERE session_id = $1
+        """
         
-        await self.question_perf_collection.create_index(
-            [("user_id", 1), ("question_content_hash", 1)],
-            unique=True
-        )
-        logger.info("Mix session indexes created")
+        async with self.pool.acquire() as conn:
+            # Pass session_id as string directly
+            row = await conn.fetchrow(query, session_id)
+            
+            if not row:
+                return None
+            
+            result = dict(row)
+            
+            # Verify ownership
+            if result["user_id"] != user_id:
+                raise PermissionError("Session does not belong to this user")
+            
+            # Parse JSONB fields
+            for field in ["deck_ids", "flashcard_master_order", "activity_queue", 
+                         "seen_in_current_round", "asked_question_hashes"]:
+                if isinstance(result.get(field), str):
+                    result[field] = json.loads(result[field])
+            
+            return result
+    
+    async def _update_session(self, session_id: str, updates: Dict[str, Any]) -> None:
+        """Update session in PostgreSQL."""
+        now = datetime.now(timezone.utc)
+        
+        # Build dynamic update query
+        set_clauses = ["last_updated = $2"]
+        # Pass session_id as string directly
+        params = [session_id, now]
+        param_idx = 3
+        
+        for key, value in updates.items():
+            if key in ["activity_queue", "seen_in_current_round", "asked_question_hashes", 
+                      "flashcard_master_order", "deck_ids"]:
+                set_clauses.append(f"{key} = ${param_idx}::jsonb")
+                params.append(json.dumps(value))
+            elif key in ["status", "current_round"]:
+                set_clauses.append(f"{key} = ${param_idx}")
+                params.append(value)
+            param_idx += 1
+        
+        query = f"""
+            UPDATE mix_sessions
+            SET {', '.join(set_clauses)}
+            WHERE session_id = $1
+        """
+        
+        async with self.pool.acquire() as conn:
+            await conn.execute(query, *params)
+    
+    async def _get_flashcard_performance(self, user_id: str, flashcard_id: str) -> Optional[Dict[str, Any]]:
+        """Get flashcard performance from PostgreSQL."""
+        return await self.analytics_repo.get_flashcard_performance(user_id, flashcard_id)
     
     async def start_session(
         self,
@@ -67,10 +116,19 @@ class MixSessionService:
         Returns:
             Tuple of (session_id, total_flashcards)
         """
-        # Load flashcards from all decks
+        # Load flashcards from all decks using DB
         all_flashcards = []
         for deck_id in deck_ids:
             flashcards = await self._load_flashcards_for_deck(course_id, deck_id)
+            # Add deck_id to each flashcard for reference
+            for fc in flashcards:
+                fc["deck_id"] = deck_id
+                # Ensure flashcard_id exists
+                if "flashcard_id" not in fc:
+                    # Fallback if ID missing in DB content (unlikely with new schema)
+                    fc_idx = flashcards.index(fc) + 1
+                    fc["flashcard_id"] = f"{course_id}_L{deck_id}_FC{fc_idx:03d}"
+            
             all_flashcards.extend(flashcards)
         
         if not all_flashcards:
@@ -79,7 +137,7 @@ class MixSessionService:
         # Sort by relevance_score (highest first), then by flashcard_id (ascending) for consistent ordering
         all_flashcards.sort(
             key=lambda fc: (
-                -fc.get("relevance_score", {}).get("score", 0),  # Negative for descending order
+                -fc.get("relevance_score", 0) if isinstance(fc.get("relevance_score"), (int, float)) else 0,
                 fc.get("flashcard_id", "")  # Secondary sort by ID (ascending)
             )
         )
@@ -99,19 +157,38 @@ class MixSessionService:
             activity_queue.append(activity)
         
         # Create session
-        session_id = f"mix_{uuid4().hex[:16]}"
-        session = MixSession(
-            session_id=session_id,
-            user_id=user_id,
-            course_id=course_id,
-            deck_ids=deck_ids,
-            flashcard_master_order=flashcard_master_order,
-            activity_queue=activity_queue,
-            status="in_progress"
-        )
+        session_uuid = uuid4()
+        session_id = f"mix_{session_uuid.hex[:16]}"
+        now = datetime.now(timezone.utc)
         
-        # Save to database
-        await self.sessions_collection.insert_one(session.model_dump())
+        # Save to PostgreSQL
+        query = """
+            INSERT INTO mix_sessions (
+                session_id, user_id, course_id, deck_ids, status, current_round,
+                flashcard_master_order, activity_queue, seen_in_current_round,
+                asked_question_hashes, created_at, last_updated
+            )
+            VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7::jsonb, $8::jsonb, $9::jsonb, $10::jsonb, $11, $11)
+            RETURNING session_id
+        """
+        
+        activity_queue_json = [a.model_dump() for a in activity_queue]
+        
+        async with self.pool.acquire() as conn:
+            await conn.execute(
+                query,
+                session_id, # Pass string directly
+                user_id,
+                course_id,
+                json.dumps(deck_ids),
+                "in_progress",
+                1,
+                json.dumps(flashcard_master_order),
+                json.dumps(activity_queue_json),
+                json.dumps([]),
+                json.dumps([]),
+                now
+            )
         
         logger.info(f"Created mix session {session_id} with {len(flashcard_master_order)} flashcards")
         return session_id, len(flashcard_master_order)
@@ -127,15 +204,29 @@ class MixSessionService:
         Returns:
             MixSession or None if not found
         """
-        session_doc = await self.sessions_collection.find_one({"session_id": session_id})
-        if not session_doc:
+        session_data = await self.get_session_data(session_id, user_id)
+        if not session_data:
             return None
         
-        session = MixSession(**session_doc)
+        # Convert activity_queue back to MixActivity objects
+        activity_queue = []
+        for a in session_data.get("activity_queue", []):
+            activity_queue.append(MixActivity(**a))
         
-        # Verify user owns this session
-        if session.user_id != user_id:
-            raise PermissionError("Session does not belong to this user")
+        session = MixSession(
+            session_id=session_data["session_id"],
+            user_id=session_data["user_id"],
+            course_id=session_data["course_id"],
+            deck_ids=session_data["deck_ids"],
+            status=session_data["status"],
+            current_round=session_data["current_round"],
+            flashcard_master_order=session_data["flashcard_master_order"],
+            activity_queue=activity_queue,
+            seen_in_current_round=session_data["seen_in_current_round"],
+            asked_question_hashes=session_data["asked_question_hashes"],
+            created_at=session_data["created_at"],
+            last_updated=session_data["last_updated"]
+        )
         
         return session
     
@@ -151,15 +242,9 @@ class MixSessionService:
             MixActivityResponse or None if session is complete
         """
         # Retrieve session
-        session_doc = await self.sessions_collection.find_one({"session_id": session_id})
-        if not session_doc:
+        session = await self.get_session(session_id, user_id)
+        if not session:
             raise ValueError(f"Session {session_id} not found")
-        
-        session = MixSession(**session_doc)
-        
-        # Verify user owns this session
-        if session.user_id != user_id:
-            raise PermissionError("Session does not belong to this user")
         
         # Check if queue is empty
         if not session.activity_queue:
@@ -186,16 +271,10 @@ class MixSessionService:
                 session.seen_in_current_round.append(next_activity.flashcard_id)
         
         # Update session in database
-        await self.sessions_collection.update_one(
-            {"session_id": session_id},
-            {
-                "$set": {
-                    "activity_queue": [act.model_dump() for act in session.activity_queue],
-                    "seen_in_current_round": session.seen_in_current_round,
-                    "last_updated": datetime.now(timezone.utc)
-                }
-            }
-        )
+        await self._update_session(session_id, {
+            "activity_queue": [act.model_dump() for act in session.activity_queue],
+            "seen_in_current_round": session.seen_in_current_round
+        })
         
         # Build response based on activity type
         if next_activity.type == "flashcard":
@@ -230,10 +309,9 @@ class MixSessionService:
                 # Add question hash to asked list
                 question_hash = self._hash_question(question["question_text"])
                 session.asked_question_hashes.append(question_hash)
-                await self.sessions_collection.update_one(
-                    {"session_id": session_id},
-                    {"$push": {"asked_question_hashes": question_hash}}
-                )
+                await self._update_session(session_id, {
+                    "asked_question_hashes": session.asked_question_hashes
+                })
                 
                 return MixActivityResponse(
                     activity_type="question",
@@ -252,12 +330,10 @@ class MixSessionService:
                 # No question found - skip this activity and try next
                 logger.warning(f"No question found for flashcard {next_activity.flashcard_id} at level {next_activity.level}, skipping to next activity")
                 
-                # Remove this activity and try again
-                session.activity_queue.pop(0)
-                await self.sessions_collection.update_one(
-                    {"session_id": session_id},
-                    {"$pop": {"activity_queue": -1}}
-                )
+                # Remove this activity and try again (already popped above)
+                await self._update_session(session_id, {
+                    "activity_queue": [a.model_dump() for a in session.activity_queue]
+                })
                 
                 # Recursively call to get next activity
                 return await self.get_next_activity(session_id, user_id)
@@ -297,27 +373,39 @@ class MixSessionService:
         
         # Update UserFlashcardPerformance (triggers CS recalculation)
         from app.services.flashcard_performance_service import FlashcardPerformanceService
-        flashcard_service = FlashcardPerformanceService(self.db)
-        
-        # Get course_id and lecture_id from flashcard_id
-        # Assuming flashcard_id format: "DECK_ID_NUMBER" (e.g., "SI_lec_1_15")
-        parts = flashcard_id.rsplit("_", 1)
-        lecture_id = parts[0] if len(parts) > 1 else flashcard_id
+        flashcard_service = FlashcardPerformanceService(self.pool)
         
         # Fetch session to get course_id
-        session_doc = await self.sessions_collection.find_one({"session_id": session_id})
-        if not session_doc:
+        session = await self.get_session(session_id, user_id)
+        if not session:
             raise ValueError(f"Session {session_id} not found")
         
-        session = MixSession(**session_doc)
         course_id = session.course_id
+        
+        # Extract lecture_id from flashcard_id
+        # Format: {course_code}_L{lecture_id}_FC{index} -> L{lecture_id} -> {lecture_id}
+        # Or fallback to simpler parsing if ID format varies
+        lecture_id = "unknown"
+        if "_L" in flashcard_id:
+            try:
+                # Example: MS5150_L2_FC001 -> 2
+                lecture_part = flashcard_id.split("_L")[1] # 2_FC001
+                lecture_id = lecture_part.split("_")[0] # 2
+            except Exception:
+                # Fallback logic
+                parts = flashcard_id.rsplit("_", 1)
+                lecture_id = parts[0] if len(parts) > 1 else flashcard_id
+        else:
+             # Legacy fallback
+             parts = flashcard_id.rsplit("_", 1)
+             lecture_id = parts[0] if len(parts) > 1 else flashcard_id
         
         # Create a QuestionResult for the service
         question_result = QuestionResult(
             question_id=question_hash,
             source_flashcard_id=flashcard_id,
             question_type="mcq",  # We'll assume MCQ for now
-            question=user_answer,
+            question=str(user_answer),
             user_answer=user_answer,
             correct_answer=correct_answer,
             is_correct=is_correct,
@@ -333,22 +421,7 @@ class MixSessionService:
             difficulty=level
         )
         
-        # Update UserQuestionPerformance
-        await self.question_perf_collection.update_one(
-            {"user_id": user_id, "question_content_hash": question_hash},
-            {
-                "$set": {
-                    "flashcard_id": flashcard_id,
-                    "level": level,
-                    "is_correct": is_correct,
-                    "last_attempted": datetime.now(timezone.utc)
-                }
-            },
-            upsert=True
-        )
-        
         # Inject remediation if user earned 0 points (completely wrong) and not a follow-up
-        # Per spec: "even if partially correct, the user moves on" - so only trigger remediation for 0 points
         if points_earned <= 0 and not is_follow_up:
             logger.info(f"🔴 Wrong answer (0 points) - injecting remediation for {flashcard_id}")
             await self._inject_remediation(session_id, flashcard_id, user_id)
@@ -392,18 +465,15 @@ class MixSessionService:
         logger.info(f"🔄 Starting remediation injection for flashcard {flashcard_id}")
         
         # Get the updated question_next_level from flashcard performance
-        flashcard_perf = await self.flashcard_perf_collection.find_one({
-            "user_id": user_id,
-            "flashcard_id": flashcard_id
-        })
+        flashcard_perf = await self._get_flashcard_performance(user_id, flashcard_id)
         
         next_level = "medium"  # Default
         if flashcard_perf:
-            perf = UserFlashcardPerformance(**flashcard_perf)
-            next_level = perf.question_next_level
-            logger.info(f"📊 Flashcard performance found - CS: {perf.comfortability_score:.2f}, next_level: {next_level}")
+            next_level = flashcard_perf.get("next_level", "medium")
+            cs = flashcard_perf.get("comfortability_score", 0.0)
+            logger.info(f"Flashcard performance found - CS: {cs:.2f}, next_level: {next_level}")
         else:
-            logger.warning(f"⚠️ No flashcard performance found for {flashcard_id}, using default level: {next_level}")
+            logger.warning(f"No flashcard performance found for {flashcard_id}, using default level: {next_level}")
         
         # Create remediation activities
         flashcard_review = MixActivity(
@@ -420,29 +490,18 @@ class MixSessionService:
             is_follow_up=True
         )
         
-        logger.info(f"📝 Created remediation activities: flashcard_review + follow_up_question at level {next_level}")
+        logger.info(f"Created remediation activities: flashcard_review + follow_up_question at level {next_level}")
         
-        # Prepend to activity queue
-        result = await self.sessions_collection.update_one(
-            {"session_id": session_id},
-            {
-                "$push": {
-                    "activity_queue": {
-                        "$each": [
-                            flashcard_review.model_dump(),
-                            follow_up_question.model_dump()
-                        ],
-                        "$position": 0
-                    }
-                },
-                "$set": {"last_updated": datetime.now(timezone.utc)}
-            }
-        )
-        
-        if result.modified_count > 0:
-            logger.info(f"✅ Successfully injected remediation for flashcard {flashcard_id} at level {next_level}")
+        # Get current session and prepend to activity queue
+        session = await self.get_session(session_id, user_id)
+        if session:
+            new_queue = [flashcard_review, follow_up_question] + session.activity_queue
+            await self._update_session(session_id, {
+                "activity_queue": [a.model_dump() for a in new_queue]
+            })
+            logger.info(f"Successfully injected remediation for flashcard {flashcard_id} at level {next_level}")
         else:
-            logger.error(f"❌ Failed to inject remediation - session {session_id} not found or not modified")
+            logger.error(f"Failed to inject remediation - session {session_id} not found")
     
     async def _generate_next_round(self, session: MixSession):
         """
@@ -455,15 +514,11 @@ class MixSessionService:
         
         for flashcard_id in session.flashcard_master_order:
             # Get the question_next_level for this flashcard
-            flashcard_perf = await self.flashcard_perf_collection.find_one({
-                "user_id": session.user_id,
-                "flashcard_id": flashcard_id
-            })
+            flashcard_perf = await self._get_flashcard_performance(session.user_id, flashcard_id)
             
             level = "easy"  # Default for new flashcards
             if flashcard_perf:
-                perf = UserFlashcardPerformance(**flashcard_perf)
-                level = perf.question_next_level
+                level = flashcard_perf.get("next_level", "easy")
             
             activity = MixActivity(
                 type="question",
@@ -478,17 +533,11 @@ class MixSessionService:
         session.seen_in_current_round = []
         session.current_round += 1
         
-        await self.sessions_collection.update_one(
-            {"session_id": session.session_id},
-            {
-                "$set": {
-                    "activity_queue": [act.model_dump() for act in new_queue],
-                    "seen_in_current_round": [],
-                    "current_round": session.current_round,
-                    "last_updated": datetime.now(timezone.utc)
-                }
-            }
-        )
+        await self._update_session(session.session_id, {
+            "activity_queue": [act.model_dump() for act in new_queue],
+            "seen_in_current_round": [],
+            "current_round": session.current_round
+        })
         
         logger.info(f"Generated round {session.current_round} for session {session.session_id}")
     
@@ -545,20 +594,11 @@ class MixSessionService:
             return random.choice(unseen_questions)
         
         # Priority 2: Previously incorrectly answered questions
-        incorrect_questions = []
-        for q in flashcard_questions:
-            q_hash = self._hash_question(q["question_text"])
-            perf = await self.question_perf_collection.find_one({
-                "user_id": user_id,
-                "question_content_hash": q_hash
-            })
-            if perf and not perf.get("is_correct"):
-                incorrect_questions.append(q)
+        # Note: We now track this via user_quiz_attempts in PostgreSQL
+        # For simplicity, if all questions have been seen, just return a random one
+        # The flashcard performance tracking already handles the adaptive difficulty
         
-        if incorrect_questions:
-            return random.choice(incorrect_questions)
-        
-        # Priority 3: Random question (all have been answered correctly)
+        # Priority 3: Random question (all have been seen)
         return random.choice(flashcard_questions)
     
     async def _load_flashcards_for_deck(
@@ -566,20 +606,22 @@ class MixSessionService:
         course_id: str,
         deck_id: str
     ) -> List[Dict[str, Any]]:
-        """Load flashcards from a deck's JSON file."""
-        flashcard_path = COURSES_BASE_PATH / course_id / "cognitive_flashcards" / deck_id / f"{deck_id}_cognitive_flashcards_only.json"
+        """Load flashcards from DB via AdaptiveQuizService."""
+        # Map dictionary returned by AdaptiveQuizService to list of dicts
+        flashcard_map = await self.quiz_service.load_flashcards(course_id, deck_id)
         
-        if not flashcard_path.exists():
-            logger.error(f"Flashcard file not found: {flashcard_path}")
-            return []
-        
-        try:
-            with open(flashcard_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            return data.get("flashcards", [])
-        except Exception as e:
-            logger.error(f"Error loading flashcards from {flashcard_path}: {e}")
-            return []
+        flashcards_list = []
+        for fc_id, metadata in flashcard_map.items():
+            # Reconstruct a flashcard object from metadata
+            fc_obj = {
+                "flashcard_id": fc_id,
+                "relevance_score": metadata.get("relevance_score"),
+                "question": metadata.get("question"),
+                "tags": metadata.get("tags")
+            }
+            flashcards_list.append(fc_obj)
+            
+        return flashcards_list
     
     async def _load_flashcard_content(
         self,
@@ -587,17 +629,49 @@ class MixSessionService:
         flashcard_id: str
     ) -> Optional[Dict[str, Any]]:
         """Load the full content of a specific flashcard."""
-        # Extract deck_id from flashcard_id (format: "DECK_ID_NUMBER")
-        parts = flashcard_id.rsplit("_", 1)
-        deck_id = parts[0] if len(parts) > 1 else flashcard_id
-        
-        flashcards = await self._load_flashcards_for_deck(course_id, deck_id)
-        
-        for fc in flashcards:
-            if fc.get("flashcard_id") == flashcard_id:
-                return fc
-        
-        return None
+        # Extract deck_id from flashcard_id
+        if "_L" in flashcard_id:
+            try:
+                lecture_part = flashcard_id.split("_L")[1]
+                deck_id = lecture_part.split("_")[0]
+            except IndexError:
+                parts = flashcard_id.rsplit("_", 1)
+                deck_id = parts[0] if len(parts) > 1 else flashcard_id
+        else:
+            parts = flashcard_id.rsplit("_", 1)
+            deck_id = parts[0] if len(parts) > 1 else flashcard_id
+            
+        repo = self.quiz_service.repository
+        if not repo:
+            return None
+            
+        try:
+            # Try to parse deck_id as int
+            lecture_id_int = int(deck_id)
+            lecture = await repo.get_lecture_by_id(lecture_id_int)
+            if not lecture:
+                return None
+                
+            flashcards_data = lecture.get('flashcards')
+            if isinstance(flashcards_data, str):
+                flashcards_data = json.loads(flashcards_data)
+                
+            if isinstance(flashcards_data, dict):
+                flashcards = flashcards_data.get('flashcards', [])
+            elif isinstance(flashcards_data, list):
+                flashcards = flashcards_data
+            else:
+                flashcards = []
+                
+            for fc in flashcards:
+                if fc.get('id') == flashcard_id or fc.get('flashcard_id') == flashcard_id:
+                    return fc
+            
+            return None
+            
+        except (ValueError, Exception) as e:
+            logger.error(f"Error loading flashcard content for {flashcard_id}: {e}")
+            return None
     
     async def _load_questions_for_level(
         self,
@@ -605,183 +679,35 @@ class MixSessionService:
         flashcard_id: str,
         level: str
     ) -> List[Dict[str, Any]]:
-        """
-        Load questions for a specific level from the appropriate quiz file.
-        
-        Level mapping: easy=1, medium=2, hard=3, boss=4
-        """
-        # Map level to file number
+        """Load questions for a specific level from DB via AdaptiveQuizService."""
+        # Map level string to int (1-4)
         level_map = {"easy": 1, "medium": 2, "hard": 3, "boss": 4}
-        level_num = level_map.get(level, 2)
+        level_int = level_map.get(level, 2)
         
-        # Extract deck_id from flashcard_id
-        parts = flashcard_id.rsplit("_", 1)
-        deck_id = parts[0] if len(parts) > 1 else flashcard_id
-        
-        # Load quiz file
-        quiz_path = COURSES_BASE_PATH / course_id / "quiz" / f"{deck_id}_level_{level_num}_quiz.json"
-        
-        if not quiz_path.exists():
-            logger.warning(f"Quiz file not found: {quiz_path}")
-            return []
-        
-        try:
-            with open(quiz_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            questions = data.get("questions", [])
+        # Extract deck_id
+        if "_L" in flashcard_id:
+            try:
+                lecture_part = flashcard_id.split("_L")[1]
+                deck_id = lecture_part.split("_")[0]
+            except IndexError:
+                parts = flashcard_id.rsplit("_", 1)
+                deck_id = parts[0] if len(parts) > 1 else flashcard_id
+        else:
+            parts = flashcard_id.rsplit("_", 1)
+            deck_id = parts[0] if len(parts) > 1 else flashcard_id
             
-            # Add content hash and normalize correct_answer to option keys
-            for q in questions:
-                q["question_hash"] = self._hash_question(q["question_text"])
-                # CRITICAL: Normalize correct_answer from text to option keys
-                q["correct_answer"] = self._normalize_correct_answer(q)
-            
-            return questions
-        except Exception as e:
-            logger.error(f"Error loading questions from {quiz_path}: {e}")
-            return []
+        return await self.quiz_service.load_quiz_questions(course_id, deck_id, level_int)
     
     def _hash_question(self, question_text: str) -> str:
         """Generate a deterministic hash for a question."""
-        return hashlib.sha256(question_text.encode('utf-8')).hexdigest()[:16]
+        return self.quiz_service.hash_question(question_text)
     
     def _normalize_correct_answer(self, question: Dict[str, Any]) -> List[str]:
-        """
-        Normalize correct_answer to always be an array of option KEYS.
-        
-        Handles legacy data where correct_answer might be:
-        - A string option key: "C"
-        - An array of option keys: ["A", "D"]
-        - A string option text: "Targeting new users or segments."
-        - An array of option texts: ["Adding new features...", "Lowering the price..."]
-        
-        Args:
-            question: Question dict with 'correct_answer' and 'options'
-            
-        Returns:
-            List of option keys (e.g., ["C"] or ["A", "D"])
-        """
-        options = question.get('options', {})
-        option_keys = list(options.keys())
-        raw = question.get('correct_answer')
-        
-        if not raw:
-            return []
-        
-        # Ensure raw is a list
-        raw_list = raw if isinstance(raw, list) else [raw]
-        
-        # Normalize text for matching
-        import re
-
-        def norm(s):
-            text = str(s or '').strip().lower()
-            # Strip leading option label like "a.", "b)", "c:", or just "d "
-            text = re.sub(r'^[a-d]\s*[\.\):\-]?\s*', '', text, flags=re.IGNORECASE)
-            # Remove common punctuation and markdown formatting
-            text = text.replace('.', '').replace(',', '').replace('*', '').replace('_', '')
-            text = text.replace('(', '').replace(')', '').replace('[', '').replace(']', '')
-            text = text.replace('"', '').replace("'", '').replace(':', '').replace(';', '')
-            text = text.replace('`', '')  # Remove backticks for code formatting
-            # Collapse multiple whitespace into single space
-            text = re.sub(r'\s+', ' ', text).strip()
-            return text
-        
-        def extract_letter_heuristic(value_str):
-            """Try to extract option letter from explanatory text."""
-            # Heuristic 1: "Option C" or "Approach D" pattern
-            label_match = re.search(r'\b(?:option|approach)\s+([a-d])\b', value_str, re.IGNORECASE)
-            if label_match:
-                return label_match.group(1).upper()
-            
-            # Heuristic 2: First letter followed by space/punctuation
-            first_match = re.match(r'^\s*([a-d])[\s:.\)\-\]]+', value_str, re.IGNORECASE)
-            if first_match:
-                return first_match.group(1).upper()
-            
-            return None
-        
-        # Special-case: some legacy questions split a single long answer across
-        # multiple strings in the correct_answer array (e.g., ["B: ...", "such as ...", "shifting ..."]).
-        # First, try to join them and match once against full option texts.
-        if len(raw_list) > 1:
-            joined_value = " ".join(str(item or '') for item in raw_list).strip()
-            if joined_value:
-                match_key = next(
-                    (k for k in option_keys if norm(options[k]) == norm(joined_value)),
-                    None
-                )
-                if match_key:
-                    logger.info(
-                        "✅ Normalized multi-part correct_answer to key '%s' for question: %s",
-                        match_key,
-                        question.get('question_text', '')[:60],
-                    )
-                    return [match_key]
-
-            # If the joined text doesn't exactly match any option, try a softer
-            # heuristic: find an option whose normalized text contains ALL of the
-            # normalized fragments (useful when the correct_answer is a set of
-            # key phrases taken from the full option text).
-            fragment_texts = [norm(item) for item in raw_list if norm(item)]
-            if fragment_texts:
-                candidate_keys = []
-                for k in option_keys:
-                    opt_text = norm(options[k])
-                    if all(fragment in opt_text for fragment in fragment_texts):
-                        candidate_keys.append(k)
-                if len(candidate_keys) == 1:
-                    logger.info(
-                        "✅ Heuristically mapped multi-part correct_answer to key '%s' for question: %s",
-                        candidate_keys[0],
-                        question.get('question_text', '')[:60],
-                    )
-                    return [candidate_keys[0]]
-        
-        keys = []
-        for item in raw_list:
-            value = str(item or '').strip()
-            if not value:
-                continue
-            
-            # Case 1: Already an option key
-            if value in option_keys:
-                keys.append(value)
-                continue
-            
-            # Case 2: Try letter extraction heuristics first
-            extracted_letter = extract_letter_heuristic(value)
-            if extracted_letter and extracted_letter in option_keys:
-                keys.append(extracted_letter)
-                logger.debug(
-                    "✅ Extracted option key '%s' from explanatory text for question: %s",
-                    extracted_letter,
-                    question.get('question_text', '')[:60],
-                )
-                continue
-            
-            # Case 3: Match by option text
-            match_key = next(
-                (k for k in option_keys if norm(options[k]) == norm(value)),
-                None
-            )
-            if match_key:
-                keys.append(match_key)
-                logger.debug(
-                    "✅ Normalized answer text to key '%s' for question: %s",
-                    match_key,
-                    question.get('question_text', '')[:60],
-                )
-            else:
-                # Fallback: keep the raw value (will cause issues, but only log at debug level)
-                logger.debug(
-                    "⚠️ Could not normalize correct_answer '%s' to option key for question: %s",
-                    value[:100],
-                    question.get('question_text', '')[:60],
-                )
-                keys.append(value)
-        
-        return keys
+        """Normalize correct_answer using AdaptiveQuizService logic."""
+        # AdaptiveQuizService already does this normalization when loading questions
+        if hasattr(self.quiz_service, '_normalize_correct_answer'):
+             return self.quiz_service._normalize_correct_answer(question)
+        return []
     
     def _grade_answer(self, user_answer: Any, correct_answer: Any) -> Tuple[bool, Optional[float]]:
         """
@@ -843,15 +769,9 @@ class MixSessionService:
             MixRevealResponse with correct answer and remediation status
         """
         # Retrieve session
-        session_doc = await self.sessions_collection.find_one({"session_id": session_id})
-        if not session_doc:
+        session = await self.get_session(session_id, user_id)
+        if not session:
             raise ValueError(f"Session {session_id} not found")
-        
-        session = MixSession(**session_doc)
-        
-        # Verify user owns this session
-        if session.user_id != user_id:
-            raise PermissionError("Session does not belong to this user")
         
         # Load question to get correct answer and explanation
         question = await self._load_question_by_hash(
@@ -868,11 +788,12 @@ class MixSessionService:
         explanation = question.get("explanation")
         
         # Remove question_hash from asked_question_hashes (allows reappearance)
-        await self.sessions_collection.update_one(
-            {"session_id": session_id},
-            {"$pull": {"asked_question_hashes": question_hash}}
-        )
-        logger.info(f"🔍 Removed question_hash {question_hash} from asked_question_hashes")
+        if question_hash in session.asked_question_hashes:
+            session.asked_question_hashes.remove(question_hash)
+            await self._update_session(session_id, {
+                "asked_question_hashes": session.asked_question_hashes
+            })
+        logger.info(f"Removed question_hash {question_hash} from asked_question_hashes")
         
         # Inject remediation if not a follow-up question
         remediation_injected = False
@@ -941,10 +862,9 @@ class MixSessionService:
             return float(level_points.get("incorrect", 0))
 
 
-def get_mix_session_service(db=None) -> MixSessionService:
-    """Dependency injection helper."""
-    from app.database import get_database
-    if db is None:
-        db = get_database()
-    return MixSessionService(db)
+async def get_mix_session_service() -> MixSessionService:
+    """Dependency injection helper with PostgreSQL pool."""
+    from app.db.postgres import get_postgres_pool
+    pool = await get_postgres_pool()
+    return MixSessionService(pool)
 

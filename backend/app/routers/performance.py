@@ -3,10 +3,11 @@ from pathlib import Path
 from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List, Dict, Any
-from ..database import get_database
-from ..firebase_auth import get_current_user
-from ..models.readiness_v2 import UserFlashcardPerformance
-from ..services.flashcard_performance_service import FlashcardPerformanceService
+
+from app.db.postgres import get_postgres_pool
+from app.firebase_auth import get_current_user
+from app.models.readiness_v2 import UserFlashcardPerformance
+from app.services.flashcard_performance_service import FlashcardPerformanceService
 
 router = APIRouter()
 
@@ -32,8 +33,7 @@ def _load_flashcard_content(course_id: str, lecture_id: str) -> Dict[str, Any]:
 
 @router.get("/weak-flashcards", response_model=List[Dict[str, Any]])
 async def get_weak_flashcards_with_content(
-    user: dict = Depends(get_current_user),
-    db = Depends(get_database)
+    user: dict = Depends(get_current_user)
 ):
     """
     Retrieves all weak flashcard performance documents for the current user,
@@ -41,7 +41,8 @@ async def get_weak_flashcards_with_content(
     """
     try:
         user_id = user["uid"]
-        flashcard_perf_service = FlashcardPerformanceService(db)
+        pool = await get_postgres_pool()
+        flashcard_perf_service = FlashcardPerformanceService(pool)
         
         weak_flashcards_perf = await flashcard_perf_service.get_weak_flashcards_for_user(user_id)
         

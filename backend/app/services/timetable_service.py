@@ -1,10 +1,12 @@
-"""Service layer for course exam timetables with timezone-aware operations."""
+"""Service layer for course exam timetables with timezone-aware operations using PostgreSQL."""
 
 import logging
 from datetime import datetime, timezone
 from typing import Optional, Dict, Any, List
-from motor.motor_asyncio import AsyncIOMotorDatabase
+import asyncpg
 from zoneinfo import ZoneInfo
+
+from app.repositories.quiz_repository import QuizRepository
 
 logger = logging.getLogger(__name__)
 
@@ -13,16 +15,17 @@ IST = ZoneInfo("Asia/Kolkata")
 
 
 class TimetableService:
-    """Service for managing course exam timetables with IST timezone support."""
+    """Service for managing course exam timetables with IST timezone support using PostgreSQL."""
     
-    def __init__(self, database: AsyncIOMotorDatabase):
-        self.db = database
-        self.collection = database.course_timetables
-    
-    async def initialize_indexes(self):
-        """Create indexes for efficient querying."""
-        await self.collection.create_index("course_id", unique=True)
-        logger.info("Course timetable indexes created")
+    def __init__(self, pool: asyncpg.Pool):
+        """
+        Initialize service with PostgreSQL connection pool.
+        
+        Args:
+            pool: AsyncPG connection pool
+        """
+        self.pool = pool
+        self.repository = QuizRepository(pool)
     
     @staticmethod
     def ist_to_utc(ist_datetime_str: str) -> datetime:
@@ -87,7 +90,7 @@ class TimetableService:
         Returns:
             Timetable document with dates converted to IST, or None if not found
         """
-        timetable = await self.collection.find_one({"course_id": course_id})
+        timetable = await self.repository.get_timetable(course_id)
         
         if not timetable:
             logger.info(f"No timetable found for course {course_id}")
@@ -96,21 +99,14 @@ class TimetableService:
         # Convert UTC dates to IST for all exams
         if timetable.get('exams'):
             for exam in timetable['exams']:
-                if 'date_utc' in exam:
+                if 'date_utc' in exam and exam['date_utc']:
                     exam['date_ist'] = self.utc_to_ist(exam['date_utc'])
                     # Remove the UTC field for frontend
                     del exam['date_utc']
         
-        # Convert last_updated_by timestamp to IST
-        if timetable.get('last_updated_by') and 'timestamp_utc' in timetable['last_updated_by']:
-            timetable['last_updated_by']['timestamp_ist'] = self.utc_to_ist(
-                timetable['last_updated_by']['timestamp_utc']
-            )
-            del timetable['last_updated_by']['timestamp_utc']
-        
-        # Remove MongoDB _id field
-        if '_id' in timetable:
-            del timetable['_id']
+        # Remove internal fields
+        if 'id' in timetable:
+            del timetable['id']
         
         logger.info(f"Retrieved timetable for course {course_id} with {len(timetable.get('exams', []))} exams")
         return timetable
@@ -142,7 +138,7 @@ class TimetableService:
                 
                 # Convert date from IST to UTC
                 if 'date_ist' in processed_exam:
-                    processed_exam['date_utc'] = self.ist_to_utc(processed_exam['date_ist'])
+                    processed_exam['date_utc'] = self.ist_to_utc(processed_exam['date_ist']).isoformat()
                     del processed_exam['date_ist']
                 
                 # Ensure exam_id exists
@@ -151,25 +147,10 @@ class TimetableService:
                 
                 processed_exams.append(processed_exam)
             
-            # Prepare the update document
-            update_doc = {
-                "course_id": course_id,
-                "exams": processed_exams,
-                "last_updated_by": {
-                    "user_id": user_id,
-                    "user_name": user_name,
-                    "timestamp_utc": datetime.utcnow()
-                }
-            }
+            # Save to PostgreSQL
+            await self.repository.save_timetable(course_id, processed_exams)
             
-            # Upsert the timetable (create if doesn't exist, update if it does)
-            result = await self.collection.replace_one(
-                {"course_id": course_id},
-                update_doc,
-                upsert=True
-            )
-            
-            logger.info(f"✅ Updated timetable for course {course_id} by {user_name} ({user_id})")
+            logger.info(f"Updated timetable for course {course_id} by {user_name} ({user_id})")
             return True
         
         except Exception as e:
@@ -188,19 +169,34 @@ class TimetableService:
             True if successful, False otherwise
         """
         try:
-            result = await self.collection.update_one(
-                {"course_id": course_id},
-                {"$pull": {"exams": {"exam_id": exam_id}}}
-            )
+            # Get current timetable
+            timetable = await self.repository.get_timetable(course_id)
             
-            if result.modified_count > 0:
-                logger.info(f"Deleted exam {exam_id} from course {course_id}")
-                return True
-            else:
+            if not timetable:
+                logger.warning(f"No timetable found for course {course_id}")
+                return False
+            
+            # Filter out the exam to delete
+            current_exams = timetable.get('exams', [])
+            new_exams = [e for e in current_exams if e.get('exam_id') != exam_id]
+            
+            if len(new_exams) == len(current_exams):
                 logger.warning(f"No exam found with id {exam_id} in course {course_id}")
                 return False
+            
+            # Save updated exams
+            await self.repository.save_timetable(course_id, new_exams)
+            
+            logger.info(f"Deleted exam {exam_id} from course {course_id}")
+            return True
         
         except Exception as e:
             logger.error(f"Error deleting exam {exam_id} from course {course_id}: {e}")
             return False
 
+
+async def get_timetable_service() -> TimetableService:
+    """Get timetable service instance with PostgreSQL pool."""
+    from app.db.postgres import get_postgres_pool
+    pool = await get_postgres_pool()
+    return TimetableService(pool)

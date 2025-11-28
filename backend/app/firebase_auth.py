@@ -2,9 +2,11 @@ import os
 import json
 import logging
 import firebase_admin
+from typing import Optional
 from firebase_admin import credentials, auth
 from fastapi import HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from app.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -73,9 +75,10 @@ def initialize_firebase():
 
 
 # Security scheme for extracting Bearer tokens
-security = HTTPBearer()
+# Use auto_error=False to allow manual handling of missing tokens (needed for debug mode bypass)
+security = HTTPBearer(auto_error=False)
 
-async def verify_firebase_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def verify_firebase_token(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)):
     """
     Verify Firebase ID token and return user information.
     
@@ -88,6 +91,22 @@ async def verify_firebase_token(credentials: HTTPAuthorizationCredentials = Depe
     Raises:
         HTTPException: If token is invalid or verification fails
     """
+    # DEBUG MODE BYPASS: If DEBUG is true, return a stub user immediately
+    if settings.DEBUG:
+        # logger.debug("🚧 DEBUG mode: Bypassing Firebase auth with dev-user")
+        return {
+            "uid": "dev-user",
+            "email": "dev@example.com",
+            "name": "Developer User",
+            "picture": "",
+            "email_verified": True,
+            "firebase_claims": {"admin": True}
+        }
+
+    # NORMAL MODE: Require and verify token
+    if not credentials:
+        raise HTTPException(status_code=401, detail="Missing authentication token")
+
     try:
         token = credentials.credentials
         decoded_token = auth.verify_id_token(token)

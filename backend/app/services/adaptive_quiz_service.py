@@ -4,8 +4,10 @@ import json
 import hashlib
 import random
 import logging
+import asyncpg
 from pathlib import Path
 from typing import List, Dict, Any, Optional
+from app.repositories.content_repository import ContentRepository
 
 logger = logging.getLogger(__name__)
 
@@ -13,9 +15,16 @@ logger = logging.getLogger(__name__)
 class AdaptiveQuizService:
     """Service for adaptive quiz question selection based on user performance."""
     
-    def __init__(self, courses_dir: Optional[str] = None):
+    def __init__(self, pool: Optional[asyncpg.Pool] = None, courses_dir: Optional[str] = None):
+        self.pool = pool
+        if pool:
+            self.repository = ContentRepository(pool)
+        else:
+            self.repository = None
+            logger.warning("AdaptiveQuizService initialized without PostgreSQL pool. DB operations will fail.")
+        
+        # Keep courses_dir for backward compatibility if needed, but prefer DB
         if courses_dir is None:
-            # Get the backend directory (parent of app directory)
             backend_dir = Path(__file__).parent.parent.parent
             courses_dir = str(backend_dir / "courses")
         self.courses_dir = Path(courses_dir)
@@ -33,62 +42,88 @@ class AdaptiveQuizService:
         """
         return hashlib.md5(question_text.encode()).hexdigest()[:16]
     
+    async def _get_lecture_id_int(self, lecture_id: str) -> Optional[int]:
+        """Helper to convert lecture_id string to int."""
+        try:
+            return int(lecture_id)
+        except ValueError:
+            logger.warning(f"Invalid lecture ID format: {lecture_id} (expected integer)")
+            return None
+
     async def load_flashcards(
         self,
         course_id: str,
         lecture_id: str
     ) -> Dict[str, Dict[str, Any]]:
         """
-        Load all flashcards for a lecture and extract their relevance scores.
+        Load all flashcards for a lecture from the database and extract metadata.
         
         Args:
-            course_id: Course identifier (e.g., "MS5150")
-            lecture_id: Lecture identifier (e.g., "SI_PLC")
+            course_id: Course identifier
+            lecture_id: Lecture identifier (database ID)
             
         Returns:
             Dict mapping flashcard_id to flashcard metadata (relevance_score, etc.)
         """
-        flashcard_file = (
-            self.courses_dir / course_id / "cognitive_flashcards" / 
-            lecture_id / f"{lecture_id}_cognitive_flashcards_only.json"
-        )
-        
-        if not flashcard_file.exists():
-            logger.error(f"Flashcard file not found: {flashcard_file}")
+        if not self.repository:
+            logger.error("Repository not initialized")
             return {}
-        
+
+        lec_id_int = await self._get_lecture_id_int(lecture_id)
+        if lec_id_int is None:
+            return {}
+
+        lecture = await self.repository.get_lecture_by_id(lec_id_int)
+        if not lecture:
+            logger.error(f"Lecture {lecture_id} not found in database")
+            return {}
+
         try:
-            with open(flashcard_file, 'r', encoding='utf-8') as f:
-                flashcard_data = json.load(f)
+            # flashcards column is JSONB, asyncpg returns it as a python object (dict/list) or string
+            flashcards_data = lecture.get('flashcards')
             
-            flashcards = flashcard_data.get('flashcards', [])
+            if not flashcards_data:
+                return {}
+                
+            if isinstance(flashcards_data, str):
+                flashcards_data = json.loads(flashcards_data)
+            
+            # Handle structure: {"flashcards": [...]} or just [...]
+            if isinstance(flashcards_data, dict):
+                flashcards = flashcards_data.get('flashcards', [])
+            elif isinstance(flashcards_data, list):
+                flashcards = flashcards_data
+            else:
+                flashcards = []
             
             # Create a mapping of flashcard_id -> metadata
             flashcard_map = {}
             for card in flashcards:
-                flashcard_id = card.get('flashcard_id')
+                # Handle both 'id' and 'flashcard_id' keys
+                flashcard_id = card.get('id') or card.get('flashcard_id')
                 if flashcard_id:
-                    # relevance_score in our JSON is an object: { score: number, justification: string }
-                    # Store the numeric score only for sorting/comparisons
+                    # relevance_score might be object or int
                     numeric_relevance = 0
                     try:
-                        numeric_relevance = (
-                            card.get('relevance_score', {}) or {}
-                        ).get('score', 0)
+                        rs = card.get('relevance_score')
+                        if isinstance(rs, dict):
+                            numeric_relevance = rs.get('score', 0)
+                        elif isinstance(rs, (int, float)):
+                            numeric_relevance = rs
                     except Exception:
                         numeric_relevance = 0
 
                     flashcard_map[flashcard_id] = {
                         'relevance_score': numeric_relevance,
-                        'question': card.get('question', ''),
+                        'question': card.get('front', '') or card.get('question', ''),
                         'tags': card.get('tags', [])
                     }
             
-            logger.info(f"Loaded {len(flashcard_map)} flashcards from {flashcard_file.name}")
+            logger.info(f"Loaded {len(flashcard_map)} flashcards for lecture {lecture_id}")
             return flashcard_map
         
         except Exception as e:
-            logger.error(f"Error loading flashcard file {flashcard_file}: {e}")
+            logger.error(f"Error parsing flashcards for lecture {lecture_id}: {e}")
             return {}
     
     async def load_quiz_questions(
@@ -98,40 +133,68 @@ class AdaptiveQuizService:
         level: int
     ) -> List[Dict[str, Any]]:
         """
-        Load all questions for a specific quiz level.
+        Load all questions for a specific quiz level from the database.
         
         Args:
-            course_id: Course identifier (e.g., "MS5150")
-            lecture_id: Lecture identifier (e.g., "SI_PLC")
+            course_id: Course identifier
+            lecture_id: Lecture identifier (database ID)
             level: Difficulty level (1-4)
             
         Returns:
-            List of question objects with added question_hash field and normalized correct_answer
+            List of question objects
         """
-        quiz_file = self.courses_dir / course_id / "quiz" / f"{lecture_id}_level_{level}_quiz.json"
-        
-        if not quiz_file.exists():
-            logger.error(f"Quiz file not found: {quiz_file}")
+        if not self.repository:
+            logger.error("Repository not initialized")
             return []
-        
+
+        lec_id_int = await self._get_lecture_id_int(lecture_id)
+        if lec_id_int is None:
+            return []
+
+        lecture = await self.repository.get_lecture_by_id(lec_id_int)
+        if not lecture:
+            logger.error(f"Lecture {lecture_id} not found in database")
+            return []
+
         try:
-            with open(quiz_file, 'r', encoding='utf-8') as f:
-                quiz_data = json.load(f)
+            quizzes_data = lecture.get('quizzes')
+            if not quizzes_data:
+                logger.warning(f"No quizzes found for lecture {lecture_id}")
+                return []
+                
+            if isinstance(quizzes_data, str):
+                quizzes_data = json.loads(quizzes_data)
             
-            questions = quiz_data.get('questions', [])
+            # Handle structure: {"levels": [{"level": 1, "questions": [...]}, ...]}
+            questions = []
             
-            # Add question_hash and normalize correct_answer to option keys
+            # Check for "levels" list structure (new format)
+            if isinstance(quizzes_data, dict) and "levels" in quizzes_data:
+                levels = quizzes_data.get("levels", [])
+                for lvl_data in levels:
+                    if lvl_data.get("level") == level:
+                        questions = lvl_data.get("questions", [])
+                        break
+            
+            # Fallback to flat dict structure (old format: {"level_1": [...]})
+            elif isinstance(quizzes_data, dict):
+                level_key = f"level_{level}"
+                questions = quizzes_data.get(level_key, [])
+            
+            if not questions:
+                logger.warning(f"No questions found for {lecture_id} level {level} in quiz data")
+                return []
+            
+            # Add question_hash and normalize correct_answer
             for question in questions:
                 question['question_hash'] = self.hash_question(question['question_text'])
-                
-                # CRITICAL: Normalize correct_answer to option keys at source
                 question['correct_answer'] = self._normalize_correct_answer(question)
             
-            logger.info(f"Loaded {len(questions)} questions from {quiz_file.name}")
+            logger.info(f"Loaded {len(questions)} questions for {lecture_id} level {level}")
             return questions
         
         except Exception as e:
-            logger.error(f"Error loading quiz file {quiz_file}: {e}")
+            logger.error(f"Error loading quiz questions for lecture {lecture_id}: {e}")
             return []
     
     @staticmethod

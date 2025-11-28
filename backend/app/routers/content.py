@@ -44,6 +44,7 @@ class LectureStatus(BaseModel):
     flashcard_status: str
     quiz_status: str
     qdrant_status: str
+    topics: List[str] = []
     error_log: Optional[dict] = None
     created_at: str
     updated_at: str
@@ -57,6 +58,7 @@ class CourseDetail(BaseModel):
     instructor: Optional[str] = None
     additional_info: Optional[str] = None
     reference_textbooks: Optional[List[str]] = None
+    lecture_count: int = 0
     created_at: str
     updated_at: str
 
@@ -65,6 +67,43 @@ async def get_repository():
     """Dependency to get repository instance."""
     pool = await get_postgres_pool()
     return ContentRepository(pool)
+
+
+def extract_topics_from_analysis(structured_analysis: Any) -> List[str]:
+    """
+    Extract topics from structured_analysis JSONB field.
+    
+    Tries multiple sources: 'topics', 'key_concepts', 'sections'.
+    """
+    if not structured_analysis:
+        return []
+    
+    # Handle if it's a string (JSON)
+    if isinstance(structured_analysis, str):
+        try:
+            structured_analysis = json.loads(structured_analysis)
+        except json.JSONDecodeError:
+            return []
+    
+    if not isinstance(structured_analysis, dict):
+        return []
+    
+    # Try 'topics' first
+    topics = structured_analysis.get("topics")
+    if topics and isinstance(topics, list):
+        return [str(t) for t in topics if t]
+    
+    # Try 'key_concepts' as fallback
+    key_concepts = structured_analysis.get("key_concepts")
+    if key_concepts and isinstance(key_concepts, list):
+        return [str(c) for c in key_concepts if c]
+    
+    # Try 'sections' as last resort (extract section titles)
+    sections = structured_analysis.get("sections")
+    if sections and isinstance(sections, list):
+        return [s.get("title", str(s)) if isinstance(s, dict) else str(s) for s in sections if s]
+    
+    return []
 
 
 @router.post("/ingest", response_model=IngestionResponse)
@@ -179,7 +218,7 @@ async def list_courses(
     # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
     repository: ContentRepository = Depends(get_repository)
 ):
-    """List all courses."""
+    """List all courses with lecture counts."""
     try:
         courses = await repository.list_courses()
         
@@ -203,6 +242,7 @@ async def list_courses(
                     instructor=course.get("instructor"),
                     additional_info=course.get("additional_info"),
                     reference_textbooks=textbooks,
+                    lecture_count=course.get("lecture_count", 0),
                     created_at=course["created_at"].isoformat(),
                     updated_at=course["updated_at"].isoformat()
                 )
@@ -239,6 +279,9 @@ async def list_lectures(
                 except json.JSONDecodeError:
                     error_log = None
             
+            # Extract topics from structured_analysis
+            topics = extract_topics_from_analysis(lecture.get("structured_analysis"))
+            
             result.append(
                 LectureStatus(
                     id=lecture["id"],
@@ -249,6 +292,7 @@ async def list_lectures(
                     flashcard_status=lecture["flashcard_status"],
                     quiz_status=lecture["quiz_status"],
                     qdrant_status=lecture["qdrant_status"],
+                    topics=topics,
                     error_log=error_log,
                     created_at=lecture["created_at"].isoformat(),
                     updated_at=lecture["updated_at"].isoformat()
@@ -283,6 +327,9 @@ async def get_lecture(
             except json.JSONDecodeError:
                 error_log = None
         
+        # Extract topics from structured_analysis
+        topics = extract_topics_from_analysis(lecture.get("structured_analysis"))
+        
         return LectureStatus(
             id=lecture["id"],
             course_code=lecture["course_code"],
@@ -292,6 +339,7 @@ async def get_lecture(
             flashcard_status=lecture["flashcard_status"],
             quiz_status=lecture["quiz_status"],
             qdrant_status=lecture["qdrant_status"],
+            topics=topics,
             error_log=error_log,
             created_at=lecture["created_at"].isoformat(),
             updated_at=lecture["updated_at"].isoformat()
@@ -309,6 +357,61 @@ class DeleteResponse(BaseModel):
     success: bool
     message: str
     lecture_id: int
+
+
+@router.get("/lectures/{lecture_id}/flashcards")
+async def get_lecture_flashcards(
+    lecture_id: int,
+    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
+    repository: ContentRepository = Depends(get_repository)
+):
+    """
+    Get full flashcards JSON for a specific lecture.
+    
+    Returns the exact JSON structure stored in the lectures.flashcards column,
+    which is what the frontend StudyDeck expects.
+    """
+    try:
+        lecture = await repository.get_lecture_by_id(lecture_id)
+        
+        if not lecture:
+            raise HTTPException(status_code=404, detail=f"Lecture {lecture_id} not found")
+        
+        flashcards_data = lecture.get("flashcards")
+        if not flashcards_data:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Flashcards not found for lecture {lecture_id}. Please run flashcard generation."
+            )
+        
+        # Handle JSON string stored in DB
+        if isinstance(flashcards_data, str):
+            try:
+                flashcards_data = json.loads(flashcards_data)
+            except json.JSONDecodeError:
+                logger.error(f"Invalid flashcards JSON for lecture {lecture_id}")
+                raise HTTPException(
+                    status_code=500,
+                    detail="Stored flashcards data is corrupted or invalid JSON"
+                )
+        
+        if not isinstance(flashcards_data, dict):
+            logger.error(f"Unexpected flashcards data type for lecture {lecture_id}: {type(flashcards_data)}")
+            raise HTTPException(
+                status_code=500,
+                detail="Stored flashcards data has unexpected format"
+            )
+        
+        return flashcards_data
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting flashcards for lecture {lecture_id}: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to fetch flashcards for lecture {lecture_id}: {str(e)}"
+        )
 
 
 @router.delete("/lectures/{lecture_id}", response_model=DeleteResponse)

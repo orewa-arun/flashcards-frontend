@@ -1,4 +1,4 @@
-"""Adaptive quiz generation and submission endpoints."""
+"""Adaptive quiz generation and submission endpoints using PostgreSQL."""
 
 import json
 import os
@@ -8,9 +8,12 @@ from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Header, Depends
-from app.database import get_database
+
+from app.db.postgres import get_postgres_pool
 from app.firebase_auth import get_current_user
-from app.services.user_service import get_user_service, UserService
+from app.services.user_service import UserService
+from app.repositories.quiz_repository import QuizRepository
+from app.repositories.user_repository import UserRepository
 from app.models.adaptive_quiz import (
     QuizGenerationRequest, QuizGenerationResponse, QuizQuestion,
     QuizSubmissionRequest, QuizSubmissionResponse, QuestionResult,
@@ -21,10 +24,6 @@ from app.config import settings
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/quiz", tags=["quiz"])
-
-# Collection name for user deck performance
-USER_DECK_PERFORMANCE_COLLECTION = "user_deck_performance"
-QUIZ_SESSIONS_COLLECTION = "quiz_sessions"
 
 # Base path for cognitive flashcards
 # Construct path relative to this file's location to ensure portability
@@ -39,25 +38,11 @@ async def get_user_id_from_header(x_user_id: str = Header(..., alias="X-User-ID"
     return x_user_id
 
 
-async def ensure_user_exists(user_id: str, db) -> User:
+async def ensure_user_exists(user_id: str, pool) -> dict:
     """Ensure user exists in database, create if not."""
-    users_collection = db[settings.USERS_COLLECTION]
-    
-    user_doc = await users_collection.find_one({"user_id": user_id})
-    
-    if not user_doc:
-        # Create minimal user document with required firebase_uid; keep legacy user_id for compatibility
-        new_user = User(firebase_uid=user_id, email=None, name=None, picture=None, user_id=user_id)
-        result = await users_collection.insert_one(new_user.model_dump(by_alias=True, exclude={"id"}))
-        user_doc = await users_collection.find_one({"_id": result.inserted_id})
-        logger.info(f"Created new user: {user_id}")
-    else:
-        await users_collection.update_one(
-            {"user_id": user_id},
-            {"$set": {"last_active": datetime.now(timezone.utc)}}
-        )
-    
-    return User(**user_doc)
+    repository = UserRepository(pool)
+    user_dict = await repository.get_or_create_user(firebase_uid=user_id)
+    return user_dict
 
 
 def load_flashcards(course_id: str, deck_id: str) -> Dict[str, Any]:
@@ -113,24 +98,43 @@ async def get_or_create_deck_performance(
     course_id: str,
     deck_id: str,
     flashcards_data: Dict[str, Any],
-    db
+    pool
 ) -> UserDeckPerformance:
-    """Get existing deck performance or create new one."""
-    performance_collection = db[USER_DECK_PERFORMANCE_COLLECTION]
+    """Get existing deck performance or create new one using PostgreSQL."""
+    from app.repositories.analytics_repository import AnalyticsRepository
     
-    perf_doc = await performance_collection.find_one({
-        "firebase_uid": firebase_uid,
-        "course_id": course_id,
-        "deck_id": deck_id
-    })
+    analytics_repo = AnalyticsRepository(pool)
     
-    if perf_doc:
-        return UserDeckPerformance(**perf_doc)
+    # Try to get existing deck progress
+    progress_data = await analytics_repo.get_deck_progress(firebase_uid, deck_id)
     
-    # Create new performance tracking document
     flashcards = flashcards_data.get("flashcards", [])
     total_flashcards = len(flashcards)
     
+    if progress_data:
+        # Build flashcards_performance from stored data
+        flashcards_performance = []
+        for card in flashcards:
+            flashcard_id = card.get("flashcard_id")
+            if not flashcard_id:
+                continue
+            flashcard_perf = FlashcardPerformance(
+                flashcard_id=flashcard_id,
+                last_attempted=None
+            )
+            flashcards_performance.append(flashcard_perf)
+        
+        return UserDeckPerformance(
+            firebase_uid=firebase_uid,
+            course_id=course_id,
+            deck_id=deck_id,
+            total_flashcards=total_flashcards,
+            flashcards_performance=flashcards_performance,
+            total_quiz_attempts=progress_data.get("total_quiz_attempts", 0),
+            last_quiz_date=progress_data.get("last_studied")
+        )
+    
+    # Create new performance tracking
     flashcards_performance = []
     for card in flashcards:
         flashcard_id = card.get("flashcard_id")
@@ -152,8 +156,15 @@ async def get_or_create_deck_performance(
         last_quiz_date=None
     )
     
-    await performance_collection.insert_one(
-        new_performance.model_dump(by_alias=True, exclude={"id"})
+    # Save to PostgreSQL
+    await analytics_repo.update_deck_progress(
+        user_id=firebase_uid,
+        deck_id=deck_id,
+        course_id=course_id,
+        progress_data={"total_quiz_attempts": 0},
+        cards_studied=0,
+        total_cards=total_flashcards,
+        study_streak=0
     )
     
     logger.info(f"Created new deck performance for user {firebase_uid}, deck {deck_id}")
@@ -401,9 +412,7 @@ def build_quiz_questions_hard(selected_questions: List[Dict[str, Any]]) -> List[
 @router.post("/generate", response_model=QuizGenerationResponse)
 async def generate_quiz(
     request: QuizGenerationRequest,
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    user_service: UserService = Depends(get_user_service),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """
     Generate an adaptive quiz based on user's performance history and difficulty level.
@@ -415,6 +424,11 @@ async def generate_quiz(
     try:
         firebase_uid = current_user["uid"]
         difficulty = request.difficulty or "medium"
+        
+        # Get PostgreSQL pool
+        pool = await get_postgres_pool()
+        quiz_repository = QuizRepository(pool)
+        user_service = UserService(pool)
         
         # Ensure user exists in database
         await user_service.get_or_create_user(
@@ -437,21 +451,14 @@ async def generate_quiz(
             selected_questions = select_hard_questions(hard_questions_data, quiz_size)
             quiz_questions = build_quiz_questions_hard(selected_questions)
             
-            # Create quiz session
-            quiz_id = str(uuid4())
-            quiz_session = {
-                "quiz_id": quiz_id,
-                "firebase_uid": firebase_uid,
-                "course_id": request.course_id,
-                "deck_id": request.deck_id,
-                "difficulty": difficulty,
-                "questions": [q.model_dump() for q in quiz_questions],
-                "created_at": datetime.now(timezone.utc),
-                "completed": False
-            }
-            
-            quiz_sessions_collection = db[QUIZ_SESSIONS_COLLECTION]
-            await quiz_sessions_collection.insert_one(quiz_session)
+            # Create quiz session using PostgreSQL
+            quiz_id = await quiz_repository.create_quiz_session(
+                firebase_uid=firebase_uid,
+                course_id=request.course_id,
+                deck_id=request.deck_id,
+                difficulty=difficulty,
+                questions=[q.model_dump() for q in quiz_questions]
+            )
             
             return QuizGenerationResponse(
                 quiz_id=quiz_id,
@@ -480,7 +487,7 @@ async def generate_quiz(
         
         # Get or create performance tracking
         performance = await get_or_create_deck_performance(
-            firebase_uid, request.course_id, request.deck_id, flashcards_data, db
+            firebase_uid, request.course_id, request.deck_id, flashcards_data, pool
         )
         
         # Select questions based on phase
@@ -496,21 +503,14 @@ async def generate_quiz(
         # Build quiz questions
         quiz_questions = build_quiz_questions(selected_questions)
         
-        # Create quiz session
-        quiz_id = str(uuid4())
-        quiz_session = {
-            "quiz_id": quiz_id,
-            "firebase_uid": firebase_uid,
-            "course_id": request.course_id,
-            "deck_id": request.deck_id,
-            "difficulty": difficulty,
-            "questions": [q.model_dump() for q in quiz_questions],
-            "created_at": datetime.now(timezone.utc),
-            "completed": False
-        }
-        
-        quiz_sessions_collection = db[QUIZ_SESSIONS_COLLECTION]
-        await quiz_sessions_collection.insert_one(quiz_session)
+        # Create quiz session using PostgreSQL
+        quiz_id = await quiz_repository.create_quiz_session(
+            firebase_uid=firebase_uid,
+            course_id=request.course_id,
+            deck_id=request.deck_id,
+            difficulty=difficulty,
+            questions=[q.model_dump() for q in quiz_questions]
+        )
         
         return QuizGenerationResponse(
             quiz_id=quiz_id,
@@ -532,9 +532,7 @@ async def generate_quiz(
 @router.post("/submit", response_model=QuizSubmissionResponse)
 async def submit_quiz(
     submission: QuizSubmissionRequest,
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    user_service: UserService = Depends(get_user_service),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """
     Submit quiz answers and update user's flashcard-level performance.
@@ -544,12 +542,16 @@ async def submit_quiz(
     try:
         firebase_uid = current_user["uid"]
         
+        # Get PostgreSQL pool
+        pool = await get_postgres_pool()
+        quiz_repository = QuizRepository(pool)
+        user_service = UserService(pool)
+        
         # Increment quiz attempts counter
         await user_service.increment_quiz_attempts(firebase_uid)
         
         # Retrieve quiz session
-        quiz_sessions_collection = db[QUIZ_SESSIONS_COLLECTION]
-        quiz_session = await quiz_sessions_collection.find_one({"quiz_id": submission.quiz_id})
+        quiz_session = await quiz_repository.get_quiz_session(submission.quiz_id)
         
         if not quiz_session:
             raise HTTPException(status_code=404, detail="Quiz session not found")
@@ -604,9 +606,11 @@ async def submit_quiz(
         # Extract lecture_id from deck_id (e.g., "MIS_lec_1" -> "MIS_lec_1")
         lecture_id = submission.deck_id
         
-        # Update flashcard performance using new service
+        # Update flashcard performance using new service (PostgreSQL)
         from app.services.flashcard_performance_service import FlashcardPerformanceService
-        flashcard_perf_service = FlashcardPerformanceService(db)
+        from app.db.postgres import get_postgres_pool
+        pg_pool = await get_postgres_pool()
+        flashcard_perf_service = FlashcardPerformanceService(pg_pool)
         
         affected_lectures = await flashcard_perf_service.update_performance_from_quiz(
             user_id=firebase_uid,
@@ -646,31 +650,24 @@ async def submit_quiz(
         weak_flashcards.sort(key=lambda x: x.accuracy)
         
         # Mark quiz session as completed
-        await quiz_sessions_collection.update_one(
-            {"quiz_id": submission.quiz_id},
-            {"$set": {"completed": True, "completed_at": now}}
-        )
+        await quiz_repository.complete_quiz_session(submission.quiz_id)
         
-        # Save quiz result to quiz_results collection for history tracking
-        quiz_results_collection = db[settings.QUIZ_RESULTS_COLLECTION]
-        quiz_result_document = {
-            "firebase_uid": firebase_uid,
-            "course_id": submission.course_id,
-            "deck_id": submission.deck_id,
-            "lecture_id": lecture_id,  # Add lecture_id for exam readiness
-            "quiz_id": submission.quiz_id,
-            "difficulty": difficulty,
-            "score": display_score,
-            "total_questions": total_questions,
-            "percentage": round(percentage, 2),
-            "time_taken": submission.time_taken_seconds,
-            "completed_at": now,
-            "question_results": [qr.model_dump() for qr in question_results]
-        }
-        
+        # Save quiz result to PostgreSQL
         logger.info(f"Attempting to save quiz result: user={firebase_uid}, course={submission.course_id}, deck={submission.deck_id}, difficulty={difficulty}, score={display_score}/{total_questions}")
-        result = await quiz_results_collection.insert_one(quiz_result_document)
-        logger.info(f"✅ Successfully saved quiz result to history! Document ID: {result.inserted_id}")
+        result_id = await quiz_repository.save_quiz_result(
+            firebase_uid=firebase_uid,
+            course_id=submission.course_id,
+            lecture_id=lecture_id,
+            deck_id=submission.deck_id,
+            difficulty=difficulty,
+            score=display_score,
+            total_questions=total_questions,
+            percentage=round(percentage, 2),
+            time_taken=submission.time_taken_seconds,
+            question_results=[qr.model_dump() for qr in question_results],
+            quiz_id=submission.quiz_id
+        )
+        logger.info(f"Successfully saved quiz result to history! Result ID: {result_id}")
         
         # Dispatch background task to recalculate exam readiness
         from fastapi import BackgroundTasks

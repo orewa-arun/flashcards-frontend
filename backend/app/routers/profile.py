@@ -1,10 +1,10 @@
-"""API endpoints for user profiles and course enrollment."""
+"""API endpoints for user profiles and course enrollment using PostgreSQL."""
 
 import logging
 from typing import Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.database import get_database
+from app.db.postgres import get_postgres_pool
 from app.firebase_auth import get_current_user
 from app.services.user_profile_service import UserProfileService
 
@@ -15,8 +15,7 @@ router = APIRouter(prefix="/api/v1/profile", tags=["profile"])
 
 @router.get("")
 async def get_user_profile(
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ) -> Dict[str, Any]:
     """
     Get current user's profile with enrolled courses.
@@ -26,7 +25,9 @@ async def get_user_profile(
     """
     try:
         user_id = current_user['uid']
-        profile_service = UserProfileService(db)
+        
+        pool = await get_postgres_pool()
+        profile_service = UserProfileService(pool)
         
         enrolled_courses = await profile_service.get_enrolled_courses(user_id)
         
@@ -46,8 +47,7 @@ async def get_user_profile(
 @router.post("/enroll/{course_id}")
 async def enroll_in_course(
     course_id: str,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ) -> Dict[str, Any]:
     """
     Enroll current user in a course.
@@ -60,7 +60,9 @@ async def enroll_in_course(
     """
     try:
         user_id = current_user['uid']
-        profile_service = UserProfileService(db)
+        
+        pool = await get_postgres_pool()
+        profile_service = UserProfileService(pool)
         
         # Check if already enrolled
         is_enrolled = await profile_service.is_enrolled(user_id, course_id)
@@ -83,7 +85,7 @@ async def enroll_in_course(
         
         enrolled_courses = await profile_service.get_enrolled_courses(user_id)
         
-        logger.info(f"✅ User {user_id} enrolled in course {course_id}")
+        logger.info(f"User {user_id} enrolled in course {course_id}")
         
         return {
             "success": True,
@@ -104,8 +106,7 @@ async def enroll_in_course(
 @router.delete("/enroll/{course_id}")
 async def unenroll_from_course(
     course_id: str,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ) -> Dict[str, Any]:
     """
     Unenroll current user from a course.
@@ -118,7 +119,9 @@ async def unenroll_from_course(
     """
     try:
         user_id = current_user['uid']
-        profile_service = UserProfileService(db)
+        
+        pool = await get_postgres_pool()
+        profile_service = UserProfileService(pool)
         
         success = await profile_service.unenroll_course(user_id, course_id)
         
@@ -151,8 +154,7 @@ async def unenroll_from_course(
 @router.get("/enrollment/{course_id}")
 async def check_enrollment_status(
     course_id: str,
-    current_user: dict = Depends(get_current_user),
-    db=Depends(get_database)
+    current_user: dict = Depends(get_current_user)
 ) -> Dict[str, Any]:
     """
     Check if current user is enrolled in a specific course.
@@ -165,7 +167,9 @@ async def check_enrollment_status(
     """
     try:
         user_id = current_user['uid']
-        profile_service = UserProfileService(db)
+        
+        pool = await get_postgres_pool()
+        profile_service = UserProfileService(pool)
         
         is_enrolled = await profile_service.is_enrolled(user_id, course_id)
         
@@ -180,4 +184,3 @@ async def check_enrollment_status(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to check enrollment: {str(e)}"
         )
-

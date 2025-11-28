@@ -1,5 +1,5 @@
 """
-Service for calculating and persisting exam readiness scores.
+Service for calculating and persisting exam readiness scores using PostgreSQL.
 
 This service aggregates flashcard-level performance data to compute
 the overall exam readiness score with three pillars: Coverage, Accuracy, and Momentum.
@@ -9,16 +9,19 @@ import json
 import logging
 import random
 from datetime import datetime, timezone, timedelta
-from pathlib import Path
 from typing import List, Dict, Tuple, Optional
-from motor.motor_asyncio import AsyncIOMotorDatabase
+import asyncpg
 
+from app.repositories.quiz_repository import QuizRepository
+from app.repositories.analytics_repository import AnalyticsRepository
 from app.models.readiness_v2 import (
     UserExamReadiness,
     UserFlashcardPerformance,
     WeakFlashcard,
     RawScores,
-    MaxPossibleScores
+    MaxPossibleScores,
+    PerformanceByLevel,
+    RecentAttempt
 )
 from app import readiness_config as config
 
@@ -29,7 +32,7 @@ class ReadinessV2Service:
     """
     Service for calculating and persisting exam readiness scores.
     
-    This service aggregates data from user_flashcard_performance documents
+    This service aggregates data from user_flashcard_performance table
     to compute the final exam readiness score.
     """
     
@@ -37,19 +40,16 @@ class ReadinessV2Service:
     _readiness_cache: Dict[str, Tuple[UserExamReadiness, datetime]] = {}
     _cache_ttl = timedelta(seconds=30)
     
-    def __init__(self, database):
-        self.db = database
-        self.flashcard_perf_collection = database.user_flashcard_performance
-        self.exam_readiness_collection = database.user_exam_readiness
-        self.timetable_collection = database.course_timetables
-    
-    async def initialize_indexes(self):
-        """Create indexes for efficient querying."""
-        await self.exam_readiness_collection.create_index(
-            [("user_id", 1), ("exam_id", 1)],
-            unique=True
-        )
-        logger.info("Exam readiness indexes created")
+    def __init__(self, pool: asyncpg.Pool):
+        """
+        Initialize service with PostgreSQL connection pool.
+        
+        Args:
+            pool: AsyncPG connection pool
+        """
+        self.pool = pool
+        self.quiz_repository = QuizRepository(pool)
+        self.analytics_repository = AnalyticsRepository(pool)
     
     async def calculate_and_persist_exam_readiness(
         self,
@@ -70,7 +70,7 @@ class ReadinessV2Service:
         """
         try:
             # Step 1: Get exam lectures from timetable
-            exam_lectures = await self._get_exam_lectures(course_id, exam_id)
+            exam_lectures = await self.quiz_repository.get_exam_lectures(course_id, exam_id)
             
             if not exam_lectures:
                 logger.warning(f"No lectures found for exam {exam_id} in course {course_id}")
@@ -136,13 +136,22 @@ class ReadinessV2Service:
             )
             
             # Step 10: Persist to database
-            await self.exam_readiness_collection.update_one(
-                {"user_id": user_id, "exam_id": exam_id},
-                {"$set": readiness.model_dump()},
-                upsert=True
+            await self.quiz_repository.save_exam_readiness(
+                user_id=user_id,
+                exam_id=exam_id,
+                course_id=course_id,
+                overall_readiness_score=readiness.overall_readiness_score,
+                coverage_factor=readiness.coverage_factor,
+                accuracy_factor=readiness.accuracy_factor,
+                momentum_factor=readiness.momentum_factor,
+                raw_scores=raw_scores.model_dump(),
+                max_possible_scores=max_possible_scores.model_dump(),
+                weak_flashcards=[wf.model_dump() for wf in weak_flashcards],
+                total_flashcards_in_exam=readiness.total_flashcards_in_exam,
+                flashcards_attempted=readiness.flashcards_attempted
             )
             
-            logger.info(f"✅ Calculated exam readiness for user {user_id}, exam {exam_id}: "
+            logger.info(f"Calculated exam readiness for user {user_id}, exam {exam_id}: "
                        f"{readiness.overall_readiness_score:.1f}% "
                        f"(C:{coverage_factor:.2f}, A:{accuracy_factor:.2f}, M:{momentum_factor:.2f})")
             
@@ -151,20 +160,6 @@ class ReadinessV2Service:
         except Exception as e:
             logger.error(f"Error calculating exam readiness: {e}", exc_info=True)
             raise
-    
-    async def _get_exam_lectures(self, course_id: str, exam_id: str) -> List[str]:
-        """Get list of lecture IDs for an exam from the timetable."""
-        timetable = await self.timetable_collection.find_one({"course_id": course_id})
-        
-        if not timetable:
-            return []
-        
-        # Find the specific exam
-        for exam in timetable.get("exams", []):
-            if exam.get("exam_id") == exam_id:
-                return exam.get("lectures", [])
-        
-        return []
     
     async def get_exams_containing_lecture(
         self,
@@ -181,27 +176,7 @@ class ReadinessV2Service:
         Returns:
             List of dicts with exam_id and exam_name for matching exams
         """
-        timetable = await self.timetable_collection.find_one({"course_id": course_id})
-        
-        if not timetable:
-            logger.warning(f"No timetable found for course {course_id}")
-            return []
-        
-        matching_exams = []
-        for exam in timetable.get("exams", []):
-            lectures = exam.get("lectures")
-            
-            # Skip if lectures is None or not a list
-            if not lectures or not isinstance(lectures, list):
-                continue
-            
-            if lecture_id in lectures:
-                matching_exams.append({
-                    "exam_id": exam.get("exam_id"),
-                    "exam_name": exam.get("subject", exam.get("exam_id"))  # Use 'subject' field, not 'exam_name'
-                })
-        
-        return matching_exams
+        return await self.quiz_repository.get_exams_containing_lecture(course_id, lecture_id)
     
     async def _fetch_exam_flashcard_ids(
         self,
@@ -209,37 +184,58 @@ class ReadinessV2Service:
         exam_lectures: List[str]
     ) -> List[str]:
         """
-        Load all flashcard IDs for the given lectures from JSON files.
+        Load all flashcard IDs for the given lectures from PostgreSQL.
         
         Args:
             course_id: Course identifier
-            exam_lectures: List of lecture IDs
+            exam_lectures: List of lecture IDs (can be string or int)
             
         Returns:
             List of flashcard IDs
         """
         flashcard_ids = []
         
-        # Base path to courses
-        base_path = Path(__file__).parent.parent.parent / "courses"
-        course_path = base_path / course_id / "cognitive_flashcards"
+        from app.repositories.content_repository import ContentRepository
+        content_repo = ContentRepository(self.pool)
         
         for lecture_id in exam_lectures:
-            lecture_folder = course_path / lecture_id
-            flashcard_file = lecture_folder / f"{lecture_id}_cognitive_flashcards_only.json"
-            
-            if flashcard_file.exists():
-                try:
-                    with open(flashcard_file, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                        flashcards = data.get("flashcards", []) if isinstance(data, dict) else data
+            try:
+                # Try to parse lecture_id as int for DB lookup
+                lecture_id_int = int(lecture_id) if isinstance(lecture_id, str) else lecture_id
+                lecture = await content_repo.get_lecture_by_id(lecture_id_int)
+                
+                if not lecture:
+                    logger.warning(f"Lecture {lecture_id} not found in database")
+                    continue
+                
+                flashcards_data = lecture.get('flashcards')
+                if not flashcards_data:
+                    logger.debug(f"No flashcards found for lecture {lecture_id}")
+                    continue
+                
+                # Parse JSONB if needed
+                if isinstance(flashcards_data, str):
+                    flashcards_data = json.loads(flashcards_data)
+                
+                # Handle both formats: {"flashcards": [...]} or direct list
+                if isinstance(flashcards_data, dict):
+                    flashcards = flashcards_data.get("flashcards", [])
+                elif isinstance(flashcards_data, list):
+                    flashcards = flashcards_data
+                else:
+                    flashcards = []
+                
+                for flashcard in flashcards:
+                    fc_id = flashcard.get("flashcard_id") or flashcard.get("id")
+                    if fc_id:
+                        flashcard_ids.append(fc_id)
                         
-                        for flashcard in flashcards:
-                            if "flashcard_id" in flashcard:
-                                flashcard_ids.append(flashcard["flashcard_id"])
-                except Exception as e:
-                    logger.error(f"Error loading flashcards from {flashcard_file}: {e}")
+            except (ValueError, TypeError) as e:
+                logger.warning(f"Invalid lecture ID format: {lecture_id} - {e}")
+            except Exception as e:
+                logger.error(f"Error loading flashcards for lecture {lecture_id}: {e}")
         
+        logger.info(f"Loaded {len(flashcard_ids)} flashcard IDs from {len(exam_lectures)} lectures")
         return flashcard_ids
     
     async def _fetch_user_flashcard_performances(
@@ -247,14 +243,61 @@ class ReadinessV2Service:
         user_id: str,
         flashcard_ids: List[str]
     ) -> List[UserFlashcardPerformance]:
-        """Fetch all flashcard performance documents for the user."""
-        cursor = self.flashcard_perf_collection.find({
-            "user_id": user_id,
-            "flashcard_id": {"$in": flashcard_ids}
-        })
+        """Fetch all flashcard performance documents for the user from PostgreSQL."""
+        performances = []
         
-        perf_docs = await cursor.to_list(length=None)
-        return [UserFlashcardPerformance(**doc) for doc in perf_docs]
+        for flashcard_id in flashcard_ids:
+            perf_data = await self.analytics_repository.get_flashcard_performance(
+                user_id, flashcard_id
+            )
+            
+            if perf_data:
+                performances.append(self._dict_to_performance_model(perf_data))
+        
+        return performances
+    
+    def _dict_to_performance_model(self, perf_data: Dict) -> UserFlashcardPerformance:
+        """Convert a dict from the database to a Pydantic model."""
+        performance_json = perf_data.get("performance_data", {})
+        
+        # Parse performance_by_level
+        perf_by_level = {}
+        for level, data in performance_json.get("performance_by_level", {}).items():
+            perf_by_level[level] = PerformanceByLevel(
+                attempts=data.get("attempts", 0),
+                correct=data.get("correct", 0),
+                points=data.get("points", 0.0)
+            )
+        
+        # Parse recent_attempts
+        recent_attempts = []
+        for attempt in performance_json.get("recent_attempts", []):
+            timestamp = attempt.get("timestamp")
+            if isinstance(timestamp, str):
+                timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+            recent_attempts.append(RecentAttempt(
+                timestamp=timestamp,
+                level=attempt.get("level", "medium"),
+                is_correct=attempt.get("is_correct", False),
+                points_earned=attempt.get("points_earned", 0.0)
+            ))
+        
+        return UserFlashcardPerformance(
+            user_id=perf_data["user_id"],
+            flashcard_id=perf_data["flashcard_id"],
+            course_id=perf_data["course_id"],
+            lecture_id=perf_data["lecture_id"],
+            is_weak=perf_data.get("is_weak", False),
+            question_next_level=perf_data.get("next_level", "easy"),
+            coverage_score=perf_data.get("coverage_score", 0.0),
+            accuracy_score=perf_data.get("accuracy_score", 0.0),
+            momentum_score=perf_data.get("momentum_score", 0.0),
+            comfortability_score=perf_data.get("comfortability_score", 0.0),
+            total_points_earned=perf_data.get("total_points_earned", 0.0),
+            performance_by_level=perf_by_level,
+            recent_attempts=recent_attempts,
+            last_updated=perf_data.get("last_updated")
+        )
     
     def _aggregate_scores(
         self,
@@ -410,13 +453,24 @@ class ReadinessV2Service:
         Returns:
             UserExamReadiness document or None if not found
         """
-        readiness_doc = await self.exam_readiness_collection.find_one({
-            "user_id": user_id,
-            "exam_id": exam_id
-        })
+        readiness_data = await self.quiz_repository.get_exam_readiness(user_id, exam_id)
         
-        if readiness_doc:
-            return UserExamReadiness(**readiness_doc)
+        if readiness_data:
+            return UserExamReadiness(
+                user_id=readiness_data["user_id"],
+                exam_id=readiness_data["exam_id"],
+                course_id=readiness_data["course_id"],
+                overall_readiness_score=readiness_data["overall_readiness_score"],
+                coverage_factor=readiness_data["coverage_factor"],
+                accuracy_factor=readiness_data["accuracy_factor"],
+                momentum_factor=readiness_data["momentum_factor"],
+                raw_scores=RawScores(**readiness_data.get("raw_scores", {})),
+                max_possible_scores=MaxPossibleScores(**readiness_data.get("max_possible_scores", {})),
+                weak_flashcards=[WeakFlashcard(**wf) for wf in readiness_data.get("weak_flashcards", [])],
+                total_flashcards_in_exam=readiness_data["total_flashcards_in_exam"],
+                flashcards_attempted=readiness_data["flashcards_attempted"],
+                last_calculated=readiness_data["last_calculated"]
+            )
         return None
     
     async def calculate_deck_readiness(
@@ -504,7 +558,7 @@ class ReadinessV2Service:
                 last_calculated=datetime.now(timezone.utc)
             )
             
-            logger.info(f"✅ Calculated deck readiness for user {user_id}, decks {deck_ids}: "
+            logger.info(f"Calculated deck readiness for user {user_id}, decks {deck_ids}: "
                        f"{readiness.overall_readiness_score:.1f}% "
                        f"(C:{coverage_factor:.2f}, A:{accuracy_factor:.2f}, M:{momentum_factor:.2f})")
             
@@ -578,10 +632,8 @@ class ReadinessV2Service:
             logger.debug(f"Invalidated cache for {cache_key}")
 
 
-def get_readiness_v2_service(db=None) -> ReadinessV2Service:
-    """Dependency injection helper."""
-    from app.database import get_database
-    if db is None:
-        db = get_database()
-    return ReadinessV2Service(db)
-
+async def get_readiness_v2_service() -> ReadinessV2Service:
+    """Dependency injection helper with PostgreSQL pool."""
+    from app.db.postgres import get_postgres_pool
+    pool = await get_postgres_pool()
+    return ReadinessV2Service(pool)

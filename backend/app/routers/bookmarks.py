@@ -1,17 +1,19 @@
-"""Bookmarks API endpoints for flashcard bookmarking."""
+"""Bookmarks API endpoints for flashcard bookmarking using PostgreSQL."""
 
 import json
 from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, HTTPException, Depends
-from app.database import get_database
-from app.models.bookmark import Bookmark, BookmarkRequest, BookmarkResponse
-from app.config import settings
+
+from app.db.postgres import get_postgres_pool
+from app.models.bookmark import BookmarkRequest, BookmarkResponse
 from app.firebase_auth import get_current_user
-from app.services.user_service import UserService, get_user_service
+from app.services.user_service import UserService
+from app.repositories.bookmark_feedback_repository import BookmarkFeedbackRepository
 import logging
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/bookmarks", tags=["bookmarks"])
+
 
 async def load_flashcard_data(course_id: str, deck_id: str, flashcard_index: int) -> Optional[dict]:
     """Load flashcard data from JSON file."""
@@ -42,18 +44,21 @@ async def load_flashcard_data(course_id: str, deck_id: str, flashcard_index: int
         logger.error(f"Error loading flashcard data: {e}")
         return None
 
+
 @router.post("", response_model=BookmarkResponse)
 async def add_bookmark(
     bookmark_data: BookmarkRequest,
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    user_service: UserService = Depends(get_user_service),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """Add a flashcard to user's bookmarks."""
     firebase_uid = current_user['uid']
     logger.info(f"Attempting to add bookmark for firebase_uid: {firebase_uid}")
+    
     try:
+        pool = await get_postgres_pool()
+        
         # Ensure user exists in database
+        user_service = UserService(pool)
         await user_service.get_or_create_user(
             firebase_uid=firebase_uid,
             email=current_user.get("email"),
@@ -63,32 +68,27 @@ async def add_bookmark(
         )
         
         # Check if bookmark already exists
-        bookmarks_collection = db[settings.BOOKMARKS_COLLECTION]
-        existing_bookmark = await bookmarks_collection.find_one({
-            "firebase_uid": firebase_uid,
-            "course_id": bookmark_data.course_id,
-            "deck_id": bookmark_data.deck_id,
-            "flashcard_index": bookmark_data.flashcard_index
-        })
-        
-        if existing_bookmark:
-            raise HTTPException(status_code=409, detail="Flashcard already bookmarked")
-        
-        # Create new bookmark
-        new_bookmark = Bookmark(
+        repository = BookmarkFeedbackRepository(pool)
+        exists = await repository.bookmark_exists(
             firebase_uid=firebase_uid,
             course_id=bookmark_data.course_id,
             deck_id=bookmark_data.deck_id,
             flashcard_index=bookmark_data.flashcard_index
         )
         
-        # Save to database
-        result = await bookmarks_collection.insert_one(
-            new_bookmark.model_dump(by_alias=True, exclude={"id"})
+        if exists:
+            raise HTTPException(status_code=409, detail="Flashcard already bookmarked")
+        
+        # Create new bookmark
+        created_bookmark = await repository.add_bookmark(
+            firebase_uid=firebase_uid,
+            course_id=bookmark_data.course_id,
+            deck_id=bookmark_data.deck_id,
+            flashcard_index=bookmark_data.flashcard_index
         )
         
-        # Get created document
-        created_doc = await bookmarks_collection.find_one({"_id": result.inserted_id})
+        if not created_bookmark:
+            raise HTTPException(status_code=409, detail="Flashcard already bookmarked")
         
         # Load flashcard data
         flashcard_data = await load_flashcard_data(
@@ -100,11 +100,11 @@ async def add_bookmark(
         logger.info(f"Added bookmark for user {firebase_uid}: {bookmark_data.course_id}:{bookmark_data.deck_id}:{bookmark_data.flashcard_index}")
         
         return BookmarkResponse(
-            firebase_uid=created_doc["firebase_uid"],
-            course_id=created_doc["course_id"],
-            deck_id=created_doc["deck_id"],
-            flashcard_index=created_doc["flashcard_index"],
-            created_at=created_doc["created_at"],
+            firebase_uid=created_bookmark["firebase_uid"],
+            course_id=created_bookmark["course_id"],
+            deck_id=created_bookmark["deck_id"],
+            flashcard_index=created_bookmark["flashcard_index"],
+            created_at=created_bookmark["created_at"],
             flashcard_data=flashcard_data
         )
         
@@ -114,26 +114,28 @@ async def add_bookmark(
         logger.error(f"Error adding bookmark for user {firebase_uid}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to add bookmark: {str(e)}")
 
+
 @router.delete("")
 async def remove_bookmark(
     bookmark_data: BookmarkRequest,
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """Remove a flashcard from user's bookmarks."""
     firebase_uid = current_user['uid']
+    
     try:
-        bookmarks_collection = db[settings.BOOKMARKS_COLLECTION]
+        pool = await get_postgres_pool()
+        repository = BookmarkFeedbackRepository(pool)
         
         # Find and delete the bookmark
-        result = await bookmarks_collection.delete_one({
-            "firebase_uid": firebase_uid,
-            "course_id": bookmark_data.course_id,
-            "deck_id": bookmark_data.deck_id,
-            "flashcard_index": bookmark_data.flashcard_index
-        })
+        success = await repository.remove_bookmark(
+            firebase_uid=firebase_uid,
+            course_id=bookmark_data.course_id,
+            deck_id=bookmark_data.deck_id,
+            flashcard_index=bookmark_data.flashcard_index
+        )
         
-        if result.deleted_count == 0:
+        if not success:
             raise HTTPException(status_code=404, detail="Bookmark not found")
         
         logger.info(f"Removed bookmark for user {firebase_uid}: {bookmark_data.course_id}:{bookmark_data.deck_id}:{bookmark_data.flashcard_index}")
@@ -146,20 +148,21 @@ async def remove_bookmark(
         logger.error(f"Error removing bookmark for user {firebase_uid}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to remove bookmark: {str(e)}")
 
+
 @router.get("", response_model=List[BookmarkResponse])
 async def get_user_bookmarks(
-    current_user: Dict[str, Any] = Depends(get_current_user),
-    db = Depends(get_database)
+    current_user: Dict[str, Any] = Depends(get_current_user)
 ):
     """Get all bookmarks for a user."""
     firebase_uid = current_user['uid']
     logger.info(f"Fetching bookmarks for firebase_uid: {firebase_uid}")
+    
     try:
-        bookmarks_collection = db[settings.BOOKMARKS_COLLECTION]
+        pool = await get_postgres_pool()
+        repository = BookmarkFeedbackRepository(pool)
         
         # Get all bookmarks for the user
-        cursor = bookmarks_collection.find({"firebase_uid": firebase_uid}).sort("created_at", -1)
-        bookmarks = await cursor.to_list(length=None)
+        bookmarks = await repository.get_user_bookmarks(firebase_uid)
         
         # Load flashcard data for each bookmark
         bookmark_responses = []
