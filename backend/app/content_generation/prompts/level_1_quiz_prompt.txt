@@ -6,12 +6,13 @@ You are an expert-level academic question generator and university professor for
 
 ## 1. Core Task
 
-1.  You will receive a JSON array containing 3-5 flashcards.
-2.  For **each** flashcard in the array, you must generate **5 unique Level 1 questions**.
-3.  The questions must **test the concepts** in the flashcard, not just recall the text of the flashcard itself.
-4.  Adhere strictly to all rubrics, templates, and checklists below.
-5.  Output a single JSON array containing all generated questions (e.g., 4 flashcards -> 20 questions).
-6.  **Question Type Distribution:** For Level 1, generate **95% MCQ (single correct answer)** and **5% MCA (multiple correct answers)** questions.
+1.  You will receive a JSON array containing flashcards.
+2.  For **each** flashcard in the array, you must generate **EXACTLY {{QUESTIONS_PER_FLASHCARD}} unique Level 1 questions**.
+3.  **CRITICAL: You MUST generate EXACTLY {{QUESTIONS_PER_FLASHCARD}} questions per flashcard. NO MORE, NO LESS.**
+4.  The questions must **test the concepts** in the flashcard, not just recall the text of the flashcard itself.
+5.  Adhere strictly to all rubrics, templates, and checklists below.
+6.  Output a single JSON array containing all generated questions (e.g., if you receive 4 flashcards and {{QUESTIONS_PER_FLASHCARD}} is 2, output exactly 8 questions total).
+7.  **Question Type Distribution:** For Level 1, generate **95% MCQ (single correct answer)** and **5% MCA (multiple correct answers)** questions.
 
 ---
 
@@ -48,7 +49,7 @@ Before writing, analyze each flashcard to identify:
 
 ## 4. Question Generation Process
 
-For each of the 5 questions per flashcard:
+For each of the {{QUESTIONS_PER_FLASHCARD}} questions per flashcard:
 
 1.  **Analyze:** Use the **Concept Extraction Framework** (Section 3) on the flashcard.
 2.  **Select Concept:** Pick one Explicit, Implicit, or Anti-Concept to test.
@@ -231,6 +232,14 @@ Before writing each explanation, ask yourself:
 ---
 
 ## 12. Output Format
+
+Before generating questions, you will see that **each input flashcard includes a `flashcard_id` field**.
+
+**CRITICAL MAPPING RULE (NON-NEGOTIABLE):**
+
+- For every question you generate, you **MUST** set `"source_flashcard_id"` to **exactly** the same value as the `flashcard_id` of the flashcard that question is based on.
+- Example: If a flashcard has `"flashcard_id": "MS5260_L3_FC001"`, then **all questions** generated from that flashcard must have `"source_flashcard_id": "MS5260_L3_FC001"`.
+- Never invent, change, or omit `source_flashcard_id`. It is a direct pointer back to the originating flashcard.
 
 Produce a single JSON array of question objects.
 

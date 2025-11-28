@@ -133,13 +133,33 @@ class LLMClient:
         system_prompt: Optional[str] = None,
         **kwargs
     ) -> str:
-        """Generate using Gemini."""
+        """Generate using Gemini with streaming to avoid timeouts on long requests."""
         full_prompt = prompt
         if system_prompt:
             full_prompt = f"{system_prompt}\n\n{prompt}"
         
-        response = self.client.generate_content(full_prompt)
-        return response.text
+        # Use streaming to avoid 504 Gateway Timeout on long-running requests
+        # The connection stays alive as chunks are received, preventing timeout
+        try:
+            response_text = ""
+            for chunk in self.client.generate_content(full_prompt, stream=True):
+                # Handle multi-part responses by extracting text from all parts
+                # The .text accessor fails for multi-part responses, so we iterate parts
+                try:
+                    if chunk.text:
+                        response_text += chunk.text
+                except ValueError:
+                    # Multi-part response: extract text from each part
+                    if chunk.candidates:
+                        for candidate in chunk.candidates:
+                            if candidate.content and candidate.content.parts:
+                                for part in candidate.content.parts:
+                                    if hasattr(part, 'text') and part.text:
+                                        response_text += part.text
+            return response_text
+        except Exception as e:
+            logger.error(f"Gemini streaming generation failed: {str(e)}")
+            raise
     
     def _generate_anthropic(
         self,
@@ -195,6 +215,28 @@ class LLMClient:
         
         response = self.client.chat.completions.create(**params)
         return response.choices[0].message.content
+    
+    async def generate_async(
+        self,
+        prompt: str,
+        system_prompt: Optional[str] = None,
+        **kwargs
+    ) -> str:
+        """
+        Async wrapper for generate().
+        Runs the synchronous LLM call in a thread pool to enable parallel execution.
+        
+        Args:
+            prompt: User prompt
+            system_prompt: Optional system prompt
+            **kwargs: Additional provider-specific parameters
+            
+        Returns:
+            Generated text
+        """
+        return await asyncio.to_thread(
+            self.generate, prompt, system_prompt, **kwargs
+        )
     
     def generate_with_images(
         self,
