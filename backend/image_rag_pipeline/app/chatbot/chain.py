@@ -3,6 +3,7 @@ Conversational chain implementation with memory.
 Enhanced with ConversationSummaryBufferMemory to prevent context drift.
 """
 import logging
+import os
 from typing import Dict, List, Optional
 from operator import itemgetter
 
@@ -15,8 +16,10 @@ from langchain.memory import ConversationSummaryBufferMemory
 from .prompts import create_contextualize_question_prompt, create_answer_prompt
 from .retrievers import CourseTextRetriever
 from ..db.vector_store import VectorStore
-from ..ingestion.embedder import Embedder
 from ..utils.lecture_metadata import load_lecture_metadata, create_foundational_context
+
+# Support both torch-based and API-based embedders
+from typing import Any
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -54,7 +57,7 @@ def create_conversational_chain(
     course_id: str,
     lecture_id: str,
     vector_store: VectorStore,
-    embedder: Embedder,
+    embedder: Any,  # Accepts both Embedder and APIEmbedder
     llm_model: str = "gemini-1.5-flash-001",
     llm_temperature: float = 0.5,
     top_k: int = 5
@@ -72,7 +75,7 @@ def create_conversational_chain(
         course_id: Course identifier (e.g., "MS5260")
         lecture_id: Lecture identifier (e.g., "MIS_lec_1-3")
         vector_store: Vector store instance
-        embedder: Embedder instance
+        embedder: Embedder instance (Embedder or APIEmbedder)
         llm_model: LLM model name (default: gemini-1.5-flash-001, also try gemini-2.0-flash or gemini-1.5-pro-001)
         llm_temperature: LLM temperature (default: 0.5 for engaging explanations)
         top_k: Number of documents to retrieve
@@ -108,12 +111,16 @@ def create_conversational_chain(
     #   - gemini-1.5-pro-001
     #   - gemini-2.0-flash
     #   - gemini-2.0-pro
+    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY or GOOGLE_API_KEY environment variable not set")
     llm = ChatGoogleGenerativeAI(
         model=llm_model,
         temperature=llm_temperature,
         convert_system_message_to_human=True,
         # Force the client to talk to the correct host; it will add /v1 or /v1beta itself.
-        client_options={"api_endpoint": "generativelanguage.googleapis.com"}
+        client_options={"api_endpoint": "generativelanguage.googleapis.com"},
+        google_api_key=api_key,
     )
     
     # Initialize retriever
@@ -208,7 +215,7 @@ class ConversationManager:
         course_id: str,
         lecture_id: str,
         vector_store: VectorStore,
-        embedder: Embedder,
+        embedder: Any,  # Accepts both Embedder and APIEmbedder
         llm_model: str = "gemini-1.5-flash-001",
         llm_temperature: float = 0.5,
         top_k: int = 5,
@@ -222,7 +229,7 @@ class ConversationManager:
             course_id: Course identifier (e.g., "MS5260")
             lecture_id: Lecture identifier (e.g., "MIS_lec_1-3")
             vector_store: Vector store instance
-            embedder: Embedder instance
+            embedder: Embedder instance (Embedder or APIEmbedder)
             llm_model: LLM model name
             llm_temperature: LLM temperature
             top_k: Number of documents to retrieve
@@ -236,11 +243,15 @@ class ConversationManager:
         self.max_token_limit = max_token_limit
         
         # Initialize LLM for summarization
+        api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            raise ValueError("GEMINI_API_KEY or GOOGLE_API_KEY environment variable not set")
         self.llm = ChatGoogleGenerativeAI(
             model=llm_model,
             temperature=llm_temperature,
             convert_system_message_to_human=True,
-            client_options={"api_endpoint": "generativelanguage.googleapis.com"}
+            client_options={"api_endpoint": "generativelanguage.googleapis.com"},
+            google_api_key=api_key,
         )
         
         # Create the conversational chain (with PILLAR 1: Foundational Context)

@@ -99,10 +99,9 @@ class VectorIndexingService:
         embedder = self._get_embedder()
         vector_store = self._get_vector_store()
         
-        # Ensure collection exists
-        collection_name = f"course_{course_code}"
+        # Ensure collection exists (create_collection adds "course_" prefix internally)
         embedding_dim = embedder.get_embedding_dim()
-        vector_store.create_collection(collection_name, vector_size=embedding_dim)
+        vector_store.create_collection(course_code, vector_size=embedding_dim)
         
         lecture_metadata = {
             "lecture_id": str(lecture_id),

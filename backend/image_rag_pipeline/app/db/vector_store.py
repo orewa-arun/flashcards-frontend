@@ -67,27 +67,51 @@ class VectorStore:
             self.client = QdrantClient(host=host, port=port)
             logger.info(f"Connected to Qdrant at {host}:{port}")
     
-    def create_collection(self, course_id: str, vector_size: int = 512):
+    def create_collection(self, course_id: str, vector_size: int = 768):
         """
         Create a collection for a specific course.
         
+        If a collection exists with a different vector size, it will be
+        deleted and recreated with the new size (required for embedding model changes).
+        
         Args:
             course_id: Unique identifier for the course
-            vector_size: Dimension of embedding vectors
+            vector_size: Dimension of embedding vectors (default: 768 for Google API embeddings)
         """
         collection_name = f"course_{course_id}"
         
         # Check if collection already exists
         collections = self.client.get_collections().collections
-        if any(col.name == collection_name for col in collections):
-            logger.info(f"Collection {collection_name} already exists")
-            return
+        existing_collection = next((col for col in collections if col.name == collection_name), None)
+        
+        if existing_collection:
+            # Get collection info to check vector size
+            try:
+                collection_info = self.client.get_collection(collection_name)
+                existing_size = collection_info.config.params.vectors.size
+                
+                if existing_size != vector_size:
+                    logger.warning(
+                        f"Collection {collection_name} has vector size {existing_size}, "
+                        f"but {vector_size} is required. Recreating collection..."
+                    )
+                    self.client.delete_collection(collection_name=collection_name)
+                    logger.info(f"Deleted old collection: {collection_name}")
+                else:
+                    logger.info(f"Collection {collection_name} already exists with correct vector size {vector_size}")
+                    return
+            except Exception as e:
+                logger.warning(f"Could not check collection info: {e}. Will try to recreate.")
+                try:
+                    self.client.delete_collection(collection_name=collection_name)
+                except Exception:
+                    pass
         
         self.client.create_collection(
             collection_name=collection_name,
             vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE)
         )
-        logger.info(f"Created collection: {collection_name}")
+        logger.info(f"Created collection: {collection_name} with vector size {vector_size}")
     
     def insert_embeddings(
         self,
@@ -165,14 +189,14 @@ class VectorStore:
         
         query_filter = Filter(must=must_conditions) if must_conditions else None
         
-        response = self.client.query_points(
+        # Use 'search' method (compatible with qdrant-client 1.9.0)
+        results = self.client.search(
             collection_name=collection_name,
-            query=query_vector,
+            query_vector=query_vector,
             query_filter=query_filter,
-            limit=top_k
+            limit=top_k,
+            with_payload=True
         )
-        
-        results = response.points
         
         return [
             {

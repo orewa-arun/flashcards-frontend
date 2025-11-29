@@ -5,14 +5,24 @@ Wraps our existing ImageRetriever to work with LangChain's ecosystem.
 ENHANCED: Now handles both flashcard and consolidated_chunk sources.
 """
 import logging
-from typing import List, Optional
+from typing import List, Optional, Any, Union
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.documents import Document
 from langchain_core.callbacks import CallbackManagerForRetrieverRun
 
 from ..retrieval.query import ImageRetriever
 from ..db.vector_store import VectorStore
-from ..ingestion.embedder import Embedder
+
+# Support both torch-based and API-based embedders
+try:
+    from ..ingestion.embedder import Embedder
+except ImportError:
+    Embedder = None
+
+try:
+    from ..ingestion.api_embedder import APIEmbedder
+except ImportError:
+    APIEmbedder = None
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -32,7 +42,7 @@ class CourseTextRetriever(BaseRetriever):
     
     course_id: str
     vector_store: VectorStore
-    embedder: Embedder
+    embedder: Any  # Accepts both Embedder and APIEmbedder
     top_k: int = 5
     lecture_id: Optional[str] = None
     
@@ -44,7 +54,7 @@ class CourseTextRetriever(BaseRetriever):
         self,
         course_id: str,
         vector_store: VectorStore,
-        embedder: Embedder,
+        embedder: Any,  # Accepts both Embedder and APIEmbedder
         top_k: int = 5,
         lecture_id: Optional[str] = None,
         **kwargs

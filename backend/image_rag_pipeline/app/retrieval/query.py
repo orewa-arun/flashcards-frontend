@@ -2,9 +2,8 @@
 Retrieval module for text-to-image search.
 """
 import logging
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from ..db.vector_store import VectorStore
-from ..ingestion.embedder import Embedder
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -13,16 +12,20 @@ logger = logging.getLogger(__name__)
 class ImageRetriever:
     """Retrieve images based on text queries."""
     
-    def __init__(self, vector_store: VectorStore, embedder: Embedder = None):
+    def __init__(self, vector_store: VectorStore, embedder: Any = None):
         """
         Initialize retriever.
         
         Args:
             vector_store: Vector store instance
-            embedder: Embedder instance (created if None)
+            embedder: Embedder instance (Embedder or APIEmbedder, created if None)
         """
         self.vector_store = vector_store
-        self.embedder = embedder if embedder else Embedder()
+        if embedder is None:
+            # Lazy import to avoid torch dependency if not needed
+            from ..ingestion.api_embedder import APIEmbedder
+            embedder = APIEmbedder()
+        self.embedder = embedder
     
     def query_text_to_image(
         self,
@@ -100,11 +103,12 @@ class ImageRetriever:
         # Embed query
         query_embedding = self.embedder.embed_text(query)[0]
         
-        # Search for text only
+        # Search for text content (flashcards and consolidated chunks)
+        # Note: We don't filter by type anymore since we use 'source' field instead
         results = self.vector_store.search(
             course_id=course_id,
             query_vector=query_embedding,
-            filter_type="text",
+            filter_type=None,  # No type filter - retrieve all text content
             top_k=top_k,
             lecture_id=lecture_id
         )

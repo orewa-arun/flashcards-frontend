@@ -3,6 +3,8 @@ API-based embedder using Google Generative AI.
 
 This is a lightweight alternative to the torch-based OpenCLIP embedder,
 designed for production environments where torch is too heavy.
+
+Used by both the main backend and the chat server for consistent embeddings.
 """
 
 import logging

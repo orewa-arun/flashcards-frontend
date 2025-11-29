@@ -14,7 +14,7 @@ import shutil
 
 from ..db.vector_store import VectorStore
 from ..ingestion.loader import IngestionPipeline
-from ..ingestion.embedder import Embedder
+from ..ingestion.api_embedder import APIEmbedder
 from ..retrieval.query import ImageRetriever
 from ..chatbot.chain import ConversationManager
 from ..utils.config import Config
@@ -70,13 +70,10 @@ def get_vector_store():
 
 
 def get_embedder():
-    """Get or create embedder instance."""
+    """Get or create embedder instance using API-based embeddings."""
     global _embedder
     if _embedder is None:
-        _embedder = Embedder(
-            model_name=Config.CLIP_MODEL,
-            pretrained=Config.CLIP_PRETRAINED
-        )
+        _embedder = APIEmbedder()
     return _embedder
 
 
