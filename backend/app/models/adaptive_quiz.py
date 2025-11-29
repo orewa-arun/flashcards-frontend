@@ -32,7 +32,8 @@ class FlashcardPerformance(BaseModel):
 class UserDeckPerformance(BaseModel):
     """Document model for tracking user's performance across all flashcards in a deck."""
     
-    id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
+    # Optional legacy identifier (previously a Mongo ObjectId); now a simple string.
+    id: Optional[str] = Field(default=None, alias="_id")
     firebase_uid: str = Field(..., description="Firebase UID for user identification")
     course_id: str = Field(..., description="Course identifier, e.g., MS5260")
     deck_id: str = Field(..., description="Deck identifier, e.g., MIS_lec_4")
