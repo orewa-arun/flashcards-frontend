@@ -72,8 +72,22 @@ class VectorStore:
         
         # Prefer local path if resolved, otherwise use host/port
         if resolved_path:
-            self.client = QdrantClient(path=resolved_path)
-            logger.info(f"Connected to Qdrant at local path: {resolved_path}")
+            try:
+                self.client = QdrantClient(path=resolved_path)
+                logger.info(f"Connected to Qdrant at local path: {resolved_path}")
+            except Exception as e:
+                # Handle corrupted Qdrant data (version mismatch, etc.)
+                # by clearing the data directory and retrying
+                logger.warning(f"Failed to initialize Qdrant at {resolved_path}: {e}")
+                logger.warning("Clearing corrupted Qdrant data and retrying...")
+                import shutil
+                path_obj = Path(resolved_path)
+                if path_obj.exists():
+                    shutil.rmtree(path_obj)
+                    logger.info(f"Cleared corrupted data at {resolved_path}")
+                # Retry initialization
+                self.client = QdrantClient(path=resolved_path)
+                logger.info(f"Connected to Qdrant at local path: {resolved_path} (after clearing)")
         else:
             self.client = QdrantClient(host=host, port=port)
             logger.info(f"Connected to Qdrant at {host}:{port}")
