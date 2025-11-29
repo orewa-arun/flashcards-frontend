@@ -53,9 +53,20 @@ class VectorStore:
         if path and not str(path).startswith("http"):
             path_obj = Path(path)
             if not path_obj.is_absolute():
-                # backend/image_rag_pipeline/app/db/vector_store.py
-                # parents[4] -> backend/
-                backend_root = Path(__file__).resolve().parents[4]
+                # Resolve a stable project root in a way that works both
+                # in local dev (monorepo) and in Railway (/app/app/...).
+                parents = Path(__file__).resolve().parents
+                # Prefer a higher-level root if available (monorepo case)
+                if len(parents) >= 5:
+                    # e.g. .../backend/image_rag_pipeline/app/db/vector_store.py
+                    # parents[4] -> project root
+                    backend_root = parents[4]
+                elif len(parents) >= 3:
+                    # e.g. /app/app/db/vector_store.py -> parents[2] == /app
+                    backend_root = parents[2]
+                else:
+                    # Fallback to the immediate parent directory
+                    backend_root = parents[0]
                 path_obj = backend_root / path_obj
             resolved_path = str(path_obj)
         
