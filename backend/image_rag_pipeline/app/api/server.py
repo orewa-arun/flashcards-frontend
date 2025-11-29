@@ -416,7 +416,9 @@ async def stream_chat(course_id: str, request: ChatRequest):
             media_type="text/plain"
         )
     except Exception as e:
+        import traceback
         logger.error(f"Stream chat failed: {e}")
+        logger.error(f"Full traceback:\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
