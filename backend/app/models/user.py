@@ -1,49 +1,23 @@
-"""User data models for analytics tracking."""
+"""User data models for analytics tracking.
+
+Legacy note:
+- Earlier versions used MongoDB documents with `bson.ObjectId` as `_id`.
+- The current analytics backend stores users in PostgreSQL (`users` table)
+  and no longer depends on MongoDB.
+
+We keep `id` as an optional string (alias `_id`) so that any legacy
+Mongo-shaped JSON can still be deserialized, but we remove the `bson`
+dependency entirely.
+"""
 
 from datetime import datetime, timezone
-from typing import Optional, Any
+from typing import Optional
 from pydantic import BaseModel, Field
-from pydantic.json_schema import JsonSchemaValue
-from pydantic_core import core_schema
-from bson import ObjectId
-
-class PyObjectId(ObjectId):
-    """Custom ObjectId type for Pydantic."""
-    
-    @classmethod
-    def __get_pydantic_core_schema__(
-        cls, _source_type: Any, _handler: Any
-    ) -> core_schema.CoreSchema:
-        return core_schema.json_or_python_schema(
-            json_schema=core_schema.str_schema(),
-            python_schema=core_schema.union_schema([
-                core_schema.is_instance_schema(ObjectId),
-                core_schema.chain_schema([
-                    core_schema.str_schema(),
-                    core_schema.no_info_plain_validator_function(cls.validate),
-                ])
-            ]),
-            serialization=core_schema.plain_serializer_function_ser_schema(
-                lambda x: str(x)
-            ),
-        )
-
-    @classmethod
-    def validate(cls, value):
-        if not ObjectId.is_valid(value):
-            raise ValueError("Invalid ObjectId")
-        return ObjectId(value)
-
-    @classmethod
-    def __get_pydantic_json_schema__(
-        cls, _core_schema: core_schema.CoreSchema, handler: Any
-    ) -> JsonSchemaValue:
-        return {"type": "string"}
 
 class User(BaseModel):
     """User document model."""
     
-    id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
+    id: Optional[str] = Field(default=None, alias="_id")
     firebase_uid: str = Field(..., description="Firebase UID for user identification")
     email: Optional[str] = Field(None, description="User's email address")
     name: Optional[str] = Field(None, description="User's display name")
