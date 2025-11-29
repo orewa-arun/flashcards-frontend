@@ -66,8 +66,8 @@ function DeckView() {
     
     const initializeDeck = async () => {
       try {
-        // Load flashcards
-        const flashcardsPath = `/courses/${courseId}/cognitive_flashcards/${lectureId}/${lectureId}_cognitive_flashcards_only.json`
+        // Load flashcards from backend (PostgreSQL-backed lectures table)
+        const flashcardsPath = `${API_BASE_URL}/api/v1/content/lectures/${lectureId}/flashcards`
         const response = await fetch(flashcardsPath)
 
         console.log('Fetching flashcards from:', flashcardsPath)
@@ -160,7 +160,11 @@ function DeckView() {
 
       <StudyDeck 
         flashcards={flashcardsData.flashcards} 
-        metadata={flashcardsData.metadata}
+        metadata={{
+          course_name: flashcardsData.course_name,
+          lecture_title: flashcardsData.lecture_title,
+          total_flashcards: flashcardsData.total_flashcards,
+        }}
         onStartQuiz={handleStartQuiz}
         courseId={courseId}
         deckId={lectureId}

@@ -4,6 +4,7 @@ import { FaCalendarAlt, FaBook, FaExclamationTriangle, FaChalkboardTeacher, FaCh
 import EnrollButton from '../components/EnrollButton'
 import NextDeadline from '../components/NextDeadline'
 import { getWeakConcepts } from '../api/weakConcepts'
+import { getCoursePublic } from '../api/courses'
 import './CourseDetailView.css'
 
 function CourseDetailView() {
@@ -11,22 +12,27 @@ function CourseDetailView() {
   const navigate = useNavigate()
   const [course, setCourse] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [weakConcepts, setWeakConcepts] = useState(null)
   const [weakConceptsLoading, setWeakConceptsLoading] = useState(true)
   const [hoveredLecture, setHoveredLecture] = useState(null)
 
   useEffect(() => {
-    fetch('/courses.json')
-      .then(response => response.json())
-      .then(data => {
-        const foundCourse = data.find(c => c.course_id === courseId)
-        setCourse(foundCourse)
+    const loadCourse = async () => {
+      try {
+        const data = await getCoursePublic(courseId)
+        setCourse(data)
+        setError(null)
+      } catch (err) {
+        console.error('Error loading course:', err)
+        setError('Failed to load course')
+        setCourse(null)
+      } finally {
         setLoading(false)
-      })
-      .catch(error => {
-        console.error('Error loading course:', error)
-        setLoading(false)
-      })
+      }
+    }
+    
+    loadCourse()
   }, [courseId])
 
   const loadWeakConcepts = useCallback(async () => {
@@ -65,9 +71,8 @@ function CourseDetailView() {
   }
 
   const handleLectureClick = (deck) => {
-    const pdfFilename = deck.pdf_path.split('/').pop()
-    const lectureId = pdfFilename.replace('.pdf', '')
-    navigate(`/courses/${courseId}/${lectureId}`)
+    // Use integer ID for routing (from PostgreSQL)
+    navigate(`/courses/${courseId}/${deck.id}`)
   }
 
   const truncateTopics = (topics, maxVisible = 3) => {
@@ -115,7 +120,7 @@ function CourseDetailView() {
             <div className="lectures-grid">
               {course.lecture_slides.map((deck, index) => (
                 <div 
-                  key={deck.lecture_number || index} 
+                  key={deck.id || index} 
                   className="lecture-card"
                   onClick={() => handleLectureClick(deck)}
                   onMouseEnter={() => setHoveredLecture(index)}

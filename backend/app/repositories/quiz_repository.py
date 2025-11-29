@@ -617,3 +617,4 @@ class QuizRepository:
             row = await conn.fetchrow(query, course_id)
             return row is not None
 
+

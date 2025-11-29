@@ -45,13 +45,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 DATA_DIR = os.path.join(BASE_DIR, "data")
 IMAGE_DIR = os.path.join(DATA_DIR, "images")
 PDF_DIR = os.path.join(DATA_DIR, "pdfs")
-# Use Config for vector DB path, but resolve relative to BASE_DIR if relative
-VECTOR_DB_PATH = Config.QDRANT_PATH if os.path.isabs(Config.QDRANT_PATH) else os.path.join(BASE_DIR, Config.QDRANT_PATH)
 
-# Ensure directories exist
+# Ensure base data directories exist (Qdrant path is handled inside VectorStore)
 os.makedirs(IMAGE_DIR, exist_ok=True)
 os.makedirs(PDF_DIR, exist_ok=True)
-os.makedirs(VECTOR_DB_PATH, exist_ok=True)
 
 # Initialize components (lazy loading)
 _vector_store = None
@@ -65,11 +62,10 @@ def get_vector_store():
     """Get or create vector store instance."""
     global _vector_store
     if _vector_store is None:
-        # Use path if configured, otherwise use host/port
-        if Config.QDRANT_PATH and not Config.QDRANT_PATH.startswith("http"):
-            _vector_store = VectorStore(path=VECTOR_DB_PATH)
-        else:
-            _vector_store = VectorStore(host=Config.QDRANT_HOST, port=Config.QDRANT_PORT)
+        # Let VectorStore resolve QDRANT_PATH consistently, so that a
+        # relative path like "data/embeddings" works the same for both
+        # the main backend and this chat server.
+        _vector_store = VectorStore()
     return _vector_store
 
 
@@ -121,21 +117,32 @@ def extract_lecture_id_from_session(session_id: str, course_id: str) -> str:
         Lecture identifier, or "unknown" if parsing fails
     """
     try:
-        parts = session_id.split('_')
-        # Expected format: uid_courseId_lectureId
-        # Find the course_id part and take everything after it
-        if len(parts) >= 3:
-            # Reconstruct lecture_id (might contain underscores)
-            for i, part in enumerate(parts):
-                if part == course_id and i < len(parts) - 1:
-                    lecture_id = '_'.join(parts[i+1:])
-                    logger.debug(f"Extracted lecture_id '{lecture_id}' from session '{session_id}'")
-                    return lecture_id
+        """
+        NOTE ON FORMAT AND UNDERSCORES
+        ------------------------------
+        Session IDs are generated as:
+            {user_uid}_{course_id}_{lecture_id}
+        where *course_id itself may contain underscores* (e.g. MAPP_F_MKT404_EN_2025).
         
-        logger.warning(f"Could not parse lecture_id from session '{session_id}', using 'unknown'")
-        return "unknown"
+        Relying on splitting and matching the full course_id fails in that case.
+        Instead, we treat the **last segment** as the lecture_id, which matches
+        how the frontend constructs the session_id.
+        """
+        parts = session_id.split("_")
+        if len(parts) < 2:
+            logger.warning(
+                f"Could not parse lecture_id from session '{session_id}', using 'unknown'"
+            )
+            return "unknown"
+        
+        lecture_id = parts[-1]
+        logger.debug(
+            f"Extracted lecture_id '{lecture_id}' from session '{session_id}' "
+            f"for course '{course_id}'"
+        )
+        return lecture_id
     except Exception as e:
-        logger.error(f"Error extracting lecture_id: {e}")
+        logger.error(f"Error extracting lecture_id from session '{session_id}': {e}")
         return "unknown"
 
 

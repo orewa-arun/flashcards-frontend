@@ -1,6 +1,8 @@
 """
 LangChain retriever integration for the Image-RAG pipeline.
 Wraps our existing ImageRetriever to work with LangChain's ecosystem.
+
+ENHANCED: Now handles both flashcard and consolidated_chunk sources.
 """
 import logging
 from typing import List, Optional
@@ -20,8 +22,12 @@ class CourseTextRetriever(BaseRetriever):
     """
     LangChain-compatible retriever for course text content.
     
-    This wraps our existing ImageRetriever to make it compatible with
-    LangChain's conversational chain components.
+    ENHANCED: Now retrieves both:
+    - Consolidated semantic chunks (rich narrative content for teaching)
+    - Flashcards (specific Q&A pairs for fact retrieval)
+    
+    Both sources have type="text" and are retrieved together, providing
+    the AI tutor with comprehensive context for answering questions.
     """
     
     course_id: str
@@ -51,6 +57,7 @@ class CourseTextRetriever(BaseRetriever):
             vector_store: Vector store instance
             embedder: Embedder instance
             top_k: Number of results to retrieve
+            lecture_id: Optional lecture ID to filter by
         """
         super().__init__(
             course_id=course_id,
@@ -73,6 +80,9 @@ class CourseTextRetriever(BaseRetriever):
     ) -> List[Document]:
         """
         Retrieve relevant documents for the query.
+        
+        Returns both consolidated chunks and flashcards, providing
+        the AI tutor with rich narrative context and specific facts.
         
         Args:
             query: User's question
@@ -98,10 +108,14 @@ class CourseTextRetriever(BaseRetriever):
         
         # Convert to LangChain Document format
         documents = []
+        consolidated_count = 0
+        flashcard_count = 0
+        
         for result in results.get("results", []):
             # Combine text content and metadata for richer context
             page_content = result.get("text", "")
             
+            # Base metadata
             metadata = {
                 "score": result.get("score", 0.0),
                 "source_id": result.get("pdf_id", result.get("source_id", "unknown")),
@@ -110,9 +124,27 @@ class CourseTextRetriever(BaseRetriever):
                 "course_id": self.course_id,
             }
             
-            # Add flashcard-specific metadata if available
-            if "flashcard_id" in result:
-                metadata["flashcard_id"] = result["flashcard_id"]
+            # Determine source type and add appropriate metadata
+            source = result.get("source", "unknown")
+            metadata["source"] = source
+            
+            if source == "consolidated_chunk":
+                # Consolidated chunk metadata
+                consolidated_count += 1
+                metadata["topics"] = result.get("topics", [])
+                metadata["key_concepts"] = result.get("key_concepts", [])
+                metadata["educational_value"] = result.get("educational_value", 0.5)
+                metadata["has_definitions"] = result.get("has_definitions", False)
+                metadata["has_examples"] = result.get("has_examples", False)
+                
+                # Format topics for display in context
+                if metadata["topics"]:
+                    metadata["context"] = ", ".join(metadata["topics"][:3])
+                    
+            elif source == "flashcard" or "flashcard_id" in result:
+                # Flashcard metadata
+                flashcard_count += 1
+                metadata["flashcard_id"] = result.get("flashcard_id", "")
                 metadata["flashcard_type"] = result.get("flashcard_type", "")
                 metadata["context"] = result.get("context", "")
                 metadata["tags"] = result.get("tags", [])
@@ -124,6 +156,8 @@ class CourseTextRetriever(BaseRetriever):
                 )
             )
         
-        logger.info(f"Retrieved {len(documents)} documents")
+        logger.info(
+            f"Retrieved {len(documents)} documents "
+            f"({consolidated_count} consolidated chunks, {flashcard_count} flashcards)"
+        )
         return documents
-

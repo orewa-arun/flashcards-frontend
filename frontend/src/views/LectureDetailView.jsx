@@ -4,6 +4,7 @@ import { FaChevronRight, FaLayerGroup, FaClipboardCheck } from 'react-icons/fa';
 import { trackEvent } from '../utils/amplitude';
 import MixModeCard from '../components/MixMode/MixModeCard';
 import TutorCard from '../components/Tutor/TutorCard';
+import { getLecturePublic, getCoursesPublic } from '../api/courses';
 import './LectureDetailView.css';
 
 function LectureDetailView() {
@@ -11,24 +12,27 @@ function LectureDetailView() {
   const navigate = useNavigate();
   const [courseData, setCourseData] = useState(null);
   const [lectureData, setLectureData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Load course and lecture data
-    fetch('/courses.json')
-      .then(response => response.json())
-      .then(data => {
-        const course = data.find(c => c.course_id === courseId);
-        if (course) {
-          setCourseData(course);
-          // Find the lecture by matching the lectureId with the pdf_path
-          const lecture = course.lecture_slides?.find(slide => {
-            const pdfFilename = slide.pdf_path.split('/').pop().replace('.pdf', '');
-            return pdfFilename === lectureId;
-          });
-          setLectureData(lecture);
-        }
-      })
-      .catch(error => console.error('Error loading course data:', error));
+    const loadData = async () => {
+      try {
+        // Fetch lecture by ID (integer)
+        const lecture = await getLecturePublic(lectureId);
+        setLectureData(lecture);
+        
+        // Fetch course info for breadcrumb
+        const courses = await getCoursesPublic();
+        const course = courses.find(c => c.course_id === courseId);
+        setCourseData(course);
+      } catch (error) {
+        console.error('Error loading lecture data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadData();
   }, [courseId, lectureId]);
 
   const handleStudyClick = () => {
@@ -70,9 +74,14 @@ function LectureDetailView() {
     navigate(`/courses/${courseId}/${lectureId}/tutor`);
   };
 
-  // Format lecture ID for display (e.g., "DAA_lec_1" -> "DAA Lecture 1")
+  // Format lecture ID for display
   const formatLectureTitle = (id) => {
-    return id
+    // If it's a number (from PostgreSQL), just show "Lecture X"
+    if (!isNaN(id)) {
+      return `Lecture ${id}`;
+    }
+    // Legacy format: "DAA_lec_1" -> "DAA Lecture 1"
+    return String(id)
       .replace(/_/g, ' ')
       .replace(/lec/i, 'Lecture')
       .split(' ')

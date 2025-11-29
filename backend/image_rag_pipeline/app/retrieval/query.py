@@ -122,7 +122,18 @@ class ImageRetriever:
                 "source_id": meta.get("source_id"),
                 "pdf_path": meta.get("pdf_path"),
                 "source_path": meta.get("source_path"),
+                "source": meta.get("source", "unknown"),  # "flashcard" or "consolidated_chunk"
             }
+            
+            # Add consolidated chunk metadata if available
+            if meta.get("source") == "consolidated_chunk":
+                formatted_result.update({
+                    "topics": meta.get("topics", []),
+                    "key_concepts": meta.get("key_concepts", []),
+                    "educational_value": meta.get("educational_value", 0.5),
+                    "has_definitions": meta.get("has_definitions", False),
+                    "has_examples": meta.get("has_examples", False),
+                })
             
             # Add flashcard-specific metadata if available
             if "flashcard_id" in meta:

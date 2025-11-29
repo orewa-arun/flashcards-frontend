@@ -620,3 +620,4 @@ class AnalyticsRepository:
         
         return weakness_scores
 
+

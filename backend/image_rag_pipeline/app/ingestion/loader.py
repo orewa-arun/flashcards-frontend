@@ -1,11 +1,13 @@
 """
 Ingestion orchestrator.
 Coordinates the extraction, chunking, embedding, and storage pipeline.
+
+ENHANCED: Added ingest_consolidated_content for semantic chunks from consolidated analysis.
 """
 import logging
 import os
 import hashlib
-from typing import Dict, Optional
+from typing import Dict, Optional, List, Any
 from .extractor import PDFExtractor
 from .json_extractor import FlashcardJSONExtractor
 from .chunker import TextChunker
@@ -291,3 +293,257 @@ class IngestionPipeline:
         
         logger.info(f"Hybrid ingestion complete: {result}")
         return result
+    
+    def ingest_consolidated_content(
+        self,
+        consolidated_analysis: Dict[str, Any],
+        course_id: str,
+        lecture_id: int,
+        lecture_metadata: Optional[Dict] = None
+    ) -> Dict:
+        """
+        Ingest semantic chunks from consolidated_structured_analysis.
+        
+        This method embeds the rich, narrative content from the consolidation
+        process, which provides better context for the AI tutor than fragmented
+        flashcard Q&A pairs.
+        
+        Args:
+            consolidated_analysis: The consolidated_structured_analysis JSON from DB
+            course_id: Course identifier (course_code)
+            lecture_id: Lecture ID (numeric)
+            lecture_metadata: Additional metadata (lecture_title, etc.)
+            
+        Returns:
+            Dictionary with ingestion statistics
+        """
+        logger.info(f"Starting consolidated content ingestion for lecture {lecture_id} into course {course_id}")
+        
+        # Ensure collection exists
+        embedding_dim = self.embedder.get_embedding_dim()
+        self.vector_store.create_collection(course_id, vector_size=embedding_dim)
+        
+        # Extract semantic chunks
+        semantic_chunks = consolidated_analysis.get("semantic_chunks", [])
+        topics = consolidated_analysis.get("topics", [])
+        
+        if not semantic_chunks:
+            logger.warning(f"No semantic chunks found in consolidated analysis for lecture {lecture_id}")
+            return {
+                "course_id": course_id,
+                "lecture_id": lecture_id,
+                "semantic_chunks": 0,
+                "total_items": 0
+            }
+        
+        logger.info(f"Found {len(semantic_chunks)} semantic chunks and {len(topics)} topics")
+        
+        # Prepare text blocks for embedding
+        text_blocks = []
+        for i, chunk in enumerate(semantic_chunks):
+            # Build a rich text representation of the chunk
+            chunk_content = chunk.get("content", "")
+            chunk_topics = chunk.get("topics", [])
+            chunk_concepts = chunk.get("key_concepts", [])
+            
+            # Create a unique ID for this chunk
+            chunk_id = f"consolidated_{lecture_id}_{i}"
+            
+            # Check if chunk has definitions or examples (for metadata)
+            has_definitions = bool(chunk.get("definitions", []))
+            has_examples = bool(chunk.get("examples", []))
+            
+            text_blocks.append({
+                "id": chunk_id,
+                "text": chunk_content,
+                "topics": chunk_topics,
+                "key_concepts": chunk_concepts,
+                "educational_value": chunk.get("educational_value", 0.5),
+                "has_definitions": has_definitions,
+                "has_examples": has_examples,
+                "chunk_index": i
+            })
+        
+        # Embed the text blocks
+        chunk_count = 0
+        if text_blocks:
+            logger.info(f"Embedding {len(text_blocks)} consolidated content chunks...")
+            
+            texts_to_embed = [block["text"] for block in text_blocks]
+            text_embeddings = self.embedder.embed_text(texts_to_embed)
+            
+            # Prepare metadata for each chunk
+            text_metadata = [
+                {
+                    "type": "text",
+                    "source": "consolidated_chunk",  # Distinct from "flashcard"
+                    "chunk_id": block["id"],
+                    "lecture_id": str(lecture_id),
+                    "topics": block["topics"],
+                    "key_concepts": block["key_concepts"][:10],  # Limit for storage
+                    "educational_value": block["educational_value"],
+                    "has_definitions": block["has_definitions"],
+                    "has_examples": block["has_examples"],
+                    "chunk_index": block["chunk_index"],
+                    "text": block["text"][:500],  # Preview for debugging
+                    **(lecture_metadata or {})
+                }
+                for block in text_blocks
+            ]
+            
+            # Convert string IDs to integer IDs for Qdrant
+            chunk_ids = [string_to_int_id(block["id"]) for block in text_blocks]
+            
+            self.vector_store.insert_embeddings(
+                course_id=course_id,
+                embeddings=text_embeddings,
+                metadata=text_metadata,
+                ids=chunk_ids
+            )
+            chunk_count = len(text_blocks)
+        
+        result = {
+            "course_id": course_id,
+            "lecture_id": lecture_id,
+            "semantic_chunks": chunk_count,
+            "topics_count": len(topics),
+            "total_items": chunk_count
+        }
+        
+        logger.info(f"Consolidated content ingestion complete: {result}")
+        return result
+    
+    def ingest_lecture_full(
+        self,
+        consolidated_analysis: Dict[str, Any],
+        flashcards: Optional[Dict[str, Any]],
+        course_id: str,
+        lecture_id: int,
+        lecture_metadata: Optional[Dict] = None,
+        include_flashcards: bool = True
+    ) -> Dict:
+        """
+        Full ingestion: consolidated semantic chunks + optionally flashcards.
+        
+        This is the recommended method for new lectures, providing both:
+        - Rich narrative content (consolidated chunks) for teaching
+        - Specific Q&A pairs (flashcards) for precise fact retrieval
+        
+        Args:
+            consolidated_analysis: The consolidated_structured_analysis JSON
+            flashcards: The flashcards JSON (optional)
+            course_id: Course identifier
+            lecture_id: Lecture ID
+            lecture_metadata: Additional metadata
+            include_flashcards: Whether to also ingest flashcards
+            
+        Returns:
+            Combined ingestion statistics
+        """
+        logger.info(f"Starting full ingestion for lecture {lecture_id}")
+        
+        # 1. Ingest consolidated content (primary)
+        consolidated_result = self.ingest_consolidated_content(
+            consolidated_analysis=consolidated_analysis,
+            course_id=course_id,
+            lecture_id=lecture_id,
+            lecture_metadata=lecture_metadata
+        )
+        
+        flashcard_count = 0
+        
+        # 2. Optionally ingest flashcards
+        if include_flashcards and flashcards:
+            flashcard_items = flashcards.get("flashcards", [])
+            if flashcard_items:
+                logger.info(f"Ingesting {len(flashcard_items)} flashcards...")
+                flashcard_count = self._ingest_flashcards_from_dict(
+                    flashcards=flashcard_items,
+                    course_id=course_id,
+                    lecture_id=lecture_id,
+                    lecture_metadata=lecture_metadata
+                )
+        
+        result = {
+            "course_id": course_id,
+            "lecture_id": lecture_id,
+            "semantic_chunks": consolidated_result.get("semantic_chunks", 0),
+            "flashcards": flashcard_count,
+            "total_items": consolidated_result.get("semantic_chunks", 0) + flashcard_count
+        }
+        
+        logger.info(f"Full ingestion complete: {result}")
+        return result
+    
+    def _ingest_flashcards_from_dict(
+        self,
+        flashcards: List[Dict[str, Any]],
+        course_id: str,
+        lecture_id: int,
+        lecture_metadata: Optional[Dict] = None
+    ) -> int:
+        """
+        Helper to ingest flashcards from a list of flashcard dicts.
+        
+        Returns the count of ingested flashcards.
+        """
+        if not flashcards:
+            return 0
+        
+        text_blocks = []
+        for fc in flashcards:
+            # Build text from question and answers
+            question = fc.get("question", "")
+            answers = fc.get("answers", {})
+            context = fc.get("context", "")
+            tags = fc.get("tags", [])
+            flashcard_id = fc.get("id", "")
+            
+            # Combine question with concise answer for embedding
+            concise = answers.get("concise", "")
+            text = f"Question: {question}\n\nAnswer: {concise}"
+            
+            if context:
+                text = f"[Topic: {context}]\n\n{text}"
+            
+            text_blocks.append({
+                "id": flashcard_id,
+                "text": text,
+                "context": context,
+                "tags": tags,
+                "flashcard_type": fc.get("type", "concept")
+            })
+        
+        if not text_blocks:
+            return 0
+        
+        # Embed
+        texts_to_embed = [block["text"] for block in text_blocks]
+        text_embeddings = self.embedder.embed_text(texts_to_embed)
+        
+        # Prepare metadata
+        text_metadata = [
+            {
+                "type": "text",
+                "source": "flashcard",
+                "flashcard_id": block["id"],
+                "flashcard_type": block["flashcard_type"],
+                "context": block["context"],
+                "tags": block["tags"],
+                "lecture_id": str(lecture_id),
+                "text": block["text"][:500],
+                **(lecture_metadata or {})
+            }
+            for block in text_blocks
+        ]
+        
+        # Insert
+        chunk_ids = [string_to_int_id(block["id"]) for block in text_blocks]
+        self.vector_store.insert_embeddings(
+            course_id=course_id,
+            embeddings=text_embeddings,
+            metadata=text_metadata,
+            ids=chunk_ids
+        )
+        
+        return len(text_blocks)

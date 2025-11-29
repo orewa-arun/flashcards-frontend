@@ -5,25 +5,31 @@ import EnrollButton from '../components/EnrollButton'
 import CourseCountdownDock from '../components/CourseCountdownDock'
 import NextDeadline from '../components/NextDeadline'
 import CourseCardBadge from '../components/CourseCardBadge'
+import { getCoursesPublic } from '../api/courses'
 import './CourseListView.css'
 
 function CourseListView() {
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [hoveredCard, setHoveredCard] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('/courses.json')
-      .then(response => response.json())
-      .then(data => {
+    const loadCourses = async () => {
+      try {
+        const data = await getCoursesPublic()
         setCourses(data)
+        setError(null)
+      } catch (err) {
+        console.error('Error loading courses:', err)
+        setError('Failed to load courses. Please try again later.')
+      } finally {
         setLoading(false)
-      })
-      .catch(error => {
-        console.error('Error loading courses:', error)
-        setLoading(false)
-      })
+      }
+    }
+    
+    loadCourses()
   }, [])
 
   const truncateText = (text, maxLength = 150) => {
@@ -37,6 +43,15 @@ function CourseListView() {
       <div className="loading-container">
         <div className="loading-spinner"></div>
         <p>Loading courses...</p>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="error-container">
+        <p>{error}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
       </div>
     )
   }
@@ -102,7 +117,7 @@ function CourseListView() {
                   <div className="meta-item">
                     <FaBook className="meta-icon" />
                     <span className="meta-text">
-                      {course.lecture_slides?.length || 0} lecture{course.lecture_slides?.length !== 1 ? 's' : ''}
+                      {course.lecture_count || 0} lecture{course.lecture_count !== 1 ? 's' : ''}
                     </span>
                   </div>
                   {course.instructor && (

@@ -358,3 +358,4 @@ class BookmarkFeedbackRepository:
                 "total": row["total"] or 0
             }
 
+

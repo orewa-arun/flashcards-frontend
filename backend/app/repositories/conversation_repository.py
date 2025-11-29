@@ -421,3 +421,4 @@ class ConversationRepository:
             
             return [{"role": row["role"], "content": row["content"]} for row in rows]
 
+

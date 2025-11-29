@@ -3,6 +3,7 @@ Vector Store wrapper for Qdrant.
 Manages course-specific collections for storing and retrieving embeddings.
 """
 import logging
+from pathlib import Path
 from typing import List, Dict, Any, Optional
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, FieldCondition, MatchValue
@@ -30,20 +31,38 @@ class VectorStore:
         Args:
             host: Qdrant server host (defaults to Config.QDRANT_HOST)
             port: Qdrant server port (defaults to Config.QDRANT_PORT)
-            path: Path for local persistence (defaults to Config.QDRANT_PATH, if None uses host:port)
+            path: Path for local persistence.
+                  If None, uses Config.QDRANT_PATH.
+                  If relative (e.g. 'data/embeddings'), it is resolved
+                  **relative to the backend project root**, so the same
+                  path works regardless of current working directory.
         """
-        # Use Config defaults if not provided
+        # Resolve configuration defaults
         if path is None:
-            path = Config.QDRANT_PATH if Config.QDRANT_PATH else None
+            path = Config.QDRANT_PATH if getattr(Config, "QDRANT_PATH", None) else None
         if host is None:
-            host = Config.QDRANT_HOST
+            host = getattr(Config, "QDRANT_HOST", "localhost")
         if port is None:
-            port = Config.QDRANT_PORT
+            port = getattr(Config, "QDRANT_PORT", 6333)
         
-        # Prefer local path if provided, otherwise use host/port
-        if path and not path.startswith("http"):
-            self.client = QdrantClient(path=path)
-            logger.info(f"Connected to Qdrant at local path: {path}")
+        # If a local path is provided (and not an HTTP URL), resolve it
+        # relative to the backend root so that both the main backend and
+        # the image_rag_pipeline server share the SAME Qdrant storage
+        # when QDRANT_PATH is something like "data/embeddings".
+        resolved_path: Optional[str] = None
+        if path and not str(path).startswith("http"):
+            path_obj = Path(path)
+            if not path_obj.is_absolute():
+                # backend/image_rag_pipeline/app/db/vector_store.py
+                # parents[4] -> backend/
+                backend_root = Path(__file__).resolve().parents[4]
+                path_obj = backend_root / path_obj
+            resolved_path = str(path_obj)
+        
+        # Prefer local path if resolved, otherwise use host/port
+        if resolved_path:
+            self.client = QdrantClient(path=resolved_path)
+            logger.info(f"Connected to Qdrant at local path: {resolved_path}")
         else:
             self.client = QdrantClient(host=host, port=port)
             logger.info(f"Connected to Qdrant at {host}:{port}")

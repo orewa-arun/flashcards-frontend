@@ -438,3 +438,4 @@ class UserRepository:
             logger.error(f"Error updating preferences for user {user_id}: {e}")
             return False
 
+
