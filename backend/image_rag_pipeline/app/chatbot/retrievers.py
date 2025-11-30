@@ -13,17 +13,6 @@ from langchain_core.callbacks import CallbackManagerForRetrieverRun
 from ..retrieval.query import ImageRetriever
 from ..db.vector_store import VectorStore
 
-# Support both torch-based and API-based embedders
-try:
-    from ..ingestion.embedder import Embedder
-except ImportError:
-    Embedder = None
-
-try:
-    from ..ingestion.api_embedder import APIEmbedder
-except ImportError:
-    APIEmbedder = None
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

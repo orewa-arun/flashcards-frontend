@@ -124,7 +124,7 @@ class VectorStore:
                     logger.info(f"Deleted old collection: {collection_name}")
                 else:
                     logger.info(f"Collection {collection_name} already exists with correct vector size {vector_size}")
-                    return
+                    return  # Collection exists with correct size, no need to recreate
             except Exception as e:
                 logger.warning(f"Could not check collection info: {e}. Will try to recreate.")
                 try:

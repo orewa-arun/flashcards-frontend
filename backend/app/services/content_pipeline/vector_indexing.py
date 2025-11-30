@@ -1,30 +1,38 @@
 """Vector indexing service for Qdrant.
 
-ENHANCED: Now indexes consolidated semantic chunks for better AI tutor context.
-Uses API-based embeddings (Google Generative AI) for lightweight production deployment.
+ENHANCED: Now delegates indexing to the RAG backend service.
+This ensures both indexing and chat use the same Qdrant store.
+
+In production (Railway), the main backend calls the RAG backend's /index endpoint.
+Locally, it can either call the local RAG server or do direct indexing.
 """
 
 import logging
 import traceback
 import os
 import json
+import httpx
 from typing import Dict, Any, Optional, TYPE_CHECKING
 from datetime import datetime
 
 from app.repositories.content_repository import ContentRepository
-from app.services.content_pipeline.api_embedder import APIEmbedder
 
 # Lazy imports for heavy dependencies - only imported when actually needed
 if TYPE_CHECKING:
     from image_rag_pipeline.app.db.vector_store import VectorStore
+    from app.services.content_pipeline.api_embedder import APIEmbedder
 
 logger = logging.getLogger(__name__)
+
+# RAG Backend URL - configurable via environment variable
+RAG_BACKEND_URL = os.getenv("RAG_BACKEND_URL", "http://localhost:8080")
 
 
 def _get_vector_store():
     """
     Lazy import and initialization of VectorStore.
     This avoids importing torch at module load time.
+    Only used for local/direct indexing mode.
     """
     # Add image_rag_pipeline to path
     import sys
@@ -36,36 +44,52 @@ def _get_vector_store():
     return VectorStore()
 
 
+def _get_api_embedder():
+    """Lazy import and initialization of APIEmbedder."""
+    from app.services.content_pipeline.api_embedder import APIEmbedder
+    return APIEmbedder()
+
+
 class VectorIndexingService:
     """
     Service for indexing lecture content into Qdrant vector database.
     
-    ENHANCED: Now indexes:
-    1. Consolidated semantic chunks (rich narrative content for teaching)
-    2. Flashcards (specific Q&A pairs for fact retrieval)
+    ENHANCED: Now delegates indexing to the RAG backend service.
+    This ensures both indexing and chat use the same Qdrant store.
     
-    Uses API-based embeddings (Google Generative AI) for lightweight deployment.
+    Modes:
+    - Remote (default in production): Calls RAG backend's /index endpoint
+    - Local (fallback): Direct indexing when RAG backend is not available
     """
     
-    def __init__(self, repository: ContentRepository):
+    def __init__(self, repository: ContentRepository, use_remote: bool = True):
         """
         Initialize service with repository.
         
         Args:
             repository: Content repository for database access
+            use_remote: If True, delegate to RAG backend; if False, index locally
         """
         self.repository = repository
-        self._embedder: Optional[APIEmbedder] = None
+        self.use_remote = use_remote
+        self._embedder = None
         self._vector_store = None
+        self._http_client = None
     
-    def _get_embedder(self) -> APIEmbedder:
-        """Lazy initialization of API-based embedder."""
+    def _get_http_client(self) -> httpx.AsyncClient:
+        """Get or create HTTP client for calling RAG backend."""
+        if self._http_client is None:
+            self._http_client = httpx.AsyncClient(timeout=120.0)  # 2 min timeout for indexing
+        return self._http_client
+    
+    def _get_embedder(self):
+        """Lazy initialization of API-based embedder (for local mode)."""
         if self._embedder is None:
-            self._embedder = APIEmbedder()
+            self._embedder = _get_api_embedder()
         return self._embedder
     
     def _get_vector_store(self):
-        """Lazy initialization of vector store."""
+        """Lazy initialization of vector store (for local mode)."""
         if self._vector_store is None:
             self._vector_store = _get_vector_store()
         return self._vector_store
@@ -81,8 +105,8 @@ class VectorIndexingService:
         """
         Index lecture content into Qdrant.
         
-        ENHANCED: Now indexes both consolidated chunks and flashcards.
-        Uses API-based embeddings for lightweight deployment.
+        ENHANCED: Now delegates to RAG backend for consistent Qdrant access.
+        Falls back to local indexing if RAG backend is unavailable.
         
         Args:
             flashcards: Flashcards JSON
@@ -96,10 +120,100 @@ class VectorIndexingService:
         """
         logger.info(f"Indexing content to Qdrant for lecture {lecture_id} (course: {course_code})")
         
+        # Parse JSON strings if needed
+        if isinstance(flashcards, str):
+            flashcards = json.loads(flashcards)
+        if isinstance(consolidated_analysis, str):
+            consolidated_analysis = json.loads(consolidated_analysis)
+        
+        # Try remote indexing first (via RAG backend)
+        if self.use_remote:
+            try:
+                result = await self._index_via_rag_backend(
+                    flashcards=flashcards,
+                    lecture_id=lecture_id,
+                    course_code=course_code,
+                    consolidated_analysis=consolidated_analysis,
+                    lecture_title=lecture_title
+                )
+                return result
+            except Exception as e:
+                logger.warning(f"Remote indexing failed, falling back to local: {e}")
+                # Fall through to local indexing
+        
+        # Local indexing (fallback or when use_remote=False)
+        return await self._index_locally(
+            flashcards=flashcards,
+            lecture_id=lecture_id,
+            course_code=course_code,
+            consolidated_analysis=consolidated_analysis,
+            lecture_title=lecture_title
+        )
+    
+    async def _index_via_rag_backend(
+        self,
+        flashcards: Dict[str, Any],
+        lecture_id: int,
+        course_code: str,
+        consolidated_analysis: Optional[Dict[str, Any]] = None,
+        lecture_title: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Index content by calling the RAG backend's /index endpoint.
+        
+        This ensures the same Qdrant store is used for both indexing and chat.
+        """
+        logger.info(f"Delegating indexing to RAG backend at {RAG_BACKEND_URL}")
+        
+        client = self._get_http_client()
+        
+        payload = {
+            "lecture_id": lecture_id,
+            "course_code": course_code,
+            "lecture_title": lecture_title or f"Lecture {lecture_id}",
+            "flashcards": flashcards,
+            "consolidated_analysis": consolidated_analysis
+        }
+        
+        response = await client.post(
+            f"{RAG_BACKEND_URL}/index",
+            json=payload
+        )
+        
+        if response.status_code != 200:
+            error_detail = response.text
+            logger.error(f"RAG backend indexing failed: {response.status_code} - {error_detail}")
+            raise Exception(f"RAG backend returned {response.status_code}: {error_detail}")
+        
+        result = response.json()
+        logger.info(f"RAG backend indexing successful: {result}")
+        
+        return {
+            "indexed_count": result.get("indexed_count", 0),
+            "semantic_chunks": result.get("semantic_chunks", 0),
+            "flashcards": result.get("flashcards", 0),
+            "timestamp": datetime.utcnow().isoformat()
+        }
+    
+    async def _index_locally(
+        self,
+        flashcards: Dict[str, Any],
+        lecture_id: int,
+        course_code: str,
+        consolidated_analysis: Optional[Dict[str, Any]] = None,
+        lecture_title: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Index content locally (direct Qdrant access).
+        
+        Used as fallback when RAG backend is unavailable.
+        """
+        logger.info(f"Indexing locally for lecture {lecture_id}")
+        
         embedder = self._get_embedder()
         vector_store = self._get_vector_store()
         
-        # Ensure collection exists (create_collection adds "course_" prefix internally)
+        # Ensure collection exists
         embedding_dim = embedder.get_embedding_dim()
         vector_store.create_collection(course_code, vector_size=embedding_dim)
         
@@ -114,9 +228,6 @@ class VectorIndexingService:
         
         # 1. Index consolidated semantic chunks (if available)
         if consolidated_analysis:
-            if isinstance(consolidated_analysis, str):
-                consolidated_analysis = json.loads(consolidated_analysis)
-            
             logger.info(f"Indexing consolidated semantic chunks for lecture {lecture_id}...")
             semantic_chunks_count = self._ingest_consolidated_content(
                 vector_store=vector_store,
@@ -133,9 +244,6 @@ class VectorIndexingService:
         
         # 2. Index flashcards
         if flashcards:
-            if isinstance(flashcards, str):
-                flashcards = json.loads(flashcards)
-            
             flashcard_items = flashcards.get("flashcards", [])
             if flashcard_items:
                 logger.info(f"Indexing {len(flashcard_items)} flashcards for lecture {lecture_id}...")
@@ -159,13 +267,13 @@ class VectorIndexingService:
             "timestamp": datetime.utcnow().isoformat()
         }
         
-        logger.info(f"Indexing complete for lecture {lecture_id}: {result}")
+        logger.info(f"Local indexing complete for lecture {lecture_id}: {result}")
         return result
     
     def _ingest_consolidated_content(
         self,
         vector_store,
-        embedder: APIEmbedder,
+        embedder,  # APIEmbedder instance
         consolidated_analysis: Dict[str, Any],
         course_code: str,
         lecture_id: int,
@@ -249,7 +357,7 @@ class VectorIndexingService:
     def _ingest_flashcards(
         self,
         vector_store,
-        embedder: APIEmbedder,
+        embedder,  # APIEmbedder instance
         flashcards: list,
         course_code: str,
         lecture_id: int,

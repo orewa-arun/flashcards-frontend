@@ -1,16 +1,21 @@
 """
 FastAPI server for Image-RAG pipeline.
-Provides endpoints for PDF ingestion and image/text search.
+Provides endpoints for PDF ingestion, image/text search, AND vector indexing.
+
+ENHANCED: Now includes /index endpoint for receiving content from main backend.
+This allows the RAG backend to handle both indexing and chat with the same Qdrant store.
 """
 import os
 import logging
+import hashlib
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List, Dict, Any
 import shutil
+import json
 
 from ..db.vector_store import VectorStore
 from ..ingestion.loader import IngestionPipeline
@@ -26,7 +31,7 @@ logger = logging.getLogger(__name__)
 # Initialize FastAPI app
 app = FastAPI(title="Image-RAG Pipeline", version="1.0.0")
 
-# Configure CORS
+# Configure CORS - allow main backend and frontend origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -34,6 +39,10 @@ app.add_middleware(
         "http://localhost:3000",  # Alternative dev port
         "http://127.0.0.1:5173",
         "http://127.0.0.1:3000",
+        "http://localhost:8000",  # Main backend
+        "https://flashcards-frontend-production.up.railway.app",  # Railway main backend
+        "https://www.exammate.ai",  # Production frontend
+        "*",  # Allow all for internal service-to-service calls
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -114,17 +123,15 @@ def extract_lecture_id_from_session(session_id: str, course_id: str) -> str:
         Lecture identifier, or "unknown" if parsing fails
     """
     try:
-        """
-        NOTE ON FORMAT AND UNDERSCORES
-        ------------------------------
-        Session IDs are generated as:
-            {user_uid}_{course_id}_{lecture_id}
-        where *course_id itself may contain underscores* (e.g. MAPP_F_MKT404_EN_2025).
-        
-        Relying on splitting and matching the full course_id fails in that case.
-        Instead, we treat the **last segment** as the lecture_id, which matches
-        how the frontend constructs the session_id.
-        """
+        # NOTE ON FORMAT AND UNDERSCORES
+        # ------------------------------
+        # Session IDs are generated as:
+        #     {user_uid}_{course_id}_{lecture_id}
+        # where *course_id itself may contain underscores* (e.g. MAPP_F_MKT404_EN_2025).
+        #
+        # Relying on splitting and matching the full course_id fails in that case.
+        # Instead, we treat the **last segment** as the lecture_id, which matches
+        # how the frontend constructs the session_id.
         parts = session_id.split("_")
         if len(parts) < 2:
             logger.warning(
@@ -196,6 +203,25 @@ class SearchResponse(BaseModel):
     query: str
     course_id: str
     results: list
+
+
+class IndexRequest(BaseModel):
+    """Request model for indexing content from main backend."""
+    lecture_id: int
+    course_code: str
+    lecture_title: Optional[str] = None
+    flashcards: Optional[Dict[str, Any]] = None
+    consolidated_analysis: Optional[Dict[str, Any]] = None
+
+
+class IndexResponse(BaseModel):
+    """Response model for indexing operations."""
+    success: bool
+    message: str
+    lecture_id: int
+    indexed_count: int = 0
+    semantic_chunks: int = 0
+    flashcards: int = 0
 
 
 # API Endpoints
@@ -340,6 +366,228 @@ async def get_image(filename: str):
 
 
 # ============================================================================
+# Indexing Endpoints (called by main backend)
+# ============================================================================
+
+@app.post("/index", response_model=IndexResponse)
+async def index_content(request: IndexRequest):
+    """
+    Index lecture content into Qdrant.
+    
+    This endpoint is called by the main backend to index content.
+    By having the RAG backend handle indexing, both indexing and chat
+    use the same Qdrant store.
+    
+    Args:
+        request: IndexRequest with lecture content
+        
+    Returns:
+        IndexResponse with indexing statistics
+    """
+    try:
+        logger.info(f"Received index request for lecture {request.lecture_id} (course: {request.course_code})")
+        
+        embedder = get_embedder()
+        vector_store = get_vector_store()
+        
+        # Ensure collection exists
+        embedding_dim = embedder.get_embedding_dim()
+        vector_store.create_collection(request.course_code, vector_size=embedding_dim)
+        
+        lecture_metadata = {
+            "lecture_id": str(request.lecture_id),
+            "lecture_title": request.lecture_title or f"Lecture {request.lecture_id}"
+        }
+        
+        total_indexed = 0
+        semantic_chunks_count = 0
+        flashcards_count = 0
+        
+        # 1. Index consolidated semantic chunks (if available)
+        if request.consolidated_analysis:
+            logger.info(f"Indexing consolidated semantic chunks for lecture {request.lecture_id}...")
+            semantic_chunks_count = _ingest_consolidated_content(
+                vector_store=vector_store,
+                embedder=embedder,
+                consolidated_analysis=request.consolidated_analysis,
+                course_code=request.course_code,
+                lecture_id=request.lecture_id,
+                lecture_metadata=lecture_metadata
+            )
+            total_indexed += semantic_chunks_count
+            logger.info(f"Indexed {semantic_chunks_count} semantic chunks")
+        
+        # 2. Index flashcards
+        if request.flashcards:
+            flashcard_items = request.flashcards.get("flashcards", [])
+            if flashcard_items:
+                logger.info(f"Indexing {len(flashcard_items)} flashcards for lecture {request.lecture_id}...")
+                flashcards_count = _ingest_flashcards(
+                    vector_store=vector_store,
+                    embedder=embedder,
+                    flashcards=flashcard_items,
+                    course_code=request.course_code,
+                    lecture_id=request.lecture_id,
+                    lecture_metadata=lecture_metadata
+                )
+                total_indexed += flashcards_count
+                logger.info(f"Indexed {flashcards_count} flashcards")
+        
+        return IndexResponse(
+            success=True,
+            message="Content indexed successfully",
+            lecture_id=request.lecture_id,
+            indexed_count=total_indexed,
+            semantic_chunks=semantic_chunks_count,
+            flashcards=flashcards_count
+        )
+        
+    except Exception as e:
+        import traceback
+        logger.error(f"Indexing failed: {e}")
+        logger.error(f"Full traceback:\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def _ingest_consolidated_content(
+    vector_store: VectorStore,
+    embedder: APIEmbedder,
+    consolidated_analysis: Dict[str, Any],
+    course_code: str,
+    lecture_id: int,
+    lecture_metadata: Dict[str, Any]
+) -> int:
+    """
+    Ingest consolidated semantic chunks into the vector store.
+    """
+    semantic_chunks = consolidated_analysis.get("semantic_chunks", [])
+    if not semantic_chunks:
+        logger.warning("No semantic_chunks found in consolidated_analysis")
+        return 0
+    
+    # Extract topics for metadata
+    topics = consolidated_analysis.get("topics", [])
+    topic_names = [t.get("name", "") for t in topics if isinstance(t, dict)]
+    
+    texts_to_embed = []
+    metadata_list = []
+    ids = []
+    
+    for i, chunk in enumerate(semantic_chunks):
+        chunk_text = chunk.get("text", "")
+        if not chunk_text:
+            continue
+        
+        # Generate deterministic ID
+        chunk_id = f"consolidated_{course_code}_{lecture_id}_{i}"
+        hash_obj = hashlib.sha256(chunk_id.encode('utf-8'))
+        int_id = abs(int.from_bytes(hash_obj.digest()[:8], 'big'))
+        
+        # Build metadata
+        chunk_topics = chunk.get("topics", topic_names[:3])
+        
+        metadata = {
+            "text": chunk_text,
+            "source": "consolidated_chunk",
+            "course_id": course_code,
+            "lecture_id": str(lecture_id),
+            "lecture_title": lecture_metadata.get("lecture_title", ""),
+            "chunk_index": i,
+            "topics": chunk_topics,
+            "educational_value": chunk.get("educational_value", 0.7),
+            "has_definitions": chunk.get("has_definitions", False),
+            "has_examples": chunk.get("has_examples", False),
+        }
+        
+        texts_to_embed.append(chunk_text)
+        metadata_list.append(metadata)
+        ids.append(int_id)
+    
+    if not texts_to_embed:
+        return 0
+    
+    # Generate embeddings
+    embeddings = embedder.embed_text(texts_to_embed)
+    
+    # Insert into vector store
+    vector_store.insert_embeddings(
+        course_id=course_code,
+        embeddings=embeddings,
+        metadata=metadata_list,
+        ids=ids
+    )
+    
+    return len(texts_to_embed)
+
+
+def _ingest_flashcards(
+    vector_store: VectorStore,
+    embedder: APIEmbedder,
+    flashcards: list,
+    course_code: str,
+    lecture_id: int,
+    lecture_metadata: Dict[str, Any]
+) -> int:
+    """
+    Ingest flashcards into the vector store.
+    """
+    if not flashcards:
+        return 0
+    
+    texts_to_embed = []
+    metadata_list = []
+    ids = []
+    
+    for i, fc in enumerate(flashcards):
+        question = fc.get("question", "")
+        answer = fc.get("answer", "")
+        flashcard_id = fc.get("id", f"fc_{course_code}_{lecture_id}_{i}")
+        
+        if not question:
+            continue
+        
+        # Combine Q&A for embedding
+        combined_text = f"Question: {question}\nAnswer: {answer}"
+        
+        # Generate deterministic ID
+        hash_obj = hashlib.sha256(flashcard_id.encode('utf-8'))
+        int_id = abs(int.from_bytes(hash_obj.digest()[:8], 'big'))
+        
+        metadata = {
+            "text": combined_text,
+            "source": "flashcard",
+            "flashcard_id": flashcard_id,
+            "question": question,
+            "answer": answer,
+            "course_id": course_code,
+            "lecture_id": str(lecture_id),
+            "lecture_title": lecture_metadata.get("lecture_title", ""),
+            "context": fc.get("context", ""),
+            "difficulty": fc.get("difficulty", "medium"),
+        }
+        
+        texts_to_embed.append(combined_text)
+        metadata_list.append(metadata)
+        ids.append(int_id)
+    
+    if not texts_to_embed:
+        return 0
+    
+    # Generate embeddings
+    embeddings = embedder.embed_text(texts_to_embed)
+    
+    # Insert into vector store
+    vector_store.insert_embeddings(
+        course_id=course_code,
+        embeddings=embeddings,
+        metadata=metadata_list,
+        ids=ids
+    )
+    
+    return len(texts_to_embed)
+
+
+# ============================================================================
 # Chat Endpoints
 # ============================================================================
 
@@ -479,6 +727,9 @@ async def get_chat_history(course_id: str, session_id: str = "default"):
 @app.get("/health")
 async def health_check():
     """Detailed health check with component status."""
+    # Get QDRANT_PATH from environment or use default
+    qdrant_path = os.getenv("QDRANT_PATH", "data/embeddings")
+    
     return {
         "status": "healthy",
         "components": {
@@ -490,8 +741,9 @@ async def health_check():
         "directories": {
             "images": os.path.exists(IMAGE_DIR),
             "pdfs": os.path.exists(PDF_DIR),
-            "vector_db": os.path.exists(VECTOR_DB_PATH)
-        }
+            "vector_db": os.path.exists(qdrant_path)
+        },
+        "rag_backend_url": RAG_BACKEND_URL if 'RAG_BACKEND_URL' in dir() else "N/A"
     }
 
 
