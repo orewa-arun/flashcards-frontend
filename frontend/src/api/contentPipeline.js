@@ -1,5 +1,4 @@
-// NOTE: Authentication temporarily disabled for testing
-// import { authenticatedFetch } from '../utils/authenticatedApi';
+import { authenticatedFetch } from '../utils/authenticatedApi';
 // import { auth } from '../utils/firebase';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
@@ -11,7 +10,7 @@ export const contentPipeline = {
    * @returns {Promise<Object>} Response data
    */
   async ingestContent(formData) {
-    const response = await fetch(`${API_BASE_URL}/api/v1/content/ingest`, {
+    const response = await authenticatedFetch(`/api/v1/content/ingest`, {
       method: 'POST',
       // Do NOT set Content-Type here, let browser set it for FormData
       body: formData
@@ -32,7 +31,7 @@ export const contentPipeline = {
    * @returns {Promise<Object>} Response data
    */
   async triggerAction(action, lectureId) {
-    const response = await fetch(`${API_BASE_URL}/api/v1/content/${action}/${lectureId}`, {
+    const response = await authenticatedFetch(`/api/v1/content/${action}/${lectureId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -52,11 +51,11 @@ export const contentPipeline = {
    * @returns {Promise<Array>} List of lectures
    */
   async getLectures(courseCode = null) {
-    let url = `${API_BASE_URL}/api/v1/content/lectures`;
+    let url = `/api/v1/content/lectures`;
     if (courseCode) {
       url += `?course_code=${encodeURIComponent(courseCode)}`;
     }
-    const response = await fetch(url);
+    const response = await authenticatedFetch(url);
     if (!response.ok) throw new Error('Failed to fetch lectures');
     return response.json();
   },
@@ -66,7 +65,7 @@ export const contentPipeline = {
    * @returns {Promise<Array>} List of courses
    */
   async getCourses() {
-    const response = await fetch(`${API_BASE_URL}/api/v1/content/courses`);
+    const response = await authenticatedFetch(`/api/v1/content/courses`);
     if (!response.ok) throw new Error('Failed to fetch courses');
     return response.json();
   },
@@ -77,7 +76,7 @@ export const contentPipeline = {
    * @returns {Promise<Object>} Response data
    */
   async deleteLecture(lectureId) {
-    const response = await fetch(`${API_BASE_URL}/api/v1/content/lectures/${lectureId}`, {
+    const response = await authenticatedFetch(`/api/v1/content/lectures/${lectureId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -98,7 +97,7 @@ export const contentPipeline = {
    * @returns {Promise<Object>} Response data with status message
    */
   async processLecture(lectureId) {
-    const response = await fetch(`${API_BASE_URL}/api/v1/content/process/${lectureId}`, {
+    const response = await authenticatedFetch(`/api/v1/content/process/${lectureId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

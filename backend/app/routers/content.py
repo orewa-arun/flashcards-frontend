@@ -102,7 +102,7 @@ async def get_optional_user(
         return None
     
     try:
-        return await verify_firebase_token(credentials.credentials)
+        return await verify_firebase_token(credentials)
     except Exception:
         return None
 
