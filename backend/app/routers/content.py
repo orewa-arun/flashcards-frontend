@@ -3,14 +3,13 @@
 import logging
 import json
 from typing import List, Optional, Dict, Any
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, BackgroundTasks
 from pydantic import BaseModel
 
 from app.db.postgres import get_postgres_pool
 from app.repositories.content_repository import ContentRepository
 from app.services.content_pipeline.orchestrator import create_orchestrator
-# NOTE: Authentication temporarily disabled for testing
-# from app.firebase_auth import get_current_user
+from app.firebase_auth import get_current_user
 
 logger = logging.getLogger(__name__)
 
@@ -58,9 +57,18 @@ class CourseDetail(BaseModel):
     instructor: Optional[str] = None
     additional_info: Optional[str] = None
     reference_textbooks: Optional[List[str]] = None
+    course_repository_link: Optional[str] = None
+    repository_created_by: Optional[str] = None
     lecture_count: int = 0
     created_at: str
     updated_at: str
+
+
+class UpdateRepositoryRequest(BaseModel):
+    """Request model for updating course repository."""
+    link: str
+    # Optional fallback: used if token doesn't contain display name
+    user_name: Optional[str] = None
 
 
 async def get_repository():
@@ -114,7 +122,7 @@ async def ingest_content(
     additional_info: Optional[str] = Form(None),
     reference_textbooks: Optional[str] = Form(None),  # JSON string
     pdf_files: List[UploadFile] = File(...),
-    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
+    current_user: Dict[str, Any] = Depends(get_current_user),
     repository: ContentRepository = Depends(get_repository)
 ):
     """
@@ -175,7 +183,7 @@ async def ingest_content(
 async def trigger_action(
     action: str,
     lecture_id: int,
-    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
+    current_user: Dict[str, Any] = Depends(get_current_user),
     repository: ContentRepository = Depends(get_repository)
 ):
     """
@@ -213,9 +221,74 @@ async def trigger_action(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class ProcessResponse(BaseModel):
+    """Response model for process (full pipeline) action."""
+    success: bool
+    message: str
+    lecture_id: int
+
+
+async def _run_full_pipeline_task(lecture_id: int, repository: ContentRepository):
+    """
+    Background task to run the full pipeline.
+    
+    This runs asynchronously after the HTTP response is sent.
+    """
+    try:
+        orchestrator = create_orchestrator(repository)
+        result = await orchestrator.run_full_pipeline(lecture_id=lecture_id)
+        
+        if result["success"]:
+            logger.info(f"Background pipeline completed for lecture {lecture_id}")
+        else:
+            logger.warning(
+                f"Background pipeline failed for lecture {lecture_id} at step '{result['failed_step']}': {result['error']}"
+            )
+    except Exception as e:
+        logger.error(f"Background pipeline exception for lecture {lecture_id}: {str(e)}")
+
+
+@router.post("/process/{lecture_id}", response_model=ProcessResponse)
+async def process_lecture(
+    lecture_id: int,
+    background_tasks: BackgroundTasks,
+    current_user: Dict[str, Any] = Depends(get_current_user),
+    repository: ContentRepository = Depends(get_repository)
+):
+    """
+    Run the full content pipeline for a lecture in the background.
+    
+    This triggers all steps (Analysis → Flashcards → Quiz → Indexing) sequentially.
+    The request returns immediately; processing continues in the background.
+    
+    If any step fails, the pipeline stops and logs the error to the lecture record.
+    """
+    try:
+        # Verify lecture exists
+        lecture = await repository.get_lecture_by_id(lecture_id)
+        if not lecture:
+            raise HTTPException(status_code=404, detail=f"Lecture {lecture_id} not found")
+        
+        # Schedule the pipeline to run in background
+        background_tasks.add_task(_run_full_pipeline_task, lecture_id, repository)
+        
+        logger.info(f"Started background pipeline for lecture {lecture_id}")
+        
+        return ProcessResponse(
+            success=True,
+            message="Pipeline started. Processing will continue in the background.",
+            lecture_id=lecture_id
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error starting pipeline for lecture {lecture_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.get("/courses", response_model=List[CourseDetail])
 async def list_courses(
-    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
     repository: ContentRepository = Depends(get_repository)
 ):
     """List all courses with lecture counts."""
@@ -242,6 +315,8 @@ async def list_courses(
                     instructor=course.get("instructor"),
                     additional_info=course.get("additional_info"),
                     reference_textbooks=textbooks,
+                    course_repository_link=course.get("course_repository_link"),
+                    repository_created_by=course.get("repository_created_by"),
                     lecture_count=course.get("lecture_count", 0),
                     created_at=course["created_at"].isoformat(),
                     updated_at=course["updated_at"].isoformat()
@@ -255,10 +330,58 @@ async def list_courses(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@router.put("/courses/{course_code}/repository")
+async def update_course_repository(
+    course_code: str,
+    request: UpdateRepositoryRequest,
+    current_user: Dict[str, Any] = Depends(get_current_user),
+    repository: ContentRepository = Depends(get_repository)
+):
+    """
+    Update the course repository link.
+    
+    This allows authenticated community members to add or update the shared 
+    drive link for a course. The user's identity is extracted from the 
+    authentication token for secure attribution and audit logging.
+    """
+    try:
+        # Validate the link is not empty
+        if not request.link or not request.link.strip():
+            raise HTTPException(status_code=400, detail="Repository link cannot be empty")
+        
+        # Get user info from authenticated token
+        user_uid = current_user.get('uid')
+        # Use name from token, fallback to request user_name, then email prefix
+        user_name = current_user.get('name') or request.user_name or current_user.get('email', '').split('@')[0] or 'Anonymous'
+        
+        # Update the repository (also logs to history table)
+        updated_course = await repository.update_course_repository(
+            course_code=course_code,
+            repository_link=request.link.strip(),
+            updated_by_name=user_name,
+            updated_by_uid=user_uid
+        )
+        
+        if not updated_course:
+            raise HTTPException(status_code=404, detail=f"Course {course_code} not found")
+        
+        return {
+            "success": True,
+            "message": "Repository link updated successfully",
+            "course_repository_link": updated_course.get("course_repository_link"),
+            "repository_created_by": updated_course.get("repository_created_by")
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error updating course repository: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.get("/lectures", response_model=List[LectureStatus])
 async def list_lectures(
     course_code: Optional[str] = None,
-    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
     repository: ContentRepository = Depends(get_repository)
 ):
     """
@@ -309,7 +432,6 @@ async def list_lectures(
 @router.get("/lectures/{lecture_id}", response_model=LectureStatus)
 async def get_lecture(
     lecture_id: int,
-    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
     repository: ContentRepository = Depends(get_repository)
 ):
     """Get detailed information about a specific lecture."""
@@ -362,7 +484,6 @@ class DeleteResponse(BaseModel):
 @router.get("/lectures/{lecture_id}/flashcards")
 async def get_lecture_flashcards(
     lecture_id: int,
-    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
     repository: ContentRepository = Depends(get_repository)
 ):
     """
@@ -417,7 +538,7 @@ async def get_lecture_flashcards(
 @router.delete("/lectures/{lecture_id}", response_model=DeleteResponse)
 async def delete_lecture(
     lecture_id: int,
-    # current_user: Dict[str, Any] = Depends(get_current_user),  # Auth disabled for testing
+    current_user: Dict[str, Any] = Depends(get_current_user),
     repository: ContentRepository = Depends(get_repository)
 ):
     """

@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaCalendarAlt, FaPlus, FaTrash, FaEdit, FaSave, FaTimes, FaArrowLeft, FaClock, FaChevronDown } from 'react-icons/fa';
 import { getTimetable, updateTimetable, deleteExam } from '../api/timetable';
+import { getCoursePublic } from '../api/courses';
 import ReadinessRing from '../components/ReadinessRing';
 import './TimetableView.css';
 
@@ -43,19 +44,19 @@ const TimetableView = () => {
 
   const loadCourseLectures = async () => {
     try {
-      const response = await fetch('/courses.json');
-      const courses = await response.json();
-      const course = courses.find(c => c.course_id === courseId);
+      const course = await getCoursePublic(courseId);
       
       if (course && course.lecture_slides) {
         // Extract lecture IDs from the course structure
         const lectures = course.lecture_slides.map(slide => {
-          // Extract lecture ID from pdf_path or create from course_code + lecture_number
-          const pathParts = slide.pdf_path.split('/');
-          const fileName = pathParts[pathParts.length - 1].replace('.pdf', '');
+          // Use lecture_id if available, otherwise extract from pdf_path
+          const lectureId = slide.lecture_id || (() => {
+            const pathParts = slide.pdf_path?.split('/') || [];
+            return pathParts[pathParts.length - 1]?.replace('.pdf', '') || '';
+          })();
           return {
-            id: fileName,
-            name: slide.lecture_name || fileName
+            id: lectureId,
+            name: slide.lecture_name || lectureId
           };
         });
         setAvailableLectures(lectures);

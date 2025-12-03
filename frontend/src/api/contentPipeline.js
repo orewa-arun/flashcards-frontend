@@ -89,5 +89,26 @@ export const contentPipeline = {
       throw new Error(error.detail || 'Failed to delete lecture');
     }
     return response.json();
+  },
+
+  /**
+   * Run the full pipeline for a lecture (Analysis → Flashcards → Quiz → Indexing)
+   * This triggers background processing; the request returns immediately.
+   * @param {number} lectureId - ID of the lecture to process
+   * @returns {Promise<Object>} Response data with status message
+   */
+  async processLecture(lectureId) {
+    const response = await fetch(`${API_BASE_URL}/api/v1/content/process/${lectureId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || 'Failed to start pipeline');
+    }
+    return response.json();
   }
 };

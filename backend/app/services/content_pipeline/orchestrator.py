@@ -118,6 +118,74 @@ class ContentPipelineOrchestrator:
         logger.info(f"Running vector indexing for lecture: {lecture_id}")
         return await self.indexing.index_content(lecture_id=lecture_id)
     
+    async def run_full_pipeline(
+        self,
+        lecture_id: int
+    ) -> Dict[str, Any]:
+        """
+        Run the full content pipeline for a lecture.
+        
+        Executes all steps in sequence: Analysis → Flashcards → Quiz → Indexing.
+        Stops at the first failure and logs the error.
+        
+        Args:
+            lecture_id: Lecture ID to process
+            
+        Returns:
+            Dict: Result with success status and details of each step
+        """
+        logger.info(f"Starting full pipeline for lecture: {lecture_id}")
+        
+        steps = [
+            ("analyze", "Analysis", self.run_analysis),
+            ("flashcards", "Flashcard Generation", self.run_flashcard_generation),
+            ("quiz", "Quiz Generation", self.run_quiz_generation),
+            ("index", "Vector Indexing", self.run_indexing),
+        ]
+        
+        results = {
+            "lecture_id": lecture_id,
+            "success": True,
+            "completed_steps": [],
+            "failed_step": None,
+            "error": None
+        }
+        
+        for step_key, step_name, handler in steps:
+            try:
+                logger.info(f"[Lecture {lecture_id}] Running step: {step_name}")
+                result = await handler(lecture_id=lecture_id)
+                
+                if not result.get("success", False):
+                    # Step returned failure
+                    error_msg = result.get("message", f"{step_name} failed")
+                    logger.error(f"[Lecture {lecture_id}] {step_name} failed: {error_msg}")
+                    results["success"] = False
+                    results["failed_step"] = step_key
+                    results["error"] = error_msg
+                    break
+                
+                logger.info(f"[Lecture {lecture_id}] Completed step: {step_name}")
+                results["completed_steps"].append(step_key)
+                
+            except Exception as e:
+                # Step threw an exception
+                error_msg = str(e)
+                logger.error(f"[Lecture {lecture_id}] {step_name} exception: {error_msg}")
+                results["success"] = False
+                results["failed_step"] = step_key
+                results["error"] = error_msg
+                break
+        
+        if results["success"]:
+            logger.info(f"[Lecture {lecture_id}] Full pipeline completed successfully")
+        else:
+            logger.warning(
+                f"[Lecture {lecture_id}] Pipeline stopped at '{results['failed_step']}': {results['error']}"
+            )
+        
+        return results
+    
     async def get_action_handler(self, action: str):
         """
         Get the appropriate handler for an action.

@@ -111,8 +111,8 @@ class ContentRepository:
         """Get course by course_code."""
         query = """
             SELECT id, course_code, course_name, instructor,
-                   additional_info, reference_textbooks,
-                   created_at, updated_at
+                   additional_info, reference_textbooks, course_repository_link,
+                   repository_created_by, created_at, updated_at
             FROM courses
             WHERE course_code = $1
         """
@@ -125,20 +125,88 @@ class ContentRepository:
         """List all courses with lecture counts."""
         query = """
             SELECT c.id, c.course_code, c.course_name, c.instructor,
-                   c.additional_info, c.reference_textbooks,
-                   c.created_at, c.updated_at,
+                   c.additional_info, c.reference_textbooks, c.course_repository_link,
+                   c.repository_created_by, c.created_at, c.updated_at,
                    COUNT(l.id) FILTER (WHERE l.is_deleted IS NULL OR l.is_deleted = FALSE) as lecture_count
             FROM courses c
             LEFT JOIN lectures l ON c.course_code = l.course_code
             GROUP BY c.id, c.course_code, c.course_name, c.instructor,
-                     c.additional_info, c.reference_textbooks,
-                     c.created_at, c.updated_at
+                     c.additional_info, c.reference_textbooks, c.course_repository_link,
+                     c.repository_created_by, c.created_at, c.updated_at
             ORDER BY c.created_at DESC
         """
         
         async with self.pool.acquire() as conn:
             rows = await conn.fetch(query)
             return [dict(row) for row in rows]
+    
+    async def update_course_repository(
+        self,
+        course_code: str,
+        repository_link: str,
+        updated_by_name: str,
+        updated_by_uid: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Update the course repository link and log the change to history.
+        
+        Uses a transaction to ensure both the course update and history
+        insertion succeed or fail together.
+        
+        Args:
+            course_code: Course code to update
+            repository_link: The drive/repository link
+            updated_by_name: Display name of the user who made the update
+            updated_by_uid: Firebase UID of the user (for audit trail)
+            
+        Returns:
+            Updated course dict or None if course not found
+        """
+        update_course_query = """
+            UPDATE courses
+            SET course_repository_link = $2,
+                repository_created_by = $3,
+                updated_at = $4
+            WHERE course_code = $1
+            RETURNING id, course_code, course_name, instructor,
+                      additional_info, reference_textbooks, course_repository_link,
+                      repository_created_by, created_at, updated_at
+        """
+        
+        insert_history_query = """
+            INSERT INTO course_repository_history (
+                course_code, repository_link, updated_by_name, updated_by_uid, updated_at
+            )
+            VALUES ($1, $2, $3, $4, $5)
+        """
+        
+        now = datetime.utcnow()
+        
+        async with self.pool.acquire() as conn:
+            # Use a transaction to ensure both operations succeed or fail together
+            async with conn.transaction():
+                # Update the course with the new repository link
+                row = await conn.fetchrow(
+                    update_course_query, 
+                    course_code, 
+                    repository_link, 
+                    updated_by_name, 
+                    now
+                )
+                
+                if row:
+                    # Log the change to history
+                    await conn.execute(
+                        insert_history_query,
+                        course_code,
+                        repository_link,
+                        updated_by_name,
+                        updated_by_uid,
+                        now
+                    )
+                    return dict(row)
+                
+                return None
     
     # ==================== Lecture Operations ====================
     

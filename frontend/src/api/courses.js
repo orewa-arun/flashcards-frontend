@@ -5,7 +5,7 @@
  * the response to match the structure expected by frontend components.
  */
 
-import { authenticatedGet } from '../utils/authenticatedApi';
+import { authenticatedGet, authenticatedPut } from '../utils/authenticatedApi';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
@@ -28,6 +28,8 @@ export const getCourses = async () => {
       course_description: course.additional_info || '',
       instructor: course.instructor || '',
       reference_textbooks: course.reference_textbooks || [],
+      course_repository_link: course.course_repository_link || null,
+      repository_created_by: course.repository_created_by || null,
       // Create a placeholder lecture_slides array with correct length for display
       lecture_slides: Array(course.lecture_count || 0).fill(null),
       lecture_count: course.lecture_count || 0,
@@ -63,6 +65,8 @@ export const getCoursesPublic = async () => {
       course_description: course.additional_info || '',
       instructor: course.instructor || '',
       reference_textbooks: course.reference_textbooks || [],
+      course_repository_link: course.course_repository_link || null,
+      repository_created_by: course.repository_created_by || null,
       lecture_slides: Array(course.lecture_count || 0).fill(null),
       lecture_count: course.lecture_count || 0,
       id: course.id,
@@ -120,6 +124,8 @@ export const getCourse = async (courseId) => {
       course_description: course.additional_info || '',
       instructor: course.instructor || '',
       reference_textbooks: course.reference_textbooks || [],
+      course_repository_link: course.course_repository_link || null,
+      repository_created_by: course.repository_created_by || null,
       lecture_slides: lectureSlides,
       lecture_count: lectureSlides.length,
       id: course.id,
@@ -180,6 +186,8 @@ export const getCoursePublic = async (courseId) => {
       course_description: course.additional_info || '',
       instructor: course.instructor || '',
       reference_textbooks: course.reference_textbooks || [],
+      course_repository_link: course.course_repository_link || null,
+      repository_created_by: course.repository_created_by || null,
       lecture_slides: lectureSlides,
       lecture_count: lectureSlides.length,
       id: course.id,
@@ -286,6 +294,33 @@ function extractLectureNumber(title, fallback) {
   
   return String(fallback);
 }
+
+/**
+ * Update the course repository link.
+ * 
+ * Uses authenticated request - user info is extracted from the auth token
+ * on the backend for secure attribution and audit logging.
+ * 
+ * @param {string} courseId - Course code (e.g., "MS5260")
+ * @param {string} link - The repository/drive link
+ * @param {string} userName - User's display name (used as fallback in DEBUG mode)
+ * @returns {Promise<Object>} Updated repository info
+ */
+export const updateCourseRepository = async (courseId, link, userName) => {
+  try {
+    return await authenticatedPut(`/api/v1/content/courses/${courseId}/repository`, {
+      link: link,
+      user_name: userName  // Fallback for DEBUG mode when token doesn't have real name
+    });
+  } catch (error) {
+    console.error(`Failed to update course repository for ${courseId}:`, error);
+    throw error;
+  }
+};
+
+
+
+
 
 
 

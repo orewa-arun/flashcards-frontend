@@ -66,6 +66,8 @@ async def _create_tables():
             instructor TEXT,
             additional_info TEXT,
             reference_textbooks JSONB DEFAULT '[]'::jsonb,
+            course_repository_link TEXT,
+            repository_created_by TEXT,
             created_at TIMESTAMP WITH TIME ZONE NOT NULL,
             updated_at TIMESTAMP WITH TIME ZONE NOT NULL
         );
@@ -391,6 +393,23 @@ async def _create_tables():
         CREATE INDEX IF NOT EXISTS idx_mix_sessions_user_status ON mix_sessions(user_id, status);
     """
     
+    # ==================== COURSE REPOSITORY HISTORY ====================
+    
+    # SQL for creating course_repository_history table (audit trail for repository link changes)
+    create_course_repository_history_table = """
+        CREATE TABLE IF NOT EXISTS course_repository_history (
+            id SERIAL PRIMARY KEY,
+            course_code VARCHAR(255) NOT NULL REFERENCES courses(course_code) ON DELETE CASCADE,
+            repository_link TEXT NOT NULL,
+            updated_by_name TEXT,
+            updated_by_uid VARCHAR(255),
+            updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+        );
+        
+        CREATE INDEX IF NOT EXISTS idx_repo_history_course_code ON course_repository_history(course_code);
+        CREATE INDEX IF NOT EXISTS idx_repo_history_updated_at ON course_repository_history(course_code, updated_at DESC);
+    """
+    
     async with _pool.acquire() as conn:
         # Content tables
         await conn.execute(create_courses_table)
@@ -423,6 +442,9 @@ async def _create_tables():
         
         # Mix Mode tables
         await conn.execute(create_mix_sessions_table)
+        
+        # Course Repository History table
+        await conn.execute(create_course_repository_history_table)
         
         logger.info("Database tables created/verified successfully")
 

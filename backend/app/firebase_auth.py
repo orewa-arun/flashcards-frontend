@@ -1,14 +1,20 @@
+"""
+Firebase Authentication Middleware
+
+This module provides secure Firebase ID token verification for FastAPI endpoints.
+All protected routes must use the `get_current_user` dependency to enforce authentication.
+"""
+
 import os
 import json
 import logging
 import firebase_admin
-from typing import Optional
 from firebase_admin import credentials, auth
 from fastapi import HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from app.config import settings
 
 logger = logging.getLogger(__name__)
+
 
 def initialize_firebase():
     """
@@ -75,38 +81,32 @@ def initialize_firebase():
 
 
 # Security scheme for extracting Bearer tokens
-# Use auto_error=False to allow manual handling of missing tokens (needed for debug mode bypass)
-security = HTTPBearer(auto_error=False)
+# auto_error=True means FastAPI will automatically return 401 if no token is provided
+security = HTTPBearer()
 
-async def verify_firebase_token(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)):
+
+async def verify_firebase_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     """
     Verify Firebase ID token and return user information.
+    
+    This function extracts the Bearer token from the Authorization header,
+    verifies it with Firebase, and returns the decoded user information.
     
     Args:
         credentials: HTTP Authorization credentials containing the Bearer token
         
     Returns:
-        dict: User information from Firebase token
+        dict: User information from Firebase token including:
+            - uid: Firebase user ID
+            - email: User's email address
+            - name: User's display name
+            - picture: URL to user's profile picture
+            - email_verified: Whether email is verified
+            - firebase_claims: Full decoded token claims
         
     Raises:
-        HTTPException: If token is invalid or verification fails
+        HTTPException: 401 if token is missing, invalid, or expired
     """
-    # DEBUG MODE BYPASS: If DEBUG is true, return a stub user immediately
-    if settings.DEBUG:
-        # logger.debug("🚧 DEBUG mode: Bypassing Firebase auth with dev-user")
-        return {
-            "uid": "dev-user",
-            "email": "dev@example.com",
-            "name": "Developer User",
-            "picture": "",
-            "email_verified": True,
-            "firebase_claims": {"admin": True}
-        }
-
-    # NORMAL MODE: Require and verify token
-    if not credentials:
-        raise HTTPException(status_code=401, detail="Missing authentication token")
-
     try:
         token = credentials.credentials
         decoded_token = auth.verify_id_token(token)
@@ -138,6 +138,8 @@ async def get_current_user(user_info: dict = Depends(verify_firebase_token)):
     """
     Get current authenticated user information.
     
+    This is the primary dependency to use in protected API endpoints.
+    
     Args:
         user_info: User information from Firebase token verification
         
@@ -151,6 +153,8 @@ async def get_admin_user(user_info: dict = Depends(verify_firebase_token)):
     """
     Verify that the current user has admin privileges.
     
+    Use this dependency for admin-only endpoints.
+    
     Args:
         user_info: User information from Firebase token verification
         
@@ -158,7 +162,7 @@ async def get_admin_user(user_info: dict = Depends(verify_firebase_token)):
         dict: Admin user information
         
     Raises:
-        HTTPException: If user is not an admin
+        HTTPException: 403 if user is not an admin
     """
     firebase_claims = user_info.get('firebase_claims', {})
     is_admin = firebase_claims.get('admin', False)

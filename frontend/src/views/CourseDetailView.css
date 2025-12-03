@@ -152,6 +152,288 @@
   min-width: 0; /* Prevent grid blowout */
 }
 
+/* ============================================
+   COURSE REPOSITORY LINK
+   ============================================ */
+
+.course-repository-container {
+  margin-bottom: 1.5rem;
+}
+
+.btn-course-repository {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-course-repository:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(66, 133, 244, 0.35);
+  background: linear-gradient(135deg, #5a9bf6 0%, #4285f4 100%);
+}
+
+.btn-course-repository:active {
+  transform: translateY(-1px);
+}
+
+.btn-course-repository .repository-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.repository-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.repository-label {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.repository-description {
+  font-size: 0.8125rem;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+/* Repository Existing State */
+.repository-existing {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.repository-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.repository-attribution {
+  font-size: 0.8125rem;
+  color: var(--text-gray);
+}
+
+.repository-attribution strong {
+  color: var(--text-charcoal);
+  font-weight: 600;
+}
+
+.btn-edit-repository {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-edit-repository:hover {
+  background: var(--page-bg);
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+}
+
+/* Repository Empty State */
+.repository-empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: var(--card-bg);
+  border: 2px dashed var(--border-light);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.repository-empty:hover {
+  border-color: var(--brand-green-light);
+  background: rgba(45, 122, 62, 0.02);
+}
+
+.repository-empty-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.repository-empty-icon {
+  font-size: 1.5rem;
+  color: var(--brand-green);
+  opacity: 0.7;
+}
+
+.repository-empty-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.repository-empty-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-charcoal);
+}
+
+.repository-empty-description {
+  font-size: 0.8125rem;
+  color: var(--text-gray);
+  line-height: 1.4;
+}
+
+.btn-start-repository {
+  padding: 0.625rem 1.25rem;
+  background: var(--brand-green);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-start-repository:hover {
+  background: var(--brand-green-dark);
+  transform: translateY(-1px);
+}
+
+.repository-login-hint {
+  font-size: 0.8125rem;
+  color: var(--text-lightgray);
+  font-style: italic;
+}
+
+/* Repository Form */
+.repository-form {
+  background: var(--card-bg);
+  border: 2px solid var(--brand-green);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.repository-form-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+  color: white;
+}
+
+.repository-form-header .repository-icon {
+  font-size: 1.25rem;
+}
+
+.repository-form-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.repository-form-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.repository-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  color: var(--text-charcoal);
+  transition: all 0.2s ease;
+}
+
+.repository-input:focus {
+  outline: none;
+  border-color: var(--brand-green);
+  box-shadow: 0 0 0 3px rgba(45, 122, 62, 0.1);
+}
+
+.repository-input::placeholder {
+  color: var(--text-lightgray);
+}
+
+.repository-error {
+  font-size: 0.8125rem;
+  color: #dc2626;
+}
+
+.repository-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.btn-repository-cancel {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-repository-cancel:hover:not(:disabled) {
+  background: var(--page-bg);
+  border-color: var(--text-gray);
+}
+
+.btn-repository-save {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--brand-green);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-repository-save:hover:not(:disabled) {
+  background: var(--brand-green-dark);
+}
+
+.btn-repository-save:disabled,
+.btn-repository-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .lectures-main .section-title {
   color: var(--text-charcoal) !important;
 }

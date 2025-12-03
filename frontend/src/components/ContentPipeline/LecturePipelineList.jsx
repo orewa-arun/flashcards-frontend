@@ -14,7 +14,8 @@ import {
   FaChevronDown,
   FaChevronUp,
   FaExclamationTriangle,
-  FaTrash
+  FaTrash,
+  FaRocket
 } from 'react-icons/fa'
 import { contentPipeline } from '../../api/contentPipeline'
 import './LecturePipelineList.css'
@@ -42,6 +43,7 @@ function LecturePipelineList({ refreshTrigger }) {
   const [expandedLectures, setExpandedLectures] = useState(new Set())
   const [actionInProgress, setActionInProgress] = useState({})
   const [deleteInProgress, setDeleteInProgress] = useState({})
+  const [pipelineInProgress, setPipelineInProgress] = useState({})
   // Track whether we're on the very first load of the component
   const [isInitialLoad, setIsInitialLoad] = useState(true)
 
@@ -167,6 +169,31 @@ function LecturePipelineList({ refreshTrigger }) {
     } finally {
       setDeleteInProgress(prev => ({ ...prev, [lecture.id]: false }))
     }
+  }
+
+  const handleRunFullPipeline = async (lecture) => {
+    setPipelineInProgress(prev => ({ ...prev, [lecture.id]: true }))
+    
+    try {
+      await contentPipeline.processLecture(lecture.id)
+      // Refresh data to show updated status
+      await fetchData()
+    } catch (err) {
+      console.error('Failed to start pipeline:', err)
+      alert(`Failed to start pipeline: ${err.message}`)
+    } finally {
+      setPipelineInProgress(prev => ({ ...prev, [lecture.id]: false }))
+    }
+  }
+
+  // Check if any stage is currently in progress for a lecture
+  const isLectureProcessing = (lecture) => {
+    return PIPELINE_STAGES.some(stage => lecture[stage.key] === 'in_progress')
+  }
+
+  // Check if all stages are completed
+  const isLectureFullyCompleted = (lecture) => {
+    return PIPELINE_STAGES.every(stage => lecture[stage.key] === 'completed')
   }
 
   const renderStatusBadge = (status) => {
@@ -364,22 +391,46 @@ function LecturePipelineList({ refreshTrigger }) {
                         <span>Updated: {new Date(lecture.updated_at).toLocaleString()}</span>
                       )}
                     </div>
-                    <button
-                      className="delete-btn"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        handleDeleteLecture(lecture)
-                      }}
-                      disabled={deleteInProgress[lecture.id]}
-                      title="Delete this lecture"
-                    >
-                      {deleteInProgress[lecture.id] ? (
-                        <FaSpinner className="spinning" />
-                      ) : (
-                        <FaTrash />
-                      )}
-                      Delete
-                    </button>
+                    <div className="lecture-actions">
+                      <button
+                        className="run-pipeline-btn"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          handleRunFullPipeline(lecture)
+                        }}
+                        disabled={pipelineInProgress[lecture.id] || isLectureProcessing(lecture)}
+                        title={
+                          isLectureProcessing(lecture) 
+                            ? "Pipeline is currently running" 
+                            : isLectureFullyCompleted(lecture)
+                              ? "Re-run full pipeline"
+                              : "Run full pipeline (Analysis → Flashcards → Quiz → Indexing)"
+                        }
+                      >
+                        {pipelineInProgress[lecture.id] || isLectureProcessing(lecture) ? (
+                          <FaSpinner className="spinning" />
+                        ) : (
+                          <FaRocket />
+                        )}
+                        {isLectureFullyCompleted(lecture) ? 'Re-run Pipeline' : 'Run Full Pipeline'}
+                      </button>
+                      <button
+                        className="delete-btn"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          handleDeleteLecture(lecture)
+                        }}
+                        disabled={deleteInProgress[lecture.id]}
+                        title="Delete this lecture"
+                      >
+                        {deleteInProgress[lecture.id] ? (
+                          <FaSpinner className="spinning" />
+                        ) : (
+                          <FaTrash />
+                        )}
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
