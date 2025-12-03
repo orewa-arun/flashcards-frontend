@@ -5,11 +5,65 @@ Handles users table (Firebase users) and user_profiles table (course enrollment)
 
 import logging
 import json
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from datetime import datetime, timezone
 import asyncpg
 
 logger = logging.getLogger(__name__)
+
+
+# ==================== Domain Mapping Configuration ====================
+# Maps email domains to organization attributes (college, country, timezone)
+
+DOMAIN_MAPPING = {
+    # Audencia Business School (France)
+    "audencia.com": {
+        "college": "Audencia",
+        "country": "France",
+        "timezone": "Europe/Paris"
+    },
+    # IIT Madras (India)
+    "smail.iitm.ac.in": {
+        "college": "IIT Madras",
+        "country": "India",
+        "timezone": "Asia/Kolkata"
+    },
+    # Add more domains as needed
+}
+
+# Default values for unknown domains
+DEFAULT_ORG_ATTRIBUTES = {
+    "college": None,
+    "country": None,
+    "timezone": "Asia/Kolkata"  # Default to IST
+}
+
+
+def infer_organization_from_email(email: Optional[str]) -> Dict[str, Optional[str]]:
+    """
+    Infer college, country, and timezone from email domain.
+    
+    Args:
+        email: User's email address
+        
+    Returns:
+        Dict with college, country, and timezone
+    """
+    if not email or "@" not in email:
+        return DEFAULT_ORG_ATTRIBUTES.copy()
+    
+    domain = email.lower().split("@")[1]
+    
+    # Check for exact domain match
+    if domain in DOMAIN_MAPPING:
+        return DOMAIN_MAPPING[domain].copy()
+    
+    # Check for subdomain matches (e.g., student.audencia.com -> audencia.com)
+    for mapped_domain, attributes in DOMAIN_MAPPING.items():
+        if domain.endswith("." + mapped_domain) or domain == mapped_domain:
+            return attributes.copy()
+    
+    return DEFAULT_ORG_ATTRIBUTES.copy()
 
 
 class UserRepository:
@@ -39,6 +93,7 @@ class UserRepository:
         query = """
             SELECT 
                 id, firebase_uid, email, name, picture, email_verified,
+                college, country, timezone,
                 total_decks_studied, total_quiz_attempts, created_at, last_active
             FROM users
             WHERE firebase_uid = $1
@@ -62,6 +117,7 @@ class UserRepository:
     ) -> Dict[str, Any]:
         """
         Create a new user.
+        Automatically infers college, country, and timezone from email domain.
         
         Args:
             firebase_uid: Firebase user ID
@@ -75,22 +131,28 @@ class UserRepository:
         """
         now = datetime.now(timezone.utc)
         
+        # Infer organization attributes from email domain
+        org_attrs = infer_organization_from_email(email)
+        
         query = """
             INSERT INTO users (
                 firebase_uid, email, name, picture, email_verified,
+                college, country, timezone,
                 total_decks_studied, total_quiz_attempts, created_at, last_active
             )
-            VALUES ($1, $2, $3, $4, $5, 0, 0, $6, $6)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 0, 0, $9, $9)
             RETURNING *
         """
         
         async with self.pool.acquire() as conn:
             row = await conn.fetchrow(
                 query,
-                firebase_uid, email, name, picture, email_verified, now
+                firebase_uid, email, name, picture, email_verified,
+                org_attrs["college"], org_attrs["country"], org_attrs["timezone"],
+                now
             )
             
-            logger.info(f"Created user {firebase_uid}")
+            logger.info(f"Created user {firebase_uid} with college={org_attrs['college']}, timezone={org_attrs['timezone']}")
             return dict(row)
     
     async def get_or_create_user(
@@ -437,10 +499,49 @@ class UserRepository:
         except Exception as e:
             logger.error(f"Error updating preferences for user {user_id}: {e}")
             return False
-
-
-
-
+    
+    # ==================== Organization & Timezone Methods ====================
+    
+    async def get_user_timezone(self, firebase_uid: str) -> str:
+        """
+        Get user's timezone.
+        
+        Args:
+            firebase_uid: Firebase user ID
+            
+        Returns:
+            Timezone string (e.g., 'Asia/Kolkata', 'Europe/Paris')
+            Defaults to 'Asia/Kolkata' if not found
+        """
+        query = "SELECT timezone FROM users WHERE firebase_uid = $1"
+        
+        async with self.pool.acquire() as conn:
+            row = await conn.fetchrow(query, firebase_uid)
+            
+            if row and row["timezone"]:
+                return row["timezone"]
+            
+            return "Asia/Kolkata"  # Default
+    
+    async def get_user_college(self, firebase_uid: str) -> Optional[str]:
+        """
+        Get user's college.
+        
+        Args:
+            firebase_uid: Firebase user ID
+            
+        Returns:
+            College name or None if not found/set
+        """
+        query = "SELECT college FROM users WHERE firebase_uid = $1"
+        
+        async with self.pool.acquire() as conn:
+            row = await conn.fetchrow(query, firebase_uid)
+            
+            if row:
+                return row["college"]
+            
+            return None
 
 
 

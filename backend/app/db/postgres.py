@@ -68,11 +68,13 @@ async def _create_tables():
             reference_textbooks JSONB DEFAULT '[]'::jsonb,
             course_repository_link TEXT,
             repository_created_by TEXT,
+            college TEXT,
             created_at TIMESTAMP WITH TIME ZONE NOT NULL,
             updated_at TIMESTAMP WITH TIME ZONE NOT NULL
         );
         
         CREATE INDEX IF NOT EXISTS idx_courses_course_code ON courses(course_code);
+        CREATE INDEX IF NOT EXISTS idx_courses_college ON courses(college);
     """
     
     # SQL for creating lectures table
@@ -222,6 +224,9 @@ async def _create_tables():
             name VARCHAR(255),
             picture TEXT,
             email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+            college TEXT,
+            country TEXT,
+            timezone TEXT DEFAULT 'Asia/Kolkata',
             total_decks_studied INTEGER NOT NULL DEFAULT 0,
             total_quiz_attempts INTEGER NOT NULL DEFAULT 0,
             created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
@@ -230,6 +235,7 @@ async def _create_tables():
         
         CREATE INDEX IF NOT EXISTS idx_users_firebase_uid ON users(firebase_uid);
         CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+        CREATE INDEX IF NOT EXISTS idx_users_college ON users(college);
     """
     
     # SQL for creating user_profiles table (course enrollment)

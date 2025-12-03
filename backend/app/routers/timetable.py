@@ -6,14 +6,26 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.db.postgres import get_postgres_pool
 from app.firebase_auth import get_current_user
-from app.services.timetable_service import TimetableService
+from app.services.timetable_service import TimetableService, DEFAULT_TIMEZONE
 from app.services.user_profile_service import UserProfileService
 from app.services.readiness_v2_service import ReadinessV2Service
 from app.models.readiness_v2 import UserExamReadiness
+from app.repositories.user_repository import UserRepository
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/v1/timetables", tags=["timetables"])
+
+
+async def get_user_timezone(user_id: str) -> str:
+    """Get user's timezone from database, fallback to default."""
+    try:
+        pool = await get_postgres_pool()
+        user_repo = UserRepository(pool)
+        return await user_repo.get_user_timezone(user_id)
+    except Exception as e:
+        logger.warning(f"Could not get user timezone: {e}")
+        return DEFAULT_TIMEZONE
 
 
 @router.get("/my-schedule")
@@ -27,7 +39,7 @@ async def get_my_aggregated_schedule(
     1. Fetches the user's enrolled courses
     2. Gets timetables for all those courses
     3. Aggregates all exams into a single list
-    4. Converts all dates to IST
+    4. Converts all dates to user's timezone
     5. Sorts chronologically
     
     Returns:
@@ -36,9 +48,12 @@ async def get_my_aggregated_schedule(
     try:
         user_id = current_user['uid']
         
+        # Get user's timezone
+        user_timezone = await get_user_timezone(user_id)
+        
         pool = await get_postgres_pool()
         profile_service = UserProfileService(pool)
-        timetable_service = TimetableService(pool)
+        timetable_service = TimetableService(pool, user_timezone)
         
         # Get user's enrolled courses
         enrolled_courses = await profile_service.get_enrolled_courses(user_id)
@@ -93,7 +108,7 @@ async def get_course_timetable(
     """
     Get exam timetable for a course.
     
-    All dates are returned in IST format for display.
+    All dates are returned in user's timezone for display.
     
     Args:
         course_id: Course identifier (e.g., "MS5031")
@@ -103,8 +118,11 @@ async def get_course_timetable(
         Timetable document with exams and last update info
     """
     try:
+        user_id = current_user['uid']
+        user_timezone = await get_user_timezone(user_id)
+        
         pool = await get_postgres_pool()
-        timetable_service = TimetableService(pool)
+        timetable_service = TimetableService(pool, user_timezone)
         
         timetable = await timetable_service.get_timetable(course_id)
         
@@ -135,7 +153,7 @@ async def update_course_timetable(
     """
     Update exam timetable for a course.
     
-    Frontend sends dates in IST format, backend converts to UTC for storage.
+    Frontend sends dates in user's local timezone, backend converts to UTC for storage.
     
     Args:
         course_id: Course identifier
@@ -148,6 +166,7 @@ async def update_course_timetable(
     try:
         user_id = current_user['uid']
         user_name = current_user.get('name') or current_user.get('email', 'Unknown User')
+        user_timezone = await get_user_timezone(user_id)
         
         # Extract exams from request
         exams = request.get('exams', [])
@@ -159,7 +178,7 @@ async def update_course_timetable(
             )
         
         pool = await get_postgres_pool()
-        timetable_service = TimetableService(pool)
+        timetable_service = TimetableService(pool, user_timezone)
         
         success = await timetable_service.update_timetable(
             course_id=course_id,
@@ -213,8 +232,11 @@ async def delete_exam_entry(
         Success message
     """
     try:
+        user_id = current_user['uid']
+        user_timezone = await get_user_timezone(user_id)
+        
         pool = await get_postgres_pool()
-        timetable_service = TimetableService(pool)
+        timetable_service = TimetableService(pool, user_timezone)
         
         success = await timetable_service.delete_exam(course_id, exam_id)
         

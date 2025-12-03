@@ -121,23 +121,39 @@ class ContentRepository:
             row = await conn.fetchrow(query, course_code)
             return dict(row) if row else None
     
-    async def list_courses(self) -> List[Dict[str, Any]]:
-        """List all courses with lecture counts."""
-        query = """
+    async def list_courses(self, college: Optional[str] = None) -> List[Dict[str, Any]]:
+        """
+        List all courses with lecture counts.
+        
+        Args:
+            college: Optional college filter. If provided, only returns courses for that college.
+        """
+        base_query = """
             SELECT c.id, c.course_code, c.course_name, c.instructor,
                    c.additional_info, c.reference_textbooks, c.course_repository_link,
-                   c.repository_created_by, c.created_at, c.updated_at,
+                   c.repository_created_by, c.college, c.created_at, c.updated_at,
                    COUNT(l.id) FILTER (WHERE l.is_deleted IS NULL OR l.is_deleted = FALSE) as lecture_count
             FROM courses c
             LEFT JOIN lectures l ON c.course_code = l.course_code
+        """
+        
+        group_by = """
             GROUP BY c.id, c.course_code, c.course_name, c.instructor,
                      c.additional_info, c.reference_textbooks, c.course_repository_link,
-                     c.repository_created_by, c.created_at, c.updated_at
+                     c.repository_created_by, c.college, c.created_at, c.updated_at
             ORDER BY c.created_at DESC
         """
         
         async with self.pool.acquire() as conn:
-            rows = await conn.fetch(query)
+            if college:
+                # Filter by college
+                query = base_query + " WHERE c.college = $1 " + group_by
+                rows = await conn.fetch(query, college)
+            else:
+                # Return all courses
+                query = base_query + group_by
+                rows = await conn.fetch(query)
+            
             return [dict(row) for row in rows]
     
     async def update_course_repository(

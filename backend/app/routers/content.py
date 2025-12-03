@@ -3,13 +3,16 @@
 import logging
 import json
 from typing import List, Optional, Dict, Any
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, BackgroundTasks
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, BackgroundTasks, Header
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 
 from app.db.postgres import get_postgres_pool
 from app.repositories.content_repository import ContentRepository
+from app.repositories.user_repository import UserRepository
 from app.services.content_pipeline.orchestrator import create_orchestrator
-from app.firebase_auth import get_current_user
+from app.firebase_auth import get_current_user, verify_firebase_token
+from app.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -59,6 +62,7 @@ class CourseDetail(BaseModel):
     reference_textbooks: Optional[List[str]] = None
     course_repository_link: Optional[str] = None
     repository_created_by: Optional[str] = None
+    college: Optional[str] = None
     lecture_count: int = 0
     created_at: str
     updated_at: str
@@ -75,6 +79,39 @@ async def get_repository():
     """Dependency to get repository instance."""
     pool = await get_postgres_pool()
     return ContentRepository(pool)
+
+
+async def get_user_repository():
+    """Dependency to get user repository instance."""
+    pool = await get_postgres_pool()
+    return UserRepository(pool)
+
+
+# Optional authentication - returns None if no token provided
+security = HTTPBearer(auto_error=False)
+
+
+async def get_optional_user(
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)
+) -> Optional[Dict[str, Any]]:
+    """
+    Optional authentication dependency.
+    Returns user data if valid token provided, None otherwise.
+    """
+    if not credentials:
+        return None
+    
+    try:
+        return await verify_firebase_token(credentials.credentials)
+    except Exception:
+        return None
+
+
+def is_global_admin(email: Optional[str]) -> bool:
+    """Check if user email is in global admin list."""
+    if not email:
+        return False
+    return email.lower() in settings.GLOBAL_ADMIN_EMAILS
 
 
 def extract_topics_from_analysis(structured_analysis: Any) -> List[str]:
@@ -289,11 +326,34 @@ async def process_lecture(
 
 @router.get("/courses", response_model=List[CourseDetail])
 async def list_courses(
-    repository: ContentRepository = Depends(get_repository)
+    repository: ContentRepository = Depends(get_repository),
+    user_repo: UserRepository = Depends(get_user_repository),
+    current_user: Optional[Dict[str, Any]] = Depends(get_optional_user)
 ):
-    """List all courses with lecture counts."""
+    """
+    List courses with lecture counts.
+    
+    Filtering logic:
+    - Global admins (email in GLOBAL_ADMIN_EMAILS): See all courses
+    - Authenticated users: See courses for their college
+    - Unauthenticated users: See all courses (public access)
+    """
     try:
-        courses = await repository.list_courses()
+        college_filter = None
+        
+        # If user is authenticated, check if they need filtering
+        if current_user:
+            user_email = current_user.get("email", "")
+            
+            # Global admins see all courses
+            if not is_global_admin(user_email):
+                # Get user's college from DB
+                user_data = await user_repo.get_user_by_firebase_uid(current_user.get("uid", ""))
+                if user_data and user_data.get("college"):
+                    college_filter = user_data["college"]
+                    logger.info(f"Filtering courses for college: {college_filter}")
+        
+        courses = await repository.list_courses(college=college_filter)
         
         result = []
         for course in courses:
@@ -317,6 +377,7 @@ async def list_courses(
                     reference_textbooks=textbooks,
                     course_repository_link=course.get("course_repository_link"),
                     repository_created_by=course.get("repository_created_by"),
+                    college=course.get("college"),
                     lecture_count=course.get("lecture_count", 0),
                     created_at=course["created_at"].isoformat(),
                     updated_at=course["updated_at"].isoformat()

@@ -56,6 +56,14 @@ class Settings:
     API_PORT: int = int(os.getenv("API_PORT", "8000"))
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
     
+    # Global Admin Configuration
+    # Comma-separated list of emails that can see all courses regardless of college
+    GLOBAL_ADMIN_EMAILS: List[str] = [
+        email.strip().lower() 
+        for email in os.getenv("GLOBAL_ADMIN_EMAILS", "").split(",") 
+        if email.strip()
+    ]
+    
     # CORS Configuration
     ALLOWED_ORIGINS: List[str] = os.getenv(
         "ALLOWED_ORIGINS", 
