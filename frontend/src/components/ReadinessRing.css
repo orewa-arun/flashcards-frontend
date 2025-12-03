@@ -3,6 +3,14 @@
  * A modern, card-based design with bottom progress bar
  */
 
+button.readiness-badge {
+  /* Reset button defaults */
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
 .readiness-badge {
   position: relative;
   display: inline-flex;

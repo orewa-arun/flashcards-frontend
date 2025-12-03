@@ -29,10 +29,9 @@
   padding: 120px 2rem 4rem;
 }
 
-/* Hard guard for this view: allow only the dedicated spinner to animate */
-.my-schedule-view *:not(.loading-spinner) {
+/* Hard guard for this view: prevent unwanted animations but allow transforms for interactions */
+.my-schedule-view *:not(.loading-spinner):not(.readiness-badge):not(.lecture-modal-overlay):not(.lecture-modal) {
   animation: none !important;
-  transform: none !important;
 }
 
 /* ========================================
@@ -203,10 +202,10 @@
 .planner-entry {
   position: relative;
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 2rem;
   margin-bottom: 3rem;
-  animation: fadeIn 0.4s ease-out;
+  align-items: center;
 }
 
 @keyframes fadeIn {
@@ -263,9 +262,15 @@
 
 .entry-readiness {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding-top: 1rem;
+}
+
+/* Ensure readiness badge is clickable and properly styled */
+.entry-readiness .readiness-badge {
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
 }
 
 /* ========================================

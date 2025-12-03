@@ -20,7 +20,8 @@ from app.routers import (
     performance,
     mix_mode,
     conversations,
-    content
+    content,
+    readiness
 )
 from app.firebase_auth import initialize_firebase
 
@@ -86,6 +87,7 @@ app.include_router(performance.router, prefix="/api/v1/performance", tags=["perf
 app.include_router(mix_mode.router)
 app.include_router(conversations.router)
 app.include_router(content.router)
+app.include_router(readiness.router)
 
 
 @app.get("/")

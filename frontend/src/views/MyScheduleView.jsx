@@ -176,6 +176,7 @@ const MyScheduleView = () => {
                       courseId={exam.course_id}
                       examId={exam.exam_id}
                       examName={exam.subject}
+                      lectures={exam.lectures || []}
                       size="lg"
                     />
                   </div>

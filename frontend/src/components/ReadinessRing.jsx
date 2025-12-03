@@ -1,37 +1,72 @@
 /**
- * ReadinessRing - Completely Redesigned
+ * ReadinessRing - Per-Lecture Readiness System
  * 
  * A clean, minimal progress indicator for exam readiness scores.
- * Shows percentage with color-coded urgency and click-to-expand details.
+ * Shows percentage based on average of per-lecture accuracy scores.
+ * Click to see breakdown by lecture.
  */
-import React, { useState, useEffect } from 'react';
-import { getExamReadiness } from '../api/examReadiness';
-import ReadinessBreakdownModal from './ReadinessBreakdownModal';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { getLectureReadiness } from '../api/examReadiness';
+import LectureReadinessModal from './LectureReadinessModal';
 import './ReadinessRing.css';
 
-const ReadinessRing = ({ courseId, examId, examName, size = 'md' }) => {
-  const [readiness, setReadiness] = useState(null);
+const ReadinessRing = ({ courseId, examId, examName, lectures = [], size = 'md' }) => {
+  const [lectureScores, setLectureScores] = useState({});
+  const [overallScore, setOverallScore] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  
+  // Track if we've already fetched for this combination
+  const fetchedRef = useRef(false);
+  const lastFetchKey = useRef('');
 
-  useEffect(() => {
-    loadReadiness();
-  }, [courseId, examId]);
+  // Create a stable key for the current props
+  const fetchKey = `${courseId}-${lectures.sort().join(',')}`;
 
-  const loadReadiness = async () => {
+  const loadReadiness = useCallback(async () => {
+    // If no lectures, show 0%
+    if (!lectures || lectures.length === 0) {
+      setOverallScore(0);
+      setLoading(false);
+      return;
+    }
+
+    // Prevent duplicate fetches for the same data
+    if (lastFetchKey.current === fetchKey && fetchedRef.current) {
+      return;
+    }
+
     try {
       setLoading(true);
       setError(null);
-      const data = await getExamReadiness(courseId, examId);
-      setReadiness(data);
+      lastFetchKey.current = fetchKey;
+      fetchedRef.current = true;
+      
+      const scores = await getLectureReadiness(courseId, lectures);
+      setLectureScores(scores);
+      
+      // Calculate overall score as average of lecture scores
+      const scoreValues = Object.values(scores);
+      if (scoreValues.length > 0) {
+        const average = scoreValues.reduce((sum, s) => sum + s, 0) / scoreValues.length;
+        setOverallScore(Math.round(average));
+      } else {
+        setOverallScore(0);
+      }
     } catch (err) {
       console.error('Error loading readiness:', err);
       setError('Failed to load');
+      setOverallScore(0);
+      fetchedRef.current = false; // Allow retry on error
     } finally {
       setLoading(false);
     }
-  };
+  }, [courseId, fetchKey, lectures]);
+
+  useEffect(() => {
+    loadReadiness();
+  }, [loadReadiness]);
 
   const getColorForScore = (score) => {
     if (score >= 75) return '#10b981'; // Green
@@ -61,7 +96,7 @@ const ReadinessRing = ({ courseId, examId, examName, size = 'md' }) => {
   }
 
   // Error state
-  if (error || !readiness) {
+  if (error) {
     return (
       <div className={`readiness-badge size-${size} status-error`}>
         <div className="badge-content">
@@ -72,38 +107,47 @@ const ReadinessRing = ({ courseId, examId, examName, size = 'md' }) => {
     );
   }
 
-  const { overall_readiness_score } = readiness;
-  const overall_score = overall_readiness_score; // Use this variable for consistency
-  const color = getColorForScore(overall_score);
-  const urgencyClass = getUrgencyClass(overall_score);
-  const label = getUrgencyLabel(overall_score);
+  const color = getColorForScore(overallScore);
+  const urgencyClass = getUrgencyClass(overallScore);
+  const label = getUrgencyLabel(overallScore);
+
+  // Exam object for the modal
+  const examData = {
+    exam_id: examId,
+    subject: examName,
+    lectures: lectures
+  };
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setShowModal(true);
+  };
 
   return (
     <>
-      <div 
+      <button 
+        type="button"
         className={`readiness-badge size-${size} status-${urgencyClass} clickable`}
-        onClick={() => setShowModal(true)}
+        onClick={handleClick}
         style={{ '--score-color': color }}
+        aria-label={`Exam readiness: ${overallScore}% - ${label}. Click for details.`}
       >
         <div className="badge-content">
-          <div className="badge-score">{Math.round(overall_score)}%</div>
+          <div className="badge-score">{overallScore}%</div>
           <div className="badge-label">{label}</div>
         </div>
         <div 
           className="badge-progress" 
-          style={{ width: `${overall_score}%` }}
+          style={{ width: `${overallScore}%` }}
         ></div>
-      </div>
+      </button>
 
-      {showModal && (
-        <ReadinessBreakdownModal
-          readiness={readiness}
-          examName={examName}
-          courseId={courseId}
-          onClose={() => setShowModal(false)}
-          onRefresh={loadReadiness}
-        />
-      )}
+      <LectureReadinessModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        exam={examData}
+        courseId={courseId}
+      />
     </>
   );
 };
