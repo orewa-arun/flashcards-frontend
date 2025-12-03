@@ -21,7 +21,8 @@ from app.routers import (
     mix_mode,
     conversations,
     content,
-    readiness
+    readiness,
+    flashcard_chat
 )
 from app.firebase_auth import initialize_firebase
 
@@ -88,6 +89,7 @@ app.include_router(mix_mode.router)
 app.include_router(conversations.router)
 app.include_router(content.router)
 app.include_router(readiness.router)
+app.include_router(flashcard_chat.router)
 
 
 @app.get("/")

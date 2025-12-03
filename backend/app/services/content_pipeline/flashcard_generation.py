@@ -274,35 +274,35 @@ class FlashcardGenerationService:
             else:
                 # Fallback to legacy approach
                 logger.info("Using legacy content extraction for flashcard generation")
-            
-            # Extract content from structured analysis
+                
+                # Extract content from structured analysis
                 content = self._extract_content_from_analysis(structured_analysis)
-            
-            # Generate flashcards (with chunking if needed)
-            flashcards_list = generator.generate_from_chunks(
-                content=content,
-                chunk_size=12000,
-                max_flashcards_per_chunk=6
-            )
-            
-            # Prepare result
-            flashcards_data = {
-                "course_name": course["course_name"],
-                "lecture_title": lecture["lecture_title"],
-                "model_used": self.model_name,
-                "provider": provider,
-                "total_flashcards": len(flashcards_list),
-                "flashcards": flashcards_list,
-                "used_enriched_prompt": False
-            }
-            
-            # Tag flashcards with stable IDs before storing
-            flashcards_data = tag_flashcards_with_ids(
-                flashcards_data=flashcards_data,
-                course_code=lecture["course_code"],
-                lecture_id=lecture_id
-            )
-            logger.info(f"Tagged {len(flashcards_list)} flashcards with IDs for lecture {lecture_id}")
+                
+                # Generate flashcards (with chunking if needed)
+                flashcards_list = generator.generate_from_chunks(
+                    content=content,
+                    chunk_size=12000,
+                    max_flashcards_per_chunk=6
+                )
+                
+                # Prepare result
+                flashcards_data = {
+                    "course_name": course["course_name"],
+                    "lecture_title": lecture["lecture_title"],
+                    "model_used": self.model_name,
+                    "provider": provider,
+                    "total_flashcards": len(flashcards_list),
+                    "flashcards": flashcards_list,
+                    "used_enriched_prompt": False
+                }
+                
+                # Tag flashcards with stable IDs before storing
+                flashcards_data = tag_flashcards_with_ids(
+                    flashcards_data=flashcards_data,
+                    course_code=lecture["course_code"],
+                    lecture_id=lecture_id
+                )
+                logger.info(f"Tagged {len(flashcards_list)} flashcards with IDs for lecture {lecture_id}")
             
             # Update lecture with results
             await self.repository.update_lecture_content(

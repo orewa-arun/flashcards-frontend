@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Flashcard from './Flashcard'
+import { FlashcardChatInput, FlashcardChatModal } from './FlashcardChat'
 import './StudyDeck.css'
 
 function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessionId, initialCardId }) {
@@ -10,9 +11,38 @@ function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessio
     }
     return 0
   })
+  
+  const [showChatModal, setShowChatModal] = useState(false)
+  const [initialChatMessage, setInitialChatMessage] = useState('')
 
   const currentCard = flashcards[currentIndex]
   const progress = ((currentIndex + 1) / flashcards.length) * 100
+
+  // Build flashcard context for chat (question + all answer modes, excluding diagrams)
+  const flashcardContext = useMemo(() => {
+    if (!currentCard) return null
+    return {
+      question: currentCard.question || '',
+      concise: currentCard.answers?.concise || '',
+      analogy: currentCard.answers?.analogy || '',
+      eli5: currentCard.answers?.eli5 || '',
+      real_world_use_case: currentCard.answers?.real_world_use_case || '',
+      common_mistakes: currentCard.answers?.common_mistakes || '',
+      example: currentCard.example || ''
+    }
+  }, [currentCard])
+
+  // Handle opening chat modal with an initial message from the input
+  const handleOpenChatModal = (initialMessage = '') => {
+    setInitialChatMessage(initialMessage)
+    setShowChatModal(true)
+  }
+
+  // Close chat modal
+  const handleCloseChatModal = () => {
+    setShowChatModal(false)
+    setInitialChatMessage('')
+  }
 
   const handleNext = () => {
     if (currentIndex < flashcards.length - 1) {
@@ -105,7 +135,29 @@ function StudyDeck({ flashcards, metadata, onStartQuiz, courseId, deckId, sessio
           <span>1-6 Switch Answers</span>
           <span>Tab Cycle Tabs</span>
         </div>
+        
+        {/* Flashcard Chat Input */}
+        {currentCard && (
+          <FlashcardChatInput
+            flashcardId={currentCard.flashcard_id || `${deckId}_${currentIndex}`}
+            courseId={courseId}
+            lectureId={deckId}
+            flashcardContext={flashcardContext}
+            onOpenModal={handleOpenChatModal}
+          />
+        )}
       </div>
+
+      {/* Flashcard Chat Modal */}
+      <FlashcardChatModal
+        isOpen={showChatModal}
+        onClose={handleCloseChatModal}
+        flashcardId={currentCard?.flashcard_id || `${deckId}_${currentIndex}`}
+        courseId={courseId}
+        lectureId={deckId}
+        flashcardContext={flashcardContext}
+        initialMessage={initialChatMessage}
+      />
 
       {/* Quiz Section */}
       {onStartQuiz && currentIndex === flashcards.length - 1 && (

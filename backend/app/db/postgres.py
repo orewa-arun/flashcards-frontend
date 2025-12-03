@@ -416,6 +416,43 @@ async def _create_tables():
         CREATE INDEX IF NOT EXISTS idx_repo_history_updated_at ON course_repository_history(course_code, updated_at DESC);
     """
     
+    # ==================== FLASHCARD CHAT (Separate from AI Tutor) ====================
+    
+    # SQL for creating flashcard_chats table
+    create_flashcard_chats_table = """
+        CREATE TABLE IF NOT EXISTS flashcard_chats (
+            id SERIAL PRIMARY KEY,
+            chat_id UUID UNIQUE NOT NULL,
+            user_id VARCHAR(255) NOT NULL,
+            course_id VARCHAR(255) NOT NULL,
+            lecture_id VARCHAR(255) NOT NULL,
+            flashcard_id VARCHAR(255) NOT NULL,
+            flashcard_context JSONB NOT NULL,
+            message_count INTEGER NOT NULL DEFAULT 0,
+            created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+            UNIQUE(user_id, flashcard_id)
+        );
+        
+        CREATE INDEX IF NOT EXISTS idx_flashcard_chats_chat_id ON flashcard_chats(chat_id);
+        CREATE INDEX IF NOT EXISTS idx_flashcard_chats_user ON flashcard_chats(user_id);
+        CREATE INDEX IF NOT EXISTS idx_flashcard_chats_user_flashcard ON flashcard_chats(user_id, flashcard_id);
+    """
+    
+    # SQL for creating flashcard_chat_messages table
+    create_flashcard_chat_messages_table = """
+        CREATE TABLE IF NOT EXISTS flashcard_chat_messages (
+            id SERIAL PRIMARY KEY,
+            chat_id UUID NOT NULL REFERENCES flashcard_chats(chat_id) ON DELETE CASCADE,
+            role VARCHAR(50) NOT NULL,
+            content TEXT NOT NULL,
+            timestamp TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+        );
+        
+        CREATE INDEX IF NOT EXISTS idx_flashcard_chat_messages_chat ON flashcard_chat_messages(chat_id);
+        CREATE INDEX IF NOT EXISTS idx_flashcard_chat_messages_timestamp ON flashcard_chat_messages(chat_id, timestamp);
+    """
+    
     async with _pool.acquire() as conn:
         # Content tables
         await conn.execute(create_courses_table)
@@ -451,6 +488,10 @@ async def _create_tables():
         
         # Course Repository History table
         await conn.execute(create_course_repository_history_table)
+        
+        # Flashcard Chat tables (separate from AI Tutor)
+        await conn.execute(create_flashcard_chats_table)
+        await conn.execute(create_flashcard_chat_messages_table)
         
         logger.info("Database tables created/verified successfully")
 
